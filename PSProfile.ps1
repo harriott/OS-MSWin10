@@ -82,7 +82,6 @@ Function p {test-connection -computername 8.8.8.8 -ErrorAction SilentlyContinue}
 New-Alias jpo $onGH\jpgorhor\jpgorhor.ps1
 New-Alias m4p $onGH\md4pdf\MSWin\m4p.ps1
 New-Alias m4ps $onGH\md4pdf\MSWin\m4ps.ps1
-New-Alias m4psy $onGH\md4pdf\MSWin\m4ps.ps1
 New-Alias RbS0 $onGH\SyncPortableDrives\RoboHPP-Sync0.ps1
 New-Alias RbS1 $onGH\SyncPortableDrives\RoboHPP-Sync1.ps1
 New-Alias RbSh $onGH\SyncPortableDrives\RoboSM3_Share.ps1
