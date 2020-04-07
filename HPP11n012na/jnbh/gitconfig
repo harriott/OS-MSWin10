@@ -1,0 +1,16 @@
+# vim: ft=gitconfig
+
+# This is Git's per-user configuration file, adjusted Powershell.
+# Its contents are referred to as needed by Git, making changes saved here instantaneous.
+
+[color "status"]
+  changed = red bold
+  untracked = red bold
+  added = green bold
+[include]
+  path = D:/Dropbox/JH/IT_stack/gitconfig
+
+[gui]
+	recentrepo = C:/Users/jnbh/vimfiles
+[winUpdater]
+	recentlySeenVersion = 2.25.0.windows.1

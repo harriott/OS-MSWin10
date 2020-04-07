@@ -1,0 +1,3 @@
+" Point to my Win10 vimrc:
+source $HOME/vimfiles/Win10-vimrc.vim
+

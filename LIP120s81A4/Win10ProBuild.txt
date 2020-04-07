@@ -1,0 +1,89 @@
+vim: fdl=0 ft=build fdm=expr:
+
+Lenovo IdeaPad 120s 81A4
+
+# setup of Win10S
+Moto G4 key
+jnbh@live.co.uk
+PIN > 4343
+then took some time
+battery was flat
+set my Power options
+waited for Updates > Restart
+Updates > Restart
+# Win10Pro
+Updates > Activation > Store > Install   then, after some Updates,  Restart
+Taskbar tweaks
+Updates > Plugged in ST905004EXD101 for needed space > Restart
+# Settings > Device name
+LAPTOP-52EN9MRG
+# Lenovo Vantage
+installed > [ Toolbar off  Help us on ]
+Updates > REBOOT
+# Settings > Apps & features
+Candy Crush Friends > Uninstall
+Candy Crush Saga > Uninstall
+# Hotkey Mode
+rebooted for F2 to get into BIOS > [ Configuration > Hotkey Mode > Disabled
+  Security > Secure Boot > Disabled ] F10
+# Start Menu tidied
+# Computer name
+Settings > System > About > Rename > LIP120s81A4 > Restart
+# Turn off Fast Start
+Power & sleep > Additional power settings > Choose what the power button does >
+  Change settings that are currently unavailable > Turn on fast startup  off-ticked
+Restarted
+# Task Manager > Hide when minimised
+# Git
+https://git-scm.com/download/win > Windows   for the executable
+## User defaulted to troin
+## Git
+Git-2.26.0-64-bit.exe > Check daily > Checkout as is, commit Unix-style line endings
+## Git Bash
+Pinned to Start
+ran and right-clicked inside for Options > [ Looks > Transparency > High
+  Window > Default size > [ 160  30 ]
+## gVim v8.2
+gvim82.exe > [ Created icons > On the Desktop off-ticked   Created Default Config off-ticked
+  Create Plugin Directories off-ticked ]
+C:\Users\troin\  for   [ _gvimrc   _vimrc  vimfiles ] Copied to in from HPP11
+Ran it, getting   .vimswap  .vimundo  &  .viminfo   generated
+# modifying SM3
+right-click on SM3 for  Properties > Security > Edit > Allow > Full
+  and Windows Security had a ball   Setting security information on   each and every file
+# Ditto Clipboard
+Microsoft Store > Ditto Clipboard > Install > Pin to Start
+Ran it for  Options > General > Maximum Number of Saved Copies > 5000
+  ( C:\Users\troin\AppData\Local\Ditto_WindowsApp\Ditto.db )
+# modifying ST905004EXD101
+right-click on ST905004EXD101 for  Properties > Security > Edit > Allow > Full
+# create SSH key
+PS> ssh-keygen -b 4096 -C "troingjo@outlook.com" > Enter (for C:\Users\troin\.ssh) >
+  Enter (= no passphrase)
+C:\Users\troin\.ssh  backed up into Secure1/Networking/SSH
+# Test GitHub SSH connection
+https://github.com/settings/ssh/new   to post key as   troingjo@outlook.com
+Git Bash > ssh -T git@github.com
+  The authenticity of host 'github.com (140.82.118.4)' can't be established.
+  RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+  Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+  Warning: Permanently added 'github.com,140.82.118.4' (RSA) to the list of known hosts.
+  Hi harriott! You've successfully authenticated, but GitHub does not provide shell access.
+got me  $HOME\.ssh\known_hosts
+# Dropbox
+DropboxInstaller.exe   Signed in > Online only   Paused for  Preferences > Sync >
+  Selective sync for just a few folders   then   Smart Sync > Local
+# Settings > Background
+somehow already has access to my DesktopBackground folder, but I can't find them in OneDrive
+it's in  C:\Users\troin\AppData\Local\Microsoft\Windows\Themes\RoamedThemeFiles\DesktopBackground
+  (which is a small subset of  JH/Then0/DesktopBackground)  Deleted
+Personalisation > Personalise > Background > [ (Slideshow)
+  Browse > C:\Users\troin\Dropbox\JH\Stack\DesktopBackground ]
+# $Profile
+PS> $Profile  returns
+  C:\Users\troin\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+## symlink $profile
+in  C:\Users\jnbh\Documents  made folder  WindowsPowerShell  for  console run as administrator:
+  mklink C:\Users\troin\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 D:\Dropbox\JH\Now\Technos\IT\HW\11-n012na\Microsoft.PowerShell_profile.ps1
+# waiting
+## Broot

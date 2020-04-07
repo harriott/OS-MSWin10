@@ -1,0 +1,5 @@
+" ------------------------------------------------------------------------
+" this is a pointer, on a MSWin system, to my more portably located gvimrc
+" ------------------------------------------------------------------------
+source $HOME/vimfiles/gvimrc-Win10.vim
+

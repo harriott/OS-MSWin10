@@ -1,0 +1,1019 @@
+﻿vim: ft=build fdm=expr:
+
+HP Pavilion x360 Convertible Laptop 11-n012na
+
+# fitted BX200
+Secure Boot > Disabled > entered given passcode
+# prep Win10_1803_English_x64.iso
+(BIOS > Legacy Support for) KNOPPIX 7.7.1 via Salcar > iso burned in K3B as ISO9660 Image & Verified.
+BIOS Legacy Support > Disabled
+# boot Win10_1803_English_x64.iso
+Booted Win10 DVD in Salcar
+  Language > English (United States) no other choice
+  Time and currency format > English (United Kingdom)
+  Install > Custom > Deleted all three partitions > New > 28935 > Partition 4 27.7 GB Primary >
+    Next > keyboard > United Kingdom
+  Sign in with Microsoft > jnbh@live.co.uk > pw
+  Create a PIN > 4598
+  Cortana > Yes > Use speech recognition > Accept
+  Let Microsoft use your location > Yes > Accept
+  Find my device > Yes > Accept
+  Send diagnostic data to Microsoft > Full > Accept
+  Improve inking & typing recognition > Yes > Accept
+  Get tailored experiences with diagnostic data > Yes > Accept
+  Let apps use advertising ID > Yes > Accept
+Restart
+# OneDriveSetup false start
+Explorer > jnbh\OneDive > OneDriveSetup.exe  got me "A newer version of OneDrive is installed"
+# BX200
+Computer Management > Disk Management > Disk 0 > Unallocated > New Simple Volume > BX200
+# Notepad++ 7.5.6
+npp.7.5.6.Installer.x64.exe
+right-clicked on a *.txt > Properties > Change > More apps > Look for another >
+  C:\Program Files\Notepad++\notepad++.exe
+# Computer name
+Settings > System > About > Rename > robust   Restart
+# 7-Zip
+7z1805-x64.exe
+# Dropbox
+DropboxInstaller.exe   Signed in   Paused for  Preferences > Sync >
+  Dropbox folder location > Move > D:\Dropbox   then  Selective sync
+# Git
+Git-2.17.1.2-64-bit.exe > Check daily > Checkout as is
+# gVim 8.1
+gvim81.exe > [ icons on Desktop  Create plugin ] > off-ticked
+  JH\Now\Technos\IT\MSWin\i6h-gVim81_installation
+C:\Users\jnbh> git clone https://github.com/harriott/vimfiles
+bashrc  gitconfig  _gvimrc  _vimrc  Copied in from  D:\Dropbox\JH\Now\Technos\IT\HW\11-n012na\jnbh
+:PlugUpdate  got me C:\Users\jnbh\vimfiles\plugged
+C:\Users\jnbh\.vimswap  got created
+# Windows Menu > [ Command Prompt  Control Panel ] Pinned to Start
+# clicked OneDrive notification icon for Settings
+Auto-save > [ Desktop  Documents  Pictures ] > This PC only
+then  PS> $Profile  returns
+  C:\Users\jnbh\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+# symlink $profile
+in  C:\Users\jnbh\Documents  made folder  WindowsPowerShell  for  console run as administrator:  mklink C:\Users\jnbh\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 D:\Dropbox\JH\Now\Technos\IT\HW\11-n012na\Microsoft.PowerShell_profile.ps1
+# FastStone Image Viewer v6.5
+FSViewerSetup65.exe
+ran it for Esc to offtick
+  (lower right icon) Settings > Viewer > [ Loop on, Confirm on ESC off, Auto-rotate by EXIF off,
+    Default unit > cm ]
+# *.jpg  Opens with FastStone Image Viewer
+# Control Panel > Power Options > Choose what closing the lid does
+Plugged in - close lid > nothing
+## Turn off Fast Start
+Power & sleep > Additional power settings > Choose what the power button does >
+  Change settings that are currently unavailable > Turn on fast startup  off-ticked   Rebooted
+# Dropbox
+"Please reinstall Dropbox to fix all your syncing icons!"
+# *.py  Opens with Vi Improved
+# Ditto Clipboard > Get
+Launch   Options > [General > [ Maximum Number of Saved Copies > 5000
+  Database Path > D:\Encrypted\Ditto.db ]  Pinned to Start
+# *.md  Opens with Vi Improved
+# Edge rebuilt
+# Vivaldi
+Vivaldi.1.15.1147.47.exe   and Configured
+# *.log  Opens with Vi Improved
+# *.vim  Opens with Vi Improved
+# symlink .gitconfig
+console run as administrator:
+  mklink C:\Users\jnbh\.gitconfig D:\Dropbox\JH\Now\Technos\IT\HW\11-n012na\jnbh\gitconfig
+# Git Bash
+Pinned to Start
+ran and right-clicked inside for Options > [ Looks > Transparency > High
+  Window > Default size > [ 160  30 ]
+# SSH keys
+cpi -r D:\Encrypted\Secure1\Networking\ssh-HPP-g5h C:\Users\jnbh\.ssh
+# Test Git SSH connection
+Git Bash > ssh -T git@github.com
+  The authenticity of host 'github.com (192.30.252.130)' can't be established.
+  RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+  Are you sure you want to continue connecting (yes/no)? yes
+  Warning: Permanently added 'github.com,192.30.253.112' (RSA) to the list of known hosts.
+  Hi harriott! You've successfully authenticated, but GitHub does not provide shell access.
+got me  $HOME\.ssh\known_hosts
+# Git for Windows .bashrc
+Console run as administrator:
+  mklink C:\Users\jnbh\.bashrc D:\Dropbox\JH\Now\Technos\IT\HW\11-n012na\jnbh\bashrc
+Git Bash generated  $HOME\.bash_profile
+# :Gbrowse > Vivaldi
+# PowerShell Opacity
+right-click on PowerShell top bar > Properties > Colours > Opacity > 72%
+# Powershell Modules
+Powershell as Administator
+## Update-Help
+"Failed to update Help for the module(s) 'WindowsUpdateProvider' with UI culture(s) {en-US}" so
+  Update-Help -Verbose -Force -ErrorAction SilentlyContinue
+## Execution Policy
+Get-ExecutionPolicy -List | ft -AutoSize
+set-executionpolicy remotesigned > a
+Get-ExecutionPolicy -List | ft -AutoSize
+## Jump.Location
+Install-Module Jump.Location
+  NuGet provider is required to continue > y
+  You are installing the modules from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from 'PSGallery'? > a
+Import-Module : The specified module
+### mistaken snag
+these weren't necessary:
+  Deleted  C:\Program Files\WindowsPowerShell\Modules\Jump.Location
+  Install-Module -Name Jump.Location
+## Opacity
+right-click on PowerShell top bar > Properties > Colours > Opacity > 72%
+## PowerShellGet 1.6.5
+Install-Module –Name PowerShellGet –Force
+# Posh-Git
+PS> Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+Administrator PS > Install-Module -Name posh-git -RequiredVersion 0.7.3
+# DesktopBackground
+some appeared automatically here:
+  C:\Users\jnbh\AppData\Local\Microsoft\Windows\Themes\RoamedThemeFiles\DesktopBackground
+- Deleted them
+Shortcut from  D:\Dropbox\JH\Stack\DesktopBackground  into  C:\Users\jnbh\Pictures
+right-click on Desktop > Personalise > [ Background > Choose > DesktopBackground
+  Lock Screen > [ Picture > Browse > i2--i2m-1117-bolsAntoine--33.jpg   Get fun facts > off ]
+# Night light
+Settings > System > Display > Night light > On
+# msinfo32
+Win+R > msinfo32  then  Task Manager > right-click on System Information  to get to
+  C:\Windows\System32\msinfo32.exe > right-click > Pin to Start
+# Realtek HD Audio
+Control Panel > Programs and Features  reports v 6.0.1.7548
+## v6.0.1.7564 rev.A
+sp72094.exe
+# Taskbar > Microsoft Store > Unpinned
+# Monitor
+isn't responding to touch
+Win+X > Device Manager > Monitors  is reporting it as  Generic PnP Monitor
+## Intel HD Graphics Driver v10.18.10.4252 rev.B
+sp72369.exe  Error
+## Intel(R) HD Graphics Properties > Driver > Update
+didn't get touch working, so Reboot
+## Settings > Update & Security > Troubleshoot > Hardware and Devices > Run
+PCI Encryption/Decryption Controller doesn't have a driver > Apply (Restarted)
+## Settings > Update & Security > Troubleshoot > Hardware and Devices > Run
+still got  "PCI Encryption/Decryption Controller doesn't have a driver"
+I don't see my device listed  got me  "Troubleshooting couldn't identify the problem"
+# System Protection
+Win+R > Sysdm.cpl > System Protection
+  then  Task Manager > right-click on System Protection Settings  to get to
+  C:\Windows\System32\SystemPropertiesProtection.exe > right-click > Pin to Start
+# MiKTeX
+basic-miktex-2.9.6643-x64.exe (only for me) missing packages on the fly > Yes
+MiKTeX Console pinned to Start Menu
+  (while online) Tasks > Update package database  then  Check for updates  got me a load
+# Firefox
+Firefox Setup 60.0.2.exe (wants exclusive access) >
+  Custom (shows it's going to  C:\Program Files\Mozilla Firefox\ ) >
+  Desktop off-ticked
+# MiniTool Partition Wizard Free v10.2.3
+pw102-free.exe > Licence > accept > Next > McAfee off-ticked
+# Process Explorer
+Process Explorer v16.21  copied into  C:\Users\jnbh\myUtils
+  therein,  procexp64.exe  Pinned to Start   hidden icon dragged to taskbar
+  ran it for
+    Options > [Hide when Minimized on   Confirm Kill off   Tray Icons > [ CPU off, Physical on ] ]
+    View > Opacity > 70%
+# Firefox Profile
+Emptied  C:\Users\jnbh\AppData\Roaming\Mozilla\Firefox\Profiles\o8ozsyvj.default
+    refilled from  i6j-sprbMb-jo\.mozilla\firefox\ilu7x8da.default   and tweaked
+# *.xml Open with C:\Program Files\Mozilla Firefox\firefox.exe
+# Pandoc
+(after MiKTeX) pandoc-2.2.1-windows-x86_64.msi
+ then a Command Prompt as Administrator for:
+  cd C:\Users\jnbh\AppData\Roaming  then  md Pandoc  then
+  mklink /D Pandoc\templates D:\Dropbox\JH\IT_stack\onGitHub\pandoc-templates
+restarted PowerShell for  $env:Path -split ';'
+# Explorer > Alt+F > R (= PowerShell)
+right-click on PowerShell top bar > Properties > [ Font > Size > 12  Colours > Opacity > 72% ]
+# *.pl  Opens with Vi Improved
+# reduced size of BX200
+MiniTool Partition Wizard Free > Resize
+# increased size of C:
+MiniTool Partition Wizard Free > Resize
+# System Restore
+Windows Menu > SystemPropertiesProtection > C: > Configure > [ Turn on  20% ]
+# Disk Usage
+du64.exe  copied into  C:\Users\jnbh\AppData\Local\Microsoft\WindowsApps
+# *.vim Opens with Vi Improved
+# *.ps1 Opens with Vi Improved
+# BX200 management tweaks
+Administrative Tools > Defragment and Optimize Drives  shows all is well
+All Control Panel Items > Indexing Options  are okay
+CT240BX200SSD1 Properties > Details  doesn't show firmware version...
+## TRIM check
+Command Prompt as Administrator > fsutil behavior query DisableDeleteNotify
+  NTFS DisableDeleteNotify = 0  (Disabled)
+  ReFS DisableDeleteNotify = 0  (Disabled)
+# Regedit
+Win+R > Regedit  then  right-clicked it in Task Manager for Open file location
+  right-click on  C:\Windows\regedit.exe > Pin to Start
+# Sumatra PDF v3.1.2
+SumatraPDF-3.1.2-64-install.exe > Options > [ Use  Let Windows show previews of PDF documents ]
+  Association set back to Edge by system
+*.pdf  Opens with SumatraPDF
+# Thunderbird
+Thunderbird Setup 52.8.0.exe > Custom > not On my Desktop
+  allowed to Run for  System Integration > Set  then Closed
+C:\Users\jnbh\AppData\Roaming\Thunderbird\Profiles\luryoz3e.default  emptied and refilled from
+  i6j-sprbMb-jo\.thunderbird\tcrvipr1.default
+Pinned to Start  Ran it > Select Your Add-ons
+# *.db Opens with Notepad++
+# FastStone Settings
+replaced  PaperSizeList  settings in  C:\Users\jnbh\AppData\Roaming\FastStone\FSIV\FSSettings.db
+  with those in  JH\IT_stack\MSWinUser\150429122906\FSIV\FSSettings.db
+# *.tex Opens with Vi Improved
+# ExifTool
+cpi exiftool.exe C:\Users\jnbh\AppData\Local\Microsoft\WindowsApps\exiftool.exe
+# Edge crashed...
+Favourites > [ Bookmarks  Trash ] Deleted
+# Google Chrome
+https://www.google.com/intl/en_uk/chrome/browser/?hl=en-GB > Download Chrome (Help us on-ticked)
+  got  ChromeSetup.exe  which, when run, did some more downloading
+  Resized, Closed, Pinned to Start
+# Transmission
+transmission-2.94-x64.msi > Command-line tools (got a  System Restore  point)
+Transmission Qt Client  Pinned to Start
+ran it for  Preferences > [ Downloading > [ Automatically  Move  Save > D:\ ]
+  Desktop > [ Show on  Play off ]
+Allowed in Windows Firewall
+# LibreOffice 6.0.5
+LibreOffice_6.0.5_Win_x86.msi > Custom > [ Optional > Dictionaries > Dutch, German on
+  Additional user interface > UK only ]  Word Documents > not on desktop
+  waited attentively to agree quickly enough to  VC_redist.x64.exe
+  (didn't get a  System Restore  point)
+LibreOffice  Pinned to Start
+Ran to build  LibreOffice\4\  in  C:\Users\jnbh\AppData\Roaming\
+  in  user\  removed  config  folder &  registrymodifications.xcu
+    & replaced them from  More\i6j-sprbMb-jo\.config\libreoffice\4\user
+*.odt  Opens with LibreOffice Writer
+# Process Explorer
+D:\myUtils\Process Explorer v16.21\procexp.exe  Pinned to Start
+# links in Thunderbird not firing up a browser
+Restart  no improvement
+Tools > Options > [ Advanced > General > Config editor (= about:config) >
+  network.protocol-handler.warn-external.http  shows both set to true
+  Attachments  is also correctly showing Vivaldi ]
+Menu > Thunderbird > Shift+click > Continue (= Safe Mode)  still no joy...
+## Uninstall Thunderbird
+backed up  C:\Users\jnbh\AppData\Roaming\Thunderbird\Profiles\luryoz3e.default
+All Control Panel Items > Programs and Features > Mozilla Thunderbird 52.8.0 (x86 en-GB) > Yes
+Precautionary  Restart
+## Thunderbird again
+Thunderbird Setup 52.8.0.exe > Custom > not On my Desktop
+  allowed to Run for  System Integration > Set  then Closed
+C:\Users\jnbh\AppData\Roaming\Thunderbird\Profiles\pbxfgpuo.default  emptied and refilled from
+  luryoz3e.default
+Ran it  hyperlinks still not firing up a browser
+Cleared Profile, and began from scratch - links working
+# longer console output line length
+(while online) MiKTeX Console > Tasks > [ Refresh file name database
+  Update package database ] Check for updates  got me two
+initexmf --edit-config-file pdflatex
+  created  C:\Users\jnbh\AppData\Roaming\MiKTeX\2.9\miktex\config\pdflatex.ini
+    in which I put   max_print_line=190
+initexmf --edit-config-file xelatex
+  created  C:\Users\jnbh\AppData\Roaming\MiKTeX\2.9\miktex\config\xelatex.ini
+    in which I put   max_print_line=190
+# IrfanView v4.51
+iviewx451.exe > no Desktop shortcuts
+ivxplugs.exe
+IrfanView Pinned to Start
+ran for  P > [JPG > Auto off  Browsing > Cut White]
+# Night light a little warmer
+Settings > System > Display > Color clicked once at salmon end
+# Epson Perfection 2480
+epson325835eu.exe > 2480 > Restart  EPSON Scan  Pinned to Start, and Deleted from Desktop
+  Professional mode > Unsharp Mask off
+# HP ENVY 5532
+11-n012na & ENVY 5532 connected to Moto G4
+  EN5530_Basicx64_198.exe > Wireless > Turn on Device Sharing > Yes > HP ENVY 5530 series > Next >
+    In a home, 75020
+HP ENVY 5530 series  Pinned to Start
+# Noto Sans CJK Regulars for Pandoc
+# Git v2.18.0
+yes to auto Update, Associate .sh off (uselessly)
+# Bulk Rename
+BRU_setup_3.0.0.1.exe   Ran it to off-tick 2 notifications
+# Python
+$env:Path -split ';'
+python-3.6.5.exe > Add Python to environment variables
+  (Installs to  C:\Users\jnbh\AppData\Local\Programs\Python\Python36-32)
+  UAC > Yes > Disable path length limit > Close
+## check pip version
+py -m pip -V
+  pip 9.0.3 from C:\Users\jnbh\AppData\Local\Programs\Python\Python36-32\lib\site-packages (python 3.6)
+## Upgrade pip
+py -m pip install -U pip
+### check packages
+py -m pip list
+  pip        10.0.1
+  setuptools 39.0.1
+## pew
+py -m pip install pew
+  The script virtualenv.exe is installed in 'C:\Users\jnbh\AppData\Local\Programs\Python\Python36-32\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  The script virtualenv-clone.exe is installed in 'C:\Users\jnbh\AppData\Local\Programs\Python\Python36-32\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  The script pew.exe is installed in 'C:\Users\jnbh\AppData\Local\Programs\Python\Python36-32\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+### check packages
+py -m pip list
+  pew              1.1.5
+  pip              10.0.1
+  psutil           5.3.1
+  setuptools       39.0.1
+  virtualenv       16.0.0
+  virtualenv-clone 0.3.0
+# LPD-rapport.cls
+PowerShell in  C:\Users\jnbh\AppData\Roaming\MiKTeX\2.9\tex
+  ni latex\mystuff -type directory -force
+console run as administrator:  mklink C:\Users\jnbh\AppData\Roaming\MiKTeX\2.9\tex\latex\mystuff\LPD-rapport.cls D:\Dropbox\JH\Work\ST\LPD-IdF\makeReport\LPD-rapport.cls
+(while online) MiKTeX Console > Tasks > Refresh file name database
+# Update MiKTeX
+(while online) MiKTeX Console > [ Tasks > Update package database  Check for updates ]
+  got me a load
+# FontSquirrel
+in  D:\Dropbox\JH\Copied\Practical0\Technos\IT\FontsForWin10\FontSquirrel  right-clicks to install:
+  FingerPaint-Regular.ttf  HennyPenny-Regular.otf
+# Ghostscript v9.23
+gs923w64.exe > Next (Generate cidfmap for Windows CJK TrueType fonts)
+## gswin64c
+cd C:\Program Files\gs\gs9.23\bin\
+  cpi gswin64c.exe C:\Users\jnbh\AppData\Local\Microsoft\WindowsApps
+# ImageMagick
+ImageMagick-7.0.8-3-Q16-x64-dll.exe
+  [ desktop icon  FFmpeg ] off-ticked
+    Install development headers and libraries for C and C++  on-ticked ]
+fresh PowerShell for:  magick wizard: wizard.jpg
+  then  magick wizard.jpg win:  first time generated an IMDisplay
+    "C:\Users\jnbh\AppData\Local\Temp\magick-<weirdCode> was not found"
+    2nd run, got the jpg opened in IMDisplay   ri wizard.jpg
+# Dropbox warning
+"Delete <file> from your account and all devices?" > Don't ask me this again
+# Firefox
+Pinned to Start
+Updated itself to  61.0
+# Opera browser
+http://www.opera.com/computer/windows > Download > Open > Options > [ English (United Kingdom)
+  default & Import off-ticked ] > Install > UAC > Yes
+# fix LPD-rapport.cls
+ri C:\Users\jnbh\AppData\Roaming\MiKTeX\2.9\tex\latex\mystuff\LPD-rapport.cls
+console run as administrator:  mklink C:\Users\jnbh\AppData\Roaming\MiKTeX\2.9\tex\latex\mystuff\LPD-rapport.cls D:\Dropbox\JH\Work\ST\LPD\IdF\makeReport\LPD-rapport.cls
+(while online) MiKTeX Console > Tasks > Refresh file name database
+# Update MiKTeX
+(while online) MiKTeX Console > [ Tasks > Update package database  Check for updates ] got me one
+# Scan to PC
+Task Manager > Startup > ScanToPCActivationApp > Disabled
+# Vivaldi v1.15.1147.52
+Install update
+# HP ENVY 5530 Series
+Set Preferences > Paper > Advanced > Paper Size > A4
+# *.cls Opens with Vi Improved
+# OutThere.cls
+console run as administrator:  mklink C:\Users\jnbh\AppData\Roaming\MiKTeX\2.9\tex\latex\mystuff\TextNotes.cls D:\Dropbox\JH\Now\TextNotes\TextNotes.cls
+(while online) MiKTeX Console > Tasks > Refresh file name database
+# Update MiKTeX
+(while online) MiKTeX Console > [ Tasks > Update package database  Check for updates ] got me one
+# Resource Monitor
+Windows Menu > Windows Administrative Tools > Resource Monitor > Pin to Start
+# News
+[ Companies & Markets  In Pictures  Money  Movies  Top Stories  Sport  Technology  UK  World ]
+# WhatsApp
+WhatsAppSetup.exe  appeared in Programs & Features, but nowhere else...
+All Control Panel Items > Default Programs > double clicked on WhatsApp got it immediately removed
+# reduced size of BX200
+MiniTool Partition Wizard Free > Resize > 180GB, 0 after > Apply
+# increased size of C:
+MiniTool Partition Wizard Free > Resize > pulled it out > Apply
+## WhatsApp
+https://www.microsoft.com/en-us/p/whatsapp-desktop/9nksqgp7f2nh > Get > Pin to Start
+# Notepad++ 7.5.7
+# Vivaldi v1.15.1147.55
+Install update
+# FFmpeg 20180723
+cd F:\Share\IT-Copied\MSWin\AV\ffmpeg-20180723-d134b8d-win64-static\bin
+  cpi ffmpeg.exe C:\Users\jnbh\AppData\Local\Microsoft\WindowsApps
+where.exe ffmpeg
+# DesktopBackground
+right-click on Desktop > Personalise > [ Background > [ Slideshow   Browse  Choose a fit > Fit ] ]
+# Adobe Flash Player Version 30.0.0.134
+pop-up opened  https://get3.adobe.com/flashplayer/update/ppapi/ (Optional was already offticked)
+  got me  flashplayer30ppau_ha_install.exe  which I ran > Notify me
+  the executable disappeared
+# Java SE Runtime Environment 8 Update 181
+JavaSetup8u181.exe  which Downloaded Installer
+# foobar2000
+Microsoft Store > foobar2000
+Ctrl+P > Media Library > Add > D:\Dropbox\CAM-fromSharon
+# Vivaldi v1.15.1147.55
+Install update
+# Adobe Flash Player Version 30.0.0.154
+pop-up opened  https://get3.adobe.com/flashplayer/update/ppapi/ (Optional was already offticked)
+  got me  flashplayer30ppau_ha_install.exe  which I ran > Notify me
+  the executable dissappeared
+# Notepad++ allowed to Update to 7.5.8
+# a *.k9s > Properties > Changed >  Vi Improved
+# VLC
+vlc-3.0.4-win64.exe > Recommended > Run
+    Ctr+p (Preferences) > [ Resize interface, Show systray ] off-ticked
+# Git v2.19.0
+yes to auto Update   But it couldn't find  libpcre2-8-0.dll  nor  zlib1.dll  but finished nonetheless
+  gVim's Ggrep ain't working, so Restarted
+# fix symlink to $profile
+Deleted  C:\Users\jnbh\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1  for
+  console run as administrator:  mklink C:\Users\jnbh\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 D:\Dropbox\JH\Now\Technos\IT\HW\laptops\11-n012na\Microsoft.PowerShell_profile.ps1
+# Adobe Flash Player Version 31.0.0.108
+pop-up opened  https://get3.adobe.com/flashplayer/update/ppapi/ (Optional was already offticked)
+  got me  flashplayer31ppau_ha_install.exe  which I ran > Notify me
+  the executable dissappeared
+# Git v2.19.0 again
+Git-2.19.0-64-bit.exe > experimentals off
+# fix symlink to .gitconfig
+When I try to use Git, "fatal: unknown error occurred while reading the configuration files", so
+  C:\Users\jnbh\.gitconfig  Deleted  for console run as administrator:
+  mklink C:\Users\jnbh\.gitconfig D:\Dropbox\JH\Now\Technos\IT\HW\laptops\11-n012na\jnbh\gitconfig
+# PAE support
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PhysicalAddressExtension  is set to 1
+# fix ISO burn option
+right-clicked on an ISO for Properties > Opens with > Windows Explorer
+# Windows 10 Home Version 10.0.17134
+# wbAdmin start backup
+HD161HJ plugged in via Decrescent
+PowerShell as administrator:  wbAdmin start backup -backupTarget:G: -include:C: -allCritical -quiet
+# Windows Updates
+after a Restart,  winver  reporting  Version 1803 (OS Build 17134.286)
+# Uninstall Transmission
+Programs & Features > Transmission 2.94 (d8e60ee44f) (x64)
+# Tixati v2.58
+tixati-2.58-1.win64-install.exe > Default Location > D:\
+  Allowed in Windows Firewall, including Private networks
+  Pinned to Start, and Deleted from Desktop
+  Bandwidth > Auto Limit on
+  Settings > Behaviour > [ Main window close > Completely   Main window minimize > Hide ]
+# LibreOffice 6.1.1
+LibreOffice_6.1.1_Win_x64.msi > Custom, then clicked thru as all was as previously >
+  Create start link on desktop  off-ticked
+# Vivaldi v2.0.1309.29
+Install update
+# MiniTool Partition Wizard Free v10.3
+Updater hung while I was reading the EULA, so forced a reboot
+  Deleted  C:\Program Files\MiniTool Partition Wizard 10
+pw103-free.exe > no desktop > McAfee WebAdvisor off-ticked
+  ran it, then off-ticked an advertising message
+# Adobe Acrobat Reader DC
+https://get.adobe.com/uk/reader/ > Install now  got me  readerdc_uk_xa_crd_install.exe
+  which downloaded more   Allowed it to run for  default > [ Do not show  No ]
+# Git v2.19.1
+yes to auto Update > experimentals off
+# Vivaldi v2.0.1309.37
+Install update
+# Adobe Flash Player Version 31.0.0.122
+pop-up opened  https://get3.adobe.com/flashplayer/update/ppapi/ (Optional was already offticked)
+  got me  flashplayer31ppau_ha_install.exe  which I ran > Notify me
+  the executable disappeared
+# Vivaldi v2.0.1309.42
+Install update
+# Update MiKTeX
+(while online) MiKTeX Console > [ Tasks > Update package database  Check for updates ] got me a load
+# Java SE Runtime Environment 8 Update 191
+Download Failed...
+# FontForge
+FontForge-2017-07-31-Windows-r2.exe
+Windows Security Alert > Alertdivvcxsrv.exe  Allowed in Private & Public networks
+# HennyPenny-Regular
+HennyPenny-Regular.otf  replaced by  HennyPenny-Regular.ttf
+# Notepad++ Updated to v7.5.9
+# plugged in Samsung ML-2165W Laser Printer to USB
+# Vivaldi v2.0.1337.36
+Install update, but I briefly paused the computer and subsequently had an update error, so
+  Vivaldi > Alt+H > U
+# Windows Media Player
+Custom > usage rights off, Finish
+Start > Windows Accessories > Windows Media Player > Pinned to Start
+# notesCLS.sty
+console run as administrator:  mklink C:\Users\jnbh\AppData\Roaming\MiKTeX\2.9\tex\latex\mystuff\notesCLS.sty D:\Dropbox\JH\Work\notesCLS.sty
+(while online) MiKTeX Console > Tasks > Refresh file name database
+# Update MiKTeX
+(while online) MiKTeX Console > Check for updates > Updates page  for a load
+# Thunderbird Updated to v60.3.1
+# Windows Update took ages
+# Adobe Flash Player Version 31.0.0.148
+pop-up opened  https://get3.adobe.com/flashplayer/update/ppapi/ (Optional was already offticked)
+  got me  flashplayer31ppau_ha_install.exe  which I ran > Notify me
+  the executable disappeared
+# right click on a *.csv > Properties
+Opens with  won't Change to  Vi Improved...
+FileTypesMan > Ctrl+F > .csv > F2 > User Choice > Applications\gvim.exe > OK
+a  dism  export doesn't list  csv...
+registry key doesn't give any clues...
+# JH.sty
+console run as administrator:  mklink C:\Users\jnbh\AppData\Roaming\MiKTeX\2.9\tex\latex\mystuff\JH.sty D:\Dropbox\JH\Work\JH.sty
+C:\Users\jnbh\AppData\Roaming\MiKTeX\2.9\tex\latex\mystuff\notesCLS.sty  Deleted
+(while online) MiKTeX Console > [ Check for updates > Updates page  for a load
+  Tasks > Refresh file name database ]
+# Adobe Flash Player Version 31.0.0.153
+pop-up opened  https://get3.adobe.com/flashplayer/update/ppapi/ (Optional was already offticked)
+  got me  flashplayer31ppau_ha_install.exe  which I ran > Notify me
+  the executable disappeared
+# Vivaldi v2.0.1337.51
+Install update
+# Aseba
+aseba-1.6.1.exe > ThymioII Package (Recommended) > Full
+Thymio Web Bridge > allowed asebahttp.exe in Windows Firewall
+# LibreOffice 6.1.3
+LibreOffice_6.1.3_Win_x64.msi > Custom, then clicked thru as all was as previously >
+  Create start link on desktop  off-ticked
+# Thunderbird Updated to v60.3.3
+# Adobe Flash Player Version 32.0.0.101
+pop-up opened  https://get3.adobe.com/flashplayer/update/ppapi/ (Optional was already offticked)
+  got me  flashplayer32ppau_ha_install.exe  which I ran > Notify me
+  the executable disappeared
+# Git v2.20.0
+clicked through all default options
+# Vivaldi v2.2.1388.34
+Install update
+# Adobe Flash Player Version 32.0.0.101 again...
+pop-up opened  https://get3.adobe.com/flashplayer/update/ppapi/ (Optional was already offticked)
+  got me  flashplayer32ppau_ha_install.exe  which I ran > Notify me
+  the executable disappeared
+# Git for Windows v2.20.1
+clicked through all options
+# Adobe Flash Player Version 32.0.0.101 again...
+pop-up opened  https://get3.adobe.com/flashplayer/update/ppapi/ (Optional was already offticked)
+  got me  flashplayer32ppau_ha_install.exe  which I ran
+  continued after a Shutdown > Notify me   the executable disappeared
+# Vivaldi v2.2.1388.37
+Install update
+# Thunderbird Updated to v60.4.0
+# a *.jp2 file set to Open With  C:\Program Files (x86)\FastStone Image Viewer\FSViewer.exe
+# Adobe Flash Player Version 32.0.0.114
+pop-up opened  https://get3.adobe.com/flashplayer/update/ppapi/ (Optional was already offticked)
+  got me  flashplayer32ppau_ha_install.exe  which I ran
+  continued after a Shutdown > Notify me   the executable disappeared
+# VLC Upgraded to v3.0.6
+# Vivaldi v2.2.1440.41
+Install update
+# (while online) Brother MFC-J5335DW plugged in
+# Vivaldi v2.3.1440.48
+Install update
+# Adobe Flash Player Version 32.0.0.142
+pop-up opened  https://get3.adobe.com/flashplayer/update/ppapi/ (Optional was already offticked)
+  got me  flashplayer32ppau_ha_install.exe  which I ran > Notify me   the executable disappeared
+# Vivaldi v2.3.1440.57
+Install update
+# JH.sty
+C:\Users\jnbh\AppData\Roaming\MiKTeX\2.9\tex\latex\mystuff\JH.sty  Deleted for
+  console run as administrator:  mklink C:\Users\jnbh\AppData\Roaming\MiKTeX\2.9\tex\latex\mystuff\JH.sty D:\Dropbox\JH\JH.sty
+(while online) MiKTeX Console > [ Check for updates > Updates page  for a load
+  Tasks > Refresh file name database ]
+# Git for Windows v2.21.0
+clicked through all options
+  while extracting, got errors, some of which I managed to screenshot. Maybe due to working in gVim. Powershell seized completely.
+After a restart, a commit from gVim worked.
+# LibreOffice 6.2.0.3
+LibreOffice_6.2.0_Win_x64.msi > Custom, then clicked thru as all was as previously >
+  Create shortcut on desktop  off-ticked
+# verseSettings.sty
+console run as administrator:  mklink C:\Users\jnbh\AppData\Roaming\MiKTeX\2.9\tex\latex\mystuff\verseSettings.sty D:\Dropbox\JH\Copied\verseSettings.sty
+(while online) MiKTeX Console > [ Check for updates > Updates page  for two
+  Tasks > Refresh file name database ]
+# Vivaldi v2.3.1440.60
+Install update
+# LameXP
+LameXP.2018-11-10.Release-Static.Build-2188.exe  allowed it to run > [ Accept Licence
+  AAC Support Disabled > Don't Show Again   Tools > Configuration > Disable Sound Effects ]
+# FFmpeg 20190312
+cd F:\Share\IT-Copied\MSWin\AV\ffmpeg-20190312-d227ed5-win64-static\bin
+  cpi ffmpeg.exe C:\Users\jnbh\AppData\Local\Microsoft\WindowsApps
+where.exe ffmpeg
+# Adobe Flash Player Version 32.0.0.156
+pop-up opened  https://get3.adobe.com/flashplayer/update/ppapi/ (Optional was already offticked)
+  got me  flashplayer32ppau_ha_install.exe  which I ran > Notify me   the executable disappeared
+# Tixati v2.59
+tixati-2.59-1.win64-install.exe  Desktop icon Deleted
+# QuickHash
+D:\myUtils\QuickHash304-x64-Signed  filled from
+  F:\Share\IT-Copied\MSWin\HW\AuxiliaryMemory\QuickHash304-Windows-Signed\64-Bit
+# Gpg4win
+gpg4win-3.1.5.exe > GpgOL off-ticked
+Kleopatra > [ pinned into Start  Imported  Encrypted\Secure1\Networking\secret-key-9F2D63AE.asc ]
+# Vivaldi v2.3.1440.61
+Install update
+# Ghostscript v9.26
+gs926w64.exe  (installed to  C:\Program Files\gs\gs9.26)
+  (Generate cidfmap for Windows CJK TrueType fonts)
+## gswin64c
+cd C:\Program Files\gs\gs9.23\bin\
+  cpi gswin64c.exe C:\Users\jnbh\AppData\Local\Microsoft\WindowsApps
+## Uninstall v9.23
+Control Panel > Programs and Features > GPL Ghostscript 9.23 > uninstall
+  left a fairly populated folder  C:\Program Files\gs\gs9.23  - I Deleted
+# Vivaldi v2.4.1488.35
+Install update
+# Vivaldi v2.4.1488.36
+Install update
+# MiniTool Partition Wizard Free v11
+pw11-free.exe > Licence > accept > desktop off-ticked > McAfee off-ticked
+  allowed it to Run to off-tick Show, Launch > popup Message > [ Do not show, X ]
+## reduced size of BX200
+Resize > D: > [ Unallocated Before 10 GB  Size 170 GB ]  Apply
+## increased size of C:
+MiniTool Partition Wizard Free > C: > Resize > stretched to 52.97 GB > Apply
+# Java Update
+Version 8 Update 201
+Update > Remove (removed Update 181)
+# LibreOffice 6.2.2
+LibreOffice_6.2.2_Win_x64.msi > Custom, then clicked thru as all was as previously >
+  Create shortcut on desktop  off-ticked
+# Adobe Flash Player Version 32.0.0.171
+pop-up opened  https://get3.adobe.com/flashplayer/update/ppapi/ (Optional was already offticked)
+  got me  flashplayer32ppau_ha_install.exe  which I ran > Notify me
+# Vivaldi v2.4.1488.38
+Install update
+# Notepad++ Updated to v7.6.6
+# DesktopBackground
+right-click on Desktop > Personalise > Background > Slideshow
+# corrupted folder
+F+F\France\IdF\Ville-dAvray\64Rue_deSaint-Cloud\Markulic\Celine\Work
+  discovered when DropSync kept failing
+recovered from Samsung M3
+# Kleopatra Imported SparkyLinux key
+checked Fingerprint, and Certified for myself only
+# Vivaldi v2.4.1488.40
+Vivaldi.2.4.1488.40.exe
+### EEMH
+# Gpg4win
+gpg4win-3.1.7.exe  Reboot
+# Linux Mint ISO Signing Key
+right-clicked on   LinuxMint191\sha256sum.txt.gpg   for   More GpgEX options > Verify
+  then  Searched  for  Certificate,  Imported, and Signed for myself
+# LibreOffice 6.2.3
+LibreOffice_6.2.3_Win_x64.msi > Custom, then clicked thru as all was as previously >
+  Create shortcut on desktop  off-ticked
+  (this was a bad idea) Close Windows Explorer
+# Tixati v2.61
+tixati-2.61-1.win64-install.exe  Desktop icon Deleted
+# HP ENVY 5532 Network no longer found
+Win+I (Windows Settings) > Devices > Printers & scanners > HP ENVY 5530 series Network > [ Remove
+  Add > HPA22F0E (HP ENVY 5530 series) > Add ]
+# HP ENVY 5532 default paper size
+HP ENVY 5530 series : HP Printer Assistant > Set Preferences > [ Layout  or  Paper/Quality ] >
+  Advanced > Paper Size > A4
+Win+I (Windows Settings) > Devices > Printers & scanners > HPA22F0E (HP ENVY 5530 series) > Manage >
+  Printing preferences > [ Layout  or  Paper/Quality ] > Advanced > Paper Size > A4
+# Adobe Flash Player Version 32.0.0.192
+pop-up opened  https://get3.adobe.com/flashplayer/update/ppapi/ (Optional was already offticked)
+  got me  flashplayer32ppau_ha_install.exe  which I ran > Notify me
+  the executable disappeared
+# Everything
+Everything-1.4.1.935.x64-Setup.exe > English (UK) > [ Check for updates on startup  on
+  Install Desktop shortcut  off ] Ran it for  Ctrl+P ( = Tools > Options ) > [ UI > Single click tray
+  Results > Open path with double click in path column ]
+# PowerShellGet
+Get-Module
+  ...
+  PowerShellGet            1.6.5.0
+Get-PackageProvider -ListAvailable
+  ...
+  NuGet                    2.8.5.210
+as Administrator:  Update-Module -Name PowerShellGet
+  then  Get-Module  didn't show any  PowerShellGet
+Get-InstalledModule
+  ...
+  2.1.4                PowerShellGet
+C:\Program Files\WindowsPowerShell\Modules\PowerShellGet  still contains old versions
+# ZLocation
+PS> Install-Module -Name ZLocation
+Get-InstalledModule
+  ...
+  1.1.0                ZLocation
+# Vivaldi crashed
+# Notepad++ Updated to v7.7
+# Git for Windows v2.22.0
+closed gVim & Powershell
+clicked through all install options
+# Update MiKTeX
+(while online) MiKTeX Console > Check for updates > Updates page  for a load
+# LibreOffice 6.2.4
+Close Windows Explorer and everything except Task Manager for
+  LibreOffice_6.2.4_Win_x64.msi > Custom, then clicked thru as all was as previously >
+    Create shortcut on desktop  off-ticked
+# Adobe Flash Player Version 32.0.0.207
+pop-up opened  https://get3.adobe.com/flashplayer/update/ppapi/ (Optional was already offticked)
+  got me  flashplayer32ppau_ha_install.exe  which I ran > Notify me
+  the executable disappeared
+# HP ENVY 5532 Network not longer printing
+Win+I (Windows Settings) > Devices > Printers & scanners > HPA22F0E (HP ENVY 5530 series) >
+  [ Remove   Add > HPA22F0E (HP ENVY 5530 series) > Add ]  got me "Driver is unavailable"
+  [ Remove   Add > HPA22F0E (HP ENVY 5530 series) > Add ]  got me "Ready"
+# VLC Upgraded to v3.0.7.1
+# Adobe Flash Player Version 32.0.0.223
+pop-up opened  https://get3.adobe.com/flashplayer/update/ppapi/ (Optional was already offticked)
+  got me  flashplayer32ppau_ha_install.exe  which I ran > Notify me
+  the executable disappeared
+# mysms - Text from Computer, Messaging
+https://www.microsoft.com/en-gb/p/mysms-sms-depuis-pc-messenger/9wzdncrfhwdc
+# AutoHotkey
+AutoHotkey_1.1.30.03_setup.exe  - accidentally installed as is...
+right-click on an  *.ahk  for Properties > Change > AutoHotkey Unicode 64-bit > OK
+## CapsLockEsc
+right-click on  C:\Users\jnbh\vimfiles\CapsLockEsc.ahk  for Create shortcut  then that moved into
+  "C:\Users\jnbh\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup" and renamed
+## Ctrl-CapsLock
+right-click on  D:\Dropbox\JH\Now\Technos\IT\HW\laptops\11-n012na\Ctrl-CapsLock.ahk
+  for Create shortcut  then that moved into
+    "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup"  and renamed
+# ExifTool Updated
+in  Share\IT-Copied\MSWin\Imagey\ExifTool v11.59
+  cpi exiftool.exe C:\Users\jnbh\AppData\Local\Microsoft\WindowsApps\exiftool.exe
+# Tixati v2.62
+tixati-2.62-1.win64-install.exe  Desktop icon Deleted
+# LibreOffice 6.2.5
+Close Windows Explorer and everything except Task Manager for
+  LibreOffice_6.2.4_Win_x64.msi > Custom, then clicked thru as all was as previously >
+    Create shortcut on desktop  off-ticked
+# Windows 10 May 2019 Update
+Feature update to Windows 10, version 1903
+# Notepad++ Updated to v7.7.1
+clicked through queries
+# gVim 8.1 DokuWiki snag
+# Git for Windows v2.23.0
+closed gVim & Powershell
+clicked through all install options
+# VLC Upgraded to v3.0.8
+# FFmpeg 20190823
+cd F:\Share\IT-Copied\MSWin\AV\ffmpeg-20190823-b29c7bc-win64-static\bin
+  cpi ffmpeg.exe C:\Users\jnbh\AppData\Local\Microsoft\WindowsApps
+where.exe ffmpeg
+# TagScanner
+tagscan-6.0.35-setup.exe (no Desktop Shortcut)
+# Everything excludes
+Everything > Tools > Options > Exclude > Add Folder > [ G:\Archive  H:\ ]
+# MiniTool Partition Wizard Free - Update allowed to v11.5
+Licence > accept > desktop off-ticked > Avast off-ticked
+  allowed it to Run > popup Message > [ Do not show, X ]
+## reduced size of BX200
+Resize > D: > [ Unallocated Before 10 GB  Size 170 GB ]  Apply
+## increased size of C:
+MiniTool Partition Wizard Free > C: > Resize > stretched to 52.97 GB > Apply
+# Tixati v2.63
+tixati-2.63-1.win64-install.exe   Desktop icon Deleted
+# LibreOffice 6.3.1
+Close Windows Explorer and everything except Task Manager for
+  LibreOffice_6.3.1_Win_x64.msi > Custom, then clicked thru as all was as previously >
+    Create shortcut on desktop  off-ticked
+# Vivaldi v2.7.1628.33
+# Intel Driver & Support Assistant
+Intel-Driver-and-Support-Assistant-Installer.exe > Accept > Restart
+Ran it, which fired up a Vivaldi page "Scanning your system..."
+  Then "Your Intel® software is up to date."
+  `JH\Now\Technos\IT\HW\laptops\11-n012na\Detailed-System-Report.html`
+# LanguageTool
+C:\Users\jnbh\LanguageTool-4.6
+# symlink _gvimrc
+$HOME\_gvimrc  Deleted   for console run as administrator:
+  mklink C:\Users\jnbh\_gvimrc D:\Dropbox\JH\Now\Technos\IT\HW\laptops\11-n012na\jnbh\_gvimrc
+# Java path check
+$env:Path -split ';'
+## Java SE Runtime Environment 8 Update 221
+JavaSetup8u221.exe  which Downloaded Installer
+## test.jar
+PS D:\Dropbox\JH\Now\Technos\IT\Cross-platform\JavaTest> java -jar test.jar
+  Hello world
+## version
+PS> java -version
+  Java(TM) SE Runtime Environment (build 1.8.0_221-b11)
+# LanguageTool path
+C:\Users\jnbh\LanguageTool-4.6\languagetool-commandline.jar
+# gVim v8.1.2102
+currently have  C:\Program Files (x86)\Vim\vim81\gvim.exe
+Tray > CapsLockEsc.ahk > Exit  for  C:\Users\jnbh\vimfiles  renamed to  vimfile  for
+  gvim_8.1.2102_x64_signed.exe > clicked through
+  empty  C:\Users\jnbh\vimfiles  folder structure removed  for
+  vimfile  renamed to  C:\Users\jnbh\vimfiles
+# Klaus Knopper's Certificate into Kleopatra
+Lookup on Server > info@knopper.net > Import > Yes > [ knopper@knopper.net  info@knopper.net
+  knoppix@knopper.net ] > I have verified the fingerprint > Certify
+# DVDFab 11.0.5.4
+DVDFab11_11054_Online.exe > [ Custom > desktop shortcut off-ticked   Click to Install
+  ( downloaded DVDFab11_x64(11.0.5.4).exe in folder C:\Users\jnbh\Downloads\DVDFab 11 ) ]
+  > trohib@gmail.com + pw > Start DVDFab
+# Windows Security
+Virus & threat protection > On
+# DVD Shrink
+dvdshrink32setup.exe   Quick Launch
+Right-click on C:\Program Files (x86)\DVD Shrink\DVD Shrink 3.2.exe > Pin to Start
+  Edit > Preferences > [ Target > DVD-9   Output > Split VOB off
+    File I/O > Check RPC2 & Nero off ]
+  with a DVD,   Backup with no TS’s & Options > sound offticked
+# Graphics for cataracts
+Tray > Intel HD Graphics Control Panel > Display > Color > Gamma > 0.6 > Save Profile > cataracts
+Settings > Ease of Access > Display > Make text bigger > 102% > Apply
+# Java Update 231
+Allowed
+PS> java -version
+  java version "1.8.0_231"
+  Java(TM) SE Runtime Environment (build 1.8.0_231-b11)
+  Java HotSpot(TM) Client VM (build 25.231-b11, mixed mode, sharing)
+# Git for Windows v2.24.0
+closed gVim & Powershell
+clicked through all install options
+# Git for Windows v2.24.0(2)
+# Tixati v2.64
+tixati-2.64-1.win64-install.exe   Desktop icon Deleted
+# LibreOffice 6.3.2
+Close Windows Explorer and everything except Task Manager for
+  LibreOffice_6.3.2_Win_x64.msi > Custom, then clicked thru as all was as previously >
+    Create shortcut on desktop  off-ticked
+# MailStore Home
+MailStoreHomeSetup-12.0.3.14426.exe   Ran it > [ anonymous usage data   Archive E-mail >
+  harriott@gmx.com > Start > pw
+# Git for Windows v2.24.1.2
+closed gVim & Powershell
+clicked through all install options
+# gVim v8.2
+currently have  C:\Program Files (x86)\Vim\vim81\gvim.exe
+  backed up C:\Users\jnbh\vimfiles
+gvim82.exe > Windows Defender SmartScreen > More info > Run anyway >
+  Create Plugin Directories off-ticked
+# Tixati v2.66
+tixati-2.66-1.win64-install.exe   Desktop icon Deleted
+# LibreOffice 6.3.3
+Close Windows Explorer and everything except Task Manager for
+  LibreOffice_6.3.3_Win_x64.msi > Custom, then clicked thru as all was as previously >
+    Create shortcut on desktop  off-ticked
+# Adobe Flash Player Version 32.0.0.321
+pop-up opened  https://get3.adobe.com/flashplayer/update/ppapi/ (Optional was already offticked)
+  got me  flashplayer32ppau_ha_install.exe  which I ran > Notify me
+  the executable disappeared
+# Thunderbird Updated to v68.4.1
+## Thunderbird Profile
+C:\Users\jnbh\AppData\Roaming\Thunderbird\Profiles\pbxfgpuo.default  emptied and refilled from
+  3df0pcma.default-release
+Ran it, but complained that profile is from an older version...
+## Uninstall Thunderbird
+Programs and Features > Mozilla Thunderbird 68.4.1 (x86 en-GB) > Uninstall
+Deleted  C:\Users\jnbh\AppData\Roaming\Thunderbird
+## install 64 bit
+Thunderbird Setup 68.4.1.exe > Custom > not On my Desktop
+Ran it to get  C:\Users\jnbh\AppData\Roaming\Thunderbird\Profiles\vosgzd6o.default-release
+  which I emptied, and refilled from  3df0pcma.default-release
+But still getting complaint that I have launched an older version, which I have not...
+  Create New Profile  got me
+    C:\Users\jnbh\AppData\Roaming\Thunderbird\Profiles\koc0hqvp.default-release-1
+    which I emptied, and filled from  3df0pcma.default-release   which was also rejected...
+So began from scratch...
+# Strawberry Perl v5.30.1.1
+strawberry-perl-5.30.1.1-64bit.msi   (installed to  C:\Strawberry\)
+restarted Powershell for
+  perl -v
+  perl -e "print qq(Hello, world!\n)"
+# HP ENVY 5532 default paper size
+Win+I (Windows Settings) > Devices > Printers & scanners > HPA22F0E (HP ENVY 5530 series) > Manage >
+  Printing preferences > [ Layout  or  Paper/Quality ] > Advanced > Paper Size > A4
+# Git for Windows v2.25.0
+closed gVim & Powershell
+clicked through all install options
+# Dropbox not starting automatically...
+Task Manager  shows  Dropbox Service  Dropbox Update (32 bit)  both using 0% CPU
+# LibreOffice 6.3.4
+Close Windows Explorer and everything except Task Manager for
+  LibreOffice_6.4.0_Win_x64.msi > Custom, then clicked thru as all was as previously >
+    Create shortcut on desktop  off-ticked
+# Kaspersky Rescue Disk 18
+booted from outdated version
+  Moto G (4) 1367 > pw   Updated (got advice to download latest ISO)
+  Start scan   didn't take long to find nothing, so
+    Change parameters > System drive > Start scan
+# FFmpeg 20200206
+cd D:\ffmpeg-20200206-343ccfc-win64-static\bin
+  cpi ffmpeg.exe C:\Users\jnbh\AppData\Local\Microsoft\WindowsApps
+where.exe ffmpeg
+# memoirArticle.sty
+console run as administrator:  mklink C:\Users\jnbh\AppData\Roaming\MiKTeX\2.9\tex\latex\mystuff\memoirArticle.sty D:\Dropbox\JH\Now\TextNotes\memoirArticle.sty
+(while online) MiKTeX Console > [ Check for updates > Updates page  for a load >
+  MiKTeX Console restarted   Tasks > Refresh file name database ]
+# Pandoc
+pandoc-2.9.1.1-windows-x86_64.msi
+## defaults
+Command Prompt as Administrator for:   mklink /D C:\Users\jnbh\AppData\Roaming\Pandoc\defaults D:\Dropbox\JH\IT_stack\onGitHub\md4pdf\defaults
+# Kaspersky Rescue Disk 18
+booted   Moto G (4) 1367 > pw   Updated
+  Change parameters > System drive > Start scan, which took a long time to find no threats
+# Kaspersky TDSSKiller tool
+tdsskiller.exe  ran from SM3 > Start scan   very fast to find no threats
+  Change parameters > Additional > [ Verify  Detect ]   again very fast to find no threats
+Ran from D: > Objects > Loaded > Reboot   then, once into my account
+  Start scan   very fast to find no threats
+    Change parameters > Additional > [ Verify  Detect ]   again very fast to find no threats
+# Pandoc defaults changed
+C:\Users\jnbh\AppData\Roaming\Pandoc\defaults  emptied, Deleted, then Created
+Command Prompt as Administrator for:   mklink C:\Users\jnbh\AppData\Roaming\Pandoc\defaults\md4pdfMSWin.yaml D:\Dropbox\JH\IT_stack\onGitHub\md4pdf\MSWin\defaults.yaml
+  mklink C:\Users\jnbh\AppData\Roaming\Pandoc\defaults\md4pdf.yaml D:\Dropbox\JH\IT_stack\onGitHub\md4pdf\defaults.yaml
+# Feature update to Windows 10, version 1909
+restarted
+# Pandoc ToC defaults
+Command Prompt as Administrator for:   mklink C:\Users\jnbh\AppData\Roaming\Pandoc\defaults\md4pdfToC.yaml D:\Dropbox\JH\IT_stack\onGitHub\md4pdf\defaults-toc.yaml
+# Notepad++ Updated to v7.8.4
+clicked through queries
+# Dropbox still not starting automatically...
+Menu > Dropbox > Uninstall  for  Programs and Features > Dropbox > Uninstall
+## Dropbox
+DropboxInstaller.exe  Signed in   How do you want files stored? > Local
+  refused due to insufficient local space, so Smart Sync > [ (renamed D:\Dropbox to D:\Dropbox-old)
+    Dropbox Location > D:   Selective Sync > offticked all my folders
+    Smart Sync off-ticked > Open my Dropbox folder ]
+Paused for the fiddly process of restoring files without using a many GB
+# routine restart to calm the system down
+Automatic Repair > Restart
+# pandoc-templates-jh
+removed C:\Users\jnbh\AppData\Roaming\Pandoc\templates  for
+  Command Prompt as Administrator for:  mklink /D C:\Users\jnbh\AppData\Roaming\Pandoc\templates D:\Dropbox\JH\IT_stack\onGitHub\pandoc-templates-jh
+# pandoc-templates
+C:\Users\jnbh\AppData\Roaming\Pandoc  to delete  templates  for
+  Command Prompt as Administrator for:  mklink /D C:\Users\jnbh\AppData\Roaming\Pandoc\templates D:\Dropbox\JH\IT_stack\onGitHub\pandoc-templates
+# DVDFab 11.0.7.4
+ran for Live Update > Update
+ran again to Delete Task, then Copy > (click on To Blu-ray for) Full Disk, then DVD9
+# Dropbox again not starting automatically...
+it's not listed in Windows Settings > Apps > Startup
+# Mouse failed
+no response from touchpad while low CPU usage
+# Git for Windows v2.25.1
+closed gVim & Powershell
+clicked through all install options
+# FFmpeg 20200224
+cd D:\ffmpeg-20200224-bc9b635-win64-static\bin
+  cpi ffmpeg.exe C:\Users\jnbh\AppData\Local\Microsoft\WindowsApps
+where.exe ffmpeg
+# on reboot
+Automatic Repair > Restart
+# Dropbox still not starting automatically...
+Preferences > Start off-ticked
+right-clicked on  "C:\Program Files (x86)\Dropbox\Client\Dropbox.exe"  for  Create shortcut
+  then renamed that, and moved it into
+    C:\Users\jnbh\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+# DVDFab 11.0.7.7
+ran for Live Update > Update
+ran again to Delete Task, then Copy > (click on To Blu-ray for) Full Disk, then DVD9
+# ChromeSetup.exe
+# Vivaldi v2.11.1811.47
+# Dropbox not starting
+C:\Users\jnbh\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Dropbox.exe
+# Dropbox 93.4.273 still not starting from link in Startup
+# DVDFab 11.0.8.1
+ran for Live Update > Update
+ran again to Delete Task, then Copy > (click on Customize for) Full Disk, then DVD9
+# MiniTool Partition Wizard Free - Update allowed to v12
+MiniTool Shadowmaker off-ticked > McAfee WebAdvisor > Decline
+  allowed it to Run > popup Message > [ Do not show, X ]
+# Notepad++ Updated to v7.8.5
+clicked through queries
+# fix _gvimrc symlink
+$HOME\_gvimrc  Deleted   for console run as administrator:
+  mklink C:\Users\jnbh\_gvimrc D:\Dropbox\JH\IT_stack\onGitHub\MSWin10\user\_gvimrc
+# fix .bashrc symlink
+$HOME\.bashrc  Deleted   for console run as administrator:
+  mklink C:\Users\jnbh\.bashrc D:\Dropbox\JH\IT_stack\onGitHub\MSWin10\user\bashrc
+# fix .gitconfig symlink
+$HOME\.gitconfig  Deleted   for console run as administrator:
+  mklink C:\Users\jnbh\.gitconfig D:\Dropbox\JH\IT_stack\onGitHub\MSWin10\HPP11n012na\jnbh\gitconfig
+# fix Ctrl-CapsLock
+right-click on  D:\Dropbox\JH\Now\Technos\IT\HW\laptops\11-n012na\Ctrl-CapsLock.ahk
+  for Create shortcut  then that moved into
+    "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup"  and renamed
+# Dropbox still not starting automatically...
+Preferences > Start off-ticked
+right-clicked on  "C:\Program Files (x86)\Dropbox\Client\Dropbox.exe"  for  Create shortcut
+  then renamed that, and moved it into
+    "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup"
+# fix symlink to $profile
+Deleted  C:\Users\jnbh\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1  for
+  console run as administrator:  mklink C:\Users\jnbh\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 D:\Dropbox\JH\IT_stack\onGitHub\MSWin10\Microsoft.PowerShell_profile.ps1
+# fix symlink to $HOME\.ssh\config
+Deleted  $HOME\.ssh\config  for  console run as administrator: mklink C:\Users\jnbh\.ssh\config D:\Dropbox\JH\IT_stack\onGitHub\MSWin10\HPP11n012na\jnbh\SSHconfig
+# Git for Windows v2.26.0
+closed gVim & Powershell
+clicked through all install options
+# fix symlink to $profile
+del  C:\Users\jnbh\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1  for console run as administrator:  mklink C:\Users\jnbh\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 D:\Dropbox\JH\IT_stack\onGitHub\MSWin10\HPP11n012na\PSProfile.ps1
+# waiting
+## f.lux
+flux-setup.exe
+## a Font that can handle U+25CB
+## once I've another system running
+### BIOS F.30 rev.A
+sp86809.exe
+### Intel Serial IO Driver 1.10 Rev.A
+sp69830.exe
+### check AHCI in BIOS
+## Google Chrome as Default Browser
+All Control Panel Items > Default Programs > Set Default Programs > Google Chrome >
+  Set this program as default, OK  gets Chrome opening from gVim, Edge from Cortana
+## Opera Signed in, Saved pw
+## Python
+## autojump
+## PSFzf
+## Broot
