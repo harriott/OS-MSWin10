@@ -11,14 +11,16 @@ Function dc { Get-ChildItem | ForEach-Object { $_.Name + ": " + "{0:N2}" -f ((Ge
 
 Function gfiln { gci -r $args[0] | select -ExpandProperty FullName }
 Function gfoln { gci -r $args[0] | where { $_.PSIsContainer } | select -ExpandProperty FullName }
+#
 # "last write time" sort (can accept a filename, including wildcards):
 Function lwt { gci -r -i $args[0],$args[1] | ForEach-Object { $_.LastWriteTime.ToString('yyyyMMdd-HH:mm:ss') + " : " + $_.FullName } | sort }
 # "last write path" sort (accepts a part of a file-path as argument):
 Function lwp { ls -r | ForEach-Object { $_.LastWriteTime.ToString('yyyyMMdd-HH:mm:ss') + " : " + $_.FullName } | out-string -stream | select-string $args[0] | sort }
 
-Function findDocs { "vim: nowrap tw=0:" > docsSearch.txt; lwt *.doc *.odt >> docsSearch.txt }
-Function find-sh { "vim: nowrap tw=0:" > docsSearch.txt; lwt *.sh >> sh-Search.txt }
-Function findTexs { "vim: nowrap tw=0:" > LaTeX-search.txt; lwt *.tex >> LaTeX-search.txt }
+Function lwt-docs      { "vim: nowrap tw=0:" > lwt-docs.txt; lwt *.doc *.odt >> lwt-docs.txt }
+Function lwt-gitignore { "vim: nowrap tw=0:" > lwt-gitignore.txt; lwt .gitignore >> lwt-gitignore.txt }
+Function lwt-sh        { "vim: nowrap tw=0:" > lwt-sh.txt; lwt *.sh >> lwt-sh.txt }
+Function lwt-tex       { "vim: nowrap tw=0:" > lwt-tex.txt; lwt *.tex >> lwt-tex.txt }
 
 Import-Module ZLocation
 

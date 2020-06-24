@@ -81,9 +81,89 @@ Personalisation > Personalise > Background > [ (Slideshow)
   Browse > C:\Users\troin\Dropbox\JH\Stack\DesktopBackground ]
 # $Profile
 PS> $Profile  returns
-  C:\Users\troin\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+  C:\Users\troin\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1   which ain't there
 ## symlink $profile
 in  C:\Users\jnbh\Documents  made folder  WindowsPowerShell  for  console run as administrator:
   mklink C:\Users\troin\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 D:\Dropbox\JH\Now\Technos\IT\HW\11-n012na\Microsoft.PowerShell_profile.ps1
+# .bashrc symlink
+## Command Prompt
+Menu > Windows System > right-clicked on Command Prompt > Pin to Start
+# .bashrc symlink
+Command Prompt run as administrator:
+  mklink C:\Users\troin\.bashrc C:\Users\troin\Dropbox\JH\IT_stack\onGitHub\MSWin10\user\bashrc
+# .gitconfig symlink
+Command Prompt run as administrator: mklink C:\Users\troin\.gitconfig C:\Users\troin\Dropbox\JH\IT_stack\onGitHub\MSWin10\LIP120s81A4\troin-gitconfig
+# symlink to $Profile
+Command Prompt run as administrator:
+  mklink C:\Users\troin\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 C:\Users\troin\Dropbox\JH\IT_stack\onGitHub\MSWin10\LIP120s81A4\PSProfile.ps1
+# PowerShell version
+$PSVersionTable  reports  PSVersion 5.1.18362.628
+# PowerShellGet
+Get-Module  doesn't list it
+Get-PackageProvider -ListAvailable
+  ...
+  PowerShellGet            1.0.0.1
+it's in  "C:\Program Files\WindowsPowerShell\Modules\PowerShellGet"
+## LastPass for Microsoft Edge
+Microsoft Store > LastPass for Microsoft Edge > Install
+## Powershell 7
+PowerShell-7.0.0-win-x64.msi > Add 'Open-here'
+## PowerShellGet
+as Administrator:  Install-PackageProvider Nuget -Force   got me   nuget 2.8.5.208
+as Administrator:  Update-Module -Name PowerShellGet
+  Module 'PowerShellGet' was not installed by using Install-Module, so it cannot be updated.
+as Administrator:  Install-Module -Name PowerShellGet -Force
+Get-InstalledModule  reported   2.2.3 PowerShellGet
+# ZLocation
+Install-Module -Name ZLocation
+  You are installing the modules from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from 'PSGallery'? > a
+Get-InstalledModule   reported   1.4.2 ZLocation
+# Posh-Git
+Get-ExecutionPolicy   reported   Bypass   so
+as Administrator:  Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Confirm > y > y
+Get-ExecutionPolicy   reported   RemoteSigned
+as Administrator:  PowerShellGet\Install-Module posh-git -Scope CurrentUser -AllowPrerelease -Force
+Get-InstalledModule   reported   1.0.0-beta4 posh-git
+# PowerShell Opacity
+right-click on PowerShell top bar > Properties > Colours > Opacity > 72%
+# Night light warmer
+Settings > System > Display > Night light settings > Strength > 57
+# Recovery Drive
+K16GBDTG2 plugged in for
+  Win+R > %WinDir%\System32\RecoveryDrive.exe   eventually told me needed a 16 GB USB drive
+    took a long time to write over 7 GB to the drive
+# Git for Windows v2.26.1
+closed gVim & Powershell
+clicked through all install options
+# Git for Windows v2.26.2
+closed gVim & Powershell
+clicked through all install options
+# 7-Zip
+7z1900-x64.exe
+# Windows Menu > [ Command Prompt  Control Panel ] Pinned to Start
+# Google Chrome
+https://www.google.com/intl/en_uk/chrome/browser/?hl=en-GB > Download Chrome (Help us on-ticked)
+  got  ChromeSetup.exe  which, when run, did some more downloading
+  Resized, Closed, Pinned to Start
+All Control Panel Items > Default Programs > Set your default programs > Google Chrome
+# Gpg4win
+gpg4win-3.1.11.exe > GpgOL off-ticked
+Kleopatra > [ pinned into Start  Imported  Encrypted\Secure1\GnuPG\secret-key-9F2D63AE.asc ]
+# Notepad++
+right-click on  npp.7.8.6.Installer.exe.sig  for  More GpgEX options > Verify
+  to bring in a signature, and then Certify it > passphrase
+# FastStone Image Viewer v7.4
+FSViewerSetup74.exe
+ran it for Esc to offtick
+  (lower right icon) Settings > Viewer > [ Loop on, Confirm on ESC off, Auto-rotate by EXIF off,
+    Default unit > cm ]
+*.jpg  Opens with FastStone Image Viewer
+## Settings
+replaced  PaperSizeList  settings in  C:\Users\troin\AppData\Roaming\FastStone\FSIV\FSSettings.db
+  with those in  JH\IT_stack\MSWinUser\150429122906\FSIV\FSSettings.db
+# Thunderbird
 # waiting
 ## Broot
+## Glances
+## Process Hacker
+processhacker-2.39-setup.exe

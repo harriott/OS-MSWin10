@@ -8,6 +8,6 @@
 
 # Clear-Host
 
-$onGH = "D:\Dropbox\JH\IT_stack\onGitHub"
+$onGH = "D:\Dropbox\JH\IT_stack\onGitHub"  # unfortunately inaccessible to vim
 
-. D:\Dropbox\JH\IT_stack\onGitHub\MSWin10\PSProfile.ps1
+. $onGH\MSWin10\PSProfile.ps1
