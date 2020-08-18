@@ -2,7 +2,14 @@ vim: fdl=0 ft=build fdm=expr:
 
 Lenovo IdeaPad 120s 81A4
 
-# setup of Win10S
+# parallel build
+## ExifTool v12.03
+cpi exiftool.exe C:\Users\troin\AppData\Local\Microsoft\WindowsApps\exiftool.exe
+## ffmpeg-20200730-134a48a-win64-static
+cpi ffmpeg.exe C:\Users\jnbh\AppData\Local\Microsoft\WindowsApps
+ffmpeg -version
+# sequential build
+## setup of Win10S
 Moto G4 key
 jnbh@live.co.uk
 PIN > 4343
@@ -11,57 +18,57 @@ battery was flat
 set my Power options
 waited for Updates > Restart
 Updates > Restart
-# Win10Pro
+## Win10Pro
 Updates > Activation > Store > Install   then, after some Updates,  Restart
 Taskbar tweaks
 Updates > Plugged in ST905004EXD101 for needed space > Restart
-# Settings > Device name
+## Settings > Device name
 LAPTOP-52EN9MRG
-# Lenovo Vantage
+## Lenovo Vantage
 installed > [ Toolbar off  Help us on ]
 Updates > REBOOT
-# Settings > Apps & features
+## Settings > Apps & features
 Candy Crush Friends > Uninstall
 Candy Crush Saga > Uninstall
-# Hotkey Mode
+## Hotkey Mode
 rebooted for F2 to get into BIOS > [ Configuration > Hotkey Mode > Disabled
   Security > Secure Boot > Disabled ] F10
-# Start Menu tidied
-# Computer name
+## Start Menu tidied
+## Computer name
 Settings > System > About > Rename > LIP120s81A4 > Restart
-# Turn off Fast Start
+## Turn off Fast Start
 Power & sleep > Additional power settings > Choose what the power button does >
   Change settings that are currently unavailable > Turn on fast startup  off-ticked
 Restarted
-# Task Manager > Hide when minimised
-# Git
-https://git-scm.com/download/win > Windows   for the executable
-## User defaulted to troin
+## Task Manager > Hide when minimised
 ## Git
+https://git-scm.com/download/win > Windows   for the executable
+### User defaulted to troin
+### Git
 Git-2.26.0-64-bit.exe > Check daily > Checkout as is, commit Unix-style line endings
-## Git Bash
+### Git Bash
 Pinned to Start
 ran and right-clicked inside for Options > [ Looks > Transparency > High
   Window > Default size > [ 160  30 ]
-## gVim v8.2
+### gVim v8.2
 gvim82.exe > [ Created icons > On the Desktop off-ticked   Created Default Config off-ticked
   Create Plugin Directories off-ticked ]
 C:\Users\troin\  for   [ _gvimrc   _vimrc  vimfiles ] Copied to in from HPP11
 Ran it, getting   .vimswap  .vimundo  &  .viminfo   generated
-# modifying SM3
+## modifying SM3
 right-click on SM3 for  Properties > Security > Edit > Allow > Full
   and Windows Security had a ball   Setting security information on   each and every file
-# Ditto Clipboard
+## Ditto Clipboard
 Microsoft Store > Ditto Clipboard > Install > Pin to Start
 Ran it for  Options > General > Maximum Number of Saved Copies > 5000
   ( C:\Users\troin\AppData\Local\Ditto_WindowsApp\Ditto.db )
-# modifying ST905004EXD101
+## modifying ST905004EXD101
 right-click on ST905004EXD101 for  Properties > Security > Edit > Allow > Full
-# create SSH key
+## create SSH key
 PS> ssh-keygen -b 4096 -C "troingjo@outlook.com" > Enter (for C:\Users\troin\.ssh) >
   Enter (= no passphrase)
 C:\Users\troin\.ssh  backed up into Secure1/Networking/SSH
-# Test GitHub SSH connection
+## Test GitHub SSH connection
 https://github.com/settings/ssh/new   to post key as   troingjo@outlook.com
 Git Bash > ssh -T git@github.com
   The authenticity of host 'github.com (140.82.118.4)' can't be established.
@@ -70,100 +77,172 @@ Git Bash > ssh -T git@github.com
   Warning: Permanently added 'github.com,140.82.118.4' (RSA) to the list of known hosts.
   Hi harriott! You've successfully authenticated, but GitHub does not provide shell access.
 got me  $HOME\.ssh\known_hosts
-# Dropbox
+## Dropbox
 DropboxInstaller.exe   Signed in > Online only   Paused for  Preferences > Sync >
   Selective sync for just a few folders   then   Smart Sync > Local
-# Settings > Background
+## Settings > Background
 somehow already has access to my DesktopBackground folder, but I can't find them in OneDrive
 it's in  C:\Users\troin\AppData\Local\Microsoft\Windows\Themes\RoamedThemeFiles\DesktopBackground
   (which is a small subset of  JH/Then0/DesktopBackground)  Deleted
 Personalisation > Personalise > Background > [ (Slideshow)
   Browse > C:\Users\troin\Dropbox\JH\Stack\DesktopBackground ]
-# $Profile
+## $Profile
 PS> $Profile  returns
   C:\Users\troin\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1   which ain't there
-## symlink $profile
+### symlink $profile
 in  C:\Users\jnbh\Documents  made folder  WindowsPowerShell  for  console run as administrator:
   mklink C:\Users\troin\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 D:\Dropbox\JH\Now\Technos\IT\HW\11-n012na\Microsoft.PowerShell_profile.ps1
-# .bashrc symlink
-## Command Prompt
+## .bashrc symlink
+### Command Prompt
 Menu > Windows System > right-clicked on Command Prompt > Pin to Start
-# .bashrc symlink
+## .bashrc symlink
 Command Prompt run as administrator:
   mklink C:\Users\troin\.bashrc C:\Users\troin\Dropbox\JH\IT_stack\onGitHub\MSWin10\user\bashrc
-# .gitconfig symlink
+## .gitconfig symlink
 Command Prompt run as administrator: mklink C:\Users\troin\.gitconfig C:\Users\troin\Dropbox\JH\IT_stack\onGitHub\MSWin10\LIP120s81A4\troin-gitconfig
-# symlink to $Profile
+## symlink to $Profile
 Command Prompt run as administrator:
   mklink C:\Users\troin\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 C:\Users\troin\Dropbox\JH\IT_stack\onGitHub\MSWin10\LIP120s81A4\PSProfile.ps1
-# PowerShell version
+## PowerShell version
 $PSVersionTable  reports  PSVersion 5.1.18362.628
-# PowerShellGet
+## PowerShellGet
 Get-Module  doesn't list it
 Get-PackageProvider -ListAvailable
   ...
   PowerShellGet            1.0.0.1
 it's in  "C:\Program Files\WindowsPowerShell\Modules\PowerShellGet"
-## LastPass for Microsoft Edge
+### LastPass for Microsoft Edge
 Microsoft Store > LastPass for Microsoft Edge > Install
-## Powershell 7
+### Powershell 7
 PowerShell-7.0.0-win-x64.msi > Add 'Open-here'
-## PowerShellGet
+### PowerShellGet
 as Administrator:  Install-PackageProvider Nuget -Force   got me   nuget 2.8.5.208
 as Administrator:  Update-Module -Name PowerShellGet
   Module 'PowerShellGet' was not installed by using Install-Module, so it cannot be updated.
 as Administrator:  Install-Module -Name PowerShellGet -Force
 Get-InstalledModule  reported   2.2.3 PowerShellGet
-# ZLocation
+## ZLocation
 Install-Module -Name ZLocation
   You are installing the modules from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from 'PSGallery'? > a
 Get-InstalledModule   reported   1.4.2 ZLocation
-# Posh-Git
+## Posh-Git
 Get-ExecutionPolicy   reported   Bypass   so
 as Administrator:  Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Confirm > y > y
 Get-ExecutionPolicy   reported   RemoteSigned
 as Administrator:  PowerShellGet\Install-Module posh-git -Scope CurrentUser -AllowPrerelease -Force
 Get-InstalledModule   reported   1.0.0-beta4 posh-git
-# PowerShell Opacity
+## PowerShell Opacity
 right-click on PowerShell top bar > Properties > Colours > Opacity > 72%
-# Night light warmer
+## Night light warmer
 Settings > System > Display > Night light settings > Strength > 57
-# Recovery Drive
+## Recovery Drive
 K16GBDTG2 plugged in for
   Win+R > %WinDir%\System32\RecoveryDrive.exe   eventually told me needed a 16 GB USB drive
     took a long time to write over 7 GB to the drive
-# Git for Windows v2.26.1
+## Git for Windows v2.26.1
 closed gVim & Powershell
 clicked through all install options
-# Git for Windows v2.26.2
+## Git for Windows v2.26.2
 closed gVim & Powershell
 clicked through all install options
-# 7-Zip
+## 7-Zip
 7z1900-x64.exe
-# Windows Menu > [ Command Prompt  Control Panel ] Pinned to Start
-# Google Chrome
+## Control Panel
+Windows Menu > [ Command Prompt  Control Panel ] Pinned to Start
+## Google Chrome
 https://www.google.com/intl/en_uk/chrome/browser/?hl=en-GB > Download Chrome (Help us on-ticked)
   got  ChromeSetup.exe  which, when run, did some more downloading
   Resized, Closed, Pinned to Start
 All Control Panel Items > Default Programs > Set your default programs > Google Chrome
-# Gpg4win
+## Gpg4win
 gpg4win-3.1.11.exe > GpgOL off-ticked
 Kleopatra > [ pinned into Start  Imported  Encrypted\Secure1\GnuPG\secret-key-9F2D63AE.asc ]
-# Notepad++
+## Notepad++
 right-click on  npp.7.8.6.Installer.exe.sig  for  More GpgEX options > Verify
   to bring in a signature, and then Certify it > passphrase
-# FastStone Image Viewer v7.4
+## FastStone Image Viewer v7.4
 FSViewerSetup74.exe
 ran it for Esc to offtick
   (lower right icon) Settings > Viewer > [ Loop on, Confirm on ESC off, Auto-rotate by EXIF off,
     Default unit > cm ]
 *.jpg  Opens with FastStone Image Viewer
-## Settings
+### Settings
 replaced  PaperSizeList  settings in  C:\Users\troin\AppData\Roaming\FastStone\FSIV\FSSettings.db
   with those in  JH\IT_stack\MSWinUser\150429122906\FSIV\FSSettings.db
-# Thunderbird
-# waiting
-## Broot
-## Glances
-## Process Hacker
+## Lenovo Vantage
+Audio > "Lenovo Vantage does not have permission to access your microphone."
+Display & Camera > "Lenovo Vantage doesn't have access to Camera."
+## Powershell Console Fonts
+right-click on top bar > Font
+### opened from Menu
+Win+X > I  (opened on  C:\Users\troin): 14 Consolas
+### opened from Explorer
+Alt+F > r  (opened on  C:\Users\troin): 16 Lucida Console, changed to 14 Consolas
+## Disk Usage
+du64.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
+## Settings > Background
+Personalisation > Personalise > Background > [ (Slideshow)
+  Browse > C:\Users\troin\Dropbox\JH\IT_stack\MSWin\DesktopBackground ]
+## Thunderbird
+Thunderbird Setup 68.10.0.exe > Custom > not On my Desktop
+Ran it to get  C:\Users\troin\AppData\Roaming\Thunderbird\Profiles\cqoeve54.default-release
+  which I emptied, and refilled from  k6i-3df0pcma.default-release.7z
+## QuickHash
+C:\Users\troin\QuickHash-64-Bit
+## MiKTeX
+basic-miktex-20.6.29-x64.exe > Run anyway > only for me > missing packages on the fly > Yes
+## Ghostscript v9.52 (in preparation for ImageMagick)
+gs952w64.exe
+Overview of Ghostscript file:///C:/Program%20Files/gs/gs9.52/doc/Readme.htm
+## ImageMagick
+ImageMagick-7.0.10-23-Q16-HDRI-x64-dll.exe > [ desktop icon  FFmpeg ] off-ticked
+fresh PowerShell for:  magick wizard: wizard.jpg
+  then  magick wizard.jpg win:  first time generated an IMDisplay
+    "C:\Users\troin\AppData\Local\Temp\magick-<weirdCode> was not found"
+    2nd run, got the jpg opened in IMDisplay   ri wizard.jpg
+## Dropbox\JH\Work
+right-click on C:\Users\troin\Dropbox\JH\Work for Smart Sync > Local
+### Notepad++ Updated to v7.8.7
+clicked through queries
+## remove Microsoft Office Desktop Apps
+Settings > Apps & features > Microsoft Office Desktop Apps > Uninstall
+## Tixati v2.73.1
+Settings > Apps & features > Choose where to get apps >
+  Anywhere, but let me know if there’s a comparable app in the Microsoft Store
+### Tixati v2.73.1
+tixati-2.73-1.win64-install.exe
+  Allowed in Windows Firewall, including Private networks
+  Pinned to Start, and Deleted from Desktop
+  Bandwidth > Auto Limit on
+  Settings > [ Behaviour > [ Main window close > Completely   Main window minimize > Hide ]
+    Transfers > Locations > C:\Users\troin\Downloads ]
+## LibreOffice 6.4.5
+Close  Windows Explorer and everything except Task Manager for
+LibreOffice_6.4.5_Win_x64_helppack_en-GB.msi > Custom > Word Documents > not on desktop
+LibreOffice  Pinned to Start
+ran it to build  C:\Users\troin\AppData\Roaming\LibreOffice\4
+  in  user\  removed  config  folder &  registrymodifications.xcu
+    & replaced them from  JH\IT_stack\CrossPlatform\LibreOffice\j9o-HPP-user
+## Dropbox Smart Sync
+need space on C:, so in C:\Users\troin\Dropbox\JH\
+  right-click on [ IT_stack  Now  Work ] for Smart Sync > Online Only
+## Sumatra PDF v3.1.2
+SumatraPDF-3.2-64-install.exe > Options > [ Let Windows show previews of PDF documents ]
+  Association set back to Edge by system
+*.pdf  Opens with SumatraPDF
+## Bulk Rename
+BRU_setup_3.3.2.1.exe  Used it to off-tick 2 notifications
+## JH.sty
+in  C:\Users\jnbh\AppData\Roaming\MiKTeX\tex\  there is already  generic\  - I created  latex\
+console run as administrator:  mklink /D C:\Users\troin\AppData\Roaming\MiKTeX\tex\latex\jo C:\Users\troin\Dropbox\JH\IT_stack\CrossPlatform\forLaTeX
+(while online) MiKTeX Console > [ Check for updates > Updates page  for 4
+  Tasks > Refresh file name database ]
+xelatex'd a TextNotes file to bring in a load of packages
+## Git for Windows v2.28.0
+closed gVim & Powershell
+clicked through all install options
+## waiting
+### Broot
+### Glances
+### Process Hacker
 processhacker-2.39-setup.exe

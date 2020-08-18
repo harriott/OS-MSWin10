@@ -3,6 +3,8 @@
 HP Pavilion x360 Convertible Laptop 11-n012na - HPP11n012na
 
 # parallel build
+## ExifTool v11.59
+cpi exiftool.exe C:\Users\jnbh\AppData\Local\Microsoft\WindowsApps\exiftool.exe
 ## FFmpeg - for Audacity
 D:\myUtils\ffmpeg-win-2.2.2
 ## FFmpeg - latest
@@ -233,8 +235,6 @@ Pinned to Start  Ran it > Select Your Add-ons
 replaced  PaperSizeList  settings in  C:\Users\jnbh\AppData\Roaming\FastStone\FSIV\FSSettings.db
   with those in  JH\IT_stack\MSWinUser\150429122906\FSIV\FSSettings.db
 ## *.tex Opens with Vi Improved
-## ExifTool
-cpi exiftool.exe C:\Users\jnbh\AppData\Local\Microsoft\WindowsApps\exiftool.exe
 ## Edge crashed...
 Favourites > [ Bookmarks  Trash ] Deleted
 ## Google Chrome
@@ -336,7 +336,7 @@ py -m pip list
   virtualenv       16.0.0
   virtualenv-clone 0.3.0
 ## LPD-rapport.cls
-PowerShell in  C:\Users\jnbh\AppData\Roaming\MiKTeX\2.9\tex
+PowerShell in  C:\Users\jnbh\AppData\Roaming\MiKTeX\2.9\tex\ (already  generic\)
   ni latex\mystuff -type directory -force
 console run as administrator:  mklink C:\Users\jnbh\AppData\Roaming\MiKTeX\2.9\tex\latex\mystuff\LPD-rapport.cls D:\Dropbox\JH\Work\ST\LPD-IdF\makeReport\LPD-rapport.cls
 (while online) MiKTeX Console > Tasks > Refresh file name database
@@ -726,9 +726,6 @@ right-click on  C:\Users\jnbh\vimfiles\CapsLockEsc.ahk  for Create shortcut  the
 right-click on  D:\Dropbox\JH\Now\Technos\IT\HW\laptops\11-n012na\Ctrl-CapsLock.ahk
   for Create shortcut  then that moved into
     "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup"  and renamed
-## ExifTool Updated
-in  Share\IT-Copied\MSWin\Imagey\ExifTool v11.59
-  cpi exiftool.exe C:\Users\jnbh\AppData\Local\Microsoft\WindowsApps\exiftool.exe
 ## Tixati v2.62
 tixati-2.62-1.win64-install.exe  Desktop icon Deleted
 ## LibreOffice 6.2.5
@@ -1041,6 +1038,10 @@ Ctrl+p (= Preferences) > Libraries > FFmpeg Library Locate >
   D:\myUtils\ffmpeg-win-2.2.2\avcodec-55.dll
 ## Task Manager shows bitness
 Details > right-click on headers to add Platform
+## MiniTool Partition Wizard Free - Update allowed to v12.1
+MiniTool Shadowmaker off-ticked > McAfee WebAdvisor > Decline
+  allowed it to Run > popup Message > [ Do not show, X ]
+## Vivaldi v3.1.1929.48
 ## waiting
 ### f.lux
 flux-setup.exe
@@ -1064,4 +1065,5 @@ All Control Panel Items > Default Programs > Set Default Programs > Google Chrom
 processhacker-2.39-setup.exe
 ### TreeSize
 ### SuperF4
-## FastStone Image Viewer v7.4
+### FastStone Image Viewer v7.4
+### Ghostscript v9.52

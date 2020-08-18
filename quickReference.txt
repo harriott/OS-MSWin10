@@ -1,6 +1,9 @@
 vim: fdl=0 ft=build fdm=expr:
 
+du64 -l 1
+gci * | select FullName
+gci * | select Name
 gci env:  # list the environment variables
 $Env:Path -split';'
-& "${Env:ProgramFiles(x86)}\Vim\vim82\gvim.exe" --% <textfile>
+& "${Env:ProgramFiles(x86)}\Vim\vim82\gvim.exe" -- <textfile>
 ffmpeg -version

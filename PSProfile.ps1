@@ -13,14 +13,14 @@ Function gfiln { gci -r $args[0] | select -ExpandProperty FullName }
 Function gfoln { gci -r $args[0] | where { $_.PSIsContainer } | select -ExpandProperty FullName }
 #
 # "last write time" sort (can accept a filename, including wildcards):
-Function lwt { gci -r -i $args[0],$args[1] | ForEach-Object { $_.LastWriteTime.ToString('yyyyMMdd-HH:mm:ss') + " : " + $_.FullName } | sort }
+Function lwt { gci -r -i $args[0],$args[1],$args[2] | ForEach-Object { $_.LastWriteTime.ToString('yyyyMMdd-HH:mm:ss') + " : " + $_.FullName } | sort }
 # "last write path" sort (accepts a part of a file-path as argument):
 Function lwp { ls -r | ForEach-Object { $_.LastWriteTime.ToString('yyyyMMdd-HH:mm:ss') + " : " + $_.FullName } | out-string -stream | select-string $args[0] | sort }
 
 Function lwt-docs      { "vim: nowrap tw=0:" > lwt-docs.txt; lwt *.doc *.odt >> lwt-docs.txt }
 Function lwt-gitignore { "vim: nowrap tw=0:" > lwt-gitignore.txt; lwt .gitignore >> lwt-gitignore.txt }
 Function lwt-sh        { "vim: nowrap tw=0:" > lwt-sh.txt; lwt *.sh >> lwt-sh.txt }
-Function lwt-tex       { "vim: nowrap tw=0:" > lwt-tex.txt; lwt *.tex >> lwt-tex.txt }
+Function lwt-tex       { "vim: nowrap tw=0:" > lwt-tex.txt; lwt *.cls *.sty *.tex >> lwt-tex.txt }
 
 Import-Module ZLocation
 
@@ -84,10 +84,6 @@ Function p {test-connection -computername 8.8.8.8 -ErrorAction SilentlyContinue}
 New-Alias jpo $onGH\jpgorhor\jpgorhor.ps1
 New-Alias m4p $onGH\md4pdf\MSWin\m4p.ps1
 New-Alias m4ps $onGH\md4pdf\MSWin\m4ps.ps1
-New-Alias RbS0 $onGH\SyncPortableDrives\RoboHPP-Sync0.ps1
-New-Alias RbS1 $onGH\SyncPortableDrives\RoboHPP-Sync1.ps1
-New-Alias RbSh $onGH\SyncPortableDrives\RoboSM3_Share.ps1
-New-Alias RbSm $onGH\SyncPortableDrives\RoboSmall.ps1
 
 #endregion
 

@@ -11,3 +11,6 @@
 $onGH = "C:\Users\troin\Dropbox\JH\IT_stack\onGitHub"
 
 . C:\Users\troin\Dropbox\JH\IT_stack\onGitHub\MSWin10\PSProfile.ps1
+
+New-Alias RCI $onGH\SyncPortableDrives\RC-IdeaPad.ps1
+
