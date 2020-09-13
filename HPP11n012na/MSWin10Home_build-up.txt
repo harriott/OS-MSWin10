@@ -1042,6 +1042,18 @@ Details > right-click on headers to add Platform
 MiniTool Shadowmaker off-ticked > McAfee WebAdvisor > Decline
   allowed it to Run > popup Message > [ Do not show, X ]
 ## Vivaldi v3.1.1929.48
+## Git for Windows v2.28.0
+closed gVim & Powershell
+clicked through all install options
+## Rufus
+rufus-3.11.exe
+## Vivaldi v3.3.2022.39
+## Samsung USB Drivers
+SAMSUNG_USB_Driver_for_Mobile_Phones.exe (InstallWizard says v1.7.23.0) > UK, UK
+## Notepad++ Updated to v7.8.7
+clicked through queries
+## Ditto
+Options > General > Theme > DarkerDitto
 ## waiting
 ### f.lux
 flux-setup.exe

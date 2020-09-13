@@ -1,5 +1,5 @@
 # vim: set et tw=0:
-# #region & #noregion create folding blocks if Peter Provost's vim-ps1 is installed
+# #region & #endregion create folding blocks if Peter Provost's vim-ps1 is installed
 
 # Joseph Harriott
 
@@ -12,10 +12,16 @@ Function dc { Get-ChildItem | ForEach-Object { $_.Name + ": " + "{0:N2}" -f ((Ge
 Function gfiln { gci -r $args[0] | select -ExpandProperty FullName }
 Function gfoln { gci -r $args[0] | where { $_.PSIsContainer } | select -ExpandProperty FullName }
 #
-# "last write time" sort (can accept a filename, including wildcards):
-Function lwt { gci -r -i $args[0],$args[1],$args[2] | ForEach-Object { $_.LastWriteTime.ToString('yyyyMMdd-HH:mm:ss') + " : " + $_.FullName } | sort }
-# "last write path" sort (accepts a part of a file-path as argument):
-Function lwp { ls -r | ForEach-Object { $_.LastWriteTime.ToString('yyyyMMdd-HH:mm:ss') + " : " + $_.FullName } | out-string -stream | select-string $args[0] | sort }
+# "last write time" sorted list of <filename(s)>:
+Function lwt { gci -r -i $args[0],$args[1],$args[2] `
+  | ForEach-Object { $_.LastWriteTime.ToString('yyyyMMdd-HH:mm:ss') + " : " + $_.FullName } `
+  | sort } # can use wildcards in the <filenames(s)>
+
+# "last write path" sorted list of files in <file-path>
+Function lwp { ls -r `
+  | ForEach-Object { $_.LastWriteTime.ToString('yyyyMMdd-HH:mm:ss') + " : " + $_.FullName } `
+  | out-string -stream | select-string $args[0] `
+  | sort } # <file-path> is a regex
 
 Function lwt-docs      { "vim: nowrap tw=0:" > lwt-docs.txt; lwt *.doc *.odt >> lwt-docs.txt }
 Function lwt-gitignore { "vim: nowrap tw=0:" > lwt-gitignore.txt; lwt .gitignore >> lwt-gitignore.txt }
@@ -99,7 +105,7 @@ Function all72 { Get-ChildItem | Where-Object {-not $_.PsIsContainer} | ForEach-
 #region - Shell settings:
 $env:path +=';C:\Program Files\7-Zip'
 
-$host.privatedata.ErrorForegroundColor = 'darkgray'
+$host.privatedata.ErrorForegroundColor = 'gray'
 $host.privatedata.ErrorBackgroundColor = 'darkmagenta'
 
 Import-Module posh-git

@@ -1,14 +1,122 @@
 vim: fdl=0 ft=build fdm=expr:
 
-Lenovo IdeaPad 120s 81A4
+Lenovo IdeaPad 120s 81A4 = LIP120s81A4
 
 # parallel build
+## Control Panel
+Windows Menu > Windows System > Control Panel > Pinned to Start
+## clicked OneDrive notification icon for Settings
+## create SSH key
+PS> ssh-keygen -b 4096 -C "troingjo@outlook.com" > Enter (for C:\Users\troin\.ssh) >
+  Enter (= no passphrase)
+C:\Users\troin\.ssh  backed up into Secure1/Networking/SSH
 ## ExifTool v12.03
 cpi exiftool.exe C:\Users\troin\AppData\Local\Microsoft\WindowsApps\exiftool.exe
 ## ffmpeg-20200730-134a48a-win64-static
 cpi ffmpeg.exe C:\Users\jnbh\AppData\Local\Microsoft\WindowsApps
 ffmpeg -version
-# sequential build
+## Git Bash
+Pinned to Start
+ran and right-clicked inside for Options > [ Looks > Transparency > High
+  Window > Default size > [ 160  30 ]
+## Night light warmer
+Settings > System > Display > Night light settings > Strength > 57
+## post SSH key to GitHub
+https://github.com/settings/ssh/new   to post key as   troingjo@outlook.com
+## Powershell 7
+PowerShell-7.0.0-win-x64.msi > Add 'Open-here'
+## Powershell Console Fonts
+right-click on top bar > Font
+### opened from Menu
+Win+X > I  (opened on  C:\Users\troin): 14 Consolas
+### opened from Explorer
+Alt+F > r  (opened on  C:\Users\troin): 16 Lucida Console, changed to 14 Consolas
+## PowerShell Opacity
+right-click on PowerShell top bar > Properties > Colours > Opacity > 86%
+## PS $profile
+PS> $Profile  returns
+  C:\Users\troin\OneDrive\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+## symlink _gvimrc & _vimrc
+$HOME\_gvimrc & $HOME\_vimrc  Deleted   for console run as administrator:
+  mklink C:\Users\jnbh\_gvimrc D:\Dropbox\JH\IT_stack\onGitHub\MSWin10\user\_gvimrc
+## Test GitHub SSH connection
+(requires Private key as C:\Users\troin\.ssh\id_rsa)
+Git Bash > ssh -T git@github.com
+  The authenticity of host 'github.com (140.82.118.4)' can't be established.
+  RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+  Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+  Warning: Permanently added 'github.com,140.82.118.4' (RSA) to the list of known hosts.
+  Hi harriott! You've successfully authenticated, but GitHub does not provide shell access.
+got me  $HOME\.ssh\known_hosts
+# physical configuration
+SDEP128G in microSD slot
+# Sequential build from Win10_2004
+Restart in Safe Mode > USB HDD (K8GBDT100 containing Win10_2004_English_x64.iso) >
+  Deleted the Windows partition, and selected it for new install
+  Region > United Kingdom   keyboard > United Kingdom   Moto G (4) 1367 > pw
+  Set up for personal use > jnbh@live.co.uk > pw   Use online speech recognition
+Settings > [ Personalisation > [ my preferences, including for Taskbar ] ]
+  System > [ my preferences, including
+    Power & sleep > Additional power settings > Choose >
+      Change settings that are currently unavailable > Turn on fast startup  off-ticked
+    About > Device name LIP120s81A4 ]
+Microsoft Store > Skype > logged in
+## Git
+https://git-scm.com/download/win > Windows   for the executable v2.28.0 > Check daily >
+  Checkout as is, commit Unix-style line endings
+  Choose a credential helper > None
+### Git Bash
+Pinned to Start
+ran and right-clicked inside for Options > [ Looks > Transparency > High
+  Window > Default size > [ 160  30 ]
+## SSH keys
+created C:\Users\troin\.ssh  & copied in  id_rsa-troingjo  &  id_rsa-troingjo.pub
+  as  id_rsa  &  id_rsa.pub
+## gVim v8.2
+gvim82.exe > [ Created icons > On the Desktop off-ticked   Created Default Config off-ticked
+  Create Plugin Directories off-ticked ]
+C:\Users\troin\  for   [ _gvimrc   _vimrc  Copied in
+  git clone git@github.com:harriott/vimfiles.git
+Ran it, getting   .vimswap  .vimundo  &  _viminfo   generated
+## PowerShell execution policy
+Get-ExecutionPolicy   reported  "Restricted"
+as Administrator:  Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Confirm > y > y
+## PowerShell version
+$PSVersionTable  reports  PSVersion 5.1.19041.1
+## PowerShellGet
+as Administrator:  Install-PackageProvider Nuget -Force   got me   nuget 2.8.5.208
+as Administrator:  Update-Module -Name PowerShellGet
+  Module 'PowerShellGet' was not installed by using Install-Module, so it cannot be updated.
+as Administrator:  Install-Module -Name PowerShellGet -Force
+Get-InstalledModule  reported   2.2.4.1 PowerShellGet
+## ZLocation
+Install-Module -Name ZLocation
+  You are installing the modules from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from 'PSGallery'? > a
+Get-InstalledModule   reported   1.4.2 ZLocation
+## FastStone Image Viewer v7.4
+FSViewerSetup74.exe
+ran it for Esc to offtick
+  Settings > Viewer > [ Loop on, Auto-rotate by EXIF off, Default unit > cm ]
+*.png  Opens with FastStone Image Viewer
+### Settings
+replaced  PaperSizeList  settings in  C:\Users\troin\AppData\Roaming\FastStone\FSIV\FSSettings.db
+  with those in  C:\Users\troin\Dropbox\JH\IT_stack\MSWin\User\150429122906\FSIV\FSSettings.db
+## vimfiles\spell
+when online, in Vim, set spell spl=fr  to get  vimfiles\spell stocked with
+  fr.utf-8.spl  &  fr.utf-8.sug
+## Settings > Personalization > Background
+was pointing to a single picture of Deauram in
+  C:\Users\troin\AppData\Local\Microsoft\Windows\Themes\RoamedThemeFiles\DesktopBackground
+Personalisation > Personalise > Background > [ Slideshow
+  Browse > C:\Users\troin\Dropbox\JH\IT_stack\MSWin\DesktopBackground
+  Change picture every > 10 minutes   Shuffle > On
+## Posh-Git
+Install-Module -Name posh-git -AllowPrerelease
+  You are installing the modules from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from 'PSGallery'? > a
+Get-InstalledModule   reported   1.4.2 ZLocation
+## 7-Zip
+7z1900-x64.exe
+# Sequential build to version 1909
 ## setup of Win10S
 Moto G4 key
 jnbh@live.co.uk
@@ -46,11 +154,7 @@ https://git-scm.com/download/win > Windows   for the executable
 ### User defaulted to troin
 ### Git
 Git-2.26.0-64-bit.exe > Check daily > Checkout as is, commit Unix-style line endings
-### Git Bash
-Pinned to Start
-ran and right-clicked inside for Options > [ Looks > Transparency > High
-  Window > Default size > [ 160  30 ]
-### gVim v8.2
+## gVim v8.2
 gvim82.exe > [ Created icons > On the Desktop off-ticked   Created Default Config off-ticked
   Create Plugin Directories off-ticked ]
 C:\Users\troin\  for   [ _gvimrc   _vimrc  vimfiles ] Copied to in from HPP11
@@ -58,28 +162,8 @@ Ran it, getting   .vimswap  .vimundo  &  .viminfo   generated
 ## modifying SM3
 right-click on SM3 for  Properties > Security > Edit > Allow > Full
   and Windows Security had a ball   Setting security information on   each and every file
-## Ditto Clipboard
-Microsoft Store > Ditto Clipboard > Install > Pin to Start
-Ran it for  Options > General > Maximum Number of Saved Copies > 5000
-  ( C:\Users\troin\AppData\Local\Ditto_WindowsApp\Ditto.db )
 ## modifying ST905004EXD101
 right-click on ST905004EXD101 for  Properties > Security > Edit > Allow > Full
-## create SSH key
-PS> ssh-keygen -b 4096 -C "troingjo@outlook.com" > Enter (for C:\Users\troin\.ssh) >
-  Enter (= no passphrase)
-C:\Users\troin\.ssh  backed up into Secure1/Networking/SSH
-## Test GitHub SSH connection
-https://github.com/settings/ssh/new   to post key as   troingjo@outlook.com
-Git Bash > ssh -T git@github.com
-  The authenticity of host 'github.com (140.82.118.4)' can't be established.
-  RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
-  Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
-  Warning: Permanently added 'github.com,140.82.118.4' (RSA) to the list of known hosts.
-  Hi harriott! You've successfully authenticated, but GitHub does not provide shell access.
-got me  $HOME\.ssh\known_hosts
-## Dropbox
-DropboxInstaller.exe   Signed in > Online only   Paused for  Preferences > Sync >
-  Selective sync for just a few folders   then   Smart Sync > Local
 ## Settings > Background
 somehow already has access to my DesktopBackground folder, but I can't find them in OneDrive
 it's in  C:\Users\troin\AppData\Local\Microsoft\Windows\Themes\RoamedThemeFiles\DesktopBackground
@@ -98,8 +182,6 @@ Menu > Windows System > right-clicked on Command Prompt > Pin to Start
 ## .bashrc symlink
 Command Prompt run as administrator:
   mklink C:\Users\troin\.bashrc C:\Users\troin\Dropbox\JH\IT_stack\onGitHub\MSWin10\user\bashrc
-## .gitconfig symlink
-Command Prompt run as administrator: mklink C:\Users\troin\.gitconfig C:\Users\troin\Dropbox\JH\IT_stack\onGitHub\MSWin10\LIP120s81A4\troin-gitconfig
 ## symlink to $Profile
 Command Prompt run as administrator:
   mklink C:\Users\troin\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 C:\Users\troin\Dropbox\JH\IT_stack\onGitHub\MSWin10\LIP120s81A4\PSProfile.ps1
@@ -111,10 +193,6 @@ Get-PackageProvider -ListAvailable
   ...
   PowerShellGet            1.0.0.1
 it's in  "C:\Program Files\WindowsPowerShell\Modules\PowerShellGet"
-### LastPass for Microsoft Edge
-Microsoft Store > LastPass for Microsoft Edge > Install
-### Powershell 7
-PowerShell-7.0.0-win-x64.msi > Add 'Open-here'
 ### PowerShellGet
 as Administrator:  Install-PackageProvider Nuget -Force   got me   nuget 2.8.5.208
 as Administrator:  Update-Module -Name PowerShellGet
@@ -131,10 +209,6 @@ as Administrator:  Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Confirm 
 Get-ExecutionPolicy   reported   RemoteSigned
 as Administrator:  PowerShellGet\Install-Module posh-git -Scope CurrentUser -AllowPrerelease -Force
 Get-InstalledModule   reported   1.0.0-beta4 posh-git
-## PowerShell Opacity
-right-click on PowerShell top bar > Properties > Colours > Opacity > 72%
-## Night light warmer
-Settings > System > Display > Night light settings > Strength > 57
 ## Recovery Drive
 K16GBDTG2 plugged in for
   Win+R > %WinDir%\System32\RecoveryDrive.exe   eventually told me needed a 16 GB USB drive
@@ -147,8 +221,6 @@ closed gVim & Powershell
 clicked through all install options
 ## 7-Zip
 7z1900-x64.exe
-## Control Panel
-Windows Menu > [ Command Prompt  Control Panel ] Pinned to Start
 ## Google Chrome
 https://www.google.com/intl/en_uk/chrome/browser/?hl=en-GB > Download Chrome (Help us on-ticked)
   got  ChromeSetup.exe  which, when run, did some more downloading
@@ -172,12 +244,6 @@ replaced  PaperSizeList  settings in  C:\Users\troin\AppData\Roaming\FastStone\F
 ## Lenovo Vantage
 Audio > "Lenovo Vantage does not have permission to access your microphone."
 Display & Camera > "Lenovo Vantage doesn't have access to Camera."
-## Powershell Console Fonts
-right-click on top bar > Font
-### opened from Menu
-Win+X > I  (opened on  C:\Users\troin): 14 Consolas
-### opened from Explorer
-Alt+F > r  (opened on  C:\Users\troin): 16 Lucida Console, changed to 14 Consolas
 ## Disk Usage
 du64.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 ## Settings > Background
@@ -241,8 +307,29 @@ xelatex'd a TextNotes file to bring in a load of packages
 ## Git for Windows v2.28.0
 closed gVim & Powershell
 clicked through all install options
+## Windows Update to version 2004 - failed
+using D: as temporary storage
+Windows needs space to update > on C: so
+  Dropbox > Preferences > Sync > Selective > JH > Now off-ticked
+  Refresh wouldn't move on, so
+    Dropbox > Preferences > Sync > Selective > JH > IT_stack off-ticked
+  Still not enough.  Settings > Storage shows that Windows is using 25.9 GB. Time to quit.
+## MiniTool Partition Wizard Free v12.1
+pw12-free.exe > ShadowMaker Trial off-ticked > McAfee Declined
+  ran it, then off-ticked an advertising message
+## Restart in Safe Mode
+holding Shift when selecting Restart got me in pw for troingjo@outlook.com is still the previous one
+## OS Build
+winver   reports Windows 10 Pro version 1909 (OS Build 18363.1016)
 ## waiting
 ### Broot
 ### Glances
 ### Process Hacker
 processhacker-2.39-setup.exe
+# Sequential builds
+## Ditto Clipboard
+Microsoft Store > Ditto Clipboard > Install > Pin to Start
+Ran it for  Options > General > [ Maximum Number of Saved Copies > 5000
+  Advanced > Show leading whitespace ] ( C:\Users\troin\AppData\Local\Ditto_WindowsApp\Ditto.db )
+## Dropbox
+DropboxInstaller.exe   Signed in > Online only > Selective sync for just a few folders
