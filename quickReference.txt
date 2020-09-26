@@ -1,23 +1,35 @@
-vim: fdl=0 ft=build fdm=expr:
+vim: fdl=1 ft=build fdm=expr:
 
+# PowerShell
+C:\Windows\explorer.exe "microsoft-edge:searchterm"
 ffmpeg -version
+start <somefile>
+stringInVims "string"
 
-# environment variables
-$Env:Path -split';'
-gci env:  # list the environment variables
+## executables
+gcm explorer
+explorer > shell:Appsfolder
 
-# folder investigations
+## folder investigations
+cat somefile.txt | where { $_ -match “expression”}
 du64 -l 1
 gci * | select FullName
 gci * | select Name
 lwp \.ps1
 lwt *.ps1 *.sh
 
-# system info
+## system info
 winver
 wmic path SoftwareLicensingService get OA3xOriginalProductKey
 
-# text wrangling
+### environment variables
+$Env:Computername
+$Env:Path -split';'
+$Env:PATHEXT
+gci env:  # list the environment variables
+$PSScriptRoot
+
+## text wrangling
 & "${Env:ProgramFiles(x86)}\Vim\vim82\gvim.exe" -- <textfile>
 (Get-Content $file) -replace $regex, $newtext | Set-Content $file
 

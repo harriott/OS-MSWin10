@@ -3,6 +3,9 @@
 
 # Joseph Harriott
 
+Set-Alias l gci
+Set-Alias ss Select-String
+
 #region - Folder investigations:
 
 Function cex { gci . -r | where { ! $_.PSIsContainer } | Group Extension -noElement | Sort Count -Desc }
@@ -58,9 +61,10 @@ gci -r -ea si `
       -auto
   }
 
-#region - strings in files
+#region --- strings in files
 
 Function stringInFiles { SIFWork Files-searchString '*' $args[0] }
+Function stringInPS1s { SIFWork LaTeX-searchString '*.ps1' $args[0] }
 Function stringInTexs { $texFiles = '*.cls','*.tex'; SIFWork LaTeX-searchString $texFiles $args[0] }
 Function stringInVims { SIFWork Vims-searchString '*.vim' $args[0] }
 
@@ -71,17 +75,18 @@ Function SIFWork {
   "" >> $outFile
   $args[2] >> $outFile
   "" >> $outFile
-  Get-ChildItem -r -e $outFile -i $args[1] | select-string $args[2] | %{$_.Path+" > "+$_.Line} >> $outFile
+  Get-ChildItem -r -e $outFile -i $args[1] | ss $args[2] | %{$_.Path+" > "+$_.Line} >> $outFile
   "" >> $outFile
   "vim-easy-align: Sip>" >> $outFile
   ":Tabularize/>" >> $outFile
+  $outFile
   }
 
 #endregion
 
 #endregion
 
-#region - General tools:
+#region --- General tools:
 
 Function e { exit } # quit
 Function gis { git status -u }

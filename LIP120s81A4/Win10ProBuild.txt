@@ -19,6 +19,11 @@ ffmpeg -version
 Pinned to Start
 ran and right-clicked inside for Options > [ Looks > Transparency > High
   Window > Default size > [ 160  30 ]
+## Google Chrome
+https://www.google.com/intl/en_uk/chrome/browser/?hl=en-GB > Download Chrome (Help us on-ticked)
+  got  ChromeSetup.exe  which, when run, did some more downloading
+  Resized, Closed, Pinned to Start
+All Control Panel Items > Default Programs > Set your default programs > Google Chrome
 ## Night light warmer
 Settings > System > Display > Night light settings > Strength > 57
 ## post SSH key to GitHub
@@ -30,57 +35,28 @@ right-click on top bar > Font
 ### opened from Menu
 Win+X > I  (opened on  C:\Users\troin): 14 Consolas
 ### opened from Explorer
-Alt+F > r  (opened on  C:\Users\troin): 16 Lucida Console, changed to 14 Consolas
+(Alt+F > r): 16 Lucida Console, changed to 14 Consolas
 ## PowerShell Opacity
 right-click on PowerShell top bar > Properties > Colours > Opacity > 86%
 ## PS $profile
 PS> $Profile  returns
   C:\Users\troin\OneDrive\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+## Spotify
+if launched, becomes junkware, so Uninstall
 ## symlink _gvimrc & _vimrc
 $HOME\_gvimrc & $HOME\_vimrc  Deleted   for console run as administrator:
   mklink C:\Users\jnbh\_gvimrc D:\Dropbox\JH\IT_stack\onGitHub\MSWin10\user\_gvimrc
-## Test GitHub SSH connection
-(requires Private key as C:\Users\troin\.ssh\id_rsa)
-Git Bash > ssh -T git@github.com
-  The authenticity of host 'github.com (140.82.118.4)' can't be established.
-  RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
-  Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
-  Warning: Permanently added 'github.com,140.82.118.4' (RSA) to the list of known hosts.
-  Hi harriott! You've successfully authenticated, but GitHub does not provide shell access.
-got me  $HOME\.ssh\known_hosts
 # physical configuration
 SDEP128G in microSD slot
 # Sequential build from Win10_2004
 Restart in Safe Mode > USB HDD (K8GBDT100 containing Win10_2004_English_x64.iso) >
+  ( SYSTEM_DRV was taking 250MB, a small 16MB "Reserved" partition,
+    Windows partition, then 1000MB for WINRE_DRV )
   Deleted the Windows partition, and selected it for new install
-  Region > United Kingdom   keyboard > United Kingdom   Moto G (4) 1367 > pw
-  Set up for personal use > jnbh@live.co.uk > pw   Use online speech recognition
-Settings > [ Personalisation > [ my preferences, including for Taskbar ] ]
-  System > [ my preferences, including
-    Power & sleep > Additional power settings > Choose >
-      Change settings that are currently unavailable > Turn on fast startup  off-ticked
-    About > Device name LIP120s81A4 ]
-Microsoft Store > Skype > logged in
 ## Git
 https://git-scm.com/download/win > Windows   for the executable v2.28.0 > Check daily >
   Checkout as is, commit Unix-style line endings
   Choose a credential helper > None
-### Git Bash
-Pinned to Start
-ran and right-clicked inside for Options > [ Looks > Transparency > High
-  Window > Default size > [ 160  30 ]
-## SSH keys
-created C:\Users\troin\.ssh  & copied in  id_rsa-troingjo  &  id_rsa-troingjo.pub
-  as  id_rsa  &  id_rsa.pub
-## gVim v8.2
-gvim82.exe > [ Created icons > On the Desktop off-ticked   Created Default Config off-ticked
-  Create Plugin Directories off-ticked ]
-C:\Users\troin\  for   [ _gvimrc   _vimrc  Copied in
-  git clone git@github.com:harriott/vimfiles.git
-Ran it, getting   .vimswap  .vimundo  &  _viminfo   generated
-## PowerShell execution policy
-Get-ExecutionPolicy   reported  "Restricted"
-as Administrator:  Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Confirm > y > y
 ## PowerShell version
 $PSVersionTable  reports  PSVersion 5.1.19041.1
 ## PowerShellGet
@@ -113,9 +89,64 @@ Personalisation > Personalise > Background > [ Slideshow
 ## Posh-Git
 Install-Module -Name posh-git -AllowPrerelease
   You are installing the modules from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from 'PSGallery'? > a
-Get-InstalledModule   reported   1.4.2 ZLocation
 ## 7-Zip
 7z1900-x64.exe
+## Disk Management
+F: (SDEP128G) set to D:
+## Everything
+Everything-1.4.1.988.x64-Setup.exe > English (UK) > [ Check for updates on startup  on
+  Install Desktop shortcut  off ] Ran it for  Ctrl+P ( = Tools > Options ) >
+    [ UI > Single click tray   Results > Open path with double click in path column ]
+## QuickHash
+C:\Users\troin\QuickHash-Windows-v3.2.0
+## Dropbox save space
+Preferences > Sync > Save hard drive space automatically > On
+## MiniTool Partition Wizard Free v12.1
+pw12-free.exe > ShadowMaker Trial off-ticked > McAfee Declined
+  ran it, then off-ticked an advertising message
+## WINRE_DRV Deleted
+
+## MiKTeX
+basic-miktex-20.6.29-x64.exe > Run anyway > only for me > missing packages on the fly > Yes
+## JH.sty
+in  C:\Users\troin\AppData\Roaming\MiKTeX\tex\  there is already  generic\  - I created  latex\
+
+console run as administrator:  mklink /D C:\Users\troin\AppData\Roaming\MiKTeX\tex\latex\jo C:\Users\troin\Dropbox\JH\IT_stack\CrossPlatform\forLaTeX
+(while online) MiKTeX Console > [ Check for updates > Updates page  for 4
+  Tasks > Refresh file name database ]
+xelatex'd a TextNotes file to bring in a load of packages
+## not enough space
+keep hitting limits, so decided to re-install, removing other partitions
+# Sequential build from Win10_2004 removing Lenovo partitions
+Restart in Safe Mode > Use a device > USB HDD (K8GBDT100 containing Win10_2004_English_x64.iso) >
+  Deleted all 4 partition then Next (can close lid during installation)
+## PowerShellGet
+as Administrator:  Install-PackageProvider Nuget -Force   got me   nuget 2.8.5.208
+as Administrator:  Update-Module -Name PowerShellGet
+  Module 'PowerShellGet' was not installed by using Install-Module, so it cannot be updated.
+as Administrator:  Install-Module -Name PowerShellGet -Force
+Get-InstalledModule  reported   2.2.4.1 PowerShellGet
+## ZLocation
+Install-Module -Name ZLocation
+  You are installing the modules from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from 'PSGallery'? > a
+z  shows it's there, but  Get-InstalledModule  isn't reporting it
+Get-Module -Name ZLocation -ListAvailable   reported   1.4.2 ZLocation
+## Git
+https://git-scm.com/download/win > Windows   for the executable v2.28.0 > Check daily >
+  Checkout as is, commit Unix-style line endings
+  Choose a credential helper > None
+## Posh-Git installed
+Install-Module -Name posh-git -AllowPrerelease
+  You are installing the modules from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from 'PSGallery'? > a
+(perhaps because I'd installed as Administrator) Get-InstalledModule   reported   1.4.2 ZLocation
+Get-Module -Name posh-git -ListAvailable   reported   1.0.0 posh-git
+it's not showing anything for  C:\Users\troin\Dropbox\JH\IT_stack\onGitHub\MSWin10\LIP120s81A4
+## Posh-Git uninstalled
+Get-InstalledModule -Name posh-git | Uninstall-Module
+Get-Module -Name posh-git | Uninstall-Module
+Uninstall-Module -Name posh-git
+## Microsoft OneDrive
+was using 147MB - Uninstalled
 # Sequential build to version 1909
 ## setup of Win10S
 Moto G4 key
@@ -154,11 +185,6 @@ https://git-scm.com/download/win > Windows   for the executable
 ### User defaulted to troin
 ### Git
 Git-2.26.0-64-bit.exe > Check daily > Checkout as is, commit Unix-style line endings
-## gVim v8.2
-gvim82.exe > [ Created icons > On the Desktop off-ticked   Created Default Config off-ticked
-  Create Plugin Directories off-ticked ]
-C:\Users\troin\  for   [ _gvimrc   _vimrc  vimfiles ] Copied to in from HPP11
-Ran it, getting   .vimswap  .vimundo  &  .viminfo   generated
 ## modifying SM3
 right-click on SM3 for  Properties > Security > Edit > Allow > Full
   and Windows Security had a ball   Setting security information on   each and every file
@@ -221,11 +247,6 @@ closed gVim & Powershell
 clicked through all install options
 ## 7-Zip
 7z1900-x64.exe
-## Google Chrome
-https://www.google.com/intl/en_uk/chrome/browser/?hl=en-GB > Download Chrome (Help us on-ticked)
-  got  ChromeSetup.exe  which, when run, did some more downloading
-  Resized, Closed, Pinned to Start
-All Control Panel Items > Default Programs > Set your default programs > Google Chrome
 ## Gpg4win
 gpg4win-3.1.11.exe > GpgOL off-ticked
 Kleopatra > [ pinned into Start  Imported  Encrypted\Secure1\GnuPG\secret-key-9F2D63AE.asc ]
@@ -327,9 +348,40 @@ winver   reports Windows 10 Pro version 1909 (OS Build 18363.1016)
 ### Process Hacker
 processhacker-2.39-setup.exe
 # Sequential builds
+## initial configuration
+  Region > United Kingdom   keyboard > United Kingdom   Moto G (4) 1367 > pw
+  Set up for personal use > jnbh@live.co.uk > pw   Use online speech recognition, etc
+  At login, pw given again for troingjo@outlook.com   Restarted
+Settings > [ Personalisation > [ my preferences, including for Taskbar ] ]
+  System > [ my preferences, including
+    Power & sleep > Additional power settings > Choose > lid etc
+      Change settings that are currently unavailable > Turn on fast startup  off-ticked
+    About > Device name LIP120s81A4 ]
+Microsoft Store > Skype > logged in
+## Edge Updated
 ## Ditto Clipboard
 Microsoft Store > Ditto Clipboard > Install > Pin to Start
 Ran it for  Options > General > [ Maximum Number of Saved Copies > 5000
   Advanced > Show leading whitespace ] ( C:\Users\troin\AppData\Local\Ditto_WindowsApp\Ditto.db )
 ## Dropbox
 DropboxInstaller.exe   Signed in > Online only > Selective sync for just a few folders
+## PowerShell execution policy
+Get-ExecutionPolicy   reported  "Restricted"
+as Administrator:  Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Confirm > y > y
+## gVim v8.2
+gvim82.exe > [ Created icons > On the Desktop off-ticked   Created Default Config off-ticked
+  Create Plugin Directories off-ticked ]
+C:\Users\troin\  for   [ _gvimrc   _vimrc  vimfiles ] Copied to in from HPP11
+Ran it, getting   .vimswap  .vimundo  &  .viminfo   generated
+## SSH keys
+created C:\Users\troin\.ssh  & copied in  id_rsa-troingjo  &  id_rsa-troingjo.pub
+  as  id_rsa  &  id_rsa.pub
+## Test GitHub SSH connection
+(requires Private key as C:\Users\troin\.ssh\id_rsa)
+Git Bash > ssh -T git@github.com
+  The authenticity of host 'github.com (140.82.118.4)' can't be established.
+  RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+  Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+  Warning: Permanently added 'github.com,140.82.118.4' (RSA) to the list of known hosts.
+  Hi harriott! You've successfully authenticated, but GitHub does not provide shell access.
+got me  $HOME\.ssh\known_hosts
