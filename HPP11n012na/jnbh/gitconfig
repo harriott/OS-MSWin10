@@ -1,6 +1,6 @@
 # vim: ft=gitconfig
 
-# This is Git's per-user configuration file, adjusted Powershell.
+# This is Git's per-user configuration file, adjusted for Powershell.
 # Its contents are referred to as needed by Git, making changes saved here instantaneous.
 
 [color "status"]

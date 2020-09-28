@@ -147,6 +147,17 @@ Get-Module -Name posh-git | Uninstall-Module
 Uninstall-Module -Name posh-git
 ## Microsoft OneDrive
 was using 147MB - Uninstalled
+## Settings > Background
+Personalisation > Personalise > Background > [ (Slideshow)
+  Browse > C:\Users\troin\Dropbox\JH\core\IT_stack\MSWin\DesktopBackground   Change > 10 minutes ]
+## FastStone Image Viewer v7.4
+FSViewerSetup74.exe
+ran it for Esc to offtick
+  Settings > Viewer > [ Loop on, Auto-rotate by EXIF off, Default unit > cm ]
+*.png  Opens with FastStone Image Viewer
+### Settings
+replaced  PaperSizeList  settings in  C:\Users\troin\AppData\Roaming\FastStone\FSIV\FSSettings.db
+  with those in  C:\Users\troin\Dropbox\JH\core\IT_stack\MSWin\FSSettings-PaperSizeList.db
 # Sequential build to version 1909
 ## setup of Win10S
 Moto G4 key

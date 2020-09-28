@@ -91,6 +91,7 @@ Function SIFWork {
 Function e { exit } # quit
 Function gis { git status -u }
 Function p {test-connection -computername 8.8.8.8 -ErrorAction SilentlyContinue}
+Function pg {test-connection -computername google.com -ErrorAction SilentlyContinue}
 # New-Alias g gm.exe # GraphicsMagick
 New-Alias jpo $onGH\jpgorhor\jpgorhor.ps1
 New-Alias m4p $onGH\md4pdf\MSWin\m4p.ps1

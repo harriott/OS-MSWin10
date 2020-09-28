@@ -8,9 +8,9 @@
 
 # Clear-Host
 
-$onGH = "C:\Users\troin\Dropbox\JH\IT_stack\onGitHub"
+$onGH = "C:\Users\troin\Dropbox\JH\core\IT_stack\onGitHub"
 
-. C:\Users\troin\Dropbox\JH\IT_stack\onGitHub\MSWin10\PSProfile.ps1
+. $onGH\MSWin10\PSProfile.ps1  # uses $onGH
 
 New-Alias RCI $onGH\SyncPortableDrives\RC-IdeaPad.ps1
 
