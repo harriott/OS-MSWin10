@@ -4,16 +4,6 @@
 # Joseph Harriott
 # to be run in Administator Powershell
 
-#region --- ~\.bashrc
-
-# new-item $HOME\.bashrc -itemtype symboliclink -value $MSWin\user\bashrc -force
-
-#endregion
-#region --- ~\.gitconfig
-
-# new-item $HOME\.gitconfig -itemtype symboliclink -value $MSWin10\LIP120s81A4\jnbh-gitconfig -force
-
-#endregion
 #region --- Pandoc\defaults
 
 $defaults = "$Env:AppData\Pandoc\defaults"
@@ -34,12 +24,27 @@ new-item "$defaults\md4pdf.yaml" -itemtype symboliclink -value $onGH\md4pdf\defa
 # new-item $HOME\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 -itemtype symboliclink -value $machine\PSProfile.ps1 -force
 
 #endregion
-#region - for vimfiles
+#region - vimfiles
 
 # new-item $HOME\_gvimrc -itemtype symboliclink -value $MSWin\user\_gvimrc -force
 # new-item $HOME\_vimrc -itemtype symboliclink -value $MSWin\user\_vimrc -force
 # new-item $HOME\_vimrc -itemtype symboliclink -value $machine\jnbh\_vimrc -force
 # remove-item $HOME\vimfiles -recurse -force
 # new-item $HOME\vimfiles -itemtype symboliclink -value $ITstack\vimfiles -force
+
+#endregion
+#region --- ~\.bashrc
+
+# new-item $HOME\.bashrc -itemtype symboliclink -value $MSWin\user\bashrc -force
+
+#endregion
+#region --- ~\.gitconfig
+
+# new-item $HOME\.gitconfig -itemtype symboliclink -value $MSWin10\LIP120s81A4\jnbh-gitconfig -force
+
+#endregion
+#region --- ~\.ssh\config
+
+# new-item $HOME\.ssh\config -itemtype symboliclink -value $machine\jnbh\SSHconfig -force
 
 #endregion

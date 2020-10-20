@@ -2,6 +2,7 @@
 let $ITstack = 'D:/Dropbox/JH/core/IT_stack'
   let $onGH = $ITstack.'/onGitHub'
     let $MSwin = $onGH.'/MSWin10'
+      let $machine = $MSwin.'/HPP11n012na'
     let $SPDHPP = $onGH.'/SyncPortableDrives\HPP'
 
 " Point to my Win10 vimrc:
