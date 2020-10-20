@@ -8,7 +8,7 @@
   untracked = red bold
   added = green bold
 [include]
-  path = D:/Dropbox/JH/IT_stack/gitconfig
+  path = D:/Dropbox/JH/core/IT_stack/gitconfig
 
 [gui]
 	recentrepo = C:/Users/jnbh/vimfiles

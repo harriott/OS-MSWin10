@@ -8,5 +8,5 @@
   untracked = red bold
   added = green bold
 [include]
-  path = C:/Users/troin/Dropbox/JH/IT_stack/gitconfig
+  path = C:/Users/troin/Dropbox/JH/core/IT_stack/gitconfig
 

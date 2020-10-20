@@ -10,6 +10,8 @@ Windows Menu > Windows System > Control Panel > Pinned to Start
 PS> ssh-keygen -b 4096 -C "troingjo@outlook.com" > Enter (for C:\Users\troin\.ssh) >
   Enter (= no passphrase)
 C:\Users\troin\.ssh  backed up into Secure1/Networking/SSH
+## Disk Usage
+du64.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 ## ExifTool v12.03
 cpi exiftool.exe C:\Users\troin\AppData\Local\Microsoft\WindowsApps\exiftool.exe
 ## ffmpeg-20200730-134a48a-win64-static
@@ -158,6 +160,67 @@ ran it for Esc to offtick
 ### Settings
 replaced  PaperSizeList  settings in  C:\Users\troin\AppData\Roaming\FastStone\FSIV\FSSettings.db
   with those in  C:\Users\troin\Dropbox\JH\core\IT_stack\MSWin\FSSettings-PaperSizeList.db
+## OneDrive Uninstalled to gain space
+Control Panel Items > Programs and Features > OneDrive > Uninstall
+### Pictures directory
+empty, and system is using  C:\Users\troin\OneDrive\Pictures 1, so Deleted  C:\Users\troin\Pictures
+  right-clicked on  C:\Users\troin\OneDrive\Pictures 1 for
+    Properties > Location > Restore Default  failed, so rebooted
+      which got me back  C:\Users\troin\Pictures  which I Pinned to Quick access
+## 7-Zip
+7z1900-x64.exe
+## Thunderbird
+Thunderbird Setup 78.3.1.exe > Custom > not On my Desktop
+Ran it to get  C:\Users\troin\AppData\Roaming\Thunderbird\Profiles\cs4mnd48.default-release
+  which I emptied, and then edited  C:\Users\troin\AppData\Roaming\Thunderbird\profiles.ini
+    [Profile0] section:
+      IsRelative=0
+      Path=D:\Sync0-Dr-JH-TP.default-release
+## C: full
+after a system update
+du64 -l 1
+           197  C:\$Recycle.Bin
+             0  C:\$WinREAgent
+             0  C:\OneDriveTemp
+       593,254  C:\Program Files
+       836,661  C:\Program Files (x86)
+       247,732  C:\ProgramData
+             0  C:\Recovery
+     1,403,249  C:\Users
+    14,178,660  C:\Windows
+  Files:        203764
+  Directories:  65727
+  Size:         17,673,989,997 bytes
+  Size on disk: 17,507,899,952 bytes
+C:\Windows\WinSxS  is over 5GB
+Storage > Temporary > Delete files in my recycle bin > 1 day
+1.11GB free...
+## C: has 5GB free
+the next morning...
+du64 -l 1
+           312  C:\$Recycle.Bin
+             0  C:\$WinREAgent
+             0  C:\OneDriveTemp
+       593,254  C:\Program Files
+       836,661  C:\Program Files (x86)
+       248,034  C:\ProgramData
+             0  C:\Recovery
+     1,502,071  C:\Users
+     9,398,672  C:\Windows
+  Files:        150841
+  Directories:  53774
+  Size:         12,880,903,520 bytes
+  Size on disk: 12,550,011,512 bytes
+du64 reports  C:\Windows\WinSxS  to be down to 1.2GB  while fso reports it to be over 6GB
+  as does  Explorer's Properties
+## language
+Settings > Click on Time & Language > [
+  Language > Preferred languages > English (United Kingdom) >
+    Options > [ Language pack   Handwriting  Speech ] > Download
+  Speech > language > English (United Kingdom)
+  Language > Windows display language > English (United Kingdom)
+  ]
+OpenHardwareMonitor  copied to  $HOME
 # Sequential build to version 1909
 ## setup of Win10S
 Moto G4 key
@@ -187,7 +250,7 @@ rebooted for F2 to get into BIOS > [ Configuration > Hotkey Mode > Disabled
 ## Computer name
 Settings > System > About > Rename > LIP120s81A4 > Restart
 ## Turn off Fast Start
-Power & sleep > Additional power settings > Choose what the power button does >
+System > Power & sleep > Additional power settings > Choose what the power button does >
   Change settings that are currently unavailable > Turn on fast startup  off-ticked
 Restarted
 ## Task Manager > Hide when minimised
@@ -276,8 +339,6 @@ replaced  PaperSizeList  settings in  C:\Users\troin\AppData\Roaming\FastStone\F
 ## Lenovo Vantage
 Audio > "Lenovo Vantage does not have permission to access your microphone."
 Display & Camera > "Lenovo Vantage doesn't have access to Camera."
-## Disk Usage
-du64.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 ## Settings > Background
 Personalisation > Personalise > Background > [ (Slideshow)
   Browse > C:\Users\troin\Dropbox\JH\IT_stack\MSWin\DesktopBackground ]
@@ -331,7 +392,7 @@ SumatraPDF-3.2-64-install.exe > Options > [ Let Windows show previews of PDF doc
 ## Bulk Rename
 BRU_setup_3.3.2.1.exe  Used it to off-tick 2 notifications
 ## JH.sty
-in  C:\Users\jnbh\AppData\Roaming\MiKTeX\tex\  there is already  generic\  - I created  latex\
+in  C:\Users\troin\AppData\Roaming\MiKTeX\tex\  there is already  generic\  - I created  latex\
 console run as administrator:  mklink /D C:\Users\troin\AppData\Roaming\MiKTeX\tex\latex\jo C:\Users\troin\Dropbox\JH\IT_stack\CrossPlatform\forLaTeX
 (while online) MiKTeX Console > [ Check for updates > Updates page  for 4
   Tasks > Refresh file name database ]
@@ -353,11 +414,14 @@ pw12-free.exe > ShadowMaker Trial off-ticked > McAfee Declined
 holding Shift when selecting Restart got me in pw for troingjo@outlook.com is still the previous one
 ## OS Build
 winver   reports Windows 10 Pro version 1909 (OS Build 18363.1016)
+## Logitech MX 610 Laser Cordless Mouse plugged in
 ## waiting
 ### Broot
 ### Glances
 ### Process Hacker
 processhacker-2.39-setup.exe
+## DuckDuckGo
+Save Cloud Settings > JoNiBraHa > Save
 # Sequential builds
 ## initial configuration
   Region > United Kingdom   keyboard > United Kingdom   Moto G (4) 1367 > pw

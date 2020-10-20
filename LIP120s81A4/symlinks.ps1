@@ -6,11 +6,6 @@
 # Joseph Harriott
 # to be run in Administator Powershell
 
-#region --- MiKTeX
-
-new-item C:\Users\troin\AppData\Roaming\MiKTeX\tex\latex\jo -itemtype symboliclink -value C:\Users\troin\Dropbox\JH\core\IT_stack\CrossPlatform\forLaTeX -force
-
-#endregion
 #region --- ~\.bashrc
 
 new-item C:\Users\troin\.bashrc -itemtype symboliclink -value C:\Users\troin\Dropbox\JH\core\IT_stack\onGitHub\MSWin10\user\bashrc -force

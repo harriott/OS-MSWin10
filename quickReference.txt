@@ -1,35 +1,62 @@
 vim: fdl=1 ft=build fdm=expr:
 
+# robocopy
+/l   - list only (= simulate)
+/tee - output to console as well as log file
+
 # PowerShell
-C:\Windows\explorer.exe "microsoft-edge:searchterm"
-ffmpeg -version
-start <somefile>
+[string]$Pwd
+Alt > Space > E > L > [ up / down  to scroll   Esc ]
 stringInVims "string"
 
+## aliases
+limited to single commands
+nal <alias> <string>
+sal <alias> <string>
+
+### standard
+ri
+
 ## executables
+C:\Windows\explorer.exe "microsoft-edge:searchterm"
 gcm explorer
+explorer "$Env:AppData\MiKTeX\tex\latex\jo"
 explorer > shell:Appsfolder
+ffmpeg -version
+start <somefile>
 
 ## folder investigations
 cat somefile.txt | where { $_ -match “expression”}
-du64 -l 1
 gci * | select FullName
 gci * | select Name
+gci $path | select -expand FullName  # for pure string output
 lwp \.ps1
 lwt *.ps1 *.sh
 
+### sizes
+dc
+du64 -l 1
+fso
+
 ## system info
 winver
-wmic path SoftwareLicensingService get OA3xOriginalProductKey
+wmic path SoftwareLicensingService get OA4xOriginalProductKey
 
 ### environment variables
+$Env:AppData
 $Env:Computername
 $Env:Path -split';'
 $Env:PATHEXT
+$Env:UserProfile
 gci env:  # list the environment variables
 $PSScriptRoot
+$PSVersionTable
+
+#### Roaming
+$Env:AppData  # C:\Users\...\AppData\Roaming
+ls "$Env:AppData\Pandoc\defaults"
 
 ## text wrangling
-& "${Env:ProgramFiles(x86)}\Vim\vim82\gvim.exe" -- <textfile>
+& "${Env:ProgramFiles(x86)}\Vim\vim82\gvim.exe" <textfile>
 (Get-Content $file) -replace $regex, $newtext | Set-Content $file
 

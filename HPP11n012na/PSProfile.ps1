@@ -8,14 +8,17 @@
 
 # Clear-Host
 
-# these variables are unfortunately inaccessible to vim
-$machineName = 'HPP11n012na'
-$onGH = "D:\Dropbox\JH\IT_stack\onGitHub"
+# helps to define these also in  $HOME\_vimrc
+$ITstack = "D:\Dropbox\JH\core\IT_stack"
+  $onGH = "$ITstack\onGitHub"
+    $MSwin = "$onGH\MSWin10"
+      $machine = "$MSWin\HPP11n012na"
+    $SPDHPP = "$onGH\SyncPortableDrives\HPP"
 
-. $onGH\MSWin10\PSProfile.ps1
+. $MSWin\PSProfile.ps1
 
-New-Alias RCS0 $onGH\SyncPortableDrives\RoboHPP-Sync0.ps1
-New-Alias RCS1 $onGH\SyncPortableDrives\RoboHPP-Sync1.ps1
-New-Alias RCSh $onGH\SyncPortableDrives\RoboSM3_Share.ps1
-New-Alias RCSm $onGH\SyncPortableDrives\RoboSmall.ps1
+New-Alias RCS0 $SPDHPP\RC-Sync0.ps1
+New-Alias RCS1 $SPDHPP\RC-Sync1.ps1
+New-Alias RCSh $SPDHPP\RC-Share.ps1
+New-Alias RCSm $SPDHPP\RC-Flash.ps1
 

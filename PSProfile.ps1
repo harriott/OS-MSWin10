@@ -6,32 +6,14 @@
 Set-Alias l gci
 Set-Alias ss Select-String
 
-#region - Folder investigations:
-
-Function cex { gci . -r | where { ! $_.PSIsContainer } | Group Extension -noElement | Sort Count -Desc }
-
-Function dc { Get-ChildItem | ForEach-Object { $_.Name + ": " + "{0:N2}" -f ((Get-ChildItem $_ -Recurse | Measure-Object Length -Sum -ErrorAction SilentlyContinue).Sum / 1MB) + " MB" } }
-
+#region --- folder investigations
 Function gfiln { gci -r $args[0] | select -ExpandProperty FullName }
 Function gfoln { gci -r $args[0] | where { $_.PSIsContainer } | select -ExpandProperty FullName }
-#
-# "last write time" sorted list of <filename(s)>:
-Function lwt { gci -r -i $args[0],$args[1],$args[2] `
-  | ForEach-Object { $_.LastWriteTime.ToString('yyyyMMdd-HH:mm:ss') + " : " + $_.FullName } `
-  | sort } # can use wildcards in the <filenames(s)>
-
-# "last write path" sorted list of files in <file-path>
-Function lwp { ls -r `
-  | ForEach-Object { $_.LastWriteTime.ToString('yyyyMMdd-HH:mm:ss') + " : " + $_.FullName } `
-  | out-string -stream | select-string $args[0] `
-  | sort } # <file-path> is a regex
-
-Function lwt-docs      { "vim: nowrap tw=0:" > lwt-docs.txt; lwt *.doc *.odt >> lwt-docs.txt }
-Function lwt-gitignore { "vim: nowrap tw=0:" > lwt-gitignore.txt; lwt .gitignore >> lwt-gitignore.txt }
-Function lwt-sh        { "vim: nowrap tw=0:" > lwt-sh.txt; lwt *.sh >> lwt-sh.txt }
-Function lwt-tex       { "vim: nowrap tw=0:" > lwt-tex.txt; lwt *.cls *.sty *.tex >> lwt-tex.txt }
 
 Import-Module ZLocation
+
+#region --- filetypes
+Function cex { gci . -r | where { ! $_.PSIsContainer } | Group Extension -noElement | Sort Count -Desc }
 
 Function Tomalak {
 # https://stackoverflow.com/questions/15064758/summarize-a-file-system-directory-with-powershell
@@ -61,6 +43,33 @@ gci -r -ea si `
       -auto
   }
 
+#endregion
+#region --- last write time
+Function lwp { ls -r `
+  | ForEach-Object { $_.LastWriteTime.ToString('yyyyMMdd-HH:mm:ss') + " : " + $_.FullName } `
+  | out-string -stream | select-string $args[0] `
+  | sort } # <file-path> is a regex
+
+#region --- by name
+Function lwt { gci -r -i $args[0],$args[1],$args[2] `
+  | ForEach-Object { $_.LastWriteTime.ToString('yyyyMMdd-HH:mm:ss') + " : " + $_.FullName } `
+  | sort } # can use wildcards in the <filenames(s)>
+
+Function lwt-docs      { "vim: nowrap tw=0:" > lwt-docs.txt; lwt *.doc *.odt >> lwt-docs.txt }
+Function lwt-gitignore { "vim: nowrap tw=0:" > lwt-gitignore.txt; lwt .gitignore >> lwt-gitignore.txt }
+Function lwt-md        { "vim: nowrap tw=0:" > lwt-md.txt; lwt *.md >> lwt-md.txt }
+Function lwt-sh        { "vim: nowrap tw=0:" > lwt-sh.txt; lwt *.sh >> lwt-sh.txt }
+Function lwt-tex       { "vim: nowrap tw=0:" > lwt-tex.txt; lwt *.cls *.sty *.tex >> lwt-tex.txt }
+
+#endregion
+
+#endregion
+#region --- sizes
+Function dc { Get-ChildItem | ForEach-Object { $_.Name + ": " + "{0:N2}" -f ((Get-ChildItem $_ -Recurse | Measure-Object Length -Sum -ErrorAction SilentlyContinue).Sum / 1MB) + " MB" } }
+
+Function fso { $fso = new-object -com Scripting.FileSystemObject; gci -Directory | select @{l='Size'; e={$fso.GetFolder($_.FullName).Size}},FullName | sort Size -Descending | ft @{l='Size [MB]'; e={'{0:N2}    ' -f ($_.Size / 1MB)}},FullName }
+
+#endregion
 #region --- strings in files
 
 Function stringInFiles { SIFWork Files-searchString '*' $args[0] }
@@ -85,10 +94,9 @@ Function SIFWork {
 #endregion
 
 #endregion
-
 #region --- General tools:
 
-Function e { exit } # quit
+Function e { exit } # quit (doesn't work as an alias)
 Function gis { git status -u }
 Function p {test-connection -computername 8.8.8.8 -ErrorAction SilentlyContinue}
 Function pg {test-connection -computername google.com -ErrorAction SilentlyContinue}
@@ -97,8 +105,11 @@ New-Alias jpo $onGH\jpgorhor\jpgorhor.ps1
 New-Alias m4p $onGH\md4pdf\MSWin\m4p.ps1
 New-Alias m4ps $onGH\md4pdf\MSWin\m4ps.ps1
 
-#endregion
+Function gvim {
+  & "${Env:ProgramFiles(x86)}\Vim\vim82\gvim.exe" $args[0] $args[1] $args[2]
+}
 
+#endregion
 #region - Re-tag image files to 72dpi:
 # a single image file:
 Function im72 { $72dpi=$args[0] -replace '((\.[^.]*)$)', '-72dpi$1'; exiftool -filename=72dpi -xresolution=72 -yresolution=72 $args[0]; mi 72dpi $72dpi -force }
@@ -107,7 +118,6 @@ Function im72 { $72dpi=$args[0] -replace '((\.[^.]*)$)', '-72dpi$1'; exiftool -f
 Function all72 { Get-ChildItem | Where-Object {-not $_.PsIsContainer} | ForEach-Object { im72 $_; Remove-Item $_ } }
 
 #endregion
-
 #region - Shell settings:
 $env:path +=';C:\Program Files\7-Zip'
 

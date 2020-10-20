@@ -1017,6 +1017,7 @@ miktex-xetex  isn't recognising  \documentclass
 Programs and Features > MiKTeX 2.9 > Uninstall > MiKTeX Console > Uninstall
 ## MiKTeX
 basic-miktex-2.9.7442-x64.exe (only for me, C:\Users\jnbh\AppData\Local\Programs\MiKTeX 2.9)
+  C:\Users\jnbh\AppData\Local\Programs\MiKTeX 2.9
   missing packages on the fly > Yes
 ## verseSettings.sty
 PowerShell in  C:\Users\jnbh\AppData\Roaming\MiKTeX\2.9\tex
@@ -1054,6 +1055,36 @@ SAMSUNG_USB_Driver_for_Mobile_Phones.exe (InstallWizard says v1.7.23.0) > UK, UK
 clicked through queries
 ## Ditto
 Options > General > Theme > DarkerDitto
+## MiKTeX v20.6.29
+basic-miktex-20.6.29-x64.exe > Run anyway > only for me > missing packages on the fly > Yes
+  C:\Users\jnbh\AppData\Local\Programs\MiKTeX
+### messy uninstall
+Settings > Apps & features > MiKTeX 2.9 > Uninstall
+  got me  MiKTeX Console > Cleanup  in which I selected  Uninstall MiKTeX
+    which removed the newer version, so rebooted and Uninstalled v2.9, with some persuasion...
+(should've been from Administrator Command Prompt) APS> uninstall_MiKTeX.bat
+Control Panel > Programs and Features > MiKTeX 2.9 > Uninstall  reported it's not there > Yes
+reg.exe query "HKLM\Software\miktex"
+D:\myUtils\OORegEditor1202172\OORegEdt.exe  found 101 straggling entries for "miktex"
+### MiKTeX v20.6.29 again
+basic-miktex-20.6.29-x64.exe > Run anyway > only for me > missing packages on the fly > Yes
+  C:\Users\jnbh\AppData\Local\Programs\MiKTeX
+in  C:\Users\jnbh\AppData\Roaming\MiKTeX\tex\  there is already  generic\  - I created  latex\
+### updates
+(while online) MiKTeX Console > [ Check for updates > Updates page  for a load
+  complied with requirement to Close ] then reran to Check again
+    Tasks > Refresh file name database ]
+### first run
+xelatex TroisPetitsChats  to bring in a load of packages
+### longer output lines
+initexmf --edit-config-file xelatex  opened Notepad on  $AppData\MiKTeX\miktex\config\xelatex.ini
+  in which I put  max_print_line=191
+### Pandoc test
+pandoc --toc --toc-depth=6 -f markdown_strict depth6MWE.md -o depth6MWE.pdf
+## Pandoc longer verbose lines
+[IO.File]::WriteAllLines("$Env:AppData\MiKTeX\miktex\config\pdftex.ini", "max_print_line=191")
+## Adobe Flash Player Uninstalled
+as suggested by itself
 ## waiting
 ### f.lux
 flux-setup.exe
