@@ -1,9 +1,11 @@
 
+let $defaults = $HOME.'/AppData/Roaming/Pandoc/defaults'
 let $ITstack = 'D:/Dropbox/JH/core/IT_stack'
   let $onGH = $ITstack.'/onGitHub'
+    let $MD4PDF = $onGH.'/md4pdf'
     let $MSwin = $onGH.'/MSWin10'
       let $machine = $MSwin.'/HPP11n012na'
-    let $SPDHPP = $onGH.'/SyncPortableDrives\HPP'
+    let $SPDHPP = $onGH.'/SyncPortableDrives/RoboCopy/HPP'
 
 " Point to my Win10 vimrc:
 source $HOME/vimfiles/vimrc-Win10.vim

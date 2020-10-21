@@ -6,10 +6,8 @@
 
 #region --- Pandoc\defaults
 
-$defaults = "$Env:AppData\Pandoc\defaults"
-new-item "$defaults\md4pdfToC.yaml" -itemtype symboliclink -value $onGH\md4pdf\defaults-toc.yaml
-new-item "$defaults\md4pdfMSWin.yaml" -itemtype symboliclink -value $onGH\md4pdf\MSWin\defaults.yaml
-new-item "$defaults\md4pdf.yaml" -itemtype symboliclink -value $onGH\md4pdf\defaults.yaml
+new-item "$defaults\md4pdfToC.yaml" -itemtype symboliclink -value $MD4PDF\defaults-toc.yaml
+new-item "$defaults\md4pdf.yaml" -itemtype symboliclink -value $MD4PDF\defaults.yaml -force
 
 #endregion
 #region --- Ctrl-CapsLock

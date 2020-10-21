@@ -1085,6 +1085,13 @@ pandoc --toc --toc-depth=6 -f markdown_strict depth6MWE.md -o depth6MWE.pdf
 [IO.File]::WriteAllLines("$Env:AppData\MiKTeX\miktex\config\pdftex.ini", "max_print_line=191")
 ## Adobe Flash Player Uninstalled
 as suggested by itself
+## Tixati v2.76
+tixati-2.76-1.win64-install.exe   Desktop icon Deleted
+## LibreOffice 6.4.6
+Close Windows Explorer and everything except Task Manager for
+
+  LibreOffice_6.4.6_Win_x64.msi > Custom, then clicked thru as all was as previously >
+    Create shortcut on desktop  off-ticked
 ## waiting
 ### f.lux
 flux-setup.exe
