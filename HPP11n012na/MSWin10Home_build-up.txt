@@ -1092,6 +1092,11 @@ Close Windows Explorer and everything except Task Manager for
 
   LibreOffice_6.4.6_Win_x64.msi > Custom, then clicked thru as all was as previously >
     Create shortcut on desktop  off-ticked
+## Git for Windows v2.29.0
+closed gVim & Powershell
+clicked through all install options
+## latex\m4p
+mkdir $Env:AppData\MiKTeX\tex\latex\m4p
 ## waiting
 ### f.lux
 flux-setup.exe

@@ -3,7 +3,12 @@
 
 # Joseph Harriott
 
-Set-Alias l gci
+Function fn { gci | select -ExpandProperty FullName | sort }
+Function l { 
+  [string[]]$list = (Get-ChildItem).Name
+  $list -join '  '
+}
+Set-Alias j z  # ZLocation
 Set-Alias ss Select-String
 
 #region --- folder investigations
@@ -94,7 +99,7 @@ Function SIFWork {
 #endregion
 
 #endregion
-#region --- General tools:
+#region --- general tools
 
 Function e { exit } # quit (doesn't work as an alias)
 Function gis { git status -u }
@@ -102,15 +107,14 @@ Function p {test-connection -computername 8.8.8.8 -ErrorAction SilentlyContinue}
 Function pg {test-connection -computername google.com -ErrorAction SilentlyContinue}
 # New-Alias g gm.exe # GraphicsMagick
 New-Alias jpo $onGH\jpgorhor\jpgorhor.ps1
-New-Alias m4p $onGH\md4pdf\MSWin\m4p.ps1
-New-Alias m4ps $onGH\md4pdf\MSWin\m4ps.ps1
 
 Function gvim {
   & "${Env:ProgramFiles(x86)}\Vim\vim82\gvim.exe" $args[0] $args[1] $args[2]
 }
 
 #endregion
-#region - Re-tag image files to 72dpi:
+#region --- re-tag image files to 72dpi
+
 # a single image file:
 Function im72 { $72dpi=$args[0] -replace '((\.[^.]*)$)', '-72dpi$1'; exiftool -filename=72dpi -xresolution=72 -yresolution=72 $args[0]; mi 72dpi $72dpi -force }
 
@@ -118,7 +122,8 @@ Function im72 { $72dpi=$args[0] -replace '((\.[^.]*)$)', '-72dpi$1'; exiftool -f
 Function all72 { Get-ChildItem | Where-Object {-not $_.PsIsContainer} | ForEach-Object { im72 $_; Remove-Item $_ } }
 
 #endregion
-#region - Shell settings:
+#region --- shell settings
+
 $env:path +=';C:\Program Files\7-Zip'
 
 $host.privatedata.ErrorForegroundColor = 'gray'

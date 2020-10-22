@@ -5,8 +5,8 @@ vim: fdl=1 ft=build fdm=expr:
 /tee - output to console as well as log file
 
 # PowerShell
-[string]$Pwd
 Alt > Space > E > L > [ up / down  to scroll   Esc ]
+foreach($element in 1..3){ $element }
 stringInVims "string"
 
 ## aliases
@@ -17,11 +17,15 @@ sal <alias> <string>
 ### standard
 ri
 
+## data
+$x.GetType()
+[string]$Pwd
+
 ## executables
 C:\Windows\explorer.exe "microsoft-edge:searchterm"
 gcm explorer
 explorer "$Env:AppData\MiKTeX\tex\latex\jo"
-explorer > shell:Appsfolder
+explorer shell:Appsfolder  # Applications
 ffmpeg -version
 start <somefile>
 

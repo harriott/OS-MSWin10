@@ -9,7 +9,8 @@
 # Clear-Host
 
 # helps to define these also in  $HOME\_vimrc
-$defaults = "$Env:AppData\Pandoc\defaults"
+$MiKTeX = "$Env:AppData\MiKTeX\tex"
+$Pandoc = "$Env:AppData\Pandoc"
 $ITstack = "D:\Dropbox\JH\core\IT_stack"
   $onGH = "$ITstack\onGitHub"
     $MD4PDF = "$onGH\md4pdf"
@@ -23,4 +24,19 @@ New-Alias RCS0 $SPDHPP\Sync0.ps1
 New-Alias RCS1 $SPDHPP\Sync1.ps1
 New-Alias RCSh $SPDHPP\Share.ps1
 New-Alias RCSm $SPDHPP\Flash.ps1
+
+#region --- Pandoc
+
+Function m4p {
+  cpi $MD4PDF/iih/headings0.sty $MiKTeX\latex\m4p\headings.sty -force
+  PowerShell -NoProfile $onGH\md4pdf\MSWin\m4p.ps1 $args[0] $args[1]
+}
+
+Function m4ps0 {
+  cpi $MD4PDF/iih/headings0.sty $MiKTeX\latex\m4p\headings.sty -force
+  PowerShell -NoProfile $onGH\md4pdf\MSWin\m4ps.ps1
+}
+# New-Alias m4ps $onGH\md4pdf\MSWin\m4ps.ps1
+
+#endregion
 

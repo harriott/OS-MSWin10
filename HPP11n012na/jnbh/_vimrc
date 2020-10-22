@@ -1,5 +1,6 @@
 
-let $defaults = $HOME.'/AppData/Roaming/Pandoc/defaults'
+let $MiKTeX = $HOME.'/AppData/Roaming/MiKTeX/tex'
+let $Pandoc = $HOME.'/AppData/Roaming/Pandoc'
 let $ITstack = 'D:/Dropbox/JH/core/IT_stack'
   let $onGH = $ITstack.'/onGitHub'
     let $MD4PDF = $onGH.'/md4pdf'

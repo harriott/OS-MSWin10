@@ -4,12 +4,6 @@
 # Joseph Harriott
 # to be run in Administator Powershell
 
-#region --- Pandoc\defaults
-
-new-item "$defaults\md4pdfToC.yaml" -itemtype symboliclink -value $MD4PDF\defaults-toc.yaml
-new-item "$defaults\md4pdf.yaml" -itemtype symboliclink -value $MD4PDF\defaults.yaml -force
-
-#endregion
 #region --- Ctrl-CapsLock
 
 # new-item "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\Ctrl-CapsLock.ahk" -itemtype symboliclink -value $machine\Ctrl-CapsLock.ahk -force # not used
@@ -22,27 +16,13 @@ new-item "$defaults\md4pdf.yaml" -itemtype symboliclink -value $MD4PDF\defaults.
 # new-item $HOME\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 -itemtype symboliclink -value $machine\PSProfile.ps1 -force
 
 #endregion
-#region - vimfiles
+#region --- ~\_vimrc
 
-# new-item $HOME\_gvimrc -itemtype symboliclink -value $MSWin\user\_gvimrc -force
-# new-item $HOME\_vimrc -itemtype symboliclink -value $MSWin\user\_vimrc -force
 # new-item $HOME\_vimrc -itemtype symboliclink -value $machine\jnbh\_vimrc -force
-# remove-item $HOME\vimfiles -recurse -force
-# new-item $HOME\vimfiles -itemtype symboliclink -value $ITstack\vimfiles -force
-
-#endregion
-#region --- ~\.bashrc
-
-# new-item $HOME\.bashrc -itemtype symboliclink -value $MSWin\user\bashrc -force
 
 #endregion
 #region --- ~\.gitconfig
 
-# new-item $HOME\.gitconfig -itemtype symboliclink -value $MSWin10\LIP120s81A4\jnbh-gitconfig -force
-
-#endregion
-#region --- ~\.ssh\config
-
-# new-item $HOME\.ssh\config -itemtype symboliclink -value $machine\jnbh\SSHconfig -force
+# new-item $HOME\.gitconfig -itemtype symboliclink -value $machine\jnbh\gitconfig -force
 
 #endregion
