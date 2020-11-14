@@ -7,6 +7,8 @@ vim: fdl=1 ft=build fdm=expr:
 # PowerShell
 Alt > Space > E > L > [ up / down  to scroll   Esc ]
 foreach($element in 1..3){ $element }
+robocopy /mir <sourcedir> <destinationdir> /l  # runs a simulation of mirroring source to destination
+> ''/MIR'' : MIRror a directory tree - equivalent to ''/PURGE'' plus all subfolders (''/E'')
 stringInVims "string"
 
 ## aliases
@@ -34,6 +36,7 @@ cat somefile.txt | where { $_ -match “expression”}
 gci * | select FullName
 gci * | select Name
 gci $path | select -expand FullName  # for pure string output
+ls -r -i '* (* conflicted copy *' |%{echo $_.fullname} | ri
 lwp \.ps1
 lwt *.ps1 *.sh
 

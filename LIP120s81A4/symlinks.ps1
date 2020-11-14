@@ -1,11 +1,10 @@
 # vim: set et tw=0:
-# #region & #endregion create folding blocks if Peter Provost's vim-ps1 is installed
 
-
-# vim: ft=ps1.ps1region:
 # Joseph Harriott
 # to be run in Administator Powershell
 
+# #region & #endregion create folding blocks if Peter Provost's vim-ps1 is installed
+#
 #region --- ~\.bashrc
 
 new-item C:\Users\troin\.bashrc -itemtype symboliclink -value C:\Users\troin\Dropbox\JH\core\IT_stack\onGitHub\MSWin10\user\bashrc -force
@@ -13,7 +12,7 @@ new-item C:\Users\troin\.bashrc -itemtype symboliclink -value C:\Users\troin\Dro
 #endregion
 #region --- ~\.gitconfig
 
-new-item C:\Users\troin\.gitconfig -itemtype symboliclink -value C:\Users\troin\Dropbox\JH\core\IT_stack\onGitHub\MSWin10\LIP120s81A4\troin-gitconfig -force
+new-item C:\Users\troin\.gitconfig -itemtype symboliclink -value C:\Users\troin\Dropbox\JH\core\IT_stack\onGitHub\MSWin10\LIP120s81A4\troin\gitconfig -force
 
 #endregion
 #region --- for PowerShell
@@ -24,7 +23,7 @@ new-item C:\Users\troin\OneDrive\Documents\WindowsPowerShell\Microsoft.PowerShel
 #region --- for vimfiles
 
 new-item C:\Users\troin\_gvimrc -itemtype symboliclink -value C:\Users\troin\Dropbox\JH\core\IT_stack\onGitHub\MSWin10\user\_gvimrc -force
-new-item C:\Users\troin\_vimrc -itemtype symboliclink -value C:\Users\troin\Dropbox\JH\core\IT_stack\onGitHub\MSWin10\user\_vimrc -force
+new-item C:\Users\troin\_vimrc -itemtype symboliclink -value C:\Users\troin\Dropbox\JH\core\IT_stack\onGitHub\MSWin10\LIP120s81A4\troin\_vimrc -force
 new-item C:\Users\troin\vimfiles -itemtype symboliclink -value C:\Users\troin\Dropbox\JH\core\IT_stack\vimfiles -force
 
 #endregion
