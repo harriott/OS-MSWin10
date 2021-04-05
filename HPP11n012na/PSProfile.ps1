@@ -1,4 +1,3 @@
-# vim: set et tw=0:
 
 # Joseph Harriott
 
@@ -9,11 +8,8 @@
 # Clear-Host
 
 # helps to define these also in  $HOME\_vimrc
-$MiKTeX = "$Env:AppData\MiKTeX\tex"
-$Pandoc = "$Env:AppData\Pandoc"
 $ITstack = "D:\Dropbox\JH\core\IT_stack"
   $onGH = "$ITstack\onGitHub"
-    $MD4PDF = "$onGH\md4pdf"
     $MSwin = "$onGH\MSWin10"
       $machine = "$MSWin\HPP11n012na"
     $SPDHPP = "$onGH\SyncPortableDrives\RoboCopy\HPP"

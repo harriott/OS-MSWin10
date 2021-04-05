@@ -1,8 +1,8 @@
-# vim: set et tw=0:
-# #region & #endregion create folding blocks if Peter Provost's vim-ps1 is installed
 
 # Joseph Harriott
 # to be run in Administator Powershell
+
+# #region & #endregion create folding blocks if Peter Provost's vim-ps1 is installed
 
 #region --- Ctrl-CapsLock
 
@@ -23,6 +23,8 @@
 #endregion
 #region --- ~\.gitconfig
 
-# new-item $HOME\.gitconfig -itemtype symboliclink -value $machine\jnbh\gitconfig -force
+new-item C:\Users\jnbh\_gvimrc -itemtype symboliclink -value $onGH\MSWin10\user\_gvimrc -force
+new-item C:\Users\jnbh\_vimrc -itemtype symboliclink -value $onGH\MSWin10\LIP120s81A4\troin\_vimrc -force
+new-item C:\Users\jnbh\vimfiles -itemtype symboliclink -value $onGH\vimfiles -force
 
 #endregion

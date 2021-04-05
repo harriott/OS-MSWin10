@@ -1,4 +1,3 @@
-# vim: set et tw=0:
 
 # Joseph Harriott
 # to be run in Administator Powershell

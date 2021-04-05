@@ -1,6 +1,7 @@
-﻿vim: ft=build fdm=expr:
+﻿vim: ft=build:
 
-HP Pavilion x360 Convertible Laptop 11-n012na - HPP11n012na
+- HP Pavilion x360 Convertible Laptop 11-n012na - HPP11n012na
+- system failing totally
 
 # parallel build
 ## ExifTool v11.59
@@ -668,7 +669,7 @@ Win+I (Windows Settings) > Devices > Printers & scanners > HPA22F0E (HP ENVY 553
 pop-up opened  https://get3.adobe.com/flashplayer/update/ppapi/ (Optional was already offticked)
   got me  flashplayer32ppau_ha_install.exe  which I ran > Notify me
   the executable disappeared
-## Everything
+## ENTFSverything
 Everything-1.4.1.935.x64-Setup.exe > English (UK) > [ Check for updates on startup  on
   Install Desktop shortcut  off ] Ran it for  Ctrl+P ( = Tools > Options ) >
     [ UI > Single click tray   Results > Open path with double click in path column ]
@@ -1097,6 +1098,23 @@ closed gVim & Powershell
 clicked through all install options
 ## latex\m4p
 mkdir $Env:AppData\MiKTeX\tex\latex\m4p
+## Git for Windows v2.29.2.3
+closed gVim & Powershell
+clicked through all install options
+## ImageMagick v7.0.10
+ImageMagick-7.0.10-48-Q16-x64-static.exe
+  [ desktop icon  FFmpeg ] off-ticked
+Programs & Features > ImageMagick 7.0.8-3 Q16 (64 bit) (2018-06-25) > Uninstall
+## MiniTool Partition Wizard Free - Update allowed to v12.3
+offticked MiniTool ShadowMaker Free
+  allowed it to Run > popup Message > [ Do not show, X ]
+## Everything
+Everything-1.4.1.1005.x64-Setup.exe > [ Check for updates on startup  on
+  Install Desktop shortcut  off  Install Quick launch shortcut  on ]
+## Notepad++ Updated to v7.9.1
+clicked through queries
+## PowerShell Opacity
+right-click on PowerShell top bar > Properties > Colours > Opacity > 86%
 ## waiting
 ### f.lux
 flux-setup.exe

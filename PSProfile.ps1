@@ -1,13 +1,7 @@
-# vim: set et tw=0:
 # #region & #endregion create folding blocks if Peter Provost's vim-ps1 is installed
 
 # Joseph Harriott
 
-Function fn { gci | select -ExpandProperty FullName | sort }
-Function l { 
-  [string[]]$list = (Get-ChildItem).Name
-  $list -join '  '
-}
 Set-Alias j z  # ZLocation
 Set-Alias ss Select-String
 
@@ -78,6 +72,7 @@ Function fso { $fso = new-object -com Scripting.FileSystemObject; gci -Directory
 #region --- strings in files
 
 Function stringInFiles { SIFWork Files-searchString '*' $args[0] }
+Function stringInMDs { SIFWork LaTeX-searchString '*.md' $args[0] }
 Function stringInPS1s { SIFWork LaTeX-searchString '*.ps1' $args[0] }
 Function stringInTexs { $texFiles = '*.cls','*.tex'; SIFWork LaTeX-searchString $texFiles $args[0] }
 Function stringInVims { SIFWork Vims-searchString '*.vim' $args[0] }
@@ -102,24 +97,48 @@ Function SIFWork {
 #region --- general tools
 
 Function e { exit } # quit (doesn't work as an alias)
+Function fn { gci | select -ExpandProperty FullName | sort }
 Function gis { git status -u }
 Function p {test-connection -computername 8.8.8.8 -ErrorAction SilentlyContinue}
 Function pg {test-connection -computername google.com -ErrorAction SilentlyContinue}
 # New-Alias g gm.exe # GraphicsMagick
 New-Alias jpo $onGH\jpgorhor\jpgorhor.ps1
 
+Function l {
+  [string[]]$list = (Get-ChildItem).Name
+  $list -join '  '
+}
+
 Function gvim {
   & "${Env:ProgramFiles(x86)}\Vim\vim82\gvim.exe" $args[0] $args[1] $args[2]
 }
 
 #endregion
+#region --- Pandoc
+# helps to define these also in  $HOME\_vimrc
+$MiKTeX = "$Env:AppData\MiKTeX\tex"
+$Pandoc = "$Env:AppData\Pandoc"
+  $MD4PDF = "$onGH\md4pdf"
+
+Function heading0sty { cpi $MD4PDF/iih/headings0.sty $MiKTeX\latex\m4p\headings.sty -force }
+Function m4p { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4p.ps1 $args[0] $args[1] }
+Function m4ps0 { heading0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4ps.ps1 }
+Function m4ps1 { heading0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4ps.ps1 $args[0] $args[1] }
+
+#endregion
 #region --- re-tag image files to 72dpi
 
 # a single image file:
-Function im72 { $72dpi=$args[0] -replace '((\.[^.]*)$)', '-72dpi$1'; exiftool -filename=72dpi -xresolution=72 -yresolution=72 $args[0]; mi 72dpi $72dpi -force }
+Function im72 {
+  $72dpi=$args[0] -replace '((\.[^.]*)$)', '-72dpi$1'
+  exiftool -filename=72dpi -xresolution=72 -yresolution=72 $args[0]; mi 72dpi $72dpi -force
+  }
 
 # all the files in a folder:
-Function all72 { Get-ChildItem | Where-Object {-not $_.PsIsContainer} | ForEach-Object { im72 $_; Remove-Item $_ } }
+Function all72 {
+  Get-ChildItem | Where-Object {-not $_.PsIsContainer} | ForEach-Object { im72 $_
+  Remove-Item $_ }
+  }
 
 #endregion
 #region --- shell settings

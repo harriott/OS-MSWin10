@@ -1,4 +1,4 @@
-vim: fdl=0 ft=build fdm=expr:
+vim: ft=build:
 
 Lenovo IdeaPad 120s 81A4 = LIP120s81A4
 
@@ -50,178 +50,7 @@ $HOME\_gvimrc & $HOME\_vimrc  Deleted   for console run as administrator:
   mklink C:\Users\jnbh\_gvimrc D:\Dropbox\JH\IT_stack\onGitHub\MSWin10\user\_gvimrc
 # physical configuration
 SDEP128G in microSD slot
-# Sequential build from Win10_2004
-Restart in Safe Mode > USB HDD (K8GBDT100 containing Win10_2004_English_x64.iso) >
-  ( SYSTEM_DRV was taking 250MB, a small 16MB "Reserved" partition,
-    Windows partition, then 1000MB for WINRE_DRV )
-  Deleted the Windows partition, and selected it for new install
-## Git
-https://git-scm.com/download/win > Windows   for the executable v2.28.0 > Check daily >
-  Checkout as is, commit Unix-style line endings
-  Choose a credential helper > None
-## PowerShell version
-$PSVersionTable  reports  PSVersion 5.1.19041.1
-## PowerShellGet
-as Administrator:  Install-PackageProvider Nuget -Force   got me   nuget 2.8.5.208
-as Administrator:  Update-Module -Name PowerShellGet
-  Module 'PowerShellGet' was not installed by using Install-Module, so it cannot be updated.
-as Administrator:  Install-Module -Name PowerShellGet -Force
-Get-InstalledModule  reported   2.2.4.1 PowerShellGet
-## ZLocation
-Install-Module -Name ZLocation
-  You are installing the modules from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from 'PSGallery'? > a
-Get-InstalledModule   reported   1.4.2 ZLocation
-## FastStone Image Viewer v7.4
-FSViewerSetup74.exe
-ran it for Esc to offtick
-  Settings > Viewer > [ Loop on, Auto-rotate by EXIF off, Default unit > cm ]
-*.png  Opens with FastStone Image Viewer
-### Settings
-replaced  PaperSizeList  settings in  C:\Users\troin\AppData\Roaming\FastStone\FSIV\FSSettings.db
-  with those in  C:\Users\troin\Dropbox\JH\IT_stack\MSWin\User\150429122906\FSIV\FSSettings.db
-## vimfiles\spell
-when online, in Vim, set spell spl=fr  to get  vimfiles\spell stocked with
-  fr.utf-8.spl  &  fr.utf-8.sug
-## Settings > Personalization > Background
-was pointing to a single picture of Deauram in
-  C:\Users\troin\AppData\Local\Microsoft\Windows\Themes\RoamedThemeFiles\DesktopBackground
-Personalisation > Personalise > Background > [ Slideshow
-  Browse > C:\Users\troin\Dropbox\JH\IT_stack\MSWin\DesktopBackground
-  Change picture every > 10 minutes   Shuffle > On
-## Posh-Git
-Install-Module -Name posh-git -AllowPrerelease
-  You are installing the modules from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from 'PSGallery'? > a
-## 7-Zip
-7z1900-x64.exe
-## Disk Management
-F: (SDEP128G) set to D:
-## Everything
-Everything-1.4.1.988.x64-Setup.exe > English (UK) > [ Check for updates on startup  on
-  Install Desktop shortcut  off ] Ran it for  Ctrl+P ( = Tools > Options ) >
-    [ UI > Single click tray   Results > Open path with double click in path column ]
-## QuickHash
-C:\Users\troin\QuickHash-Windows-v3.2.0
-## Dropbox save space
-Preferences > Sync > Save hard drive space automatically > On
-## MiniTool Partition Wizard Free v12.1
-pw12-free.exe > ShadowMaker Trial off-ticked > McAfee Declined
-  ran it, then off-ticked an advertising message
-## WINRE_DRV Deleted
-
-## MiKTeX
-basic-miktex-20.6.29-x64.exe > Run anyway > only for me > missing packages on the fly > Yes
-## JH.sty
-in  C:\Users\troin\AppData\Roaming\MiKTeX\tex\  there is already  generic\  - I created  latex\
-
-console run as administrator:  mklink /D C:\Users\troin\AppData\Roaming\MiKTeX\tex\latex\jo C:\Users\troin\Dropbox\JH\IT_stack\CrossPlatform\forLaTeX
-(while online) MiKTeX Console > [ Check for updates > Updates page  for 4
-  Tasks > Refresh file name database ]
-xelatex'd a TextNotes file to bring in a load of packages
-## not enough space
-keep hitting limits, so decided to re-install, removing other partitions
-# Sequential build from Win10_2004 removing Lenovo partitions
-Restart in Safe Mode > Use a device > USB HDD (K8GBDT100 containing Win10_2004_English_x64.iso) >
-  Deleted all 4 partition then Next (can close lid during installation)
-## PowerShellGet
-as Administrator:  Install-PackageProvider Nuget -Force   got me   nuget 2.8.5.208
-as Administrator:  Update-Module -Name PowerShellGet
-  Module 'PowerShellGet' was not installed by using Install-Module, so it cannot be updated.
-as Administrator:  Install-Module -Name PowerShellGet -Force
-Get-InstalledModule  reported   2.2.4.1 PowerShellGet
-## ZLocation
-Install-Module -Name ZLocation
-  You are installing the modules from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from 'PSGallery'? > a
-z  shows it's there, but  Get-InstalledModule  isn't reporting it
-Get-Module -Name ZLocation -ListAvailable   reported   1.4.2 ZLocation
-## Git
-https://git-scm.com/download/win > Windows   for the executable v2.28.0 > Check daily >
-  Checkout as is, commit Unix-style line endings
-  Choose a credential helper > None
-## Posh-Git installed
-Install-Module -Name posh-git -AllowPrerelease
-  You are installing the modules from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from 'PSGallery'? > a
-(perhaps because I'd installed as Administrator) Get-InstalledModule   reported   1.4.2 ZLocation
-Get-Module -Name posh-git -ListAvailable   reported   1.0.0 posh-git
-it's not showing anything for  C:\Users\troin\Dropbox\JH\IT_stack\onGitHub\MSWin10\LIP120s81A4
-## Posh-Git uninstalled
-Get-InstalledModule -Name posh-git | Uninstall-Module
-Get-Module -Name posh-git | Uninstall-Module
-Uninstall-Module -Name posh-git
-## Microsoft OneDrive
-was using 147MB - Uninstalled
-## Settings > Background
-Personalisation > Personalise > Background > [ (Slideshow)
-  Browse > C:\Users\troin\Dropbox\JH\core\IT_stack\MSWin\DesktopBackground   Change > 10 minutes ]
-## FastStone Image Viewer v7.4
-FSViewerSetup74.exe
-ran it for Esc to offtick
-  Settings > Viewer > [ Loop on, Auto-rotate by EXIF off, Default unit > cm ]
-*.png  Opens with FastStone Image Viewer
-### Settings
-replaced  PaperSizeList  settings in  C:\Users\troin\AppData\Roaming\FastStone\FSIV\FSSettings.db
-  with those in  C:\Users\troin\Dropbox\JH\core\IT_stack\MSWin\FSSettings-PaperSizeList.db
-## OneDrive Uninstalled to gain space
-Control Panel Items > Programs and Features > OneDrive > Uninstall
-### Pictures directory
-empty, and system is using  C:\Users\troin\OneDrive\Pictures 1, so Deleted  C:\Users\troin\Pictures
-  right-clicked on  C:\Users\troin\OneDrive\Pictures 1 for
-    Properties > Location > Restore Default  failed, so rebooted
-      which got me back  C:\Users\troin\Pictures  which I Pinned to Quick access
-## 7-Zip
-7z1900-x64.exe
-## Thunderbird
-Thunderbird Setup 78.3.1.exe > Custom > not On my Desktop
-Ran it to get  C:\Users\troin\AppData\Roaming\Thunderbird\Profiles\cs4mnd48.default-release
-  which I emptied, and then edited  C:\Users\troin\AppData\Roaming\Thunderbird\profiles.ini
-    [Profile0] section:
-      IsRelative=0
-      Path=D:\Sync0-Dr-JH-TP.default-release
-## C: full
-after a system update
-du64 -l 1
-           197  C:\$Recycle.Bin
-             0  C:\$WinREAgent
-             0  C:\OneDriveTemp
-       593,254  C:\Program Files
-       836,661  C:\Program Files (x86)
-       247,732  C:\ProgramData
-             0  C:\Recovery
-     1,403,249  C:\Users
-    14,178,660  C:\Windows
-  Files:        203764
-  Directories:  65727
-  Size:         17,673,989,997 bytes
-  Size on disk: 17,507,899,952 bytes
-C:\Windows\WinSxS  is over 5GB
-Storage > Temporary > Delete files in my recycle bin > 1 day
-1.11GB free...
-## C: has 5GB free
-the next morning...
-du64 -l 1
-           312  C:\$Recycle.Bin
-             0  C:\$WinREAgent
-             0  C:\OneDriveTemp
-       593,254  C:\Program Files
-       836,661  C:\Program Files (x86)
-       248,034  C:\ProgramData
-             0  C:\Recovery
-     1,502,071  C:\Users
-     9,398,672  C:\Windows
-  Files:        150841
-  Directories:  53774
-  Size:         12,880,903,520 bytes
-  Size on disk: 12,550,011,512 bytes
-du64 reports  C:\Windows\WinSxS  to be down to 1.2GB  while fso reports it to be over 6GB
-  as does  Explorer's Properties
-## language
-Settings > Click on Time & Language > [
-  Language > Preferred languages > English (United Kingdom) >
-    Options > [ Language pack   Handwriting  Speech ] > Download
-  Speech > language > English (United Kingdom)
-  Language > Windows display language > English (United Kingdom)
-  ]
-OpenHardwareMonitor  copied to  $HOME
-# Sequential build to version 1909
+# Sequential build old 1 to version 1909
 ## setup of Win10S
 Moto G4 key
 jnbh@live.co.uk
@@ -422,6 +251,254 @@ winver   reports Windows 10 Pro version 1909 (OS Build 18363.1016)
 processhacker-2.39-setup.exe
 ## DuckDuckGo
 Save Cloud Settings > JoNiBraHa > Save
+# Sequential build old 2 from Win10_2004
+Restart in Safe Mode > USB HDD (K8GBDT100 containing Win10_2004_English_x64.iso) >
+  ( SYSTEM_DRV was taking 250MB, a small 16MB "Reserved" partition,
+    Windows partition, then 1000MB for WINRE_DRV )
+  Deleted the Windows partition, and selected it for new install
+## Git
+https://git-scm.com/download/win > Windows   for the executable v2.28.0 > Check daily >
+  Checkout as is, commit Unix-style line endings
+  Choose a credential helper > None
+## PowerShell version
+$PSVersionTable  reports  PSVersion 5.1.19041.1
+## PowerShellGet
+as Administrator:  Install-PackageProvider Nuget -Force   got me   nuget 2.8.5.208
+as Administrator:  Update-Module -Name PowerShellGet
+  Module 'PowerShellGet' was not installed by using Install-Module, so it cannot be updated.
+as Administrator:  Install-Module -Name PowerShellGet -Force
+Get-InstalledModule  reported   2.2.4.1 PowerShellGet
+## ZLocation
+Install-Module -Name ZLocation
+  You are installing the modules from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from 'PSGallery'? > a
+Get-InstalledModule   reported   1.4.2 ZLocation
+## FastStone Image Viewer v7.4
+FSViewerSetup74.exe
+ran it for Esc to offtick
+  Settings > Viewer > [ Loop on, Auto-rotate by EXIF off, Default unit > cm ]
+*.png  Opens with FastStone Image Viewer
+### Settings
+replaced  PaperSizeList  settings in  C:\Users\troin\AppData\Roaming\FastStone\FSIV\FSSettings.db
+  with those in  C:\Users\troin\Dropbox\JH\IT_stack\MSWin\User\150429122906\FSIV\FSSettings.db
+## vimfiles\spell
+when online, in Vim, set spell spl=fr  to get  vimfiles\spell stocked with
+  fr.utf-8.spl  &  fr.utf-8.sug
+## Settings > Personalization > Background
+was pointing to a single picture of Deauram in
+  C:\Users\troin\AppData\Local\Microsoft\Windows\Themes\RoamedThemeFiles\DesktopBackground
+Personalisation > Personalise > Background > [ Slideshow
+  Browse > C:\Users\troin\Dropbox\JH\IT_stack\MSWin\DesktopBackground
+  Change picture every > 10 minutes   Shuffle > On
+## Posh-Git
+Install-Module -Name posh-git -AllowPrerelease
+  You are installing the modules from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from 'PSGallery'? > a
+## 7-Zip
+7z1900-x64.exe
+## Disk Management
+F: (SDEP128G) set to D:
+## Everything
+Everything-1.4.1.988.x64-Setup.exe > English (UK) > [ Check for updates on startup  on
+  Install Desktop shortcut  off ] Ran it for  Ctrl+P ( = Tools > Options ) >
+    [ UI > Single click tray   Results > Open path with double click in path column ]
+## QuickHash
+C:\Users\troin\QuickHash-Windows-v3.2.0
+## Dropbox save space
+Preferences > Sync > Save hard drive space automatically > On
+## MiniTool Partition Wizard Free v12.1
+pw12-free.exe > ShadowMaker Trial off-ticked > McAfee Declined
+  ran it, then off-ticked an advertising message
+## WINRE_DRV Deleted
+
+## MiKTeX
+basic-miktex-20.6.29-x64.exe > Run anyway > only for me > missing packages on the fly > Yes
+## JH.sty
+in  C:\Users\troin\AppData\Roaming\MiKTeX\tex\  there is already  generic\  - I created  latex\
+## not enough space
+keep hitting limits, so decided to re-install, removing other partitions
+C:\Program Files (x86)\Java\jre1.8.0_281 = 180MB
+java -jar $HOME\LanguageTool-5.2\languagetool-commandline.jar $core\TextNotes\JH-DailyLife\Europe\France\Scratch\scratch0.txt
+# Sequential build current from Win10_2004 removing Lenovo partitions
+Restart in Safe Mode > Use a device > USB HDD (K8GBDT100 containing Win10_2004_English_x64.iso) >
+  Deleted all 4 partition then Next (can close lid during installation)
+## PowerShellGet
+as Administrator:  Install-PackageProvider Nuget -Force   got me   nuget 2.8.5.208
+as Administrator:  Update-Module -Name PowerShellGet
+  Module 'PowerShellGet' was not installed by using Install-Module, so it cannot be updated.
+as Administrator:  Install-Module -Name PowerShellGet -Force
+Get-InstalledModule  reported   2.2.4.1 PowerShellGet
+## ZLocation
+Install-Module -Name ZLocation
+  You are installing the modules from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from 'PSGallery'? > a
+z  shows it's there, but  Get-InstalledModule  isn't reporting it
+Get-Module -Name ZLocation -ListAvailable   reported   1.4.2 ZLocation
+## Git
+https://git-scm.com/download/win > Windows   for the executable v2.28.0 > Check daily >
+  Checkout as is, commit Unix-style line endings
+  Choose a credential helper > None
+## Posh-Git installed
+Install-Module -Name posh-git -AllowPrerelease
+  You are installing the modules from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from 'PSGallery'? > a
+(perhaps because I'd installed as Administrator) Get-InstalledModule   reported   1.4.2 ZLocation
+Get-Module -Name posh-git -ListAvailable   reported   1.0.0 posh-git
+it's not showing anything for  C:\Users\troin\Dropbox\JH\IT_stack\onGitHub\MSWin10\LIP120s81A4
+## Posh-Git uninstalled
+Get-InstalledModule -Name posh-git | Uninstall-Module
+Get-Module -Name posh-git | Uninstall-Module
+Uninstall-Module -Name posh-git
+## Microsoft OneDrive
+was using 147MB - Uninstalled
+## Settings > Background
+Personalisation > Personalise > Background > [ (Slideshow)
+  Browse > C:\Users\troin\Dropbox\JH\core\IT_stack\MSWin\DesktopBackground   Change > 10 minutes ]
+## FastStone Image Viewer v7.4
+FSViewerSetup74.exe
+ran it for Esc to offtick
+  Settings > Viewer > [ Loop on, Auto-rotate by EXIF off, Default unit > cm ]
+*.png  Opens with FastStone Image Viewer
+### Settings
+replaced  PaperSizeList  settings in  C:\Users\troin\AppData\Roaming\FastStone\FSIV\FSSettings.db
+  with those in  C:\Users\troin\Dropbox\JH\core\IT_stack\MSWin\FSSettings-PaperSizeList.db
+## OneDrive Uninstalled to gain space
+Control Panel Items > Programs and Features > OneDrive > Uninstall
+### Pictures directory
+empty, and system is using  C:\Users\troin\OneDrive\Pictures 1, so Deleted  C:\Users\troin\Pictures
+  right-clicked on  C:\Users\troin\OneDrive\Pictures 1 for
+    Properties > Location > Restore Default  failed, so rebooted
+      which got me back  C:\Users\troin\Pictures  which I Pinned to Quick access
+## 7-Zip
+7z1900-x64.exe
+## Thunderbird v78.3.1
+Thunderbird Setup 78.3.1.exe > Custom > not On my Desktop
+Ran it to get  C:\Users\troin\AppData\Roaming\Thunderbird\Profiles\cs4mnd48.default-release
+  which I emptied, and then edited  C:\Users\troin\AppData\Roaming\Thunderbird\profiles.ini
+    [Profile0] section:
+      IsRelative=0
+      Path=D:\Sync0-Dr-JH-TP.default-release
+## C: full
+after a system update
+du64 -l 1
+           197  C:\$Recycle.Bin
+             0  C:\$WinREAgent
+             0  C:\OneDriveTemp
+       593,254  C:\Program Files
+       836,661  C:\Program Files (x86)
+       247,732  C:\ProgramData
+             0  C:\Recovery
+     1,403,249  C:\Users
+    14,178,660  C:\Windows
+  Files:        203764
+  Directories:  65727
+  Size:         17,673,989,997 bytes
+  Size on disk: 17,507,899,952 bytes
+C:\Windows\WinSxS  is over 5GB
+Storage > Temporary > Delete files in my recycle bin > 1 day
+1.11GB free...
+## C: has 5GB free
+the next morning...
+du64 -l 1
+           312  C:\$Recycle.Bin
+             0  C:\$WinREAgent
+             0  C:\OneDriveTemp
+       593,254  C:\Program Files
+       836,661  C:\Program Files (x86)
+       248,034  C:\ProgramData
+             0  C:\Recovery
+     1,502,071  C:\Users
+     9,398,672  C:\Windows
+  Files:        150841
+  Directories:  53774
+  Size:         12,880,903,520 bytes
+  Size on disk: 12,550,011,512 bytes
+du64 reports  C:\Windows\WinSxS  to be down to 1.2GB  while fso reports it to be over 6GB
+  as does  Explorer's Properties
+## language
+Settings > Click on Time & Language > [
+  Language > Preferred languages > English (United Kingdom) >
+    Options > [ Language pack   Handwriting  Speech ] > Download
+  Speech > language > English (United Kingdom)
+  Language > Windows display language > English (United Kingdom)
+  ]
+OpenHardwareMonitor  copied to  $HOME
+## Git for Windows v2.29.2.2
+closed gVim & Powershell
+clicked through all install options
+## QuickHash
+C:\Users\troin\QuickHash-GUI-Linux-v3.2.0
+## MiKTeX
+basic-miktex-20.11-x64.exe > only for me > Install MiKTeX to > (SDEP128G) D:MiKTeX >
+  missing packages on the fly > Yes
+## Thunderbird v78.5.0
+Thunderbird Setup 78.5.0.msi
+## stop individual Edge tabs showing in task switcher
+Settings > System > Multi-tasking > Pressing Alt + Tab shows > Open windows only
+## Sumatra PDF v3.2
+SumatraPDF-3.2-64-install.exe > Options > [ Let Windows show previews of PDF documents ]
+  Association set back to Edge by system
+*.pdf  Opens with SumatraPDF
+## Git for Windows v2.29.2.3
+closed gVim & Powershell
+clicked through all install options
+## Edge > Settings > Appearance > Default theme > Dark
+## Git for Windows v2.30.0
+closed gVim & Powershell
+clicked through all install options
+## Git for Windows v2.30.0.2
+closed gVim & Powershell
+clicked through all install options
+## Settings > Apps & features > Messenger
+(Facebook Inc) Uninstall  to free 173MB
+## Git for Windows v2.30.0.2 > Uninstall
+to allow Windows Update
+## Git v2.30.0.2
+https://git-scm.com/download/win > Windows   for the executable
+Settings > Apps & features > Choose where to get apps >
+  Anywhere, but let me know if there’s a comparable app in the Microsoft Store
+Git-2.30.0.2-64-bit.exe > D:\Git > Check daily >
+  Checkout as is, commit Unix-style line endings
+  Choose a credential helper > None
+## Bulk Rename
+BRU_setup_3.4.1.0.exe  Used it to off-tick 2 notifications
+## Git for Windows v2.30.1
+closed gVim & Powershell
+clicked through all install options
+## Gpg4win
+Settings > Apps & features > Choose where to get apps >
+  Anywhere, but let me know if there’s a comparable app in the Microsoft Store
+gpg4win-3.1.15.exe > GpgOL off-ticked
+Kleopatra > [ pinned into Start  Imported  Encrypted\Secure1\GnuPG\secret-key-9F2D63AE.asc ]
+  Imported  keepassxc_master_signing_key.asc  and  Certified
+## KeePassXC
+right-click on  KeePassXC-2.6.4-Win64.msi.sig  for  More GpgEX options > Verify
+KeePassXC-2.6.4-Win64.msi
+Imported  C:\Users\troin\Dropbox\JH\core\encrypted\JH.kdbx
+Tools > Settings > Browser Integration > Enable > Edge
+## Git for Windows v2.31.0
+closed gVim & Powershell
+## Java SE Runtime Environment 8
+JavaSetup8u281.exe  which Downloaded Installer
+C:\Program Files (x86)\Java\jre1.8.0_281
+## Updates
+:: Starting full system upgrade...
+:: Replace python-dbus with extra/dbus-python? [Y/n] y
+:: Replace python-dbus-common with extra/dbus-python? [Y/n] y
+### Pending Download
+Windows Update Settings > Advanced > Download updates to download over metered connections > On
+  didn't help...
+Settings > Troubleshoot > Additional troubleshooters > Windows Update > Run  didn't help
+## Git for Windows v2.31.1
+closed gVim & Powershell
+## Updates
+2021-03 Cumulative Update for Windows 10 Version 20H2 for x64-based Systems (KB5000802) Status Pending download > Download still achieves nothing...
+## MiKTeX
+MiKTeX Console  reporting "something went wrong"
+  Cleanup > Uninstall MiKTeX > Yes  then  D:MiKTeX  was removed
+basic-miktex-21.2-x64.exe > only for me > Install MiKTeX to > (SDEP128G) D:MiKTeX >
+  missing packages on the fly > Yes   102 Updates
+mkdir $MiKTeX\latex\m4p
+## Everything
+Everything-1.4.1.1005.x64-Setup.exe > English (UK) > [ Check for updates on startup  on
+  Install Desktop shortcut  off ] Ran it for  Ctrl+P ( = Tools > Options ) >
+    [ UI > Single click tray   Results > Open path with double click in path column ]
 # Sequential builds
 ## initial configuration
   Region > United Kingdom   keyboard > United Kingdom   Moto G (4) 1367 > pw

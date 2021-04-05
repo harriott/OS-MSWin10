@@ -25,7 +25,7 @@ new-item "$Pandoc\templates" -itemtype symboliclink -value $onGH/pandoc-template
 
 # new-item $HOME\_gvimrc -itemtype symboliclink -value $MSWin\user\_gvimrc -force
 # remove-item $HOME\vimfiles -recurse -force
-# new-item $HOME\vimfiles -itemtype symboliclink -value $ITstack\vimfiles -force
+# new-item $HOME\vimfiles -itemtype symboliclink -value $onGH\vimfiles -force
 
 #endregion
 #region --- ~\.bashrc
@@ -35,6 +35,7 @@ new-item "$Pandoc\templates" -itemtype symboliclink -value $onGH/pandoc-template
 #endregion
 #region --- ~\.ssh\config
 
+new-item $HOME\.ssh\config -itemtype symboliclink -value $ITstack\CrossPlatform\SSHconfig\LIP120s81A4 -force
 # new-item $HOME\.ssh\config -itemtype symboliclink -value $machine\jnbh\SSHconfig -force
 
 #endregion

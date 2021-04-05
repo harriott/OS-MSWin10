@@ -8,8 +8,11 @@
 
 # Clear-Host
 
-$ITstack = "C:\Users\troin\Dropbox\JH\core\IT_stack"
-  $onGH = "$ITstack\onGitHub"
+$core = "C:\Users\troin\Dropbox\JH\core"
+  $ITstack = "$core\IT_stack"
+    $MSwin = "$onGH\MSWin10"
+      $machine = "$MSWin\HPP11n012na"
+    $onGH = "$ITstack\onGitHub"
 
 . $onGH\MSWin10\PSProfile.ps1  # uses $onGH
 

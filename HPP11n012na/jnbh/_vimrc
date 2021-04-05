@@ -1,12 +1,12 @@
 
-let $MiKTeX = $HOME.'/AppData/Roaming/MiKTeX/tex'
-let $Pandoc = $HOME.'/AppData/Roaming/Pandoc'
-let $ITstack = 'D:/Dropbox/JH/core/IT_stack'
-  let $onGH = $ITstack.'/onGitHub'
-    let $MD4PDF = $onGH.'/md4pdf'
-    let $MSwin = $onGH.'/MSWin10'
-      let $machine = $MSwin.'/HPP11n012na'
-    let $SPDHPP = $onGH.'/SyncPortableDrives/RoboCopy/HPP'
+let $DROPBOX='D:/Dropbox'
+  let $ITHD=$DROPBOX.'/JH/Technos/IT0-HD'
+  let $core = $Dropbox.'/JH/core'
+    let $ITstack = $core.'/IT_stack'
+      let $onGH = $ITstack.'/onGitHub'
+        let $MSwin = $onGH.'/MSWin10'
+          let $machine = $MSwin.'/HPP11n012na'
+        let $SPDHPP = $onGH.'/SyncPortableDrives/RoboCopy/HPP'
 
 " Point to my Win10 vimrc:
 source $HOME/vimfiles/vimrc-Win10.vim
