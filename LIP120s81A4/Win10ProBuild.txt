@@ -495,10 +495,25 @@ MiKTeX Console  reporting "something went wrong"
 basic-miktex-21.2-x64.exe > only for me > Install MiKTeX to > (SDEP128G) D:MiKTeX >
   missing packages on the fly > Yes   102 Updates
 mkdir $MiKTeX\latex\m4p
+(while online) MiKTeX Console > Tasks > Refresh file name database
 ## Everything
 Everything-1.4.1.1005.x64-Setup.exe > English (UK) > [ Check for updates on startup  on
   Install Desktop shortcut  off ] Ran it for  Ctrl+P ( = Tools > Options ) >
     [ UI > Single click tray   Results > Open path with double click in path column ]
+## Pandoc
+pandoc-2.13-windows-x86_64.msi
+## MiKTeX test
+xelatex $ITstack\CrossPlatform\LaTeX\hello.tex
+## Pandoc test
+pandoc --toc --toc-depth=6 -f markdown_strict PandocToCdepth6MWE.md -o PandocToCdepth6MWE.pdf
+  Unfortunately, the package uniquecounter could not be installed.
+MiKTeX Console > Packages > uniquecounter > +
+## Noto Sans CJK Regulars for Pandoc
+$ITstack\MSWin\fonts-copied\NotoHinted > right clicked on the four to Install
+## Updates
+2021-03 Cumulative Update for Windows 10 Version 20H2 for x64-based Systems (KB5000802) repeatedly installs, then claims it failed...
+## running out of space
+space for my data is varying from 1.7 to 2.4 GB, which limits what I can do with Dropbox, and makes updating tricky
 # Sequential builds
 ## initial configuration
   Region > United Kingdom   keyboard > United Kingdom   Moto G (4) 1367 > pw

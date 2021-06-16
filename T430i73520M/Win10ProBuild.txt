@@ -1,0 +1,13 @@
+vim: ft=build:
+
+Lenovo ThinkPad T430 i7-3520M = T430i73520M
+
+# parallel build
+# physical configuration
+# sequential build
+Windows 10 Pro 1909 OS build 18363.1500
+Device name DESKTOP-QSRVUSO
+Activation > Windows is activated with a digital license
+Updated to Windows 10 version 20H2
+# waiting
+Activation > Add a Microsoft Account > 

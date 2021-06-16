@@ -1,4 +1,6 @@
-vim: fdl=1 ft=build:
+vim: ft=build:
+
+C:\Windows\Fonts
 
 # PowerShell
 $MyInvocation.MyCommand.Name  # = the script's name
@@ -69,4 +71,8 @@ ls "$Env:AppData\Pandoc\defaults"
 
 # storage - forbidden characters
 < > : " / \ | ?  *
+
+# Vivaldi
+Alt+P = Settings
+Ctrl+Shift+E = Extensions
 

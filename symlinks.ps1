@@ -1,14 +1,9 @@
-# vim: set et tw=0:
+
 # #region & #endregion create folding blocks if Peter Provost's vim-ps1 is installed
 
 # Joseph Harriott
 # to be run in Administator Powershell
 
-#region --- MiKTeX
-
-new-item "$MiKTeX\latex\jo" -itemtype symboliclink -value $ITstack\CrossPlatform\forLaTeX
-
-#endregion
 #region --- Pandoc\defaults
 
 new-item "$Pandoc\defaults\md4pdfToC.yaml" -itemtype symboliclink -value $MD4PDF\defaults-toc.yaml -force
@@ -35,7 +30,7 @@ new-item "$Pandoc\templates" -itemtype symboliclink -value $onGH/pandoc-template
 #endregion
 #region --- ~\.ssh\config
 
-new-item $HOME\.ssh\config -itemtype symboliclink -value $ITstack\CrossPlatform\SSHconfig\LIP120s81A4 -force
+# new-item $HOME\.ssh\config -itemtype symboliclink -value $ITstack\CrossPlatform\SSHconfig\LIP120s81A4 -force
 # new-item $HOME\.ssh\config -itemtype symboliclink -value $machine\jnbh\SSHconfig -force
 
 #endregion

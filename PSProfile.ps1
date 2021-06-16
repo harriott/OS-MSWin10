@@ -71,11 +71,11 @@ Function fso { $fso = new-object -com Scripting.FileSystemObject; gci -Directory
 #endregion
 #region --- strings in files
 
-Function stringInFiles { SIFWork Files-searchString '*' $args[0] }
-Function stringInMDs { SIFWork LaTeX-searchString '*.md' $args[0] }
-Function stringInPS1s { SIFWork LaTeX-searchString '*.ps1' $args[0] }
-Function stringInTexs { $texFiles = '*.cls','*.tex'; SIFWork LaTeX-searchString $texFiles $args[0] }
-Function stringInVims { SIFWork Vims-searchString '*.vim' $args[0] }
+Function stringInAllFiles { SIFWork string-AllFiles '*' $args[0] }
+Function stringInMDs { SIFWork string-md '*.md' $args[0] }
+Function stringInPS1s { SIFWork string-ps1 '*.ps1' $args[0] }
+Function stringInTexs { $texFiles = '*.cls','*.tex'; SIFWork string-LaTeX $texFiles $args[0] }
+Function stringInVims { SIFWork string-vim '*.vim' $args[0] }
 
 Function SIFWork {
   # not to be called directly
@@ -114,16 +114,24 @@ Function gvim {
 }
 
 #endregion
+#region --- MiKTeX
+
+Function lj {
+  Remove-Item -recurse $MiKTeX\latex\jo
+  Copy-Item -recurse $ITstack\CrossPlatform\forLaTeX $MiKTeX\latex\jo
+} # instead of a symlink to avoid snags if MiKTeX is uninstalled
+
+#endregion
 #region --- Pandoc
 # helps to define these also in  $HOME\_vimrc
 $MiKTeX = "$Env:AppData\MiKTeX\tex"
 $Pandoc = "$Env:AppData\Pandoc"
   $MD4PDF = "$onGH\md4pdf"
 
-Function heading0sty { cpi $MD4PDF/iih/headings0.sty $MiKTeX\latex\m4p\headings.sty -force }
-Function m4p { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4p.ps1 $args[0] $args[1] }
-Function m4ps0 { heading0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4ps.ps1 }
-Function m4ps1 { heading0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4ps.ps1 $args[0] $args[1] }
+Function headings0sty { cpi $MD4PDF/iih/headings0.sty $MiKTeX\latex\m4p\headings.sty -force }
+Function m4p { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4p.ps1 $args[0] $args[1] $args[2] }
+Function m4ps0 { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4ps.ps1 -r }
+Function m4ps1 { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4ps.ps1 $args[0] $args[1] }
 
 #endregion
 #region --- re-tag image files to 72dpi

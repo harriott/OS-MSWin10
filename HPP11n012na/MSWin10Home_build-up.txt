@@ -13,6 +13,14 @@ where.exe ffmpeg
 cd *\ffmpeg-yyyymmdd-xxxxxxx-win64-static\bin
   cpi ffmpeg.exe C:\Users\jnbh\AppData\Local\Microsoft\WindowsApps
 ffmpeg -version
+## KeePassXC
+Kleopatra > Imported  keepassxc_master_signing_key.asc  and  Certified
+  (Fingerprint BF5A669F2272CF4324C1FDA8CFB4C2166397D0D2, Gpg4win Passphrase)
+right-click on  KeePassXC-2.6.4-Win64.msi.sig  for  More GpgEX options > Verify
+KeePassXC-2.6.4-Win64.msi > Settings > General > Startup > [ Automatically launch  offticked
+  Minimize window after unlocking database ]
+Imported  C:\Users\troin\Dropbox\JH\core\encrypted\JH.kdbx
+Tools > Settings > Browser Integration > Enable > Vivaldi
 # sequential build
 ## fitted BX200
 Secure Boot > Disabled > entered given passcode
@@ -1114,7 +1122,13 @@ Everything-1.4.1.1005.x64-Setup.exe > [ Check for updates on startup  on
 ## Notepad++ Updated to v7.9.1
 clicked through queries
 ## PowerShell Opacity
-right-click on PowerShell top bar > Properties > Colours > Opacity > 86%
+right-click on PowerShell top bar > Properties > Colours > Opacity > 86when lid has been closed for a while.%
+## Update KB5001337
+Took ages, then failed after the restart. Next try worked.
+## Git for Windows v2.
+closed gVim & Powershell
+clicked through all install options
+## Feature update to Windows 10, version 20H2
 ## waiting
 ### f.lux
 flux-setup.exe
