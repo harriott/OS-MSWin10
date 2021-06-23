@@ -2,12 +2,106 @@ vim: ft=build:
 
 Lenovo ThinkPad T430 i7-3520M = T430i73520M
 
-# parallel build
 # physical configuration
+SanDisk microSD adapter containing S32GBC10
 # sequential build
 Windows 10 Pro 1909 OS build 18363.1500
 Device name DESKTOP-QSRVUSO
 Activation > Windows is activated with a digital license
 Updated to Windows 10 version 20H2
+## before Dropbox, prepare KDTG311282
+on an Arch machine:  rsync -irtv --delete --modify-window=1 $core/ /run/media/jo/KDTG311282/core
+in  C:\Users\Admin:  robocopy /mir D:\core core
+Settings > Update & Security > Activation > Add a Microsoft Account > Add > troingjo@outlook.com
+  Sign in to this computer using your Microsoft account > Next
+Sign-in options > Windows Hello PIN > 6734
+## get better account name
+created account using  jharrio@outlook.com
+in C:\Users\jharr  robocopy /mir C:\Users\Admin\core core
+Deleted  Admin
+Computer Management > Family & other users > troingjo@outlook.com > Allow > Change account type >
+  Administrator  then Signed in with pw, set PIN, Yes'd all Microsoft's privacy questions
+HP Smart > Continue > Yes
+precautionary reboot
+in C:\Users\troin  robocopy /mir C:\Users\jharr\core core
+Control Panel > User Accounts > Add or remove > jharrio@outlook.com > Delete the Account > Delete Files > Delete
+## Ditto Clipboard
+Microsoft Store > Ditto Clipboard > Install > Pin to Start
+Ran it for  Options > General > [ Maximum Number of Saved Copies > 5000
+   Advanced > Show leading whitespace ] ( C:\Users\troin\AppData\Local\Ditto_WindowsApp\Ditto.db )
+## stop individual Edge tabs showing in task switcher
+Settings > System > Multi-tasking > Pressing Alt + Tab shows > Open windows only
+## Dropbox
+dropbox.com  for  DropboxInstaller.exe
+  Signed in > Online only > Selective sync for most immediately useful folders
+## KeePassXC
+KeePassXC-2.6.6-Win64.msi > Install > UAC > Yes
+C:\Users\troin\Dropbox\JH\core\encrypted\JH.kdbx
+Tools > Settings > Browser Integration > Enable > Edge
+restarted Edge
+## PowerShell execution policy
+Get-ExecutionPolicy   reported  "Restricted"
+as Administrator:  Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Confirm > y
+## $Profile
+PS> $Profile  returns
+  C:\Users\troin\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1   which ain't there
+### symlink $profile
+Administrator PS:  new-item ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 -itemtype symboliclink -value ~\Dropbox\JH\core\IT_stack\onGitHub\MSWin10\T430i73520M\PSProfile.ps1 -force
+## gVim v8.2.3013
+gvim_8.2.3013_x86_signed.exe
+  [ Create icons > On the Desktop off  Create Default Config off  Create Plugin Directories off ]
+\Users\troin\Dropbox\JH\core\IT_stack\onGitHub\MSWin10\T430i73520M
+$machine\symlinks.ps1
+## CapsLock
+https://www.microsoft.com/en-gb/p/capslock/9nbx19w2pp00
+## Windows Terminal
+https://www.microsoft.com/en-gb/p/windows-terminal-preview/9n0dx20hk701
+~\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
+## Settings > System
+Power & sleep > Additional power settings > Choose >
+  Change settings that are currently unavailable > Turn on fast startup  off-ticked
+About > Rename > T430i73520M
+## Ditto Activate
+Ctrl + '  unresponsive, so  Options > Keyboard Shortcuts > first Activate > [ ' Win ]
+## UK keyboard
+Settings > Language > Preferred > [ US removed
+  English (United Kingdom) > Options > Keyboards > US > Remove ]
+## Git v2.32
+https://git-scm.com/download/win
+Git-2.32.0-64-bit.exe > [ Check daily  Git Bash Profile in Windows Terminal ]
+  Checkout as is, commit Unix-style line endings
+  Choose a credential helper > None
+## 7-Zip
+7z1900-x64.exe
+## SSH keys
+created  C:\Users\troin\.ssh
+  cpi ~\Encrypted\Secure1\Networking\SSH\id_ed25519-forGitHub ~\.ssh\id_rsa.
+  cpi ~\Encrypted\Secure1\Networking\SSH\id_ed25519-forGitHub.pub ~\.ssh\id_rsa.pub
+## Test GitHub SSH connection
+(requires Private key as C:\Users\troin\.ssh\id_rsa)
+Git Bash > ssh -T git@github.com
+  The authenticity of host 'github.com (140.82.118.4)' can't be established.
+  RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+  Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+  Warning: Permanently added 'github.com,140.82.118.4' (RSA) to the list of known hosts.
+  Hi harriott! You've successfully authenticated, but GitHub does not provide shell access.
+got me  $HOME\.ssh\known_hosts
+## PowerShell Modules
+$Env:PSModulePath -split ';'
+### update PowerShellGet
+as Administrator:  Install-PackageProvider Nuget -Force   got me   nuget 2.8.5.208
+as Administrator:  Update-Module PowerShellGet
+  Module 'PowerShellGet' was not installed by using Install-Module, so it cannot be updated.
+as Administrator:  Install-Module PowerShellGet -Force
+Get-InstalledModule  reported  1.4.7 PackageManagement  2.2.5 PowerShellGet
+## ZLocation
+Install-Module ZLocation
+  You are installing the modules from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from 'PSGallery'? > a
+z  shows it's there, and  Get-InstalledModule  reports  1.4.3 ZLocation
+C:\Users\troin\Documents\WindowsPowerShell\Modules\ZLocation
+## Posh-Git installed
+Install-Module posh-git
+  You are installing the modules from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from 'PSGallery'? > a
+Get-InstalledModule  reports  1.4.2 ZLocation
+C:\Users\troin\Documents\WindowsPowerShell\Modules\posh-git
 # waiting
-Activation > Add a Microsoft Account > 

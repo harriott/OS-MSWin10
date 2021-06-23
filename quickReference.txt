@@ -2,26 +2,31 @@ vim: ft=build:
 
 C:\Windows\Fonts
 
-# PowerShell
+# cli
+in Explorer:  Alt+D > cmd > Enter
+
+## PowerShell
 $MyInvocation.MyCommand.Name  # = the script's name
 Alt > Space > E > L > [ up / down  to scroll   Esc ]
+in Explorer:  Alt+D > powershell > Enter
 foreach($element in 1..3){ $element }
+Get-Package | Format-Table -AutoSize
 robocopy /mir <sourcedir> <destinationdir> /l  # runs a simulation of mirroring source to destination
 stringInVims "string"
 
-## aliases
+### aliases
 limited to single commands
 nal <alias> <string>
 sal <alias> <string>
 
-### standard
+#### standard
 ri
 
-## data
+### data
 $x.GetType()
 [string]$Pwd
 
-## executables
+### executables
 C:\Windows\explorer.exe "microsoft-edge:searchterm"
 gcm explorer
 explorer "$Env:AppData\MiKTeX\tex\latex\jo"
@@ -29,7 +34,7 @@ explorer shell:Appsfolder  # Applications
 ffmpeg -version
 start <somefile>
 
-## folder investigations
+### folder investigations
 cat somefile.txt | where { $_ -match “expression”}
 gci * | select FullName
 gci * | select Name
@@ -38,16 +43,16 @@ ls -r -i '* (* conflicted copy *' |%{echo $_.fullname} | ri
 lwp \.ps1
 lwt *.ps1 *.sh
 
-### sizes
+#### sizes
 dc
 du64 -l 1
 fso
 
-## system info
+### system info
 winver
 wmic path SoftwareLicensingService get OA4xOriginalProductKey
 
-### environment variables
+#### environment variables
 $Env:AppData
 $Env:Computername
 $Env:Path -split';'
@@ -57,17 +62,25 @@ gci env:  # list the environment variables
 $PSScriptRoot
 $PSVersionTable
 
-#### Roaming
+##### Roaming
 $Env:AppData  # C:\Users\...\AppData\Roaming
 ls "$Env:AppData\Pandoc\defaults"
 
-## text wrangling
+### text wrangling
 & "${Env:ProgramFiles(x86)}\Vim\vim82\gvim.exe" <textfile>
 (Get-Content $file) -replace $regex, $newtext | Set-Content $file
 
-# robocopy
+## robocopy
 /l   - list only (= simulate)
 /tee - output to console as well as log file
+
+## wt
+in Explorer:  Alt+D > wt > Enter
+
+### Settings
+Ctrl+, -> Settings
+Ctrl+Shift+W -> close pane
+Ctrl+Shift+PgUp -> scroll up a page
 
 # storage - forbidden characters
 < > : " / \ | ?  *

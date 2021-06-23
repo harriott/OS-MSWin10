@@ -2,14 +2,13 @@
 
 # Joseph Harriott
 
-Set-Alias j z  # ZLocation
 Set-Alias ss Select-String
 
 #region --- folder investigations
 Function gfiln { gci -r $args[0] | select -ExpandProperty FullName }
 Function gfoln { gci -r $args[0] | where { $_.PSIsContainer } | select -ExpandProperty FullName }
 
-Import-Module ZLocation
+Set-Alias j z  # ZLocation
 
 #region --- filetypes
 Function cex { gci . -r | where { ! $_.PSIsContainer } | Group Extension -noElement | Sort Count -Desc }
@@ -98,6 +97,7 @@ Function SIFWork {
 
 Function e { exit } # quit (doesn't work as an alias)
 Function fn { gci | select -ExpandProperty FullName | sort }
+Function gic { git commit -m "$args[0]" }
 Function gis { git status -u }
 Function p {test-connection -computername 8.8.8.8 -ErrorAction SilentlyContinue}
 Function pg {test-connection -computername google.com -ErrorAction SilentlyContinue}
@@ -163,4 +163,3 @@ Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
 #endregion
-

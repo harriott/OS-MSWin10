@@ -1,0 +1,11 @@
+
+let $core = $HOME.'/Dropbox/JH/core'
+  let $ITstack = $core.'/IT_stack'
+    let $onGH = $ITstack.'/onGitHub'
+      let $MSwin10 = $onGH.'/MSWin10'
+        let $machine = $MSwin10.'/T430i73520M'
+" more locations are defined in  $onGH/vimfiles/vimrc-Win10.vim
+
+let mapleader='#'
+source $HOME/vimfiles/vimrc-Win10.vim
+
