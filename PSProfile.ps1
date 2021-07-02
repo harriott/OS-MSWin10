@@ -115,6 +115,7 @@ Function gvim {
 
 #endregion
 #region --- MiKTeX
+Function x { xelatex --max-print-line=99 $args[0] }
 
 Function lj {
   Remove-Item -recurse $MiKTeX\latex\jo

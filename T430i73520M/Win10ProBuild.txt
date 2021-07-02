@@ -60,7 +60,12 @@ https://www.microsoft.com/en-gb/p/windows-terminal-preview/9n0dx20hk701
 ## Settings > System
 Power & sleep > Additional power settings > Choose >
   Change settings that are currently unavailable > Turn on fast startup  off-ticked
-About > Rename > T430i73520M
+About >
+  Device specifications  shows
+      Device ID: B46A2877-26FB-4631-9844-9A6F1C6384FA
+      Product ID: 00330-80000-00000-AA294
+    Rename > T430i73520M
+  Windows specifications  shows  OS build: 19042.1055
 ## Ditto Activate
 Ctrl + '  unresponsive, so  Options > Keyboard Shortcuts > first Activate > [ ' Win ]
 ## UK keyboard
@@ -104,4 +109,47 @@ Install-Module posh-git
   You are installing the modules from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from 'PSGallery'? > a
 Get-InstalledModule  reports  1.4.2 ZLocation
 C:\Users\troin\Documents\WindowsPowerShell\Modules\posh-git
+## QuickHash
+C:\Users\troin\QuickHash-GUI-Linux-v3.3.0
+## MiKTeX
+basic-miktex-21.6-x64.exe > (only for me) > missing packages on the fly > Yes
+rebooted for  MiKTeX Console  which got me 7 updates, then  "MiKTeX Console needs to be closed."
+  MiKTeX Console  for  miktex-misc, then  "MiKTeX Console needs to be closed."
+  Again...  Same after reboots...
+  ~\AppData\Local\MiKTeX\miktex\log\miktex-console.log  reporting
+    WARN  miktex-console.packagemanager - miktex-misc: package is broken
+MiKTeX Console > Cleanup > Uninstall MiKTeX > Yes
+precautionary reboot
+basic-miktex-21.6-x64.exe > (only for me) > (Install MiKTeX to >
+  C:\Users\troin\AppData\Local\Programs\MiKTeX) > missing packages on the fly > Yes
+precautionary reboot
+## FastStone Image Viewer v7.5
+FSViewerSetup75.exe
+ran it for Esc to offtick
+  Settings > Viewer > [ Loop on, Auto-rotate by EXIF off, Default Unit > cm ]
+*.png  Opens with FastStone Image Viewer
+### Settings
+replaced  PaperSizeList  settings in  ~\AppData\Roaming\FastStone\FSIV\FSSettings.db
+  with those in  $ITstack\MSWin\FSSettings-PaperSizeList.db
+## Notepad++ v8.1
+npp.8.1.Installer.exe ( > C:\Program Files (x86)\Notepad++ )
+## Everything
+Everything-1.4.1.1009.x64-Setup.exe > English (UK) > [ Check for updates on startup  on
+  Install Desktop shortcut  off ] Ran it for  Ctrl+P ( = Tools > Options ) >
+    [ UI > Single click tray   Results > Open path with double click in path column ]
+## Sumatra PDF v3.2
+SumatraPDF-3.2-64-install.exe > Options > [ Let Windows show previews of PDF documents ]
+  (Association set back to Edge by system) *.pdf  Opens with SumatraPDF
+## Thunderbird v78.11.0
+Thunderbird Setup 78.11.0.exe > Custom > not On my Desktop
+Ran it to get  C:\Users\troin\AppData\Roaming\Thunderbird\Profiles\ksd3df6o.default-release
+  which I emptied, and then edited  C:\Users\troin\AppData\Roaming\Thunderbird\profiles.ini
+    [Profile0] section:
+      IsRelative=0
+      Path=C:\Users\troin\Dropbox\JH\TP.default-release
+## Disk Usage
+du64.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
+## UltraNav icon
+Control Panel > Mouse (= Mouse Properties > UltraNav) > Show UltraNav icon on the system tray
+## S32GBC10 moved to D:
 # waiting

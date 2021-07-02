@@ -79,8 +79,14 @@ in Explorer:  Alt+D > wt > Enter
 
 ### Settings
 Ctrl+, -> Settings
-Ctrl+Shift+W -> close pane
+
+#### key-binds
+Alt+Shift+d -> vertical pane split of current profile
+Ctrl+Shift+t -> new tab
+Ctrl+Shift+w -> close pane
 Ctrl+Shift+PgUp -> scroll up a page
+Ctrl(+Shift)+Tab -> move to next (previous) tab
+Settings > Actions
 
 # storage - forbidden characters
 < > : " / \ | ?  *
