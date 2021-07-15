@@ -2,7 +2,7 @@
 # #region & #endregion create folding blocks if Peter Provost's vim-ps1 is installed
 
 # Joseph Harriott
-# to be run in Administator Powershell
+# to be run in Administator Powershell:  iex $MSWin10\symlinks.ps1
 
 #region --- Pandoc\defaults
 
@@ -12,8 +12,9 @@ new-item "$Pandoc\defaults\md4pdf.yaml" -itemtype symboliclink -value $MD4PDF\de
 #endregion
 #region --- Pandoc\templates
 
-$(get-item $Pandoc\templates).Delete()
-new-item "$Pandoc\templates" -itemtype symboliclink -value $onGH/pandoc-templates -force
+$Pt = "$Pandoc\templates"
+if (Test-Path $Pt) {$(get-item $Pt).Delete()}
+new-item "$Pt" -itemtype symboliclink -value $onGH/pandoc-templates -force
 
 #endregion
 #region --- vim

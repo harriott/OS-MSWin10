@@ -1,16 +1,18 @@
 vim: ft=build:
 
-C:\Windows\Fonts
+Adobe Acrobat Reader DC > Shift+Ctrl+Minus -> rotate left
 
 # cli
 in Explorer:  Alt+D > cmd > Enter
 
 ## PowerShell
 $MyInvocation.MyCommand.Name  # = the script's name
+<command> | Out-Null  # works for some commands
 Alt > Space > E > L > [ up / down  to scroll   Esc ]
 in Explorer:  Alt+D > powershell > Enter
 foreach($element in 1..3){ $element }
 Get-Package | Format-Table -AutoSize
+ii .  # invoke Explorer on WD
 robocopy /mir <sourcedir> <destinationdir> /l  # runs a simulation of mirroring source to destination
 stringInVims "string"
 
@@ -20,6 +22,7 @@ nal <alias> <string>
 sal <alias> <string>
 
 #### standard
+iex -> Invoke-Expression
 ri
 
 ### data
@@ -33,6 +36,7 @@ explorer "$Env:AppData\MiKTeX\tex\latex\jo"
 explorer shell:Appsfolder  # Applications
 ffmpeg -version
 start <somefile>
+where.exe where.exe
 
 ### folder investigations
 cat somefile.txt | where { $_ -match “expression”}
@@ -50,7 +54,6 @@ fso
 
 ### system info
 winver
-wmic path SoftwareLicensingService get OA4xOriginalProductKey
 
 #### environment variables
 $Env:AppData
@@ -81,12 +84,25 @@ in Explorer:  Alt+D > wt > Enter
 Ctrl+, -> Settings
 
 #### key-binds
-Alt+Shift+d -> vertical pane split of current profile
-Ctrl+Shift+t -> new tab
-Ctrl+Shift+w -> close pane
+Alt+D -> duplicate pane right
+Alt+_ -> split pane below
+Alt++ -> split pane right
+Ctrl+c -> copy text
+Ctrl+T -> new tab
+Ctrl+W -> close pane
 Ctrl+Shift+PgUp -> scroll up a page
 Ctrl(+Shift)+Tab -> move to next (previous) tab
 Settings > Actions
+
+# Fonts
+C:\Windows\Fonts
+Get-ItemProperty -Path "Registry::\HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" | Format-List
+
+# IrfanView
+Ctrl+Shift+a -> Acquire/Batch Scanning
+p -> Properties/Settings
+R -> Reopen file
+r -> rotate right
 
 # storage - forbidden characters
 < > : " / \ | ?  *

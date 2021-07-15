@@ -1,8 +1,10 @@
 vim: ft=build:
 
+Fn+k toggles Scroll Lock
 Lenovo ThinkPad T430 i7-3520M = T430i73520M
 
 # physical configuration
+1600x900 screen with rhs taskbar
 SanDisk microSD adapter containing S32GBC10
 # sequential build
 Windows 10 Pro 1909 OS build 18363.1500
@@ -152,4 +154,124 @@ du64.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 ## UltraNav icon
 Control Panel > Mouse (= Mouse Properties > UltraNav) > Show UltraNav icon on the system tray
 ## S32GBC10 moved to D:
+## HP Smart
+Signed In
+was seeing my HP ENVY 5532, as HP ENVY 5530 series & I was able to Scan
+## Tixati v2.84.1
+tixati-2.84-1.win64-install.exe
+  Pinned to Start, and Deleted from Desktop
+  Initial Configuration > Bandwidth Throttle > Automatic Limiter
+  Allowed in Windows Firewall, including Private networks
+  Settings > [ Behaviour > [ Main window close > Completely   Main window minimize > Hide ]
+    Transfers > Locations > C:\Users\troin\Downloads ]
+## Adobe Acrobat Reader DC
+https://get.adobe.com/uk/reader/  for  readerdc_uk_xa_crd_install.exe
+Ctrl+k (= Preferences) >
+  Documents > Open Settings > Restore last view
+  Page Display > Page Layout > Two-Up Continuous
+  Units > Page Units > Millimeters
+## OpenOffice
+Settings > Apps & features > OpenOffice 4.1.9 > Uninstall > allowed an msi to run
+## LibreOffice 7.1.4
+LibreOffice_7.1.4_Win_x64.msi > Custom > not on desktop > accepted in UAC
+ran it to build  C:\Users\troin\AppData\Roaming\LibreOffice\4
+  in  user\  removed  config  folder &  registrymodifications.xcu
+    & replaced them from  C:\Users\troin\Dropbox\JH\core\IT_stack\CrossPlatform\LibreOffice\l3i-sbMb-user
+right-clicked on a PDF for  Open with > Choose > C:\Program Files\LibreOffice\program\sdraw.exe
+## HP Smart
+no longer seeing my HP ENVY 5532, so
+  Add your first printer > Add Printer > HPA22FOE (ENVY 5530 series)
+## IrfanView 4.58
+iview458_x64_setup.exe
+  (no Desktop shortcuts  For all users)
+ran it for  P (= Properties/Settings) > [JPG > Auto-rotate off    Browsing > Cut White]
+scanned from HP ENVY 5532
+## Ghostscript v9.54 (in preparation for ImageMagick)
+gs9540w64.exe  Overview of Ghostscript  file:///C:/Program%20Files/gs/gs9.54.0/doc/Readme.htm
+$env:path +=';C:\Program Files\gs\gs9.54.0\bin'
+gswin64c -h
+## ImageMagick
+ImageMagick-7.1.0-2-Q16-HDRI-x64-dll.exe > [ desktop icon  FFmpeg ] off-ticked
+fresh PowerShell for:  magick wizard: wizard.jpg
+  then  magick wizard.jpg win:  first time generated an IMDisplay
+    "C:\Users\troin\AppData\Local\Temp\magick-<weirdCode> was not found"
+    2nd run, got the jpg opened in IMDisplay   ri wizard.jpg
+ImageMagick  file:///C:/Program%20Files/ImageMagick-7.1.0-Q16-HDRI/index.html
+## MiniTool Partition Wizard Free v12.5
+pw1205-free.exe > ShadowMaker Trial off-ticked
+  ran it, then off-ticked an advertising message
+## Gpg4win
+gpg4win-3.1.16.exe > GpgOL off-ticked
+### Kleopatra
+pinned into Start  Imported  Encrypted\Secure1\GnuPG\secret-key-9F2D63AE.asc
+notification icon unhidden for full quitting
+#### fail to Import Pierre Schmitz' certificate
+Ctrl+Shift+, (= Settings > Configure Kleopatra) > Directory Services > OpenPGP Keyserver =
+  hkps://hkps.pool.sks-keyservers.net  changing that to  https://keys.openpgp.org/
+    didn't get a result for  0x4AA4767BBC9C4B1D18AE28B77F2D434B9741E8AC
+  https://pgp.key-server.io/  found it, but won't Import...
+### gpg
+gpg --version
+  ...
+  Home: C:/Users/troin/AppData/Roaming/gnupg
+gpg --list-keys
+gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys 4AA4767BBC9C4B1D18AE28B77F2D434B9741E8AC
+gpg --fingerprint
+gpg --edit-key pierre@archlinux.de > sign > passphrase > save
+gpg --list-sigs
+## Gpg4win Uninstall
+Windows+i > Apps & features > Gpg4win (3.1.16) > Uninstall
+didn't remove  C:\Users\troin\AppData\Roaming\gnupg
+## Gpg4win reinstall without Kleopatra
+gpg4win-3.1.16.exe > GpgOL, GpgEX, then Kleopatra off-ticked
+where.exe gpg  reports  C:\Program Files (x86)\GnuPG\bin\gpg.exe
+## C:\Users\troin\rufus-3.14.exe
+## ExifTool v12.28
+cpi 'exiftool(-k).exe' C:\Users\troin\AppData\Local\Microsoft\WindowsApps\exiftool.exe
+## Bulk Rename
+BRU_setup_3.4.3.0.exe
+Used it to off-tick 2 notifications
+## Sigcheck
+sigcheck64.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
+sigcheck64 sigcheck64.exe
+## O&O RegEditor
+C:\Users\troin\ooregeditor_12_0_2172\OORegEdt.exe > default for .REG, do not ask again
+## Opera
+https://www.opera.com/download > OperaSetup.exe
+## Git v2.32.0.2 failed
+- maybe because I'd hit a key, so  Apps & Features > Git > Uninstall
+  didn't remove empty folder  C:\Program Files\Git\cmd  nor  C:\Program Files\Git\etc\gitconfig
+Git-2.32.0.2-64-bit.exe
+## Git v2.32
+https://git-scm.com/download/win
+Git-2.32.0-64-bit.exe > [ Check daily  Add Git Bash Profile to Windows Terminal ]
+  Checkout as is, commit Unix-style line endings
+  Choose a credential helper > None
+## Pandoc
+pandoc-2.14.0.3-windows-x86_64.msi
+## Pandoc test
+pandoc --toc --toc-depth=6 -f markdown_strict PandocToCdepth6MWE.md -o PandocToCdepth6MWE.pdf
+## Noto Sans CJK Regulars for Pandoc
+$ITstack\MSWin\fonts-copied\NotoHinted > right clicked on all four to Install
+## for my m4p scripts
+new-item -type directory $tex\latex\m4p
+## update MiKTeX
+mpm --verify
+  metapost: this package needs to be reinstalled.
+mpm --update
+  91 packages have been successfully updated.
+mpm --verify
+  All packages are correctly installed.
+## path too long for gVim & Pandoc
+  C:\Users\troin\Dropbox\JH\core\TN-OT-V-N-Eukaryote\Animal\Bilateria\Nephrozoa\Deuterostome-Chordata-Vertebrates\Tetrapod\Sauropsida-Reptile\Diapsid\Neotheropoda-Averostra\Ornithothoraces-Paraves\Aves\Neognathae\Neoaves\Aequorlitornithes.md
+### LongPath
+Get-ItemProperty -Path "Registry::\HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" | Format-List
+right-clicked on  $DROPBOX\JH\Copied\IT-handy\tenforumsLongPaths\Enable_Win32_long_paths.reg
+  for  Properties > Opens with > Registry Editor
+  then double-clicked on it
+Get-ItemProperty -Path "Registry::\HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" | Format-List
+  shows  LongPathsEnabled : 1
+rebooted
+### path still too long for gVim swap
+E303: Unable to open swap file for "\Users\troin\Dropbox\JH\core\TN-OT-V-N-Eukaryote\Animal\Bilateria\Nephrozoa\Deuterostome-Chordata-Vertebrates\Tetrapod\Sauropsida-Reptile\Diapsid\Neotheropoda-Averostra\Ornithothoraces-Paraves\Aves\Neognathae\Neoaves\Aequorlitornithes.md", recovery impossible
 # waiting

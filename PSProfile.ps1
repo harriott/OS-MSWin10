@@ -114,25 +114,37 @@ Function gvim {
 }
 
 #endregion
+#region --- Ghostscript v9.54
+$env:path +=';C:\Program Files\gs\gs9.54.0\bin'
+
+#endregion
 #region --- MiKTeX
 Function x { xelatex --max-print-line=99 $args[0] }
 
 Function lj {
-  Remove-Item -recurse $MiKTeX\latex\jo
-  Copy-Item -recurse $ITstack\CrossPlatform\forLaTeX $MiKTeX\latex\jo
+  Remove-Item -recurse $tex\latex\jo
+  Copy-Item -recurse $ITstack\CrossPlatform\forLaTeX $tex\latex\jo
 } # instead of a symlink to avoid snags if MiKTeX is uninstalled
 
 #endregion
 #region --- Pandoc
 # helps to define these also in  $HOME\_vimrc
-$MiKTeX = "$Env:AppData\MiKTeX\tex"
+$tex = "$Env:AppData\MiKTeX\tex"
 $Pandoc = "$Env:AppData\Pandoc"
   $MD4PDF = "$onGH\md4pdf"
 
-Function headings0sty { cpi $MD4PDF/iih/headings0.sty $MiKTeX\latex\m4p\headings.sty -force }
+Function headings0sty { cpi $MD4PDF/iih/headings0.sty $tex\latex\m4p\headings.sty -force }
 Function m4p { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4p.ps1 $args[0] $args[1] $args[2] }
-Function m4ps0 { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4ps.ps1 -r }
-Function m4ps1 { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4ps.ps1 $args[0] $args[1] }
+Function m4ps0 { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4ps.ps1 $args[0] $args[1] }
+Function mt {
+  sl $DROPBOX\JH\core\TextNotes
+  [string]$Pwd
+  m4ps0 -s
+  sl ../TN-OT-V-N-E-A-B-Nephrozoa
+  [string]$Pwd
+  m4ps0 -s
+}
+
 
 #endregion
 #region --- re-tag image files to 72dpi
