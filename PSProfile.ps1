@@ -4,42 +4,73 @@
 
 Set-Alias ss Select-String
 
-#region --- folder investigations
-Function gfiln { gci -r $args[0] | select -ExpandProperty FullName }
-Function gfoln { gci -r $args[0] | where { $_.PSIsContainer } | select -ExpandProperty FullName }
+#region --- documenting
+  Function xc { iex "$Env:LocalAppData\SumatraPDF\SumatraPDF.exe $Dropbox\JH\Copied\IT-handy\TeX\LaTeX\Appearance\xcolor.pdf -page 38" }
 
-Set-Alias j z  # ZLocation
+#region --- MiKTeX
+  Function x { xelatex --max-print-line=110 $args[0] }
+
+  Function lj {
+    Remove-Item -recurse $tex\latex\jo
+    Copy-Item -recurse $ITstack\CrossPlatform\forLaTeX $tex\latex\jo
+  } # instead of a symlink to avoid snags if MiKTeX is uninstalled
+#endregion
+#region --- Pandoc
+  # helps to define these also in  $HOME\_vimrc
+  $tex = "$Env:AppData\MiKTeX\tex"
+  $Pandoc = "$Env:AppData\Pandoc"
+    $MD4PDF = "$onGH\md4pdf"
+
+  Function headings0sty { cpi $MD4PDF/iih/headings0.sty $tex\latex\m4p\headings.sty -force }
+  Function m4p { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4p.ps1 $args[0] $args[1] $args[2] }
+  Function m4ps0 { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4ps.ps1 $args[0] $args[1] }
+  Function mt {
+    sl $DROPBOX\JH\core\TextNotes
+    [string]$Pwd
+    m4ps0 -s
+    sl ../TN-OT-V-N-E-A-B-Nephrozoa
+    [string]$Pwd
+    m4ps0 -s
+  }
+
+#endregion
+#endregion
+#region --- folder investigations
+  Function gfiln { gci -r $args[0] | select -ExpandProperty FullName }
+  Function gfoln { gci -r $args[0] | where { $_.PSIsContainer } | select -ExpandProperty FullName }
+
+  Set-Alias j z  # ZLocation
 
 #region --- filetypes
-Function cex { gci . -r | where { ! $_.PSIsContainer } | Group Extension -noElement | Sort Count -Desc }
+  Function cex { gci . -r | where { ! $_.PSIsContainer } | Group Extension -noElement | Sort Count -Desc }
 
-Function Tomalak {
+  Function Tomalak {
 # https://stackoverflow.com/questions/15064758/summarize-a-file-system-directory-with-powershell
-gci -r -ea si `
-  | select `
-      Length, `
-      @{n="FileType"; e={ if ($_.PSIsContainer) {""} else {$_.Extension.ToLower()} }}, `
-      @{n="PathLength"; e={$_.FullName.Length}}, `
-      @{n="PathDepth"; e={$_.FullName.Split("\").Length - 1}} `
-  | group FileType `
-  | sort @{e="Count"; desc=$True}, FileType `
-  | select `
-      Name, `
-      Count, `
-      @{n="Length"; e={$_.Group | measure Length -sum -average} }, `
-      @{n="PathLength"; e={$_.Group | measure PathLength -max -average} }, `
-      @{n="PathDepth"; e={$_.Group | measure PathDepth -max -average} } `
-  | ft `
-      @{n="FileType"; e={$_.Name} }, `
-      Count, `
-      @{n="SumSizeMB"; e={"{0:N1}" -f ($_.Length.Sum / 1MB)}; a="right"}, `
-      @{n="AvgSizeKB"; e={"{0:N2}" -f ($_.Length.Average / 1MB)}; a="right"}, `
-      @{n="MaxPathLength"; e={[int]$_.PathLength.Maximum}; a="right"}, `
-      @{n="AvgPathLength"; e={[int]$_.PathLength.Average}; a="right"}, `
-      @{n="MaxPathDepth"; e={[int]$_.PathDepth.Maximum}; a="right"}, `
-      @{n="AvgPathDepth"; e={[int]$_.PathDepth.Average}; a="right"} `
-      -auto
-  }
+  gci -r -ea si `
+    | select `
+        Length, `
+        @{n="FileType"; e={ if ($_.PSIsContainer) {""} else {$_.Extension.ToLower()} }}, `
+        @{n="PathLength"; e={$_.FullName.Length}}, `
+        @{n="PathDepth"; e={$_.FullName.Split("\").Length - 1}} `
+    | group FileType `
+    | sort @{e="Count"; desc=$True}, FileType `
+    | select `
+        Name, `
+        Count, `
+        @{n="Length"; e={$_.Group | measure Length -sum -average} }, `
+        @{n="PathLength"; e={$_.Group | measure PathLength -max -average} }, `
+        @{n="PathDepth"; e={$_.Group | measure PathDepth -max -average} } `
+    | ft `
+        @{n="FileType"; e={$_.Name} }, `
+        Count, `
+        @{n="SumSizeMB"; e={"{0:N1}" -f ($_.Length.Sum / 1MB)}; a="right"}, `
+        @{n="AvgSizeKB"; e={"{0:N2}" -f ($_.Length.Average / 1MB)}; a="right"}, `
+        @{n="MaxPathLength"; e={[int]$_.PathLength.Maximum}; a="right"}, `
+        @{n="AvgPathLength"; e={[int]$_.PathLength.Average}; a="right"}, `
+        @{n="MaxPathDepth"; e={[int]$_.PathDepth.Maximum}; a="right"}, `
+        @{n="AvgPathDepth"; e={[int]$_.PathDepth.Average}; a="right"} `
+        -auto
+    }
 
 #endregion
 #region --- last write time
@@ -91,7 +122,6 @@ Function SIFWork {
   }
 
 #endregion
-
 #endregion
 #region --- general tools
 
@@ -116,35 +146,6 @@ Function gvim {
 #endregion
 #region --- Ghostscript v9.54
 $env:path +=';C:\Program Files\gs\gs9.54.0\bin'
-
-#endregion
-#region --- MiKTeX
-Function x { xelatex --max-print-line=99 $args[0] }
-
-Function lj {
-  Remove-Item -recurse $tex\latex\jo
-  Copy-Item -recurse $ITstack\CrossPlatform\forLaTeX $tex\latex\jo
-} # instead of a symlink to avoid snags if MiKTeX is uninstalled
-
-#endregion
-#region --- Pandoc
-# helps to define these also in  $HOME\_vimrc
-$tex = "$Env:AppData\MiKTeX\tex"
-$Pandoc = "$Env:AppData\Pandoc"
-  $MD4PDF = "$onGH\md4pdf"
-
-Function headings0sty { cpi $MD4PDF/iih/headings0.sty $tex\latex\m4p\headings.sty -force }
-Function m4p { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4p.ps1 $args[0] $args[1] $args[2] }
-Function m4ps0 { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4ps.ps1 $args[0] $args[1] }
-Function mt {
-  sl $DROPBOX\JH\core\TextNotes
-  [string]$Pwd
-  m4ps0 -s
-  sl ../TN-OT-V-N-E-A-B-Nephrozoa
-  [string]$Pwd
-  m4ps0 -s
-}
-
 
 #endregion
 #region --- re-tag image files to 72dpi

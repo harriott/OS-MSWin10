@@ -4,6 +4,10 @@
 # Joseph Harriott
 # to be run in Administator Powershell:  iex $MSWin10\symlinks.ps1
 
+#region --- LaTeX
+new-item $Env:AppData\MiKTeX\tex\latex\jo -itemtype symboliclink -value $ITstack\CrossPlatform\LaTeX\jo -force
+
+#endregion
 #region --- Pandoc\defaults
 
 new-item "$Pandoc\defaults\md4pdfToC.yaml" -itemtype symboliclink -value $MD4PDF\defaults-toc.yaml -force

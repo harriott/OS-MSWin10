@@ -274,4 +274,8 @@ Get-ItemProperty -Path "Registry::\HKLM\SYSTEM\CurrentControlSet\Control\FileSys
 rebooted
 ### path still too long for gVim swap
 E303: Unable to open swap file for "\Users\troin\Dropbox\JH\core\TN-OT-V-N-Eukaryote\Animal\Bilateria\Nephrozoa\Deuterostome-Chordata-Vertebrates\Tetrapod\Sauropsida-Reptile\Diapsid\Neotheropoda-Averostra\Ornithothoraces-Paraves\Aves\Neognathae\Neoaves\Aequorlitornithes.md", recovery impossible
+## Explorer++
+C:\Users\troin\explorer++_1.3.5_x64
+ran it for  Tools > Options > Files and Folders > Show folder sizes
+## Cortana Keyboard shortcut off
 # waiting

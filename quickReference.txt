@@ -1,6 +1,8 @@
 vim: ft=build:
 
 Adobe Acrobat Reader DC > Shift+Ctrl+Minus -> rotate left
+Get-ChildItem Env:  # list all environment variables
+Win+r > control firewall.cpl -> (= Control Panel > All Control Panel Items > Windows Defender Firewall)
 
 # cli
 in Explorer:  Alt+D > cmd > Enter
@@ -36,7 +38,7 @@ explorer "$Env:AppData\MiKTeX\tex\latex\jo"
 explorer shell:Appsfolder  # Applications
 ffmpeg -version
 start <somefile>
-where.exe where.exe
+where.exe where.exe  # doesn't find executables in  ~\AppData\
 
 ### folder investigations
 cat somefile.txt | where { $_ -match “expression”}
