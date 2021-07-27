@@ -170,6 +170,7 @@ $env:path +=';C:\Program Files\7-Zip'
 $host.privatedata.ErrorForegroundColor = 'gray'
 $host.privatedata.ErrorBackgroundColor = 'darkmagenta'
 
+$GitPromptSettings.DefaultPromptPath.ForegroundColor = 'Cyan'
 Import-Module posh-git
 
 Set-PSReadlineOption -EditMode Vi

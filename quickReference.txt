@@ -7,6 +7,11 @@ Win+r > control firewall.cpl -> (= Control Panel > All Control Panel Items > Win
 # cli
 in Explorer:  Alt+D > cmd > Enter
 
+## Command Prompt
+powershell -Command ($env:Path).split(';')
+PS> cmd  then  exit
+pwsh -Command ($env:Path).split(';')
+
 ## PowerShell
 $MyInvocation.MyCommand.Name  # = the script's name
 <command> | Out-Null  # works for some commands
@@ -15,6 +20,7 @@ in Explorer:  Alt+D > powershell > Enter
 foreach($element in 1..3){ $element }
 Get-Package | Format-Table -AutoSize
 ii .  # invoke Explorer on WD
+powershell /?
 robocopy /mir <sourcedir> <destinationdir> /l  # runs a simulation of mirroring source to destination
 stringInVims "string"
 
@@ -54,12 +60,19 @@ dc
 du64 -l 1
 fso
 
+### Modules
+$Env:PSModulePath -split (';')
+Get-InstalledModule
+
 ### system info
+$Profile
+$PSVersionTable
 winver
 
 #### environment variables
 $Env:AppData
 $Env:Computername
+$Env:LOCALAPPDATA
 $Env:Path -split';'
 $Env:PATHEXT
 $Env:UserProfile

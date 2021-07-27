@@ -93,7 +93,7 @@ Git Bash > ssh -T git@github.com
   Warning: Permanently added 'github.com,140.82.118.4' (RSA) to the list of known hosts.
   Hi harriott! You've successfully authenticated, but GitHub does not provide shell access.
 got me  $HOME\.ssh\known_hosts
-## PowerShell Modules
+## Windows PowerShell Modules
 $Env:PSModulePath -split ';'
 ### update PowerShellGet
 as Administrator:  Install-PackageProvider Nuget -Force   got me   nuget 2.8.5.208
@@ -109,8 +109,9 @@ C:\Users\troin\Documents\WindowsPowerShell\Modules\ZLocation
 ## Posh-Git installed
 Install-Module posh-git
   You are installing the modules from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from 'PSGallery'? > a
-Get-InstalledModule  reports  1.4.2 ZLocation
+Get-InstalledModule  reports  1.0.0 posh-git
 C:\Users\troin\Documents\WindowsPowerShell\Modules\posh-git
+restarting  Windows PowerShell 5.1  shows git info in the prompt
 ## QuickHash
 C:\Users\troin\QuickHash-GUI-Linux-v3.3.0
 ## MiKTeX
@@ -247,6 +248,9 @@ https://git-scm.com/download/win
 Git-2.32.0-64-bit.exe > [ Check daily  Add Git Bash Profile to Windows Terminal ]
   Checkout as is, commit Unix-style line endings
   Choose a credential helper > None
+## Git Perl
+& 'C:\Program Files\Git\usr\bin\perl' -v
+  This is perl 5, version 32, subversion 1 (v5.32.1) built for x86_64-msys-thread-multi
 ## Pandoc
 pandoc-2.14.0.3-windows-x86_64.msi
 ## Pandoc test
@@ -278,4 +282,66 @@ E303: Unable to open swap file for "\Users\troin\Dropbox\JH\core\TN-OT-V-N-Eukar
 C:\Users\troin\explorer++_1.3.5_x64
 ran it for  Tools > Options > Files and Folders > Show folder sizes
 ## Cortana Keyboard shortcut off
+## FFmpeg - latest
+where.exe ffmpeg
+cd *\ffmpeg-4.4-full_build\bin
+  cpi ffmpeg.exe $Env:LOCALAPPDATA\Microsoft\WindowsApps
+ffmpeg -version
+## ActivePerl
+perl -v  "not recognized"
+(should've been from Command Prompt in ~)
+  PS> & $([scriptblock]::Create((New-Object Net.WebClient).DownloadString('https://platform.activestate.com/dl/cli/install.ps1'))) -activate-default harriott/Perl-5.32.0-Windows
+    Installing State Tool
+    Installing to 'C:\Users\troin\AppData\Roaming\ActiveState\bin'...
+    ...
+    Adding C:\Users\troin\AppData\Roaming\ActiveState\bin to user PATH
+    State Tool successfully installed to: C:\Users\troin\AppData\Roaming\ActiveState\bin.
+    Please close your current terminal window and open a CMD prompt in order to start using the 'state.exe' program.  Powershell support is coming soon.
+    Activating project harriott/Perl-5.32.0-Windows as default
+    C:\Users\troin\harriott\Perl-5.32.0-Windows
+### tests
+perl -v  "not recognized"
+state  gives no clues...
+PS> state projects
+  Perl-5.32.0-Windows                      harriott
+   └─ ✔ Local Checkout → C:\Users\troin\harriott\Perl-5.32.0-Windows
+state activate   won't complete
+where state  returns nothing
+$Env:Path -split';'
+  ...
+  C:\Users\troin\AppData\Roaming\ActiveState\bin
+  C:\Users\troin\AppData\Local\activestate\bin
+### uninstall
+state clean uninstall
+ri -recurse $Env:AppData\ActiveState
+"$Env:AppData\ActiveState\bin\state.exe"
+$Env:Path -=';C:\Users\troin\AppData\Roaming\ActiveState\bin;C:\Users\troin\AppData\Local\activestate\bin'
+$Env:Path -=';C:\Users\troin\AppData\Roaming\ActiveState\bin'
+## PowerShell v7.1.3
+PowerShell-7.1.3-win-x64.msi > Optional > all on
+pwsh -Command ($env:Path).split(';')
+Windows Terminal > Settings > Startup > Default profile > PowerShell > Save
+### $Profile
+PS> $Profile  returns
+  C:\Users\troin\Documents\PowerShell\Microsoft.PowerShell_profile.ps1  which ain't there
+#### symlink $profile
+Administrator PS:  new-item ~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 -itemtype symboliclink -value ~\Dropbox\JH\core\IT_stack\onGitHub\MSWin10\T430i73520M\PSProfile.ps1 -force
+### PowerShell Modules
+Get-Module
+  7.0.0.0 Microsoft.PowerShell.Management
+  7.0.0.0 Microsoft.PowerShell.Utility
+  1.4.7   PackageManagement
+  2.2.5   PowerShellGet
+  2.1.0   PSReadLine
+#### ZLocation
+Install-Module ZLocation
+  You are installing the modules from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from 'PSGallery'? > a
+z  shows it's there, and  Get-InstalledModule  reports  1.4.3 ZLocation
+C:\Users\troin\Documents\PowerShell\Modules\ZLocation
+#### Posh-Git
+Install-Module posh-git
+  You are installing the modules from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from 'PSGallery'? > a
+Get-InstalledModule  reports  1.0.0 posh-git
+C:\Users\troin\Documents\PowerShell\Modules\posh-git
+restarting  PowerShell 7  shows git info in the prompt
 # waiting

@@ -4,7 +4,9 @@
 
 # restart PowerShell if you change anything here
 
-# symlink this file to  ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+# symlink this file to
+#  ~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
+#  ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
 
 # Clear-Host
 
