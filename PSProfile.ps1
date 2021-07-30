@@ -129,6 +129,7 @@ Function e { exit } # quit (doesn't work as an alias)
 Function fn { gci | select -ExpandProperty FullName | sort }
 Function gic { git commit -m "$args[0]" }
 Function gis { git status -u }
+Function gsp { gswin64c -dSAFER -sDEVICE=png16m -r400 $args[0] $args[1] $args[2] $args[3] $args[4] }
 Function p {test-connection -computername 8.8.8.8 -ErrorAction SilentlyContinue}
 Function pg {test-connection -computername google.com -ErrorAction SilentlyContinue}
 # New-Alias g gm.exe # GraphicsMagick
@@ -170,8 +171,8 @@ $env:path +=';C:\Program Files\7-Zip'
 $host.privatedata.ErrorForegroundColor = 'gray'
 $host.privatedata.ErrorBackgroundColor = 'darkmagenta'
 
-$GitPromptSettings.DefaultPromptPath.ForegroundColor = 'Cyan'
 Import-Module posh-git
+$GitPromptSettings.DefaultPromptPath.ForegroundColor = 'Cyan'
 
 Set-PSReadlineOption -EditMode Vi
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward

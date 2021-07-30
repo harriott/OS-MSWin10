@@ -248,6 +248,10 @@ https://git-scm.com/download/win
 Git-2.32.0-64-bit.exe > [ Check daily  Add Git Bash Profile to Windows Terminal ]
   Checkout as is, commit Unix-style line endings
   Choose a credential helper > None
+$Env:Path -split';'
+  ...
+  C:\Program Files\Git\cmd
+  ...
 ## Git Perl
 & 'C:\Program Files\Git\usr\bin\perl' -v
   This is perl 5, version 32, subversion 1 (v5.32.1) built for x86_64-msys-thread-multi
@@ -287,7 +291,7 @@ where.exe ffmpeg
 cd *\ffmpeg-4.4-full_build\bin
   cpi ffmpeg.exe $Env:LOCALAPPDATA\Microsoft\WindowsApps
 ffmpeg -version
-## ActivePerl
+## ActivePerl from PS - fail
 perl -v  "not recognized"
 (should've been from Command Prompt in ~)
   PS> & $([scriptblock]::Create((New-Object Net.WebClient).DownloadString('https://platform.activestate.com/dl/cli/install.ps1'))) -activate-default harriott/Perl-5.32.0-Windows
@@ -315,6 +319,7 @@ $Env:Path -split';'
 state clean uninstall
 ri -recurse $Env:AppData\ActiveState
 "$Env:AppData\ActiveState\bin\state.exe"
+
 $Env:Path -=';C:\Users\troin\AppData\Roaming\ActiveState\bin;C:\Users\troin\AppData\Local\activestate\bin'
 $Env:Path -=';C:\Users\troin\AppData\Roaming\ActiveState\bin'
 ## PowerShell v7.1.3
@@ -344,4 +349,26 @@ Install-Module posh-git
 Get-InstalledModule  reports  1.0.0 posh-git
 C:\Users\troin\Documents\PowerShell\Modules\posh-git
 restarting  PowerShell 7  shows git info in the prompt
+## ActivePerl from CP - fail
+P7 > j ~ > cmd > powershell -noprofile -Command "& $([scriptblock]::Create((New-Object Net.WebClient).DownloadString('https://platform.activestate.com/dl/cli/install.ps1'))) -activate-default ActiveState/Perl-5.32"
+  Verifying checksums...
+  The term 'Get-FileHash' is not recognized as the name of a cmdlet, function, script file, or operable program.
+ri -recurse $Env:AppData\ActiveState
+System Properties > Advanced > Environment Variables > Path > Edit > removed two references to activestate
+## JRE
+JavaSetup8u301.exe
+Configure Java (= Java Control Panel) > [ Update > Advanced > [ Daily  10h ]  Security >
+  Enable Java content for browser and Web Start applications > off ]
+## Strawberry Perl v5.32.1.1
+strawberry-perl-5.32.1.1-64bit.msi (install to  C:\Strawberry\) UAC Unknown > Yes
+$Env:Path -split';'
+  C:\Strawberry\c\bin
+  C:\Strawberry\perl\site\bin
+  C:\Strawberry\perl\bin
+perl -v
+  This is perl 5, version 32, subversion 1 (v5.32.1) built for MSWin32-x64-multi-thread
+perl -e "print qq(Hello, world!\n)"
+## move Git to unspaced path
+
+Apps & Features > Git > Uninstall
 # waiting

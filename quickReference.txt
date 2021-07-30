@@ -67,6 +67,7 @@ Get-InstalledModule
 ### system info
 $Profile
 $PSVersionTable
+Sysdm.cpl -> System Properties
 winver
 
 #### environment variables
