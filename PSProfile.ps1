@@ -23,7 +23,7 @@ Set-Alias ss Select-String
 
   Function headings0sty { cpi $MD4PDF/iih/headings0.sty $tex\latex\m4p\headings.sty -force }
   Function m4p { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4p.ps1 $args[0] $args[1] $args[2] }
-  Function m4ps0 { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4ps.ps1 $args[0] $args[1] }
+  Function m4ps0 { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4ps.ps1 $args[0] $args[1] $args[2] }
   Function mt {
     sl $DROPBOX\JH\core\TextNotes
     [string]$Pwd
@@ -126,10 +126,11 @@ Function SIFWork {
 #region --- general tools
 
 Function e { exit } # quit (doesn't work as an alias)
+Function ffmhb {ffmpeg -hide_banner $args}
 Function fn { gci | select -ExpandProperty FullName | sort }
 Function gic { git commit -m "$args[0]" }
 Function gis { git status -u }
-Function gsp { gswin64c -dSAFER -sDEVICE=png16m -r400 $args[0] $args[1] $args[2] $args[3] $args[4] }
+Function gvim { & "${Env:ProgramFiles(x86)}\Vim\vim82\gvim.exe" $args[0] $args[1] $args[2] }
 Function p {test-connection -computername 8.8.8.8 -ErrorAction SilentlyContinue}
 Function pg {test-connection -computername google.com -ErrorAction SilentlyContinue}
 # New-Alias g gm.exe # GraphicsMagick
@@ -140,13 +141,20 @@ Function l {
   $list -join '  '
 }
 
-Function gvim {
-  & "${Env:ProgramFiles(x86)}\Vim\vim82\gvim.exe" $args[0] $args[1] $args[2]
-}
-
 #endregion
-#region --- Ghostscript v9.54
+#region --- Ghostscript
+
 $env:path +=';C:\Program Files\gs\gs9.54.0\bin'
+# Function gsp { 'gswin64c -dSAFER -sDEVICE=png16m -r400 sPageList=$args[0] -o $args[1]%d.png $args[2].pdf' }
+Function gsp {
+    $PL = $args[0]
+    $r = '-r'+$args[1]  # resolution 40 is good for photos
+    $pngs = $args[2]+'-%02d.png'
+    $pdf = $args[3]+'.pdf'
+    $g = "gswin64c -dSAFER -sDEVICE=png16m $r -sPageList=$pl -o $pngs '$pdf'"
+    iex $g
+    }
+#  gsp xx-xx out%d.png 'in.pdf'
 
 #endregion
 #region --- re-tag image files to 72dpi

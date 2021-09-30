@@ -2,20 +2,24 @@ vim: ft=build:
 
 Adobe Acrobat Reader DC > Shift+Ctrl+Minus -> rotate left
 Get-ChildItem Env:  # list all environment variables
+Sumatra PDF: r = reload
 Win+r > control firewall.cpl -> (= Control Panel > All Control Panel Items > Windows Defender Firewall)
 
 # cli
 in Explorer:  Alt+D > cmd > Enter
 
 ## Command Prompt
+echo %path:;=&echo.%  # %PATH% on separate lines
 powershell -Command ($env:Path).split(';')
 PS> cmd  then  exit
 pwsh -Command ($env:Path).split(';')
 
 ## PowerShell
 $MyInvocation.MyCommand.Name  # = the script's name
+$n = Get-Date -f yyyyMMddhhmmss
 <command> | Out-Null  # works for some commands
 Alt > Space > E > L > [ up / down  to scroll   Esc ]
+iex <someCommand>  # = Invoke-Expression
 in Explorer:  Alt+D > powershell > Enter
 foreach($element in 1..3){ $element }
 Get-Package | Format-Table -AutoSize
@@ -38,6 +42,7 @@ $x.GetType()
 [string]$Pwd
 
 ### executables
+C:\MozillaThunderbird\thunderbird.exe -addressbook
 C:\Windows\explorer.exe "microsoft-edge:searchterm"
 gcm explorer
 explorer "$Env:AppData\MiKTeX\tex\latex\jo"
@@ -76,6 +81,7 @@ $Env:Computername
 $Env:LOCALAPPDATA
 $Env:Path -split';'
 $Env:PATHEXT
+$Env:ProgramFiles
 $Env:UserProfile
 gci env:  # list the environment variables
 $PSScriptRoot
@@ -100,14 +106,14 @@ in Explorer:  Alt+D > wt > Enter
 Ctrl+, -> Settings
 
 #### key-binds
-Alt+D -> duplicate pane right
-Alt+_ -> split pane below
-Alt++ -> split pane right
-Ctrl+c -> copy text
-Ctrl+T -> new tab
-Ctrl+W -> close pane
-Ctrl+Shift+PgUp -> scroll up a page
-Ctrl(+Shift)+Tab -> move to next (previous) tab
+alt+D -> duplicate pane right
+alt+_ -> split pane below
+alt++ -> split pane right
+ctrl+c -> copy text
+ctrl+T -> new tab
+ctrl+W -> close pane
+ctrl+Shift+PgUp -> scroll up a page
+ctrl(+Shift)+Tab -> move to next (previous) tab
 Settings > Actions
 
 # Fonts

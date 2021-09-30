@@ -8,7 +8,7 @@ Lenovo ThinkPad T430 i7-3520M = T430i73520M
 SanDisk microSD adapter containing S32GBC10
 # sequential build
 Windows 10 Pro 1909 OS build 18363.1500
-Device name DESKTOP-QSRVUSO
+Device name (DESKTOP-QSRVUSO) T430i73520M
 Activation > Windows is activated with a digital license
 Updated to Windows 10 version 20H2
 ## before Dropbox, prepare KDTG311282
@@ -255,6 +255,7 @@ $Env:Path -split';'
 ## Git Perl
 & 'C:\Program Files\Git\usr\bin\perl' -v
   This is perl 5, version 32, subversion 1 (v5.32.1) built for x86_64-msys-thread-multi
+C:\Git\usr\bin\perl.exe -le '$,="\n"; print @INC'  returns a weird unix-style directory...
 ## Pandoc
 pandoc-2.14.0.3-windows-x86_64.msi
 ## Pandoc test
@@ -369,6 +370,65 @@ perl -v
   This is perl 5, version 32, subversion 1 (v5.32.1) built for MSWin32-x64-multi-thread
 perl -e "print qq(Hello, world!\n)"
 ## move Git to unspaced path
-
 Apps & Features > Git > Uninstall
+  didn't remove empty folder  C:\Program Files\Git\cmd
+    nor the  file  C:\Program Files\Git\etc\gitconfig
+  so manually deleted that
+https://git-scm.com/download/win
+Git-2.32.0-64-bit.exe > [ C:\Git  Check daily  Add Git Bash Profile to Windows Terminal ]
+  Checkout as is, commit Unix-style line endings
+  Choose a credential helper > None
+$Env:Path -split';'
+  ...
+  C:\Git\cmd
+  ...
+## Perl from gVim
+perl -le '$,="\n"; print @INC'
+  E370: Could not load library perl528.dll
+  Sorry, this command is disabled: the Perl library could not be loaded.
+C:\Git\usr\bin\perl.exe -le '$,="\n"; print @INC'  doesn't complain
+C:\Strawberry\perl\bin\perl.exe -le '$,="\n"; print @INC'  doesn't complain
+## Notepad++ v8.1.2
+allowed to Update
+## LanguageTool v5.4
+C:\Users\troin\tools\LanguageTool-5.4
+java -jar $HOME\tools\LanguageTool-5.4\languagetool-commandline.jar $core\TextNotes\JH-DailyLife\Europe\France\Scratch\scratch0.txt
+## stop Spotify launch on startup
+Ctrl+p (= Preferences) > Advanced > Startup > Open Spotify > No
+## Updated to Windows 10 version 21H1
+## HP Deskjet 1050A
+plugged in, it appears in Sumatra's Print dialogue as "HP Deskjet 1050 J410 series Class Driver"
+  but Print button is greyed out...
+DJ1050_J410_Basicx64_1313.exe > default... click >
+  Do not allow this installer to set the default printer >
+  Printer Information > [ USA  100  Personal ]
+## Thunderbird v91.0
+Settings > Apps & features > Mozilla Thunderbird Setup 78.11.0 (x64 en-GB) > Uninstall
+  Deleted  C:\Users\troin\AppData\Roaming\Thunderbird
+Thunderbird Setup 91.0.exe > Custom > Install location > C:\MozillaThunderbird\
+Ran it to get  C:\Users\troin\AppData\Roaming\Thunderbird\Profiles\57isrjsc.default-release
+  which I emptied, and then edited  C:\Users\troin\AppData\Roaming\Thunderbird\profiles.ini
+    [Profile0] section:
+      IsRelative=0
+      Path=C:\Users\troin\Dropbox\JH\T91-default-release
+## PowerShell v7.1.4
+PowerShell-7.1.4-win-x64.msi > Optional > all on
+## LibreOffice 7.1.5
+Close Windows Explorer and everything except Task Manager for
+  LibreOffice_7.2.0_Win_x64.msi > Custom > [
+    Optional Components > Dictionaries > Dutch  added
+    User interface languages > [ English (South Africa)  English (United States) ] removed
+    Create shortcut on desktop  off-ticked
+## OBS Studio
+OBS-Studio-27.0.1-Full-Installer-x64.exe  (installed to  C:\Program Files\obs-studio) >
+  Optimise just for recording > FPS > Use Current (30)  got  Video >
+    Base (Canvas) Resolution = 1600x900 (= screen size)
+    Output (Scaled) Resolution > 1280x720
+## OBS Studio Output Resolution 960x540
+Alt+f (= File) > s (= Settings) > Output (Scaled) Resolution = 960x540
+## DVDFab 12.0.4.5
+dvdfab12_x64_12045.exe > Click to Install > trohib@gmail.com + pw > Start DVDFab
+## DVDFab 12.0.4.7
+Update Now
+## DVD Shrink
 # waiting
