@@ -216,6 +216,7 @@ gpg --version
   ...
   Home: C:/Users/troin/AppData/Roaming/gnupg
 gpg --list-keys
+#### Pierre Schmitz
 gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys 4AA4767BBC9C4B1D18AE28B77F2D434B9741E8AC
 gpg --fingerprint
 gpg --edit-key pierre@archlinux.de > sign > passphrase > save
@@ -430,5 +431,51 @@ Alt+f (= File) > s (= Settings) > Output (Scaled) Resolution = 960x540
 dvdfab12_x64_12045.exe > Click to Install > trohib@gmail.com + pw > Start DVDFab
 ## DVDFab 12.0.4.7
 Update Now
+## Steam
+Install Steam
+Age of Empires III Definitive Edition
 ## DVD Shrink
+## DVDFab 12.0.5.1
+Update Now
+## Tixati v2.85.1
+tixati-2.85-1.win64-install.exe
+## LibreOffice 7.2.1
+Close Windows Explorer and everything except Task Manager for
+  LibreOffice_7.2.1_Win_x64.msi > Custom > Next
+## Git v2.33
+## KB5006670
+2021-10 Cumulative Update for Windows 10 Version 21H1 for x64-based Systems
+## Steam
+FRIENDS & CHAT > Settings > Sign in... off
+Steam > Settings > Interface > Run Steam... off
+## PowerShell v7.1.5
+PowerShell-7.1.5-win-x64.msi > Optional > all on
+## youtube-dl
+### Microsoft Visual C++ 2015-2019 Redistributable (x64) 14.29.30135
+VC_redist.x64.exe
+### Microsoft Visual C++ 2010 x64 10.0.40219
+vcredist_x64.exe
+### Microsoft Visual C++ 2015-2019 Redistributable (x64) 14.29.30135 Uninstalled
+not needed
+### Microsoft Visual C++ 2010 x64 10.0.40219 Uninstalled
+restart
+### Microsoft Visual C++ 2010 x64 Redistributable 10.0.40219
+VisualC++
+vcredist_x64.exe
+### Tixati v2.86
+tixati-2.86-1.win64-install.exe
+### Microsoft Visual C++ 2010 x86 Redistributable 10.0.40219
+vcredist_x86.exe  got  youtube-dl  working
+### youtube-dl 2021.06.06
+cpi ~\Downloads\youtube-dl.exe $Env:LOCALAPPDATA\Microsoft\WindowsApps
+youtube-dl --version
+### Microsoft Visual C++ 2010 x64 Redistributable 10.0.40219 Uninstalled
+not needed
+## ~\tools\rufus-3.17.exe
+## LibreOffice 7.2.2
+Close Windows Explorer and everything except Task Manager for
+  LibreOffice_7.2.2_Win_x64.msi > Custom > Next
+## PowerShell v7.2.0
+PowerShell-7.2.0-win-x64.msi > Optional > all on
 # waiting
+The Platinum Searcher

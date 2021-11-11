@@ -24,14 +24,7 @@ Set-Alias ss Select-String
   Function headings0sty { cpi $MD4PDF/iih/headings0.sty $tex\latex\m4p\headings.sty -force }
   Function m4p { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4p.ps1 $args[0] $args[1] $args[2] }
   Function m4ps0 { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4ps.ps1 $args[0] $args[1] $args[2] }
-  Function mt {
-    sl $DROPBOX\JH\core\TextNotes
-    [string]$Pwd
-    m4ps0 -s
-    sl ../TN-OT-V-N-E-A-B-Nephrozoa
-    [string]$Pwd
-    m4ps0 -s
-  }
+  Function mt { sl $DROPBOX\JH\core\TextNotes; [string]$Pwd; m4ps0 -s }
 
 #endregion
 #endregion
@@ -73,22 +66,28 @@ Set-Alias ss Select-String
     }
 
 #endregion
-#region --- last write time
+#region --- LastWriteTime
 Function lwp { ls -r `
   | ForEach-Object { $_.LastWriteTime.ToString('yyyyMMdd-HH:mm:ss') + " : " + $_.FullName } `
   | out-string -stream | select-string $args[0] `
   | sort } # <file-path> is a regex
 
 #region --- by name
-Function lwt { gci -r -i $args[0],$args[1],$args[2] `
+Function lwt { $of = 'lwt-'+$args[0]+'.txt'
+  "vim: ft=ftlist nowrap tw=0:" > $of; "" >> $of
+  if ($args[1]) { $a1 = '*.'+$args[1] }
+  if ($args[2]) { $a2 = '*.'+$args[2] }
+  if ($args[3]) { $a3 = '*.'+$args[3] }
+  "$a1 $a2 $a3" >> $of; "" >> $of
+  lwts $a1 $a2 $a3 >> $of }
+  # examples in  $MSWin10\quickReference.txt
+
+Function lwt-gitignore {
+  "vim: nowrap tw=0:" > lwt-gitignore.txt; lwts .gitignore >> lwt-gitignore.txt } # specific case
+
+Function lwts { gci -r -i $args[0],$args[1],$args[2] `
   | ForEach-Object { $_.LastWriteTime.ToString('yyyyMMdd-HH:mm:ss') + " : " + $_.FullName } `
   | sort } # can use wildcards in the <filenames(s)>
-
-Function lwt-docs      { "vim: nowrap tw=0:" > lwt-docs.txt; lwt *.doc *.odt >> lwt-docs.txt }
-Function lwt-gitignore { "vim: nowrap tw=0:" > lwt-gitignore.txt; lwt .gitignore >> lwt-gitignore.txt }
-Function lwt-md        { "vim: nowrap tw=0:" > lwt-md.txt; lwt *.md >> lwt-md.txt }
-Function lwt-sh        { "vim: nowrap tw=0:" > lwt-sh.txt; lwt *.sh >> lwt-sh.txt }
-Function lwt-tex       { "vim: nowrap tw=0:" > lwt-tex.txt; lwt *.cls *.sty *.tex >> lwt-tex.txt }
 
 #endregion
 
