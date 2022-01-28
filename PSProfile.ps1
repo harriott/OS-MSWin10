@@ -4,6 +4,13 @@
 
 Set-Alias ss Select-String
 
+Function GNFR {
+  $FRlist = Get-NetFirewallRule | out-string
+  $FRlf = "$machine\troin\FirewallRules.txt"
+  "vim: set ft=NFR:" > $FRlf
+  $FRlist.TrimEnd() >> $FRlf
+  '' >> $FRlf
+}
 #region --- documenting
   Function xc { iex "$Env:LocalAppData\SumatraPDF\SumatraPDF.exe $Dropbox\JH\Copied\IT-handy\TeX\LaTeX\Appearance\xcolor.pdf -page 38" }
 
@@ -29,13 +36,13 @@ Set-Alias ss Select-String
 #endregion
 #endregion
 #region --- folder investigations
-  Function gfiln { gci -r $args[0] | select -ExpandProperty FullName }
-  Function gfoln { gci -r $args[0] | where { $_.PSIsContainer } | select -ExpandProperty FullName }
+Function gfiln { gci -r $args[0] | select -ExpandProperty FullName }
+Function gfoln { gci -r $args[0] | where { $_.PSIsContainer } | select -ExpandProperty FullName }
 
-  Set-Alias j z  # ZLocation
+Set-Alias j z  # ZLocation
 
 #region --- filetypes
-  Function cex { gci . -r | where { ! $_.PSIsContainer } | Group Extension -noElement | Sort Count -Desc }
+Function cex { gci . -r | where { ! $_.PSIsContainer } | Group Extension -noElement | Sort Count -Desc }
 
   Function Tomalak {
 # https://stackoverflow.com/questions/15064758/summarize-a-file-system-directory-with-powershell
@@ -73,14 +80,20 @@ Function lwp { ls -r `
   | sort } # <file-path> is a regex
 
 #region --- by name
-Function lwt { $of = 'lwt-'+$args[0]+'.txt'
-  "vim: ft=ftlist nowrap tw=0:" > $of; "" >> $of
-  if ($args[1]) { $a1 = '*.'+$args[1] }
-  if ($args[2]) { $a2 = '*.'+$args[2] }
-  if ($args[3]) { $a3 = '*.'+$args[3] }
-  "$a1 $a2 $a3" >> $of; "" >> $of
-  lwts $a1 $a2 $a3 >> $of }
-  # examples in  $MSWin10\quickReference.txt
+Function lwt {
+  if ($args[0]) {
+    $of = 'lwt-'+$args[0]+'.txt'
+    "vim: ft=ftlist nowrap tw=0:" > $of; "" >> $of
+    if ($args[1]) { $a1 = '*.'+$args[1]
+      if ($args[2]) { $a2 = '*.'+$args[2] }
+      if ($args[3]) { $a3 = '*.'+$args[3] }
+      "$a1 $a2 $a3" >> $of; "" >> $of
+      lwts $a1 $a2 $a3 >> $of
+      "results in $of"
+    } else { "next three arguments are specific file extensions" }
+  } else {
+    "first argument should be the general descriptor of the type of files you're looking for"
+  } } # examples in  $MSWin10\quickReference.txt
 
 Function lwt-gitignore {
   "vim: nowrap tw=0:" > lwt-gitignore.txt; lwts .gitignore >> lwt-gitignore.txt } # specific case
@@ -156,6 +169,19 @@ Function gsp {
 #  gsp xx-xx out%d.png 'in.pdf'
 
 #endregion
+#region --- convert images recursively
+
+Function mc {
+  $format1 = $args[0]
+  $format2 = $args[1]
+  gci -r *.$format1 | %{
+    $oi = $_.Name.Replace('.', '_')
+    magick $_ $oi".$format2"
+    ri $_
+  }
+} #  mc tiff jpg
+
+#endregion
 #region --- re-tag image files to 72dpi
 
 # a single image file:
@@ -180,6 +206,10 @@ $host.privatedata.ErrorBackgroundColor = 'darkmagenta'
 
 Import-Module posh-git
 $GitPromptSettings.DefaultPromptPath.ForegroundColor = 'Cyan'
+
+if ($PSVersionTable.PSVersion.Major -eq 7) {
+  $PSStyle.OutputRendering = [System.Management.Automation.OutputRendering]::Host;
+}
 
 Set-PSReadlineOption -EditMode Vi
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward

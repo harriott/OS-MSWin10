@@ -1,11 +1,12 @@
 vim: ft=build:
 
 Adobe Acrobat Reader DC > Shift+Ctrl+Minus -> rotate left
+C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 Get-ChildItem Env:  # list all environment variables
 Sumatra PDF: r = reload
-Win+r > control firewall.cpl -> (= Control Panel > All Control Panel Items > Windows Defender Firewall)
 
 # cli
+chcp  # reports code page
 in Explorer:  Alt+D > cmd > Enter
 
 ## Command Prompt
@@ -15,7 +16,9 @@ PS> cmd  then  exit
 pwsh -Command ($env:Path).split(';')
 
 ## PowerShell
+(Invoke-WebRequest -uri "http://ifconfig.me/ip").Content  # returns your IP address
 $MyInvocation.MyCommand.Name  # = the script's name
+$_ = $PSItem = current object in the pipeline object
 $n = Get-Date -f yyyyMMddhhmmss
 '"Hello world"'
 (Get-Date).Day
@@ -66,7 +69,11 @@ lwt md md
 lwt sh sh
 lwt docs doc odt
 lwt tex cls sty tex
+lwt txt txt
+
+##### quick terminal output
 lwts *.ps1 *.sh
+lwts *.txt
 
 #### sizes
 dc
@@ -86,8 +93,9 @@ $Env:PSModulePath -split (';')
 Get-InstalledModule
 
 ### system info
+$env:Path -split ';'
 $Profile
-$PSVersionTable
+$PSVersionTable.PSVersion
 Sysdm.cpl -> System Properties
 winver
 
@@ -108,6 +116,7 @@ $Env:AppData  # C:\Users\...\AppData\Roaming
 ls "$Env:AppData\Pandoc\defaults"
 
 ### text wrangling
+"Hello".Replace('l', 'x')
 & "${Env:ProgramFiles(x86)}\Vim\vim82\gvim.exe" <textfile>
 (Get-Content $file) -replace $regex, $newtext | Set-Content $file
 
@@ -148,4 +157,11 @@ r -> rotate right
 # Vivaldi
 Alt+P = Settings
 Ctrl+Shift+E = Extensions
+
+# Windows
+regedit
+
+# Windows Defender Firewall
+control firewall.cpl  # Control Panel > All Control Panel Items > Windows Defender Firewall
+wf.msc  # Windows Defender Firewall with Advanced Security, where Rules can be seen
 

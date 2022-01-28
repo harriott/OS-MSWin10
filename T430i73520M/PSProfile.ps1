@@ -7,6 +7,7 @@
 # symlink this file to
 #  ~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
 #  ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+#  - done in  $machine\Win10ProBuild.txt
 
 # Clear-Host
 
@@ -15,10 +16,12 @@
 $DROPBOX = "C:\Users\troin\Dropbox"
   $core = "$DROPBOX\JH\core"
     $ITstack = "$core\IT_stack"
+      $CP = "$ITstack\CrossPlatform"
       $onGH = "$ITstack\onGitHub"
         $MSwin10 = "$onGH\MSWin10"
           $machine = "$MSWin10\T430i73520M"
-        $SPD = "$onGH\SyncPortableDrives\RoboCopy\T430i73520M"
+        $SPD = "$onGH\SyncPortableDrives\RoboCopy\T430i73520M"  # see below
+  $ITP = "$DROPBOX\JH\Technos\IT0-Partitionable"  # $ITP\diskUsage.txt
 
 #endregion
 #region --- 2 more functionality
