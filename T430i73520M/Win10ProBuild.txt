@@ -515,5 +515,18 @@ New-Item -Path HKCU:\EUDC\1252
   Test-Path -Path HKCU:\EUDC\1252
 Set-ItemProperty HKCU:\EUDC\1252 -Name SystemDefaultEUDCFont -Value "Caskaydia Cove Regular Nerd Font Complete Mono Windows Compatible.otf" -Type String
   (Get-ItemProperty -Path HKCU:\EUDC\1252).SystemDefaultEUDCFont
+## Terminal-Icons
+Install-Module Terminal-Icons
+## PowerColorLS
+Install-Module -Name PowerColorLS -Repository PSGallery
+## Perl WWW::ipinfo
+cpanm WWW::ipinfo
+## DVDFab 12.0.6.0
+Update Now
+## Perl Log::Log4perl
+cpanm Log::Log4perl
+## Git v2.35.1
+## Powershell.Chunks
+Install-Module -Name Powershell.Chunks -Repository PSGallery
 # waiting
 The Platinum Searcher

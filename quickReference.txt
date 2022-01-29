@@ -5,6 +5,10 @@ C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 Get-ChildItem Env:  # list all environment variables
 Sumatra PDF: r = reload
 
+# Microsoft Edge - view source
+... > More tools > Developer tools > Elements
+Ctrl+u  is searchable
+
 # cli
 chcp  # reports code page
 in Explorer:  Alt+D > cmd > Enter
@@ -16,7 +20,6 @@ PS> cmd  then  exit
 pwsh -Command ($env:Path).split(';')
 
 ## PowerShell
-(Invoke-WebRequest -uri "http://ifconfig.me/ip").Content  # returns your IP address
 $MyInvocation.MyCommand.Name  # = the script's name
 $_ = $PSItem = current object in the pipeline object
 $n = Get-Date -f yyyyMMddhhmmss
@@ -62,6 +65,7 @@ gci * | select FullName
 gci * | select Name
 gci $path | select -expand FullName  # for pure string output
 ls -r -i '* (* conflicted copy *' |%{echo $_.fullname} | ri
+pcls -a -l -t  # includes hidden & time sorted
 
 #### LastWriteTime
 lwp \.ps1

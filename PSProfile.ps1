@@ -11,6 +11,19 @@ Function GNFR {
   $FRlist.TrimEnd() >> $FRlf
   '' >> $FRlf
 }
+#region --- convert images recursively
+
+Function mc {
+  $format1 = $args[0]
+  $format2 = $args[1]
+  gci -r *.$format1 | %{
+    $oi = $_.Name.Replace('.', '_')
+    magick $_ $oi".$format2"
+    ri $_
+  }
+} #  mc tiff jpg
+
+#endregion
 #region --- documenting
   Function xc { iex "$Env:LocalAppData\SumatraPDF\SumatraPDF.exe $Dropbox\JH\Copied\IT-handy\TeX\LaTeX\Appearance\xcolor.pdf -page 38" }
 
@@ -138,13 +151,13 @@ Function SIFWork {
 #region --- general tools
 
 Function e { exit } # quit (doesn't work as an alias)
+Function fcco {Format-Custom -InputObject $args[0] -Expand CoreOnly}
+# - shows summarised layout of array
 Function ffmhb {ffmpeg -hide_banner $args}
 Function fn { gci | select -ExpandProperty FullName | sort }
 Function gic { git commit -m "$args[0]" }
 Function gis { git status -u }
 Function gvim { & "${Env:ProgramFiles(x86)}\Vim\vim82\gvim.exe" $args[0] $args[1] $args[2] }
-Function p {test-connection -computername 8.8.8.8 -ErrorAction SilentlyContinue}
-Function pg {test-connection -computername google.com -ErrorAction SilentlyContinue}
 # New-Alias g gm.exe # GraphicsMagick
 New-Alias jpo $onGH\jpgorhor\jpgorhor.ps1
 
@@ -169,17 +182,17 @@ Function gsp {
 #  gsp xx-xx out%d.png 'in.pdf'
 
 #endregion
-#region --- convert images recursively
+#region --- internetworking
 
-Function mc {
-  $format1 = $args[0]
-  $format2 = $args[1]
-  gci -r *.$format1 | %{
-    $oi = $_.Name.Replace('.', '_')
-    magick $_ $oi".$format2"
-    ri $_
-  }
-} #  mc tiff jpg
+Function cc {
+  $co = (Invoke-WebRequest http://ifconfig.co/country).Content.replace("`n",'')
+  $ci = (Invoke-WebRequest http://ifconfig.co/city).Content.replace("`n",'')
+  "$ci, $co"
+  }  # city, country
+Function ip { (Invoke-WebRequest -uri "http://ifconfig.me/ip").Content }  # IP address
+Function p {test-connection -computername 8.8.8.8 -ErrorAction SilentlyContinue}
+Function pg {test-connection -computername google.com -ErrorAction SilentlyContinue}
+Function wp { curl wttr.in/Paris }
 
 #endregion
 #region --- re-tag image files to 72dpi
@@ -206,6 +219,12 @@ $host.privatedata.ErrorBackgroundColor = 'darkmagenta'
 
 Import-Module posh-git
 $GitPromptSettings.DefaultPromptPath.ForegroundColor = 'Cyan'
+
+Import-Module Powershell.Chunks
+
+# Better directory & file listings:
+Import-Module Terminal-Icons; Import-Module PowerColorLS
+Set-Alias pcls PowerColorLS
 
 if ($PSVersionTable.PSVersion.Major -eq 7) {
   $PSStyle.OutputRendering = [System.Management.Automation.OutputRendering]::Host;
