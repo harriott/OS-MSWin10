@@ -11,3 +11,5 @@ let $DROPBOX = $HOME.'/Dropbox'  " keep this capitalised for finding it without 
 let mapleader='#'
 source $HOME/vimfiles/vimrc-Win10.vim
 
+set pythonthreedll=C:\Users\troin\AppData\Local\Programs\Python\Python310-32\python310.dll
+

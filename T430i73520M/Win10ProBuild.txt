@@ -16,6 +16,9 @@ where.exe ffmpeg
 cd *\ffmpeg-4.4-full_build\bin
   cpi ffmpeg.exe $Env:LOCALAPPDATA\Microsoft\WindowsApps
 ffmpeg -version
+## fzf
+extracted  fzf-0.20.0-windows_386.zip  for  fzf.exe
+  mi fzf.exe $Env:LOCALAPPDATA\Microsoft\WindowsApps
 ## fonts
 right-clicked on  nerd-fonts\patched-fonts\CascadiaCode\Regular\complete\Caskaydia Cove Regular Nerd Font Complete Mono Windows Compatible.otf
   appears as  CaskaydiaCove NF Regular
@@ -73,7 +76,6 @@ Administrator PS:  new-item ~\Documents\WindowsPowerShell\Microsoft.PowerShell_p
 ## gVim v8.2.3013
 gvim_8.2.3013_x86_signed.exe
   [ Create icons > On the Desktop off  Create Default Config off  Create Plugin Directories off ]
-\Users\troin\Dropbox\JH\core\IT_stack\onGitHub\MSWin10\T430i73520M
 $machine\symlinks.ps1
 ## CapsLock
 https://www.microsoft.com/en-gb/p/capslock/9nbx19w2pp00
@@ -330,9 +332,6 @@ $Env:Path -split';'
 state clean uninstall
 ri -recurse $Env:AppData\ActiveState
 "$Env:AppData\ActiveState\bin\state.exe"
-
-$Env:Path -=';C:\Users\troin\AppData\Roaming\ActiveState\bin;C:\Users\troin\AppData\Local\activestate\bin'
-$Env:Path -=';C:\Users\troin\AppData\Roaming\ActiveState\bin'
 ## PowerShell v7.1.3
 PowerShell-7.1.3-win-x64.msi > Optional > all on
 pwsh -Command ($env:Path).split(';')
@@ -492,11 +491,9 @@ Update Now
 ## Git v2.34.1
 ## MiniTool Partition Wizard Free v12.6
 ShadowMaker off
-## Python
+## Python 3.10.0
 python-3.10.0-amd64.exe > Add Python 3.10 to PATH > Advanced >
   [ for all  on  [ Associate  Precompile  debugging  debug  off ]
-
-python-3.4.2.msi (Add python.exe to Path)
 ## HP Smart Signed In
 ## PowerShell v7.2.1
 PowerShell-7.2.1-win-x64.msi > Optional > all on
@@ -526,7 +523,67 @@ Update Now
 ## Perl Log::Log4perl
 cpanm Log::Log4perl
 ## Git v2.35.1
+## NordVPN 6.42.4
+Update and restart
 ## Powershell.Chunks
 Install-Module -Name Powershell.Chunks -Repository PSGallery
+## WindowsApps\python...
+Settings > Apps & features > App execution aliases > [ App installer > python.exe  App installer > python3.exe ] > Off
+## Python 3.10.0 uninstall
+Settings > Apps & features > [ Python 3.10.0  Python Launcher 3.10.7581.0 ] > Uninstall
+### fix $env:Path
+still contains  C:\Program Files\Python310\Scripts\;C:\Program Files\Python310\;
+  restart didn't fix that
+#### get existing
+(Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).path
+  C:\Program Files\Python310\Scripts\;C:\Program Files\Python310\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\ImageMagick-7.1.0-Q16-HDRI;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Gpg4win\..\GnuPG\bin;C:\Strawberry\c\bin;C:\Strawberry\perl\site\bin;C:\Strawberry\perl\bin;C:\Program Files\PowerShell\7\;C:\Git\cmd
+#### fix in Administrator PowerShell
+  $newpath = 'C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\ImageMagick-7.1.0-Q16-HDRI;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Gpg4win\..\GnuPG\bin;C:\Strawberry\c\bin;C:\Strawberry\perl\site\bin;C:\Strawberry\perl\bin;C:\Program Files\PowerShell\7\;C:\Git\cmd'
+  Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH -Value $newPath
+restart
+## Python 3.10.2
+python-3.10.2-amd64.exe > Add Python 3.10 to PATH > Customize > Advanced Options >
+  [ Install for all users  Customize install location > C:\Python310 ]
+restart  for
+  where.exe python
+    C:\Python310\python.exe
+  $env:Path
+    ...;C:\Python310\Scripts\;C:\Python310\;...
+## Git v2.35.2
+## pyenv-win
+$MSWin10\pyenv-win.ps1
+new WT for  pyenv --version  got me  pyenv 2.64.11
+pyenv install 3.9.6-win32
+## Python 3.10.2 32-bit
+python-3.10.2.exe > Customize > Optional Features all off > Advanced Options all off
+C:\Users\troin\AppData\Local\Programs\Python\Python310-32\python.exe
+## gVim v8.2.3013 uninstall
+Settings > Apps & features > Vim 8.2 > Uninstall > uninstall-gui.exe >
+  [ Remove plugin directories  Remove the vim root directory ] off
+## gVim v8.2.4405
+gvim_8.2.4405_x86.exe
+  [ Create icons > On the Desktop off  Create Default Config off  Create Plugin Directories off ]
+  C:\Vim
+C:\Vim\vim82\gvim.exe  references  python310
+:set pythonthreedll?  reports  python310.dll
+## Notepad++ v8.2.1
+allowed to Update
+## install Nuget v3.0.0.1
+Get-PackageProvider | where name -eq 'nuget' | Install-PackageProvider -Force -Verbose
+Get-PackageProvider | where name -eq 'nuget'  reports  v3.0.0.1
+Get-PackageProvider Nuget | ft -Property Name, Version, ProviderPath  reports  v3.0.0.1
+## remove Nuget v2.8.5.208
+accidentally scrapped  'C:\Program Files\PackageManagement\ProviderAssemblies\nuget'
+## Check-ModuleUpdate
+Install-Script -Name Check-ModuleUpdate
+  PATH Environment Variable Change
+    Your system has not been configured with a default script installation path yet, which means you can only run a script by specifying the full path to the script file. This action places the script into the folder 'C:\Users\troin\Documents\PowerShell\Scripts', and adds that folder to your PATH environment variable. Do you want to add the script installation path 'C:\Users\troin\Documents\PowerShell\Scripts' to the PATH environment variable?
+    [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
+  Untrusted repository
+    You are installing the scripts from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the scripts from 'PSGallery'?
+    [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"):
+## PSFzf
+Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+Install-Module -Name PSFzf
 # waiting
 The Platinum Searcher

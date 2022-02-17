@@ -1,6 +1,6 @@
 # #region & #endregion create folding blocks if Peter Provost's vim-ps1 is installed
 
-# Joseph Harriott
+# Joseph Harriott, Thu 17 Feb 2022
 
 Set-Alias ss Select-String
 
@@ -195,6 +195,13 @@ Function pg {test-connection -computername google.com -ErrorAction SilentlyConti
 Function wp { curl wttr.in/Paris }
 
 #endregion
+#region --- PSFzf
+
+# Set-PsFzfOption -EnableAliasFuzzySetEverything  # cde  does nothing...
+# Set-PsFzfOption -EnableAliasFuzzyZLocation  # fz  unfortunately kills  Alt+c...
+# and settings for PSReadLine
+
+#endregion
 #region --- re-tag image files to 72dpi
 
 # a single image file:
@@ -230,8 +237,16 @@ if ($PSVersionTable.PSVersion.Major -eq 7) {
   $PSStyle.OutputRendering = [System.Management.Automation.OutputRendering]::Host;
 }
 
-Set-PSReadlineOption -EditMode Vi
+#region --- PSReadLine
+
+Set-PSReadlineOption -EditMode Vi  # wipes out any other settings, so first
+
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
+# PSFzf additions
+Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
+Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
+
+#endregion
 #endregion

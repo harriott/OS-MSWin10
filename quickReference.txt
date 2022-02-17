@@ -29,11 +29,8 @@ $n = Get-Date -f yyyyMMddhhmmss
 <command> | Out-Null  # works for some commands
 Alt > Space > E > L > [ up / down  to scroll   Esc ]
 iex <someCommand>  # = Invoke-Expression
-in Explorer:  Alt+D > powershell > Enter
 foreach($element in 1..3){ $element }
 Get-Package | Format-Table -AutoSize
-ii .  # invoke Explorer on WD
-robocopy /mir <sourcedir> <destinationdir> /l  # runs a simulation of mirroring source to destination
 stringInVims "string"
 
 ### aliases
@@ -50,6 +47,7 @@ $x.GetType()
 [string]$Pwd
 
 ### executables
+cd 'C:\Program Files'
 (Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* ).displayname | Sort-Object # lists removable x64 programs
 C:\MozillaThunderbird\thunderbird.exe -addressbook
 C:\Windows\explorer.exe "microsoft-edge:searchterm"
@@ -58,6 +56,38 @@ explorer "$Env:AppData\MiKTeX\tex\latex\jo"
 explorer shell:Appsfolder  # Applications
 start <somefile>
 where.exe where.exe  # doesn't find executables in  ~\AppData\
+
+### help
+Get-Alias ls
+Get-Alias -Definition Get-ChildItem
+Get-Help Start-BitsTransfer
+man <cmdlet>  # Get-Help, paged
+powershell /?
+Update-Help -UICulture en-US
+
+### modules
+$Env:PSModulePath -split (';')
+C:\Users\troin\Documents\PowerShell\Modules
+Get-InstalledModule
+Get-Module
+
+#### PSFzf
+Alt+a   # select an argument
+Alt+c   # change to sub-directory
+Ctrl+r  # search PSReadline History
+Ctrl+t  # select provider path
+fz      # fuzzy ZLocation
+tab completion
+
+### scripts
+C:\Users\troin\Documents\PowerShell\Scripts
+Check-ModuleUpdate
+Get-InstalledScript
+
+### storage
+ii .  # invoke Explorer on WD
+remove-item: erase, del, rd, ri, rm, rmdir
+robocopy /mir <sourcedir> <destinationdir> /l  # runs a simulation of mirroring source to destination
 
 ### folder investigations
 cat somefile.txt | where { $_ -match “expression”}
@@ -84,18 +114,6 @@ dc
 du64 -l 1
 fso
 
-### help
-Get-Alias ls
-Get-Alias -Definition Get-ChildItem
-Get-Help Start-BitsTransfer
-man <cmdlet>  # Get-Help, paged
-powershell /?
-Update-Help -UICulture en-US
-
-### Modules
-$Env:PSModulePath -split (';')
-Get-InstalledModule
-
 ### system info
 $env:Path -split ';'
 $Profile
@@ -104,7 +122,6 @@ Sysdm.cpl -> System Properties
 winver
 
 #### environment variables
-$Env:AppData
 $Env:Computername
 $Env:LOCALAPPDATA
 $Env:Path -split';'
@@ -163,6 +180,7 @@ Alt+P = Settings
 Ctrl+Shift+E = Extensions
 
 # Windows
+in Explorer:  Alt+D > powershell > Enter
 regedit
 
 # Windows Defender Firewall
