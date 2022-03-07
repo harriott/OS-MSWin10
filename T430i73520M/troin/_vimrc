@@ -6,10 +6,9 @@ let $DROPBOX = $HOME.'/Dropbox'  " keep this capitalised for finding it without 
       let $onGH = $ITstack.'/onGitHub'
         let $MSwin10 = $onGH.'/MSWin10'
           let $machine = $MSwin10.'/T430i73520M'
+  let $IThandy = $DROPBOX.'/JH/copied/IT-handy'
 " more locations are defined in  $onGH/vimfiles/vimrc-Win10.vim
 
-let mapleader='#'
+let mapleader='#'  " because  T430i73520M  has no  \
 source $HOME/vimfiles/vimrc-Win10.vim
-
-set pythonthreedll=C:\Users\troin\AppData\Local\Programs\Python\Python310-32\python310.dll
 

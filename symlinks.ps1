@@ -4,6 +4,10 @@
 # Joseph Harriott
 # to be run in Administator Powershell:  iex $MSWin10\symlinks.ps1
 
+#region --- LanguageTool
+new-item C:\LanguageTool -itemtype symboliclink -value C:\Users\troin\Dropbox\JH\copied\IT-handy\LanguageTool -force
+
+#endregion
 #region --- LaTeX
 new-item $Env:AppData\MiKTeX\tex\latex\jo -itemtype symboliclink -value $ITstack\CrossPlatform\LaTeX\jo -force
 

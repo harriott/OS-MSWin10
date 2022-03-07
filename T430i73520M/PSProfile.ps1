@@ -22,6 +22,7 @@ $DROPBOX = "C:\Users\troin\Dropbox"
           $machine = "$MSWin10\T430i73520M"
         $SPD = "$onGH\SyncPortableDrives\RoboCopy\T430i73520M"  # see below
   $ITP = "$DROPBOX\JH\Technos\IT0-Partitionable"  # $ITP\diskUsage.txt
+  $IThandy = "$DROPBOX\JH\copied\IT-handy"
 
 #endregion
 #region --- 2 more functionality

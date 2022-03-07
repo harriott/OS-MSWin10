@@ -2,6 +2,7 @@ vim: ft=build:
 
 Adobe Acrobat Reader DC > Shift+Ctrl+Minus -> rotate left
 C:\Users\troin\AppData\Local\Microsoft\WindowsApps
+ctrl+m on selected text opens it in LanguageTool
 Get-ChildItem Env:  # list all environment variables
 Sumatra PDF: r = reload
 
@@ -76,7 +77,6 @@ Alt+a   # select an argument
 Alt+c   # change to sub-directory
 Ctrl+r  # search PSReadline History
 Ctrl+t  # select provider path
-fz      # fuzzy ZLocation
 tab completion
 
 ### scripts
@@ -128,6 +128,7 @@ $Env:Path -split';'
 $Env:PATHEXT
 $Env:ProgramFiles
 $Env:UserProfile
+$HOME
 gci env:  # list the environment variables
 $PSScriptRoot
 $PSVersionTable
@@ -155,6 +156,7 @@ Ctrl+, -> Settings
 alt+D -> duplicate pane right
 alt+_ -> split pane below
 alt++ -> split pane right
+alt+arrow -> move focus
 ctrl+c -> copy text
 ctrl+T -> new tab
 ctrl+W -> close pane
@@ -182,6 +184,7 @@ Ctrl+Shift+E = Extensions
 # Windows
 in Explorer:  Alt+D > powershell > Enter
 regedit
+Win+l => lock screen
 
 # Windows Defender Firewall
 control firewall.cpl  # Control Panel > All Control Panel Items > Windows Defender Firewall

@@ -16,9 +16,6 @@ where.exe ffmpeg
 cd *\ffmpeg-4.4-full_build\bin
   cpi ffmpeg.exe $Env:LOCALAPPDATA\Microsoft\WindowsApps
 ffmpeg -version
-## fzf
-extracted  fzf-0.20.0-windows_386.zip  for  fzf.exe
-  mi fzf.exe $Env:LOCALAPPDATA\Microsoft\WindowsApps
 ## fonts
 right-clicked on  nerd-fonts\patched-fonts\CascadiaCode\Regular\complete\Caskaydia Cove Regular Nerd Font Complete Mono Windows Compatible.otf
   appears as  CaskaydiaCove NF Regular
@@ -505,7 +502,7 @@ NordVPNSetup.exe  (defaults to  C:\Program Files\NordVPN) no Desktop Shortcut
 Windows Defender Firewall > Inbound Rules > nordvpn.exe
 Administrator PS for  Set-NetFirewallProfile -All -Enabled False
   reset Firewall
-NordVPN > [ Settings > Launch at Windows startup off  connected USA ]
+NordVPN >  Settings > Launch at Windows startup off  connected USA
 ## Git v2.35.0
 ## EUDC 1252
 New-Item -Path HKCU:\EUDC\1252
@@ -582,8 +579,48 @@ Install-Script -Name Check-ModuleUpdate
   Untrusted repository
     You are installing the scripts from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the scripts from 'PSGallery'?
     [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"):
+## fzf (for PSFzf)
+extracted  fzf-0.20.0-windows_386.zip  for  fzf.exe
+  mi fzf.exe $Env:LOCALAPPDATA\Microsoft\WindowsApps
 ## PSFzf
 Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 Install-Module -Name PSFzf
+## pyenv uninstall 3.9.6-win32
+didn't clear out  ~\.pyenv\pyenv-win\install_cache  so I did that manually
+## NordVPN 6.43.5
+Update and restart
+NordVPN > Settings > Kill Switch > App Kill Switch On > Add apps > Microsoft Edge
+## Tixati v2.88
+tixati-2.88-1.win64-install.exe
+## LibreOffice 7.3.0
+Close Windows Explorer and everything except Task Manager for
+  LibreOffice_7.3.0_Win_x64.msi > Custom > Next
+## fzf v0.22.0
+extracted  fzf-0.22.0-windows_386.zip  for  fzf.exe
+  mi fzf.exe $Env:LOCALAPPDATA\Microsoft\WindowsApps -force
+  fzf --version
+## move to x64 gVim
+Settings > Apps & features > Vim 8.2 > Uninstall > Uninstall > uninstall-gui.exe >
+  Remove the Vim root directory  off > Uninstall
+gvim_8.2.4478_x64_signed.exe >
+  [ Create icons > On the Desktop off  Create Default Config off  Create Plugin Directories off ] >
+  C:\Vim
+## Python 3.10.2
+python-3.10.2-amd64.exe  was installed
+## Python 3.10.2 32-bit uninstall
+Settings > Apps & features > Python 3.10.2 (32-bit) > Uninstall > Uninstall
+## LanguageTool
+LanguageTool-1.0.8.exe
+  installed to  C:\Users\troin\AppData\Local\Programs\LanguageTool\LanguageTool.exe
+Settings > App Settings > Change shortcut > M
+## LanguageTool v5.4
+Deleted  C:\Users\troin\tools\LanguageTool-5.4
+java -jar C:\LanguageTool\languagetool-commandline.jar -h
+## NordVPN 6.44.5
+Update and restart
+## The Platinum Searcher
+PlatinumSearcher-v2_2_0
+cpi pt.exe $Env:LOCALAPPDATA\Microsoft\WindowsApps -force
+pt /version
 # waiting
-The Platinum Searcher
+## ShellCheck v0.8.0
