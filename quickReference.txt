@@ -23,6 +23,7 @@ pwsh -Command ($env:Path).split(';')
 ## PowerShell
 $MyInvocation.MyCommand.Name  # = the script's name
 $_ = $PSItem = current object in the pipeline object
+$MSwin10\gac.ps1  # to explore all commands
 $n = Get-Date -f yyyyMMddhhmmss
 '"Hello world"'
 (Get-Date).Day
@@ -33,6 +34,7 @@ iex <someCommand>  # = Invoke-Expression
 foreach($element in 1..3){ $element }
 Get-Package | Format-Table -AutoSize
 stringInVims "string"
+$string.trim()  # removes whitespaces (including newlines) from ends
 
 ### aliases
 limited to single commands
@@ -46,6 +48,7 @@ ri
 ### data
 $x.GetType()
 [string]$Pwd
+Arrays
 
 ### executables
 cd 'C:\Program Files'
@@ -71,6 +74,11 @@ $Env:PSModulePath -split (';')
 C:\Users\troin\Documents\PowerShell\Modules
 Get-InstalledModule
 Get-Module
+gvim $Env:LOCALAPPDATA\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
+New-BurntToastNotification
+pcls  # PowerColorLS
+v5: C:\Users\troin\Documents\WindowsPowerShell\Modules
+v7: C:\Users\troin\Documents\PowerShell\Modules
 
 #### PSFzf
 Alt+a   # select an argument

@@ -157,7 +157,7 @@ Function ffmhb {ffmpeg -hide_banner $args}
 Function fn { gci | select -ExpandProperty FullName | sort }
 Function gic { git commit -m "$args[0]" }
 Function gis { git status -u }
-Function gvim { & "${Env:ProgramFiles(x86)}\Vim\vim82\gvim.exe" $args[0] $args[1] $args[2] }
+Function gvim { & "C:\Vim\vim82\gvim.exe" $args[0] $args[1] $args[2] }
 # New-Alias g gm.exe # GraphicsMagick
 New-Alias jpo $onGH\jpgorhor\jpgorhor.ps1
 
@@ -227,16 +227,16 @@ $host.privatedata.ErrorBackgroundColor = 'darkmagenta'
 Import-Module posh-git
 $GitPromptSettings.DefaultPromptPath.ForegroundColor = 'Cyan'
 
-Import-Module Powershell.Chunks
+if ($PSVersionTable.PSVersion.Major -eq 7) { Import-Module Powershell.Chunks }
 
-# Better directory & file listings:
+#region --- colours in outputs
 Import-Module Terminal-Icons; Import-Module PowerColorLS
 Set-Alias pcls PowerColorLS
 
 if ($PSVersionTable.PSVersion.Major -eq 7) {
   $PSStyle.OutputRendering = [System.Management.Automation.OutputRendering]::Host;
 }
-
+#endregion
 #region --- PSReadLine
 
 Set-PSReadlineOption -EditMode Vi  # wipes out any other settings, so first

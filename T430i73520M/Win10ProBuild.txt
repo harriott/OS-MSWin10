@@ -1,11 +1,13 @@
 vim: ft=build:
 
-Fn+k toggles Scroll Lock
 Lenovo ThinkPad T430 i7-3520M = T430i73520M
 
 # physical configuration
 1600x900 screen with rhs taskbar
 SanDisk microSD adapter containing S32GBC10
+## keyboard
+Fn+k toggles Scroll Lock
+shift+rightAlt+# => |
 # parallel build
 ## Disk Usage
 du64.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
@@ -201,8 +203,7 @@ right-clicked on a PDF for  Open with > Choose > C:\Program Files\LibreOffice\pr
 no longer seeing my HP ENVY 5532, so
   Add your first printer > Add Printer > HPA22FOE (ENVY 5530 series)
 ## IrfanView 4.58
-iview458_x64_setup.exe
-  (no Desktop shortcuts  For all users)
+iview458_x64_setup.exe (no Desktop shortcuts  For all users)
 ran it for  P (= Properties/Settings) > [JPG > Auto-rotate off    Browsing > Cut White]
 scanned from HP ENVY 5532
 ## Ghostscript v9.54 (in preparation for ImageMagick)
@@ -510,7 +511,7 @@ New-Item -Path HKCU:\EUDC\1252
 Set-ItemProperty HKCU:\EUDC\1252 -Name SystemDefaultEUDCFont -Value "Caskaydia Cove Regular Nerd Font Complete Mono Windows Compatible.otf" -Type String
   (Get-ItemProperty -Path HKCU:\EUDC\1252).SystemDefaultEUDCFont
 ## Terminal-Icons
-Install-Module Terminal-Icons
+PS> Install-Module Terminal-Icons
 ## PowerColorLS
 Install-Module -Name PowerColorLS -Repository PSGallery
 ## Perl WWW::ipinfo
@@ -622,5 +623,53 @@ Update and restart
 PlatinumSearcher-v2_2_0
 cpi pt.exe $Env:LOCALAPPDATA\Microsoft\WindowsApps -force
 pt /version
+## Python 3's sys.path
+python -c "import sys; print (sys.path)"
+  ['', 'C:\\Python310\\python310.zip', 'C:\\Python310\\DLLs', 'C:\\Python310\\lib', 'C:\\Python310', 'C:\\Python310\\lib\\site-packages']
+## update Python modules
+pip install --upgrade setuptools
+py -m pip install --upgrade pip
+## Git v2.35.3
+## NordVPN  via  Sony Xperia XA2 HotSpot
+  only got the window a long time after double-clicking on the tray icon
+  connnected to  Sony Xperia XA2 HotSpot: authentication error
+## KeePassXC
+KeePassXC-2.7.1-Win64.msi > Install > UAC > Yes
+Windows Security Making sure it's you > Windows 10 Pro login PIN
+## NordVPN 6.45.8
+Update and restart
+## OBS Studio v27.2.4
+## Git v2.36.0
+## Git v2.36.1
+## PowerShell v7.2.4
+PowerShell-7.2.4-win-x64.msi > [ Add 'Open here' context menu to Explorer
+  Add 'Run with PowerShell 7' context menu for PowerShell files ] > UAC > Yes
+## BurntToast
+Install-Module -Name BurntToast
+## Windows Media Player
+Custom > usage rights & Histories off
+## foobar2000
+Microsoft Store > foobar2000 > Get
+Ctrl+P > Media Library > Add > audio folders in C:\Users\troin\Dropbox
+.mp3 > Properties > Opens with > foobar2000
+## Java Version 8 Update 333
+UAC > Java SE Runtime > Yes > Install
+Configure Java (= Java Control Panel) > General > About
+## IrfanView 4.60
+iview460_x64_setup.exe (no Desktop shortcuts  For all users)
+iview460_plugins_x64_setup.exe
+.svg > Properties > Opens with > IrfanView
+## ps.checkModuleUpdates
+Install-Module -Name ps.checkModuleUpdates
+## Terminal-Icons in WPS
+in WPS:  Install-Module Terminal-Icons
+## PowerColorLS in WPS
+in WPS:  Install-Module -Name PowerColorLS
+## PSFzf in WPS
+in WPS:  Install-Module -Name PSFzf
+## gVim v8.2.5006
+gvim_8.2.5006_x64_signed.exe (picked up previous installation settings, and uninstalled old version)
+## Notepad++ v8.3.3
+allowed to Update
 # waiting
 ## ShellCheck v0.8.0
