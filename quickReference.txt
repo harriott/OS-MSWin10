@@ -59,6 +59,7 @@ gcm explorer
 explorer "$Env:AppData\MiKTeX\tex\latex\jo"
 explorer shell:Appsfolder  # Applications
 start <somefile>
+where.exe pwsh
 where.exe where.exe  # doesn't find executables in  ~\AppData\
 
 ### help
@@ -93,11 +94,12 @@ Check-ModuleUpdate
 Get-InstalledScript
 
 ### storage
+if ( ! ( test-path 'dir' ) ) { ni -name 'dir' -type directory }
 ii .  # invoke Explorer on WD
 remove-item: erase, del, rd, ri, rm, rmdir
 robocopy /mir <sourcedir> <destinationdir> /l  # runs a simulation of mirroring source to destination
 
-### folder investigations
+#### investigations
 cat somefile.txt | where { $_ -match “expression”}
 gci * | select FullName
 gci * | select Name
@@ -105,7 +107,7 @@ gci $path | select -expand FullName  # for pure string output
 ls -r -i '* (* conflicted copy *' |%{echo $_.fullname} | ri
 pcls -a -l -t  # includes hidden & time sorted
 
-#### LastWriteTime
+##### LastWriteTime
 lwp \.ps1
 lwt md md
 lwt sh sh
@@ -113,11 +115,11 @@ lwt docs doc odt
 lwt tex cls sty tex
 lwt txt txt
 
-##### quick terminal output
+###### quick terminal output
 lwts *.ps1 *.sh
 lwts *.txt
 
-#### sizes
+##### sizes
 dc
 du64 -l 1
 fso
@@ -125,7 +127,6 @@ fso
 ### system info
 $env:Path -split ';'
 $Profile
-$PSVersionTable.PSVersion
 Sysdm.cpl -> System Properties
 winver
 
@@ -139,7 +140,6 @@ $Env:UserProfile
 $HOME
 gci env:  # list the environment variables
 $PSScriptRoot
-$PSVersionTable
 
 ##### Roaming
 $Env:AppData  # C:\Users\...\AppData\Roaming
@@ -149,6 +149,10 @@ ls "$Env:AppData\Pandoc\defaults"
 "Hello".Replace('l', 'x')
 & "${Env:ProgramFiles(x86)}\Vim\vim82\gvim.exe" <textfile>
 (Get-Content $file) -replace $regex, $newtext | Set-Content $file
+
+### version
+$PSVersionTable
+Get-ItemPropertyValue -Path "HKLM:\SOFTWARE\Microsoft\PowerShellCore\InstalledVersions\*" -Name "SemanticVersion"
 
 ## robocopy
 /l   - list only (= simulate)
@@ -193,6 +197,13 @@ Ctrl+Shift+E = Extensions
 in Explorer:  Alt+D > powershell > Enter
 regedit
 Win+l => lock screen
+Win+r > taskschd.msc => Task Scheduler
+
+## Start Menus
+cd "$Env:AppData\Microsoft\Windows\Start Menu\Programs"
+Win+r > shell:common programs
+Win+r > shell:programs
+Win+r > shell:startup => user Start-up
 
 # Windows Defender Firewall
 control firewall.cpl  # Control Panel > All Control Panel Items > Windows Defender Firewall

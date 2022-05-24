@@ -1,13 +1,13 @@
-# vim: set et tw=0:
+# vim: set fdl=2:
 
 # Joseph Harriott
 
 # restart PowerShell if you change anything here
 
-# symlink this file to
+# symlink this file (T430i73520M\PSProfile.ps1) to
 #  ~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
 #  ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
-#  - done in  $machine\Win10ProBuild.txt
+#  - both done in  $machine\Win10ProBuild.txt
 
 # Clear-Host
 
@@ -29,7 +29,7 @@ $DROPBOX = "C:\Users\troin\Dropbox"
 
 . $MSWin10\PSProfile.ps1  # also uses $onGH ($MSWin10/PSProfile.ps1)
 
-#region --- backups
+#region ---- backups
 
 New-Alias RCF $SPD\Flash.ps1
 New-Alias RCPD $SPD\PD.ps1

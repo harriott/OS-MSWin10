@@ -230,6 +230,8 @@ $GitPromptSettings.DefaultPromptPath.ForegroundColor = 'Cyan'
 if ($PSVersionTable.PSVersion.Major -eq 7) { Import-Module Powershell.Chunks }
 
 #region --- colours in outputs
+Function SCFCW { [System.Console]::ForegroundColor = 'White' }
+Function SCRC { [System.Console]::ResetColor() }
 Import-Module Terminal-Icons; Import-Module PowerColorLS
 Set-Alias pcls PowerColorLS
 
