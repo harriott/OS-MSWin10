@@ -87,10 +87,34 @@ Function cex { gci . -r | where { ! $_.PSIsContainer } | Group Extension -noElem
 
 #endregion
 #region --- LastWriteTime
-Function lwp { ls -r `
-  | ForEach-Object { $_.LastWriteTime.ToString('yyyyMMdd-HH:mm:ss') + " : " + $_.FullName } `
-  | out-string -stream | select-string $args[0] `
-  | sort } # <file-path> is a regex
+
+Function dtsFN { $args[0].LastWriteTime.ToString('yyyyMMdd-HH:mm:ss')+' '+$args[1]+' '+ $args[0].FullName }
+#  used by other functions
+
+Function encrypted {
+  $Encrypted = "actions", "Digital0", "Digital1", "Secure0", "Secure1", "SHG", "stack"
+  if (!($(get-location).path).equals($Enc)) {
+    if ( ( test-path $Enc ) ) { sl $Enc } else { "$Enc ain't there"; Return } }
+  foreach ($node in $Encrypted) {
+    if ( gci $node* ) {
+      ''
+      $node+':'
+      if ( $node.equals('actions') ) { $path = '*ps1*' } else {
+        if ( test-path $node -PathType Container ) { $EncDir = gci $node -Recurse -File | sort LastWriteTime -Descending | select -First 1 | %{ dtsFN $_ '??' } }
+        $path = $node+'*7z'
+      }
+      $Enc7z = gci -Path $path | %{ dtsFN $_ '**' }
+      $ce7z = gci -Path "$core\encrypted\$path" | %{ dtsFN $_ 'Dr' }
+      $objects = $EncDir, $Enc7z, $ce7z
+      $sorted = $objects | sort -uniq  # also removes nulls
+      $sorted.Replace('C:\Users\troin\', '').Replace('Dropbox\JH\core\encrypted\', '').Replace('Encrypted\', '')
+    }
+  }
+  ''
+}
+
+Function lwp { ls -r | %{ dtsFN $_ ':' } | out-string -stream | select-string $args[0] | sort }
+#  <file-path> is a regex
 
 #region --- by name
 Function lwt {
@@ -111,15 +135,14 @@ Function lwt {
 Function lwt-gitignore {
   "vim: nowrap tw=0:" > lwt-gitignore.txt; lwts .gitignore >> lwt-gitignore.txt } # specific case
 
-Function lwts { gci -r -i $args[0],$args[1],$args[2] `
-  | ForEach-Object { $_.LastWriteTime.ToString('yyyyMMdd-HH:mm:ss') + " : " + $_.FullName } `
-  | sort } # can use wildcards in the <filenames(s)>
+Function lwts { gci -r -i $args[0],$args[1],$args[2] | %{ dtsFN $_ ':' } | sort }
+#  can use wildcards in the <filenames(s)>
 
 #endregion
 
 #endregion
 #region --- sizes
-Function dc { Get-ChildItem | ForEach-Object { $_.Name + ": " + "{0:N2}" -f ((Get-ChildItem $_ -Recurse | Measure-Object Length -Sum -ErrorAction SilentlyContinue).Sum / 1MB) + " MB" } }
+Function dc { gci | ForEach-Object { $_.Name + ": " + "{0:N2}" -f ((gci $_ -Recurse | Measure-Object Length -Sum -ErrorAction SilentlyContinue).Sum / 1MB) + " MB" } }
 
 Function fso { $fso = new-object -com Scripting.FileSystemObject; gci -Directory | select @{l='Size'; e={$fso.GetFolder($_.FullName).Size}},FullName | sort Size -Descending | ft @{l='Size [MB]'; e={'{0:N2}    ' -f ($_.Size / 1MB)}},FullName }
 
@@ -139,7 +162,7 @@ Function SIFWork {
   "" >> $outFile
   $args[2] >> $outFile
   "" >> $outFile
-  Get-ChildItem -r -e $outFile -i $args[1] | ss $args[2] | %{$_.Path+" > "+$_.Line} >> $outFile
+  gci -r -e $outFile -i $args[1] | ss $args[2] | %{$_.Path+" > "+$_.Line} >> $outFile
   "" >> $outFile
   "vim-easy-align: Sip>" >> $outFile
   ":Tabularize/>" >> $outFile
@@ -162,7 +185,7 @@ Function gvim { & "C:\Vim\vim82\gvim.exe" $args[0] $args[1] $args[2] }
 New-Alias jpo $onGH\jpgorhor\jpgorhor.ps1
 
 Function l {
-  [string[]]$list = (Get-ChildItem).Name
+  [string[]]$list = (gci).Name
   $list -join '  '
 }
 
@@ -212,7 +235,7 @@ Function im72 {
 
 # all the files in a folder:
 Function all72 {
-  Get-ChildItem | Where-Object {-not $_.PsIsContainer} | ForEach-Object { im72 $_
+  gci | Where-Object {-not $_.PsIsContainer} | ForEach-Object { im72 $_
   Remove-Item $_ }
   }
 
@@ -224,16 +247,32 @@ $env:path +=';C:\Program Files\7-Zip'
 $host.privatedata.ErrorForegroundColor = 'gray'
 $host.privatedata.ErrorBackgroundColor = 'darkmagenta'
 
+if ($PSVersionTable.PSVersion.Major -eq 7) { Import-Module Powershell.Chunks }
+
 Import-Module posh-git
 $GitPromptSettings.DefaultPromptPath.ForegroundColor = 'Cyan'
 
-if ($PSVersionTable.PSVersion.Major -eq 7) { Import-Module Powershell.Chunks }
+Import-Module ps.checkModuleUpdates
 
 #region --- colours in outputs
+. $MSWin10\Out-HostColored.ps1
 Function SCFCW { [System.Console]::ForegroundColor = 'White' }
 Function SCRC { [System.Console]::ResetColor() }
 Import-Module Terminal-Icons; Import-Module PowerColorLS
-Set-Alias pcls PowerColorLS
+Set-Alias pc PowerColorLS
+
+function Format-Color([hashtable] $Colors = @{}, [switch] $SimpleMatch) {
+	$lines = ($input | Out-String) -replace "`r", "" -split "`n"
+	foreach($line in $lines) {
+		$color = ''
+		foreach($pattern in $Colors.Keys){
+			if(!$SimpleMatch -and $line -match $pattern) { $color = $Colors[$pattern] }
+			elseif ($SimpleMatch -and $line -like $pattern) { $color = $Colors[$pattern] }
+		}
+		if($color) { Write-Host -ForegroundColor $color $line } else { Write-Host $line }
+	}
+}
+# gci | %{ dtsFN $_ ':' } | Format-Color @{'8'='green';'9'='red'}
 
 if ($PSVersionTable.PSVersion.Major -eq 7) {
   $PSStyle.OutputRendering = [System.Management.Automation.OutputRendering]::Host;

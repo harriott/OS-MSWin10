@@ -1,5 +1,6 @@
 vim: ft=build:
 
+$MSwin10\jo.ahk
 Adobe Acrobat Reader DC > Shift+Ctrl+Minus -> rotate left
 C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 ctrl+m on selected text opens it in LanguageTool
@@ -33,11 +34,10 @@ Alt > Space > E > L > [ up / down  to scroll   Esc ]
 iex <someCommand>  # = Invoke-Expression
 foreach($element in 1..3){ $element }
 Get-Package | Format-Table -AutoSize
-stringInVims "string"
-$string.trim()  # removes whitespaces (including newlines) from ends
 
 ### aliases
 limited to single commands
+gal h*
 nal <alias> <string>
 sal <alias> <string>
 
@@ -45,10 +45,18 @@ sal <alias> <string>
 iex -> Invoke-Expression
 ri
 
+### command history
+gvim (Get-PSReadlineOption).HistorySavePath
+h  # Get-History
+
 ### data
+"Hello".Replace('l', 'x').Replace('H', 'Y')
+$string.trim()  # removes whitespaces (including newlines) from ends
 $x.GetType()
+'a'.equals('b')
 [string]$Pwd
-Arrays
+foreach ($element in $myArray) {$element}
+Format-Custom -InputObject $array -Expand CoreOnly  # displays structure
 
 ### executables
 cd 'C:\Program Files'
@@ -72,7 +80,6 @@ Update-Help -UICulture en-US
 
 ### modules
 $Env:PSModulePath -split (';')
-C:\Users\troin\Documents\PowerShell\Modules
 Get-InstalledModule
 Get-Module
 gvim $Env:LOCALAPPDATA\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
@@ -88,16 +95,24 @@ Ctrl+r  # search PSReadline History
 Ctrl+t  # select provider path
 tab completion
 
+#### update
+$machine\updateModules.ps1
+Check-ModuleUpdate
+Check-ModuleUpdates  # (ignore InvalidOperations...) ends with highlighted updates
+
 ### scripts
 C:\Users\troin\Documents\PowerShell\Scripts
-Check-ModuleUpdate
 Get-InstalledScript
 
 ### storage
+gci -r -i i1*,i2*,i3*
 if ( ! ( test-path 'dir' ) ) { ni -name 'dir' -type directory }
 ii .  # invoke Explorer on WD
+ni <directory> -type directory
 remove-item: erase, del, rd, ri, rm, rmdir
 robocopy /mir <sourcedir> <destinationdir> /l  # runs a simulation of mirroring source to destination
+ROBOCOPY.exe
+stringInVims "string"
 
 #### investigations
 cat somefile.txt | where { $_ -match “expression”}

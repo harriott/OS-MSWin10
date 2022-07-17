@@ -3,7 +3,10 @@
 # Joseph Harriott - Tue 24 May 2022
 
 # remove Mozilla Thunderbird's  parent.lock  if Thunderbird isn't running
-# ---------------------------------------------------------------
+# -----------------------------------------------------------------------
+# using  parent.lock  as an indicator on a linux box
+#  that Thunderbird is active on this Win10 machine
+
 # for  Task Scheduler
 #  APS> ni C:\MT-clearParentLock.ps1 -itemtype symboliclink -value $machine\T91\TaskScheduler\clearParentLock.ps1 -Force
 #   gc C:\clearParentLock.ps1
@@ -25,5 +28,4 @@ if ( ! (Get-Process thunderbird -ErrorAction SilentlyContinue) ) {
     New-BurntToastNotification -AppLogo C:\MozillaThunderbird\chrome\icons\default\messengerWindow.ico -Text "removed $pl", $T91short
   }
 }
-
 

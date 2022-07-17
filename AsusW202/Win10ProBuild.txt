@@ -1,0 +1,48 @@
+vim: ft=build:
+
+Asus VivoBook W202 - AsusW202
+
+# parallel build
+right-clicked on Taskbar > [ Search > Hidden  Cortana > off-ticked  settings (= Taskbar) > small > On ]
+Splendid > Eye Care
+## stop individual Edge tabs showing in task switcher
+Settings > System > Multi-tasking > Pressing Alt + Tab shows > Open windows only
+## Settings > System
+Power & sleep > When plugged ins > Never
+Additional power settings > Choose >
+  Change settings that are currently unavailable > Turn on fast startup  off-ticked
+  Plugged > close > Do nothing
+### About > Device specifications
+Device name: 
+Processor: 
+Installed RAM:
+Device ID:
+Product ID:
+System type:
+Pen and touch
+### About > Windows specifications
+Edition:
+Version:
+OS build:
+Experience:
+# physical configuration
+# sequential build
+UK...
+Jo-OPPO-A76 > key
+Setup for personal use
+jharrio@outlook.com
+PIN
+[ Use online speech recognition  Get location-based experiences  Turn on Find my device
+  Send Required and Optional diagnostic data  Send optional inking and typing diagnostic data
+  Le Microsoft use your diagnostic data  Apps can use advertising ID ] Accept
+[ Entertainment  Creativity ] on
+free trial of Microsoft 365 > Decline
+Cortana > Accept
+Task Manager  to drag the icon onto tray
+HP Smart > Launch > Sign In > trohib@gmail.com > pw
+Menu > Windows System > [ Command Prompt  Control Panel ] > Pinned to Start
+Control Panel > Microsoft 365s Uninstalled
+ASUS Live Update > ASUS Live Update
+Recovery Drive > KDT100G3A
+## waiting
+ASUS Hello (Serial Number: M5NXCX003203199  Product Name: E201NA)

@@ -4,9 +4,11 @@ Lenovo ThinkPad T430 i7-3520M = T430i73520M
 
 # physical configuration
 1600x900 screen with rhs taskbar
-SanDisk microSD adapter containing S32GBC10
+HX256GSSDSATA3  is configured mostly as C:\
+SanDisk microSD adapter containing S32GBC10 is D:\
 ## keyboard
 Fn+k toggles Scroll Lock
+rightAlt+# => \
 shift+rightAlt+# => |
 # parallel build
 ## Disk Usage
@@ -26,6 +28,9 @@ defaulted to  Cascadia Mono 9 Normal
 ## Sigcheck
 sigcheck64.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 sigcheck64 sigcheck64.exe
+## Streams
+streams64.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
+streams64
 ## yt-dlp
 yt-dlp.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 ~\tools\yt-dlp.exe
@@ -664,7 +669,7 @@ Install-Module -Name ps.checkModuleUpdates
 ## Terminal-Icons in WPS
 in WPS:  Install-Module Terminal-Icons
 ## PowerColorLS in WPS
-in WPS:  Install-Module -Name PowerColorLS
+Install-Module -Name PowerColorLS
 ## PSFzf in WPS
 in WPS:  Install-Module -Name PSFzf
 ## gVim v8.2.5006
@@ -682,5 +687,21 @@ Shortcut to  $vimfiles\CapsLockEsc.ahk  moved into
   C:\Users\troin\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 ## CapsLock in Start-up
 icon dragged from Menu to Desktop, then renamed SathyaCapsLock and dragged into Start-up
+## Windows Terminal at startup
+Settings > Startup > Launch on machine startup
+## Git v2.37.0
+## Age of Empires III Definitive Edition
+battleserver.exe Allowed in Firewall on Public networks
+UI Options > Language > Français (French)
+## Storage Sense
+got turned on
+## Git v2.37.1
+## Check-ModuleUpdates in WPS
+in WT: Install-Module -Name Check-ModuleUpdates
+## ps.checkModuleUpdates in WPS
+in WT: Install-Module ps.checkModuleUpdates
+## update PackageManagement
+Install-Module PackageManagement -Force
 # waiting
-## ShellCheck v0.8.0
+MusikCube
+ShellCheck v0.8.0

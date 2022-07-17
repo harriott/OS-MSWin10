@@ -1,7 +1,7 @@
 
 ; Joseph Harriott - Tue 24 May 2022
 
-; $vimfiles\CapsLockEsc.ahk
+; $MSwin10\jo.ahk
 
 ; move a Shortcut of this script into
 ; "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Start-up"
