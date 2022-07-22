@@ -13,28 +13,20 @@
 
 #region --- 1 paths
 
-$DROPBOX = "C:\Users\troin\Dropbox"
+$DROPBOX = "C:\Users\jharr\Dropbox"
   $core = "$DROPBOX\JH\core"
     $ITstack = "$core\IT_stack"
       $CP = "$ITstack\CrossPlatform"
       $onGH = "$ITstack\onGitHub"
         $MSwin10 = "$onGH\MSWin10"
-          $machine = "$MSWin10\T430i73520M"
-        $SPD = "$onGH\SyncPortableDrives\RoboCopy\T430i73520M"  # see below
+          $machine = "$MSWin10\AsusW202"
   $ITP = "$DROPBOX\JH\Technos\IT0-Partitionable"  # $ITP\diskUsage.txt
   $IThandy = "$DROPBOX\JH\copied\IT-handy"
-$Enc = 'C:\Users\troin\Encrypted'
+$Enc = 'C:\Users\jharr\Encrypted'
 
 #endregion
 #region --- 2 more functionality
 
-. $MSWin10\PSProfile.ps1  # also uses $onGH ($MSWin10/PSProfile.ps1)
-
-#region ---- backups
-
-New-Alias RCF $SPD\Flash.ps1
-New-Alias RCPD $SPD\PD.ps1
-
-#endregion
+. $MSWin10\PSProfile.ps1  # ($MSWin10/PSProfile.ps1) also uses $onGH
 
 #endregion

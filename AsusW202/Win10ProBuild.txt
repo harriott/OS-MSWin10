@@ -13,19 +13,24 @@ Additional power settings > Choose >
   Change settings that are currently unavailable > Turn on fast startup  off-ticked
   Plugged > close > Do nothing
 ### About > Device specifications
-Device name: 
-Processor: 
-Installed RAM:
-Device ID:
-Product ID:
-System type:
-Pen and touch
+Device name: LAPTOP-0971GB38
+Processor: Intel(R) Celeron(R) CPU N3350 @ 1.10GHz   1.10 GHz
+Installed RAM: 	4.00 GB (3.87 GB usable)
+Device ID: EE068EC3-ED1C-4ED0-9DC9-DB9DA4011FE4
+Product ID: 00330-53622-90240-AAOEM
+System type: 64-bit operating system, x64-based processor
+Pen and touch: No pen or touch input is available for this display
 ### About > Windows specifications
-Edition:
-Version:
-OS build:
-Experience:
+Edition: Windows 10 Pro
+Version: 21H2
+Installed on: 16/05/2021
+OS build: 19044.1826
+Experience: Windows Feature Experience Pack 120.2212.4180.0
+Activation > Windows is activated with a digital license linked to your Microsoft account
+## Windows Terminal fonts
+ctrl+, (= Settings) > [ Command Prompt  Windows Powershell ] > Appearance > (Cascadia Mono 12 Normal) > 9
 # physical configuration
+SDEP128G  in  Samsung microSD Adapter  in  SD  slot, for  Dropbox
 # sequential build
 UK...
 Jo-OPPO-A76 > key
@@ -44,5 +49,51 @@ Menu > Windows System > [ Command Prompt  Control Panel ] > Pinned to Start
 Control Panel > Microsoft 365s Uninstalled
 ASUS Live Update > ASUS Live Update
 Recovery Drive > KDT100G3A
+## Ditto Clipboard
+Microsoft Store > Ditto Clipboard > Get > Open > Options > General > [ Maximum Number of Saved Copies > 5000
+  Advanced > Show leading whitespace ( C:\Users\jharr\AppData\Local\Ditto_WindowsApp\Ditto.db )
+  Keyboard Shortcuts > first Activate > [ ' Win ] ]
+## Pictures folder
+manually moved  C:\Users\jharr\OneDrive\Pictures  to  C:\Users\jharr\Pictures
+### fail
+isn't in C:\Users\jharr  so navigated to  C:\Users\jharr\OneDrive\Pictures  for right-click > Location > C:\Users\jharr\Pictures
+  Control Panel > Microsoft OneDrive Uninstalled
+## KeePassXC
+KeePassXC-2.7.1-Win64.msi > Autostart off > Next > Install > UAC > Yes  failed, so
+https://docs.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist  for  VC_redist.x64.exe
+KeePassXC-2.7.1-Win64.msi > Repair
+D:\Dropbox\JH\core\encrypted\JH.kdbx
+Tools > Settings > Browser Integration > Enable > Edge
+restarted Edge
+## Dropbox
+dropbox.com > Signed in > my pic > Install > Open > Install
+Dropbox tray icon > de-Selected all folders
+Dropbox tray icon > Sync > location > SDEP128G (D:)  got me  "Error with selected folder: This folder is on removable media."
+## Restore drive
+Windows Update > Recovery > Creating a recovery drive
+Menu > Windows Administrative Tools > Recovery Drive > Next
+## mount SDEP128G in C:
+Disk Management > right click in D: for  Change Drive Letter and Paths… > Add > C:\SD
+## move Dropbox to C:\SD
+renamed  D:\Dropbox  to  D:\Dropbo
+Dropbox > Preferences > me > Sync > Move > C:\SD
+ctrl+click on icon for  paused Syncing
+Dropbox > Preferences > me > Sync > Selective > selected directories corresponding to what's in  D:\Dropbo
+ctrl+click on icon for  Exit
+Dropbox > Preferences > me > Quit
+  renamed  D:\Dropbox  to  D:\Dropboxx
+  renamed  D:\Dropbo  to  D:\Dropbox
+  deleted  D:\Dropboxx
+## Windows Terminal
+Microsoft Store > Windows Terminal > Get
+### starting directory
+from Explorer it's opening on  %USERPROFILE%
+  ctrl+, (= Settings) > Defaults > Starting directory > (Use parent process directory)
+## Dropbox
+sbMb > find -name "* conflicted copy*" | wc -l  reported over 450
+sbMb > dcc0  then  dcc1  moved out 465, and later more...
+stuck for days on "Uploading 46... Downloading 1,037..." with no apparent changes
 ## waiting
 ASUS Hello (Serial Number: M5NXCX003203199  Product Name: E201NA)
+### PSProfile
+APS > $machine\symlinks.ps1

@@ -7,10 +7,6 @@ ctrl+m on selected text opens it in LanguageTool
 Get-ChildItem Env:  # list all environment variables
 Sumatra PDF: r = reload
 
-# Microsoft Edge - view source
-... > More tools > Developer tools > Elements
-Ctrl+u  is searchable
-
 # cli
 chcp  # reports code page
 in Explorer:  Alt+D > cmd > Enter
@@ -28,6 +24,7 @@ $MSwin10\gac.ps1  # to explore all commands
 $n = Get-Date -f yyyyMMddhhmmss
 '"Hello world"'
 (Get-Date).Day
+(Get-Date).ToString("yyMMdd-HHmmss")
 1..3
 <command> | Out-Null  # works for some commands
 Alt > Space > E > L > [ up / down  to scroll   Esc ]
@@ -37,13 +34,13 @@ Get-Package | Format-Table -AutoSize
 
 ### aliases
 limited to single commands
-gal h*
-nal <alias> <string>
-sal <alias> <string>
 
 #### standard
+gal h*
 iex -> Invoke-Expression
+nal <alias> <string>
 ri
+sal <alias> <string>
 
 ### command history
 gvim (Get-PSReadlineOption).HistorySavePath
@@ -55,6 +52,9 @@ $string.trim()  # removes whitespaces (including newlines) from ends
 $x.GetType()
 'a'.equals('b')
 [string]$Pwd
+
+#### arrays
+$a = 1,'a',2,'b'
 foreach ($element in $myArray) {$element}
 Format-Custom -InputObject $array -Expand CoreOnly  # displays structure
 
@@ -105,8 +105,6 @@ C:\Users\troin\Documents\PowerShell\Scripts
 Get-InstalledScript
 
 ### storage
-gci -r -i i1*,i2*,i3*
-if ( ! ( test-path 'dir' ) ) { ni -name 'dir' -type directory }
 ii .  # invoke Explorer on WD
 ni <directory> -type directory
 remove-item: erase, del, rd, ri, rm, rmdir
@@ -119,7 +117,10 @@ cat somefile.txt | where { $_ -match “expression”}
 gci * | select FullName
 gci * | select Name
 gci $path | select -expand FullName  # for pure string output
-ls -r -i '* (* conflicted copy *' |%{echo $_.fullname} | ri
+gci -r -i i1*,i2*,i3*
+gci -r -i '* (* conflicted copy *' |%{echo $_.fullname} | ri
+gci -r | ? Name -match <regex>
+if ( ! ( test-path 'dir' ) ) { ni -name 'dir' -type directory }
 pcls -a -l -t  # includes hidden & time sorted
 
 ##### LastWriteTime
@@ -200,6 +201,27 @@ Ctrl+Shift+a -> Acquire/Batch Scanning
 p -> Properties/Settings
 R -> Reopen file
 r -> rotate right
+
+# Microsoft Edge
+ctrl+u  (= right-click > View page source) is searchable
+
+## Extensions
+Manage -> edge://extensions
+
+### Extensions
+jigsaw icon
+∙∙∙ > Extensions
+
+### developer tools
+ctrl+shift+i  -> toggles
+∙∙∙ > More tools > Developer tools > Elements
+
+## Favourites
+∙∙∙ > Open favourites page > ∙∙∙ > Sort
+
+### Favourites
+ctrl+shift+o
+star icon
 
 # storage - forbidden characters
 < > : " / \ | ?  *

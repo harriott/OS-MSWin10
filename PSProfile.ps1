@@ -1,6 +1,8 @@
+
 # #region & #endregion create folding blocks if Peter Provost's vim-ps1 is installed
 
-# Joseph Harriott, Thu 17 Feb 2022
+# Joseph Harriott, Tue 19 Jul 2022
+# sourced by  $machine\PSProfile.ps1
 
 Set-Alias ss Select-String
 
@@ -48,14 +50,45 @@ Function mc {
 
 #endregion
 #endregion
+#region --- Dropbox conflicted copies
+  $DropboxConflictedLog = ''
+
+  Function dcc0 {
+    sl $DROPBOX
+    $dts = (Get-Date).ToString("yyMMdd-HHmmss")
+    Set-Variable -scope 1 -Name 'DropboxConflictedLog' -Value "$DROPBOX/conflicted/$dts.log"
+    'scanning for conflicted copies'
+    $all = gci -r | ? Name -match ".+'s conflicted copy.+" | %{echo $_.fullname}
+    $new = $all | ? { $_ -notMatch ('C:\\Users\\troin\\Dropbox\\conflicted' -Join "|") }
+    $new > $DropboxConflictedLog
+    gvim $DropboxConflictedLog
+  }  # lists them
+
+  Function dcc1 {
+    $DropboxConflictedLog = 'C:\Users\troin\Dropbox\conflicted\220722-164647.log'
+    if ( test-path $DropboxConflictedLog ) {
+      $DropboxConflictedRemoved=$DropboxConflictedLog.Replace('.log','-removed')
+      new-item $DropboxConflictedRemoved -type directory > $null
+      gc $DropboxConflictedLog | %{
+        $removedRelativePath=$_.Replace("$DROPBOX\",'')
+        $removedFlattenedPath=$removedRelativePath.Replace('\','--')
+        mi $_ "$DropboxConflictedRemoved\$removedFlattenedPath"
+      }
+      $removedLog = "$DropboxConflictedRemoved.log"
+      mi $DropboxConflictedLog $removedLog
+      gvim $removedLog
+    } else { "- you should've dcc0'd" | Out-HostColored dcc0 }
+  }  # removes them
+
+#endregion
 #region --- folder investigations
-Function gfiln { gci -r $args[0] | select -ExpandProperty FullName }
-Function gfoln { gci -r $args[0] | where { $_.PSIsContainer } | select -ExpandProperty FullName }
+  Function gfiln { gci -r $args[0] | select -ExpandProperty FullName }
+  Function gfoln { gci -r $args[0] | where { $_.PSIsContainer } | select -ExpandProperty FullName }
 
 Set-Alias j z  # ZLocation
 
 #region --- filetypes
-Function cex { gci . -r | where { ! $_.PSIsContainer } | Group Extension -noElement | Sort Count -Desc }
+  Function cex { gci . -r | where { ! $_.PSIsContainer } | Group Extension -noElement | Sort Count -Desc }
 
   Function Tomalak {
 # https://stackoverflow.com/questions/15064758/summarize-a-file-system-directory-with-powershell
@@ -96,17 +129,18 @@ Function encrypted {
   if (!($(get-location).path).equals($Enc)) {
     if ( ( test-path $Enc ) ) { sl $Enc } else { "$Enc ain't there"; Return } }
   foreach ($node in $Encrypted) {
+    ''
+    SCFCDC; $node; SCRC
     if ( gci $node* ) {
-      ''
-      $node+':'
       if ( $node.equals('actions') ) { $path = '*ps1*' } else {
-        if ( test-path $node -PathType Container ) { $EncDir = gci $node -Recurse -File | sort LastWriteTime -Descending | select -First 1 | %{ dtsFN $_ '??' } }
+        if ( test-path $node -PathType Container ) { $EncDir = gci $node -Recurse -File | sort LastWriteTime -Descending | select -First 3 | %{ dtsFN $_ '??' } } else { $EncDir = '' }
         $path = $node+'*7z'
       }
       $Enc7z = gci -Path $path | %{ dtsFN $_ '**' }
       $ce7z = gci -Path "$core\encrypted\$path" | %{ dtsFN $_ 'Dr' }
       $objects = $EncDir, $Enc7z, $ce7z
-      $sorted = $objects | sort -uniq  # also removes nulls
+      $flattened = @($objects | % {$_})  # optional
+      $sorted = $flattened | ? { $_ } | sort -uniq  # also removes nulls
       $sorted.Replace('C:\Users\troin\', '').Replace('Dropbox\JH\core\encrypted\', '').Replace('Encrypted\', '')
     }
   }
@@ -170,8 +204,7 @@ Function SIFWork {
   }
 
 #endregion
-#endregion
-#region --- general tools
+#endregion #region --- general tools
 
 Function e { exit } # quit (doesn't work as an alias)
 Function fcco {Format-Custom -InputObject $args[0] -Expand CoreOnly}
@@ -256,6 +289,7 @@ Import-Module ps.checkModuleUpdates
 
 #region --- colours in outputs
 . $MSWin10\Out-HostColored.ps1
+Function SCFCDC { [System.Console]::ForegroundColor = 'DarkCyan' }
 Function SCFCW { [System.Console]::ForegroundColor = 'White' }
 Function SCRC { [System.Console]::ResetColor() }
 Import-Module Terminal-Icons; Import-Module PowerColorLS
