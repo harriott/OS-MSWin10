@@ -2,14 +2,6 @@ vim: ft=build:
 
 Lenovo ThinkPad T430 i7-3520M = T430i73520M
 
-# physical configuration
-1600x900 screen with rhs taskbar
-HX256GSSDSATA3  is configured mostly as C:\
-SanDisk microSD adapter containing S32GBC10 is D:\
-## keyboard
-Fn+k toggles Scroll Lock
-rightAlt+# => \
-shift+rightAlt+# => |
 # parallel build
 ## Disk Usage
 du64.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
@@ -34,6 +26,14 @@ streams64
 ## yt-dlp
 yt-dlp.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 ~\tools\yt-dlp.exe
+# physical configuration
+1600x900 screen with rhs taskbar
+HX256GSSDSATA3  is configured mostly as C:\
+SanDisk microSD adapter containing S32GBC10 is D:\
+## keyboard
+Fn+k toggles Scroll Lock
+rightAlt+# => \
+shift+rightAlt+# => |
 # sequential build
 Windows 10 Pro 1909 OS build 18363.1500
 Device name (DESKTOP-QSRVUSO) T430i73520M
@@ -702,6 +702,19 @@ in WT: Install-Module -Name Check-ModuleUpdates
 in WT: Install-Module ps.checkModuleUpdates
 ## update PackageManagement
 Install-Module PackageManagement -Force
+## WSL
+wsl --install
+rebooted
+Ubuntu window
+  Installing, this may take a few minutes...
+  WslRegisterDistribution failed with error: 0x80370102
+  Error: 0x80370102 The virtual machine could not be started because a required feature is not installed.
+rebooted  for  ThinkPad Setup > Security >
+  [ Intel (R) Virtualization Technology  Intel (R) VT-d Feature ] > Enabled
+rebooted  for  Ubuntu > UNIX username > [ jo  pw typed in ]
+  Ubuntu 20.04 LTS (GNU/Linux 5.10.16.3-microsoft-standard-WSL2 x86_64)
+## Tixati v2.89
+tixati-2.89-1.win64-install.exe
 # waiting
 MusikCube
 ShellCheck v0.8.0

@@ -226,16 +226,19 @@ Function l {
 #region --- Ghostscript
 
 $env:path +=';C:\Program Files\gs\gs9.54.0\bin'
-# Function gsp { 'gswin64c -dSAFER -sDEVICE=png16m -r400 sPageList=$args[0] -o $args[1]%d.png $args[2].pdf' }
 Function gsp {
-    $PL = $args[0]
-    $r = '-r'+$args[1]  # resolution 40 is good for photos
+    $pl = $args[0]
+    $r = '-r'+$args[1]
+    #  40  can be fine for photos
+    #  700  can be good for texty pdf
     $pngs = $args[2]+'-%02d.png'
     $pdf = $args[3]+'.pdf'
-    $g = "gswin64c -dSAFER -sDEVICE=png16m $r -sPageList=$pl -o $pngs '$pdf'"
-    iex $g
+    if ( test-path $pdf ) {
+      $g = "gswin64c -dSAFER -sDEVICE=png16m $r -sPageList=$pl -o $pngs '$pdf'"
+    } else { "$pdf ain't there" }
+    SCFCW; $g; SCRC; iex $g
     }
-#  gsp xx-xx out%d.png 'in.pdf'
+#  gsp <startPageNo>-<endPageNo> resolution outPNGbaseName 'inPDFbaseName'
 
 #endregion
 #region --- internetworking
@@ -290,7 +293,7 @@ Import-Module ps.checkModuleUpdates
 #region --- colours in outputs
 . $MSWin10\Out-HostColored.ps1
 Function SCFCDC { [System.Console]::ForegroundColor = 'DarkCyan' }
-Function SCFCW { [System.Console]::ForegroundColor = 'White' }
+Function SCFCW { [System.Console]::ForegroundColor = 'White' }  # SCFCW; "white"; SCRC
 Function SCRC { [System.Console]::ResetColor() }
 Import-Module Terminal-Icons; Import-Module PowerColorLS
 Set-Alias pc PowerColorLS

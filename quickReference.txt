@@ -21,10 +21,7 @@ pwsh -Command ($env:Path).split(';')
 $MyInvocation.MyCommand.Name  # = the script's name
 $_ = $PSItem = current object in the pipeline object
 $MSwin10\gac.ps1  # to explore all commands
-$n = Get-Date -f yyyyMMddhhmmss
 '"Hello world"'
-(Get-Date).Day
-(Get-Date).ToString("yyMMdd-HHmmss")
 1..3
 <command> | Out-Null  # works for some commands
 Alt > Space > E > L > [ up / down  to scroll   Esc ]
@@ -58,6 +55,11 @@ $a = 1,'a',2,'b'
 foreach ($element in $myArray) {$element}
 Format-Custom -InputObject $array -Expand CoreOnly  # displays structure
 
+### dts
+$n = Get-Date -f yyyyMMddhhmmss
+(Get-Date).Day
+(Get-Date).ToString("yyMMdd-HHmmss")
+
 ### executables
 cd 'C:\Program Files'
 (Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* ).displayname | Sort-Object # lists removable x64 programs
@@ -77,6 +79,10 @@ Get-Help Start-BitsTransfer
 man <cmdlet>  # Get-Help, paged
 powershell /?
 Update-Help -UICulture en-US
+
+### IP
+(Invoke-WebRequest -uri "http://ifconfig.co/country").Content.trim()
+(Invoke-WebRequest -uri "http://ifconfig.me/ip").Content  # IPv4
 
 ### modules
 $Env:PSModulePath -split (';')
