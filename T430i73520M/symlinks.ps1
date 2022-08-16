@@ -13,7 +13,6 @@
 #endregion
 #region --- ~\.gitconfig
 
-# new-item C:\Users\troin\.gitconfig -itemtype symboliclink -value C:\Users\troin\Dropbox\JH\core\IT_stack\onGitHub\MSWin10\LIP120s81A4\troin\gitconfig -force
 # new-item ~\.gitconfig -itemtype symboliclink -value $machine\troin\gitconfig -force
 
 #endregion

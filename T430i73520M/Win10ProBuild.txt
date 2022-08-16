@@ -5,6 +5,10 @@ Lenovo ThinkPad T430 i7-3520M = T430i73520M
 # parallel build
 ## Disk Usage
 du64.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
+## Everything
+Ctrl+P ( = Tools > Options ) > General >
+  Fonts and Colours > Background colour > Custom > #c0c0c0
+    [ UI > Single click tray   Results > Open path with double click in path column ]
 ## ExifTool v12.28
 cpi 'exiftool(-k).exe' C:\Users\troin\AppData\Local\Microsoft\WindowsApps\exiftool.exe
 ## FFmpeg - latest
@@ -17,12 +21,27 @@ right-clicked on  nerd-fonts\patched-fonts\CascadiaCode\Regular\complete\Caskayd
   appears as  CaskaydiaCove NF Regular
 ### Windows Terminal > Powershell
 defaulted to  Cascadia Mono 9 Normal
+## PowerToys
+Always on Top > Off
+Awake > [ Keep screen on > On  Enable Awake > Off ]
+Color Picker > [ Activation behaviour > Only pick a color  Show color name > On ]
+FancyZones > Off
+PowerToys Run > Shortcut > Activation > win+space > Enable > Off
+### Mouse utilities
+Find My Mouse > Appearance & behaviour > Overall opacity (%) > 17
+Mouse Highlighter > Enable > Off
+Mouse Pointer Crosshairs > [ Activation shortcut > win+H  opacity > 23  thickness > 1 ]
 ## Sigcheck
 sigcheck64.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 sigcheck64 sigcheck64.exe
 ## Streams
 streams64.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 streams64
+## Sumatra PDF
+Let Windows show previews of PDF documents
+~\AppData\Local\SumatraPDF\SumatraPDF-settings.txt
+## Windows Explorer Preview pane
+$MSWin10\asAdminWEPreviewPane.ps1
 ## yt-dlp
 yt-dlp.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 ~\tools\yt-dlp.exe
@@ -164,9 +183,8 @@ replaced  PaperSizeList  settings in  ~\AppData\Roaming\FastStone\FSIV\FSSetting
 ## Notepad++ v8.1
 npp.8.1.Installer.exe ( > C:\Program Files (x86)\Notepad++ )
 ## Everything
-Everything-1.4.1.1009.x64-Setup.exe > English (UK) > [ Check for updates on startup  on
-  Install Desktop shortcut  off ] Ran it for  Ctrl+P ( = Tools > Options ) >
-    [ UI > Single click tray   Results > Open path with double click in path column ]
+Everything-1.4.1.1009.x64-Setup.exe > English (UK) >
+  [ Check for updates on startup  on  Install Desktop shortcut  off ]
 ## Sumatra PDF v3.2
 SumatraPDF-3.2-64-install.exe > Options > [ Let Windows show previews of PDF documents ]
   (Association set back to Edge by system) *.pdf  Opens with SumatraPDF
@@ -715,6 +733,68 @@ rebooted  for  Ubuntu > UNIX username > [ jo  pw typed in ]
   Ubuntu 20.04 LTS (GNU/Linux 5.10.16.3-microsoft-standard-WSL2 x86_64)
 ## Tixati v2.89
 tixati-2.89-1.win64-install.exe
+## LibreOffice 7.3.4
+Close Windows Explorer and everything except Task Manager for
+  LibreOffice_7.3.4_Win_x64.msi > Custom > Next > no shortcut on desktop > UAC
+## MiKTeX update
+mpm --update
+  Sorry, but "MiKTeX Package Manager" did not succeed.
+  The log file hopefully contains the information to get MiKTeX going again:
+    C:\Users\troin\AppData\Local\MiKTeX\miktex\log\mpmcli.log
+  so got online for  mpm --update  took a while to update 40 packages
+## Notepad++ v8.4.4
+allowed to Update
+## NordVPN 6.48.18.0
+Update and restart
+## fzf v0.23.0
+extracted  fzf-0.23.1-windows_amd64.zip  for  fzf.exe
+  mi fzf.exe $Env:LOCALAPPDATA\Microsoft\WindowsApps -force
+  fzf --version
+## fzf v0.32.1
+vim > F9 > y
+  mi $vimfiles\plugin\fzf\bin\fzf.exe $Env:LOCALAPPDATA\Microsoft\WindowsApps -force
+## gVim v9.0.0167
+gvim_9.0.0167_x64_signed.exe >
+  [ Create icons > On the Desktop off [ Create Default Config  Create Plugin Directories ] off ] >
+  C:\Vim
+## PowerShell v7.2.6
+PowerShell-7.2.6-win-x64.msi > [ Add 'Open here' context menu to Explorer
+  Add 'Run with PowerShell 7' context menu for PowerShell files ] > UAC > Yes
+## PSWriteColor
+in WT: Install-Module PSWriteColor
+## Git v2.37.2.2
+## PowerToys
+PowerToysSetup-0.61.1-x64.exe > closed it &  Restarted, as recommended
+Start Menu > PowerToys (Preview) > Pinned to Start
+## Sumatra PDF v3.4.6
+SumatraPDF-3.4.6-64-install.exe >
+  Options > [ Install for all users  Let Windows show previews of PDF documents ] onticked
+## Everything
+Everything-1.4.1.1017.x64-Setup.exe > English (UK) >
+  [ Check for updates on startup  on  Install Desktop shortcut  off ]
+## Posh-Git v1.0.0 removes
+File Explorer > [
+  C:\Users\troin\Documents\PowerShell\Modules\posh-git
+  C:\Users\troin\Documents\WindowsPowerShell\Modules\posh-git
+  ] > 1.1.0 > Delete
+## PSFzf v2.4.0 removes
+File Explorer > [
+  C:\Users\troin\Documents\PowerShell\Modules\PSFzf
+  C:\Users\troin\Documents\WindowsPowerShell\Modules\PSFzf
+  ] > 2.4.0 > Delete
+## PSReadLine v2.2.5 removes
+File Explorer > [
+  C:\Users\troin\Documents\PowerShell\Modules\PSReadLine
+  C:\Users\troin\Documents\WindowsPowerShell\Modules\PSReadLine
+  ] > 2.2.5 > Delete
+## Terminal-Icons 0.9.0 removes
+File Explorer > [
+  C:\Users\troin\Documents\PowerShell\Modules\Terminal-Icons
+  C:\Users\troin\Documents\WindowsPowerShell\Modules\Terminal-Icons
+  ] > 0.9.0 > Delete
+## PSScriptTools
+Install-Module PSScriptTools
+in WT: Install-Module PSScriptTools
 # waiting
 MusikCube
 ShellCheck v0.8.0

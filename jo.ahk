@@ -20,7 +20,7 @@ return
 ; Win+Alt+i - open gVim
 ; ---------------------
 #!i::
-Run C:\Vim\vim82\gvim.exe
+Run C:\Vim\vim90\gvim.exe
 Return
 
 ; Win+Alt+e - open Edge

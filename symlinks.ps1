@@ -1,8 +1,8 @@
 
-# #region & #endregion create folding blocks if Peter Provost's vim-ps1 is installed
+#  #region  &  #endregion  create folding blocks if Peter Provost's  vim-ps1  is installed
 
 # Joseph Harriott
-# sourced by   $machine\symlinks.ps1
+# to be run in Administator Powershell
 
 #region --- ~\.bashrc
 
@@ -18,11 +18,13 @@ new-item ~/.bashrc -itemtype symboliclink -value $MSWin10/user/bashrc -force
 #endregion
 #region --- LanguageTool
 # new-item C:\LanguageTool -itemtype symboliclink -value C:\Users\troin\Dropbox\JH\copied\IT-handy\LanguageTool -force
-new-item C:\LanguageTool -itemtype symboliclink -value $IThandy\LanguageTool -force
+new-item C:\LanguageTool -itemtype symboliclink -value $cITh\CP\LanguageTool -force
+java -jar C:\LanguageTool\languagetool-commandline.jar -h
 
 #endregion
 #region --- LaTeX
-new-item $Env:AppData\MiKTeX\tex\latex\jo -itemtype symboliclink -value $ITstack\CrossPlatform\LaTeX\jo -force
+new-item $Env:AppData\MiKTeX\tex\latex\jo -itemtype symboliclink -value $CP\LaTeX\jo -force
+# cSL $Env:AppData\MiKTeX\tex\latex
 
 #endregion
 #region --- Pandoc\defaults
@@ -39,10 +41,8 @@ new-item "$Pt" -itemtype symboliclink -value $onGH/pandoc-templates -force
 
 #endregion
 #region --- PSProfile
-# new-item ~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 -itemtype symboliclink -value ~\Dropbox\JH\core\IT_stack\onGitHub\MSWin10\T430i73520M\PSProfile.ps1 -force
-new-item ~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 -itemtype symboliclink -value $machine\PSProfile.ps1 -force
-# new-item ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 -itemtype symboliclink -value ~\Dropbox\JH\core\IT_stack\onGitHub\MSWin10\T430i73520M\PSProfile.ps1 -force
-new-item ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 -itemtype symboliclink -value $machine\PSProfile.ps1 -force
+new-item ~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 -itemtype symboliclink -value $MSWin10\PSProfile.ps1 -force
+new-item ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 -itemtype symboliclink -value $MSWin10\PSProfile.ps1 -force
 
 #endregion
 #region --- vim

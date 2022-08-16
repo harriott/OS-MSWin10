@@ -6,7 +6,7 @@ let $DROPBOX = $HOME.'/Dropbox'  " keep this capitalised for finding it without 
       let $onGH = $ITstack.'/onGitHub'
         let $MSwin10 = $onGH.'/MSWin10'
           let $machine = $MSwin10.'/AsusW202'
-  let $IThandy = $DROPBOX.'/JH/copied/IT-handy'
+  let $cITh = $DROPBOX.'/JH/copied/IT-handy'
 " more locations are defined in  $onGH/vimfiles/vimrc-Win10.vim
 
 source $HOME/vimfiles/vimrc-Win10.vim

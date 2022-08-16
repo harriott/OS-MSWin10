@@ -21,7 +21,7 @@ $DROPBOX = "C:\Users\jharr\Dropbox"
         $MSwin10 = "$onGH\MSWin10"
           $machine = "$MSWin10\AsusW202"
   $ITP = "$DROPBOX\JH\Technos\IT0-Partitionable"  # $ITP\diskUsage.txt
-  $IThandy = "$DROPBOX\JH\copied\IT-handy"
+  $cITh = "$DROPBOX\JH\copied\IT-handy"
 $Enc = 'C:\Users\jharr\Encrypted'
 
 #endregion

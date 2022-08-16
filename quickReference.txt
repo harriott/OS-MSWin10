@@ -25,40 +25,69 @@ $MSwin10\gac.ps1  # to explore all commands
 1..3
 <command> | Out-Null  # works for some commands
 Alt > Space > E > L > [ up / down  to scroll   Esc ]
+Get-CommandSyntax <command>
 iex <someCommand>  # = Invoke-Expression
 foreach($element in 1..3){ $element }
 Get-Package | Format-Table -AutoSize
+Measure-Object = measure
+PowerShell -NoProfile
+sleep 1
 
 ### aliases
+Get-MyAlias
 limited to single commands
 
+#### Get-Alias
+gal -Definition Get-ChildItem
+gal ls
+
 #### standard
+ft => format-table
 gal h*
-iex -> Invoke-Expression
+gc <file>
+iex => Invoke-Expression
 nal <alias> <string>
+rni
 ri
 sal <alias> <string>
 
-### command history
-gvim (Get-PSReadlineOption).HistorySavePath
-h  # Get-History
+### colour
+[System.Enum]::GetValues('ConsoleColor') | ForEach-Object { Write-Host $_ -ForegroundColor $_ }
+iex "$ITstack\MSWin\PowerShell\colours\ConsoleColor.ps1"
+iex "$ITstack\MSWin\PowerShell\colours\LindbergColors.ps1"
+iex "$onGH\misc\Colors.ps1"
+Write-Color -Text 'Red ', 'Green ', 'Yellow ' -Color Red,Green,Yellow
+
+#### PSScriptTools bars
+New-ANSIBar -Range (232..255)
+New-RedGreenGradient
 
 ### data
-"Hello".Replace('l', 'x').Replace('H', 'Y')
-$string.trim()  # removes whitespaces (including newlines) from ends
 $x.GetType()
-'a'.equals('b')
-[string]$Pwd
+Get-MyVariable
 
 #### arrays
 $a = 1,'a',2,'b'
 foreach ($element in $myArray) {$element}
 Format-Custom -InputObject $array -Expand CoreOnly  # displays structure
 
-### dts
+### strings
+"Hello".Replace('l', 'x').Replace('H', 'Y')
+'a'.equals('b')
+$string.trim()  # removes whitespaces (including newlines) from ends
+[string]$Pwd
+Format-String PowerShell -Randomize
+
+### datetime
+[System.TimeZoneinfo]::GetSystemTimeZones() | Out-GridView
+Get-TimeZone -listavailable | Out-GridView
+Get-TZData Australia/Hobart
+
+#### Get-Date
 $n = Get-Date -f yyyyMMddhhmmss
 (Get-Date).Day
 (Get-Date).ToString("yyMMdd-HHmmss")
+no standard aliases
 
 ### executables
 cd 'C:\Program Files'
@@ -73,16 +102,22 @@ where.exe pwsh
 where.exe where.exe  # doesn't find executables in  ~\AppData\
 
 ### help
-Get-Alias ls
-Get-Alias -Definition Get-ChildItem
 Get-Help Start-BitsTransfer
 man <cmdlet>  # Get-Help, paged
 powershell /?
 Update-Help -UICulture en-US
 
+### history
+Get-LastModifiedFile
+
+#### command history
+gvim (Get-PSReadlineOption).HistorySavePath
+h  # Get-History
+
 ### IP
 (Invoke-WebRequest -uri "http://ifconfig.co/country").Content.trim()
 (Invoke-WebRequest -uri "http://ifconfig.me/ip").Content  # IPv4
+Get-WhoIs 8.8.8.8
 
 ### modules
 $Env:PSModulePath -split (';')
@@ -90,9 +125,15 @@ Get-InstalledModule
 Get-Module
 gvim $Env:LOCALAPPDATA\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
 New-BurntToastNotification
-pcls  # PowerColorLS
+pc  # PowerColorLS
 v5: C:\Users\troin\Documents\WindowsPowerShell\Modules
 v7: C:\Users\troin\Documents\PowerShell\Modules
+
+#### PSScriptTools
+Get-DirectoryInfo  # alias  dw
+Get-ModuleCommand PSScriptTools  # compact list
+Get-PSScriptTools  # synopsi of commands
+Open-PSScriptToolsHelp
 
 #### PSFzf
 Alt+a   # select an argument
@@ -103,8 +144,11 @@ tab completion
 
 #### update
 $machine\updateModules.ps1
+
+##### check
 Check-ModuleUpdate
 Check-ModuleUpdates  # (ignore InvalidOperations...) ends with highlighted updates
+Compare-Module
 
 ### scripts
 C:\Users\troin\Documents\PowerShell\Scripts
@@ -116,18 +160,34 @@ ni <directory> -type directory
 remove-item: erase, del, rd, ri, rm, rmdir
 robocopy /mir <sourcedir> <destinationdir> /l  # runs a simulation of mirroring source to destination
 ROBOCOPY.exe
+sl <directoryToMoveTo>
 stringInVims "string"
 
 #### investigations
 cat somefile.txt | where { $_ -match “expression”}
+csl  # symlink targets in green or red
+dw -?
+if ( ! ( test-path 'dir' ) ) { ni -name 'dir' -type directory }
+pc -a -l -t  # includes hidden & time sorted
+t [n]  => pstree <depth>
+
+##### by extension
+cex
+Get-FileExtensionInfo -r
+tomalak
+
+##### gci
 gci * | select FullName
 gci * | select Name
 gci $path | select -expand FullName  # for pure string output
+gci . -force  # Gets both hidden & non-hidden. Shows desired symlinks target.
 gci -r -i i1*,i2*,i3*
 gci -r -i '* (* conflicted copy *' |%{echo $_.fullname} | ri
 gci -r | ? Name -match <regex>
-if ( ! ( test-path 'dir' ) ) { ni -name 'dir' -type directory }
-pcls -a -l -t  # includes hidden & time sorted
+
+###### PSAnsiMap
+gci . | ft -view ansi  # overrides Terminal-Icons
+Get-PSAnsiFileMap  # shows ANSI mappings
 
 ##### LastWriteTime
 lwp \.ps1
@@ -145,19 +205,29 @@ lwts *.txt
 dc
 du64 -l 1
 fso
+Get-GitSize  # when you're in .git's parent directory
+gfsi
 
 ### system info
-$env:Path -split ';'
 $Profile
+(Get-CimInstance Win32_OperatingSystem) | Select-Object -Property Version, Caption
+Get-PowerShellEngine -Detail
+Get-PSLocation
+Get-PSWho
+Get-WindowsUpdateLog  # creates  \Users\troin\Desktop\WindowsUpdate.log
 Sysdm.cpl -> System Properties
-winver
+winver  # pops up  About Windows
+Get-PSSessionInfo
+Get-WindowsVersion
+Get-WindowsVersionString
+Test-IsElevated
 
 #### environment variables
 $Env:Computername
 $Env:LOCALAPPDATA
-$Env:Path -split';'
 $Env:PATHEXT
 $Env:ProgramFiles
+$Env:USERNAME
 $Env:UserProfile
 $HOME
 gci env:  # list the environment variables
@@ -166,6 +236,10 @@ $PSScriptRoot
 ##### Roaming
 $Env:AppData  # C:\Users\...\AppData\Roaming
 ls "$Env:AppData\Pandoc\defaults"
+
+##### path
+$env:Path -split ';'
+Get-PathVariable
 
 ### text wrangling
 "Hello".Replace('l', 'x')
@@ -182,9 +256,11 @@ Get-ItemPropertyValue -Path "HKLM:\SOFTWARE\Microsoft\PowerShellCore\InstalledVe
 
 ## wt
 in Explorer:  Alt+D > wt > Enter
+Windows Terminal
 
 ### Settings
 Ctrl+, -> Settings
+Startup > Launch on machine startup
 
 #### key-binds
 alt+D -> duplicate pane right
@@ -239,8 +315,11 @@ Ctrl+Shift+E = Extensions
 # Windows
 in Explorer:  Alt+D > powershell > Enter
 regedit
-Win+l => lock screen
-Win+r > taskschd.msc => Task Scheduler
+shift+win+/ > PowerToys Shortcut Guide
+win+C > PowerToys Color Picker
+win+S > Snipping
+win+l => lock screen
+win+r > taskschd.msc => Task Scheduler
 
 ## Start Menus
 cd "$Env:AppData\Microsoft\Windows\Start Menu\Programs"
