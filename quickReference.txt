@@ -4,8 +4,6 @@ $MSwin10\jo.ahk
 Adobe Acrobat Reader DC > Shift+Ctrl+Minus -> rotate left
 C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 ctrl+m on selected text opens it in LanguageTool
-Get-ChildItem Env:  # list all environment variables
-Sumatra PDF: r = reload
 
 # cli
 chcp  # reports code page
@@ -16,6 +14,9 @@ echo %path:;=&echo.%  # %PATH% on separate lines
 powershell -Command ($env:Path).split(';')
 PS> cmd  then  exit
 pwsh -Command ($env:Path).split(';')
+
+## The Platinum Searcher
+pt /version
 
 ## PowerShell
 $MyInvocation.MyCommand.Name  # = the script's name
@@ -42,6 +43,7 @@ gal -Definition Get-ChildItem
 gal ls
 
 #### standard
+cpi => copy-item
 ft => format-table
 gal h*
 gc <file>
@@ -114,9 +116,12 @@ Get-LastModifiedFile
 gvim (Get-PSReadlineOption).HistorySavePath
 h  # Get-History
 
-### IP
-(Invoke-WebRequest -uri "http://ifconfig.co/country").Content.trim()
-(Invoke-WebRequest -uri "http://ifconfig.me/ip").Content  # IPv4
+### networking
+wp
+
+#### IP
+cc
+ip
 Get-WhoIs 8.8.8.8
 
 ### modules
@@ -307,6 +312,17 @@ star icon
 
 # storage - forbidden characters
 < > : " / \ | ?  *
+
+# PDF
+gsp
+
+## Sumatra PDF
+Ctrl+6         - View Single pages
+Ctrl+7         - View Facing pages
+Ctrl+Shift+Tab - go to previous tab
+Ctrl+Tab       - go to next tab
+r              - reload
+z              - toggle zoom between Fit Page, Fit Width, Fit Content
 
 # Vivaldi
 Alt+P = Settings

@@ -19,6 +19,21 @@ Function GNFR {
   '' >> $FRlf
 }
 
+function fi {
+  $wd = gl | select -expand path
+  $pIF = "$wd-imageyFlat"
+  if ( test-path $pIF ) { ri -r $pIF }
+  [void](ni $pIF -type directory)
+  $imagies = gci $wd -r -i *.jpeg,*.jpg,*.png,*.ogv | resolve-path -relative
+  foreach ($imagey in $imagies) {$imagey.replace('.\','')}
+  foreach ($imagey in $imagies) {
+    $imageyReady = $imagey.replace('.\','')
+    $imageyFlat = $imageyReady.replace('\','--')
+    cpi "$wd\$imageyReady" "$pIF\$imageyFlat"
+  }
+} # gets a flattened directory alongside of imagies
+# use  cex  to see what's imagey
+
 #region --- 0 convert images recursively
 
 Function mc {
@@ -117,7 +132,7 @@ function encrypted {
       $objects = $encdir, $enc7z, $ce7z
       $flattened = @($objects | % {$_})  # optional
       $sorted = $flattened | ? { $_ } | sort -uniq  # also removes nulls
-      $sorted.replace('c:\users\troin\', '').replace('dropbox\jh\core\encrypted\', '').replace('encrypted\', '')
+      $sorted.replace('C:\Users\troin\', '').replace('Dropbox\JH\core\encrypted\', '').replace('encrypted\', '')
     }
   }
   ''
@@ -227,9 +242,9 @@ Function gsp {
 Function cc {
   $co = (Invoke-WebRequest http://ifconfig.co/country).Content.replace("`n",'')
   $ci = (Invoke-WebRequest http://ifconfig.co/city).Content.replace("`n",'')
-  "$ci, $co"
-  }  # city, country
-Function ip { (Invoke-WebRequest -uri "http://ifconfig.me/ip").Content }  # IP address
+  if ( $ci ) { "$ci, $co" } else { "$co" }
+  }  # [city, ]country
+Function ip { (Invoke-WebRequest -uri "http://ifconfig.me/ip").Content }  # IPv4
 Function p {test-connection -computername 8.8.8.8 -ErrorAction SilentlyContinue}
 Function pg {test-connection -computername google.com -ErrorAction SilentlyContinue}
 Function wp { curl wttr.in/Paris }
@@ -251,7 +266,7 @@ $DROPBOX = "C:\Users\$UN\Dropbox"
   $IT1 = "$DROPBOX\JH\technos\IT1"
   $ITP = "$DROPBOX\JH\Technos\IT0-Partitionable"  # $ITP\diskUsage.txt
   $cITh = "$DROPBOX\JH\copied\IT-handy"
-$Enc = "C:\Users\$UN\Encrypted"
+$Enc = "C:\Users\$UN\encrypted"
 
 #endregion
 #region --- 0 re-tag image files to 72dpi
