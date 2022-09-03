@@ -9,7 +9,8 @@
 
 # for  Task Scheduler
 #  APS> ni C:\MT-clearParentLock.ps1 -itemtype symboliclink -value $machine\T91\TaskScheduler\clearParentLock.ps1 -Force
-#   gc C:\clearParentLock.ps1
+#   gc C:\MT-clearParentLock.ps1
+#  iex "$machine\T91\TaskScheduler\clearParentLock.ps1"
 #  Import Task > $machine\T91\TaskScheduler\removeParentLock.xml
 #   (Task will stop repeating if tweaked or Run manually - fix is to Sign in again...)
 

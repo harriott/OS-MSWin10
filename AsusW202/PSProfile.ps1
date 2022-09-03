@@ -16,7 +16,7 @@
 $DROPBOX = "C:\Users\jharr\Dropbox"
   $core = "$DROPBOX\JH\core"
     $ITstack = "$core\IT_stack"
-      $CP = "$ITstack\CrossPlatform"
+      $CrPl = "$ITstack\CrossPlatform"
       $onGH = "$ITstack\onGitHub"
         $MSwin10 = "$onGH\MSWin10"
           $machine = "$MSWin10\AsusW202"

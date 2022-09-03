@@ -256,7 +256,7 @@ $UN = $Env:USERNAME
 $DROPBOX = "C:\Users\$UN\Dropbox"
   $core = "$DROPBOX\JH\core"
     $ITstack = "$core\IT_stack"
-      $CP = "$ITstack\CrossPlatform"
+      $CrPl = "$ITstack\CrossPlatform"
       $onGH = "$ITstack\onGitHub"
         $Cn = $Env:Computername
         $MSwin10 = "$onGH\MSWin10"
@@ -335,10 +335,22 @@ Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 
 #endregion
 #endregion
+#region --- 0 Vifm
+$env:path +=';C:\vifm-w64-se-0.12-binary'
+
+#endregion
 #region --- 1 place-dependent
 . $machine\PSProfile.ps1  # also uses $onGH ($MSWin10/PSProfile.ps1)
 
-#region --- 1 documenting
+#region --- bat
+. $MSwin10\_bat.ps1
+# completion
+function f { Invoke-Fzf -preview 'bat --color=always {}' }
+Set-Alias b bat
+function bd { bat -d $args[0] }  # showing changes from git index
+
+#endregion
+#region --- documenting
   Function xc { iex "$Env:LocalAppData\SumatraPDF\SumatraPDF.exe $Dropbox\JH\Copied\IT-handy\TeX\LaTeX\Appearance\xcolor.pdf -page 38" }
 
 #region --- MiKTeX
@@ -350,19 +362,19 @@ Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
   } # instead of a symlink to avoid snags if MiKTeX is uninstalled
 #endregion
 #region --- Pandoc
-  # helps to define these also in  $HOME\_vimrc
-  $tex = "$Env:AppData\MiKTeX\tex"
-  $Pandoc = "$Env:AppData\Pandoc"
-    $MD4PDF = "$onGH\md4pdf"
+# helps to define these also in  $HOME\_vimrc
+$tex = "$Env:AppData\MiKTeX\tex"
+$Pandoc = "$Env:AppData\Pandoc"
+  $MD4PDF = "$onGH\md4pdf"
 
-  Function headings0sty { cpi $MD4PDF/iih/headings0.sty $tex\latex\m4p\headings.sty -force }
-  Function m4p { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4p.ps1 $args[0] $args[1] $args[2] }
-  Function m4ps0 { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4ps.ps1 $args[0] $args[1] $args[2] }
-  Function mt { sl $DROPBOX\JH\core\TextNotes; [string]$Pwd; m4ps0 -s }
+Function headings0sty { cpi $MD4PDF/iih/headings0.sty $tex\latex\m4p\headings.sty -force }
+Function m4p { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4p.ps1 $args[0] $args[1] $args[2] }
+Function m4ps0 { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4ps.ps1 $args[0] $args[1] $args[2] }
+Function mt { sl $DROPBOX\JH\core\TextNotes; [string]$Pwd; m4ps0 -s }
 
 #endregion
 #endregion
-#region --- 1 Dropbox conflicted copies
+#region --- Dropbox conflicted copies
   $DropboxConflictedLog = ''
 
   Function dcc0 {
@@ -393,7 +405,7 @@ Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
   }  # removes them
 
 #endregion
-#region --- 1 general tools
+#region --- general tools
 
 Function e { exit } # quit (doesn't work as an alias)
 Function fcco {Format-Custom -InputObject $args[0] -Expand CoreOnly}
@@ -414,7 +426,7 @@ Function l {
 }
 
 #endregion
-#region --- 1 PSFzf
+#region --- PSFzf
 
 # Set-PsFzfOption -EnableAliasFuzzySetEverything  # cde  does nothing...
 # Set-PsFzfOption -EnableAliasFuzzyZLocation  # fz  unfortunately kills  Alt+c...

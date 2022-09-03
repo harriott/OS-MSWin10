@@ -2,7 +2,7 @@
 let $DROPBOX = $HOME.'\Dropbox'  " keep this capitalised for finding it without need for $
   let $core = $DROPBOX.'\JH\core'
     let $ITstack = $core.'\IT_stack'
-      let $CP = $ITstack.'\CrossPlatform'
+      let $CrPl = $ITstack.'\CrossPlatform'
       let $onGH = $ITstack.'\onGitHub'
         let $MSwin10 = $onGH.'\MSWin10'
           let $machine = $MSwin10.'\T430i73520M'

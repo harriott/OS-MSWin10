@@ -8,6 +8,7 @@ ctrl+m on selected text opens it in LanguageTool
 # cli
 chcp  # reports code page
 in Explorer:  Alt+D > cmd > Enter
+~\AppData\Roaming\Vifm\vifmrc
 
 ## Command Prompt
 echo %path:;=&echo.%  # %PATH% on separate lines
@@ -46,7 +47,6 @@ gal ls
 cpi => copy-item
 ft => format-table
 gal h*
-gc <file>
 iex => Invoke-Expression
 nal <alias> <string>
 rni
@@ -145,6 +145,7 @@ Alt+a   # select an argument
 Alt+c   # change to sub-directory
 Ctrl+r  # search PSReadline History
 Ctrl+t  # select provider path
+Invoke-Fzf -?
 tab completion
 
 #### update
@@ -161,19 +162,18 @@ Get-InstalledScript
 
 ### storage
 ii .  # invoke Explorer on WD
-ni <directory> -type directory
-remove-item: erase, del, rd, ri, rm, rmdir
-robocopy /mir <sourcedir> <destinationdir> /l  # runs a simulation of mirroring source to destination
-ROBOCOPY.exe
 sl <directoryToMoveTo>
-stringInVims "string"
 
 #### investigations
+bat <textFile>  # with beautiful formatting and less paging
 cat somefile.txt | where { $_ -match “expression”}
 csl  # symlink targets in green or red
 dw -?
+f  # fzf preview files with bat
+gc <file>
 if ( ! ( test-path 'dir' ) ) { ni -name 'dir' -type directory }
 pc -a -l -t  # includes hidden & time sorted
+stringInVims "string"
 t [n]  => pstree <depth>
 
 ##### by extension
@@ -213,6 +213,13 @@ fso
 Get-GitSize  # when you're in .git's parent directory
 gfsi
 
+#### manipulations
+gci -r -i "*.txt" | %{mi $_.fullname ($_.fullname -replace ".txt",'.dw')}  # renames all txt's to dw's
+ni <directory> -type directory
+remove-item: erase, del, rd, ri, rm, rmdir
+robocopy /mir <sourcedir> <destinationdir> /l  # runs a simulation of mirroring source to destination
+ROBOCOPY.exe
+
 ### system info
 $Profile
 (Get-CimInstance Win32_OperatingSystem) | Select-Object -Property Version, Caption
@@ -235,8 +242,8 @@ $Env:ProgramFiles
 $Env:USERNAME
 $Env:UserProfile
 $HOME
-gci env:  # list the environment variables
 $PSScriptRoot
+gci env:  # list the environment variables
 
 ##### Roaming
 $Env:AppData  # C:\Users\...\AppData\Roaming
@@ -261,6 +268,7 @@ Get-ItemPropertyValue -Path "HKLM:\SOFTWARE\Microsoft\PowerShellCore\InstalledVe
 
 ## wt
 in Explorer:  Alt+D > wt > Enter
+win+r > wt  => opens wt on ~
 Windows Terminal
 
 ### Settings
@@ -310,9 +318,6 @@ ctrl+shift+i  -> toggles
 ctrl+shift+o
 star icon
 
-# storage - forbidden characters
-< > : " / \ | ?  *
-
 # PDF
 gsp
 
@@ -324,18 +329,24 @@ Ctrl+Tab       - go to next tab
 r              - reload
 z              - toggle zoom between Fit Page, Fit Width, Fit Content
 
+# storage - forbidden characters
+< > : " / \ | ?  *
+
 # Vivaldi
 Alt+P = Settings
 Ctrl+Shift+E = Extensions
 
 # Windows
-in Explorer:  Alt+D > powershell > Enter
 regedit
 shift+win+/ > PowerToys Shortcut Guide
 win+C > PowerToys Color Picker
 win+S > Snipping
 win+l => lock screen
 win+r > taskschd.msc => Task Scheduler
+
+## Explorer
+alt+d > powershell > Enter
+alt+p > toggle preview pane
 
 ## Start Menus
 cd "$Env:AppData\Microsoft\Windows\Start Menu\Programs"

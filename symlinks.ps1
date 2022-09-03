@@ -23,7 +23,7 @@ java -jar C:\LanguageTool\languagetool-commandline.jar -h
 
 #endregion
 #region --- LaTeX
-new-item $Env:AppData\MiKTeX\tex\latex\jo -itemtype symboliclink -value $CP\LaTeX\jo -force
+new-item $Env:AppData\MiKTeX\tex\latex\jo -itemtype symboliclink -value $CrPl\LaTeX\jo -force
 # cSL $Env:AppData\MiKTeX\tex\latex
 
 #endregion
