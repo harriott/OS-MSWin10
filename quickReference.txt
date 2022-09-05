@@ -164,7 +164,7 @@ C:\Users\troin\Documents\PowerShell\Scripts
 Get-InstalledScript
 
 ### storage
-cpi => copy-item
+copy-item: copy cp cpi
 ii .  # invoke Explorer on WD
 sl <directoryToMoveTo>
 takeown /? | less

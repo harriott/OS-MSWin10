@@ -2,12 +2,12 @@
 #  #region  &  #endregion  create folding blocks if Peter Provost's  vim-ps1  is installed
 
 # Joseph Harriott
-# to be run in Administator Powershell
+# $MSwin10\symlinks.ps1  to be run in Administator Powershell
 
 #region --- Emacs
-new-item $Env:AppData\.emacs.d -itemtype symboliclink -value $emd -force
-new-item $Env:AppData\.emacs -itemtype symboliclink -value $MSwin10\user\_emacs -force
-# csl $Env:AppData
+new-item $Env:AppData\.emacs.d\early-init.el -itemtype symboliclink -value $MSwin10\user\Emacs\early-init.el -force
+new-item $Env:AppData\.emacs.d\init.el -itemtype symboliclink -value $MSwin10\user\Emacs\init.el -force
+# csl $Env:AppData\.emacs.d
 
 #endregion
 #region --- LanguageTool

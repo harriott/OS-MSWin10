@@ -257,7 +257,6 @@ $DROPBOX = "C:\Users\$uname\Dropbox"
   $core = "$DROPBOX\JH\core"
     $ITstack = "$core\IT_stack"
       $CrPl = "$ITstack\CP"
-      $emd = "$ITstack\MSwin-emacsd"
       $onGH = "$ITstack\onGitHub"
         $Cn = $Env:Computername
         $MSwin10 = "$onGH\MSWin10"
