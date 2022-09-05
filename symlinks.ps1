@@ -4,16 +4,10 @@
 # Joseph Harriott
 # to be run in Administator Powershell
 
-#region --- ~\.bashrc
-
-# new-item $HOME\.bashrc -itemtype symboliclink -value $MSWin\user\bashrc -force
-new-item ~/.bashrc -itemtype symboliclink -value $MSWin10/user/bashrc -force
-
-#endregion
-#region --- ~\.ssh\config
-
-# new-item $HOME\.ssh\config -itemtype symboliclink -value $ITstack\CrossPlatform\SSHconfig\LIP120s81A4 -force
-# new-item $HOME\.ssh\config -itemtype symboliclink -value $machine\jnbh\SSHconfig -force
+#region --- Emacs
+new-item $Env:AppData\.emacs.d -itemtype symboliclink -value $emd -force
+new-item $Env:AppData\.emacs -itemtype symboliclink -value $MSwin10\user\_emacs -force
+# csl $Env:AppData
 
 #endregion
 #region --- LanguageTool
@@ -52,5 +46,17 @@ new-item ~\_gvimrc -itemtype symboliclink -value $MSWin10\user\_gvimrc -force  #
 # remove-item $HOME\vimfiles -recurse -force
 # new-item $HOME\vimfiles -itemtype symboliclink -value $onGH\vimfiles -force
 new-item ~\vimfiles -itemtype symboliclink -value $onGH\vimfiles -force
+
+#endregion
+#region --- ~\.bashrc
+
+# new-item $HOME\.bashrc -itemtype symboliclink -value $MSWin\user\bashrc -force
+new-item ~/.bashrc -itemtype symboliclink -value $MSWin10/user/bashrc -force
+
+#endregion
+#region --- ~\.ssh\config
+
+# new-item $HOME\.ssh\config -itemtype symboliclink -value $ITstack\CrossPlatform\SSHconfig\LIP120s81A4 -force
+# new-item $HOME\.ssh\config -itemtype symboliclink -value $machine\jnbh\SSHconfig -force
 
 #endregion

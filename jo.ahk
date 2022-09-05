@@ -1,5 +1,5 @@
 
-; Joseph Harriott - Tue 24 May 2022
+; Joseph Harriott - AutoHotkey - Tue 24 May 2022
 
 ; $MSwin10\jo.ahk
 
@@ -17,31 +17,37 @@ Send, {ESC}
 Suspend Off
 return
 
-; Win+Alt+i - open gVim
+; win+alt+i - open gVim
 ; ---------------------
 #!i::
 Run C:\Vim\vim90\gvim.exe
 Return
 
-; Win+Alt+e - open Edge
+; win+alt+e - open Edge
 ; ---------------------
 #!e::
 Run "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
 Return
 
-; Win+Alt+k - open KeePassXC
+; win+alt+k - open KeePassXC
 ; ---------------------
 #!k::
 Run "C:\Program Files\KeePassXC\KeePassXC.exe"
 Return
 
-; Win+Alt+t - open Thunderbird safely
+; win+alt+m - open Emacs
+; -----------------------------------
+#!m::
+Run C:\Emacs\emacs-28.1\bin\runemacs.exe
+Return
+
+; win+alt+t - open Thunderbird safely
 ; -----------------------------------
 #!t::
 Run pwsh -NoProfile -WindowStyle Minimized -File C:\MT-runSafely.ps1
 Return
 
-; Win+Alt+v - open Everything
+; win+alt+v - open Everything
 ; ---------------------------
 #!v::
 Run "C:\Program Files\Everything\Everything.exe"

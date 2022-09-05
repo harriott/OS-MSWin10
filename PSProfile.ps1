@@ -252,11 +252,12 @@ Function wp { curl wttr.in/Paris }
 #endregion
 #region --- 0 places
 
-$UN = $Env:USERNAME
-$DROPBOX = "C:\Users\$UN\Dropbox"
+$uname = $Env:USERNAME
+$DROPBOX = "C:\Users\$uname\Dropbox"
   $core = "$DROPBOX\JH\core"
     $ITstack = "$core\IT_stack"
-      $CrPl = "$ITstack\CrossPlatform"
+      $CrPl = "$ITstack\CP"
+      $emd = "$ITstack\MSwin-emacsd"
       $onGH = "$ITstack\onGitHub"
         $Cn = $Env:Computername
         $MSwin10 = "$onGH\MSWin10"
@@ -266,7 +267,8 @@ $DROPBOX = "C:\Users\$UN\Dropbox"
   $IT1 = "$DROPBOX\JH\technos\IT1"
   $ITP = "$DROPBOX\JH\Technos\IT0-Partitionable"  # $ITP\diskUsage.txt
   $cITh = "$DROPBOX\JH\copied\IT-handy"
-$Enc = "C:\Users\$UN\encrypted"
+    $GHrUse = "$cITh\GHrepos"  # GitHub Repositories Use
+$Enc = "C:\Users\$uname\encrypted"
 
 #endregion
 #region --- 0 re-tag image files to 72dpi
@@ -415,7 +417,7 @@ Function fn { gci | select -ExpandProperty FullName | sort }
 Function ga { git add $args[0] }
 Function gic { git commit -m "$args[0]" }
 Function gis { git status -u }
-Function gvim { & "C:\Vim\vim82\gvim.exe" $args[0] $args[1] $args[2] }
+Function gvim { & "C:\Vim\vim90\gvim.exe" $args[0] $args[1] $args[2] }
 Function tz { Get-MyTimeInfo -Locations ([ordered]@{"GMT" = "GMT Standard Time"}) -HomeTimeZone "Romance Standard Time" }
 # New-Alias g gm.exe # GraphicsMagick
 New-Alias jpo $onGH\jpgorhor\jpgorhor.ps1

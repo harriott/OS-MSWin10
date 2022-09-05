@@ -4,9 +4,11 @@
 
 # restart PowerShell if you change anything here
 
-# sourced by  $MSWin10\PSProfile.ps1
+# $machine\PSProfile.ps1  sourced by  $MSWin10\PSProfile.ps1
 
 # Clear-Host
+
+$GHrCl = 'E:\IT-Copied\GHrepos'  # GitHub Repositories Clone
 
 #region ---- backups
 

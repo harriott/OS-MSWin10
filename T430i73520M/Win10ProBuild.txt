@@ -28,6 +28,8 @@ right-clicked on  nerd-fonts\patched-fonts\CascadiaCode\Regular\complete\Caskayd
 defaulted to  Cascadia Mono 9 Normal
 ## less
 less.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
+## night light
+Settings > Display > Night light settings
 ## The Platinum Searcher
 pt.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 ## PowerToys
@@ -819,6 +821,16 @@ gvim_9.0.0213_x64_signed.exe >
   C:\Vim
 ## Notepad++
 Settings > Dark Mode
+## Emacs v28.1
+emacs-28.1-installer.exe > C:\Emacs > Install  Pinned to Start, ran it
+## .emacs.d
+robocopy /mir $GHrUse\emacs\syl20bnr-spacemacs-develop $spma
+## remove vim82 traces
+Deleted  C:\Vim\vim82
+## RHO Emacs
+rho-emacs-x86_64-setup-1.1.0.exe > Run anyway > UAC > yes > C:\Users\troin\Documents\rho-emacs >
+  Themes > Spacemacs dark
+## Git v2.37.3
 # waiting
 MusikCube
 ShellCheck v0.8.0

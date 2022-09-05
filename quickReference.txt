@@ -1,9 +1,12 @@
 vim: ft=build:
 
-$MSwin10\jo.ahk
 Adobe Acrobat Reader DC > Shift+Ctrl+Minus -> rotate left
 C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 ctrl+m on selected text opens it in LanguageTool
+
+# build
+$MSwin10\jo.ahk
+pt '$emd' $DROPBOX\JH
 
 # cli
 chcp  # reports code page
@@ -18,6 +21,7 @@ pwsh -Command ($env:Path).split(';')
 
 ## The Platinum Searcher
 pt /version
+pt search .
 
 ## PowerShell
 $MyInvocation.MyCommand.Name  # = the script's name
@@ -44,7 +48,6 @@ gal -Definition Get-ChildItem
 gal ls
 
 #### standard
-cpi => copy-item
 ft => format-table
 gal h*
 iex => Invoke-Expression
@@ -161,12 +164,13 @@ C:\Users\troin\Documents\PowerShell\Scripts
 Get-InstalledScript
 
 ### storage
+cpi => copy-item
 ii .  # invoke Explorer on WD
 sl <directoryToMoveTo>
+takeown /? | less
 
 #### investigations
 bat <textFile>  # with beautiful formatting and less paging
-cat somefile.txt | where { $_ -match “expression”}
 csl  # symlink targets in green or red
 dw -?
 f  # fzf preview files with bat
@@ -174,7 +178,10 @@ gc <file>
 if ( ! ( test-path 'dir' ) ) { ni -name 'dir' -type directory }
 pc -a -l -t  # includes hidden & time sorted
 stringInVims "string"
-t [n]  => pstree <depth>
+
+##### Get-Content
+aliases: cat, type
+gc somefile.txt | where { $_ -match “expression”}
 
 ##### by extension
 cex
@@ -205,6 +212,10 @@ lwt txt txt
 ###### quick terminal output
 lwts *.ps1 *.sh
 lwts *.txt
+
+##### Show-Tree
+pstree -?
+t [n]  => pstree <depth>
 
 ##### sizes
 dc
@@ -258,6 +269,10 @@ Get-PathVariable
 & "${Env:ProgramFiles(x86)}\Vim\vim82\gvim.exe" <textfile>
 (Get-Content $file) -replace $regex, $newtext | Set-Content $file
 
+#### Emacs
+C:\Emacs\emacs-28.1\bin\emacs.exe -nw
+~\AppData\Roaming\.spacemacs
+
 ### version
 $PSVersionTable
 Get-ItemPropertyValue -Path "HKLM:\SOFTWARE\Microsoft\PowerShellCore\InstalledVersions\*" -Name "SemanticVersion"
@@ -272,7 +287,8 @@ win+r > wt  => opens wt on ~
 Windows Terminal
 
 ### Settings
-Ctrl+, -> Settings
+alt+shift+- => split down
+Ctrl+, => Settings
 Startup > Launch on machine startup
 
 #### key-binds
