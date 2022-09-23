@@ -33,6 +33,13 @@ if ($reply -eq 'y') {
   Get-ItemProperty Registry::HKEY_CLASSES_ROOT\.dw
 }
 
+$reply = Read-Host '- .el? '
+if ($reply -eq 'y') {
+  Get-ItemProperty Registry::HKEY_CLASSES_ROOT\.el
+  Set-ItemProperty Registry::HKEY_CLASSES_ROOT\.el -Name PerceivedType -Value text
+  Get-ItemProperty Registry::HKEY_CLASSES_ROOT\.el
+}
+
 $reply = Read-Host '- .list? '
 if ($reply -eq 'y') {
   Get-ItemProperty Registry::HKEY_CLASSES_ROOT\.list

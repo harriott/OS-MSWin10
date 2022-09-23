@@ -5,8 +5,12 @@
 # $MSwin10\symlinks.ps1  to be run in Administator Powershell
 
 #region --- Emacs
-new-item $Env:AppData\.emacs.d\early-init.el -itemtype symboliclink -value $MSwin10\user\Emacs\early-init.el -force
-new-item $Env:AppData\.emacs.d\init.el -itemtype symboliclink -value $MSwin10\user\Emacs\init.el -force
+new-item $Env:AppData\.emacs.d\custom.el -itemtype symboliclink -value $onGH\misc\Emacs\custom.el -force
+new-item $Env:AppData\.emacs.d\early-init.el -itemtype symboliclink -value $onGH\misc\Emacs\early-init.el -force
+new-item $Env:AppData\.emacs.d\init.el -itemtype symboliclink -value $onGH\misc\Emacs\init.el -force
+new-item $Env:AppData\.emacs.d\lisp -itemtype symboliclink -value $onGH\misc\Emacs\lisp -force
+new-item $Env:AppData\.emacs.d\diary -itemtype symboliclink -value $core\TextNotes\TN\Emacs\diary -force
+new-item $Env:AppData\.emacs.d\TobiasZawada-md-outline-list -itemtype symboliclink -value $GHrUse/emacs/TobiasZawada-md-outline-list -force
 # csl $Env:AppData\.emacs.d
 
 #endregion
@@ -18,7 +22,10 @@ java -jar C:\LanguageTool\languagetool-commandline.jar -h
 #endregion
 #region --- LaTeX
 new-item $Env:AppData\MiKTeX\tex\latex\jo -itemtype symboliclink -value $CrPl\LaTeX\jo -force
+#  after changes:  initexmf --update-fndb
 # cSL $Env:AppData\MiKTeX\tex\latex
+#  ii "$Env:AppData\MiKTeX\tex\latex\jo"
+#  sl $Env:AppData\MiKTeX\tex\latex
 
 #endregion
 #region --- Pandoc\defaults

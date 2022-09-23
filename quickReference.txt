@@ -76,7 +76,7 @@ $a = 1,'a',2,'b'
 foreach ($element in $myArray) {$element}
 Format-Custom -InputObject $array -Expand CoreOnly  # displays structure
 
-### strings
+#### strings
 "Hello".Replace('l', 'x').Replace('H', 'Y')
 'a'.equals('b')
 $string.trim()  # removes whitespaces (including newlines) from ends
@@ -100,7 +100,6 @@ cd 'C:\Program Files'
 C:\MozillaThunderbird\thunderbird.exe -addressbook
 C:\Windows\explorer.exe "microsoft-edge:searchterm"
 gcm explorer
-explorer "$Env:AppData\MiKTeX\tex\latex\jo"
 explorer shell:Appsfolder  # Applications
 start <somefile>
 where.exe pwsh
@@ -162,6 +161,7 @@ Compare-Module
 ### scripts
 C:\Users\troin\Documents\PowerShell\Scripts
 Get-InstalledScript
+param( [switch]$doSomething )  # -doSomething  creates  $doSomething = true
 
 ### storage
 copy-item: copy cp cpi
@@ -271,6 +271,7 @@ Get-PathVariable
 
 #### Emacs
 C:\Emacs\emacs-28.1\bin\emacs.exe -nw
+C:\Users\troin\AppData\Roaming\.emacs.d
 ~\AppData\Roaming\.spacemacs
 
 ### version

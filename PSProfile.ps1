@@ -59,8 +59,7 @@ function csl {
     $lt = $link | select -expand target
     $t = 'red'
     if ( test-path $lt ) { $t = 'green' }
-    # write-color -text "$lfn, -> ", $lt -color white, green
-    write-color -text "$lfn, -> ", $lt -color white, $t
+    write-color -text "$lfn -> ", $lt -color white, $t
     }
 } #  shows good symlink targets in green, bad in red
 
@@ -204,17 +203,31 @@ function sifwork {
 # $itstack\ghissues.list
 
 function ghissues {
-  stringinmds 'github.com.+issues'
+  'Searching...'
+  stringinmds 'github\.com.+issues'
+  "Stripping issues that aren't mine..."
   $sifwof = '.\'+$global:sifworkoutfile  # as set in  function sifwork
-  sleep 1
+  sleep 3
   set-content $sifwof -value (gc $sifwof | select-string -pattern 'tmux-resurrect' -notmatch)
-  sleep 1
+  sleep 3
   set-content $sifwof -value (gc $sifwof | select-string -pattern 'vimfiles\\pack' -notmatch)
-  sleep 1
+  sleep 3
   set-content $sifwof -value (gc $sifwof | select-string -pattern 'vimfiles\\plugin\\fzf' -notmatch)
   mi $sifwof ghissues.list -force
   '- moved to ghissues.list' 
 }
+#endregion
+#region --- SE
+# $ITstack\SE.list
+
+function SE {
+  'Searching...'
+  stringinmds 'stackexchange'
+  $sifwof = '.\'+$global:sifworkoutfile  # as set in  function sifwork
+  mi $sifwof SE.list -force
+  '- moved to SE.list'
+}
+
 #endregion
 #endregion
 #endregion
@@ -369,7 +382,7 @@ $Pandoc = "$Env:AppData\Pandoc"
   $MD4PDF = "$onGH\md4pdf"
 
 Function headings0sty { cpi $MD4PDF/iih/headings0.sty $tex\latex\m4p\headings.sty -force }
-Function m4p { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4p.ps1 $args[0] $args[1] $args[2] }
+Function m4p { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4p.ps1 $args[0] $args[1] $args[2] $args[3] }
 Function m4ps0 { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4ps.ps1 $args[0] $args[1] $args[2] }
 Function mt { sl $DROPBOX\JH\core\TextNotes; [string]$Pwd; m4ps0 -s }
 
@@ -411,7 +424,8 @@ Function mt { sl $DROPBOX\JH\core\TextNotes; [string]$Pwd; m4ps0 -s }
 Function e { exit } # quit (doesn't work as an alias)
 Function fcco {Format-Custom -InputObject $args[0] -Expand CoreOnly}
 # - shows summarised layout of array
-Function ffmhb {ffmpeg -hide_banner $args}
+function ffmhb { $f = "ffmpeg -hide_banner " + $args -join ' '
+  $f = $f.Replace(' -q: v ', ' -q:v '); iex "$f" }
 Function fn { gci | select -ExpandProperty FullName | sort }
 Function ga { git add $args[0] }
 Function gic { git commit -m "$args[0]" }

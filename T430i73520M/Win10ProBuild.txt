@@ -60,11 +60,13 @@ yt-dlp.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 # physical configuration
 1600x900 screen with rhs taskbar
 HX256GSSDSATA3  is configured mostly as C:\
-SanDisk microSD  adapter containing  SDU64GB  is E:\
 ## keyboard
 Fn+k toggles Scroll Lock
 rightAlt+# => \
 shift+rightAlt+# => |
+## microSD adaptor tray
+SanDisk microSD  adapter containing  SDU64GB  is E:\
+  220911 realised I'd lost it - either in a bag, or Cafézoïde, or trains
 # sequential build
 Windows 10 Pro 1909 OS build 18363.1500
 Device name (DESKTOP-QSRVUSO) T430i73520M
@@ -829,8 +831,17 @@ robocopy /mir $GHrUse\emacs\syl20bnr-spacemacs-develop $spma
 Deleted  C:\Vim\vim82
 ## RHO Emacs
 rho-emacs-x86_64-setup-1.1.0.exe > Run anyway > UAC > yes > C:\Users\troin\Documents\rho-emacs >
-  Themes > Spacemacs dark
+  Themes > Spacemacs dark - aborted
 ## Git v2.37.3
+## PowerToys v0.62.0
+allowed to update
+## Thunderbird v91.12.0
+won't work with  Profile  used by  thunderbird v102.2.0-1
+  Thunderbird Setup 102.2.2.exe > Custom > [ Install location > C:\MozillaThunderbird\ ] >
+    Icons > On my Desktop  off-ticked > Upgrade > allowed it to run (it picked up my  Profile)
+## Thunderbird v102.3.0
+## VLC V3.0.14
+allowed
 # waiting
 MusikCube
 ShellCheck v0.8.0
