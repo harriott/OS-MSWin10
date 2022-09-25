@@ -189,9 +189,9 @@ Get-FileExtensionInfo -r
 tomalak
 
 ##### gci
+dir, list, ls
 gci * | select FullName
 gci * | select Name
-gci $path | select -expand FullName  # for pure string output
 gci . -force  # Gets both hidden & non-hidden. Shows desired symlinks target.
 gci -r -i i1*,i2*,i3*
 gci -r -i '* (* conflicted copy *' |%{echo $_.fullname} | ri
@@ -200,6 +200,10 @@ gci -r | ? Name -match <regex>
 ###### PSAnsiMap
 gci . | ft -view ansi  # overrides Terminal-Icons
 Get-PSAnsiFileMap  # shows ANSI mappings
+
+###### pure string output
+gci *.pdf | select -expand name
+gci $path | select -expand FullName
 
 ##### LastWriteTime
 lwp \.ps1

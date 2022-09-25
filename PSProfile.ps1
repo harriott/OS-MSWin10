@@ -239,15 +239,18 @@ Function gsp {
     $pl = $args[0]
     $r = '-r'+$args[1]
     #  40  can be fine for photos
-    #  700  can be good for texty pdf
-    $pngs = $args[2]+'-%02d.png'
-    $pdf = $args[3]+'.pdf'
+    #  400  can be good for texty pdf
+    $DSF = $args[2]
+    #  1 = no down-scale of size
+    #  8 = maximum blurring down
+    $pngs = $args[3]+'-%02d.png'
+    $pdf = $args[4]+'.pdf'
     if ( test-path $pdf ) {
-      $g = "gswin64c -dSAFER -sDEVICE=png16m $r -sPageList=$pl -o $pngs '$pdf'"
+      $g = "gswin64c -dSAFER -sDEVICE=png16m $r -dDownScaleFactor=$DSF -sPageList=$pl -o $pngs '$pdf'"
     } else { "$pdf ain't there" }
     SCFCW; $g; SCRC; iex $g
     }
-#  gsp <startPageNo>-<endPageNo> resolution outPNGbaseName 'inPDFbaseName'
+#  gsp <startPageNo>-<endPageNo> resolution DownScaleFactor(1-8) outPNGbaseName 'inPDFbaseName'
 
 #endregion
 #region --- 0 internetworking
@@ -425,7 +428,9 @@ Function e { exit } # quit (doesn't work as an alias)
 Function fcco {Format-Custom -InputObject $args[0] -Expand CoreOnly}
 # - shows summarised layout of array
 function ffmhb { $f = "ffmpeg -hide_banner " + $args -join ' '
-  $f = $f.Replace(' -q: v ', ' -q:v '); iex "$f" }
+  $f = $f.Replace(' -c: a ', ' -c:a ')
+  $f = $f.Replace(' -q: v ', ' -q:v ')
+  iex "$f" }
 Function fn { gci | select -ExpandProperty FullName | sort }
 Function ga { git add $args[0] }
 Function gic { git commit -m "$args[0]" }

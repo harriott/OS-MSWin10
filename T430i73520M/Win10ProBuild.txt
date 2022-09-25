@@ -842,6 +842,13 @@ won't work with  Profile  used by  thunderbird v102.2.0-1
 ## Thunderbird v102.3.0
 ## VLC V3.0.14
 allowed
+## Tixati v3.11
+tixati-3.11-1.win64-install.exe
+## LibreOffice 7.4.1.2
+Close Windows Explorer and everything except Task Manager for
+  LibreOffice_7.4.1_Win_x64.msi > Custom > Next > no shortcut on desktop > UAC
+## Notepad++ v8.4.5
+allowed to Update
 # waiting
 MusikCube
 ShellCheck v0.8.0
