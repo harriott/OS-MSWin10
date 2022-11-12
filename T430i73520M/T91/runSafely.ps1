@@ -12,17 +12,20 @@
 
 # Test this script:
 #  ni -Path 'C:\Users\troin\Dropbox\JH\T91-default-release' -name 'linuxlock'
-#  ni -Path '$DROPBOX\JH\T91-default-release' -name 'linuxlock'
-#  $Env:Computername > $DROPBOX\JH\T91-default-release\linuxlock
+#  ni -Path '$Drpbx\JH\T91-default-release' -name 'linuxlock'
+#  $Env:Computername > $Drpbx\JH\T91-default-release\linuxlock
 #  pwsh -NoProfile -WindowStyle Minimized -File C:\MT-runSafely.ps1
 
-$DROPBOX = "C:\Users\troin\Dropbox"
+$Drpbx = "C:\Users\troin\Dropbox"
 $T91short = "JH\T91-default-release"
-$T91 = "$DROPBOX\$T91short"
+$T91 = "$Drpbx\$T91short"
 $lf = "$T91\linuxlock"
 if ( Test-Path $lf) {
   $h = gc $lf
   New-BurntToastNotification -AppLogo C:\MozillaThunderbird\chrome\icons\default\messengerWindow.ico -Text "? $h > linux > Thunderbird", "Dropbox\$T91short"
 }
-else { start thunderbird }
+else {
+  echo T430i73520M > $T91\Win10ProLock
+  start thunderbird
+  }
 

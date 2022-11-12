@@ -4,6 +4,7 @@ Lenovo ThinkPad T430 i7-3520M = T430i73520M
 
 # parallel build
 MultiCommander SE (Store Edition)
+Microsoft Edge > Sign in > troingjo@outlook.com > Win10Pro PIN
 ## bat
 cd $cITh\MSWin\bat-v0.21.0-i686-pc-windows-msvc  for
   _bat.ps1  copied into  $MSwin10
@@ -54,6 +55,8 @@ Let Windows show previews of PDF documents
 ## Windows Explorer Preview pane
 $MSWin10\asAdminWEPreviewPane.ps1
 Notepad > Format > Font > Size > 8
+## Windows Terminal
+ctrl+, > Powershell > Appearance > Transparency > Background opacity > 80%
 ## yt-dlp
 yt-dlp.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 ~\tools\yt-dlp.exe
@@ -327,7 +330,7 @@ mpm --verify
   C:\Users\troin\Dropbox\JH\core\TN-OT-V-N-Eukaryote\Animal\Bilateria\Nephrozoa\Deuterostome-Chordata-Vertebrates\Tetrapod\Sauropsida-Reptile\Diapsid\Neotheropoda-Averostra\Ornithothoraces-Paraves\Aves\Neognathae\Neoaves\Aequorlitornithes.md
 ### LongPath
 Get-ItemProperty -Path "Registry::\HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" | Format-List
-right-clicked on  $DROPBOX\JH\Copied\IT-handy\tenforumsLongPaths\Enable_Win32_long_paths.reg
+right-clicked on  $Drpbx\JH\Copied\IT-handy\tenforumsLongPaths\Enable_Win32_long_paths.reg
   for  Properties > Opens with > Registry Editor
   then double-clicked on it
 Get-ItemProperty -Path "Registry::\HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" | Format-List
@@ -849,6 +852,21 @@ Close Windows Explorer and everything except Task Manager for
   LibreOffice_7.4.1_Win_x64.msi > Custom > Next > no shortcut on desktop > UAC
 ## Notepad++ v8.4.5
 allowed to Update
+## Git v2.38.0
+## Everything v1.4.1.1022
+Everything-1.4.1.1022.x64-Setup.exe > clicked through > UAC
+## Git v2.38.1
+## Java 8v351
+Free Java Update 8 Version 8 Update 351 > Update > UAC > Java SE Runtime Environment > Install
+## Tixati v3.12
+tixati-3.12-1.win64-install.exe
+## PowerShell v7.2.7
+PowerShell-7.2.7-win-x64.msi > [ Add 'Open here' context menu to Explorer
+  Add 'Run with PowerShell 7' context menu for PowerShell files ] > UAC > Yes
+## LibreOffice 7.4.2.2
+
+Close Windows Explorer and everything except Task Manager for
+  LibreOffice_7.4.2_Win_x64.msi > Custom > Next > no shortcut on desktop > UAC
 # waiting
 MusikCube
 ShellCheck v0.8.0

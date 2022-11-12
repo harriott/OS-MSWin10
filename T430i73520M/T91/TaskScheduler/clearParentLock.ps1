@@ -6,6 +6,7 @@
 # -----------------------------------------------------------------------
 # using  parent.lock  as an indicator on a linux box
 #  that Thunderbird is active on this Win10 machine
+#  test-path C:\Users\troin\Dropbox\JH\T91-default-release\parent.lock
 
 # for  Task Scheduler
 #  APS> ni C:\MT-clearParentLock.ps1 -itemtype symboliclink -value $machine\T91\TaskScheduler\clearParentLock.ps1 -Force
@@ -19,9 +20,9 @@
 #  pwsh -NoProfile -WindowStyle Hidden -File C:\clearParentLock.ps1
 #  pwsh -NoProfile -WindowStyle Minimized -File C:\clearParentLock.ps1
 
-$DROPBOX = "C:\Users\troin\Dropbox"
+$Drpbx = "C:\Users\troin\Dropbox"
 $T91short = "JH\T91-default-release"
-$T91 = "$DROPBOX\$T91short"
+$T91 = "$Drpbx\$T91short"
 $pl = 'parent.lock'  # '.parentlock' seems to be a relic
 if ( ! (Get-Process thunderbird -ErrorAction SilentlyContinue) ) {
   if ( test-path "$T91\$pl" ) {

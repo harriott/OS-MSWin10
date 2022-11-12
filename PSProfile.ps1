@@ -1,7 +1,5 @@
 
-#  #region  &  #endregion  create folding blocks if Peter Provost's  vim-ps1  is installed
-
-# Joseph Harriott, Tue 16 Aug 2022
+# Joseph Harriott, Mon 26 Sep 2022
 
 # symlink this file ($MSWin10\PSProfile.ps1) to
 #  ~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
@@ -34,8 +32,7 @@ function fi {
 } # gets a flattened directory alongside of imagies
 # use  cex  to see what's imagey
 
-#region --- 0 convert images recursively
-
+#=> 0 convert images recursively
 Function mc {
   $format1 = $args[0]
   $format2 = $args[1]
@@ -46,10 +43,10 @@ Function mc {
   }
 } #  mc tiff jpg
 
-#endregion
-#region --- 0 file handling
+#=> 0 directories & files
 function c { if ( $args[0] ) { sl $args[0] } else { sl .. }; pc }  # handily move in or out
 function i { ii . }  # opens  file explorer  on current directory
+function tt { ri "*.aux"; ri "*.log" }  # tidy tex = clear away TeX ancillary files
 
 function csl {
   $links = gci $args[0] -force | ?{$_.linktype} | select fullname,target
@@ -63,7 +60,7 @@ function csl {
     }
 } #  shows good symlink targets in green, bad in red
 
-#region --- investigations
+#==> investigations
 function gfiln { gci -r $args[0] | select -expandproperty fullname }
 function gfoln { gci -r $args[0] | where { $_.psiscontainer } | select -expandproperty fullname }
 
@@ -77,7 +74,7 @@ function t {
 
 set-alias j z  # zlocation
 
-#region --- filetypes
+#===> filetypes
 function cex { gci . -r | where { ! $_.psiscontainer } | group extension -noelement | sort count -desc }
 
 function tomalak {
@@ -108,9 +105,7 @@ gci -r -ea si `
       -auto
   }
 
-#endregion
-#region --- lastwritetime
-
+#===> lastwritetime
 function dtsfn { $args[0].lastwritetime.tostring('yyyymmdd-hh:mm:ss')+' '+$args[1]+' '+ $args[0].fullname }
 # - used by other functions
 
@@ -140,11 +135,11 @@ function encrypted {
 function lwp { ls -r | %{ dtsfn $_ ':' } | out-string -stream | select-string $args[0] | sort }
 #  <file-path> is a regex
 
-#region --- by name
+#====> by name
 function lwt {
   if ($args[0]) {
-    $of = 'lwt-'+$args[0]+'.txt'
-    "vim: ft=ftlist:" > $of; "" >> $of
+    $of = 'lwt-'+$args[0]+'.list'
+    "vim: ft=fdtslist:" > $of; "" >> $of
     if ($args[1]) { $a1 = '*.'+$args[1]
       if ($args[2]) { $a2 = '*.'+$args[2] }
       if ($args[3]) { $a3 = '*.'+$args[3] }
@@ -157,24 +152,20 @@ function lwt {
   } } # examples in  $mswin10\quickreference.txt
 
 function lwt-gitignore {
-  # "vim: ft=ftlist:" > lwt-gitignore.txt; lwts .gitignore >> lwt-gitignore.txt } # specific case
-  lwts .gitignore >> lwt-gitignore.ftlist } # specific case
+  # "vim: ft=fdtslist:" > lwt-gitignore.txt; lwts .gitignore >> lwt-gitignore.txt } # specific case
+  lwts .gitignore >> lwt-gitignore.fdtslist } # specific case
 
 function lwts { gci -r -i $args[0],$args[1],$args[2] | %{ dtsfn $_ ':' } | sort }
 #  can use wildcards in the <filenames(s)>
 
-#endregion
-
-#endregion
-#region --- sizes
+#===> sizes
 function dc { gci | foreach-object { $_.name + ": " + "{0:n2}" -f ((gci $_ -recurse | measure-object length -sum -erroraction silentlycontinue).sum / 1mb) + " mb" } }
 
 function fso { $fso = new-object -com scripting.filesystemobject; gci -directory | select @{l='size'; e={$fso.getfolder($_.fullname).size}},fullname | sort size -descending | ft @{l='size [mb]'; e={'{0:n2}    ' -f ($_.size / 1mb)}},fullname }
 
 function gfsi { Get-ChildItem . -Directory | Get-FolderSizeInfo -Hidden | Sort-Object TotalSize -Descending | Format-Table -AutoSize -View mb }
 
-#endregion
-#region --- strings in files
+#===> strings in files
 
 function stringinallfiles { sifwork string-allfiles '*' $args[0] }
 function stringinmds { sifwork string-md '*.md' $args[0] }
@@ -198,7 +189,7 @@ function sifwork {
   $global:sifworkoutfile = $outfile
   }
 
-#region --- github issues
+#====> github issues
 # $it1\ghissues.list
 # $itstack\ghissues.list
 
@@ -214,10 +205,9 @@ function ghissues {
   sleep 3
   set-content $sifwof -value (gc $sifwof | select-string -pattern 'vimfiles\\plugin\\fzf' -notmatch)
   mi $sifwof ghissues.list -force
-  '- moved to ghissues.list' 
+  '- moved to ghissues.list'
 }
-#endregion
-#region --- SE
+#====> SE
 # $ITstack\SE.list
 
 function SE {
@@ -228,12 +218,7 @@ function SE {
   '- moved to SE.list'
 }
 
-#endregion
-#endregion
-#endregion
-#endregion
-#region --- 0 Ghostscript
-
+#=> 0 Ghostscript
 $env:path +=';C:\Program Files\gs\gs9.54.0\bin'
 Function gsp {
     $pl = $args[0]
@@ -252,9 +237,7 @@ Function gsp {
     }
 #  gsp <startPageNo>-<endPageNo> resolution DownScaleFactor(1-8) outPNGbaseName 'inPDFbaseName'
 
-#endregion
-#region --- 0 internetworking
-
+#=> 0 internetworking
 Function cc {
   $co = (Invoke-WebRequest http://ifconfig.co/country).Content.replace("`n",'')
   $ci = (Invoke-WebRequest http://ifconfig.co/city).Content.replace("`n",'')
@@ -265,12 +248,10 @@ Function p {test-connection -computername 8.8.8.8 -ErrorAction SilentlyContinue}
 Function pg {test-connection -computername google.com -ErrorAction SilentlyContinue}
 Function wp { curl wttr.in/Paris }
 
-#endregion
-#region --- 0 places
-
+#=> 0 places
 $uname = $Env:USERNAME
-$DROPBOX = "C:\Users\$uname\Dropbox"
-  $core = "$DROPBOX\JH\core"
+$Drpbx = "C:\Users\$uname\Dropbox"
+  $core = "$Drpbx\JH\core"
     $ITstack = "$core\IT_stack"
       $CrPl = "$ITstack\CP"
       $onGH = "$ITstack\onGitHub"
@@ -279,15 +260,14 @@ $DROPBOX = "C:\Users\$uname\Dropbox"
           $machine = "$MSWin10\$Cn"
         $SPD = "$onGH\SyncPortableDrives\RoboCopy\$Cn"  # see below
         $vimfiles = "$onGH\vimfiles"
-  $IT1 = "$DROPBOX\JH\technos\IT1"
-  $ITP = "$DROPBOX\JH\Technos\IT0-Partitionable"  # $ITP\diskUsage.txt
-  $cITh = "$DROPBOX\JH\copied\IT-handy"
+  $cITh = "$Drpbx\JH\copied\IT-handy"
     $GHrUse = "$cITh\GHrepos"  # GitHub Repositories Use
+  $IT1 = "$Drpbx\JH\technos\IT1"
+  $ITP = "$Drpbx\JH\Technos\IT0-Partitionable"  # $ITP\diskUsage.txt
+  $P0 = "$Drpbx\JH\Copied\Practical0"
 $Enc = "C:\Users\$uname\encrypted"
 
-#endregion
-#region --- 0 re-tag image files to 72dpi
-
+#=> 0 re-tag image files to 72dpi
 # a single image file:
 Function im72 {
   $72dpi=$args[0] -replace '((\.[^.]*)$)', '-72dpi$1'
@@ -300,9 +280,7 @@ Function all72 {
   Remove-Item $_ }
   }
 
-#endregion
-#region --- 0 shell settings
-
+#=> 0 shell settings
 $env:path +=';C:\Program Files\7-Zip'
 
 if ($PSVersionTable.PSVersion.Major -eq 7) { Import-Module Powershell.Chunks }
@@ -312,7 +290,7 @@ $GitPromptSettings.DefaultPromptPath.ForegroundColor = [ConsoleColor]::Cyan
 
 Import-Module ps.checkModuleUpdates
 
-#region --- colours in outputs
+#==> colours in outputs
 . $MSWin10\Out-HostColored.ps1
 Function SCFCDC { [System.Console]::ForegroundColor = 'DarkCyan' }  # scfcdc; "DarkCyan"; scrc
 Function SCFCW { [System.Console]::ForegroundColor = 'White' }  # scfcw; "White"; scrc
@@ -320,11 +298,6 @@ Function SCRC { [System.Console]::ResetColor() }
 # SCFCW; "DarkCyan"; "White"; SCRC
 Import-Module Terminal-Icons; Import-Module PowerColorLS
 Set-Alias pc PowerColorLS
-
-#region --- errors
-$host.privatedata.ErrorForegroundColor = 'DarkGray'
-$host.privatedata.ErrorBackgroundColor = 'darkmagenta'
-#endregion
 
 function Format-Color([hashtable] $Colors = @{}, [switch] $SimpleMatch) {
 	$lines = ($input | Out-String) -replace "`r", "" -split "`n"
@@ -338,9 +311,11 @@ function Format-Color([hashtable] $Colors = @{}, [switch] $SimpleMatch) {
 	}
 }
 
-#endregion
-#region --- PSReadLine
+#===> errors
+$host.privatedata.ErrorForegroundColor = 'DarkGray'
+$host.privatedata.ErrorBackgroundColor = 'darkmagenta'
 
+#==> PSReadLine
 Set-PSReadlineOption -EditMode Vi  # wipes out any other settings, so first
 
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
@@ -350,35 +325,31 @@ Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
 Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 
-#endregion
-#endregion
-#region --- 0 Vifm
+#=> 0 Vifm
 $env:path +=';C:\vifm-w64-se-0.12-binary'
 
-#endregion
-#region --- 1 place-dependent
+#=> 1 place-dependent
 . $machine\PSProfile.ps1  # also uses $onGH ($MSWin10/PSProfile.ps1)
 
-#region --- bat
+#==> bat
 . $MSwin10\_bat.ps1
 # completion
 function f { Invoke-Fzf -preview 'bat --color=always {}' }
 Set-Alias b bat
 function bd { bat -d $args[0] }  # showing changes from git index
 
-#endregion
-#region --- documenting
-  Function xc { iex "$Env:LocalAppData\SumatraPDF\SumatraPDF.exe $Dropbox\JH\Copied\IT-handy\TeX\LaTeX\Appearance\xcolor.pdf -page 38" }
+#==> documenting
+Function xc { iex "$Env:LocalAppData\SumatraPDF\SumatraPDF.exe $Drpbx\JH\Copied\IT-handy\TeX\LaTeX\Appearance\xcolor.pdf -page 38" }
 
-#region --- MiKTeX
-  Function x { xelatex --max-print-line=110 $args[0] }
+#===> MiKTeX
+Function x { xelatex -halt-on-error --max-print-line=110 $args[1] $args[0] }
 
-  Function lj {
-    Remove-Item -recurse $tex\latex\jo
-    Copy-Item -recurse $ITstack\CrossPlatform\forLaTeX $tex\latex\jo
-  } # instead of a symlink to avoid snags if MiKTeX is uninstalled
-#endregion
-#region --- Pandoc
+Function lj {
+  Remove-Item -recurse $tex\latex\jo
+  Copy-Item -recurse $ITstack\CrossPlatform\forLaTeX $tex\latex\jo
+} # instead of a symlink to avoid snags if MiKTeX is uninstalled
+
+#===> Pandoc
 # helps to define these also in  $HOME\_vimrc
 $tex = "$Env:AppData\MiKTeX\tex"
 $Pandoc = "$Env:AppData\Pandoc"
@@ -387,43 +358,39 @@ $Pandoc = "$Env:AppData\Pandoc"
 Function headings0sty { cpi $MD4PDF/iih/headings0.sty $tex\latex\m4p\headings.sty -force }
 Function m4p { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4p.ps1 $args[0] $args[1] $args[2] $args[3] }
 Function m4ps0 { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4ps.ps1 $args[0] $args[1] $args[2] }
-Function mt { sl $DROPBOX\JH\core\TextNotes; [string]$Pwd; m4ps0 -s }
+Function mt { sl $Drpbx\JH\core\TextNotes; [string]$Pwd; m4ps0 -s }
 
-#endregion
-#endregion
-#region --- Dropbox conflicted copies
-  $DropboxConflictedLog = ''
+#==> Dropbox conflicted copies
+$DropboxConflictedLog = ''
 
-  Function dcc0 {
-    sl $DROPBOX
-    $dts = (Get-Date).ToString("yyMMdd-HHmmss")
-    Set-Variable -scope 1 -Name 'DropboxConflictedLog' -Value "$DROPBOX/conflicted/$dts.log"
-    'scanning for conflicted copies'
-    $all = gci -r | ? Name -match ".+'s conflicted copy.+" | %{echo $_.fullname}
-    $new = $all | ? { $_ -notMatch ('C:\\Users\\troin\\Dropbox\\conflicted' -Join "|") }
-    $new > $DropboxConflictedLog
-    gvim $DropboxConflictedLog
-  }  # lists them
+Function dcc0 {
+  sl $Drpbx
+  $dts = (Get-Date).ToString("yyMMdd-HHmmss")
+  Set-Variable -scope 1 -Name 'DropboxConflictedLog' -Value "$Drpbx/conflicted/$dts.log"
+  'scanning for conflicted copies'
+  $all = gci -r | ? Name -match ".+'s conflicted copy.+" | %{echo $_.fullname}
+  $new = $all | ? { $_ -notMatch ('C:\\Users\\troin\\Dropbox\\conflicted' -Join "|") }
+  $new > $DropboxConflictedLog
+  gvim $DropboxConflictedLog
+}  # lists them
 
-  Function dcc1 {
-    $DropboxConflictedLog = 'C:\Users\troin\Dropbox\conflicted\220722-164647.log'
-    if ( test-path $DropboxConflictedLog ) {
-      $DropboxConflictedRemoved=$DropboxConflictedLog.Replace('.log','-removed')
-      new-item $DropboxConflictedRemoved -type directory > $null
-      gc $DropboxConflictedLog | %{
-        $removedRelativePath=$_.Replace("$DROPBOX\",'')
-        $removedFlattenedPath=$removedRelativePath.Replace('\','--')
-        mi $_ "$DropboxConflictedRemoved\$removedFlattenedPath"
-      }
-      $removedLog = "$DropboxConflictedRemoved.log"
-      mi $DropboxConflictedLog $removedLog
-      gvim $removedLog
-    } else { "- you should've dcc0'd" | Out-HostColored dcc0 }
-  }  # removes them
+Function dcc1 {
+  $DropboxConflictedLog = 'C:\Users\troin\Dropbox\conflicted\220722-164647.log'
+  if ( test-path $DropboxConflictedLog ) {
+    $DropboxConflictedRemoved=$DropboxConflictedLog.Replace('.log','-removed')
+    new-item $DropboxConflictedRemoved -type directory > $null
+    gc $DropboxConflictedLog | %{
+      $removedRelativePath=$_.Replace("$Drpbx\",'')
+      $removedFlattenedPath=$removedRelativePath.Replace('\','--')
+      mi $_ "$DropboxConflictedRemoved\$removedFlattenedPath"
+    }
+    $removedLog = "$DropboxConflictedRemoved.log"
+    mi $DropboxConflictedLog $removedLog
+    gvim $removedLog
+  } else { "- you should've dcc0'd" | Out-HostColored dcc0 }
+}  # removes them
 
-#endregion
-#region --- general tools
-
+#==> general tools
 Function e { exit } # quit (doesn't work as an alias)
 Function fcco {Format-Custom -InputObject $args[0] -Expand CoreOnly}
 # - shows summarised layout of array
@@ -445,14 +412,10 @@ Function l {
   $list -join '  '
 }
 
-#endregion
-#region --- PSFzf
-
+#==> PSFzf
 # Set-PsFzfOption -EnableAliasFuzzySetEverything  # cde  does nothing...
 # Set-PsFzfOption -EnableAliasFuzzyZLocation  # fz  unfortunately kills  Alt+c...
 # and settings for PSReadLine
 
 # see  $MSWin10\quickReference.txt
 
-#endregion
-#endregion

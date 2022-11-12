@@ -13,15 +13,15 @@
 
 #region --- 1 paths
 
-$DROPBOX = "C:\Users\jharr\Dropbox"
-  $core = "$DROPBOX\JH\core"
+$Drpbx = "C:\Users\jharr\Dropbox"
+  $core = "$Drpbx\JH\core"
     $ITstack = "$core\IT_stack"
       $CrPl = "$ITstack\CrossPlatform"
       $onGH = "$ITstack\onGitHub"
         $MSwin10 = "$onGH\MSWin10"
           $machine = "$MSWin10\AsusW202"
-  $ITP = "$DROPBOX\JH\Technos\IT0-Partitionable"  # $ITP\diskUsage.txt
-  $cITh = "$DROPBOX\JH\copied\IT-handy"
+  $ITP = "$Drpbx\JH\Technos\IT0-Partitionable"  # $ITP\diskUsage.txt
+  $cITh = "$Drpbx\JH\copied\IT-handy"
 $Enc = 'C:\Users\jharr\Encrypted'
 
 #endregion

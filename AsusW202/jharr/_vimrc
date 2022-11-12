@@ -1,12 +1,12 @@
 
-let $DROPBOX = $HOME.'/Dropbox'  " keep this capitalised for finding it without need for $
-  let $core = $DROPBOX.'/JH/core'
+let $Drpbx = $HOME.'/Dropbox'  " keep this capitalised for finding it without need for $
+  let $core = $Drpbx.'/JH/core'
     let $ITstack = $core.'/IT_stack'
       let $CrPl = $ITstack.'/CrossPlatform'
       let $onGH = $ITstack.'/onGitHub'
         let $MSwin10 = $onGH.'/MSWin10'
           let $machine = $MSwin10.'/AsusW202'
-  let $cITh = $DROPBOX.'/JH/copied/IT-handy'
+  let $cITh = $Drpbx.'/JH/copied/IT-handy'
 " more locations are defined in  $onGH/vimfiles/vimrc-Win10.vim
 
 source $HOME/vimfiles/vimrc-Win10.vim
