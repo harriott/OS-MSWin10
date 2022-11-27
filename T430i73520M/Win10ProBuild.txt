@@ -864,9 +864,19 @@ tixati-3.12-1.win64-install.exe
 PowerShell-7.2.7-win-x64.msi > [ Add 'Open here' context menu to Explorer
   Add 'Run with PowerShell 7' context menu for PowerShell files ] > UAC > Yes
 ## LibreOffice 7.4.2.2
-
 Close Windows Explorer and everything except Task Manager for
   LibreOffice_7.4.2_Win_x64.msi > Custom > Next > no shortcut on desktop > UAC
+## KeePassXC
+Executable dissappeared!
+v2.7.4 installed from Microsoft Store (UAC) got me  C:\Program Files\KeePassXC\KeePassXC.exe
+## CPU-Z
+cpu-z_2.03-en.exe > C:\CPUID\CPU-Z > Create a desktop icon off-ticked
+  got me  C:\CPUID\CPU-Z\cpuz_readme.txt
+## PowerShell v7.3.0
+PowerShell-7.3.0-win-x64.msi > [ Add 'Open here' context menu to Explorer
+  Add 'Run with PowerShell 7' context menu for PowerShell files ] > UAC > Yes
+## MiniTool Partition Wizard Free v12.7
+ShadowMaker off > Ran it for Do not show this message again
 # waiting
 MusikCube
 ShellCheck v0.8.0

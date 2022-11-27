@@ -25,7 +25,7 @@ if ( Test-Path $lf) {
   New-BurntToastNotification -AppLogo C:\MozillaThunderbird\chrome\icons\default\messengerWindow.ico -Text "? $h > linux > Thunderbird", "Dropbox\$T91short"
 }
 else {
-  echo T430i73520M > $T91\Win10ProLock
+  echo T430i73520M > $T91\Win10ProLock  # noting that Thunderbird is active here
   start thunderbird
   }
 

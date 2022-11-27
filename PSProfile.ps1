@@ -366,27 +366,31 @@ $DropboxConflictedLog = ''
 Function dcc0 {
   sl $Drpbx
   $dts = (Get-Date).ToString("yyMMdd-HHmmss")
-  Set-Variable -scope 1 -Name 'DropboxConflictedLog' -Value "$Drpbx/conflicted/$dts.log"
-  'scanning for conflicted copies'
+  Set-Variable -scope 1 -Name 'DropboxConflictedLog' -Value "$Drpbx\conflicted\$dts.log"
+  "scanning for conflicted copies in $Drpbx"
   $all = gci -r | ? Name -match ".+'s conflicted copy.+" | %{echo $_.fullname}
-  $new = $all | ? { $_ -notMatch ('C:\\Users\\troin\\Dropbox\\conflicted' -Join "|") }
-  $new > $DropboxConflictedLog
+  $new = $all | ? { $_ -notmatch 'C:\\Users\\troin\\Dropbox\\conflicted' }
+  'vim: nowrap:' > $DropboxConflictedLog
+  '' >> $DropboxConflictedLog
+  $new >> $DropboxConflictedLog
   gvim $DropboxConflictedLog
 }  # lists them
 
 Function dcc1 {
-  $DropboxConflictedLog = 'C:\Users\troin\Dropbox\conflicted\220722-164647.log'
   if ( test-path $DropboxConflictedLog ) {
     $DropboxConflictedRemoved=$DropboxConflictedLog.Replace('.log','-removed')
     new-item $DropboxConflictedRemoved -type directory > $null
-    gc $DropboxConflictedLog | %{
+    $removedRestore = "$DropboxConflictedRemoved-restore.ps1"
+    'vim: nowrap:' > $removedRestore
+    '' >> $removedRestore
+    gc $DropboxConflictedLog | select-object -skip 2 | %{
       $removedRelativePath=$_.Replace("$Drpbx\",'')
-      $removedFlattenedPath=$removedRelativePath.Replace('\','--')
-      mi $_ "$DropboxConflictedRemoved\$removedFlattenedPath"
+      $removedFlattenedPath = $removedRelativePath.Replace('\','--')
+      $removedFPNS = $removedFlattenedPath.Replace(' ','_')
+      mi "$_" "$DropboxConflictedRemoved\$removedFPNS"
+      "cpi `"$DropboxConflictedRemoved\$removedFPNS`" `"$_`"" >> $removedRestore
     }
-    $removedLog = "$DropboxConflictedRemoved.log"
-    mi $DropboxConflictedLog $removedLog
-    gvim $removedLog
+    gvim $removedRestore
   } else { "- you should've dcc0'd" | Out-HostColored dcc0 }
 }  # removes them
 
