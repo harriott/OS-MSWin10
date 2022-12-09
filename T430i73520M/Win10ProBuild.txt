@@ -877,6 +877,9 @@ PowerShell-7.3.0-win-x64.msi > [ Add 'Open here' context menu to Explorer
   Add 'Run with PowerShell 7' context menu for PowerShell files ] > UAC > Yes
 ## MiniTool Partition Wizard Free v12.7
 ShadowMaker off > Ran it for Do not show this message again
+## AutoHotkey
+Shortcut to  $MSwin10\jo.ahk  moved into
+  C:\Users\troin\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 # waiting
 MusikCube
 ShellCheck v0.8.0

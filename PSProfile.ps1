@@ -256,14 +256,14 @@ $Drpbx = "C:\Users\$uname\Dropbox"
       $CrPl = "$ITstack\CP"
       $onGH = "$ITstack\onGitHub"
         $Cn = $Env:Computername
-        $MSwin10 = "$onGH\MSWin10"
+        $MSwin10 = "$onGH\OS-MSWin10"
           $machine = "$MSWin10\$Cn"
         $SPD = "$onGH\SyncPortableDrives\RoboCopy\$Cn"  # see below
         $vimfiles = "$onGH\vimfiles"
   $cITh = "$Drpbx\JH\copied\IT-handy"
     $GHrUse = "$cITh\GHrepos"  # GitHub Repositories Use
   $IT1 = "$Drpbx\JH\technos\IT1"
-  $ITP = "$Drpbx\JH\Technos\IT0-Partitionable"  # $ITP\diskUsage.txt
+  $IT0s = "$Drpbx\JH\Technos\IT0-Partitionable"  # $IT0s\diskUsage.txt
   $P0 = "$Drpbx\JH\Copied\Practical0"
 $Enc = "C:\Users\$uname\encrypted"
 
@@ -381,7 +381,7 @@ Function dcc1 {
     $DropboxConflictedRemoved=$DropboxConflictedLog.Replace('.log','-removed')
     new-item $DropboxConflictedRemoved -type directory > $null
     $removedRestore = "$DropboxConflictedRemoved-restore.ps1"
-    'vim: nowrap:' > $removedRestore
+    '# vim: nowrap:' > $removedRestore
     '' >> $removedRestore
     gc $DropboxConflictedLog | select-object -skip 2 | %{
       $removedRelativePath=$_.Replace("$Drpbx\",'')
@@ -390,6 +390,7 @@ Function dcc1 {
       mi "$_" "$DropboxConflictedRemoved\$removedFPNS"
       "cpi `"$DropboxConflictedRemoved\$removedFPNS`" `"$_`"" >> $removedRestore
     }
+    ri $DropboxConflictedLog
     gvim $removedRestore
   } else { "- you should've dcc0'd" | Out-HostColored dcc0 }
 }  # removes them

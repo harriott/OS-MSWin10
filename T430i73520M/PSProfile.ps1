@@ -1,4 +1,4 @@
-# vim: set fdl=2:
+# vim: set fdl=1:
 
 # Joseph Harriott
 
@@ -10,10 +10,7 @@
 
 $GHrCl = 'E:\IT-Copied\GHrepos'  # GitHub Repositories Clone
 
-#region ---- backups
-
+#=> backups
 New-Alias RCF $SPD\Flash.ps1
 New-Alias RCPD $SPD\PD.ps1
-
-#endregion
 

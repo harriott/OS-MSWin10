@@ -4,7 +4,7 @@ let $Drpbx = $HOME.'\Dropbox'  " keep this capitalised for finding it without ne
     let $ITstack = $core.'\IT_stack'
       let $CrPl = $ITstack.'\CrossPlatform'
       let $onGH = $ITstack.'\onGitHub'
-        let $MSwin10 = $onGH.'\MSWin10'
+        let $MSwin10 = $onGH.'\OS-MSWin10'
           let $machine = $MSwin10.'\T430i73520M'
 " more locations are defined in  $onGH\vimfiles\vimrc-Win10.vim
 let $USER = 'troin'
