@@ -1,0 +1,8 @@
+
+" $MSWin10\user\_vimrc (see  $MSwin10\symlinks.ps1)
+
+" -----------------------------------------------------------------------
+" this is a pointer, on a MSWin system, to my more portably located vimrc
+" -----------------------------------------------------------------------
+source $HOME\vimfiles\vimrc-Win10.vim
+

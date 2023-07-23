@@ -138,8 +138,8 @@ function lwp { ls -r | %{ dtsfn $_ ':' } | out-string -stream | select-string $a
 #====> by name
 function lwt {
   if ($args[0]) {
-    $of = 'lwt-'+$args[0]+'.list'
-    "vim: ft=fdtslist:" > $of; "" >> $of
+    $of = 'lwt-'+$args[0]+'.fetl'
+    "" > $of
     if ($args[1]) { $a1 = '*.'+$args[1]
       if ($args[2]) { $a2 = '*.'+$args[2] }
       if ($args[3]) { $a3 = '*.'+$args[3] }
@@ -152,8 +152,8 @@ function lwt {
   } } # examples in  $mswin10\quickreference.txt
 
 function lwt-gitignore {
-  # "vim: ft=fdtslist:" > lwt-gitignore.txt; lwts .gitignore >> lwt-gitignore.txt } # specific case
-  lwts .gitignore >> lwt-gitignore.fdtslist } # specific case
+  # "vim: ft=fetl:" > lwt-gitignore.txt; lwts .gitignore >> lwt-gitignore.txt } # specific case
+  lwts .gitignore >> lwt-gitignore.fetl } # specific case
 
 function lwts { gci -r -i $args[0],$args[1],$args[2] | %{ dtsfn $_ ':' } | sort }
 #  can use wildcards in the <filenames(s)>
@@ -165,7 +165,7 @@ function fso { $fso = new-object -com scripting.filesystemobject; gci -directory
 
 function gfsi { Get-ChildItem . -Directory | Get-FolderSizeInfo -Hidden | Sort-Object TotalSize -Descending | Format-Table -AutoSize -View mb }
 
-#===> strings in files
+#===> string in files
 
 function stringinallfiles { sifwork string-allfiles '*' $args[0] }
 function stringinmds { sifwork string-md '*.md' $args[0] }
@@ -175,47 +175,48 @@ function stringinvims { sifwork string-vim '*.vim' $args[0] }
 
 function sifwork {
   # not to be called directly
-  $outfile = $args[0]+".list"
-  "vim: ft=sif:" > $outfile
-  "" >> $outfile
+  $outfile = $args[0]+".sifw"
+  "" > $outfile
+  'string in files - see  $MSWin10\PSProfile.ps1' > $outfile
+  "" > $outfile
   $args[2] >> $outfile
   "" >> $outfile
   gci -r -e $outfile -i $args[1] | ss $args[2] | %{$_.path+" > "+$_.line} >> $outfile
   "" >> $outfile
-  "vim-easy-align: gaip>" >> $outfile
-  ":tabularize/>" >> $outfile
+  "vim-easy-align: gAip>" >> $outfile
+  ":packadd tabular | Tabularize/>" >> $outfile
   '' >> $outfile
   $outfile
   $global:sifworkoutfile = $outfile
   }
 
 #====> github issues
-# $it1\ghissues.list
-# $itstack\ghissues.list
+# $jtIT\ghissues.sifw
+# $ITstack\ghissues.sifw
 
 function ghissues {
   'Searching...'
-  stringinmds 'github\.com.+issues'
+  stringinmds 'github\.com.+issues'  # calling function sifwork
   "Stripping issues that aren't mine..."
-  $sifwof = '.\'+$global:sifworkoutfile  # as set in  function sifwork
+  $sifwof = '.\'+$global:sifworkoutfile  # global variable set in function sifwork
   sleep 3
   set-content $sifwof -value (gc $sifwof | select-string -pattern 'tmux-resurrect' -notmatch)
   sleep 3
   set-content $sifwof -value (gc $sifwof | select-string -pattern 'vimfiles\\pack' -notmatch)
   sleep 3
   set-content $sifwof -value (gc $sifwof | select-string -pattern 'vimfiles\\plugin\\fzf' -notmatch)
-  mi $sifwof ghissues.list -force
-  '- moved to ghissues.list'
+  mi $sifwof ghissues.sifw -force
+  '- moved to ghissues.sifw'
 }
 #====> SE
-# $ITstack\SE.list
+# $ITstack\SE.sifw
 
 function SE {
   'Searching...'
   stringinmds 'stackexchange'
   $sifwof = '.\'+$global:sifworkoutfile  # as set in  function sifwork
-  mi $sifwof SE.list -force
-  '- moved to SE.list'
+  mi $sifwof SE.sifw -force
+  '- moved to SE.sifw'
 }
 
 #=> 0 Ghostscript
@@ -251,20 +252,23 @@ Function wp { curl wttr.in/Paris }
 #=> 0 places
 $uname = $Env:USERNAME
 $Drpbx = "C:\Users\$uname\Dropbox"
-  $core = "$Drpbx\JH\core"
-    $ITstack = "$core\IT_stack"
-      $CrPl = "$ITstack\CP"
-      $onGH = "$ITstack\onGitHub"
-        $Cn = $Env:Computername
-        $MSwin10 = "$onGH\OS-MSWin10"
-          $machine = "$MSWin10\$Cn"
-        $SPD = "$onGH\SyncPortableDrives\RoboCopy\$Cn"  # see below
-        $vimfiles = "$onGH\vimfiles"
-  $cITh = "$Drpbx\JH\copied\IT-handy"
-    $GHrUse = "$cITh\GHrepos"  # GitHub Repositories Use
-  $IT1 = "$Drpbx\JH\technos\IT1"
-  $IT0s = "$Drpbx\JH\Technos\IT0-Partitionable"  # $IT0s\diskUsage.txt
-  $P0 = "$Drpbx\JH\Copied\Practical0"
+  $DJH = "$Drpbx\JH"
+    $core = "$DJH\core"
+      $ITstack = "$core\IT_stack"
+        $CrPl = "$ITstack\CP"
+        $onGH = "$ITstack\onGitHub"
+          $Cn = $Env:Computername
+          $MSwin10 = "$onGH\OS-MSWin10"
+            $machine = "$MSWin10\$Cn"
+          $SPD = "$onGH\SyncPortableDrives\RoboCopy\$Cn"  # see below
+          $vimfiles = "$onGH\vimfiles"
+    $GHrUse = "$DJH\CGHrepos"  # GitHub Repositories Use
+    $JHw = "$DJH\work"  # for IT websites and more
+      $Jhm="$JHw\IT-Jekyll-harriott-minima"
+    $jtIT = "$DJH\technos\IT"
+    $tIs = "$DJH\Technos\IT-storage"  # $tIs\diskUsage.txt
+    $Pr0 = "$DJH\Copied\Practical0"
+    $Thb = "$DJH\Thbdr"
 $Enc = "C:\Users\$uname\encrypted"
 
 #=> 0 re-tag image files to 72dpi
@@ -328,7 +332,14 @@ Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 #=> 0 Vifm
 $env:path +=';C:\vifm-w64-se-0.12-binary'
 
+#=> Jekyll
+function js { sl $JHm; $JHm; bundle exec jekyll serve; }
+function jt { sl $JHm; ri tag\*; python $JHm\_plugins\compile_tags.py; sl tag; }
+
 #=> 1 place-dependent
+. $GHrUse\CP\wfxr-code-minimap\completions\powershell\_code-minimap.ps1
+# $GHrUse/CP/wfxr-code-minimap/completions/README.md
+# $GHrUse\CP\wfxr-code-minimap\completions\README.md
 . $machine\PSProfile.ps1  # also uses $onGH ($MSWin10/PSProfile.ps1)
 
 #==> bat

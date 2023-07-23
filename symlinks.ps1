@@ -38,10 +38,8 @@ new-item ~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 -itemtype symbo
 new-item ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 -itemtype symboliclink -value $MSWin10\PSProfile.ps1 -force
 
 #=> vim
-# new-item $HOME\_gvimrc -itemtype symboliclink -value $MSWin\user\_gvimrc -force
 new-item ~\_gvimrc -itemtype symboliclink -value $MSWin10\user\_gvimrc -force  # $MSWin10/user/_gvimrc
-# remove-item $HOME\vimfiles -recurse -force
-# new-item $HOME\vimfiles -itemtype symboliclink -value $onGH\vimfiles -force
+new-item ~\_vimrc -itemtype symboliclink -value $MSWin10\user\_vimrc -force  # $MSWin10/user/_vimrc
 new-item ~\vimfiles -itemtype symboliclink -value $onGH\vimfiles -force
 
 #=> ~\.bashrc

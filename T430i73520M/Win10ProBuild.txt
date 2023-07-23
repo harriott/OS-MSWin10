@@ -1,14 +1,19 @@
 vim: ft=build:
 
+jnbh@live.co.uk
 Lenovo ThinkPad T430 i7-3520M = T430i73520M
+$machine\Win10ProBuild.txt
 
 # parallel build
 MultiCommander SE (Store Edition)
 Microsoft Edge > Sign in > troingjo@outlook.com > Win10Pro PIN
+ShellCheck v0.9.0  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 ## bat
 cd $cITh\MSWin\bat-v0.21.0-i686-pc-windows-msvc  for
   _bat.ps1  copied into  $MSwin10
   bat.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
+## code-minimap
+code-minimap-v0.6.4-x86_64-pc-windows-msvc > code-minimap.exe  copied to  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 ## Disk Usage
 du64.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 ## Everything
@@ -472,7 +477,7 @@ OBS-Studio-27.0.1-Full-Installer-x64.exe  (installed to  C:\Program Files\obs-st
     Base (Canvas) Resolution = 1600x900 (= screen size)
     Output (Scaled) Resolution > 1280x720
 ## OBS Studio Output Resolution 960x540
-Alt+f (= File) > s (= Settings) > Output (Scaled) Resolution = 960x540
+Alt+f (= File) > s (= Settings) > Video > Output (Scaled) Resolution = 960x540
 ## DVDFab 12.0.4.5
 dvdfab12_x64_12045.exe > Click to Install > trohib@gmail.com + pw > Start DVDFab
 ## DVDFab 12.0.4.7
@@ -844,7 +849,7 @@ won't work with  Profile  used by  thunderbird v102.2.0-1
     Icons > On my Desktop  off-ticked > Upgrade > allowed it to run (it picked up my  Profile)
 ## Thunderbird v102.3.0
 ## VLC V3.0.14
-allowed
+allowed, but didn't take
 ## Tixati v3.11
 tixati-3.11-1.win64-install.exe
 ## LibreOffice 7.4.1.2
@@ -880,6 +885,71 @@ ShadowMaker off > Ran it for Do not show this message again
 ## AutoHotkey
 Shortcut to  $MSwin10\jo.ahk  moved into
   C:\Users\troin\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+## Git v2.39.0.2
+## PowerToys v0.66.0
+allowed to update
+## Git v2.39.2.2
+## Java Updated
+## Git v2.40.0.0
+## PowerShell v7.3.3
+PowerShell-7.3.3-win-x64.msi > [ Add 'Open here' context menu to Explorer
+  Add 'Run with PowerShell 7' context menu for PowerShell files ] > UAC > Yes
+## PowerShell v7.3.4
+PowerShell-7.3.4-win-x86.msi > [ Add 'Open here' context menu to Explorer
+  Add 'Run with PowerShell 7' context menu for PowerShell files ] > UAC > Yes
+Uninstalled
+PowerShell-7.3.4-win-x64.msi > [ Add 'Open here' context menu to Explorer
+  Add 'Run with PowerShell 7' context menu for PowerShell files ] > UAC > Yes
+## Dropbox offering to backup TOSHIBA
+Dropbox Preferences > Backups > External Drive Backups  off-ticked
+## QuickHash v3.3.1
+C:\Users\troin\tools\QuickHash-GUI-Windows-v3.3.1-64-Bit
+## Gpg4win Uninstall
+Settings > Apps & features > Gnu Privacy Guard > Uninstall
+C:\Program Files (x86)\GnuPG\  Deleted
+## Gpg4win v4.1.0
+gpg4win-4.1.0.exe > Kleopatra off-ticked > C:\Gpg4win
+## Ruby
+cpi $onGH\misc\irbrc ~\.irbrc
+rubyinstaller-devkit-3.2.2-1-x64.exe > for me only > C:\Ruby32-x64
+(in a refreshed Powershell) gem install bundler jekyll  # takes ages...
+  A new release of RubyGems is available: 3.4.10 → 3.4.12!
+  Run `gem update --system 3.4.12` to update your installation.
+## Everything v1.4.1.1023
+Everything-1.4.1.1023.x64-Setup.exe > clicked through > UAC
+## Java Updated
+## gVim v9.0.1558
+gvim_9.0.1558_x64_signed.exe  (picked up my settings)
+## Git v2.40.1.0
+## Python 3.11.3
+python-3.11.3-amd64.exe > Add python.exe to PATH > Customize > Advanced Options >
+  [ Install for all users  Customize install location > C:\Python310 ]
+Settings > Apps & features > [ Python 3.10.2 (64-bit)  Python 3.11.3 (64-bit)
+  Python Launcher 3.11.3150.0 ] > Uninstall
+$oldpath = (Get-ItemProperty -Path ‘Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment’ -Name PATH).path
+Set-ItemProperty -Path ‘Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment’ -Name PATH -Value $oldpath.Replace('310','311')
+python-3.11.3-amd64.exe > Add python.exe to PATH > Customize > Advanced Options >
+  [ Install for all users  Customize install location > C:\Python311 ]
+## PowerToys v0.70.1
+allowed to update
+## Everything v1.4.1.1024
+Everything-1.4.1.1024.x64-Setup.exe > clicked through > UAC
+## VLC V3.0.18
+vlc-3.0.18-win32.exe > Next > [C:\Program Files (x86)\VideoLAN\VLC] > Install
+## Git v2.41.0
+## OBS Studio v29.1.3
+## PowerToys v0.71.0
+allowed to update
+## Git v2.41.0.3
+## PowerShell v7.3.6
+PowerShell-7.3.6-win-x86.msi > [ Add 'Open here' context menu to Explorer
+  Add 'Run with PowerShell 7' context menu for PowerShell files ] > Install > UAC > Yes
+## Java Updated
+(Version 8 Update 381) Update > Install
+## Skype isn't launching in background...
+## gem update
+  Fetching sass-embedded-1.64.1-x64-mingw-ucrt.gem
+  sass-embedded's executable "sass" conflicts with sass
+  Overwrite the executable? [yN]  y
 # waiting
-MusikCube
-ShellCheck v0.8.0
+## move to Thunderbird v115 profile
