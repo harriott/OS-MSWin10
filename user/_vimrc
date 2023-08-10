@@ -4,5 +4,5 @@
 " -----------------------------------------------------------------------
 " this is a pointer, on a MSWin system, to my more portably located vimrc
 " -----------------------------------------------------------------------
-source $HOME\vimfiles\vimrc-Win10.vim
+source $HOME\vimfiles\vimrc-Win10.vim  " $vimfiles\vimrc-Win10.vim
 

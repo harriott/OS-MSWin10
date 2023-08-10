@@ -4,8 +4,7 @@ vim: nospell:
     C:\Users\troin\AppData\Local\Microsoft\WindowsApps
     sl $cITh\CP\TeX\LaTeX\Structure\Classes\Memoir
 
-- `ctrl+m` on selected text opens it in `LanguageTool`
-- Skype: `Ctrl+,` = `Menu > Settings`
+`ctrl+m` on selected text opens it in `LanguageTool`
 
 # build
     $MSwin10\jo.ahk
@@ -50,6 +49,7 @@ in Explorer: `Alt+D > cmd > Enter`
     <command> | Out-Null  # works for some commands
     Alt > Space > E > L > [ up / down  to scroll   Esc ]
     iex <someCommand>  # = invoke-expression
+    less <someFile>
     foreach($element in 1..3){ $element }
     get-package | Format-Table -AutoSize
     PowerShell -NoProfile
@@ -59,13 +59,12 @@ in Explorer: `Alt+D > cmd > Enter`
 `measure-object` = `measure`
 
 ### aliases
-    Get-MyAlias
-
 limited to single commands
 
 #### Get-Alias
     gal -Definition Get-ChildItem
     gal ls
+    gal | sort Source | ft -view Source
 
 #### standard
     gal h*
@@ -171,10 +170,19 @@ no standard aliases
 - v7: `C:\Users\troin\Documents\PowerShell\Modules`
 
 #### PSScriptTools
+    Get-MyAlias  # limited to  PSScriptTools
     Get-DirectoryInfo  # alias  dw
-    Get-ModuleCommand PSScriptTools  # compact list
+    Get-MyVariable
+    Get-PathVariable
+    Get-PSSessionInfo
     Get-PSScriptTools  # synopsi of commands
+    Get-TZData Europe/Paris
+    Get-WhoIs 8.8.8.8
     Open-PSScriptToolsHelp
+
+##### compact lists
+    Get-ModuleCommand ps.checkModuleUpdates
+    Get-ModuleCommand PSScriptTools
 
 #### PSFzf
     Alt+a   # select an argument
@@ -187,11 +195,7 @@ tab completion
 
 #### update
     $machine\updateModules.ps1
-
-##### check
-    Check-ModuleUpdate
-    Check-ModuleUpdates  # (ignore InvalidOperations...) ends with highlighted updates
-    Compare-Module
+    Compare-Module | Where UpdateNeeded | Foreach { Update-Module $_.name }  # slow...
 
 ### Ruby
     where.exe irb
@@ -203,6 +207,7 @@ tab completion
     param( [switch]$doSomething )  # -doSomething  creates  $doSomething = true
 
 ### storage
+    dw  # directory counts
     ii .  # invoke Explorer on WD
     sl <directoryToMoveTo>
     takeown /? | less
@@ -261,10 +266,12 @@ aliases: `cat`, `type`
     t [n]  => pstree <depth>
 
 ##### sizes
-    dc
     du64 -l 1
     fso
     Get-GitSize  # when you're in .git's parent directory
+
+###### using PSScriptTools
+    dc
     gfsi
 
 #### manipulations
@@ -338,6 +345,7 @@ ROBOCOPY.exe
 
 ## wt
 - in Explorer: `Alt+D > wt > Enter`
+- `win+;` emojis
 - `win+r > wt` opens `wt` on `~`
 - Windows Terminal
 
@@ -444,7 +452,12 @@ star icon
     Win+r > shell:programs
     Win+r > shell:startup => user Start-up
 
-# Windows Defender Firewall
+# internetworking
+    whois 8.8.8.8
+
+Skype: `Ctrl+,` = `Menu > Settings`
+
+## Windows Defender Firewall
     control firewall.cpl  # Control Panel > All Control Panel Items > Windows Defender Firewall
     wf.msc  # Windows Defender Firewall with Advanced Security, where Rules can be seen
 

@@ -15,12 +15,12 @@
 #   (Task will stop repeating if tweaked or Run manually - fix is to Sign in again...)
 
 # Test:
-#  ni -Path 'C:\Users\troin\Dropbox\JH\Thbdr' -name 'Win10ProLock'
+#  ni -Path 'C:\Users\troin\Dropbox\JH\Thb-dr' -name 'Win10ProLock'
 #  pwsh -NoProfile -WindowStyle Hidden -File C:\MT-clearParentLock.ps1
 #  pwsh -NoProfile -WindowStyle Minimized -File C:\MT-clearParentLock.ps1
 
 $Drpbx = "C:\Users\troin\Dropbox"
-$Thbshort = "JH\Thbdr"
+$Thbshort = "JH\Thb-dr"
 $Thb = "$Drpbx\$Thbshort"
 # parent.lock  is kept in use by  Thunderbird  and so isn't sync'd by  Dropbox  until  Thunderbird closes
 # <dot>parentlock  seems to be a relic

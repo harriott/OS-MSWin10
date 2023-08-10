@@ -6,10 +6,10 @@
 #  ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
 #   - both done in  $MSWin10\symlinks.ps1
 
-Set-Alias seco Set-Content  # because  sc  is overridden by  sc.exe
-Set-Alias ss Select-String
+sal seco Set-Content  # because  sc  is overridden by  sc.exe
+sal ss Select-String
 
-Function GNFR {
+function GNFR {
   $FRlist = Get-NetFirewallRule | out-string
   $FRlf = "$machine\troin\FirewallRules.txt"
   "vim: set ft=NFR:" > $FRlf
@@ -31,6 +31,10 @@ function fi {
   }
 } # gets a flattened directory alongside of imagies
 # use  cex  to see what's imagey
+
+function pro {
+  Get-Process | Sort-Object WS -Descending | Select-Object -first 39 ID,Name,WS,VM,PM,Handles,StartTime | ConvertTo-WPFGrid -Refresh -timeout 10 -Title "Top Processes"
+  } # needs to be on 3 lines
 
 #=> 0 convert images recursively
 Function mc {
@@ -72,7 +76,7 @@ function t {
   iex $pst
   }
 
-set-alias j z  # zlocation
+set-alias j z  # Zlocation
 
 #===> filetypes
 function cex { gci . -r | where { ! $_.psiscontainer } | group extension -noelement | sort count -desc }
@@ -264,11 +268,11 @@ $Drpbx = "C:\Users\$uname\Dropbox"
           $vimfiles = "$onGH\vimfiles"
     $GHrUse = "$DJH\CGHrepos"  # GitHub Repositories Use
     $JHw = "$DJH\work"  # for IT websites and more
-      $Jhm="$JHw\IT-Jekyll-harriott-minima"
+      $JHm="$JHw\IT-Jekyll-harriott-minima"
     $jtIT = "$DJH\technos\IT"
     $tIs = "$DJH\Technos\IT-storage"  # $tIs\diskUsage.txt
     $Pr0 = "$DJH\Copied\Practical0"
-    $Thb = "$DJH\Thbdr"
+    $Thb = "$DJH\Thb-dr"
 $Enc = "C:\Users\$uname\encrypted"
 
 #=> 0 re-tag image files to 72dpi
@@ -301,7 +305,7 @@ Function SCFCW { [System.Console]::ForegroundColor = 'White' }  # scfcw; "White"
 Function SCRC { [System.Console]::ResetColor() }
 # SCFCW; "DarkCyan"; "White"; SCRC
 Import-Module Terminal-Icons; Import-Module PowerColorLS
-Set-Alias pc PowerColorLS
+sal pc PowerColorLS
 
 function Format-Color([hashtable] $Colors = @{}, [switch] $SimpleMatch) {
 	$lines = ($input | Out-String) -replace "`r", "" -split "`n"
@@ -332,10 +336,6 @@ Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 #=> 0 Vifm
 $env:path +=';C:\vifm-w64-se-0.12-binary'
 
-#=> Jekyll
-function js { sl $JHm; $JHm; bundle exec jekyll serve; }
-function jt { sl $JHm; ri tag\*; python $JHm\_plugins\compile_tags.py; sl tag; }
-
 #=> 1 place-dependent
 . $GHrUse\CP\wfxr-code-minimap\completions\powershell\_code-minimap.ps1
 # $GHrUse/CP/wfxr-code-minimap/completions/README.md
@@ -346,7 +346,7 @@ function jt { sl $JHm; ri tag\*; python $JHm\_plugins\compile_tags.py; sl tag; }
 . $MSwin10\_bat.ps1
 # completion
 function f { Invoke-Fzf -preview 'bat --color=always {}' }
-Set-Alias b bat
+sal b bat
 function bd { bat -d $args[0] }  # showing changes from git index
 
 #==> documenting
@@ -364,7 +364,7 @@ Function lj {
 # helps to define these also in  $HOME\_vimrc
 $tex = "$Env:AppData\MiKTeX\tex"
 $Pandoc = "$Env:AppData\Pandoc"
-  $MD4PDF = "$onGH\md4pdf"
+  $MD4PDF = "$onGH\pandoc-md4pdf"
 
 Function headings0sty { cpi $MD4PDF/iih/headings0.sty $tex\latex\m4p\headings.sty -force }
 Function m4p { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4p.ps1 $args[0] $args[1] $args[2] $args[3] }
@@ -427,6 +427,10 @@ Function l {
   [string[]]$list = (gci).Name
   $list -join '  '
 }
+
+#==> Jekyll
+function js { sl $JHm; $JHm; bundle exec jekyll serve --drafts; }
+function jt { sl $JHm; ri tag\*; python $JHm\_plugins\compile_tags.py; sl tag; }
 
 #==> PSFzf
 # Set-PsFzfOption -EnableAliasFuzzySetEverything  # cde  does nothing...

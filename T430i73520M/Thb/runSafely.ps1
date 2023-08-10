@@ -12,13 +12,13 @@
 #  New-BurntToastNotification -AppLogo C:\MozillaThunderbird\chrome\icons\default\messengerWindow.ico -Text "? > linux > Thunderbird"
 
 # Test this script:
-#  ni -Path "$Drpbx\JH\Thbdr" -name 'linuxlock'
-#  $Env:Computername > $Drpbx\JH\Thbdr\linuxlock
-#  gc $Drpbx\JH\Thbdr\linuxlock
+#  ni -Path "$Drpbx\JH\Thb-dr" -name 'linuxlock'
+#  $Env:Computername > $Drpbx\JH\Thb-dr\linuxlock
+#  gc $Drpbx\JH\Thb-dr\linuxlock
 #  pwsh -NoProfile -WindowStyle Minimized -File C:\MT-runSafely.ps1
 
 $Drpbx = "C:\Users\troin\Dropbox"
-$Thbshort = "JH\Thbdr"
+$Thbshort = "JH\Thb-dr"
 $Thb = "$Drpbx\$Thbshort"
 $lf = "$Thb\linuxlock"
 if ( Test-Path $lf) {

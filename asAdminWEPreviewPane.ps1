@@ -1,9 +1,7 @@
 
-# #region & #endregion create folding blocks if Peter Provost's vim-ps1 is installed
-
 # Joseph Harriott, Wed 03 Aug 2022
 
-# Windows Explorer Preview pane
+# File Explorer Preview pane
 
 $reply = Read-Host '- .ahk? '
 if ($reply -eq 'y') {
