@@ -6,8 +6,9 @@
 #  ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
 #   - both done in  $MSWin10\symlinks.ps1
 
-sal seco Set-Content  # because  sc  is overridden by  sc.exe
-sal ss Select-String
+sal seco set-content  # because  sc  is overridden by  sc.exe
+sal ss select-string
+sal su C:\SumatraPDF\SumatraPDF.exe
 
 function GNFR {
   $FRlist = Get-NetFirewallRule | out-string
@@ -110,8 +111,8 @@ gci -r -ea si `
   }
 
 #===> lastwritetime
-function dtsfn { $args[0].lastwritetime.tostring('yyyymmdd-hh:mm:ss')+' '+$args[1]+' '+ $args[0].fullname }
-# - used by other functions
+function dtsfn { $args[0].lastwritetime.tostring('yyyyMMdd-hh:mm:ss')+' '+$args[1]+' '+ $args[0].fullname }
+# - used by other functions  gci <test> | %{ dtsfn $_ ':' }
 
 function encrypted {
   $encrypted = "actions", "digital0", "digital1", "secure0", "secure1", "shg", "stack"
@@ -136,8 +137,8 @@ function encrypted {
   ''
 }
 
-function lwp { ls -r | %{ dtsfn $_ ':' } | out-string -stream | select-string $args[0] | sort }
-#  <file-path> is a regex
+function lwp { gci -r | %{ dtsfn $_ ':' } | out-string -stream | ss $args[0] | sort }
+#  $args[0]  is a regex, something in the filepath
 
 #====> by name
 function lwt {
@@ -153,7 +154,7 @@ function lwt {
     } else { "next three arguments are specific file extensions" }
   } else {
     "first argument should be the general descriptor of the type of files you're looking for"
-  } } # examples in  $mswin10\quickreference.txt
+  } } # examples in  $MSwin10\QR\cli.md
 
 function lwt-gitignore {
   # "vim: ft=fetl:" > lwt-gitignore.txt; lwts .gitignore >> lwt-gitignore.txt } # specific case
@@ -176,23 +177,43 @@ function stringinmds { sifwork string-md '*.md' $args[0] }
 function stringinps1s { sifwork string-ps1 '*.ps1' $args[0] }
 function stringintexs { $texfiles = '*.cls','*.tex'; sifwork string-latex $texfiles $args[0] }
 function stringinvims { sifwork string-vim '*.vim' $args[0] }
+# stringin* <regex>
+
+function SE {
+  $outfile = "$DJH/search/SEN.sifw"
+  sifwork0 $outfile 'stackexchange|stackoverflow'
+  foreach($ITd in $jtIT, $ITstack, "$JHw\France") {
+    "Searching in $ITd\..."
+    sl $ITd
+    gci -r -e $outfile -i '*.md' | ss 'stackexchange|stackoverflow' | %{$_.path+" > "+$_.line} >> $outfile
+    '' >> $outfile
+  }
+  sleep 3
+  seco $outfile -value (gc $outfile | ss -pattern 'vimfiles\\pack' -notmatch)
+  sifwork1 $outfile
+  sl "$DJH/search"
+}
 
 function sifwork {
   # not to be called directly
   $outfile = $args[0]+".sifw"
-  "" > $outfile
-  'string in files - see  $MSWin10\PSProfile.ps1' > $outfile
-  "" > $outfile
-  $args[2] >> $outfile
-  "" >> $outfile
+  sifwork0 $outfile $args[2]
   gci -r -e $outfile -i $args[1] | ss $args[2] | %{$_.path+" > "+$_.line} >> $outfile
   "" >> $outfile
+  sifwork1 $outfile
+  $global:sifworkoutfile = $outfile
+}
+function sifwork0 {
+  "" > $args[0]
+  'vim /: '+$args[1].replace('|','\|') >> $args[0]
+  "" >> $args[0]
+} # header
+function sifwork1 {
   "vim-easy-align: gAip>" >> $outfile
   ":packadd tabular | Tabularize/>" >> $outfile
   '' >> $outfile
   $outfile
-  $global:sifworkoutfile = $outfile
-  }
+} # footer
 
 #====> github issues
 # $jtIT\ghissues.sifw
@@ -204,25 +225,16 @@ function ghissues {
   "Stripping issues that aren't mine..."
   $sifwof = '.\'+$global:sifworkoutfile  # global variable set in function sifwork
   sleep 3
-  set-content $sifwof -value (gc $sifwof | select-string -pattern 'tmux-resurrect' -notmatch)
+  seco $sifwof -value (gc $sifwof | ss -pattern 'tmux-resurrect' -notmatch)
   sleep 3
-  set-content $sifwof -value (gc $sifwof | select-string -pattern 'vimfiles\\pack' -notmatch)
+  seco $sifwof -value (gc $sifwof | ss -pattern 'vimfiles\\pack' -notmatch)
   sleep 3
-  set-content $sifwof -value (gc $sifwof | select-string -pattern 'vimfiles\\plugin\\fzf' -notmatch)
+  seco $sifwof -value (gc $sifwof | ss -pattern 'vimfiles\\plugin\\fzf' -notmatch)
+  sleep 3
+  seco $sifwof -value (gc $sifwof | ss -pattern 'vimtest' -notmatch)
   mi $sifwof ghissues.sifw -force
   '- moved to ghissues.sifw'
 }
-#====> SE
-# $ITstack\SE.sifw
-
-function SE {
-  'Searching...'
-  stringinmds 'stackexchange'
-  $sifwof = '.\'+$global:sifworkoutfile  # as set in  function sifwork
-  mi $sifwof SE.sifw -force
-  '- moved to SE.sifw'
-}
-
 #=> 0 Ghostscript
 $env:path +=';C:\Program Files\gs\gs9.54.0\bin'
 Function gsp {
@@ -257,6 +269,9 @@ Function wp { curl wttr.in/Paris }
 $uname = $Env:USERNAME
 $Drpbx = "C:\Users\$uname\Dropbox"
   $DJH = "$Drpbx\JH"
+    $Cfzd = "$DJH\Cafezoide"
+      $CzPhy = "$Cfzd\PhysicalProperty"
+    $copied = "$DJH\copied"
     $core = "$DJH\core"
       $ITstack = "$core\IT_stack"
         $CrPl = "$ITstack\CP"
@@ -264,9 +279,10 @@ $Drpbx = "C:\Users\$uname\Dropbox"
           $Cn = $Env:Computername
           $MSwin10 = "$onGH\OS-MSWin10"
             $machine = "$MSWin10\$Cn"
-          $SPD = "$onGH\SyncPortableDrives\RoboCopy\$Cn"  # see below
+          $SPD = "$onGH\SyncPortableDrives\RoboCopy\$Cn"  # used in  $machine\PSProfile.ps1
           $vimfiles = "$onGH\vimfiles"
-    $GHrUse = "$DJH\CGHrepos"  # GitHub Repositories Use
+            $vfp = "$vimfiles\pack"
+    $GHrUse = "$Drpbx\CGHrepos"  # GitHub Repositories Use
     $JHw = "$DJH\work"  # for IT websites and more
       $JHm="$JHw\IT-Jekyll-harriott-minima"
     $jtIT = "$DJH\technos\IT"
@@ -297,6 +313,7 @@ Import-Module posh-git
 $GitPromptSettings.DefaultPromptPath.ForegroundColor = [ConsoleColor]::Cyan
 
 Import-Module ps.checkModuleUpdates
+Import-Module PSScriptTools
 
 #==> colours in outputs
 . $MSWin10\Out-HostColored.ps1
@@ -308,19 +325,20 @@ Import-Module Terminal-Icons; Import-Module PowerColorLS
 sal pc PowerColorLS
 
 function Format-Color([hashtable] $Colors = @{}, [switch] $SimpleMatch) {
-	$lines = ($input | Out-String) -replace "`r", "" -split "`n"
-	foreach($line in $lines) {
-		$color = ''
-		foreach($pattern in $Colors.Keys){
-			if(!$SimpleMatch -and $line -match $pattern) { $color = $Colors[$pattern] }
-			elseif ($SimpleMatch -and $line -like $pattern) { $color = $Colors[$pattern] }
-		}
-		if($color) { Write-Host -ForegroundColor $color $line } else { Write-Host $line }
-	}
+    $lines = ($input | Out-String) -replace "`r", "" -split "`n"
+    foreach($line in $lines) {
+        $color = ''
+        foreach($pattern in $Colors.Keys){
+            if(!$SimpleMatch -and $line -match $pattern) { $color = $Colors[$pattern] }
+            elseif ($SimpleMatch -and $line -like $pattern) { $color = $Colors[$pattern] }
+        }
+        if($color) { Write-Host -ForegroundColor $color $line } else { Write-Host $line }
+    }
 }
 
 #===> errors
-$host.privatedata.ErrorForegroundColor = 'DarkGray'
+# only affecting  Windows PowerShell
+$host.privatedata.errorforegroundcolor = 'green'
 $host.privatedata.ErrorBackgroundColor = 'darkmagenta'
 
 #==> PSReadLine
@@ -368,7 +386,7 @@ $Pandoc = "$Env:AppData\Pandoc"
 
 Function headings0sty { cpi $MD4PDF/iih/headings0.sty $tex\latex\m4p\headings.sty -force }
 Function m4p { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4p.ps1 $args[0] $args[1] $args[2] $args[3] }
-Function m4ps0 { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4ps.ps1 $args[0] $args[1] $args[2] }
+Function m4ps0 { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4ps.ps1 $args[0] $args[1] $args[2] } # m4ps0 [-n] [-r] [-s]
 Function mt { sl $Drpbx\JH\core\TextNotes; [string]$Pwd; m4ps0 -s }
 
 #==> Dropbox conflicted copies

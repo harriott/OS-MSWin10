@@ -1,0 +1,28 @@
+vim: ft=build:
+
+$MSWin10\MSBUC22PIX8-Win10ProBuild.txt
+
+Microsoft Surface Book UC PIX BOOK 22 Pix 8 = MSBUC22PIX8
+# parallel build
+## waiting
+# physical configuration
+QWERTY
+# sequential build
+## French MSWin10Pro
+Qui sera amené á utiliser ce PC ? > HARRIOTT
+Quet était le nom de votre premier animal de compagnie ? > Fifi
+Quet était votre surnom lorsque vous étiez enfant ? > Jeffke
+Quet est le nom de la ville où vous êtes né ? > Newcastle
+powered failed while plugged in so now going into Recovery
+## K16GBDTR500 loaded with ESD-USB (Windows 10 2022 Update l Version 22H2)
+separated the clipboard from the keyboard and left both on charge for 24h
+won't boot in upper USB socket, booted in lower socket into Recovery so,
+  Use a device > USB > Custom
+Where do you want to install  shows
+  Drive 0 Partition 1: BOOT - System
+  Drive 0 Partition 2: - MSR
+  Drive 0 Partition 3: Windows - Primary
+  Drive 0 Partition 4: Recovery - Recovery
+- deleted 4, then 3, getting  Unallocated Space > New  got it as Primary > Next
+Died during a restart...
+## waiting

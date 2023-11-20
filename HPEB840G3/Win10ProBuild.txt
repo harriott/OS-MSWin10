@@ -1,0 +1,71 @@
+vim: ft=build:
+
+$machine\Win10ProBuild.txt
+
+HP EliteBook 840 G3 = HPEB840G3 BCPNB17
+jharrio@outlook.com
+# parallel build
+## Desktop Background
+Paramètres > [ Personnalisation > Arrière-plan > Couleur unie
+Système > Écran > Mise à l'échelle et disposition > Modifier la taille du texte des applications et d'autres éléments > 100%
+## File Explorer
+Affichage > Options > Affichage > [ [ Afficher l'icône des fichiers sure les miniatures  Afficher la barre d'état ] off-ticked  Afficher le chemin d'accès complet dans la barre de titre  on-ticked  Afficher les fichiers, dossier et lecteurs cachés  [ Masquer les extensions des fichiers dont le type est connu  Masquer les fichier protégés du système d'exploitation ]  off-ticked
+## File Explorer > View > Options > View > Display the full path in the title bar
+## Gestionnaire de tâches
+Options > Masquer l'icône réduite
+hidden icon dragged to taskbar
+## Sécurité Windows
+pinned to Start
+## stop individual Edge tabs showing in task switcher
+Paramètres > System > Multitâche > Alt + Tab > Uniquement les fenêtres ouvertes
+## waiting
+Panneau de configuration > Programmes et fonctionnalités > 
+# physical configuration
+1920x1080 screen
+SSD: 119Go
+## Startup Menu
+repeatedly hit  esc  at start to get into  Startup Menu
+repeatedly hit  f9  at start to get into  Boot Menu
+repeatedly hit  f10  at start to get into  BIOS Setup
+# sequential build
+Utilisateur
+Windows 10 Pro 21H2 OS build 19044.1889
+Activation > Windows is activated with a digital license
+connected to  Jo-X10II
+Mise à jour et sécurité > Windows Update > Updated to Windows 10 version 22H2
+connected to  Jo-OPPO-A76
+Menu > Système Windows > [ Invite de Commandes  Panneau de configuration ] > Pinned to Start
+Menu > [ Disnéy  Microsoft 365 ] > right-click > Désintaller
+Settings > Système > Alimentation et mise en veille > Paramètres d'alimentation supplémentaire > Choisir l'action des boutons d'alimentation > [ Modifier des paramètres actuellement non disponibles > Activer le démarrage rapide  off-ticked  Lorsque je referme le capot > Sur secteur > Ne rien faire ]
+win+i > Comptes > Famille et autres utilisateurs > Ajouter > jharrio@outlook.com >
+win+i > Comptes > Famille et autres utilisateurs > Autres > Utilisateur > supprimer
+## Ditto Clipboard
+  Microsoft Store > Ditto Clipboard > Install > Pin to Start
+  Ran it for  Options > General > [ Maximum Number of Saved Copies > 5000
+     Advanced > Show leading whitespace ] ( C:\Users\jharr\AppData\Local\Ditto_WindowsApp\Ditto.db )
+  ctrl+ù = Activate Ditto
+## dropbox.com
+Signed in > DropboxInstaller.exe > English & Selective sync
+## $MSwin10 for symlinks.ps1
+run in Administator Powershell
+## L'Assistant de stockage
+(Paramètres > Système > Stockage) got turned on
+## Analyse Microsoft Defender hors ligne
+Sécurité Windows > Protection contre les virus et menaces > Options d'analyse > Analyse Microsoft Defender hors ligne > Analyser maintenant > Analyser > Contrôle de compte d'utilisateur > Oui  wouldn't start the process, so  Paramètres > Mise à jour et sécurité > Récupération > Réinitialiser ce PC > Commencer > Conserver mes fichiers  failed to find  KDTG311281  plugged in left or right loaded with  ESD-USB (français (France), Windows 10 2022 Update l Version 22H2)  so  Démarrage avancé > Redémarrer maintenant > Dépannage > Paramètres > Rédémarrer > BitLocker > entered the 8x6 number sequences for  DESKTOP-GSPV6OJ  but system powered off...
+### BitLocker
+Gestion des disques  reports  C: to be  NTFS (Chiffré avec BitLocker)
+#### turn off
+manage-bde -status  then  manage-bde -off c:  and kept checking until done
+### boot from KDTG311281
+loaded with  ESD-USB (français (France), Windows 10 2022 Update l Version 22H2)
+repeatedly hit  f9  at start to get into  Boot Menu >
+  UEFI - Kingston DataTraveler 3.0 08606E6D413DE361970C7E18 > Suivant > Réparer l'ordinateur
+  didn't get me anywhere so  booted into hard drive for  ESD-USB (D:) > setup.exe > Suivant >
+  Accepter  ensured 10G of free space on C: for  Installer
+    eventually got me a  Partition de récupération
+### Microsoft Defender Antivirus
+APS> start-mpwdoscan
+Paramètres > Sécurité Windows > Protection contre les virus et menaces (= Sécurité Windows) > Historique de protection
+## waiting
+### gVim v9.0.1712
+gvim_9.0.1712_x64_signed.exe

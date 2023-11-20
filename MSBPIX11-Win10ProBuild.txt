@@ -1,0 +1,18 @@
+vim: ft=build:
+
+$machine\Win10ProBuild.txt
+
+Microsoft Surface Book PIX 11 = MSBPIX11
+# parallel build
+## waiting
+# physical configuration
+looks like I'd need to replace the  M.2 2280 SSD...
+# sequential build
+KDTG311281 plugged into upper USB with français (France), Windows 10 2022 Update l Version 22H2
+  Personnalisé : installer uniquement Windows (avancé)
+  Lecteur 0 Espace non alloué 238.5 Go
+## won't install to non-allocated space
+shift+f10 > diskpart > list disk > select disk 0 > clean > create partition primary
+  Diskpart à rencontré une erreur : Erreur de données (contrôle de redondance cyclique). Pour plus d'informations, voir le journal d'événements système.
+  attributes disk clear readonly
+## waiting

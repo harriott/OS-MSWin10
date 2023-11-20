@@ -22,7 +22,7 @@
 $Drpbx = "C:\Users\troin\Dropbox"
 $Thbshort = "JH\Thb-dr"
 $Thb = "$Drpbx\$Thbshort"
-# parent.lock  is kept in use by  Thunderbird  and so isn't sync'd by  Dropbox  until  Thunderbird closes
+# $Thb\parent.lock  is kept in use by  Thunderbird  and so isn't sync'd by  Dropbox  until  Thunderbird closes
 # <dot>parentlock  seems to be a relic
 $W10PL = 'Win10ProLock'
 if ( ! (Get-Process thunderbird -ErrorAction SilentlyContinue) ) {

@@ -38,6 +38,13 @@ if ($reply -eq 'y') {
   Get-ItemProperty Registry::HKEY_CLASSES_ROOT\.el
 }
 
+$reply = Read-Host '- .emdr? '
+if ($reply -eq 'y') {
+  Get-ItemProperty Registry::HKEY_CLASSES_ROOT\.emdr
+  Set-ItemProperty Registry::HKEY_CLASSES_ROOT\.emdr -Name PerceivedType -Value text
+  Get-ItemProperty Registry::HKEY_CLASSES_ROOT\.emdr
+}
+
 $reply = Read-Host '- .list? '
 if ($reply -eq 'y') {
   Get-ItemProperty Registry::HKEY_CLASSES_ROOT\.list

@@ -2,7 +2,7 @@
 
 # Joseph Harriott
 
-# $machine\symlinks.ps1  to be run in Administator Powershell
+# $machine\symlinks.ps1  to be run in  Administator Powershell
 #  depends on  $machine\PSProfile.ps1
 
 #=> ~\.gitconfig

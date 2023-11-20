@@ -18,7 +18,7 @@ new-item C:\LanguageTool -itemtype symboliclink -value $cITh\CP\LanguageTool -fo
 java -jar C:\LanguageTool\languagetool-commandline.jar -h
 
 #=> LaTeX
-new-item $Env:AppData\MiKTeX\tex\latex\jo -itemtype symboliclink -value $CrPl\LaTeX\jo -force
+new-item $Env:AppData\MiKTeX\tex\latex\jo -itemtype symboliclink -value $CrPl\documenting\LaTeX\jo -force
 #  after changes:  initexmf --update-fndb
 # cSL $Env:AppData\MiKTeX\tex\latex
 #  ii "$Env:AppData\MiKTeX\tex\latex\jo"
@@ -43,6 +43,5 @@ new-item ~\_vimrc -itemtype symboliclink -value $MSWin10\user\_vimrc -force  # $
 new-item ~\vimfiles -itemtype symboliclink -value $onGH\vimfiles -force
 
 #=> ~\.bashrc
-# new-item $HOME\.bashrc -itemtype symboliclink -value $MSWin\user\bashrc -force
 new-item ~/.bashrc -itemtype symboliclink -value $MSWin10/user/bashrc -force
 

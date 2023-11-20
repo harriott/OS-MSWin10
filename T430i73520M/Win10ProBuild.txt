@@ -1,9 +1,10 @@
 vim: ft=build:
 
-jnbh@live.co.uk
-Lenovo ThinkPad T430 i7-3520M = T430i73520M
 $machine\Win10ProBuild.txt
 
+Activation > Windows is activated with a digital license
+jnbh@live.co.uk
+Lenovo ThinkPad T430 i7-3520M = T430i73520M
 # parallel build
 MultiCommander SE (Store Edition)
 Microsoft Edge > Sign in > troingjo@outlook.com > Win10Pro PIN
@@ -12,7 +13,7 @@ ShellCheck v0.9.0  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsAp
 C:\Users\troin\AppData\Local\Microsoft\WindowsApps\Autoruns64.exe
 C:\Users\troin\AppData\Local\Microsoft\WindowsApps\autorunsc64.exe
 ## bat
-cd $cITh\MSWin\bat-v0.21.0-i686-pc-windows-msvc  for
+sl $copied\IT-handy\MSWin\bat-v0.21.0-i686-pc-windows-msvc  for
   _bat.ps1  copied into  $MSwin10
   bat.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 ## BgInfo
@@ -52,6 +53,9 @@ where.exe ffmpeg
 cd ffmpeg-2023-07-19-git-efa6cec759-full_build
   cpi ffmpeg.exe $Env:LOCALAPPDATA\Microsoft\WindowsApps
 ffmpeg -version
+## File Explorer Preview pane
+$MSWin10\asAdminWEPreviewPane.ps1
+Notepad > Format > Font > Size > 8
 ## fonts
 right-clicked on  nerd-fonts\patched-fonts\CascadiaCode\Regular\complete\Caskaydia Cove Regular Nerd Font Complete Mono Windows Compatible.otf
   appears as  CaskaydiaCove NF Regular
@@ -81,6 +85,9 @@ alt+o (= Options) > [ i (= Tray Icons) > p (= Physical Memory History)
   h (= Hide When Minimized)  l (= Run At Logon) ]
 ## RegJump
 C:\Users\troin\AppData\Local\Microsoft\WindowsApps\regjump.exe
+## Settings > System
+Power & sleep > Additional power settings > Choose what the power buttons do >
+  Change settings that are currently unavailable > Turn on fast startup  off-ticked
 ## Sigcheck
 sigcheck64.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 sigcheck64 sigcheck64.exe
@@ -92,9 +99,11 @@ C:\Users\troin\AppData\Local\Microsoft\WindowsApps\strings64.exe
 ## Sumatra PDF
 Let Windows show previews of PDF documents
 ~\AppData\Local\SumatraPDF\SumatraPDF-settings.txt
-## File Explorer Preview pane
-$MSWin10\asAdminWEPreviewPane.ps1
-Notepad > Format > Font > Size > 8
+## Task Manager
+Options > [ Hide when minimized  Set default tab > Processes ]
+hidden icon dragged to taskbar
+## Windows Security
+pinned to Start
 ## Windows Terminal
 ctrl+, > PowerShell > Appearance > Transparency > Background opacity > 80%
 ## yt-dlp
@@ -104,7 +113,7 @@ yt-dlp.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 C:\Users\troin\AppData\Local\Microsoft\WindowsApps\ZoomIt64.exe
 # physical configuration
 1600x900 screen with rhs taskbar
-HX256GSSDSATA3  is configured mostly as C:\
+SSD: 256GB, HX256GSSDSATA3  is configured mostly as C:\
 ## keyboard
 Fn+k toggles Scroll Lock
 rightAlt+# => \
@@ -115,14 +124,13 @@ SanDisk microSD  adapter containing  SDU64GB  is E:\
 # sequential build
 Windows 10 Pro 1909 OS build 18363.1500
 Device name (DESKTOP-QSRVUSO) T430i73520M
-Activation > Windows is activated with a digital license
 Updated to Windows 10 version 20H2
 ## before Dropbox, prepare KDTG311282
 on an Arch machine:  rsync -irtv --delete --modify-window=1 $core/ /run/media/jo/KDTG311282/core
 in  C:\Users\Admin:  robocopy /mir D:\core core
 Settings > Update & Security > Activation > Add a Microsoft Account > Add > troingjo@outlook.com
   Sign in to this computer using your Microsoft account > Next
-Sign-in options > Windows Hello PIN > 6734
+Sign-in options > Windows Hello PIN
 ## get better account name
 created account using  jharrio@outlook.com
 in C:\Users\jharr  robocopy /mir C:\Users\Admin\core core
@@ -771,7 +779,7 @@ Settings > Startup > Launch on machine startup
 battleserver.exe Allowed in Firewall on Public networks
 UI Options > Language > Français (French)
 ## Storage Sense
-got turned on
+(Settings > System > Storage) got turned on
 ## Git v2.37.1
 ## Check-ModuleUpdate in WPS
 in WT: Install-Module Check-ModuleUpdate  - did this do anything?
@@ -1001,5 +1009,67 @@ allowed to update
 ## IrfanView 4.62
 iview462_x64_setup.exe (no Desktop shortcuts  For all users)
 iview462_plugins_x64_setup.exe
+## MiniTool Partition Wizard Free v12.8
+ShadowMaker off > Ran it for Do not show this message again
+## gVim v9.0.1712
+gvim_9.0.1712_x64_signed.exe
+## Defender Offline scan
+closed all for  Windows Security > Virus & threat protection > Scan options > Microsoft Defender Offline scan > Scan now > Scan > Yes
+after restart  Windows Security > Virus & threat protection > Protection history  empty
+## Thunderbird v115
+edited  C:\Users\troin\AppData\Roaming\Thunderbird\profiles.ini
+Thunderbird Setup 115.1.1.exe > Custom > [ Install location > C:\MozillaThunderbird\ ] >
+  Icons > [ On my Desktop  On my taskbar ] off-ticked > Next >
+  Upgrade > allowed it to run (it picked up my  Profile)
+## Sumatra PDF location
+Settings > Apps & features > Sumatra PDF v3.4.6 > Uninstall
+C:\Users\troin\AppData\Local\SumatraPDF  Deleted
+SumatraPDF-3.4.6-64-install.exe >
+  Options > [ Install for all users > C:\SumatraPDF  Let Windows show previews of PDF documents ]
+## Git v2.42.0
+## PowerToys v0.73.0
+allowed to update
+## FastStone Image Viewer
+with an image open, E  for  C:\Program Files\IrfanView\i_view64.exe 
+## Steam
+C:\Program Files (x86)\Steam\steamapps  taking up 88G!
+## Git v2.42.0.2
+## PowerShell v7.3.7
+PowerShell Uninstalled, and v7.3.5.0-x64
+PowerShell-7.3.7-win-x64.msi > [ Add 'Open here' context menu to Explorer
+  Add 'Run with PowerShell 7' context menu for PowerShell files ] > UAC > Yes
+## pstree -InColor not coloured
+uninstall-module psscripttools -requiredversion 2.43.0
+uninstall-module psscripttools -requiredversion 2.47.0
+## old PowerShell modules
+uninstall-module terminal-icons -requiredversion 0.10.0
+uninstall-module pswritecolor -requiredversion 0.87.3
+uninstall-module psreadline -requiredversion 2.2.6
+uninstall-module psfzf -requiredversion 2.4.9
+## old Windows PowerShell module
+uninstall-module powershellget -requiredversion 1.0.0.1  fails
+## Steam 2.10.91.91 > Uninstall
+## Epson EcoTank ET-5170
+plugged into USB (got it going)
+### Universal Print Driver v2.72.04
+epson653191eu.exe - where the fuck did it go?
+### Driver v3.01.00
+epson637525eu.exe - where the fuck did it go?
+### WiFi
+while connected to  cafezoide, Settings > Printers & scanners > Add a printer or scanner
+  got me  EPSONFE86A3 (ET-5170 Series) then needed to accept installation of
+  Epson Printer Connection Checker  then got into a cycle so rebooted and ran it again
+## PowerToys v0.75.1
+allowed to update
+## Epson Software Updater
+allowed to install
+  Printer Driver v3.02.00
+  Scanner Driver v6.5.23.0
+## VLC V3.0.20
+allowed
+## PowerShell v7.4.0
+PowerShell-7.4.0-win-x64.msi > [ Add 'Open here' context menu to Explorer
+  Add 'Run with PowerShell 7' context menu for PowerShell files ] > UAC > Yes
+Settings > Apps & features > PowerShell 7.3.9.0-x64 > Uninstall
 # waiting
-## move to Thunderbird v115 profile
+## Git v2.42.0
