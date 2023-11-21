@@ -8,12 +8,16 @@ vim: nospell:
 
 `ctrl+m` on selected text opens it in `LanguageTool`
 
+# LaTeX Polyglossia
+    \setmainfont{Segoe Print}
+    \setmainfont{Segoe Script}
+
 # build
     $MSwin10\jo.ahk
     pt '$emd' $Drpbx\JH
     pt '$Pr0' $Drpbx\JH
 
-# Fonts
+# fonts
     C:\Windows\Fonts
     Get-ItemProperty -Path "Registry::\HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" | Format-List
 
