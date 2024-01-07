@@ -2,7 +2,7 @@ vim: ft=build:
 
 $machine\Win10ProBuild.txt
 
-HP EliteBook 840 G3 = HPEB840G3 BCPNB17
+HP EliteBook 840 G3 barcoded PC117862 (labelled BCPNB17 by last owner) = HPEB840G362
 jharrio@outlook.com
 # parallel build
 ## Desktop Background
@@ -66,6 +66,41 @@ repeatedly hit  f9  at start to get into  Boot Menu >
 ### Microsoft Defender Antivirus
 APS> start-mpwdoscan
 Paramètres > Sécurité Windows > Protection contre les virus et menaces (= Sécurité Windows) > Historique de protection
+## HP Hotkey Support
+empty popup appearing each time I try to change the screen brightness
+Services > HP Hotkey UWP Service > Type de démarrage > (was Automatique) Désactivé
+## gVim v9.1.0
+gvim_9.1.0_x64_signed.exe
+  [ Create icons > On the Desktop off [ Create Default Config  Create Plugin Directories ] off ] >
+  (C:\Vim)
+## Windows Terminal
+found in Microsoft Store > Obtenir
+ctrl+, > Démarrage > Application Terminal par défaut > Terminal Windows
+## PowerShell v7.4.0
+found in Microsoft Store > Obtenir
+## Windows Terminal
+ctrl+, > [ Démarrage > Profil par défaut > PowerShell
+  PowerShell > Apparance > Transparence > Opacité de l'arrière plan > 80%
+  Ouvrir le fichier JSON and added  "startingDirectory": ".",  into  "defaults": {}
+## PowerShell execution policy
+Get-ExecutionPolicy   reported  "Restricted"
+### Administrateur PowerShell
+Get-ExecutionPolicy   reported  "Restricted"
+Get-ExecutionPolicy -list  reported all as  "Undefined"
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Confirm > y
+## $Profile
+$Profile  returns
+  C:\Users\jharr\OneDrive\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1  so
+OneDrive Paramètres > Gérer la sauvegarde > [ Documents  Images  Bureau ] off-slid
+## Nom de l'appareil
+Paramètres > Système > À propos de > (Nom de l'appareil > DESKTOP-GSPV6OJ)  Renommer ce PC > HPEB840G362
+## code-minimap
+code-minimap.exe  copied to  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
+## Python 3.12.3
+python-3.12.3-amd64.exe > Add python.exe to PATH > Customize > Optional Features > for all users >
+  Next > [ Advanced Options > [ Install for all users  Customize install location > C:\Python312 ]
+## WT s'ouvre dans Invite de commandes
+Paramètres > Applications > Terminal > Désinstaller  then  win+x > Redémarrer  then re-installed from Microsoft Store
 ## waiting
 ### gVim v9.0.1712
 gvim_9.0.1712_x64_signed.exe

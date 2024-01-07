@@ -113,6 +113,7 @@ yt-dlp.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 C:\Users\troin\AppData\Local\Microsoft\WindowsApps\ZoomIt64.exe
 # physical configuration
 1600x900 screen with rhs taskbar
+MAC address: a4:4e:31:ca:1e:60
 SSD: 256GB, HX256GSSDSATA3  is configured mostly as C:\
 ## keyboard
 Fn+k toggles Scroll Lock
@@ -968,7 +969,7 @@ gvim_9.0.1558_x64_signed.exe  (picked up my settings)
 ## Git v2.40.1.0
 ## Python 3.11.3
 python-3.11.3-amd64.exe > Add python.exe to PATH > Customize > Advanced Options >
-  [ Install for all users  Customize install location > C:\Python310 ]
+  [ Install for all users  Customize install location > C:\Python311 ]
 Settings > Apps & features > [ Python 3.10.2 (64-bit)  Python 3.11.3 (64-bit)
   Python Launcher 3.11.3150.0 ] > Uninstall
 $oldpath = (Get-ItemProperty -Path ‘Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment’ -Name PATH).path
@@ -1071,5 +1072,31 @@ allowed
 PowerShell-7.4.0-win-x64.msi > [ Add 'Open here' context menu to Explorer
   Add 'Run with PowerShell 7' context menu for PowerShell files ] > UAC > Yes
 Settings > Apps & features > PowerShell 7.3.9.0-x64 > Uninstall
+## KeePassXC
+KeePassXC-2.7.6-Win64.msi` > Install > UAC > Yes  Rebooted
+## DVD Shrink
+dvdshrink32setup.exe > [ C:\DVDShrink  no destop icon ]
+## Git v2.43.0
+## Google Drive
+GoogleDriveSetup.exe (C:\Users\troin\My Drive) > Mirror > Reboot
+## PowerToys v0.76.1
+allowed to update
+## gVim v9.1.0
+gvim_9.1.0_x64_signed.exe
+  [ Create icons > On the Desktop off [ Create Default Config  Create Plugin Directories ] off ] >
+  (C:\Vim)
+$MSwin10\jo.ahk  &  $MSWin10\PSProfile.ps1  updated for minor version change
+C:\Vim\vim90  Deleted
+## Python 3.12.3 wrong order
+python-3.12.3-amd64.exe > Add python.exe to PATH > Customize > [ Advanced Options >
+  [ Install for all users  Customize install location > C:\Python312 ]
+### too many items in path
+should've uninstalled v3.10 first
+Settings > Apps & features >
+  [ Python 3.11.2 (64-bit)  Python 3.12.3 (64-bit)  Python Launcher ] > Uninstall
+$oldpath = (Get-ItemProperty -Path ‘Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment’ -Name PATH).path
+Set-ItemProperty -Path ‘Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment’ -Name PATH -Value $oldpath.Replace('C:\Python312\Scripts\;C:\Python312\;','')
+## Python 3.12.3
+python-3.12.3-amd64.exe > Add python.exe to PATH > Customize > Optional Features > for all users >
+  Next > [ Advanced Options > [ Install for all users  Customize install location > C:\Python312 ]
 # waiting
-## Git v2.42.0

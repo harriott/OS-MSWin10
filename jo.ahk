@@ -3,8 +3,10 @@
 
 ; $MSwin10\jo.ahk
 
+; Reload if changed!
+
 ; move a Shortcut of this script into
-; "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Start-up"
+; "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
 
 ; CapsLock off on Esc
 ; -------------------
@@ -20,7 +22,7 @@ return
 ; win+alt+i - open gVim
 ; ---------------------
 #!i::
-Run C:\Vim\vim90\gvim.exe
+Run C:\Vim\vim91\gvim.exe
 Return
 
 ; win+alt+e - open Edge

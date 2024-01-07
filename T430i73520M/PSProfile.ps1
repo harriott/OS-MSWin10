@@ -8,7 +8,7 @@
 
 # Clear-Host
 
-$GHrCl = 'E:\IT-Copied\GHrepos'  # GitHub Repositories Clone
+# $GHrCl = 'E:\IT-Copied\GHrepos'  # GitHub Repositories Clone
 
 #=> backups
 New-Alias RCF $SPD\Flash.ps1

@@ -8,14 +8,14 @@ vim: nospell:
 
 `ctrl+m` on selected text opens it in `LanguageTool`
 
-# LaTeX Polyglossia
-    \setmainfont{Segoe Print}
-    \setmainfont{Segoe Script}
-
 # build
     $MSwin10\jo.ahk
     pt '$emd' $Drpbx\JH
     pt '$Pr0' $Drpbx\JH
+
+# File Explorer
+- Explorateur de fichiers
+- `alt+d`/`ctrl+l` (& `f4`) sélectionner le chemin d’accès
 
 # fonts
     C:\Windows\Fonts
@@ -26,6 +26,11 @@ vim: nospell:
 - `p` Properties/Settings
 - `R` Reopen file
 - `r` rotate right
+
+# LaTeX Polyglossia
+    \setmainfont{Segoe Print}
+    \setmainfont{Segoe Script}
+    \setmainfont{Trebuchet MS}
 
 # Microsoft Edge
 `ctrl+u` (= `right-click > View page source`) is searchable

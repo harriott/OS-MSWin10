@@ -211,7 +211,6 @@ tab completion
     param( [switch]$doSomething )  # -doSomething  creates  $doSomething = true
 
 ## storage
-    dw  # directory counts
     get-volume  # reports partitions
     ii .  # invoke Explorer on WD
     sl <directoryToMoveTo>
@@ -221,6 +220,7 @@ tab completion
     bat <textFile>  # with beautiful formatting and less paging
     csl  # symlink targets in green or red
     dw -?
+    dw  # directory counts
     f  # fzf preview files with bat
     Get-FileHash <fileForWhichYouWantSHA256>
     if ( ! ( test-path 'dir' ) ) { ni -name 'dir' -type directory }

@@ -275,11 +275,13 @@ $Drpbx = "C:\Users\$uname\Dropbox"
     $core = "$DJH\core"
       $ITstack = "$core\IT_stack"
         $CrPl = "$ITstack\CP"
+          $LTXj = "$CrPl\documenting\LaTeX\jo"
+        $ITsc = "$ITstack\copied"
         $onGH = "$ITstack\onGitHub"
           $Cn = $Env:Computername
           $MSwin10 = "$onGH\OS-MSWin10"
             $machine = "$MSWin10\$Cn"
-          $SPD = "$onGH\SyncPortableDrives\RoboCopy\$Cn"  # used in  $machine\PSProfile.ps1
+          $SPD = "$onGH\FM-MSWin-syncDrives\RoboCopy\$Cn"  # used in  $machine\PSProfile.ps1
           $vimfiles = "$onGH\vimfiles"
             $vfp = "$vimfiles\pack"
     $GHrUse = "$Drpbx\CGHrepos"  # GitHub Repositories Use
@@ -431,12 +433,12 @@ Function fcco {Format-Custom -InputObject $args[0] -Expand CoreOnly}
 function ffmhb { $f = "ffmpeg -hide_banner " + $args -join ' '
   $f = $f.Replace(' -c: a ', ' -c:a ')
   $f = $f.Replace(' -q: v ', ' -q:v ')
-  iex "$f" }
+  iex "$f" } # no spaces or () in file names
 Function fn { gci | select -ExpandProperty FullName | sort }
 Function ga { git add $args[0] }
 Function gic { git commit -m "$args[0]" }
 Function gis { git status -u }
-Function gvim { & "C:\Vim\vim90\gvim.exe" $args[0] $args[1] $args[2] }
+Function gvim { & "C:\Vim\vim91\gvim.exe" $args[0] $args[1] $args[2] }
 Function tz { Get-MyTimeInfo -Locations ([ordered]@{"GMT" = "GMT Standard Time"}) -HomeTimeZone "Romance Standard Time" }
 # New-Alias g gm.exe # GraphicsMagick
 New-Alias jpo $onGH\jpgorhor\jpgorhor.ps1
