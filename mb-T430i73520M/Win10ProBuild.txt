@@ -1,6 +1,6 @@
 vim: ft=build:
 
-$machine\Win10ProBuild.txt
+$machBld\Win10ProBuild.txt
 
 Activation > Windows is activated with a digital license
 jnbh@live.co.uk
@@ -167,7 +167,7 @@ Administrator PS:  new-item ~\Documents\WindowsPowerShell\Microsoft.PowerShell_p
 ## gVim v8.2.3013
 gvim_8.2.3013_x86_signed.exe
   [ Create icons > On the Desktop off  Create Default Config off  Create Plugin Directories off ]
-$machine\symlinks.ps1
+$machBld\symlinks.ps1
 ## CapsLock
 https://www.microsoft.com/en-gb/p/capslock/9nbx19w2pp00
 ## Windows Terminal
@@ -1099,4 +1099,16 @@ Set-ItemProperty -Path ‘Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\
 ## Python 3.12.3
 python-3.12.3-amd64.exe > Add python.exe to PATH > Customize > Optional Features > for all users >
   Next > [ Advanced Options > [ Install for all users  Customize install location > C:\Python312 ]
+## fzf 0.45.0
+sl $ITsc  for  cpi fzf.exe $Env:LOCALAPPDATA\Microsoft\WindowsApps -force
+  fzf --version
+## 7-Zip
+7z2301-x64.exe
+## Tixati v3.19
+tixati-3.19-1.win64-install.exe
+## LibreOffice 7.6.4.2
+Close File Explorer and everything except Task Manager for
+  LibreOffice_7.6.4_Win_x64.msi > Custom > Next > no shortcut on desktop > UAC
+## ExifTool v12.72
+cpi 'exiftool(-k).exe' C:\Users\troin\AppData\Local\Microsoft\WindowsApps\exiftool.exe -force
 # waiting

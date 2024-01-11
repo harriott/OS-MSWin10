@@ -4,14 +4,14 @@
 
 # remove my  $Thb\Win10ProLock  if Thunderbird isn't running
 # ----------------------------------------------------------
-# see  $machine\T91\runSafely.ps1
+# see  $machBld\T91\runSafely.ps1
 #  test-path $Thb\Win10ProLock
 
 # for  Task Scheduler
-#  APS> ni C:\MT-clearParentLock.ps1 -itemtype symboliclink -value $machine\Thb\TaskScheduler\clearParentLock.ps1 -Force
+#  APS> ni C:\MT-clearParentLock.ps1 -itemtype symboliclink -value $machBld\Thb\TaskScheduler\clearParentLock.ps1 -Force
 #   gc C:\MT-clearParentLock.ps1
-#  iex "$machine\T91\TaskScheduler\clearParentLock.ps1"
-#  Import Task > $machine\T91\TaskScheduler\removeParentLock.xml
+#  iex "$machBld\T91\TaskScheduler\clearParentLock.ps1"
+#  Import Task > $machBld\T91\TaskScheduler\removeParentLock.xml
 #   (Task will stop repeating if tweaked or Run manually - fix is to Sign in again...)
 
 # Test:

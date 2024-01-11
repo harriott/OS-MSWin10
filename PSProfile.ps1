@@ -12,26 +12,11 @@ sal su C:\SumatraPDF\SumatraPDF.exe
 
 function GNFR {
   $FRlist = Get-NetFirewallRule | out-string
-  $FRlf = "$machine\troin\FirewallRules.txt"
+  $FRlf = "$machLg\FirewallRules.txt"
   "vim: set ft=NFR:" > $FRlf
   $FRlist.TrimEnd() >> $FRlf
   '' >> $FRlf
-}
-
-function fi {
-  $wd = gl | select -expand path
-  $pIF = "$wd-imageyFlat"
-  if ( test-path $pIF ) { ri -r $pIF }
-  [void](ni $pIF -type directory)
-  $imagies = gci $wd -r -i *.jpeg,*.jpg,*.png,*.ogv | resolve-path -relative
-  foreach ($imagey in $imagies) {$imagey.replace('.\','')}
-  foreach ($imagey in $imagies) {
-    $imageyReady = $imagey.replace('.\','')
-    $imageyFlat = $imageyReady.replace('\','--')
-    cpi "$wd\$imageyReady" "$pIF\$imageyFlat"
-  }
-} # gets a flattened directory alongside of imagies
-# use  cex  to see what's imagey
+} # as administrator
 
 function pro {
   Get-Process | Sort-Object WS -Descending | Select-Object -first 39 ID,Name,WS,VM,PM,Handles,StartTime | ConvertTo-WPFGrid -Refresh -timeout 10 -Title "Top Processes"
@@ -51,11 +36,20 @@ Function mc {
 #=> 0 directories & files
 function c { if ( $args[0] ) { sl $args[0] } else { sl .. }; pc }  # handily move in or out
 function i { ii . }  # opens  file explorer  on current directory
+
+#==> changes
+function chco {
+    $afs = gci -recurse . | sls -pattern $args[0] | select -expand path
+    foreach ($af in $afs) {
+      $af; (get-content $af) -replace $args[0], $args[1] | Set-Content $af
+    }
+  } # (release files for: change contents)  chco '\$m' '$mmm'
+
 function tt { ri "*.aux"; ri "*.log" }  # tidy tex = clear away TeX ancillary files
 
+#==> investigations
 function csl {
   $links = gci $args[0] -force | ?{$_.linktype} | select fullname,target
-
   foreach ($link in $links) {
     $lfn = $link | select -expand fullname
     $lt = $link | select -expand target
@@ -64,10 +58,6 @@ function csl {
     write-color -text "$lfn -> ", $lt -color white, $t
     }
 } #  shows good symlink targets in green, bad in red
-
-#==> investigations
-function gfiln { gci -r $args[0] | select -expandproperty fullname }
-function gfoln { gci -r $args[0] | where { $_.psiscontainer } | select -expandproperty fullname }
 
 function t {
   $d = $args[0]
@@ -109,6 +99,13 @@ gci -r -ea si `
       @{n="avgpathdepth"; e={[int]$_.pathdepth.average}; a="right"} `
       -auto
   }
+
+#===> get file names
+function gfiln { gci -r $args[0] | select -expandproperty fullname } # gfiln *u*
+
+#====> get folder names
+function gfoln { gci -r $args[0] | where { $_.psiscontainer } | select -expandproperty fullname }
+# gfoln *u*
 
 #===> lastwritetime
 function dtsfn { $args[0].lastwritetime.tostring('yyyyMMdd-hh:mm:ss')+' '+$args[1]+' '+ $args[0].fullname }
@@ -170,7 +167,7 @@ function fso { $fso = new-object -com scripting.filesystemobject; gci -directory
 
 function gfsi { Get-ChildItem . -Directory | Get-FolderSizeInfo -Hidden | Sort-Object TotalSize -Descending | Format-Table -AutoSize -View mb }
 
-#===> string in files
+#===> string in files - sifw's
 
 function stringinallfiles { sifwork string-allfiles '*' $args[0] }
 function stringinmds { sifwork string-md '*.md' $args[0] }
@@ -254,6 +251,35 @@ Function gsp {
     }
 #  gsp <startPageNo>-<endPageNo> resolution DownScaleFactor(1-8) outPNGbaseName 'inPDFbaseName'
 
+#=> 0 imagey
+function fi {
+  $wd = gl | select -expand path
+  $pIF = "$wd-imageyFlat"
+  if ( test-path $pIF ) { ri -r $pIF }
+  [void](ni $pIF -type directory)
+  $imagies = gci $wd -r -i *.jpeg,*.jpg,*.png,*.ogv | resolve-path -relative
+  foreach ($imagey in $imagies) {$imagey.replace('.\','')}
+  foreach ($imagey in $imagies) {
+    $imageyReady = $imagey.replace('.\','')
+    $imageyFlat = $imageyReady.replace('\','--')
+    cpi "$wd\$imageyReady" "$pIF\$imageyFlat"
+  }
+} # gets a flattened directory alongside of imagies
+# use  cex  to see what's imagey
+
+#==> re-tag image files to 72dpi
+# a single image file:
+Function im72 {
+  $72dpi=$args[0] -replace '((\.[^.]*)$)', '-72dpi$1'
+  exiftool -filename=72dpi -xresolution=72 -yresolution=72 $args[0]; mi 72dpi $72dpi -force
+  }
+
+# all the files in a folder:
+Function all72 {
+  gci | Where-Object {-not $_.PsIsContainer} | ForEach-Object { im72 $_
+  Remove-Item $_ }
+  }
+
 #=> 0 internetworking
 Function cc {
   $co = (Invoke-WebRequest http://ifconfig.co/country).Content.replace("`n",'')
@@ -267,44 +293,32 @@ Function wp { curl wttr.in/Paris }
 
 #=> 0 places
 $uname = $Env:USERNAME
-$Drpbx = "C:\Users\$uname\Dropbox"
-  $DJH = "$Drpbx\JH"
-    $Cfzd = "$DJH\Cafezoide"
-      $CzPhy = "$Cfzd\PhysicalProperty"
-    $copied = "$DJH\copied"
-    $core = "$DJH\core"
-      $ITstack = "$core\IT_stack"
-        $CrPl = "$ITstack\CP"
-          $LTXj = "$CrPl\documenting\LaTeX\jo"
-        $ITsc = "$ITstack\copied"
-        $onGH = "$ITstack\onGitHub"
-          $Cn = $Env:Computername
-          $MSwin10 = "$onGH\OS-MSWin10"
-            $machine = "$MSWin10\$Cn"
-          $SPD = "$onGH\FM-MSWin-syncDrives\RoboCopy\$Cn"  # used in  $machine\PSProfile.ps1
-          $vimfiles = "$onGH\vimfiles"
-            $vfp = "$vimfiles\pack"
-    $GHrUse = "$Drpbx\CGHrepos"  # GitHub Repositories Use
-    $JHw = "$DJH\work"  # for IT websites and more
-      $JHm="$JHw\IT-Jekyll-harriott-minima"
-    $jtIT = "$DJH\technos\IT"
-    $tIs = "$DJH\Technos\IT-storage"  # $tIs\diskUsage.txt
-    $Pr0 = "$DJH\Copied\Practical0"
-    $Thb = "$DJH\Thb-dr"
-$Enc = "C:\Users\$uname\encrypted"
-
-#=> 0 re-tag image files to 72dpi
-# a single image file:
-Function im72 {
-  $72dpi=$args[0] -replace '((\.[^.]*)$)', '-72dpi$1'
-  exiftool -filename=72dpi -xresolution=72 -yresolution=72 $args[0]; mi 72dpi $72dpi -force
-  }
-
-# all the files in a folder:
-Function all72 {
-  gci | Where-Object {-not $_.PsIsContainer} | ForEach-Object { im72 $_
-  Remove-Item $_ }
-  }
+  $Drpbx = "C:\Users\$uname\Dropbox"
+    $DJH = "$Drpbx\JH"
+      $Cfzd = "$DJH\Cafezoide"
+        $CzPhy = "$Cfzd\PhysicalProperty"
+      $copied = "$DJH\copied"
+      $core = "$DJH\core"
+        $ITstack = "$core\IT_stack"
+          $CrPl = "$ITstack\CP"
+            $LTXj = "$CrPl\documenting\LaTeX\jo"
+          $ITsc = "$ITstack\copied"
+          $machLg = "$ITstack\MSWin\ml-$Cn"
+          $onGH = "$ITstack\onGitHub"
+            $Cn = $Env:Computername
+            $MSwin10 = "$onGH\OS-MSWin10"
+              $machBld = "$MSWin10\mb-$Cn"
+            $SPD = "$onGH\FM-MSWin-syncDrives\RoboCopy\$Cn"  # used in  $machBld\PSProfile.ps1
+            $vimfiles = "$onGH\vimfiles"
+              $vfp = "$vimfiles\pack"
+      $GHrUse = "$Drpbx\CGHrepos"  # GitHub Repositories Use
+      $JHw = "$DJH\work"  # for IT websites and more
+        $JHm="$JHw\IT-Jekyll-harriott-minima"
+      $jtIT = "$DJH\technos\IT"
+      $tIs = "$DJH\Technos\IT-storage"  # $tIs\diskUsage.txt
+      $Pr0 = "$DJH\Copied\Practical0"
+      $Thb = "$DJH\Thb-dr"
+  $Enc = "C:\Users\$uname\encrypted"
 
 #=> 0 shell settings
 $env:path +=';C:\Program Files\7-Zip'
@@ -360,7 +374,7 @@ $env:path +=';C:\vifm-w64-se-0.12-binary'
 . $GHrUse\CP\wfxr-code-minimap\completions\powershell\_code-minimap.ps1
 # $GHrUse/CP/wfxr-code-minimap/completions/README.md
 # $GHrUse\CP\wfxr-code-minimap\completions\README.md
-. $machine\PSProfile.ps1  # also uses $onGH ($MSWin10/PSProfile.ps1)
+. $machBld\PSProfile.ps1  # also uses $onGH ($MSWin10/PSProfile.ps1)
 
 #==> bat
 . $MSwin10\_bat.ps1

@@ -9,6 +9,6 @@
   untracked = red bold
   added = green bold
 [include]
-  path = C:/Users/troin/Dropbox/JH/core/IT_stack/CP/encoding/gitconfig-JH
-  path = C:/Users/troin/Dropbox/JH/core/IT_stack/onGitHub/misc/CrossPlatform/gitconfig
+  path = C:/Users/jharr/Dropbox/JH/core/IT_stack/CP/encoding/gitconfig-JH
+  path = C:/Users/jharr/Dropbox/JH/core/IT_stack/onGitHub/misc/CP/gitconfig
 

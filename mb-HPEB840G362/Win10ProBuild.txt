@@ -1,6 +1,6 @@
 vim: ft=build:
 
-$machine\Win10ProBuild.txt
+$machBld\Win10ProBuild.txt
 
 HP EliteBook 840 G3 barcoded PC117862 (labelled BCPNB17 by last owner) = HPEB840G362
 jharrio@outlook.com
@@ -43,7 +43,7 @@ win+i > Comptes > Famille et autres utilisateurs > Autres > Utilisateur > suppri
   Microsoft Store > Ditto Clipboard > Install > Pin to Start
   Ran it for  Options > General > [ Maximum Number of Saved Copies > 5000
      Advanced > Show leading whitespace ] ( C:\Users\jharr\AppData\Local\Ditto_WindowsApp\Ditto.db )
-  ctrl+ù = Activate Ditto
+  ctrl+* = Activate Ditto
 ## dropbox.com
 Signed in > DropboxInstaller.exe > English & Selective sync
 ## $MSwin10 for symlinks.ps1
@@ -100,7 +100,35 @@ code-minimap.exe  copied to  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 python-3.12.3-amd64.exe > Add python.exe to PATH > Customize > Optional Features > for all users >
   Next > [ Advanced Options > [ Install for all users  Customize install location > C:\Python312 ]
 ## WT s'ouvre dans Invite de commandes
-Paramètres > Applications > Terminal > Désinstaller  then  win+x > Redémarrer  then re-installed from Microsoft Store
+Paramètres > Applications > Terminal > Désinstaller  then  win+x > Redémarrer
+  then re-installed from Microsoft Store
+## dark applications
+Paramètres > Personnalisation > Couleurs > Choisir votre mode d'application par défaut > Sombre
+## Git v2.32
+https://git-scm.com/download/win
+Git-2.32.0-64-bit.exe > [ C:\Git  Select Components > [ Associate .sh with Bash > off
+  [ Check daily  Add Git Bash Profile to Windows Terminal ] > on ]
+  Checkout as is, commit Unix-style line endings
+  Choose a credential helper > None
+$Env:Path -split';'
+  ...
+  C:\Git\cmd
+  ...
+allowed  MINGW64  for  A ~/.bash_profile that loads ~/.bashrc will be created for you.
+## WT s'ouvre dans Invite de commandes
+Paramètres > Applications > Terminal > Désinstaller  then  win+x > Redémarrer
+  then re-installed from Microsoft Store
+WT > ctrl+, > (= Paramètres) > [ Interaction > M'avertir off-slid  
+  PowerShell > [ Répertoire de démarrage > .  Apparance >
+    [ Texte > Taille de police > 9  Transparence > Opacité de l'arrière plan > 90% ] ]
+## fzf (for PSFzf)
+sl $ITsc  for  cpi fzf.exe $Env:LOCALAPPDATA\Microsoft\WindowsApps
+  fzf --version
+## 7-Zip
+7z2301-x64.exe
+## SSH keys
+mkdir ~/encrypted
+mkdir ~/.ssh
+  cpi ~\Encrypted\Secure1\Networking\SSH\id_ed25519-forGitHub ~\.ssh\id_rsa.
+  cpi ~\Encrypted\Secure1\Networking\SSH\id_ed25519-forGitHub.pub ~\.ssh\id_rsa.pub
 ## waiting
-### gVim v9.0.1712
-gvim_9.0.1712_x64_signed.exe

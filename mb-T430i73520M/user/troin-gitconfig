@@ -1,0 +1,14 @@
+# vim: ft=gitconfig
+
+# This is Git's per-user configuration file, adjusted for Powershell.
+#  symlink this to  ~\.gitconfig
+# Changes saved here immediately affect Git.
+
+[color "status"]
+  changed = red bold
+  untracked = red bold
+  added = green bold
+[include]
+  path = C:/Users/troin/Dropbox/JH/core/IT_stack/CP/encoding/gitconfig-JH
+  path = C:/Users/troin/Dropbox/JH/core/IT_stack/onGitHub/misc/CP/gitconfig
+

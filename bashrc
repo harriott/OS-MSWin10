@@ -1,6 +1,6 @@
-# vim: set ft=sh tw=0:
+# vim: set ft=sh:
 
-# Joseph Harriott  http://momentary.eu/  Mon 23 May 2016
+# Joseph Harriott - Mon 23 May 2016
 # Git for Windows .bashrc
 # source ~/.bashrc if you've changed something here...
 

@@ -1,0 +1,14 @@
+" vim: fdl=1:
+
+" $MSWin10\user\_gvimrc (see  $MSwin10\symlinks.ps1)
+
+" ------------------------------------------------------------------------
+" this is a pointer, on a MSWin system, to my more portably located gvimrc
+" ------------------------------------------------------------------------
+"
+""> 0 monitor height
+let g:monitorheight='1080' " used in  $vimfiles/gvimrc.vim
+
+""> 1 move on
+source $HOME/vimfiles/gvimrc-Win10.vim
+

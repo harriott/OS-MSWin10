@@ -2,7 +2,7 @@
 
 # little script to discover commands on system
 
-$l = $machine\allCommands.log
+$l = $machLg\allCommands.log
 "vim: ft=build nowrap tw=0:" > $l
 'this file made by $MSwin10\getAllCommands.ps1' >> $l
 '%s/ *$//|nohlsearch' >> $l

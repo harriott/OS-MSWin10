@@ -14,7 +14,7 @@
 # #=> 0 LanguageTool
 # # new-item C:\LanguageTool -itemtype symboliclink -value C:\Users\troin\Dropbox\JH\copied\IT-handy\LanguageTool -force
 # new-item C:\LanguageTool -itemtype symboliclink -value $ITsc\LanguageTool -force
-# java -jar C:\LanguageTool\languagetool-commandline.jar -h
+# java -jar C:\LanguageTool\languagetool-commandline.jar --version
 
 # #=> 0 LaTeX
 # new-item $Env:AppData\MiKTeX\tex\latex\jo -itemtype symboliclink -value $CrPl\documenting\LaTeX\jo -force
@@ -39,17 +39,19 @@ $uname = $Env:USERNAME
       $core = "$DJH\core"
         $ITstack = "$core\IT_stack"
           $onGH = "$ITstack\onGitHub"
+            $Cn = $Env:Computername
             $MSwin10 = "$onGH\OS-MSWin10"
+              $machBld = "$MSWin10\mb-$Cn"
 
 #=> 2 PSProfile
 new-item ~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 -itemtype symboliclink -value $MSWin10\PSProfile.ps1 -force
 new-item ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 -itemtype symboliclink -value $MSWin10\PSProfile.ps1 -force
 
 #=> 2 vim
-new-item ~\_gvimrc -itemtype symboliclink -value $MSWin10\user\_gvimrc -force  # $MSWin10/user/_gvimrc
-new-item ~\_vimrc -itemtype symboliclink -value $MSWin10\user\_vimrc -force  # $MSWin10/user/_vimrc
+new-item ~\_gvimrc -itemtype symboliclink -value $machBld\user\_gvimrc -force  # $MSWin10/user/_gvimrc
+new-item ~\_vimrc -itemtype symboliclink -value $machBld\user\_vimrc -force  # $MSWin10/user/_vimrc
 new-item ~\vimfiles -itemtype symboliclink -value $onGH\vimfiles -force
 
 #=> 2 ~\.bashrc
-new-item ~\.bashrc -itemtype symboliclink -value $MSWin10\user\bashrc -force
+new-item ~\.bashrc -itemtype symboliclink -value $MSWin10\bashrc -force
 

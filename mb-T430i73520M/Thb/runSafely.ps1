@@ -5,7 +5,7 @@
 # run Mozilla Thunderbird safely from profile shared on Dropbox
 # -------------------------------------------------------------
 # for  $MSwin10\jo.ahk
-#  APS> ni C:\MT-runSafely.ps1 -itemtype symboliclink -value $machine\Thb\runSafely.ps1 -Force
+#  APS> ni C:\MT-runSafely.ps1 -itemtype symboliclink -value $machBld\Thb\runSafely.ps1 -Force
 #  gc C:\MT-runSafely.ps1
 
 # Test BurntToast:

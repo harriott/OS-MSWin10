@@ -1,8 +1,11 @@
 
-" $MSWin10\user\_vimrc (see  $MSwin10\symlinks.ps1)
+" $machBld\user\_vimrc (see  $MSwin10\symlinks.ps1)
 
 " -----------------------------------------------------------------------
 " this is a pointer, on a MSWin system, to my more portably located vimrc
 " -----------------------------------------------------------------------
+
+let mapleader = 'ù' " because  HP EliteBook 840 G3  keyboards'  #  needs  qltGr...
+
 source $HOME\vimfiles\vimrc-Win10.vim  " $vimfiles\vimrc-Win10.vim
 

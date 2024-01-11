@@ -2,7 +2,7 @@
 # vim: set fdl=3:
 
 # Joseph Harriott - Tue 25 Jul 2023
-# $machine\updateModules.ps1
+# $machBld\updateModules.ps1
 # some commands here are defined in my  $MSWin10\PSProfile.ps1
 # update my modules
 

@@ -1,6 +1,6 @@
 vim: ft=build:
 
-$machine\Win10ProBuild.txt
+$machBld\Win10ProBuild.txt
 
 Microsoft Surface Book PIX 11 = MSBPIX11
 # parallel build

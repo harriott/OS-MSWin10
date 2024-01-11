@@ -1,0 +1,11 @@
+
+" $machBld\user\_vimrc (see  $MSwin10\symlinks.ps1)
+
+" -----------------------------------------------------------------------
+" this is a pointer, on a MSWin system, to my more portably located vimrc
+" -----------------------------------------------------------------------
+
+let mapleader = '#' " because  T430i73520M  keyboard has no  \
+
+source $HOME\vimfiles\vimrc-Win10.vim  " $vimfiles\vimrc-Win10.vim
+

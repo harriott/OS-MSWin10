@@ -4,6 +4,7 @@ vim: nospell:
 
     Adobe Acrobat Reader DC > Shift+Ctrl+Minus -> rotate left
     C:\Users\troin\AppData\Local\Microsoft\WindowsApps
+    cpan -l > $machLg\cpanList.txt
     sl $copied\IT-handy\CP\TeX\LaTeX\structure\classes\memoir
 
 `ctrl+m` on selected text opens it in `LanguageTool`
@@ -12,10 +13,6 @@ vim: nospell:
     $MSwin10\jo.ahk
     pt '$emd' $Drpbx\JH
     pt '$Pr0' $Drpbx\JH
-
-# File Explorer
-- Explorateur de fichiers
-- `alt+d`/`ctrl+l` (& `f4`) sélectionner le chemin d’accès
 
 # fonts
     C:\Windows\Fonts
@@ -108,9 +105,11 @@ star icon
 - `win+x` > `t` = `Gestion des disques`
 
 ## Explorer
-- `alt+d` (`powershell`) Enter
+- `alt+d`/`ctrl+l` (& `f4`) le chemin d’accès > `powershell`/`wt` Enter
 - `alt+p` toggle preview pane
 - `ctrl+space` toggle PowerToys Peek
+- Explorateur de fichiers
+- File Explorer
 
 ## Microsoft Defender Antivirus
     PS> get-mpthreatdetection

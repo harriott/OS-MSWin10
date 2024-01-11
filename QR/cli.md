@@ -3,6 +3,7 @@ vim: nospell:
     $MSwin10\QR\cli.md
 
     chcp  # reports code page
+    java -jar C:\LanguageTool\languagetool-commandline.jar -h
     ~\AppData\Roaming\Vifm\vifmrc
 
 in Explorer: `Alt+D > cmd > Enter`
@@ -26,6 +27,11 @@ in Explorer: `Alt+D > cmd > Enter`
     powershell -Command ($env:Path).split(';')
     pwsh -Command ($env:Path).split(';')
 
+# fzf
+    alt+c
+    fzf -h
+    fzf --version
+
 # The Platinum Searcher
     pt /version
     pt search .
@@ -35,6 +41,10 @@ in Explorer: `Alt+D > cmd > Enter`
     pt '$DJH' .
     pt '$JH' .
     pt 'notmatch' .
+
+### `$core`
+    pt '$machBld' .
+    pt '$machBld' .
 
 # PowerShell
     $MyInvocation.MyCommand.Name  # = the script's name
@@ -74,6 +84,7 @@ limited to single commands
 - `get-item`: `gi`
 - `invoke-expression`: `iex`
 - `remove-item`: `del`, `erase`, `rd`, `ri`, `rm`, `rmdir`
+- `select-string`: `sls`
 
 ## colour
     [System.Enum]::GetValues('ConsoleColor') | ForEach-Object { Write-Host $_ -ForegroundColor $_ }
@@ -198,7 +209,7 @@ no standard aliases
 tab completion
 
 ### update
-    $machine\updateModules.ps1  # for reference
+    $machBld\updateModules.ps1  # for reference
     compare-module | where updateneeded | foreach { update-module $_.name }  # slow but reliable
 
 ## Ruby
@@ -329,7 +340,7 @@ aliases: `cat`, `type`
 
 ## text wrangling
     "Hello".Replace('l', 'x')
-    (Get-Content $file) -replace $regex, $newtext | Set-Content $file
+    (get-content $file) -replace $regex, $newtext | Set-Content $file
 
 ## version
     $PSVersionTable
