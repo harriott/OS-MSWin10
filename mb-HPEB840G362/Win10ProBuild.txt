@@ -8,6 +8,10 @@ jharrio@outlook.com
 ## Desktop Background
 Paramètres > [ Personnalisation > Arrière-plan > Couleur unie
 Système > Écran > Mise à l'échelle et disposition > Modifier la taille du texte des applications et d'autres éléments > 100%
+## Everything
+Ctrl+P ( = Tools > Options ) > General > [ UI > [ Démarrer sur un clic simple > on  Résultats >
+  Autoriser le clic double dans la colonne des chemin ] Polices and couleurs >
+  Couleur d'arrière plan > Personnalisé > selected a yellow ]
 ## File Explorer
 Affichage > Options > Affichage > [ [ Afficher l'icône des fichiers sure les miniatures  Afficher la barre d'état ] off-ticked  Afficher le chemin d'accès complet dans la barre de titre  on-ticked  Afficher les fichiers, dossier et lecteurs cachés  [ Masquer les extensions des fichiers dont le type est connu  Masquer les fichier protégés du système d'exploitation ]  off-ticked
 ## File Explorer > View > Options > View > Display the full path in the title bar
@@ -129,6 +133,69 @@ sl $ITsc  for  cpi fzf.exe $Env:LOCALAPPDATA\Microsoft\WindowsApps
 ## SSH keys
 mkdir ~/encrypted
 mkdir ~/.ssh
-  cpi ~\Encrypted\Secure1\Networking\SSH\id_ed25519-forGitHub ~\.ssh\id_rsa.
+  cpi ~\Encrypted\Secure1\Networking\SSH\id_ed25519-forGitHub ~\.ssh\id_rsa
   cpi ~\Encrypted\Secure1\Networking\SSH\id_ed25519-forGitHub.pub ~\.ssh\id_rsa.pub
+## Test GitHub SSH connection
+(requires Private key as C:\Users\jharr\.ssh\id_rsa)
+Git Bash > ssh -T git@github.com
+  The authenticity of host 'github.com (140.82.121.4)' can't be established.
+  ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+  This key is not known by any other names.
+  Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+  Warning: Permanently added 'github.com,140.82.118.4' (RSA) to the list of known hosts.
+  Hi harriott! You've successfully authenticated, but GitHub does not provide shell access.
+got me  $HOME\.ssh\known_hosts
+## PSFzf
+Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+Install-Module -Name PSFzf
+## PowerColorLS
+Install-Module -Name PowerColorLS -Repository PSGallery
+## Terminal-Icons
+PS> Install-Module -Name Terminal-Icons -Repository PSGallery
+## PSScriptTools
+Install-Module PSScriptTools
+## ps.checkModuleUpdates
+Install-Module -Name ps.checkModuleUpdates
+## Posh-Git
+Install-Module posh-git
+## Powershell.Chunks
+install-module powershell.chunks
+## KeePassXC
+in Microsoft Store > Installer
+C:\Users\jharr\Dropbox\JH\core\encrypted\JH.kdbx
+ctrl+, (= Outils > Paramètres) > [
+  Général > Démarrage > Lancer automatiquement KeePassXC au démarrage du système  off
+  Intégration aux navigateurs > Activer > Edge ]
+restarted Edge
+## Sumatra PDF v3.4.6
+SumatraPDF-3.5.2-64-install.exe >
+  Options > [ Installer pour tout les utilisateurs
+  Permettre à Windows de montrer des aperçus des documents PDF ] onticked > Ccu > Oui
+## HP Smart
+in Microsoft Store > Installer
+Se connecter  found  HPA22F0E (ENVY 5530)
+  Récupération des informations sur le pilote d'impression  took a while
+## Edge
+Paramètres > Encadré > Personnaliser la barre latérale > Toujours afficher la barre latérale  off
+## AutoHotkey v2.0.11
+AutoHotkey_2.0.11_setup.exe
+Shortcut to  $MSwin10\mb-HPEB840G362\user\jo.ahk  moved into
+  C:\Users\jharr\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+## after a reboot
+Faisons une sauvegarde des données de votre PC > Ignorer pour le moment > Continuer
+## FastStone Image Viewer v7.5
+FSViewerSetup75.exe
+ran it for Esc to offtick
+*.png  Opens with FastStone Image Viewer
+f12 (= Paramètres) > Aperçu >
+  [ En boucle  Rotation Auto par tag orientation EXIF > off  Unité par défaut > cm ]
+### Settings
+replaced  PaperSizeList  settings in  ~\AppData\Roaming\FastStone\FSIV\FSSettings.db
+  with those in  $ITstack\MSWin\FSSettings-PaperSizeList.db
+## Everything v1.4.1.1024
+Everything-1.4.1.1024.x64-Setup.exe > clicked through > UAC
+## The Platinum Searcher v2_2_0
+cpi pt.exe $Env:LOCALAPPDATA\Microsoft\WindowsApps -force
+pt /version
 ## waiting
+Go

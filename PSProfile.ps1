@@ -19,8 +19,22 @@ function GNFR {
 } # as administrator
 
 function pro {
-  Get-Process | Sort-Object WS -Descending | Select-Object -first 39 ID,Name,WS,VM,PM,Handles,StartTime | ConvertTo-WPFGrid -Refresh -timeout 10 -Title "Top Processes"
-  } # needs to be on 3 lines
+  Get-Process | sort ws -descending | select-object -first 39 ID,Name,WS,VM,PM,Handles,StartTime | ConvertTo-WPFGrid -Refresh -timeout 10 -Title "Top Processes"
+} # needs to be on 3 lines
+
+function wl {
+  $wli = "$machLg/winget_list"
+  winget list > $wli
+  # $wlit  = "$wli.txt"
+  # (gc $wli -raw) -replace "(?s).*------" > $wlit
+  # ri $wli
+  # gc $wlit | sort | sc $wlit
+}
+function wl1 {
+  $wli = "$machLg/winget_list"
+  $wlit  = "$wli.txt"
+  (gc $wli -raw) -replace "(?s).*------" > $wlit
+}
 
 #=> 0 convert images recursively
 Function mc {
@@ -178,7 +192,7 @@ function stringinvims { sifwork string-vim '*.vim' $args[0] }
 
 function SE {
   $outfile = "$DJH/search/SEN.sifw"
-  sifwork0 $outfile 'stackexchange|stackoverflow'
+  sifwork0 $outfile 'stackexchange|stackoverflow|superuser'
   foreach($ITd in $jtIT, $ITstack, "$JHw\France") {
     "Searching in $ITd\..."
     sl $ITd
@@ -303,9 +317,9 @@ $uname = $Env:USERNAME
           $CrPl = "$ITstack\CP"
             $LTXj = "$CrPl\documenting\LaTeX\jo"
           $ITsc = "$ITstack\copied"
-          $machLg = "$ITstack\MSWin\ml-$Cn"
           $onGH = "$ITstack\onGitHub"
             $Cn = $Env:Computername
+              $machLg = "$ITstack\MSWin\ml-$Cn"
             $MSwin10 = "$onGH\OS-MSWin10"
               $machBld = "$MSWin10\mb-$Cn"
             $SPD = "$onGH\FM-MSWin-syncDrives\RoboCopy\$Cn"  # used in  $machBld\PSProfile.ps1

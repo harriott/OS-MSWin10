@@ -34,7 +34,7 @@ in Explorer: `Alt+D > cmd > Enter`
 
 # The Platinum Searcher
     pt /version
-    pt search .
+    pt text_to_find .
 
 ## in $Drpbx\JH
     pt '$core' .
@@ -44,10 +44,11 @@ in Explorer: `Alt+D > cmd > Enter`
 
 ### `$core`
     pt '$machBld' .
-    pt '$machBld' .
+    pt 's~~$' .
 
 # PowerShell
-    $MyInvocation.MyCommand.Name  # = the script's name
+    $function:<function>  # contains it's internal commands
+    $myinvocation.mycommand.name  # = the script's name
     $MSwin10\gac.ps1  # to explore all commands
     '"Hello world"'
     1..3
@@ -77,7 +78,7 @@ limited to single commands
     sal <alias> <string>
 
 ## cmdlets
-    get-commandSyntax <command>
+    get-commandsyntax <command>
 
 - `format-table`: `ft`
 - `get-content`: `cat`, `gc`, `type`
@@ -85,6 +86,9 @@ limited to single commands
 - `invoke-expression`: `iex`
 - `remove-item`: `del`, `erase`, `rd`, `ri`, `rm`, `rmdir`
 - `select-string`: `sls`
+
+### get-command
+    (gcm <function>).scriptblock
 
 ## colour
     [System.Enum]::GetValues('ConsoleColor') | ForEach-Object { Write-Host $_ -ForegroundColor $_ }
@@ -132,7 +136,7 @@ no standard aliases
 
 ## executables
     cd 'C:\Program Files'
-    (Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* ).displayname | Sort-Object # lists removable x64 programs
+    (Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* ).displayname | Sort-Object  # lists removable x64 programs
     C:\MozillaThunderbird\thunderbird.exe -addressbook
     C:\Windows\explorer.exe "microsoft-edge:searchterm"
     gcm explorer
@@ -305,18 +309,16 @@ aliases: `cat`, `type`
 `md` = `mkdir`, which calls `new-item`
 
 ## system info
-    $Profile
-    (Get-CimInstance Win32_OperatingSystem) | Select-Object -Property Version, Caption
-    Get-PowerShellEngine -Detail
-    Get-PSLocation
-    Get-PSWho
-    Get-WindowsUpdateLog  # creates  \Users\troin\Desktop\WindowsUpdate.log
-    Sysdm.cpl -> System Properties
+    $profile
+    (get-ciminstance win32_operatingsystem) | select-object -property version, caption
+    get-powershellengine -detail
+    get-pslocation
+    get-pswho
+    get-windowsupdatelog  # creates  $HOME\Desktop\WindowsUpdate.log
+    sysdm.cpl  # pops up  System Properties
     winver  # pops up  About Windows
-    Get-PSSessionInfo
-    Get-WindowsVersion
-    Get-WindowsVersionString
-    Test-IsElevated
+    get-pssessioninfo
+    test-iselevated
 
 ### environment variables
     $env:computername

@@ -9,8 +9,10 @@ vim: nospell:
 
 `ctrl+m` on selected text opens it in `LanguageTool`
 
+# AutoHotkey
+    $machBld\user\jo.ahk
+
 # build
-    $MSwin10\jo.ahk
     pt '$emd' $Drpbx\JH
     pt '$Pr0' $Drpbx\JH
 
@@ -53,6 +55,35 @@ jigsaw icon
 
 star icon
 
+# browsers
+KeePassXC: Getting Started Guide
+
+## Chromium-based
+    chrome://apps/
+    chrome://plugins/
+    chrome://system > extensions > Expand -> a list of Extensions
+    ctrl+h -> chrome://history
+    ctrl+Shft+O (= Bookmarks) > Organise > Export
+    ctrl+u => view page source in new tab
+
+### Edge
+    ctrl+j -> open downloads pane
+
+## Firefox
+    about:config > caret
+    about:plugins
+    about:preferences#general
+    about:preferences#sync
+    alt > e (= Edit) > n (= Settings)
+    ctrl+p > Destination > Save to PDF > Save
+    ctrl+shft+b (= toggle Bookmarks Toolbar)
+    ctrl+shft+o (= Library)
+
+## Vivaldi
+    Alt+P (= Settings)
+    Alt+P > Search > [ Google up to top and Set as Default , DuckDuckGo next, Wikipedia third ]
+    Ctrl+B -> Manage Bookmarks
+
 # PDF
     gsp  # Ghostscript convert pdf to png
 
@@ -63,6 +94,7 @@ star icon
 - `Ctrl+k` command palette
 - `Ctrl+Shift+Tab` go to previous tab
 - `Ctrl+Tab` go to next tab
+- `f12` = Afficher les signets
 - `r` reload
 - `z` toggle zoom between Fit Page, Fit Width, Fit Content
 

@@ -42,10 +42,12 @@ code-minimap-v0.6.4-x86_64-pc-windows-msvc > code-minimap.exe  copied to  C:\Use
 du64.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 ## duf
 duf_0.8.1_Windows_x86_64\duf.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
+## Edge
+Settings > Sidebqr > Customise sidebar > Always show sidebar  off
 ## Everything
-Ctrl+P ( = Tools > Options ) > General >
-  Fonts and Colours > Background colour > Custom > #c0c0c0
-    [ UI > Single click tray   Results > Open path with double click in path column ]
+Ctrl+P ( = Tools > Options ) > General > [
+  UI > [ Single click tray > on   Results > Open path with double click in path column ]
+  Fonts and Colours > Background colour > Custom > #c0c0c0 ]
 ## ExifTool v12.28
 cpi 'exiftool(-k).exe' C:\Users\troin\AppData\Local\Microsoft\WindowsApps\exiftool.exe
 ## FFmpeg - latest
@@ -243,7 +245,7 @@ precautionary reboot
 ## FastStone Image Viewer v7.5
 FSViewerSetup75.exe
 ran it for Esc to offtick
-  Settings > Viewer > [ Loop on, Auto-rotate by EXIF off, Default Unit > cm ]
+  f12 (= Settings) > Viewer > [ Loop on, Auto-rotate by EXIF off, Default Unit > cm ]
 *.png  Opens with FastStone Image Viewer
 ### Settings
 replaced  PaperSizeList  settings in  ~\AppData\Roaming\FastStone\FSIV\FSSettings.db
@@ -615,7 +617,7 @@ cpanm Log::Log4perl
 ## NordVPN 6.42.4
 Update and restart
 ## Powershell.Chunks
-Install-Module -Name Powershell.Chunks -Repository PSGallery
+install-module -name powershell.chunks -repository psgallery
 ## WindowsApps\python...
 Settings > Apps & features > App execution aliases > [ App installer > python.exe  App installer > python3.exe ] > Off
 ## Python 3.10.0 uninstall
@@ -1111,4 +1113,18 @@ Close File Explorer and everything except Task Manager for
   LibreOffice_7.6.4_Win_x64.msi > Custom > Next > no shortcut on desktop > UAC
 ## ExifTool v12.72
 cpi 'exiftool(-k).exe' C:\Users\troin\AppData\Local\Microsoft\WindowsApps\exiftool.exe -force
+## Let's finish setting up your PC
+appeared after an update
+## PowerToys v0.77.1
+allowed to update
+## Sumatra PDF v3.4.6
+SumatraPDF-3.5.2-64-install.exe >
+  Options > [ Install for all users  Let Windows show previews of PDF documents ] onticked
+  UAC > Yes
+## Java Updated
+(Version 8 Update 401) Update > Install
+## AutoHotkey
+Shortcut to  $MSwin10\mb-T430i73520M\user\jo.ahk  moved into
+  C:\Users\troin\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 # waiting
+Go
