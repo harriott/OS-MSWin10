@@ -44,8 +44,9 @@ $uname = $Env:USERNAME
               $machBld = "$MSWin10\mb-$Cn"
 
 #=> 2 PSProfile
-new-item ~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 -itemtype symboliclink -value $MSWin10\PSProfile.ps1 -force
-new-item ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 -itemtype symboliclink -value $MSWin10\PSProfile.ps1 -force
+# new-item ~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 -itemtype symboliclink -value $MSWin10\PSProfile.ps1 -force
+new-item ~\PSProfile.ps1 -itemtype symboliclink -value $MSWin10\PSProfile.ps1 -force
+# new-item ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 -itemtype symboliclink -value $MSWin10\PSProfile.ps1 -force
 
 #=> 2 vim
 new-item ~\_gvimrc -itemtype symboliclink -value $machBld\user\_gvimrc -force  # $MSWin10/user/_gvimrc

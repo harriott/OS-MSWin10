@@ -24,17 +24,19 @@ function pro {
 
 function wl {
   $wli = "$machLg/winget_list"
-  winget list > $wli
-  # $wlit  = "$wli.txt"
-  # (gc $wli -raw) -replace "(?s).*------" > $wlit
-  # ri $wli
-  # gc $wlit | sort | sc $wlit
-}
-function wl1 {
-  $wli = "$machLg/winget_list"
+  winget ls > $wli
   $wlit  = "$wli.txt"
   (gc $wli -raw) -replace "(?s).*------" > $wlit
+  ri $wli
+  gc $wlit | sort | select -skip 2 | seco $wlit
+  'winget list  is in  $machLg/winget_list.txt'
 }
+
+function stc {
+  '"Nom de la tâche","Prochaine exécution","Statut"' > $machLg\schtasks.csv
+  schtasks /fo csv /nh | sort-object | out-file -append $machlg\schtasks.csv
+}
+# ( schtasks /fo list | out-file $machlg\schtasks.txt -encoding utf8bom )
 
 #=> 0 convert images recursively
 Function mc {
@@ -50,6 +52,7 @@ Function mc {
 #=> 0 directories & files
 function c { if ( $args[0] ) { sl $args[0] } else { sl .. }; pc }  # handily move in or out
 function i { ii . }  # opens  file explorer  on current directory
+set-alias j z  # ZLocation
 
 #==> changes
 function chco {
@@ -80,8 +83,6 @@ function t {
   $pst
   iex $pst
   }
-
-set-alias j z  # Zlocation
 
 #===> filetypes
 function cex { gci . -r | where { ! $_.psiscontainer } | group extension -noelement | sort count -desc }
@@ -137,12 +138,13 @@ function encrypted {
         if ( test-path $node -pathtype container ) { $encdir = gci $node -recurse -file | sort lastwritetime -descending | select -first 9 | %{ dtsfn $_ '??' } } else { $encdir = '' }
         $path = $node+'*7z'
       }
-      $enc7z = gci -path $path | %{ dtsfn $_ '**' }
-      $ce7z = gci -path "$core\encrypted\$path" | %{ dtsfn $_ 'dr' }
-      $objects = $encdir, $enc7z, $ce7z
-      $flattened = @($objects | % {$_})  # optional
-      $sorted = $flattened | ? { $_ } | sort -uniq  # also removes nulls
-      $sorted.replace('C:\Users\troin\', '').replace('Dropbox\JH\core\encrypted\', '').replace('encrypted\', '')
+      $path
+      # $enc7z = gci -path $path | %{ dtsfn $_ '**' }
+      # $ce7z = gci -path "$core\encrypted\$path" | %{ dtsfn $_ 'dr' }
+      # $objects = $encdir, $enc7z, $ce7z
+      # $flattened = @($objects | % {$_})  # optional
+      # $sorted = $flattened | ? { $_ } | sort -uniq  # also removes nulls
+      # $sorted.replace('C:\Users\troin\', '').replace('Dropbox\JH\core\encrypted\', '').replace('encrypted\', '')
     }
   }
   ''
@@ -177,6 +179,8 @@ function lwts { gci -r -i $args[0],$args[1],$args[2] | %{ dtsfn $_ ':' } | sort 
 #===> sizes
 function dc { gci | foreach-object { $_.name + ": " + "{0:n2}" -f ((gci $_ -recurse | measure-object length -sum -erroraction silentlycontinue).sum / 1mb) + " mb" } }
 
+function du { du64 -nobanner -l 1 }
+
 function fso { $fso = new-object -com scripting.filesystemobject; gci -directory | select @{l='size'; e={$fso.getfolder($_.fullname).size}},fullname | sort size -descending | ft @{l='size [mb]'; e={'{0:n2}    ' -f ($_.size / 1mb)}},fullname }
 
 function gfsi { Get-ChildItem . -Directory | Get-FolderSizeInfo -Hidden | Sort-Object TotalSize -Descending | Format-Table -AutoSize -View mb }
@@ -199,7 +203,7 @@ function SE {
     gci -r -e $outfile -i '*.md' | ss 'stackexchange|stackoverflow' | %{$_.path+" > "+$_.line} >> $outfile
     '' >> $outfile
   }
-  sleep 3
+  sleep 4
   seco $outfile -value (gc $outfile | ss -pattern 'vimfiles\\pack' -notmatch)
   sifwork1 $outfile
   sl "$DJH/search"
@@ -295,15 +299,20 @@ Function all72 {
   }
 
 #=> 0 internetworking
-Function cc {
+function cc {
   $co = (Invoke-WebRequest http://ifconfig.co/country).Content.replace("`n",'')
   $ci = (Invoke-WebRequest http://ifconfig.co/city).Content.replace("`n",'')
   if ( $ci ) { "$ci, $co" } else { "$co" }
   }  # [city, ]country
-Function ip { (Invoke-WebRequest -uri "http://ifconfig.me/ip").Content }  # IPv4
-Function p {test-connection -computername 8.8.8.8 -ErrorAction SilentlyContinue}
-Function pg {test-connection -computername google.com -ErrorAction SilentlyContinue}
-Function wp { curl wttr.in/Paris }
+function ip { (Invoke-WebRequest -uri "http://ifconfig.me/ip").Content }  # IPv4
+function p {test-connection -computername 8.8.8.8 -ErrorAction SilentlyContinue}
+function pg {test-connection -computername google.com -ErrorAction SilentlyContinue}
+function wp { curl wttr.in/Paris }
+
+#==> yt-dlp
+sal y yt-dlp
+  function y7 { y -f '[height<=?720]' $args[0] }
+  function yf { y -F $args[0] }
 
 #=> 0 places
 $uname = $Env:USERNAME
@@ -312,6 +321,7 @@ $uname = $Env:USERNAME
       $Cfzd = "$DJH\Cafezoide"
         $CzPhy = "$Cfzd\PhysicalProperty"
       $copied = "$DJH\copied"
+        $cITh = "$copied\IT-handy"
       $core = "$DJH\core"
         $ITstack = "$core\IT_stack"
           $CrPl = "$ITstack\CP"
@@ -327,20 +337,22 @@ $uname = $Env:USERNAME
               $vfp = "$vimfiles\pack"
       $GHrUse = "$Drpbx\CGHrepos"  # GitHub Repositories Use
       $JHw = "$DJH\work"  # for IT websites and more
-        $JHm="$JHw\IT-Jekyll-harriott-minima"
+        $JHm = "$JHw\IT-Jekyll-harriott-minima"
+        $rEr = "$JHw\France\IdF\Paris\20e-rueErmitage"
+          $StEr = "$rEr\StudioErmitage"  # $StEr
       $jtIT = "$DJH\technos\IT"
       $tIs = "$DJH\Technos\IT-storage"  # $tIs\diskUsage.txt
       $Pr0 = "$DJH\Copied\Practical0"
       $Thb = "$DJH\Thb-dr"
   $Enc = "C:\Users\$uname\encrypted"
 
-#=> 0 shell settings
+#=> 0 shell settings 0
 $env:path +=';C:\Program Files\7-Zip'
 
 if ($PSVersionTable.PSVersion.Major -eq 7) { Import-Module Powershell.Chunks }
 
 Import-Module posh-git
-$GitPromptSettings.DefaultPromptPath.ForegroundColor = [ConsoleColor]::Cyan
+  $GitPromptSettings.DefaultPromptPath.ForegroundColor = [ConsoleColor]::Cyan
 
 Import-Module ps.checkModuleUpdates
 Import-Module PSScriptTools
@@ -381,13 +393,23 @@ Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
 Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 
+#=> 0 shell settings 1 new tab in same directory
+function prompt {
+  $loc = gl
+  $prompt = & $GitPromptScriptBlock
+  $prompt += "$([char]27)]9;12$([char]7)"
+  if ($loc.Provider.Name -eq "FileSystem")
+    { $prompt += "$([char]27)]9;9;`"$($loc.ProviderPath)`"$([char]27)\" }
+  $prompt
+} # ctrl+shift+d  now opens a new tab in same directory
+
 #=> 0 Vifm
 $env:path +=';C:\vifm-w64-se-0.12-binary'
 
 #=> 1 place-dependent
-. $GHrUse\CP\wfxr-code-minimap\completions\powershell\_code-minimap.ps1
-# $GHrUse/CP/wfxr-code-minimap/completions/README.md
-# $GHrUse\CP\wfxr-code-minimap\completions\README.md
+# cp $GHrUse/CP/wfxr-code-minimap/completions/powershell/_code-minimap.ps1 $ITsc/forMSWin/_code-minimap.ps1
+. $ITsc/forMSWin/_code-minimap.ps1
+# $GHrUse/CP/wfxr-code-minimap/README.md
 . $machBld\PSProfile.ps1  # also uses $onGH ($MSWin10/PSProfile.ps1)
 
 #==> bat
@@ -398,7 +420,7 @@ sal b bat
 function bd { bat -d $args[0] }  # showing changes from git index
 
 #==> documenting
-Function xc { iex "$Env:LocalAppData\SumatraPDF\SumatraPDF.exe $Drpbx\JH\Copied\IT-handy\TeX\LaTeX\Appearance\xcolor.pdf -page 38" }
+function xc { iex "$Env:LocalAppData\SumatraPDF\SumatraPDF.exe $Drpbx\JH\Copied\IT-handy\TeX\LaTeX\Appearance\xcolor.pdf -page 38" }
 
 #===> MiKTeX
 Function x { xelatex -halt-on-error --max-print-line=110 $args[1] $args[0] }

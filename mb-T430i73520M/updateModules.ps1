@@ -6,7 +6,7 @@
 # some commands here are defined in my  $MSWin10\PSProfile.ps1
 # update my modules
 
-# obviated by  compare-module - see  $MSWin10\QR.md
+# obviated by  compare-module - see  $MSWin10\QR\QR.md
 
 # Get-InstalledModule | Format-Table -Property Name; Get-Module
 

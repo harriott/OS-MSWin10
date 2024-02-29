@@ -6,10 +6,17 @@ vim: nospell:
     java -jar C:\LanguageTool\languagetool-commandline.jar -h
     ~\AppData\Roaming\Vifm\vifmrc
 
-in Explorer: `Alt+D > cmd > Enter`
+`intl.cpl` (= Panneau de configuration > Région)
+
+# console code page
+    chcp [65001]
+    REG query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Console\TrueTypeFont"
 
 # Command Prompt
-`PS> cmd` then `exit`
+    dir * /x
+
+- in Explorer: `Alt+D > cmd > Enter`
+- `PS> cmd` then `exit`
 
 ## environment variables
     echo %username%
@@ -51,8 +58,9 @@ in Explorer: `Alt+D > cmd > Enter`
     $myinvocation.mycommand.name  # = the script's name
     $MSwin10\gac.ps1  # to explore all commands
     '"Hello world"'
-    1..3
     <command> | Out-Null  # works for some commands
+    1..3
+    (gc $file | select -skip 3) | sc $file  # removes first 3 lines
     Alt > Space > E > L > [ up / down  to scroll   Esc ]
     iex <someCommand>  # = invoke-expression
     less <someFile>
@@ -84,11 +92,10 @@ limited to single commands
 - `get-content`: `cat`, `gc`, `type`
 - `get-item`: `gi`
 - `invoke-expression`: `iex`
-- `remove-item`: `del`, `erase`, `rd`, `ri`, `rm`, `rmdir`
 - `select-string`: `sls`
 
 ### get-command
-    (gcm <function>).scriptblock
+    (gcm <function>).scriptblock  # shows what's in <function>
 
 ## colour
     [System.Enum]::GetValues('ConsoleColor') | ForEach-Object { Write-Host $_ -ForegroundColor $_ }
@@ -173,14 +180,21 @@ no standard aliases
 
 ## modules
     $env:psmodulepath -split (';')
-    C:\Users\troin\Documents\PowerShell\Modules
-    get-installedmodule
     get-module
     get-module -all
     get-module -listavailable  # details, including old and those in  Windows PowerShell
     gvim $env:localappdata\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
     New-BurntToastNotification
     pc  # PowerColorLS
+    ~\Documents\PowerShell\Modules
+
+### Microsoft.PowerShell.PSResourceGet
+    Get-InstalledPSResource
+    Get-PSResourceRepository
+
+### PowerShellGet
+    Get-InstalledModule
+    Get-PSRepository
 
 ### PSScriptTools
     Get-MyAlias  # limited to  PSScriptTools
@@ -221,14 +235,15 @@ tab completion
     where.exe ruby
 
 ## scripts
-    C:\Users\troin\Documents\PowerShell\Scripts
+    $funs = gc "$MSWin10\PSProfile.ps1" | ss -pattern "function\s+([^\s{]+)" | %{ $_.matches.groups[1].value }; $funs -join '  '  # lists function names
     Get-InstalledScript
     param( [switch]$doSomething )  # -doSomething  creates  $doSomething = true
+    ~\Documents\PowerShell\Scripts
 
 ## storage
     get-volume  # reports partitions
     ii .  # invoke Explorer on WD
-    sl <directoryToMoveTo>
+    sl ~ (= set-location C:\Users\$ENV:UserName")
     takeown /? | less
 
 ### investigations
@@ -238,6 +253,7 @@ tab completion
     dw  # directory counts
     f  # fzf preview files with bat
     Get-FileHash <fileForWhichYouWantSHA256>
+    gl  # pwd = get-location
     if ( ! ( test-path 'dir' ) ) { ni -name 'dir' -type directory }
     pc -a -l -t  # includes hidden & time sorted
     stringInVims "string"
@@ -295,7 +311,8 @@ aliases: `cat`, `type`
     gci -r -i "*.txt" | %{mi $_.fullname ($_.fullname -replace ".txt",'.dw')}  # renames all txt's to dw's
     robocopy /mir <sourcedir> <destinationdir> /l  # runs a simulation of mirroring source to destination
 
-`ROBOCOPY.exe`
+- `remove-item`: `del`, `erase`, `rd`, `ri`, `rm`, `rmdir`
+- `ROBOCOPY.exe`
 
 #### aliases
 `copy-item`: `copy` `cp` `cpi`
@@ -352,13 +369,26 @@ aliases: `cat`, `type`
     /l   - list only (= simulate)
     /tee - output to console as well as log file
 
+# Windows Package Manager
+    winget --info
+    winget install altsnap
+    winget search powershell
+    winget upgrade --all
+    winget upgrade google.chrome
+
 # Windows PowerShell - modules
-    C:\Users\troin\Documents\WindowsPowerShell\Modules
     get-installedmodule
     get-module -listavailable  # details, including old
 
+## paths
+    $Env:PSModulePath -split ';'
+    ~\Documents\WindowsPowerShell\Modules
+
 # wt
+    cpi ~\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json $machLg\WT-settings.json
+
 - in Explorer: `Alt+D > wt > Enter`
+- <https://www.microsoft.com/en-gb/p/windows-terminal-preview/9n0dx20hk701>
 - `win+;` emojis
 - `win+r > wt` opens `wt` on `~`
 - Windows Terminal

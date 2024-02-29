@@ -1,0 +1,61 @@
+vim: ft=build:
+
+$machBld\Win10ProBuild.txt
+
+HP EliteBook 840 G3 barcoded PC117855 (labelled BC PNB 19 by last owner) = HPEB840G355
+(jharrio@outlook.com)
+# parallel build
+## waiting
+# physical configuration
+1920x1080 screen
+Intel Core i5-6300U
+## storage
+(essential) M.2 SSD: 119Go
+(optional) 2.5" SSD: SDSSDA240G
+## Startup Menu
+repeatedly hit  esc  at start to get into  Startup Menu
+repeatedly hit  f9  at start to get into  Boot Menu
+repeatedly hit  f10  at start to get into  BIOS Setup
+# sequential build
+## failed to get my account correctly named
+Utilisateur
+  À propos de > Spécifications de Windows > Windows 10 Pro 21H2 OS build 19044.1889
+  Mise à jour et sécurité > Activation > Windows est activé à l'aide d'une license numérique
+connected to  Jo-X10II
+Mise à jour et sécurité > Windows Update > for a load & Updated to Windows 10 version 22H2
+  having closed the lid, Windows Update became unresponsive, Restarted
+Finalisons la configuration de votre PC > Se connecter avec Microsoft > jharrio@outlook.com > pw
+  then couldn't change name from  Utilisateur, so created account jo with no pw, logged into that,
+    removed Utilisateur, couldn't create account jharrio@outlook.com
+Mise à jour et sécurité > Récupération > Réinitialiser > Commencer > Supprimer tout
+  "Environment de récupération introuvable" and yes, Gestion de disques shows there's no WinPE...
+## re-install Windows
+booted to  Windows 10 2022 Update l Version 22H2  on  KDTG311281 > français (France) >
+  Installer maintenant > Personnalisé >
+    Lecteur 0 Partition 3 (119.1 Go) > Supprimer > Nouveau > Taille > 121000 Mo (118.1 Go)
+    Lecteur 0 Partition 4 (987.0 Mo) > Nouveau
+    Suivant  connected to  Jo-X10II  jharrio@outlook.com + pw  PIN  Oui...
+fitted  SDSSDA240G
+connected to  Jo-OPPO-A76
+loads of updates
+Settings > Système > Alimentation et mise en veille > Paramètres d'alimentation supplémentaire > Choisir l'action des boutons d'alimentation > [ Modifier des paramètres actuellement non disponibles > Activer le démarrage rapide  off-ticked  Lorsque je referme le capot > Sur secteur > Ne rien faire ]
+Menu > Système Windows > [ Invite de Commandes  Panneau de configuration ] > Pinned to Start
+Menu > Microsoft 365 > right-click > Désintaller
+## Ditto Clipboard
+Microsoft Store > Ditto Clipboard > Install > Pin to Start
+Ran it for  Options > General > [ Maximum Number of Saved Copies > 5000
+   Advanced > Show leading whitespace ] ( C:\Users\jharr\AppData\Local\Ditto_WindowsApp\Ditto.db )
+ctrl+* = Activate Ditto
+## BitLocker check
+AIdc> manage-bde -status  reports "Intégralement déchiffré"
+## Windows Recovery
+reagentc /info  reports it to be in  C:\Recovery\WindowsRE  so
+  Gestion de disques > Deleted  D:, extended  C:, and formatted  SDSSDA240G  as  D:
+## dropbox.com
+Signed in > DropboxInstaller.exe > English & Selective sync
+## waiting
+ExifTool v12.77
+Go
+### reduce C:
+MiniTool Partition Wizard Free v12.8
+  right-clicked on C: > Déplacer/redimensionner > Taille de la partition > 118.15

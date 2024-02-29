@@ -1,12 +1,12 @@
 # vim: fdl=1:
 
-# Joseph Harriott - Wed 25 May 2022
+# Joseph Harriott - Tue 06 Feb 2024
 
 # run Mozilla Thunderbird safely from profile shared on Dropbox
 # -------------------------------------------------------------
 # for  $MSwin10\jo.ahk
 #  APS> ni C:\MT-runSafely.ps1 -itemtype symboliclink -value $machBld\Thb\runSafely.ps1 -Force
-#  gc C:\MT-runSafely.ps1
+#  csl C:\MT-runSafely.ps1
 
 # Test BurntToast:
 #  New-BurntToastNotification -AppLogo C:\MozillaThunderbird\chrome\icons\default\messengerWindow.ico -Text "? > linux > Thunderbird"

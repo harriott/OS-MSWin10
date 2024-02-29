@@ -87,8 +87,8 @@ alt+o (= Options) > [ i (= Tray Icons) > p (= Physical Memory History)
   h (= Hide When Minimized)  l (= Run At Logon) ]
 ## RegJump
 C:\Users\troin\AppData\Local\Microsoft\WindowsApps\regjump.exe
-## Settings > System
-Power & sleep > Additional power settings > Choose what the power buttons do >
+## fast startup off
+Settings > System > Power & sleep > Additional power settings > Choose what the power buttons do >
   Change settings that are currently unavailable > Turn on fast startup  off-ticked
 ## Sigcheck
 sigcheck64.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
@@ -104,12 +104,16 @@ Let Windows show previews of PDF documents
 ## Task Manager
 Options > [ Hide when minimized  Set default tab > Processes ]
 hidden icon dragged to taskbar
+## Task Scheduler
+Start menu > All apps > Windows Administrative Tools > Task Scheduler > Pin to Start > Resize > Small
+## waiting
+update  Process Explorer
 ## Windows Security
 pinned to Start
 ## Windows Terminal
 ctrl+, > PowerShell > Appearance > Transparency > Background opacity > 80%
 ## yt-dlp
-yt-dlp.exe  copied into  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
+yt-dlp.exe  copied into  ~\AppData\Local\Microsoft\WindowsApps
 ~\tools\yt-dlp.exe
 ## ZoomIt
 C:\Users\troin\AppData\Local\Microsoft\WindowsApps\ZoomIt64.exe
@@ -1128,8 +1132,95 @@ Shortcut to  $MSwin10\mb-T430i73520M\user\jo.ahk  moved into
   C:\Users\troin\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 ## AutoHotkey v2.0.11
 AutoHotkey_2.0.11_setup.exe
-$MSwin10\mb-T430i73520M\user\jo.ahk  renamed to  jo-v1.ahk
+$MSwin10\mb-T430i73520M\user\jo.ahk  renamed to  jo-v1.ahk, then fixed the shortcut
 Shortcut to  $MSwin10\mb-T430i73520M\user\jo.ahk  moved into
   C:\Users\troin\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+## remove AutoHotkey
+removed shortcut in  C:\Users\troin\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+Settings > Apps & features > AutoHotkey 2.0.11 > Uninstall > 1.1.34.03 > Remove checked
+## PowerShell v7.4.1
+Settings > Apps & features > PowerShell 7-x64 7.4.0.0 > Unistall
+found in Microsoft Store > Get
+## WT > Azure
+c-, (= Settings) > Azure Cloud Shell > Hide profile from dropdown
+## WPS BurntToast
+Install-Module -Name BurntToast
+New-BurntToastNotification
+## no notifications from Powershell
+Uninstall-Module BurntToast  failed until after a reboot
+Install-Module -Name BurntToast  still no notifications showing
+## PowerShell v7.4.1
+Settings > Apps & features > PowerShell > Uninstall
+PowerShell-7.4.1-win-x64.msi > [ Add 'Open here' context menu to Explorer
+  Add 'Run with PowerShell 7' context menu for PowerShell files ] > UAC > Yes
+## microsoft.powershell.psresourceget > psgallery trusted
+set-psresourcerepository psgallery -trusted
+## ExifTool v12.77
+cpi "$ITstack\copied\forMSWin\exiftool(-k).exe" ~\AppData\Local\Microsoft\WindowsApps\exiftool.exe
+## KB5034441
+Disk Management  shows
+  System Reserved 579 MB NTFS (System, Active, Primary Partition)
+  (C:) 237.33 GB NTFS (Boot, Page File, Crash Dump, Primary Partition)
+  590 MB - Recovery Partition
+AIdc> reagentc /info
+AIdc> reagentc /disable  for  diskpart
+  list disk
+  sel disk 0
+  list part
+    Partition ###  Type              Size     Offset
+    -------------  ----------------  -------  -------
+    Partition 1    Primary            579 MB  1024 KB
+    Partition 2    Primary            237 GB   580 MB
+    Partition 3    Recovery           590 MB   237 GB
+  sel part 2
+  shrink desired=250 minimum=200
+    DiskPart successfully shrunk the volume by:  250 MB
+  (Disk Management, still open, shows  251 MB Unallocated)
+  list part
+  sel part 3
+  delete partition override
+    DiskPart successfully deleted the selected partition.
+  (Disk Management, still open, shows  842 MB Unallocated)
+  create partition primary id=27
+    DiskPart succeeded in creating the specified partition.
+  format quick fs=ntfs label=”WinRE”
+    DiskPart successfully formatted the volume.
+  list vol
+      Volume ###  Ltr  Label        Fs     Type        Size     Status     Info
+      ----------  ---  -----------  -----  ----------  -------  ---------  --------
+      Volume 0     D                       DVD-ROM         0 B  No Media
+      Volume 1         System Rese  NTFS   Partition    579 MB  Healthy    System
+      Volume 2     C                NTFS   Partition    237 GB  Healthy    Boot
+    * Volume 4         WinRE        NTFS   Partition    841 MB  Healthy
+  exit
+    Leaving DiskPart...
+  reagentc /enable
+    REAGENTC.EXE: Operation Successful.
+  reagentc /info
+    Windows Recovery Environment (Windows RE) and system reset configuration
+    Information:
+      Windows RE status:         Enabled
+      Windows RE location:       \\?\GLOBALROOT\device\harddisk0\partition2\Recovery\WindowsRE
+      Boot Configuration Data (BCD) identifier: 15f46a8c-cf60-11ee-801f-3c77e6ee38a5
+      Recovery image location:
+      Recovery image index:      0
+      Custom image location:
+      Custom image index:        0
+    REAGENTC.EXE: Operation Successful.
+re-ran  Disk Management
+## repair attempt
+booted to  Windows 10 2022 Update l Version 22H2  on  K16GBDTR500 > Repair > System Restore
+  page fault in a nonpaged area  still cycling through dud restarts, so booted again for  Install
+  but more dud restarts...
+## re-install attempt
+without battery, booted to  Windows 10 2022 Update l Version 22H2  on  K16GBDTR500
+  irql not less or equal
 # waiting
 Go
+### Windows Backup
+Comptes > Sauvegarde Windows > Vérifier > trohib@gmail.com > Security code
+#### remove symlink in ~\Documents
+ri ~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
+  cpi $MSWin10\MPSProfile.ps1 ~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
+ri ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+  cpi $MSWin10\MPSProfile.ps1 ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1

@@ -2,56 +2,85 @@ vim: ft=build:
 
 $machBld\Win10ProBuild.txt
 
-HP EliteBook 840 G3 barcoded PC117862 (labelled BCPNB17 by last owner) = HPEB840G362
-jharrio@outlook.com
-# parallel build
+HP EliteBook 840 G3 barcoded PC117862 (labelled BC PNB 17 by last owner) = HPEB840G362
+(jharrio@outlook.com)
+# build - parallel
+Google Chrome somehow there
+Paramètres > Écran > Éclairage nocturne > Activé
+winget install altsnap
 ## Desktop Background
 Paramètres > [ Personnalisation > Arrière-plan > Couleur unie
 Système > Écran > Mise à l'échelle et disposition > Modifier la taille du texte des applications et d'autres éléments > 100%
+## Disk Usage
+du64.exe  copied into ~\AppData\Local\Microsoft\WindowsApps
 ## Everything
-Ctrl+P ( = Tools > Options ) > General > [ UI > [ Démarrer sur un clic simple > on  Résultats >
-  Autoriser le clic double dans la colonne des chemin ] Polices and couleurs >
-  Couleur d'arrière plan > Personnalisé > selected a yellow ]
+Ctrl+P ( = Tools > Options ) > General >
+  UI > [ Démarrer sur un clic simple > on  Résultats >
+    Autoriser le clic double dans la colonne des chemin ]
+  Polices and couleurs >
+    Couleur d'avant plan > Personnalisé > selected a white
+    Couleur d'arrière plan > Personnalisé > selected a lime
 ## File Explorer
 Affichage > Options > Affichage > [ [ Afficher l'icône des fichiers sure les miniatures  Afficher la barre d'état ] off-ticked  Afficher le chemin d'accès complet dans la barre de titre  on-ticked  Afficher les fichiers, dossier et lecteurs cachés  [ Masquer les extensions des fichiers dont le type est connu  Masquer les fichier protégés du système d'exploitation ]  off-ticked
+## Notepad++
+winget install --name notepad++
+Alt+p (Paramètres) > Préférences > Mode Sombre > Mode sombre > Suivre Windows
+## language pack - UK
+win+i (= Paramètres) > Heure et langue > Langue > Langues préférées > Ajouter une langue >
+  English (United Kingdom) > Installer
 ## File Explorer > View > Options > View > Display the full path in the title bar
 ## Gestionnaire de tâches
 Options > Masquer l'icône réduite
 hidden icon dragged to taskbar
+## Process Explorer
+sl $ITsc\forMSWin\ProcessExplorer
+  for  cpi procexp64.exe $Env:LOCALAPPDATA\Microsoft\WindowsApps
+ran it for
+  alt+o (= Options) > i (= Tray Icons) > p (= Physical Memory History)
+  alt+o (= Options) > h (= Hide When Minimized)
+  alt+o (= Options) > l (= Run At Logon) ]
 ## Sécurité Windows
 pinned to Start
 ## stop individual Edge tabs showing in task switcher
 Paramètres > System > Multitâche > Alt + Tab > Uniquement les fenêtres ouvertes
 ## waiting
-Panneau de configuration > Programmes et fonctionnalités > 
-# physical configuration
-1920x1080 screen
-SSD: 119Go
-## Startup Menu
-repeatedly hit  esc  at start to get into  Startup Menu
-repeatedly hit  f9  at start to get into  Boot Menu
-repeatedly hit  f10  at start to get into  BIOS Setup
-# sequential build
+schtasks /create /f /tn "RunAltSnap" /tr "$Env:AppData\AltSnap\AltSnap.exe" /sc onlogon /rl highest
+## WT > Azure
+c-, (= Settings) > Azure Cloud Shell > Masquez le profil de la liste déroulante > Activé
+# build - PS 0 PSGallery
+Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+# build - PS 1 modules
+install-module burnttoast
+Install-Module posh-git
+Install-Module PowerColorLS -Repository PSGallery
+install-module powershell.chunks
+Install-Module -Name ps.checkModuleUpdates
+install-module psscripttools
+install-module psfzf
+Install-Module Terminal-Icons -Repository PSGallery
+Install-Module ZLocation
+# build - sequential
 Utilisateur
-Windows 10 Pro 21H2 OS build 19044.1889
-Activation > Windows is activated with a digital license
+  À propos de > Spécifications de Windows > Windows 10 Pro 21H2 OS build 19044.1889
+  Mise à jour et sécurité > Activation > Windows est activé à l'aide d'une license numérique
 connected to  Jo-X10II
 Mise à jour et sécurité > Windows Update > Updated to Windows 10 version 22H2
 connected to  Jo-OPPO-A76
-Menu > Système Windows > [ Invite de Commandes  Panneau de configuration ] > Pinned to Start
+Menu > Système Windows > [ Invite de Commandes  Outils d’administration  Panneau de configuration ] >
+  Pinned to Start
 Menu > [ Disnéy  Microsoft 365 ] > right-click > Désintaller
 Settings > Système > Alimentation et mise en veille > Paramètres d'alimentation supplémentaire > Choisir l'action des boutons d'alimentation > [ Modifier des paramètres actuellement non disponibles > Activer le démarrage rapide  off-ticked  Lorsque je referme le capot > Sur secteur > Ne rien faire ]
-win+i > Comptes > Famille et autres utilisateurs > Ajouter > jharrio@outlook.com >
+win+i > Comptes > Famille et autres utilisateurs > Ajouter > jharrio@outlook.com > pw
 win+i > Comptes > Famille et autres utilisateurs > Autres > Utilisateur > supprimer
 ## Ditto Clipboard
-  Microsoft Store > Ditto Clipboard > Install > Pin to Start
-  Ran it for  Options > General > [ Maximum Number of Saved Copies > 5000
-     Advanced > Show leading whitespace ] ( C:\Users\jharr\AppData\Local\Ditto_WindowsApp\Ditto.db )
-  ctrl+* = Activate Ditto
+Microsoft Store > Ditto Clipboard > Install > Pin to Start
+Ran it for  Options > General > [ Maximum Number of Saved Copies > 5000
+   Advanced > Show leading whitespace ] ( C:\Users\jharr\AppData\Local\Ditto_WindowsApp\Ditto.db )
+ctrl+* = Activate Ditto
 ## dropbox.com
 Signed in > DropboxInstaller.exe > English & Selective sync
 ## $MSwin10 for symlinks.ps1
-run in Administator Powershell
+run in Administator PowerShell
 ## L'Assistant de stockage
 (Paramètres > Système > Stockage) got turned on
 ## Analyse Microsoft Defender hors ligne
@@ -59,7 +88,7 @@ Sécurité Windows > Protection contre les virus et menaces > Options d'analyse 
 ### BitLocker
 Gestion des disques  reports  C: to be  NTFS (Chiffré avec BitLocker)
 #### turn off
-manage-bde -status  then  manage-bde -off c:  and kept checking until done
+AIdc> manage-bde -status  then  manage-bde -off c:  and kept checking until done
 ### boot from KDTG311281
 loaded with  ESD-USB (français (France), Windows 10 2022 Update l Version 22H2)
 repeatedly hit  f9  at start to get into  Boot Menu >
@@ -70,7 +99,7 @@ repeatedly hit  f9  at start to get into  Boot Menu >
 ### Microsoft Defender Antivirus
 APS> start-mpwdoscan
 Paramètres > Sécurité Windows > Protection contre les virus et menaces (= Sécurité Windows) > Historique de protection
-## HP Hotkey Support
+## unwanted HP Hotkey Support popup
 empty popup appearing each time I try to change the screen brightness
 Services > HP Hotkey UWP Service > Type de démarrage > (was Automatique) Désactivé
 ## gVim v9.1.0
@@ -82,10 +111,6 @@ found in Microsoft Store > Obtenir
 ctrl+, > Démarrage > Application Terminal par défaut > Terminal Windows
 ## PowerShell v7.4.0
 found in Microsoft Store > Obtenir
-## Windows Terminal
-ctrl+, > [ Démarrage > Profil par défaut > PowerShell
-  PowerShell > Apparance > Transparence > Opacité de l'arrière plan > 80%
-  Ouvrir le fichier JSON and added  "startingDirectory": ".",  into  "defaults": {}
 ## PowerShell execution policy
 Get-ExecutionPolicy   reported  "Restricted"
 ### Administrateur PowerShell
@@ -103,7 +128,7 @@ code-minimap.exe  copied to  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 ## Python 3.12.3
 python-3.12.3-amd64.exe > Add python.exe to PATH > Customize > Optional Features > for all users >
   Next > [ Advanced Options > [ Install for all users  Customize install location > C:\Python312 ]
-## WT s'ouvre dans Invite de commandes
+## Windows Terminal s'ouvre dans Invite de commandes
 Paramètres > Applications > Terminal > Désinstaller  then  win+x > Redémarrer
   then re-installed from Microsoft Store
 ## dark applications
@@ -119,12 +144,9 @@ $Env:Path -split';'
   C:\Git\cmd
   ...
 allowed  MINGW64  for  A ~/.bash_profile that loads ~/.bashrc will be created for you.
-## WT s'ouvre dans Invite de commandes
+## Windows Terminal s'ouvre dans Invite de commandes
 Paramètres > Applications > Terminal > Désinstaller  then  win+x > Redémarrer
   then re-installed from Microsoft Store
-WT > ctrl+, > (= Paramètres) > [ Interaction > M'avertir off-slid  
-  PowerShell > [ Répertoire de démarrage > .  Apparance >
-    [ Texte > Taille de police > 9  Transparence > Opacité de l'arrière plan > 90% ] ]
 ## fzf (for PSFzf)
 sl $ITsc  for  cpi fzf.exe $Env:LOCALAPPDATA\Microsoft\WindowsApps
   fzf --version
@@ -145,21 +167,6 @@ Git Bash > ssh -T git@github.com
   Warning: Permanently added 'github.com,140.82.118.4' (RSA) to the list of known hosts.
   Hi harriott! You've successfully authenticated, but GitHub does not provide shell access.
 got me  $HOME\.ssh\known_hosts
-## PSFzf
-Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
-Install-Module -Name PSFzf
-## PowerColorLS
-Install-Module -Name PowerColorLS -Repository PSGallery
-## Terminal-Icons
-PS> Install-Module -Name Terminal-Icons -Repository PSGallery
-## PSScriptTools
-Install-Module PSScriptTools
-## ps.checkModuleUpdates
-Install-Module -Name ps.checkModuleUpdates
-## Posh-Git
-Install-Module posh-git
-## Powershell.Chunks
-install-module powershell.chunks
 ## KeePassXC
 in Microsoft Store > Installer
 C:\Users\jharr\Dropbox\JH\core\encrypted\JH.kdbx
@@ -197,5 +204,160 @@ Everything-1.4.1.1024.x64-Setup.exe > clicked through > UAC
 ## The Platinum Searcher v2_2_0
 cpi pt.exe $Env:LOCALAPPDATA\Microsoft\WindowsApps -force
 pt /version
+## ExifTool v12.76
+cpi 'exiftool(-k).exe' ~\AppData\Local\Microsoft\WindowsApps\exiftool.exe
+## ZLocation v1.4.3
+z  shows it's there, and  Get-InstalledModule  reports  1.4.3 ZLocation
+c ~\Documents\PowerShell\Modules\ZLocation\1.4.3
+## minimal Visual Studio - for Rust
+VisualStudioSetup.exe > [ Composants individuels > [
+  Compilateurs, outils de génération et runtime >
+  MSVC v143 - VS 2022 C++ x64/x86 build tools (dernière version)
+  SDK, biblothèaues et frameworks > Kit SDK Windows 10 (10.0.19041.0) ]
+  Modules linguistiques > Anglais ] (over 5GB) Installer
+## Synaptics TouchPad became inactive
+double tap wouldn't restore it, TouchStyk still working
+began a Windows Update that seemed to get stuck,
+  so hard shutdown then reboot and the TouchPad was working again
+## Windows Update
+2024-01 Mise à jour de sécurité pour Windows 10 Version 22H2 pour les systèmes x64 (KB5034441)
+  Des problèmes sont survenus lors de l'installation des mises à jour, mais nous réessaierons ultérieurement. Si le problème persiste et que vous souhaitez rechercher des informations sur Internet ou contacter l'assistance pour en obtenir, ceci peut vous aider : (0x80070643)
+## PC Health Check
+WindowsPCHealthCheckSetup.msi
+  Processeur : Intel Core i5-6300U CPU @ 2.40GHz  ain't enough for Win11...
+## Bulk Rename
+BRU_setup_3.4.4.0.exe  Ran some changes to off-tick 2 notifications
+## check fast startup off
+Panneau de configuration > Tous les Panneaux de configuration > Options d’alimentation
+  Choisir l'action des boutons d'alimentation > Activer le démarrage rapide  is off
+## KB5034441
+Gestion de disques  shows
+  100Mo - Partition du système EFI
+  C: 118,42 Go NTFS - Démarrer, Fichier d'échange, image mémoire après incident, Partition de données de base
+  722Mo - Partition de récupératon
+AIdc> reagentc /info
+AIdc> reagentc /disable  for  diskpart
+  list disk
+  sel disk 0
+  list part
+    N° partition   Type              Taille   Décalage
+    -------------  ----------------  -------  --------
+    Partition 1    Système            100 M   1024 K
+    Partition 2    Réservé             16 M    101 M
+    Partition 3    Principale         118 G    117 M
+    Partition 4    Récupération       722 M    118 G
+  sel part 3
+  shrink desired=250 minimum=200
+    Erreur du service de disque virtuel : La taille de réduction spécifiée est trop grande et le volume sera plus petit que la taille de volume minimale.
+  exit
+  reagentc /enable
+## Windows Backup
+Comptes > Sauvegarde Windows > Vérifier > trohib@gmail.com > Security code
+### remove symlink in ~\Documents
+ri ~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
+  cpi $MSWin10\MPSProfile.ps1 ~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
+ri ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+  cpi $MSWin10\MPSProfile.ps1 ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+## Windows ADK & Windows PE
+adksetup.exe  (C:\Program Files (x86)\Windows Kits\10\)
+  off-ticked all but  Outils de déploiement  around 130 Mo
+adkwinpesetup.exe  3,6 Go !
+## create bootable Windows PE media - fail
+Démarrage > Windows Kits > Environnement de déploiement et d’outils de création d’images
+  épinglé au menu Démarrer  then ran as Administrator
+    cd "..\Windows Preinstallation Environment\amd64"
+    md C:\WinPE_amd64\mount
+    Dism /Mount-Image /ImageFile:"en-us\winpe.wim" /index:1 /MountDir:"C:\WinPE_amd64\mount"
+    Xcopy "C:\WinPE_amd64\mount\Windows\Boot\EFI\bootmgr.efi" "Media\bootmgr.efi" /Y
+    Xcopy "C:\WinPE_amd64\mount\Windows\Boot\EFI\bootmgfw.efi" "Media\EFI\Boot\bootx64.efi" /Y
+    Dism /Unmount-Image /MountDir:"C:\WinPE_amd64\mount" /commit
+      Erreur : 0xc1420117
+        Le répertoire n’a pas pu être complètement démonté. Ce problème est généralement dû aux applications qui ont des fichiers encore ouverts dans le répertoire de montage. Fermez ces fichiers et réeffectuez le démontage afin de terminer le processus de démontage.
+        Le fichier journal DISM se trouve à l’emplacement C:\WINDOWS\Logs\DISM\dism.log
+    Dism /Unmount-Image /MountDir:"C:\WinPE_amd64\mount" /commit
+      Erreur : 0xc142011d
+        L’image montée spécifiée ne peut pas être revalidée dans le fichier WIM. Ce problème se produit lorsqu’une image a subi un démontage partiel ou lorsqu’une image est encore montée. Si cette image a été démontée avec une validation antérieure, la validation a probablement réussi. Veuillez vérifier si c’est le cas, puis effectuez un démontage sans validation.
+        Le fichier journal DISM se trouve à l’emplacement C:\WINDOWS\Logs\DISM\dism.log
+  exit
+## optimize-volume
+PS> Optimize-Volume -DriveLetter C -Analyze -Verbose
+  ...
+  Il n’est pas nécessaire de défragmenter ce volume.
+## MiniTool Partition Wizard Free v12.8
+pw-free-online.exe > édition gratuite > ShadowMaker off_ticked
+  Ran it for "Ne pas afficher ce message à nouveau."
+## Ghostscript v10.02.1 (in preparation for ImageMagick)
+gs10021w64.exe > C:\gs-10_02_1  rebooted
+## remove Windows PE
+Paramètres > Applications > Extensions de l'environnement de préinstallation Windows (Win PE) du Kit de déploiment et d'évaluation Windows 3,64 Go > Désinstaller
+## ExifTool v12.77
+cpi "$ITsc\forMSWin\exiftool(-k).exe" ~\AppData\Local\Microsoft\WindowsApps\exiftool.exe
+## Go
+go1.22.0.windows-amd64.msi > C:\Go\
+## WizTree v4.18
+wiztree_4_18_setup.exe > pas d'icônes
+## Rust for ripgrep
+(once Visual Studio) winget install rustup
+## ripgrep
+(once Rust) winget install burntsushi.ripgrep.msvc
+## Git v2.44.0
+## Thunderbird v115.8
+winget install mozilla.thunderbird
+winget uninstall mozilla.thunderbird
+winget install mozilla.thunderbird
+## unwanted HP Hotkey Support popup
+empty popup appearing each time I try to change the screen brightness
+Services > HP Hotkey UWP Service > Type de démarrage > (was Automatique) Désactivé
+rebooted
+## no BurntToast notifications from Powershell
+C:\Users\jharr\Documents\PowerShell\Modules\BurntToast\0.8.5\README.md
+rebooted  for  uninstall-module burnttoast
+APS> install-module burnttoast  got it in the same location and still no notifications...
+Settings > Apps & features > PowerShell > Uninstall
+Idc> winget install microsoft.powershell
+WT: [erreur 2147942402 (0x80070002) lors du lancement de `"C:\Users\jharr\AppData\Local\Microsoft\WindowsApps\Microsoft.PowerShell_8wekyb3d8bbwe\pwsh.exe"'] so
+  PowerShell > Ligne de commande > "C:\Program Files\PowerShell\7\pwsh.exe"
 ## waiting
-Go
+### reduce C:
+MiniTool Partition Wizard Free v12.8
+  right-clicked on C: > Déplacer/redimensionner > Taille de la partition > 118.15
+# build - WPS 0 PowerShellGet
+as Administrator, install-packageprovider nuget -force  got me  nuget 2.8.5.208
+as Administrator, update-module powershellget
+as Administrator, install-module powershellget -force
+install-module microsoft.powershell.psresourceget
+set-psrepository psgallery -installationpolicy trusted
+set-psresourcerepository psgallery -trusted
+# build - WPS 1 modules
+install-module burnttoast
+install-module posh-git
+install-module powercolorls
+install-module ps.checkmoduleupdates
+install-module psfzf
+install-module psscripttools
+install-module terminal-icons
+# build - WT 0 instalL
+https://www.microsoft.com/en-gb/p/windows-terminal-preview/9n0dx20hk701
+# build - WT 1 settings
+~\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
+chcp  reports  CodePage 850
+ctrl+, >
+  Démarrage > Profil par défaut > PowerShell
+  Interaction > M'avertir lorsque je ferme plusieurs onglets  off-slid  
+  PowerShell > Apparance >
+    Texte > Taille de police > 9
+    Transparence > Opacité de l'arrière plan > 80%
+  Windows PowerShell > Apparance > Texte > Taille de police > 9
+~\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
+## PowerShell
+defaults to  Cascadia Mono 9 Normal
+# physical configuration
+1920x1080 screen
+Intel Core i5-6300U
+SSD: 119Go
+## Startup Menu
+repeatedly hit  esc  at start to get into  Startup Menu
+repeatedly hit  f9  at start to get into  Boot Menu
+repeatedly hit  f10  at start to get into  BIOS Setup
+## waiting
+fit SD480GSSDPlus

@@ -6,21 +6,29 @@ vim: nospell:
     C:\Users\troin\AppData\Local\Microsoft\WindowsApps
     cpan -l > $machLg\cpanList.txt
     sl $copied\IT-handy\CP\TeX\LaTeX\structure\classes\memoir
+    yt-dlp -U  # update inplace
 
-`ctrl+m` on selected text opens it in `LanguageTool`
+- `ctrl+m` on selected text opens it in `LanguageTool`
+- Task Scheduler: `taskschd.msc`
+- WinRE
 
 # AutoHotkey
     $machBld\user\jo.ahk
 
 # build
+    $machBld
+    $machLg
     pt '$emd' $Drpbx\JH
     pt '$Pr0' $Drpbx\JH
 
 # fonts
-    C:\Windows\Fonts
+    sl C:\Windows\Fonts
     Get-ItemProperty -Path "Registry::\HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" | Format-List
 
-# IrfanView
+# imagey
+ExifTool by Phil Harvey
+
+## IrfanView
 - `Ctrl+Shift+a` Acquire/Batch Scanning
 - `p` Properties/Settings
 - `R` Reopen file
@@ -88,12 +96,12 @@ KeePassXC: Getting Started Guide
     gsp  # Ghostscript convert pdf to png
 
 ## Sumatra PDF
-- `Ctrl+6` view single pages
-- `Ctrl+7` view facing pages
-- `Ctrl+d` properties
-- `Ctrl+k` command palette
-- `Ctrl+Shift+Tab` go to previous tab
-- `Ctrl+Tab` go to next tab
+- `ctrl+6` view single pages (`ctrl+-` on AZERTY)
+- `ctrl+7` view facing pages (`ctrl+è` on AZERTY)
+- `ctrl+d` properties
+- `ctrl+k` command palette
+- `ctrl+shift+tab` go to previous tab
+- `ctrl+tab` go to next tab
 - `f12` = Afficher les signets
 - `r` reload
 - `z` toggle zoom between Fit Page, Fit Width, Fit Content
@@ -163,7 +171,8 @@ Gestionnaire de tâches
 ## internetworking
     whois 8.8.8.8
 
-Skype: `Ctrl+,` = `Menu > Settings`
+- Skype: `Ctrl+,` = `Menu > Settings`
+- `WiFi icon > Properties` (or `Settings > Network & Internet > WiFi > Hardware properties`)
 
 ### Windows Defender Firewall
     control firewall.cpl  # Control Panel > All Control Panel Items > Windows Defender Firewall

@@ -1,18 +1,18 @@
 # vim: fdl=2:
 
-# Joseph Harriott - Sat 12 Nov 2022
+# Joseph Harriott - Fri 09 Feb 2024
 
 # remove my  $Thb\Win10ProLock  if Thunderbird isn't running
 # ----------------------------------------------------------
-# see  $machBld\T91\runSafely.ps1
+# see  $machBld\Thb\runSafely.ps1
 #  test-path $Thb\Win10ProLock
+#  iex "$machBld\Thb\TaskScheduler\clearParentLock.ps1"
 
 # for  Task Scheduler
 #  APS> ni C:\MT-clearParentLock.ps1 -itemtype symboliclink -value $machBld\Thb\TaskScheduler\clearParentLock.ps1 -Force
-#   gc C:\MT-clearParentLock.ps1
-#  iex "$machBld\T91\TaskScheduler\clearParentLock.ps1"
-#  Import Task > $machBld\T91\TaskScheduler\removeParentLock.xml
-#   (Task will stop repeating if tweaked or Run manually - fix is to Sign in again...)
+#   csl C:\MT-clearParentLock.ps1
+#  Import Task > $machBld\Thb\TaskScheduler\removeParentLock.xml
+#   (Task will stop repeating if tweaked or Run manually - fix is to  Sign in  again...)
 
 # Test:
 #  ni -Path 'C:\Users\troin\Dropbox\JH\Thb-dr' -name 'Win10ProLock'
