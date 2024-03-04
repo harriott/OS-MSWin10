@@ -1,10 +1,7 @@
 
 # Joseph Harriott, Mon 26 Sep 2022
 
-# symlink this file ($MSWin10\PSProfile.ps1) to
-#  ~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
-#  ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
-#   - both done in  $MSWin10\symlinks.ps1
+# $MSWin10\PSProfile.ps1 (symlinked in  $MSWin10\symlinks.ps1) sourced by
 
 sal seco set-content  # because  sc  is overridden by  sc.exe
 sal ss select-string
@@ -23,12 +20,13 @@ function pro {
 } # needs to be on 3 lines
 
 function wl {
-  $wli = "$machLg/winget_list"
-  winget ls > $wli
-  $wlit  = "$wli.txt"
-  (gc $wli -raw) -replace "(?s).*------" > $wlit
-  ri $wli
-  gc $wlit | sort | select -skip 2 | seco $wlit
+  $mwgl = "$machLg/winget_list"
+  $l0 = $mwgl+'0'; winget ls > $l0
+  $l1 = $mwgl+'1'; (gc $l0 -raw) -replace "(?s).*------" > $l1
+  ri $l0
+  $lt  = "$mwgl.txt"; 'vim: set nowrap:' > $lt; '' >> $lt
+  gc $l1 | sort | select -skip 2 >> $lt
+  sleep 1; ri $l1
   'winget list  is in  $machLg/winget_list.txt'
 }
 
@@ -36,7 +34,9 @@ function stc {
   '"Nom de la tâche","Prochaine exécution","Statut"' > $machLg\schtasks.csv
   schtasks /fo csv /nh | sort-object | out-file -append $machlg\schtasks.csv
 }
-# ( schtasks /fo list | out-file $machlg\schtasks.txt -encoding utf8bom )
+# Alternatively:
+#  schtasks /fo list | out-file $machlg\schtasks.txt -encoding utf8bom
+#   ri $machlg\schtasks.txt
 
 #=> 0 convert images recursively
 Function mc {
@@ -321,12 +321,12 @@ $uname = $Env:USERNAME
       $Cfzd = "$DJH\Cafezoide"
         $CzPhy = "$Cfzd\PhysicalProperty"
       $copied = "$DJH\copied"
-        $cITh = "$copied\IT-handy"
       $core = "$DJH\core"
         $ITstack = "$core\IT_stack"
           $CrPl = "$ITstack\CP"
             $LTXj = "$CrPl\documenting\LaTeX\jo"
-          $ITsc = "$ITstack\copied"
+          $ITscc = "$ITstack\copied-code"
+          $ITscr = "$ITstack\copied-reference"
           $onGH = "$ITstack\onGitHub"
             $Cn = $Env:Computername
               $machLg = "$ITstack\MSWin\ml-$Cn"
@@ -408,19 +408,12 @@ $env:path +=';C:\vifm-w64-se-0.12-binary'
 
 #=> 1 place-dependent
 # cp $GHrUse/CP/wfxr-code-minimap/completions/powershell/_code-minimap.ps1 $ITsc/forMSWin/_code-minimap.ps1
-. $ITsc/forMSWin/_code-minimap.ps1
+. $ITscc/forMSWin/_code-minimap.ps1
 # $GHrUse/CP/wfxr-code-minimap/README.md
-. $machBld\PSProfile.ps1  # also uses $onGH ($MSWin10/PSProfile.ps1)
-
-#==> bat
-. $MSwin10\_bat.ps1
-# completion
-function f { Invoke-Fzf -preview 'bat --color=always {}' }
-sal b bat
-function bd { bat -d $args[0] }  # showing changes from git index
+. $machBld\PSProfile.ps1
 
 #==> documenting
-function xc { iex "$Env:LocalAppData\SumatraPDF\SumatraPDF.exe $Drpbx\JH\Copied\IT-handy\TeX\LaTeX\Appearance\xcolor.pdf -page 38" }
+function xc { iex "su $ITscr\CP\TeX\LaTeX\appearance\colour\xcolor.pdf -page 38" }
 
 #===> MiKTeX
 Function x { xelatex -halt-on-error --max-print-line=110 $args[1] $args[0] }
@@ -508,4 +501,10 @@ function jt { sl $JHm; ri tag\*; python $JHm\_plugins\compile_tags.py; sl tag; }
 # and settings for PSReadLine
 
 # see  $MSWin10\quickReference.txt
+
+#==> sharkdp/bat
+# completion
+function f { Invoke-Fzf -preview 'bat --color=always {}' }
+sal b bat
+function bd { bat -d $args[0] }  # showing changes from git index
 

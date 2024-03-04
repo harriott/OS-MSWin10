@@ -7,7 +7,10 @@ HP EliteBook 840 G3 barcoded PC117862 (labelled BC PNB 17 by last owner) = HPEB8
 # build - parallel
 Google Chrome somehow there
 Paramètres > Écran > Éclairage nocturne > Activé
-winget install altsnap
+## AltSnap
+winget add altsnap
+  APS> schtasks /create /f /tn "AltSnap onlogon" /tr "$Env:AppData\AltSnap\AltSnap.exe" /sc onlogon /rl highest
+  PS> $ASi="~\AppData\Roaming\AltSnap\AltSnap.ini"; (gc $ASi).replace('AutoSnap=2','AutoSnap=0') | seco -encoding utf8 $ASi
 ## Desktop Background
 Paramètres > [ Personnalisation > Arrière-plan > Couleur unie
 Système > Écran > Mise à l'échelle et disposition > Modifier la taille du texte des applications et d'autres éléments > 100%
@@ -19,21 +22,33 @@ Ctrl+P ( = Tools > Options ) > General >
     Autoriser le clic double dans la colonne des chemin ]
   Polices and couleurs >
     Couleur d'avant plan > Personnalisé > selected a white
-    Couleur d'arrière plan > Personnalisé > selected a lime
+    Couleur d'arrière plan > Personnalisé > selected a olive
+## FastStone Image Viewer
+with an image open, e  for  C:\Program Files\IrfanView\i_view64.exe 
 ## File Explorer
 Affichage > Options > Affichage > [ [ Afficher l'icône des fichiers sure les miniatures  Afficher la barre d'état ] off-ticked  Afficher le chemin d'accès complet dans la barre de titre  on-ticked  Afficher les fichiers, dossier et lecteurs cachés  [ Masquer les extensions des fichiers dont le type est connu  Masquer les fichier protégés du système d'exploitation ]  off-ticked
-## Notepad++
-winget install --name notepad++
-Alt+p (Paramètres) > Préférences > Mode Sombre > Mode sombre > Suivre Windows
-## language pack - UK
-win+i (= Paramètres) > Heure et langue > Langue > Langues préférées > Ajouter une langue >
-  English (United Kingdom) > Installer
-## File Explorer > View > Options > View > Display the full path in the title bar
 ## Gestionnaire de tâches
 Options > Masquer l'icône réduite
 hidden icon dragged to taskbar
+## IrfanView
+winget add IrfanSkiljan.IrfanView -h  went to  "C:\Program Files\IrfanView\i_view64.exe"
+ran it for  P (= Properties/Settings) > [ JPG > Auto-rotate off  Editing > Cut White ]
+winget add IrfanSkiljan.IrfanView.PlugIns -h
+## language pack - UK
+win+i (= Paramètres) > Heure et langue > Langue > Langues préférées > Ajouter une langue >
+  English (United Kingdom) > Installer
+## modules
+$env:psmodulepath -split (';')
+  C:\Users\jharr\Documents\PowerShell\Modules
+  C:\Program Files\PowerShell\Modules
+  c:\program files\powershell\7\Modules
+  C:\Program Files\WindowsPowerShell\Modules
+  C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+## Notepad++
+winget add --name notepad++
+Alt+p (Paramètres) > Préférences > Mode Sombre > Mode sombre > Suivre Windows
 ## Process Explorer
-sl $ITsc\forMSWin\ProcessExplorer
+sl $ITscc\forMSWin\ProcessExplorer
   for  cpi procexp64.exe $Env:LOCALAPPDATA\Microsoft\WindowsApps
 ran it for
   alt+o (= Options) > i (= Tray Icons) > p (= Physical Memory History)
@@ -41,12 +56,34 @@ ran it for
   alt+o (= Options) > l (= Run At Logon) ]
 ## Sécurité Windows
 pinned to Start
+## sharkdp/bat
+winget add sharkdp.bat
+## sharkdp.fd
+winget add sharkdp.fd
+### path modified
+  Variable d'environnement de chemin modifiée ; redémarrez votre interpréteur de commandes pour utiliser la nouvelle valeur.
+  Alias de ligne de commande ajouté : "bat"
+and, yes, it added  "C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.bat_Microsoft.Winget.Source_8wekyb3d8bbwe\bat-v0.24.0-x86_64-pc-windows-msvc;;"
+#### fix ;;
+$oldPathCU = (gp -path 'registry::hkcu\environment' -name path).path
+$oldPathCU
+  C:\Users\jharr\.cargo\bin;C:\Users\jharr\AppData\Local\Microsoft\WindowsApps;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\BurntSushi.ripgrep.MSVC_Microsoft.Winget.Source_8wekyb3d8bbwe\ripgrep-14.1.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.bat_Microsoft.Winget.Source_8wekyb3d8bbwe\bat-v0.24.0-x86_64-pc-windows-msvc;
+##### remove trailing ;
+$newPathCU = $oldPathCU -replace ';$', ''
+$newPathCU
+sp -path 'registry::hkcu\environment' -name path -value $newPathCU
 ## stop individual Edge tabs showing in task switcher
 Paramètres > System > Multitâche > Alt + Tab > Uniquement les fenêtres ouvertes
+## Thunderbird
+winget add mozilla.thunderbird -h -l C:\MT
+ran it to get  C:\Users\jharr\AppData\Roaming\Thunderbird\Profiles\q6qwq868.default-release
+  which I emptied, and then edited  C:\Users\jharr\AppData\Roaming\Thunderbird\profiles.ini
+    [Profile0] section:
+      Name=default-release
+      IsRelative=0
+      Path=C:\Users\jharr\Dropbox\JH\Thb-dr
+ran it for (default-release) Démarrer Thunderbird)
 ## waiting
-schtasks /create /f /tn "RunAltSnap" /tr "$Env:AppData\AltSnap\AltSnap.exe" /sc onlogon /rl highest
-## WT > Azure
-c-, (= Settings) > Azure Cloud Shell > Masquez le profil de la liste déroulante > Activé
 # build - PS 0 PSGallery
 Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 # build - PS 1 modules
@@ -56,6 +93,7 @@ Install-Module PowerColorLS -Repository PSGallery
 install-module powershell.chunks
 Install-Module -Name ps.checkModuleUpdates
 install-module psscripttools
+install-module pswritecolor
 install-module psfzf
 Install-Module Terminal-Icons -Repository PSGallery
 Install-Module ZLocation
@@ -66,7 +104,7 @@ Utilisateur
 connected to  Jo-X10II
 Mise à jour et sécurité > Windows Update > Updated to Windows 10 version 22H2
 connected to  Jo-OPPO-A76
-Menu > Système Windows > [ Invite de Commandes  Outils d’administration  Panneau de configuration ] >
+Menu > Système Windows > [ Invite de Commandes  Outils d'administration  Panneau de configuration ] >
   Pinned to Start
 Menu > [ Disnéy  Microsoft 365 ] > right-click > Désintaller
 Settings > Système > Alimentation et mise en veille > Paramètres d'alimentation supplémentaire > Choisir l'action des boutons d'alimentation > [ Modifier des paramètres actuellement non disponibles > Activer le démarrage rapide  off-ticked  Lorsque je referme le capot > Sur secteur > Ne rien faire ]
@@ -148,7 +186,7 @@ allowed  MINGW64  for  A ~/.bash_profile that loads ~/.bashrc will be created fo
 Paramètres > Applications > Terminal > Désinstaller  then  win+x > Redémarrer
   then re-installed from Microsoft Store
 ## fzf (for PSFzf)
-sl $ITsc  for  cpi fzf.exe $Env:LOCALAPPDATA\Microsoft\WindowsApps
+sl $ITscc  for  cpi fzf.exe $Env:LOCALAPPDATA\Microsoft\WindowsApps
   fzf --version
 ## 7-Zip
 7z2301-x64.exe
@@ -178,6 +216,7 @@ restarted Edge
 SumatraPDF-3.5.2-64-install.exe >
   Options > [ Installer pour tout les utilisateurs
   Permettre à Windows de montrer des aperçus des documents PDF ] onticked > Ccu > Oui
+"C:\Program Files\SumatraPDF\SumatraPDF.exe"
 ## HP Smart
 in Microsoft Store > Installer
 Se connecter  found  HPA22F0E (ENVY 5530)
@@ -228,7 +267,7 @@ WindowsPCHealthCheckSetup.msi
 ## Bulk Rename
 BRU_setup_3.4.4.0.exe  Ran some changes to off-tick 2 notifications
 ## check fast startup off
-Panneau de configuration > Tous les Panneaux de configuration > Options d’alimentation
+Panneau de configuration > Tous les Panneaux de configuration > Options d'alimentation
   Choisir l'action des boutons d'alimentation > Activer le démarrage rapide  is off
 ## KB5034441
 Gestion de disques  shows
@@ -263,7 +302,7 @@ adksetup.exe  (C:\Program Files (x86)\Windows Kits\10\)
   off-ticked all but  Outils de déploiement  around 130 Mo
 adkwinpesetup.exe  3,6 Go !
 ## create bootable Windows PE media - fail
-Démarrage > Windows Kits > Environnement de déploiement et d’outils de création d’images
+Démarrage > Windows Kits > Environnement de déploiement et d'outils de création d'images
   épinglé au menu Démarrer  then ran as Administrator
     cd "..\Windows Preinstallation Environment\amd64"
     md C:\WinPE_amd64\mount
@@ -271,18 +310,18 @@ Démarrage > Windows Kits > Environnement de déploiement et d’outils de créa
     Xcopy "C:\WinPE_amd64\mount\Windows\Boot\EFI\bootmgr.efi" "Media\bootmgr.efi" /Y
     Xcopy "C:\WinPE_amd64\mount\Windows\Boot\EFI\bootmgfw.efi" "Media\EFI\Boot\bootx64.efi" /Y
     Dism /Unmount-Image /MountDir:"C:\WinPE_amd64\mount" /commit
-      Erreur : 0xc1420117
-        Le répertoire n’a pas pu être complètement démonté. Ce problème est généralement dû aux applications qui ont des fichiers encore ouverts dans le répertoire de montage. Fermez ces fichiers et réeffectuez le démontage afin de terminer le processus de démontage.
-        Le fichier journal DISM se trouve à l’emplacement C:\WINDOWS\Logs\DISM\dism.log
+      Erreur : 0xc1420117
+        Le répertoire n'a pas pu être complètement démonté. Ce problème est généralement dû aux applications qui ont des fichiers encore ouverts dans le répertoire de montage. Fermez ces fichiers et réeffectuez le démontage afin de terminer le processus de démontage.
+        Le fichier journal DISM se trouve à l'emplacement C:\WINDOWS\Logs\DISM\dism.log
     Dism /Unmount-Image /MountDir:"C:\WinPE_amd64\mount" /commit
-      Erreur : 0xc142011d
-        L’image montée spécifiée ne peut pas être revalidée dans le fichier WIM. Ce problème se produit lorsqu’une image a subi un démontage partiel ou lorsqu’une image est encore montée. Si cette image a été démontée avec une validation antérieure, la validation a probablement réussi. Veuillez vérifier si c’est le cas, puis effectuez un démontage sans validation.
-        Le fichier journal DISM se trouve à l’emplacement C:\WINDOWS\Logs\DISM\dism.log
+      Erreur : 0xc142011d
+        L'image montée spécifiée ne peut pas être revalidée dans le fichier WIM. Ce problème se produit lorsqu'une image a subi un démontage partiel ou lorsqu'une image est encore montée. Si cette image a été démontée avec une validation antérieure, la validation a probablement réussi. Veuillez vérifier si c'est le cas, puis effectuez un démontage sans validation.
+        Le fichier journal DISM se trouve à l'emplacement C:\WINDOWS\Logs\DISM\dism.log
   exit
 ## optimize-volume
 PS> Optimize-Volume -DriveLetter C -Analyze -Verbose
   ...
-  Il n’est pas nécessaire de défragmenter ce volume.
+  Il n'est pas nécessaire de défragmenter ce volume.
 ## MiniTool Partition Wizard Free v12.8
 pw-free-online.exe > édition gratuite > ShadowMaker off_ticked
   Ran it for "Ne pas afficher ce message à nouveau."
@@ -291,32 +330,46 @@ gs10021w64.exe > C:\gs-10_02_1  rebooted
 ## remove Windows PE
 Paramètres > Applications > Extensions de l'environnement de préinstallation Windows (Win PE) du Kit de déploiment et d'évaluation Windows 3,64 Go > Désinstaller
 ## ExifTool v12.77
-cpi "$ITsc\forMSWin\exiftool(-k).exe" ~\AppData\Local\Microsoft\WindowsApps\exiftool.exe
+cpi "$ITscc\forMSWin\exiftool(-k).exe" ~\AppData\Local\Microsoft\WindowsApps\exiftool.exe
 ## Go
 go1.22.0.windows-amd64.msi > C:\Go\
 ## WizTree v4.18
 wiztree_4_18_setup.exe > pas d'icônes
 ## Rust for ripgrep
-(once Visual Studio) winget install rustup
+(once Visual Studio) winget add rustup
 ## ripgrep
-(once Rust) winget install burntsushi.ripgrep.msvc
+(once Rust) winget add burntsushi.ripgrep.msvc
 ## Git v2.44.0
 ## Thunderbird v115.8
-winget install mozilla.thunderbird
-winget uninstall mozilla.thunderbird
-winget install mozilla.thunderbird
+winget add mozilla.thunderbird
+winget rm mozilla.thunderbird
 ## unwanted HP Hotkey Support popup
 empty popup appearing each time I try to change the screen brightness
 Services > HP Hotkey UWP Service > Type de démarrage > (was Automatique) Désactivé
 rebooted
-## no BurntToast notifications from Powershell
+## no BurntToast notifications from PowerShell
 C:\Users\jharr\Documents\PowerShell\Modules\BurntToast\0.8.5\README.md
 rebooted  for  uninstall-module burnttoast
 APS> install-module burnttoast  got it in the same location and still no notifications...
 Settings > Apps & features > PowerShell > Uninstall
-Idc> winget install microsoft.powershell
+Idc> winget add microsoft.powershell
 WT: [erreur 2147942402 (0x80070002) lors du lancement de `"C:\Users\jharr\AppData\Local\Microsoft\WindowsApps\Microsoft.PowerShell_8wekyb3d8bbwe\pwsh.exe"'] so
   PowerShell > Ligne de commande > "C:\Program Files\PowerShell\7\pwsh.exe"
+New-BurntToastNotification
+## Sumatra PDF v3.5.2
+winget add SumatraPDF -h -l C:\SumatraPDF
+##  update-help
+  Update-Help: Failed to update Help for the module(s) 'AppBackgroundTask, Appx, AssignedAccess, BitLocker, BitsTransfer, BranchCache, CimCmdlets, Defender, DirectAccessClientComponents, Dism, DnsClient, EventTracingManagement, International, Kds, LanguagePackManagement, LAPS, Microsoft.PowerShell.Archive, Microsoft.PowerShell.Core, Microsoft.PowerShell.Diagnostics, Microsoft.PowerShell.Host, Microsoft.PowerShell.LocalAccounts, Microsoft.PowerShell.Management, Microsoft.PowerShell.Operation.Validation, Microsoft.PowerShell.PSResourceGet, Microsoft.PowerShell.Security, Microsoft.PowerShell.Utility, Microsoft.WSMan.Management, MMAgent, NetAdapter, NetConnection, NetEventPacketCapture, NetLbfo, NetNat, NetQos, NetSecurity, NetSwitchTeam, NetTCPIP, NetworkConnectivityStatus, NetworkSwitchManager, NetworkTransition, PackageManagement, PcsvDevice, PKI, PnpDevice, PowerShellGet, PrintManagement, ProcessMitigations, Provisioning, PSDiagnostics, PSReadLine, ScheduledTasks, SecureBoot, SmbShare, SmbWitness, StartLayout, Storage, ThreadJob, TLS, TroubleshootingPack, TrustedPlatformModule, UEV, VpnClient, Wdac, Whea, WindowsDeveloperLicense, WindowsErrorReporting, WindowsSearch, WindowsUpdate' with UI culture(s) {fr-FR} : No UI culture was found that matches the following pattern: fr-FR. Verify the pattern and then try the command again..
+  Update-Help: Failed to update Help for the module(s) 'ConfigDefenderPerformance, PSReadline' with UI culture(s) {fr-FR} : One or more errors occurred. (Response status code does not indicate success: 404 (The specified blob does not exist.).).
+  English-US help content is available and can be installed using: Update-Help -UICulture en-US.
+update-help -uiculture en-gb
+update-help -uiculture en-us
+## ImageMagick
+winget add imagemagick  went to  "C:\Program Files\ImageMagick-7.1.1-Q16-HDRI"
+fresh PowerShell for:  magick wizard: wizard.jpg
+  then  magick wizard.jpg win:  first time generated an IMDisplay
+    "C:\Users\troin\AppData\Local\Temp\magick-<weirdCode> was not found"
+    2nd run, got the jpg opened in IMDisplay   ri wizard.jpg
 ## waiting
 ### reduce C:
 MiniTool Partition Wizard Free v12.8
@@ -339,18 +392,17 @@ install-module terminal-icons
 # build - WT 0 instalL
 https://www.microsoft.com/en-gb/p/windows-terminal-preview/9n0dx20hk701
 # build - WT 1 settings
-~\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
 chcp  reports  CodePage 850
-ctrl+, >
+ctrl+, (= Settings)
+  Azure Cloud Shell > Masquez le profil de la liste déroulante > Activé
   Démarrage > Profil par défaut > PowerShell
   Interaction > M'avertir lorsque je ferme plusieurs onglets  off-slid  
   PowerShell > Apparance >
     Texte > Taille de police > 9
     Transparence > Opacité de l'arrière plan > 80%
+    Type de police > Cascadia Mono
   Windows PowerShell > Apparance > Texte > Taille de police > 9
 ~\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
-## PowerShell
-defaults to  Cascadia Mono 9 Normal
 # physical configuration
 1920x1080 screen
 Intel Core i5-6300U

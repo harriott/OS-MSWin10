@@ -19,6 +19,7 @@ vim: nospell:
 - `PS> cmd` then `exit`
 
 ## environment variables
+    echo %LOCALAPPDATA%  # C:\Users\<user>\AppData\Local
     echo %username%
     echo %userprofile%
         echo %appdata%
@@ -58,62 +59,36 @@ vim: nospell:
     $myinvocation.mycommand.name  # = the script's name
     $MSwin10\gac.ps1  # to explore all commands
     '"Hello world"'
-    <command> | Out-Null  # works for some commands
     1..3
-    (gc $file | select -skip 3) | sc $file  # removes first 3 lines
-    Alt > Space > E > L > [ up / down  to scroll   Esc ]
-    iex <someCommand>  # = invoke-expression
     less <someFile>
     foreach($element in 1..3){ $element }
-    get-package | Format-Table -AutoSize
-    PowerShell -NoProfile
+    powershell -noprofile
     sleep 1
 
-`$_` = `$PSItem` = current object in the pipeline object
-`measure-object` = `measure`
+- `Alt > Space > E > L > up/down` to scroll, then `Esc`
+- `$_` = `$PSItem` = current object in the pipeline object
 
-## aliases
+## alias manage
 limited to single commands
 
-### Get-Alias
+### ?-Alias
     gal -Definition Get-ChildItem
+    gal h*
     gal ls
     gal | sort Source | ft -view Source
-
-### standard
-    gal h*
     nal <alias> <string>
     sal <alias> <string>
-
-## cmdlets
-    get-commandsyntax <command>
-
-- `format-table`: `ft`
-- `get-content`: `cat`, `gc`, `type`
-- `get-item`: `gi`
-- `invoke-expression`: `iex`
-- `select-string`: `sls`
-
-### get-command
-    (gcm <function>).scriptblock  # shows what's in <function>
 
 ## colour
     [System.Enum]::GetValues('ConsoleColor') | ForEach-Object { Write-Host $_ -ForegroundColor $_ }
     iex "$ITstack\MSWin\PowerShell\colours\ConsoleColor.ps1"
     iex "$ITstack\MSWin\PowerShell\colours\LindbergColors.ps1"
     iex "$onGH\misc\Colors.ps1"
-    Write-Color -Text 'Red ', 'Green ', 'Yellow ' -Color Red,Green,Yellow
-
-### PSScriptTools
-    Get-PSSessionInfo
-
-#### bars
-    New-ANSIBar -Range (232..255)
-    New-RedGreenGradient
+    PSScriptTools
+    write-color -text 'red ', 'green ', 'yellow ' -color red,green,yellow
 
 ## data
     $x.GetType()
-    Get-MyVariable
 
 ### arrays
     $a = 1,'a',2,'b'
@@ -126,7 +101,7 @@ limited to single commands
     'me'+'et'
     $string.trim()  # removes whitespaces (including newlines) from ends
     [string]$Pwd
-    Format-String PowerShell -Randomize
+    format-string powershell -randomize
     if ( '5' -ne '4' ) { '5 is not 4' }
 
 ## datetime
@@ -143,25 +118,35 @@ no standard aliases
 
 ## executables
     cd 'C:\Program Files'
-    (Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* ).displayname | Sort-Object  # lists removable x64 programs
+    (gp hklm:\software\microsoft\windows\currentversion\uninstall\* ).displayname | sort  # lists removable x64 programs
     C:\MozillaThunderbird\thunderbird.exe -addressbook
     C:\Windows\explorer.exe "microsoft-edge:searchterm"
     gcm explorer
     explorer shell:Appsfolder  # Applications
     start <somefile>
+
+### where.exe
     where.exe gpg
     where.exe pwsh
-    where.exe where.exe  # doesn't find executables in  ~\AppData\
+    where.exe sumatrapdf
+    where.exe where.exe
+
+doesn't find executables in `~\AppData\`
+
+## file contents
+    (gc $file | select -skip 3) | sc $file  # removes first 3 lines
 
 ## foreach-object
 - `%` = `foreach`
 - not the `foreach` loop statement
 
 ## help
-    Get-Help Start-BitsTransfer
+    get-help Start-BitsTransfer
     man <cmdlet>  # Get-Help, paged
     powershell /?
     Update-Help -UICulture en-US
+
+`F1` dynamic help (= `PSReadLine ShowCommandHelp` on command closest to left of cursor)
 
 ## history
     Get-LastModifiedFile
@@ -169,6 +154,27 @@ no standard aliases
 ### command history
     gvim (Get-PSReadlineOption).HistorySavePath
     h  # Get-History
+
+## microsoft.powershell.core
+    <command> | out-null  # works for some commands
+
+## microsoft.powershell.management
+- `gc` (= `cat` = `type` = `get-content`)
+- `gp` (= `get-itemproperty`)
+
+### get-process
+    ps | oh -paging
+    ps | ?{$_.mainwindowtitle} | ft id, name, mainwindowtitle -autosize
+
+## microsoft.powershell.psresourceget
+    get-installedpsresource
+    get-psresourcerepository
+
+## microsoft.powershell.utility
+    iex <someCommand>  # = invoke-expression
+
+- `measure` (= `measure-object`)
+- `sort` (= `sort-object`)
 
 ## networking
     wp
@@ -178,46 +184,65 @@ no standard aliases
     ip
     Get-WhoIs 8.8.8.8
 
-## modules
-    $env:psmodulepath -split (';')
+## package manage
+    get-package | format-table -autosize
+
+### modules
     get-module
     get-module -all
     get-module -listavailable  # details, including old and those in  Windows PowerShell
     gvim $env:localappdata\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
     New-BurntToastNotification
     pc  # PowerColorLS
+
+#### help
+    *.help.txt
+    update-help -uiculture en-us
+    ~\Documents\PowerShell\Help\en-US\about_Regular_Expressions.help.txt
+
+#### paths
+    $env:psmodulepath -split (';')
+    $pshome/Modules
     ~\Documents\PowerShell\Modules
 
-### Microsoft.PowerShell.PSResourceGet
-    Get-InstalledPSResource
-    Get-PSResourceRepository
+#### powershellget
+    get-installedmodule
+    get-psrepository
 
-### PowerShellGet
-    Get-InstalledModule
-    Get-PSRepository
+#### update
+    $machBld\updateModules.ps1  # for reference
+    compare-module | where updateneeded | foreach { update-module $_.name }  # slow but reliable
 
-### PSScriptTools
+## PSScriptTools
     Get-MyAlias  # limited to  PSScriptTools
     Get-DirectoryInfo  # alias  dw
     Get-MyVariable
     Get-PathVariable
+    get-powershellengine -detail
     Get-PSSessionInfo
     Get-PSScriptTools  # synopsi of commands
     Get-TZData Europe/Paris
     Get-WhoIs 8.8.8.8
     Open-PSScriptToolsHelp
 
-#### compact lists
+### colours
+    Get-PSSessionInfo
+
+#### bars
+    New-ANSIBar -Range (232..255)
+    New-RedGreenGradient
+
+### compact lists
     Get-ModuleCommand ps.checkModuleUpdates
     Get-ModuleCommand PSScriptTools
 
-#### Show-Tree
+### Show-Tree
     pstree -?
     t [n]  => pstree <depth>
 
 `-InColor` only works in `Windows PowerShell`
 
-### PSFzf
+## PSFzf
     Alt+a   # select an argument
     Alt+c   # change to sub-directory
     Ctrl+r  # search PSReadline History
@@ -225,10 +250,6 @@ no standard aliases
     Invoke-Fzf -?
 
 tab completion
-
-### update
-    $machBld\updateModules.ps1  # for reference
-    compare-module | where updateneeded | foreach { update-module $_.name }  # slow but reliable
 
 ## Ruby
     where.exe irb
@@ -248,7 +269,6 @@ tab completion
 
 ### investigations
     bat <textFile>  # with beautiful formatting and less paging
-    csl  # symlink targets in green or red
     dw -?
     dw  # directory counts
     f  # fzf preview files with bat
@@ -257,6 +277,10 @@ tab completion
     if ( ! ( test-path 'dir' ) ) { ni -name 'dir' -type directory }
     pc -a -l -t  # includes hidden & time sorted
     stringInVims "string"
+
+#### symlinks
+    csl  # targets in green or red
+    gci -force | ?{$_.linktype}
 
 #### by extension
     cex
@@ -325,10 +349,19 @@ aliases: `cat`, `type`
 
 `md` = `mkdir`, which calls `new-item`
 
+## stray cmdlets
+    get-commandsyntax <command>
+
+- `format-table`: `ft`
+- `get-item`: `gi`
+- `select-string`: `sls`
+
+### get-command
+    (gcm <function>).scriptblock  # shows what's in <function>
+
 ## system info
     $profile
-    (get-ciminstance win32_operatingsystem) | select-object -property version, caption
-    get-powershellengine -detail
+    (gcim win32_operatingsystem) | select -property version, caption
     get-pslocation
     get-pswho
     get-windowsupdatelog  # creates  $HOME\Desktop\WindowsUpdate.log
@@ -357,9 +390,14 @@ aliases: `cat`, `type`
     $env:Path -split ';'
     Get-PathVariable
 
+### registry
+    $oldPathCU = (gp -path ‘registry::hkcu\environment’ -name path).path; $oldPathCU -split ';'
+    $oldPathLM = (gp -path ‘registry::hklm\system\currentcontrolset\control\session manager\environment’ -name path).path; $oldPathLM -split ';'
+
 ## text wrangling
+    'boob' -replace 'b$', ''
     "Hello".Replace('l', 'x')
-    (get-content $file) -replace $regex, $newtext | Set-Content $file
+    (gc $file) -replace $regex, $newtext | seco $file
 
 ## version
     $PSVersionTable
@@ -371,7 +409,7 @@ aliases: `cat`, `type`
 
 # Windows Package Manager
     winget --info
-    winget install altsnap
+    winget add altsnap  # install
     winget search powershell
     winget upgrade --all
     winget upgrade google.chrome
@@ -402,13 +440,14 @@ aliases: `cat`, `type`
 ### key-binds
     Settings > Actions
 
-- `alt+D` duplicate pane right
-- `alt+_` split pane below
-- `alt++` split pane right
-- `alt+arrow` move focus
-- `ctrl+c` copy text
-- `ctrl+T` new tab
-- `ctrl+W` close pane
-- `ctrl+Shift+PgUp` scroll up a page
-- `ctrl(+Shift)+Tab` move to next (previous) tab
+- `Alt+D` duplicate pane right
+- `Alt+_` split pane below (AZERTY `Alt+Shift+-`)
+- `Alt++` split pane right
+- `Alt+arrow` move focus
+- `Ctrl+c` copy text
+- `Ctrl+Shift+f` find
+- `Ctrl+Shift+t` new tab
+- `Ctrl+Shift+w` close pane
+- `Ctrl+Shift+PgUp` scroll up a page
+- `Ctrl(+Shift)+Tab` move to next (previous) tab
 

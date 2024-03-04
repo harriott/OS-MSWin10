@@ -54,8 +54,3 @@ reagentc /info  reports it to be in  C:\Recovery\WindowsRE  so
 ## dropbox.com
 Signed in > DropboxInstaller.exe > English & Selective sync
 ## waiting
-ExifTool v12.77
-Go
-### reduce C:
-MiniTool Partition Wizard Free v12.8
-  right-clicked on C: > Déplacer/redimensionner > Taille de la partition > 118.15

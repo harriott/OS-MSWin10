@@ -29,7 +29,8 @@ vim: nospell:
 ExifTool by Phil Harvey
 
 ## IrfanView
-- `Ctrl+Shift+a` Acquire/Batch Scanning
+- `ctrl+shift+a` Acquire/Batch Scanning
+- `ctrl+t` Insert text
 - `p` Properties/Settings
 - `R` Reopen file
 - `r` rotate right
