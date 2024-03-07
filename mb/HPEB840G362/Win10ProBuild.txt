@@ -382,10 +382,12 @@ rebooted for  MiKTeX Console  which got me a necessary update
 ~\AppData\Local\MiKTeX  created at some point
 sl $jtIT\CP\TeX\distro-MiKTeX\miktex-xetex  for  x mwe.tex  and off_ticked "Always show this dialog"
 ## Pandoc
-winget add JohnMacFarlane.Pandoc  got  C:\Users\jharr\AppData\Local\Pandoc\pandoc.exe
-sl $CrPl\Pandoc  for  
-  pandoc --toc --toc-depth=6 -f markdown_strict toCdepth6MWE.md -o toCdepth6MWE.pdf
-  - took a while for MiKTeX to download all the necessary packages
+after MiKTeX
+  winget add JohnMacFarlane.Pandoc  got  C:\Users\jharr\AppData\Local\Pandoc\pandoc.exe
+    sl $CrPl\Pandoc  for  
+      pandoc --toc --toc-depth=6 -f markdown_strict toCdepth6MWE.md -o toCdepth6MWE.pdf
+      - took a while for MiKTeX to download all the necessary packages
+    md $tex\latex\m4p
 ## path too long for gVim swap
 gp -path "registry::\hklm\system\currentcontrolset\control\filesystem" | fl -property longpathsenabled
 sp 'hklm:\system\currentcontrolset\control\filesystem' -name 'longpathsenabled' -value 1

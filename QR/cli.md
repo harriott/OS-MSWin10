@@ -42,6 +42,7 @@ vim: nospell:
 
 # MiKTeX
     ~\AppData\Local\MiKTeX\miktex\log\initexmf.log
+    ~\AppData\Local\MiKTeX\miktex\log\miktex-makemf.log
     ~\AppData\Local\Programs\MiKTeX\miktex\config\xelatex.ini
 
 # The Platinum Searcher
@@ -138,7 +139,7 @@ no standard aliases
 doesn't find executables in `~\AppData\`
 
 ## file contents
-    (gc $file | select -skip 3) | sc $file  # removes first 3 lines
+    (gc $file | select -skip 3) | seco $file  # removes first 3 lines
 
 ## foreach-object
 - `%` = `foreach`
@@ -161,6 +162,9 @@ doesn't find executables in `~\AppData\`
 
 ## microsoft.powershell.core
     <command> | out-null  # works for some commands
+
+### get-command
+    (gcm <function>).scriptblock  # shows what's in <function>
 
 ## microsoft.powershell.management
 - `gc` (= `cat` = `type` = `get-content`)
@@ -361,9 +365,6 @@ aliases: `cat`, `type`
 - `format-table`: `ft`
 - `get-item`: `gi`
 - `select-string`: `sls`
-
-### get-command
-    (gcm <function>).scriptblock  # shows what's in <function>
 
 ## system info
     $profile

@@ -7,6 +7,19 @@ sal seco set-content  # because  sc  is overridden by  sc.exe
 sal ss select-string
 sal su C:\SumatraPDF\SumatraPDF.exe
 
+function fonts {
+  $mf0 = "$machLg\fonts-fl"
+  $mf1 = $mf0+'-1'
+  gp -path "registry::\hklm\software\microsoft\windows nt\currentversion\fonts" | fc > $mf1
+  (gc $mf1 | select -skip 3) | seco $mf1
+  $mf2 = $mf0+'-2'
+  (gc $mf1 -raw) -replace "(?s)  PSPath.*" > $mf2
+  $mf3 = $mf0+'.wntf'
+  '' > $mf3
+  (gc $mf2).trim() >> $mf3
+  # (gc $mf2).trim() | seco $mf2
+}
+
 function GNFR {
   $FRlist = Get-NetFirewallRule | out-string
   $FRlf = "$machLg\FirewallRules.txt"

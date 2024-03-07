@@ -23,7 +23,7 @@ vim: nospell:
 
 # fonts
     sl C:\Windows\Fonts
-    Get-ItemProperty -Path "Registry::\HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" | Format-List
+    gp -path "registry::\hklm\software\microsoft\windows nt\currentversion\fonts" | fl > $machLg/fonts-fl.txt
 
 # imagey
 ExifTool by Phil Harvey
@@ -151,6 +151,16 @@ KeePassXC: Getting Started Guide
 - `ctrl+space` toggle PowerToys Peek
 - Explorateur de fichiers
 
+## internetworking
+    whois 8.8.8.8
+
+- Skype: `Ctrl+,` = `Menu > Settings`
+- `WiFi icon > Properties` (or `Settings > Network & Internet > WiFi > Hardware properties`)
+
+### Windows Defender Firewall
+    control firewall.cpl  # Control Panel > All Control Panel Items > Windows Defender Firewall
+    wf (= C:\WINDOWS\system32\wf.msc) # Windows Defender Firewall with Advanced Security, where Rules can be seen
+
 ## Microsoft Defender Antivirus
     PS> get-mpthreatdetection
     APS> start-mpwdoscan
@@ -167,14 +177,4 @@ requires a Windows Recovery partition to be present
     C:\WINDOWS\system32\Taskmgr.exe
 
 Gestionnaire de tâches
-
-## internetworking
-    whois 8.8.8.8
-
-- Skype: `Ctrl+,` = `Menu > Settings`
-- `WiFi icon > Properties` (or `Settings > Network & Internet > WiFi > Hardware properties`)
-
-### Windows Defender Firewall
-    control firewall.cpl  # Control Panel > All Control Panel Items > Windows Defender Firewall
-    wf.msc  # Windows Defender Firewall with Advanced Security, where Rules can be seen
 
