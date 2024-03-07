@@ -10,11 +10,9 @@
 #  test-path $Thb\Win10ProLock
 #  iex "$MSwin10\Thb\TaskScheduler\clearParentLock.ps1"
 
-# for  Task Scheduler
+# for  $MSWin10\AZERTY.ahk
 #  APS> ni C:\MT-clearParentLock.ps1 -itemtype symboliclink -value $MSwin10\Thb\clearParentLock.ps1 -Force
 #   csl C:\MT-clearParentLock.ps1
-#  Import Task > $MSwin10\Thb\TaskScheduler\removeParentLock.xml
-#   (Task will stop repeating if tweaked or Run manually - fix is to  Sign in  again...)
 
 # Test:
 #  ni -Path 'C:\Users\troin\Dropbox\JH\Thb-dr' -name 'Win10ProLock'

@@ -40,6 +40,10 @@ vim: nospell:
     fzf -h
     fzf --version
 
+# MiKTeX
+    ~\AppData\Local\MiKTeX\miktex\log\initexmf.log
+    ~\AppData\Local\Programs\MiKTeX\miktex\config\xelatex.ini
+
 # The Platinum Searcher
     pt /version
     pt text_to_find .
@@ -161,6 +165,7 @@ doesn't find executables in `~\AppData\`
 ## microsoft.powershell.management
 - `gc` (= `cat` = `type` = `get-content`)
 - `gp` (= `get-itemproperty`)
+- `sp` (= `set-itemproperty`)
 
 ### get-process
     ps | oh -paging
@@ -173,6 +178,7 @@ doesn't find executables in `~\AppData\`
 ## microsoft.powershell.utility
     iex <someCommand>  # = invoke-expression
 
+- `fl` (= `format-list`)
 - `measure` (= `measure-object`)
 - `sort` (= `sort-object`)
 
@@ -410,9 +416,10 @@ aliases: `cat`, `type`
 # Windows Package Manager
     winget --info
     winget add altsnap  # install
-    winget search powershell
-    winget upgrade --all
-    winget upgrade google.chrome
+    winget find powershell
+    winget update --all
+    winget update google.chrome
+    winget rm google.chrome
 
 # Windows PowerShell - modules
     get-installedmodule

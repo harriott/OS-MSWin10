@@ -370,6 +370,27 @@ fresh PowerShell for:  magick wizard: wizard.jpg
   then  magick wizard.jpg win:  first time generated an IMDisplay
     "C:\Users\troin\AppData\Local\Temp\magick-<weirdCode> was not found"
     2nd run, got the jpg opened in IMDisplay   ri wizard.jpg
+## Google Chrome icon not showing in Start Menu
+C:\Program Files\Google\Chrome\Application\chrome.exe
+winget rm google.chrome
+C:\Program Files (x86)\Google  Deleted
+winget add google.chrome  got  C:\Users\jharr\AppData\Local\Google\Chrome\Application\chrome.exe
+## MiKTeX
+winget add miktex  went to  ~\AppData\Local\Programs\MiKTeX
+rebooted for  MiKTeX Console  which got me a necessary update
+  MiKTeX Console  for 10 updates
+~\AppData\Local\MiKTeX  created at some point
+sl $jtIT\CP\TeX\distro-MiKTeX\miktex-xetex  for  x mwe.tex  and off_ticked "Always show this dialog"
+## Pandoc
+winget add JohnMacFarlane.Pandoc  got  C:\Users\jharr\AppData\Local\Pandoc\pandoc.exe
+sl $CrPl\Pandoc  for  
+  pandoc --toc --toc-depth=6 -f markdown_strict toCdepth6MWE.md -o toCdepth6MWE.pdf
+  - took a while for MiKTeX to download all the necessary packages
+## path too long for gVim swap
+gp -path "registry::\hklm\system\currentcontrolset\control\filesystem" | fl -property longpathsenabled
+sp 'hklm:\system\currentcontrolset\control\filesystem' -name 'longpathsenabled' -value 1
+rebooted
+didn't fix it, and anyway doesn't help gVim
 ## waiting
 ### reduce C:
 MiniTool Partition Wizard Free v12.8

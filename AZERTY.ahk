@@ -1,12 +1,12 @@
 
 ; Joseph Harriott - AutoHotkey - lun. 04 mars 2024
 
-; $machBld\user\jo.ahk
+; $MSWin10\AZERTY.ahk
 
 ; Reload if changed!
 
 ; move a Shortcut of this script into
-; "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
+;  "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
 
 ; ² (mapped in Vim's insert mode) I can't get to work with any modifier
 !é::SendText "~" ; alt+é = tilde

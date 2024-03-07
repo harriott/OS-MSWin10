@@ -145,12 +145,11 @@ KeePassXC: Getting Started Guide
 - `win+r` = `taskschd.msc` Task Scheduler
 - `win+x` > `t` = `Gestion des disques`
 
-## Explorer
+## File Explorer
 - `alt+d`/`ctrl+l` (& `f4`) le chemin d’accès > `powershell`/`wt` Enter
-- `alt+p` toggle preview pane
+- `alt+p` toggle preview panel
 - `ctrl+space` toggle PowerToys Peek
 - Explorateur de fichiers
-- File Explorer
 
 ## Microsoft Defender Antivirus
     PS> get-mpthreatdetection

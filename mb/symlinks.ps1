@@ -26,6 +26,7 @@
 # #=> 0 Pandoc\defaults
 # new-item "$Pandoc\defaults\md4pdfToC.yaml" -itemtype symboliclink -value $MD4PDF\defaults-toc.yaml -force
 # new-item "$Pandoc\defaults\md4pdf.yaml" -itemtype symboliclink -value $MD4PDF\defaults.yaml -force
+# # csl $Pandoc\defaults
 
 # #=> 0 Pandoc\templates
 # $Pt = "$Pandoc\templates"
@@ -43,13 +44,14 @@ $uname = $Env:USERNAME
             $MSwin10 = "$onGH\OS-MSWin10"
               $machBld = "$MSWin10\mb-$Cn"
 
-#=> 2 PSProfile
-new-item ~\PSProfile.ps1 -itemtype symboliclink -value $MSWin10\PSProfile.ps1 -force
+# #=> 2 PSProfile
+# new-item ~\PSProfile.ps1 -itemtype symboliclink -value $MSWin10\PSProfile.ps1 -force
 
 #=> 2 vim
 new-item ~\_gvimrc -itemtype symboliclink -value $machBld\user\_gvimrc -force  # $MSWin10/user/_gvimrc
 new-item ~\_vimrc -itemtype symboliclink -value $machBld\user\_vimrc -force  # $MSWin10/user/_vimrc
 new-item ~\vimfiles -itemtype symboliclink -value $onGH\vimfiles -force
+ # csl ~
 
 #=> 2 ~\.bashrc
 new-item ~\.bashrc -itemtype symboliclink -value $MSWin10\bashrc -force

@@ -1,7 +1,9 @@
 # vim: ft=gitconfig
 
+# $MSWin10\user-HPEB840G3\jharr-gitconfig (see $MSWin10\user-HPEB840G3\symlinks.ps1)
+
 # This is Git's per-user configuration file, adjusted for Powershell.
-#  symlink this to  ~\.gitconfig
+
 # Changes saved here immediately affect Git.
 
 [color "status"]
