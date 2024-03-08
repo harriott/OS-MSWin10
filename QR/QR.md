@@ -8,12 +8,10 @@ vim: nospell:
     sl $copied\IT-handy\CP\TeX\LaTeX\structure\classes\memoir
     yt-dlp -U  # update inplace
 
+- AutoHotkey `$machBld\user\jo.ahk`
 - `ctrl+m` on selected text opens it in `LanguageTool`
 - Task Scheduler: `taskschd.msc`
 - WinRE
-
-# AutoHotkey
-    $machBld\user\jo.ahk
 
 # build
     $machBld
@@ -24,6 +22,7 @@ vim: nospell:
 # fonts
     sl C:\Windows\Fonts
     gp -path "registry::\hklm\software\microsoft\windows nt\currentversion\fonts" | fl > $machLg/fonts-fl.txt
+
 
 # imagey
 ExifTool by Phil Harvey

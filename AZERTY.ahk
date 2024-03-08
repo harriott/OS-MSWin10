@@ -15,11 +15,49 @@
 ; environment variables don't work
 #!a::Run "C:\Users\jharr\AppData\Roaming\AltSnap\AltSnap.exe" ; win+alt+a - open AltSnap
 #!e::Run "msedge.exe" ; win+alt+e - open Edge
+#!h::Reload
 #!i::Run "C:\Vim\vim91\gvim.exe" ; win+alt+i - open gVim
 #!k::Run "C:\Program Files\KeePassXC\KeePassXC.exe" ; win+alt+k - open KeePassXC
 #!m::Run "C:\Emacs\emacs-28.1\bin\runemacs.exe" ; win+alt+m - open Emacs
 #!p::Run "pwsh -wd ~" ; win+alt+p - PowerShell
 #!v::Run "C:\Program Files\Everything\Everything.exe" ; win+alt+v - open Everything
+
+#^e::{
+	WinActivate "HP Smart"
+    MouseMove 790,700
+	Click ; on Enregister
+    MouseMove 820,430
+    Sleep 500
+	Click ; on Type de fichier drop-down
+    MouseMove 820,460
+    Sleep 500
+	Click ; on Image(*.jpg)
+    MouseMove 820,640
+    Sleep 1000
+	Click ; on Enregister
+} ; win+ctrl+e  after a scan, brings forward and saves as jpg
+#^s::{
+	WinActivate "HP Smart"
+    MouseMove 960,700
+	Click ; on Numériser
+} ; win+ctrl+s  brings forward and scans
+#^x::{
+	WinActivate "HP Smart"
+    MouseMove 905,275
+	Click ; on that tiny x
+    MouseMove 30,55
+    Sleep 1000
+	Click ; on that big back arrow
+} ; win+ctrl+x  after saving, brings forward and returns to  Numériser  window
+#!s::{
+    SendEvent "^{Esc}"
+    Sleep 1000
+    Send "HP Smart"
+    Sleep 1000
+    SendEvent "{Enter}"
+    Sleep 1000
+    MouseMove 440,400
+} ; win+alt+s  gets mouse ready on  Numériser  button
 
 #!t::Run "pwsh -nop -w minimized -f C:\MT-runSafely.ps1"
 ; - win+alt+t = Mozilla Thunderbird

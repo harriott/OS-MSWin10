@@ -76,8 +76,8 @@ sp -path 'registry::hkcu\environment' -name path -value $newPathCU
 Paramètres > System > Multitâche > Alt + Tab > Uniquement les fenêtres ouvertes
 ## Thunderbird
 winget add mozilla.thunderbird -h -l C:\MT
-ran it to get  C:\Users\jharr\AppData\Roaming\Thunderbird\Profiles\q6qwq868.default-release
-  which I emptied, and then edited  C:\Users\jharr\AppData\Roaming\Thunderbird\profiles.ini
+ran it to get  ~\AppData\Roaming\Thunderbird\Profiles\q6qwq868.default-release
+  which I emptied, and then edited  ~\AppData\Roaming\Thunderbird\profiles.ini
     [Profile0] section:
       Name=default-release
       IsRelative=0
@@ -145,7 +145,7 @@ gvim_9.1.0_x64_signed.exe
   [ Create icons > On the Desktop off [ Create Default Config  Create Plugin Directories ] off ] >
   (C:\Vim)
 ## Windows Terminal
-found in Microsoft Store > Obtenir  (C:\Users\jharr\AppData\Local\Microsoft\WindowsApps\wt.exe)
+found in Microsoft Store > Obtenir  (~\AppData\Local\Microsoft\WindowsApps\wt.exe)
 ctrl+, > Démarrage > Application Terminal par défaut > Terminal Windows
 ## PowerShell v7.4.0
 found in Microsoft Store > Obtenir
@@ -226,7 +226,7 @@ Paramètres > Encadré > Personnaliser la barre latérale > Toujours afficher la
 ## AutoHotkey v2.0.11
 AutoHotkey_2.0.11_setup.exe
 Shortcut to  $MSwin10\mb-HPEB840G362\user\jo.ahk  moved into
-  C:\Users\jharr\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+  ~\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 ## after a reboot
 Faisons une sauvegarde des données de votre PC > Ignorer pour le moment > Continuer
 ## FastStone Image Viewer v7.5
@@ -348,7 +348,7 @@ empty popup appearing each time I try to change the screen brightness
 Services > HP Hotkey UWP Service > Type de démarrage > (was Automatique) Désactivé
 rebooted
 ## no BurntToast notifications from PowerShell
-C:\Users\jharr\Documents\PowerShell\Modules\BurntToast\0.8.5\README.md
+~\Documents\PowerShell\Modules\BurntToast\0.8.5\README.md
 rebooted  for  uninstall-module burnttoast
 APS> install-module burnttoast  got it in the same location and still no notifications...
 Settings > Apps & features > PowerShell > Uninstall
@@ -374,7 +374,7 @@ fresh PowerShell for:  magick wizard: wizard.jpg
 C:\Program Files\Google\Chrome\Application\chrome.exe
 winget rm google.chrome
 C:\Program Files (x86)\Google  Deleted
-winget add google.chrome  got  C:\Users\jharr\AppData\Local\Google\Chrome\Application\chrome.exe
+winget add google.chrome  got  ~\AppData\Local\Google\Chrome\Application\chrome.exe
 ## MiKTeX
 winget add miktex  went to  ~\AppData\Local\Programs\MiKTeX
 rebooted for  MiKTeX Console  which got me a necessary update
@@ -383,7 +383,7 @@ rebooted for  MiKTeX Console  which got me a necessary update
 sl $jtIT\CP\TeX\distro-MiKTeX\miktex-xetex  for  x mwe.tex  and off_ticked "Always show this dialog"
 ## Pandoc
 after MiKTeX
-  winget add JohnMacFarlane.Pandoc  got  C:\Users\jharr\AppData\Local\Pandoc\pandoc.exe
+  winget add JohnMacFarlane.Pandoc  got  ~\AppData\Local\Pandoc\pandoc.exe
     sl $CrPl\Pandoc  for  
       pandoc --toc --toc-depth=6 -f markdown_strict toCdepth6MWE.md -o toCdepth6MWE.pdf
       - took a while for MiKTeX to download all the necessary packages
@@ -396,6 +396,30 @@ didn't fix it, and anyway doesn't help gVim
 ## Noto Sans CJK Regulars for Pandoc
 $ITstack\MSWin\fonts-copied\NotoHinted > selected all, right clicked on to Install
   arrived in  ~\AppData\Local\Microsoft\Windows\Fonts
+## yt-dlp (and FFmpeg)
+winget add yt-dlp.yt-dlp
+  Ce package nécessite les dépendances suivantes :
+    - Packages
+        Gyan.FFmpeg
+  (1/1) Trouvé FFmpeg [Gyan.FFmpeg] Version 6.1.1
+  ...
+  Téléchargement en cours https://github.com/GyanD/codexffmpeg/releases/download/6.1.1/ffmpeg-6.1.1-full_build.zip
+  ...
+  Installé correctement
+  Téléchargement en cours https://github.com/yt-dlp/yt-dlp/releases/download/2023.12.30/yt-dlp.exe
+### FFmpeg
+  ~\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-6.1.1-full_build\bin\ffmpeg.exe
+ffmpeg -version
+### yt-dlp
+  C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\yt-dlp.yt-dlp_Microsoft.Winget.Source_8wekyb3d8bbwe\yt-dlp.exe
+yt-dlp --version
+## Windows Package Manager Updates
+winget update --all
+## LibreOffice 24.2.0.3
+I seem to've installed with winget.
+ran it to build  ~\AppData\Roaming\LibreOffice\4
+  in  user\  removed  config  folder &  registrymodifications.xcu
+    & replaced them from  $CrPl\documenting\LibreOffice\lcu-sbMb-user
 ## waiting
 ### reduce C:
 MiniTool Partition Wizard Free v12.8

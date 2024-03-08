@@ -29,14 +29,15 @@ function pro {
 } # needs to be on 3 lines
 
 function wl {
-  $mwgl = "$machLg/winget_list"
+  $dts = (Get-Date).ToString("yyMMdd-HHmmss")
+  $mwgl = "$machLg/winget_list-$dts"
   $l0 = $mwgl+'0'; winget ls > $l0
   $l1 = $mwgl+'1'; (gc $l0 -raw) -replace "(?s).*------" > $l1
   ri $l0
   $lt  = "$mwgl.txt"; 'vim: set nowrap:' > $lt; '' >> $lt
   gc $l1 | sort | select -skip 2 >> $lt
   sleep 1; ri $l1
-  'winget list  is in  $machLg/winget_list.txt'
+  'winget list  is in  $machLg/winget_list'+"-$dts.txt"
 }
 
 function stc {
@@ -327,6 +328,7 @@ sal y yt-dlp
 $uname = $Env:USERNAME
   $Drpbx = "C:\Users\$uname\Dropbox"
     $DJH = "$Drpbx\JH"
+      $CfWk = "$DJH\CforWork"
       $Cfzd = "$DJH\Cafezoide"
         $CzPhy = "$Cfzd\PhysicalProperty"
       $copied = "$DJH\copied"

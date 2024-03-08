@@ -164,9 +164,10 @@ doesn't find executables in `~\AppData\`
 
 ## microsoft.powershell.core
     <command> | out-null  # works for some commands
+    (gcm <function>).scriptblock  # (get-command) shows what's in <function>
 
-### get-command
-    (gcm <function>).scriptblock  # shows what's in <function>
+- `?` (= `where` = `where-object`)
+
 
 ## microsoft.powershell.management
 - `gc` (= `cat` = `type` = `get-content`)
