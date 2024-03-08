@@ -145,7 +145,7 @@ gvim_9.1.0_x64_signed.exe
   [ Create icons > On the Desktop off [ Create Default Config  Create Plugin Directories ] off ] >
   (C:\Vim)
 ## Windows Terminal
-found in Microsoft Store > Obtenir
+found in Microsoft Store > Obtenir  (C:\Users\jharr\AppData\Local\Microsoft\WindowsApps\wt.exe)
 ctrl+, > Démarrage > Application Terminal par défaut > Terminal Windows
 ## PowerShell v7.4.0
 found in Microsoft Store > Obtenir
@@ -393,6 +393,9 @@ gp -path "registry::\hklm\system\currentcontrolset\control\filesystem" | fl -pro
 sp 'hklm:\system\currentcontrolset\control\filesystem' -name 'longpathsenabled' -value 1
 rebooted
 didn't fix it, and anyway doesn't help gVim
+## Noto Sans CJK Regulars for Pandoc
+$ITstack\MSWin\fonts-copied\NotoHinted > selected all, right clicked on to Install
+  arrived in  ~\AppData\Local\Microsoft\Windows\Fonts
 ## waiting
 ### reduce C:
 MiniTool Partition Wizard Free v12.8

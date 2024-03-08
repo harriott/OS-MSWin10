@@ -1,5 +1,5 @@
 
-# Joseph Harriott, Mon 26 Sep 2022
+# Joseph Harriott, jeu. 07 mars 2024
 
 # $MSWin10\PSProfile.ps1 (symlinked in  $MSWin10\symlinks.ps1) sourced by
 
@@ -8,17 +8,13 @@ sal ss select-string
 sal su C:\SumatraPDF\SumatraPDF.exe
 
 function fonts {
-  $mf0 = "$machLg\fonts-fl"
+  $mf0 = "$machLg\fonts"
   $mf1 = $mf0+'-1'
   gp -path "registry::\hklm\software\microsoft\windows nt\currentversion\fonts" | fc > $mf1
   (gc $mf1 | select -skip 3) | seco $mf1
-  $mf2 = $mf0+'-2'
-  (gc $mf1 -raw) -replace "(?s)  PSPath.*" > $mf2
-  $mf3 = $mf0+'.wntf'
-  '' > $mf3
-  (gc $mf2).trim() >> $mf3
-  # (gc $mf2).trim() | seco $mf2
-}
+  $mf2 = $mf0+'-2'; (gc $mf1 -raw) -replace "(?s)  PSPath.*" > $mf2; ri $mf1
+  $mf3 = $mf0+'.wntf'; 'vim: ft=wntf:' > $mf3; '' >> $mf3; (gc $mf2).trim() >> $mf3; ri $mf2
+} # $vimfiles/syntax/wntf.vim
 
 function GNFR {
   $FRlist = Get-NetFirewallRule | out-string
@@ -442,10 +438,10 @@ $tex = "$Env:AppData\MiKTeX\tex"
 $Pandoc = "$Env:AppData\Pandoc"
   $MD4PDF = "$onGH\pandoc-md4pdf"
 
-Function headings0sty { cpi $MD4PDF/iih/headings0.sty $tex\latex\m4p\headings.sty -force }
-Function m4p { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4p.ps1 $args[0] $args[1] $args[2] $args[3] }
-Function m4ps0 { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4ps.ps1 $args[0] $args[1] $args[2] } # m4ps0 [-n] [-r] [-s]
-Function mt { sl $Drpbx\JH\core\TextNotes; [string]$Pwd; m4ps0 -s }
+function headings0sty { cpi $MD4PDF/iih/headings0.sty $tex\latex\m4p\headings.sty -force } # will need a  miktex fndb refresh  after first run
+function m4p { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4p.ps1 $args[0] $args[1] $args[2] $args[3] }
+function m4ps0 { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4ps.ps1 $args[0] $args[1] $args[2] } # m4ps0 [-n] [-r] [-s]
+function mt { sl $Drpbx\JH\core\TextNotes; [string]$Pwd; m4ps0 -s }
 
 #==> Dropbox conflicted copies
 $DropboxConflictedLog = ''

@@ -41,6 +41,7 @@ vim: nospell:
     fzf --version
 
 # MiKTeX
+    miktex fndb refresh
     ~\AppData\Local\MiKTeX\miktex\log\initexmf.log
     ~\AppData\Local\MiKTeX\miktex\log\miktex-makemf.log
     ~\AppData\Local\Programs\MiKTeX\miktex\config\xelatex.ini
@@ -67,7 +68,6 @@ vim: nospell:
     1..3
     less <someFile>
     foreach($element in 1..3){ $element }
-    powershell -noprofile
     sleep 1
 
 - `Alt > Space > E > L > up/down` to scroll, then `Esc`
@@ -85,12 +85,11 @@ limited to single commands
     sal <alias> <string>
 
 ## colour
-    [System.Enum]::GetValues('ConsoleColor') | ForEach-Object { Write-Host $_ -ForegroundColor $_ }
+    [System.Enum]::GetValues('ConsoleColor') | %{ Write-Host $_ -ForegroundColor $_ }
     iex "$ITstack\MSWin\PowerShell\colours\ConsoleColor.ps1"
     iex "$ITstack\MSWin\PowerShell\colours\LindbergColors.ps1"
     iex "$onGH\misc\Colors.ps1"
-    PSScriptTools
-    write-color -text 'red ', 'green ', 'yellow ' -color red,green,yellow
+    write-color -text 'red ', 'green ', 'yellow ' -color red,green,yellow  # pswritecolor
 
 ## data
     $x.GetType()
@@ -110,14 +109,14 @@ limited to single commands
     if ( '5' -ne '4' ) { '5 is not 4' }
 
 ## datetime
-    [System.TimeZoneinfo]::GetSystemTimeZones() | Out-GridView
-    Get-TimeZone -listavailable | Out-GridView
+    [system.timezoneinfo]::getsystemtimezones() | out-gridview
+    get-timezone -listavailable | out-gridview
     Get-TZData Australia/Hobart
 
-### Get-Date
-    $n = Get-Date -f yyyyMMddhhmmss
-    (Get-Date).Day
-    (Get-Date).ToString("yyMMdd-HHmmss")
+### get-date
+    $n = get-date -f yyyyMMddhhmmss
+    (get-date).day  # of month
+    (get-date).tostring("yyMMdd-HHmmss")
 
 no standard aliases
 
@@ -128,6 +127,8 @@ no standard aliases
     C:\Windows\explorer.exe "microsoft-edge:searchterm"
     gcm explorer
     explorer shell:Appsfolder  # Applications
+    powershell -noprofile  #  runs  Windows PowerShell
+    pwsh -nol
     start <somefile>
 
 ### where.exe
@@ -140,6 +141,7 @@ doesn't find executables in `~\AppData\`
 
 ## file contents
     (gc $file | select -skip 3) | seco $file  # removes first 3 lines
+    (gc $file_with_whitespaces_at_ends_of_lines).trim() | seco trimmed.txt
 
 ## foreach-object
 - `%` = `foreach`
@@ -169,6 +171,7 @@ doesn't find executables in `~\AppData\`
 ## microsoft.powershell.management
 - `gc` (= `cat` = `type` = `get-content`)
 - `gp` (= `get-itemproperty`)
+- `gpv` (= `get-itempropertyvalue`)
 - `sp` (= `set-itemproperty`)
 
 ### get-process
@@ -184,6 +187,8 @@ doesn't find executables in `~\AppData\`
 
 - `fl` (= `format-list`)
 - `measure` (= `measure-object`)
+- `select` (= `select-object`)
+- `sls` (= `select-string`)
 - `sort` (= `sort-object`)
 
 ## networking
@@ -364,7 +369,6 @@ aliases: `cat`, `type`
 
 - `format-table`: `ft`
 - `get-item`: `gi`
-- `select-string`: `sls`
 
 ## system info
     $profile
@@ -407,8 +411,8 @@ aliases: `cat`, `type`
     (gc $file) -replace $regex, $newtext | seco $file
 
 ## version
-    $PSVersionTable
-    Get-ItemPropertyValue -Path "HKLM:\SOFTWARE\Microsoft\PowerShellCore\InstalledVersions\*" -Name "SemanticVersion"
+    $psversiontable.psversion
+    gpv -path "hklm:\software\microsoft\powershellcore\installedversions\*" -name "semanticversion"
 
 # robocopy
     /l   - list only (= simulate)

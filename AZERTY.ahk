@@ -1,5 +1,5 @@
 
-; Joseph Harriott - AutoHotkey - lun. 04 mars 2024
+; Joseph Harriott - AutoHotkey - ven. 08 mars 2024
 
 ; $MSWin10\AZERTY.ahk
 
@@ -12,19 +12,22 @@
 !é::SendText "~" ; alt+é = tilde
 !è::SendText "``" ; alt+è = back-tick
 
+; environment variables don't work
+#!a::Run "C:\Users\jharr\AppData\Roaming\AltSnap\AltSnap.exe" ; win+alt+a - open AltSnap
+#!e::Run "msedge.exe" ; win+alt+e - open Edge
 #!i::Run "C:\Vim\vim91\gvim.exe" ; win+alt+i - open gVim
-#!e::Run "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" ; win+alt+e - open Edge
 #!k::Run "C:\Program Files\KeePassXC\KeePassXC.exe" ; win+alt+k - open KeePassXC
 #!m::Run "C:\Emacs\emacs-28.1\bin\runemacs.exe" ; win+alt+m - open Emacs
+#!p::Run "pwsh -wd ~" ; win+alt+p - PowerShell
 #!v::Run "C:\Program Files\Everything\Everything.exe" ; win+alt+v - open Everything
 
-#!t::Run "pwsh -NoProfile -WindowStyle Minimized -File C:\MT-runSafely.ps1"
+#!t::Run "pwsh -nop -w minimized -f C:\MT-runSafely.ps1"
 ; - win+alt+t = Mozilla Thunderbird
 #^t::{
 	if WinExist("Thunderbird") {
 		WinClose "Thunderbird"
 	} else {
-		Run "pwsh -NoProfile -WindowStyle Minimized -File C:\MT-clearParentLock.ps1"
+		Run "pwsh -nop -w minimized -f C:\MT-clearParentLock.ps1"
 	}
 } ; win+ctrl+t  closes MT
 
