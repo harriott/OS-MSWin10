@@ -57,13 +57,13 @@
     SendEvent "{Enter}"
     Sleep 1000
     MouseMove 440,400
-} ; win+alt+s  gets mouse ready on  Numériser  button
+} ; win+alt+s  launches  HP Smart  and gets mouse ready on  Numériser  button
 
 #!t::Run "pwsh -nop -w minimized -f C:\MT-runSafely.ps1"
 ; - win+alt+t = Mozilla Thunderbird
 #^t::{
-	if WinExist("Thunderbird") {
-		WinClose "Thunderbird"
+	if WinExist("ahk_exe thunderbird.exe") {
+		WinClose "ahk_exe thunderbird.exe"
 	} else {
 		Run "pwsh -nop -w minimized -f C:\MT-clearParentLock.ps1"
 	}
