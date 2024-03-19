@@ -15,7 +15,7 @@
 ; environment variables don't work
 #!a::Run "C:\Users\jharr\AppData\Roaming\AltSnap\AltSnap.exe" ; win+alt+a - open AltSnap
 #!e::Run "msedge.exe" ; win+alt+e - open Edge
-#!h::Reload
+#!h::Reload ; win+alt+h - Reloads this file
 #!i::Run "C:\Vim\vim91\gvim.exe" ; win+alt+i - open gVim
 #!k::Run "C:\Program Files\KeePassXC\KeePassXC.exe" ; win+alt+k - open KeePassXC
 #!m::Run "C:\Emacs\emacs-28.1\bin\runemacs.exe" ; win+alt+m - open Emacs
@@ -23,7 +23,7 @@
 #!v::Run "C:\Program Files\Everything\Everything.exe" ; win+alt+v - open Everything
 
 #^e::{
-	WinActivate "HP Smart"
+	WinActivate "HP Smart ahk_exe ApplicationFrameHost.exe"
     MouseMove 790,700
 	Click ; on Enregister
     MouseMove 820,430
@@ -37,12 +37,12 @@
 	Click ; on Enregister
 } ; win+ctrl+e  after a scan, brings forward and saves as jpg
 #^s::{
-	WinActivate "HP Smart"
-    MouseMove 960,700
+	WinActivate "HP Smart ahk_exe ApplicationFrameHost.exe"
+    MouseMove 440,400
 	Click ; on Numériser
 } ; win+ctrl+s  brings forward and scans
 #^x::{
-	WinActivate "HP Smart"
+	WinActivate "HP Smart ahk_exe ApplicationFrameHost.exe"
     MouseMove 905,275
 	Click ; on that tiny x
     MouseMove 30,55

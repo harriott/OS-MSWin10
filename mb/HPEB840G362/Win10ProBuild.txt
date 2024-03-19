@@ -420,6 +420,29 @@ I seem to've installed with winget.
 ran it to build  ~\AppData\Roaming\LibreOffice\4
   in  user\  removed  config  folder &  registrymodifications.xcu
     & replaced them from  $CrPl\documenting\LibreOffice\lcu-sbMb-user
+## DejaVu fonts
+$ITscc\forMSWin\fonts-dejavu-fonts-ttf-2.37\ttf > selected all, right clicked on to Install
+  arrived in  ~\AppData\Local\Microsoft\Windows\Fonts
+## WSL
+### fails (maybe needed to reboot)
+winget add 9MZNMNKSM73X > agreed to  https://vineelsai.com/Privacy/Apps/ArchWSL.html
+  Installing, this may take a few minutes...
+  WslRegisterDistribution failed with error: 0x8007019e
+  Error: 0x8007019e Le sous-systÞme Windows pour Linux n'a pas ÚtÚ activÚ.
+winget rm 9MZNMNKSM73X
+wsl --install  then  Windows Menu > Ubuntu  got me
+  WslRegisterDistribution failed with error: 0x80080005
+  Error: 0x80080005 ╔chec de l?exÚcution du serveur
+Paramètres > Applications > linux > Désinstaller
+### Microsoft Store
+https://apps.microsoft.com/detail/9p9tqf7mrm4r > Télécharger > Obténir
+  WslRegisterDistribution failed with error: 0x80080005
+  Error: 0x80080005 ╔chec de l?exÚcution du serveur
+reboot  got a Ubuntu lancement WT
+UNIX username > jo > pw
+jkdf
+### configure
+touch ~/.hushlogin
 ## waiting
 ### reduce C:
 MiniTool Partition Wizard Free v12.8

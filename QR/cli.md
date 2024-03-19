@@ -50,6 +50,8 @@ vim: nospell:
     pt /version
     pt text_to_find .
 
+output is simplified when redirected to a file
+
 ## in $Drpbx\JH
     pt '$core' .
     pt '$DJH' .
@@ -71,6 +73,7 @@ vim: nospell:
     sleep 1
 
 - `Alt > Space > E > L > up/down` to scroll, then `Esc`
+- `continue` returns to the top of a loop a `trap` or a `switch`
 - `$_` = `$PSItem` = current object in the pipeline object
 
 ## alias manage
@@ -288,7 +291,7 @@ tab completion
     dw -?
     dw  # directory counts
     f  # fzf preview files with bat
-    Get-FileHash <fileForWhichYouWantSHA256>
+    get-filehash <fileForWhichYouWantSHA256>
     gl  # pwd = get-location
     if ( ! ( test-path 'dir' ) ) { ni -name 'dir' -type directory }
     pc -a -l -t  # includes hidden & time sorted
@@ -435,6 +438,10 @@ aliases: `cat`, `type`
     $Env:PSModulePath -split ';'
     ~\Documents\WindowsPowerShell\Modules
 
+# Windows Subsystem for Linux
+    wsl -l -o
+    wsl -l -v
+
 # wt
     cpi ~\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json $machLg\WT-settings.json
 
@@ -447,20 +454,19 @@ aliases: `cat`, `type`
 ## Settings
     Startup > Launch on machine startup
 
-- `alt+shift+-` = `split down`
-- `Ctrl+,` = `Settings`
-
 ### key-binds
     Settings > Actions
 
-- `Alt+D` duplicate pane right
-- `Alt+_` split pane below (AZERTY `Alt+Shift+-`)
-- `Alt++` split pane right
-- `Alt+arrow` move focus
-- `Ctrl+c` copy text
-- `Ctrl+Shift+f` find
-- `Ctrl+Shift+t` new tab
-- `Ctrl+Shift+w` close pane
-- `Ctrl+Shift+PgUp` scroll up a page
-- `Ctrl(+Shift)+Tab` move to next (previous) tab
+- `alt+D` duplicate pane right
+- `alt+_` split pane below (AZERTY `alt+shift+-`)
+- `alt++` split pane right
+- `alt+arrow` move focus
+- `alt+shift+-` = `split down`
+- `ctrl+,` = `Settings`
+- `ctrl+c` copy text
+- `ctrl+shift+f` find
+- `ctrl+shift+t` new tab
+- `ctrl+shift+w` close pane
+- `ctrl+shift+PgUp` scroll up a page
+- `ctrl(+Shift)+Tab` move to next (previous) tab
 

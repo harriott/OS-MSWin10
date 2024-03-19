@@ -145,16 +145,15 @@ function encrypted {
     scfcdc; $node; scrc
     if ( gci $node* ) {
       if ( $node.equals('actions') ) { $path = '*ps1*' } else {
-        if ( test-path $node -pathtype container ) { $encdir = gci $node -recurse -file | sort lastwritetime -descending | select -first 9 | %{ dtsfn $_ '??' } } else { $encdir = '' }
+        if ( test-path $node -pathtype container ) { $ldContents = gci $node -recurse -file | sort lastwritetime -descending | select -first 9 | %{ dtsfn $_ '??' } } else { $encdir = '' }
         $path = $node+'*7z'
       }
-      $path
-      # $enc7z = gci -path $path | %{ dtsfn $_ '**' }
-      # $ce7z = gci -path "$core\encrypted\$path" | %{ dtsfn $_ 'dr' }
-      # $objects = $encdir, $enc7z, $ce7z
-      # $flattened = @($objects | % {$_})  # optional
-      # $sorted = $flattened | ? { $_ } | sort -uniq  # also removes nulls
-      # $sorted.replace('C:\Users\troin\', '').replace('Dropbox\JH\core\encrypted\', '').replace('encrypted\', '')
+      $enc7z = gci -path $path | %{ dtsfn $_ '**' }
+      $ce7z = gci -path "$core\encrypted\$path" | %{ dtsfn $_ 'dr' }
+      $objects = $ldContents, $enc7z, $ce7z
+      $flattened = @($objects | % {$_})  # optional
+      $sorted = $flattened | ? { $_ } | sort -uniq  # also removes nulls
+      $sorted.replace('C:\Users\jharr\', '').replace('Dropbox\JH\core\encrypted\', '').replace('encrypted\', '')
     }
   }
   ''
@@ -328,6 +327,8 @@ sal y yt-dlp
 $uname = $Env:USERNAME
   $Drpbx = "C:\Users\$uname\Dropbox"
     $DJH = "$Drpbx\JH"
+      $ess = "$DJH\now\essential"
+        $eFr = "$ess\France"
       $CfWk = "$DJH\CforWork"
       $Cfzd = "$DJH\Cafezoide"
         $CzPhy = "$Cfzd\PhysicalProperty"

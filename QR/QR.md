@@ -147,6 +147,7 @@ KeePassXC: Getting Started Guide
 ## File Explorer
 - `alt+d`/`ctrl+l` (& `f4`) le chemin d’accès > `powershell`/`wt` Enter
 - `alt+p` toggle preview panel
+- `ctrl+N` new directory
 - `ctrl+space` toggle PowerToys Peek
 - Explorateur de fichiers
 
