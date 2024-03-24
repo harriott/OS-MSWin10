@@ -7,6 +7,10 @@ HP EliteBook 840 G3 barcoded PC117862 (labelled BC PNB 17 by last owner) = HPEB8
 # build - parallel
 Google Chrome somehow there
 Paramètres > Écran > Éclairage nocturne > Activé
+## Administrator PowerShell opacity
+saps pwsh -verb runas  to right-click on toolbar for  Propriétés > Opacité > 80%
+## Administrator Windows PowerShell opacity
+saps powershell -verb runas  to right-click on toolbar for  Propriétés > Opacité > 80%
 ## AltSnap
 winget add altsnap
   APS> schtasks /create /f /tn "AltSnap onlogon" /tr "$Env:AppData\AltSnap\AltSnap.exe" /sc onlogon /rl highest
@@ -58,20 +62,6 @@ ran it for
 pinned to Start
 ## sharkdp/bat
 winget add sharkdp.bat
-## sharkdp.fd
-winget add sharkdp.fd
-### path modified
-  Variable d'environnement de chemin modifiée ; redémarrez votre interpréteur de commandes pour utiliser la nouvelle valeur.
-  Alias de ligne de commande ajouté : "bat"
-and, yes, it added  "C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.bat_Microsoft.Winget.Source_8wekyb3d8bbwe\bat-v0.24.0-x86_64-pc-windows-msvc;;"
-#### fix ;;
-$oldPathCU = (gp -path 'registry::hkcu\environment' -name path).path
-$oldPathCU
-  C:\Users\jharr\.cargo\bin;C:\Users\jharr\AppData\Local\Microsoft\WindowsApps;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\BurntSushi.ripgrep.MSVC_Microsoft.Winget.Source_8wekyb3d8bbwe\ripgrep-14.1.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.bat_Microsoft.Winget.Source_8wekyb3d8bbwe\bat-v0.24.0-x86_64-pc-windows-msvc;
-##### remove trailing ;
-$newPathCU = $oldPathCU -replace ';$', ''
-$newPathCU
-sp -path 'registry::hkcu\environment' -name path -value $newPathCU
 ## stop individual Edge tabs showing in task switcher
 Paramètres > System > Multitâche > Alt + Tab > Uniquement les fenêtres ouvertes
 ## Thunderbird
@@ -83,6 +73,8 @@ ran it to get  ~\AppData\Roaming\Thunderbird\Profiles\q6qwq868.default-release
       IsRelative=0
       Path=C:\Users\jharr\Dropbox\JH\Thb-dr
 ran it for (default-release) Démarrer Thunderbird)
+## QuickLook
+winget add 9NV4BS3L1H4S --accept-package-agreements
 ## waiting
 # build - PS 0 PSGallery
 Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
@@ -97,6 +89,7 @@ install-module pswritecolor
 install-module psfzf
 Install-Module Terminal-Icons -Repository PSGallery
 Install-Module ZLocation
+install-module recycle
 # build - sequential
 Utilisateur
   À propos de > Spécifications de Windows > Windows 10 Pro 21H2 OS build 19044.1889
@@ -440,9 +433,85 @@ https://apps.microsoft.com/detail/9p9tqf7mrm4r > Télécharger > Obténir
   Error: 0x80080005 ╔chec de l?exÚcution du serveur
 reboot  got a Ubuntu lancement WT
 UNIX username > jo > pw
-jkdf
 ### configure
 touch ~/.hushlogin
+apt update
+  Reading package lists... Done
+  E: Could not open lock file /var/lib/apt/lists/lock - open (13: Permission denied)
+  E: Unable to lock directory /var/lib/apt/lists/
+  W: Problem unlinking the file /var/cache/apt/pkgcache.bin - RemoveCaches (13: Permission denied)
+  W: Problem unlinking the file /var/cache/apt/srcpkgcache.bin - RemoveCaches (13: Permission denied)
+sudo apt update  reported 84 so  
+sudo apt upgrade
+## sharkdp.fd
+winget add sharkdp.fd
+### path modified
+  Variable d'environnement de chemin modifiée ; redémarrez votre interpréteur de commandes pour utiliser la nouvelle valeur.
+  Alias de ligne de commande ajouté : "bat"
+and, yes, it added  "C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.bat_Microsoft.Winget.Source_8wekyb3d8bbwe\bat-v0.24.0-x86_64-pc-windows-msvc;;"
+#### fix ;;
+$oldPathCU = (gp -path 'registry::hkcu\environment' -name path).path
+$oldPathCU
+  C:\Users\jharr\.cargo\bin;C:\Users\jharr\AppData\Local\Microsoft\WindowsApps;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\BurntSushi.ripgrep.MSVC_Microsoft.Winget.Source_8wekyb3d8bbwe\ripgrep-14.1.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.bat_Microsoft.Winget.Source_8wekyb3d8bbwe\bat-v0.24.0-x86_64-pc-windows-msvc;
+##### remove trailing ;
+$newPathCU = $oldPathCU -replace ';$', ''
+$newPathCU
+sp -path 'registry::hkcu\environment' -name path -value $newPathCU
+## gokcehan lf
+winget add gokcehan.lf
+### path modified
+  Variable d’environnement de chemin modifiée ; redémarrez votre interpréteur de commandes pour utiliser la nouvelle valeur.
+  Alias de ligne de commande ajouté : "lf"
+#### fix ;;
+$oldPathCU = (gp -path 'registry::hkcu\environment' -name path).path; $oldPathCU
+  C:\Users\jharr\.cargo\bin;C:\Users\jharr\AppData\Local\Microsoft\WindowsApps;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\BurntSushi.ripgrep.MSVC_Microsoft.Winget.Source_8wekyb3d8bbwe\ripgrep-14.1.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.bat_Microsoft.Winget.Source_8wekyb3d8bbwe\bat-v0.24.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.fd_Microsoft.Winget.Source_8wekyb3d8bbwe\fd-v9.0.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Programs\MiKTeX\miktex\bin\x64\;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-6.1.1-full_build\bin;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\gokcehan.lf_Microsoft.Winget.Source_8wekyb3d8bbwe;
+##### remove trailing ;
+$newPathCU = $oldPathCU -replace ';$', ''; $newPathCU
+sp -path 'registry::hkcu\environment' -name path -value $newPathCU
+## less-Windows
+winget install jftuga.less
+### path modified
+  Variable d’environnement de chemin modifiée ; redémarrez votre interpréteur de commandes pour utiliser la nouvelle valeur.
+  Alias de ligne de commande ajouté : "less"
+  Alias de ligne de commande ajouté : "lesskey"
+#### fix ;;
+$oldPathCU = (gp -path 'registry::hkcu\environment' -name path).path; $oldPathCU
+  C:\Users\jharr\.cargo\bin;C:\Users\jharr\AppData\Local\Microsoft\WindowsApps;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\BurntSushi.ripgrep.MSVC_Microsoft.Winget.Source_8wekyb3d8bbwe\ripgrep-14.1.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.bat_Microsoft.Winget.Source_8wekyb3d8bbwe\bat-v0.24.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.fd_Microsoft.Winget.Source_8wekyb3d8bbwe\fd-v9.0.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Programs\MiKTeX\miktex\bin\x64\;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-6.1.1-full_build\bin;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\gokcehan.lf_Microsoft.Winget.Source_8wekyb3d8bbwe;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\jftuga.less_Microsoft.Winget.Source_8wekyb3d8bbwe;
+##### remove trailing ;
+$newPathCU = $oldPathCU -replace ';$', ''; $newPathCU
+sp -path 'registry::hkcu\environment' -name path -value $newPathCU
+## EUDC 1252 (for PowerColorLS icons)
+right-clicked on  $ITscc/font-CascadiaMono/CaskaydiaMonoNerdFontMono-Regular.ttf >
+  Installer  then (should be only)  Installer pour tous les utilisateurs
+test-path hkcu:\eudc\1252
+ni -path hkcu:\eudc\1252
+sp hkcu:\eudc\1252 -name SystemDefaultEUDCFont -value CaskaydiaMonoNerdFontMono-Regular.ttf -type string
+(gp hkcu:\eudc\1252).SystemDefaultEUDCFont
+## gokcehan lf configuration
+md ~\AppData\Local\lf
+## reboot to ensure path changes for PowerShell
+## Chafa
+winget add chafa
+### path modified
+  Variable d’environnement de chemin modifiée ; redémarrez votre interpréteur de commandes pour utiliser la nouvelle valeur.
+  Alias de ligne de commande ajouté : "chafa"
+#### fix ;;
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+  C:\Users\jharr\.cargo\bin;C:\Users\jharr\AppData\Local\Microsoft\WindowsApps;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\BurntSushi.ripgrep.MSVC_Microsoft.Winget.Source_8wekyb3d8bbwe\ripgrep-14.1.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.bat_Microsoft.Winget.Source_8wekyb3d8bbwe\bat-v0.24.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.fd_Microsoft.Winget.Source_8wekyb3d8bbwe\fd-v9.0.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Programs\MiKTeX\miktex\bin\x64\;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-6.1.1-full_build\bin;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\gokcehan.lf_Microsoft.Winget.Source_8wekyb3d8bbwe;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\jftuga.less_Microsoft.Winget.Source_8wekyb3d8bbwe;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\hpjansson.Chafa_Microsoft.Winget.Source_8wekyb3d8bbwe\chafa-1.14.0-1-x86_64-win;
+##### remove trailing ;
+$newPathCU = $oldPathCU -replace ';$', ''; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+## LSD
+winget add lsd
+### path modified
+  Variable d’environnement de chemin modifiée ; redémarrez votre interpréteur de commandes pour utiliser la nouvelle valeur.
+  Alias de ligne de commande ajouté : "lsd"
+#### fix ;;
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+  C:\Users\jharr\.cargo\bin;C:\Users\jharr\AppData\Local\Microsoft\WindowsApps;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\BurntSushi.ripgrep.MSVC_Microsoft.Winget.Source_8wekyb3d8bbwe\ripgrep-14.1.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.bat_Microsoft.Winget.Source_8wekyb3d8bbwe\bat-v0.24.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.fd_Microsoft.Winget.Source_8wekyb3d8bbwe\fd-v9.0.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Programs\MiKTeX\miktex\bin\x64\;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-6.1.1-full_build\bin;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\gokcehan.lf_Microsoft.Winget.Source_8wekyb3d8bbwe;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\jftuga.less_Microsoft.Winget.Source_8wekyb3d8bbwe;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\hpjansson.Chafa_Microsoft.Winget.Source_8wekyb3d8bbwe\chafa-1.14.0-1-x86_64-win;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\lsd-rs.lsd_Microsoft.Winget.Source_8wekyb3d8bbwe\lsd-v1.0.0-x86_64-pc-windows-msvc;
+##### remove trailing ;
+$newPathCU = $oldPathCU -replace ';$', ''; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## waiting
 ### reduce C:
 MiniTool Partition Wizard Free v12.8
@@ -474,6 +543,10 @@ ctrl+, (= Settings)
     Texte > Taille de police > 9
     Transparence > Opacité de l'arrière plan > 80%
     Type de police > Cascadia Mono
+  Ubuntu > Apparance >
+    Jeu de couleurs > Vintage
+    Texte > Taille de police > 9
+    Transparence > Opacité de l'arrière plan > 80%
   Windows PowerShell > Apparance > Texte > Taille de police > 9
 ~\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
 # physical configuration

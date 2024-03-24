@@ -1,0 +1,32 @@
+# vim: set fdl=1 ft=sh sw=2:
+
+# (see  \\wsl$\Ubuntu\etc\skel\.profile)
+# $MSWSL\bash_profile
+
+# setup steps
+#  rm ~/.profile
+#  cp /mnt/c/Users/jharr/Dropbox/JH/core/IT_stack/onGitHub/OS-MSwin10/WSL/bash_profile ~/.bash_profile
+#  bash $MSWSL/bs-symlinks.sh
+
+# . "$HOME/.bashrc"
+
+# private bin
+if [ -d "$HOME/bin" ] ; then PATH="$HOME/bin:$PATH"; fi
+if [ -d "$HOME/.local/bin" ] ; then PATH="$HOME/.local/bin:$PATH"; fi
+
+#=> 0 exports
+export host=$(uname -n)
+
+#==> places
+export Drpbx=/mnt/c/Users/jharr/Dropbox
+  export DJH=$Drpbx/JH
+    export core=$DJH/core
+      export ITstack=$core/IT_stack
+        export machLg=$ITstack/MSWin/ml-$host  # $machLg
+        export onGH=$ITstack/onGitHub
+          export MSwin10=$onGH/OS-MSWin10
+            export MSWSL=$MSwin10/WSL
+
+#=> 1 bashrc
+.  $MSWSL/bashrc
+

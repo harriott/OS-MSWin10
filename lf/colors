@@ -1,0 +1,216 @@
+# vim: ft=dircolors:
+
+# $MSWin10\colors ($MSwin10\mb\symlinks.ps1)
+
+# adapted, with thanks, from  https://codeberg.org/tplasdio/lf-config/src/commit/1c295ce7bc09c418dc9e101a0add033d74ce48b7/.config/lf/colors ($GHrUse/CP/Go-lf/tplasdio-lf-config/.config/lf/colors)
+
+# Colors for filenames in lf
+
+# there's only a very approximate match between what  Vim  shows and what's seen in  WT
+
+# slight error herein can disable all of these settings
+
+# file types
+bd  01;33 # BLK
+cd  01;33 # CHR
+di  01;93 # DIR = Documents, Pictures, etc
+ex  01;32 # EXEC
+fi  00    # FILE
+ln  01;36 # LINK
+or  01;91 # ORPHAN
+ow  01;94 # OTHER_WRITABLE = most directories
+pi  00;33 # FIFO
+sg  01;32 # SETGID
+so  01;32 # SOCK
+st  00;37 # STICKY
+su  01;32 # SETUID
+tw  01;32 # STICKY_OTHER_WRITABLE
+
+# archives or compressed
+*.7z    01;93
+*.ace   01;93
+*.alz   01;93
+*.arc   01;93
+*.arj   01;93
+*.bz    01;93
+*.bz2   01;93
+*.cab   01;93
+*.cpio  01;93
+*.deb   01;93
+*.dwm   01;93
+*.dz    01;93
+*.ear   01;93
+*.esd   01;93
+*.gz    01;93
+*.jar   01;93
+*.lha   01;93
+*.lrz   01;93
+*.lz    01;93
+*.lz4   01;93
+*.lzh   01;93
+*.lzma  01;93
+*.lzo   01;93
+*.rar   01;93
+*.rpm   01;93
+*.rz    01;93
+*.sar   01;93
+*.swm   01;93
+*.t7z   01;93
+*.tar   01;93
+*.taz   01;93
+*.tbz   01;93
+*.tbz2  01;93
+*.tgz   01;93
+*.tlz   01;93
+*.txz   01;93
+*.tz    01;93
+*.tzo   01;93
+*.tzst  01;93
+*.war   01;93
+*.wim   01;93
+*.xpi   01;93
+*.xz    01;93
+*.z     01;93
+*.zip   01;93
+*.zoo   01;93
+*.zst   01;93
+
+# images
+*.jpg   01;92
+*.JPG   01;92
+*.jpeg  01;92
+*.mjpg  01;92
+*.mjpeg 01;92
+*.jxl   01;92
+*.JXL   01;92
+*.webp  01;92
+*.gif   01;92
+*.bmp   01;92
+*.pbm   01;92
+*.pgm   01;92
+*.ppm   01;92
+*.tga   01;92
+*.xbm   01;92
+*.xpm   01;92
+*.tif   01;92
+*.tiff  01;92
+*.png   01;92
+*.svg   01;92
+*.svgz  01;92
+*.mng   01;92
+*.odg   01;92
+
+# films
+*.pcx   00;95
+*.mov   00;95
+*.mpg   00;95
+*.mpeg  00;95
+*.m2v   00;95
+*.mkv   00;95
+*.webm  00;95
+*.ogm   00;95
+*.mp4   00;95
+*.m4v   00;95
+*.mp4v  00;95
+*.vob   00;95
+*.qt    00;95
+*.nuv   00;95
+*.wmv   00;95
+*.asf   00;95
+*.rm    00;95
+*.rmvb  00;95
+*.flc   00;95
+*.avi   00;95
+*.fli   00;95
+*.flv   00;95
+*.gl    00;95
+*.dl    00;95
+*.xcf   00;95
+*.xwd   00;95
+*.yuv   00;95
+*.cgm   00;95
+*.emf   00;95
+*.ogv   00;95
+*.ogx   00;95
+
+# audio formats
+*.aac   00;36
+*.au    00;36
+*.flac  00;36
+*.m4a   00;36
+*.mid   00;36
+*.midi  00;36
+*.mka   00;36
+*.mp3   00;36
+*.mpc   00;36
+*.ogg   00;36
+*.ra    00;36
+*.wav   00;36
+*.oga   00;36
+*.opus  00;36
+*.spx   00;36
+*.xspf  00;36
+
+# documentish
+*.pdf    00;96
+*.PDF    00;96
+*.ps     00;96
+*.epub   00;96
+*.mobi   00;96
+*.ods    00;92
+*.xls    00;92
+*.XLS    00;92
+*.xlsx   00;92
+*.XLSX   00;92
+*.odt    00;92
+*.doc    00;92
+*.DOC    00;92
+*.docx   00;92
+*.DOCX   00;92
+*.odp    00;96
+*.ppt    00;96
+*.PPT    00;96
+*.pptx   00;96
+*.PPTX   00;96
+
+# codish
+*.R      01;93
+*.apk    01;93
+*.apk    01;93
+*.blend  01;93
+*.c      01;93
+*.cpp    01;93
+*.cs     01;93
+*.css    01;93
+*.db     01;93
+*.exe    01;93
+*.go     01;93
+*.hs     01;93
+*.htm    01;93
+*.html   01;93
+*.img    01;93
+*.iso    01;93
+*.java   01;93
+*.jl     01;93
+*.js     01;93
+*.lhs    01;93
+*.lua    01;93
+*.m      01;93
+*.nim    01;93
+*.nims   01;93
+*.odb    01;93
+*.php    01;93
+*.pl     01;93
+*.py     01;93
+*.r      01;93
+*.raku   01;93
+*.rb     01;93
+*.rs     01;93
+*.scala  01;93
+*.shtml  01;93
+*.sql    01;93
+*.sqlite 01;93
+*.tex    01;93
+*.vim    01;93
+*.xhtml  01;93
+

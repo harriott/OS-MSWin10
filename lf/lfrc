@@ -1,0 +1,13 @@
+
+# $MSWin10\lfrc ($MSwin10\mb\symlinks.ps1)
+
+set hidden true
+set icons true
+
+# 0 remove some defaults
+map m
+
+# 1
+map ge $explorer %PWD%
+map md $mkdir ---
+

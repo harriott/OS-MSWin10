@@ -40,6 +40,11 @@ vim: nospell:
     fzf -h
     fzf --version
 
+# lf file manager
+    ~\AppData\Local\lf
+
+by gokcehan
+
 # MiKTeX
     miktex fndb refresh
     ~\AppData\Local\MiKTeX\miktex\log\initexmf.log
@@ -68,6 +73,7 @@ output is simplified when redirected to a file
     $MSwin10\gac.ps1  # to explore all commands
     '"Hello world"'
     1..3
+    get-volume  # reports partitions
     less <someFile>
     foreach($element in 1..3){ $element }
     sleep 1
@@ -129,10 +135,18 @@ no standard aliases
     C:\MozillaThunderbird\thunderbird.exe -addressbook
     C:\Windows\explorer.exe "microsoft-edge:searchterm"
     gcm explorer
+    gcm lsd
+    get-startapps  # lists AppIDs
     explorer shell:Appsfolder  # Applications
-    powershell -noprofile  #  runs  Windows PowerShell
-    pwsh -nol
     start <somefile>
+
+### PowerShell
+    pwsh -nol
+    saps pwsh -verb runas  # Administrator
+
+### Windows PowerShell
+    powershell -noprofile  #  runs  Windows PowerShell
+    saps powershell -verb runas  # Administrator
 
 ### where.exe
     where.exe gpg
@@ -146,145 +160,10 @@ doesn't find executables in `~\AppData\`
     (gc $file | select -skip 3) | seco $file  # removes first 3 lines
     (gc $file_with_whitespaces_at_ends_of_lines).trim() | seco trimmed.txt
 
-## foreach-object
-- `%` = `foreach`
-- not the `foreach` loop statement
-
-## help
-    get-help Start-BitsTransfer
-    man <cmdlet>  # Get-Help, paged
-    powershell /?
-    Update-Help -UICulture en-US
-
-`F1` dynamic help (= `PSReadLine ShowCommandHelp` on command closest to left of cursor)
-
-## history
-    Get-LastModifiedFile
-
-### command history
-    gvim (Get-PSReadlineOption).HistorySavePath
-    h  # Get-History
-
-## microsoft.powershell.core
-    <command> | out-null  # works for some commands
-    (gcm <function>).scriptblock  # (get-command) shows what's in <function>
-
-- `?` (= `where` = `where-object`)
-
-
-## microsoft.powershell.management
-- `gc` (= `cat` = `type` = `get-content`)
-- `gp` (= `get-itemproperty`)
-- `gpv` (= `get-itempropertyvalue`)
-- `sp` (= `set-itemproperty`)
-
-### get-process
-    ps | oh -paging
-    ps | ?{$_.mainwindowtitle} | ft id, name, mainwindowtitle -autosize
-
-## microsoft.powershell.psresourceget
-    get-installedpsresource
-    get-psresourcerepository
-
-## microsoft.powershell.utility
-    iex <someCommand>  # = invoke-expression
-
-- `fl` (= `format-list`)
-- `measure` (= `measure-object`)
-- `select` (= `select-object`)
-- `sls` (= `select-string`)
-- `sort` (= `sort-object`)
-
-## networking
-    wp
-
-### IP
-    cc
-    ip
-    Get-WhoIs 8.8.8.8
-
-## package manage
-    get-package | format-table -autosize
-
-### modules
-    get-module
-    get-module -all
-    get-module -listavailable  # details, including old and those in  Windows PowerShell
-    gvim $env:localappdata\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
-    New-BurntToastNotification
-    pc  # PowerColorLS
-
-#### help
-    *.help.txt
-    update-help -uiculture en-us
-    ~\Documents\PowerShell\Help\en-US\about_Regular_Expressions.help.txt
-
-#### paths
-    $env:psmodulepath -split (';')
-    $pshome/Modules
-    ~\Documents\PowerShell\Modules
-
-#### powershellget
-    get-installedmodule
-    get-psrepository
-
-#### update
-    $machBld\updateModules.ps1  # for reference
-    compare-module | where updateneeded | foreach { update-module $_.name }  # slow but reliable
-
-## PSScriptTools
-    Get-MyAlias  # limited to  PSScriptTools
-    Get-DirectoryInfo  # alias  dw
-    Get-MyVariable
-    Get-PathVariable
-    get-powershellengine -detail
-    Get-PSSessionInfo
-    Get-PSScriptTools  # synopsi of commands
-    Get-TZData Europe/Paris
-    Get-WhoIs 8.8.8.8
-    Open-PSScriptToolsHelp
-
-### colours
-    Get-PSSessionInfo
-
-#### bars
-    New-ANSIBar -Range (232..255)
-    New-RedGreenGradient
-
-### compact lists
-    Get-ModuleCommand ps.checkModuleUpdates
-    Get-ModuleCommand PSScriptTools
-
-### Show-Tree
-    pstree -?
-    t [n]  => pstree <depth>
-
-`-InColor` only works in `Windows PowerShell`
-
-## PSFzf
-    Alt+a   # select an argument
-    Alt+c   # change to sub-directory
-    Ctrl+r  # search PSReadline History
-    Ctrl+t  # select provider path
-    Invoke-Fzf -?
-
-tab completion
-
-## Ruby
-    where.exe irb
-    where.exe ruby
-
-## scripts
-    $funs = gc "$MSWin10\PSProfile.ps1" | ss -pattern "function\s+([^\s{]+)" | %{ $_.matches.groups[1].value }; $funs -join '  '  # lists function names
-    Get-InstalledScript
-    param( [switch]$doSomething )  # -doSomething  creates  $doSomething = true
-    ~\Documents\PowerShell\Scripts
-
-## storage
-    get-volume  # reports partitions
+## file manage
     ii .  # invoke Explorer on WD
+    lsd --help
     sl ~ (= set-location C:\Users\$ENV:UserName")
-    takeown /? | less
 
 ### investigations
     bat <textFile>  # with beautiful formatting and less paging
@@ -352,7 +231,9 @@ aliases: `cat`, `type`
 
 ### manipulations
     gci -r -i "*.txt" | %{mi $_.fullname ($_.fullname -replace ".txt",'.dw')}  # renames all txt's to dw's
+    remove-itemsafely file_or_dir  # to Recycle Bin
     robocopy /mir <sourcedir> <destinationdir> /l  # runs a simulation of mirroring source to destination
+    takeown /? | less
 
 - `remove-item`: `del`, `erase`, `rd`, `ri`, `rm`, `rmdir`
 - `ROBOCOPY.exe`
@@ -367,6 +248,144 @@ aliases: `cat`, `type`
     ni <directory> -type directory
 
 `md` = `mkdir`, which calls `new-item`
+
+## foreach-object
+- `%` = `foreach`
+- not the `foreach` loop statement
+
+## help
+    get-help Start-BitsTransfer
+    man <cmdlet>  # Get-Help, paged
+    powershell /?
+    Update-Help -UICulture en-US
+
+`F1` dynamic help (= `PSReadLine ShowCommandHelp` on command closest to left of cursor)
+
+## history
+    Get-LastModifiedFile
+
+### command history
+    gvim (Get-PSReadlineOption).HistorySavePath
+    h  # Get-History
+
+## microsoft.powershell.core
+    <command> | out-null  # works for some commands
+    (gcm <function>).scriptblock  # (get-command) shows what's in <function>
+
+- `?` (= `where` = `where-object`)
+
+## microsoft.powershell.management
+- `gc` (= `cat` = `type` = `get-content`)
+- `gp` (= `get-itemproperty`)
+- `gpv` (= `get-itempropertyvalue`)
+- `saps` (= `start` = `start-process`)
+- `sp` (= `set-itemproperty`)
+
+### get-process
+    ps | oh -paging
+    ps | ?{$_.mainwindowtitle} | ft id, name, mainwindowtitle -autosize
+
+## microsoft.powershell.psresourceget
+    get-installedPSResource
+    get-PSResourceRepository
+
+## microsoft.powershell.utility
+    iex <someCommand>  # = invoke-expression
+
+- `fl` (= `format-list`)
+- `measure` (= `measure-object`)
+- `select` (= `select-object`)
+- `sls` (= `select-string`)
+- `sort` (= `sort-object`)
+
+## networking
+    wp
+
+### IP
+    cc
+    get-whois 8.8.8.8
+    ip
+
+## package manage
+    get-package | format-table -autosize
+
+### modules
+    gvim $env:localappdata\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
+    New-BurntToastNotification
+    pc  # PowerColorLS
+
+- `ipmo` (`import-module`)
+- `rmo` (`remove-module`)
+
+#### get-module
+    gmo -all
+    gmo -listavailable  # details, including old and those in  Windows PowerShell
+
+#### help
+    *.help.txt
+    update-help -uiculture en-us
+    ~\Documents\PowerShell\Help\en-US\about_Regular_Expressions.help.txt
+
+#### paths
+    $env:psmodulepath -split (';')
+    $pshome/Modules
+    ~\Documents\PowerShell\Modules
+
+#### powershellget
+    get-installedmodule
+    get-psrepository
+
+#### update
+    $machBld\updateModules.ps1  # for reference
+    compare-module | where updateneeded | foreach { update-module $_.name }  # slow but reliable
+
+## PSScriptTools
+    Get-MyAlias  # limited to  PSScriptTools
+    Get-DirectoryInfo  # alias  dw
+    Get-MyVariable
+    Get-PathVariable
+    get-powershellengine -detail
+    Get-PSSessionInfo
+    Get-PSScriptTools  # synopsi of commands
+    Get-TZData Europe/Paris
+    Get-WhoIs 8.8.8.8
+    Open-PSScriptToolsHelp
+
+### colours
+    Get-PSSessionInfo
+
+#### bars
+    New-ANSIBar -Range (232..255)
+    New-RedGreenGradient
+
+### compact lists
+    Get-ModuleCommand ps.checkModuleUpdates
+    Get-ModuleCommand PSScriptTools
+
+### Show-Tree
+    pstree -?
+    t [n]  => pstree <depth>
+
+`-InColor` only works in `Windows PowerShell`
+
+## PSFzf
+    Alt+a   # select an argument
+    Alt+c   # change to sub-directory
+    Ctrl+r  # search PSReadline History
+    Ctrl+t  # select provider path
+    Invoke-Fzf -?
+
+tab completion
+
+## Ruby
+    where.exe irb
+    where.exe ruby
+
+## scripts
+    $funs = gc "$MSWin10\PSProfile.ps1" | ss -pattern "function\s+([^\s{]+)" | %{ $_.matches.groups[1].value }; $funs -join '  '  # lists function names
+    Get-InstalledScript
+    param( [switch]$doSomething )  # -doSomething  creates  $doSomething = true
+    ~\Documents\PowerShell\Scripts
 
 ## stray cmdlets
     get-commandsyntax <command>
@@ -402,8 +421,9 @@ aliases: `cat`, `type`
     ls "$Env:AppData\Pandoc\defaults"
 
 #### path
-    $env:Path -split ';'
+    (gp 'registry::hkcu\environment' path).path -split ';'
     Get-PathVariable
+    $env:Path -split ';'
 
 ### registry
     $oldPathCU = (gp -path ‘registry::hkcu\environment’ -name path).path; $oldPathCU -split ';'
@@ -439,17 +459,26 @@ aliases: `cat`, `type`
     ~\Documents\WindowsPowerShell\Modules
 
 # Windows Subsystem for Linux
+    \\wsl$\Ubuntu\home\jo\.bash_history
+    \\wsl$\Ubuntu\usr\bin
+
+    wsl --help
+    wsl --shutdown  # kills all WSL2
     wsl -l -o
     wsl -l -v
+    wsl -l --running
+    wsl -v
 
-# wt
+- `sudo apt update` [the package index]
+- `sudo apt upgrade`
+
+# Windows Terminal
     cpi ~\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json $machLg\WT-settings.json
 
 - in Explorer: `Alt+D > wt > Enter`
 - <https://www.microsoft.com/en-gb/p/windows-terminal-preview/9n0dx20hk701>
 - `win+;` emojis
 - `win+r > wt` opens `wt` on `~`
-- Windows Terminal
 
 ## Settings
     Startup > Launch on machine startup
@@ -464,6 +493,7 @@ aliases: `cat`, `type`
 - `alt+shift+-` = `split down`
 - `ctrl+,` = `Settings`
 - `ctrl+c` copy text
+- `ctrl+shift+d` new tab in same directory (`$MSWin10\PSProfile.ps1`)
 - `ctrl+shift+f` find
 - `ctrl+shift+t` new tab
 - `ctrl+shift+w` close pane

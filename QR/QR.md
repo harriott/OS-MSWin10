@@ -19,11 +19,6 @@ vim: nospell:
     pt '$emd' $Drpbx\JH
     pt '$Pr0' $Drpbx\JH
 
-# fonts
-    sl C:\Windows\Fonts
-    gp -path "registry::\hklm\software\microsoft\windows nt\currentversion\fonts" | fl > $machLg/fonts-fl.txt
-
-
 # imagey
 ExifTool by Phil Harvey
 
@@ -33,6 +28,8 @@ ExifTool by Phil Harvey
 - `p` Properties/Settings
 - `R` Reopen file
 - `r` rotate right
+
+Consolas can handle €
 
 # LaTeX Polyglossia
     \setmainfont{Segoe Print}
@@ -133,6 +130,7 @@ KeePassXC: Getting Started Guide
 
 # Windows
     regedit
+    sl C:\Windows\Fonts
 
 - `Control Panel > Programs and Features`
 - `shift+win+/` PowerToys general Win10 Shortcut Guide
@@ -145,7 +143,7 @@ KeePassXC: Getting Started Guide
 - `win+x` > `t` = `Gestion des disques`
 
 ## File Explorer
-- `alt+d`/`ctrl+l` (& `f4`) le chemin d’accès > `powershell`/`wt` Enter
+- `alt+d`/`ctrl+l` (& `f4`) le chemin d’accès > `bash`/`pwsh`/`wt` Enter
 - `alt+p` toggle preview panel
 - `ctrl+N` new directory
 - `ctrl+space` toggle PowerToys Peek
@@ -177,4 +175,10 @@ requires a Windows Recovery partition to be present
     C:\WINDOWS\system32\Taskmgr.exe
 
 Gestionnaire de tâches
+
+## Windows Subsystem for Linux
+    \\wsl$\Ubuntu\etc\wsl.conf
+    \\wsl$\Ubuntu\home\jo\.bash_history
+
+`\\wsl$\Ubuntu\etc\skel` has Bash configuration defaults
 

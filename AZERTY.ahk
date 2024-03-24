@@ -38,7 +38,7 @@
 } ; win+ctrl+e  after a scan, brings forward and saves as jpg
 #^s::{
 	WinActivate "HP Smart ahk_exe ApplicationFrameHost.exe"
-    MouseMove 440,400
+    MouseMove 960,700
 	Click ; on Numériser
 } ; win+ctrl+s  brings forward and scans
 #^x::{

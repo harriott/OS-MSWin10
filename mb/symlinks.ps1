@@ -12,6 +12,11 @@
 # ni $Env:AppData\.emacs.d\lisp -type symboliclink -value $onGH\misc\CP\emacs\lisp -force
 # # csl $Env:AppData\.emacs.d
 
+#=> 0 gokcehan lf configuration
+ni ~\AppData\Local\lf\colors -type symboliclink -value $MSWin10\lf\colors -force
+ni ~\AppData\Local\lf\lfrc -type symboliclink -value $MSWin10\lf\lfrc -force
+ni ~\AppData\Local\lf\icons -type symboliclink -value $MSWin10\lf\icons -force
+
 # #=> 0 LanguageTool
 # # ni C:\LanguageTool -type symboliclink -value C:\Users\troin\Dropbox\JH\copied\IT-handy\LanguageTool -force
 # ni C:\LanguageTool -type symboliclink -value $ITscc\LanguageTool -force

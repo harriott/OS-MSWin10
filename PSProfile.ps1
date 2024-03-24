@@ -1,5 +1,5 @@
 
-# Joseph Harriott, jeu. 07 mars 2024
+# Joseph Harriott, ven 22 mars 2024
 
 # $MSWin10\PSProfile.ps1 (symlinked in  $MSWin10\symlinks.ps1) sourced by
 
@@ -14,7 +14,7 @@ function fonts {
   (gc $mf1 | select -skip 3) | seco $mf1
   $mf2 = $mf0+'-2'; (gc $mf1 -raw) -replace "(?s)  PSPath.*" > $mf2; ri $mf1
   $mf3 = $mf0+'.wntf'; 'vim: ft=wntf:' > $mf3; '' >> $mf3; (gc $mf2).trim() >> $mf3; ri $mf2
-} # $vimfiles/syntax/wntf.vim
+} # $machLg\fonts.wntf ($vimfiles/syntax/wntf.vim)
 
 function GNFR {
   $FRlist = Get-NetFirewallRule | out-string
@@ -62,7 +62,23 @@ Function mc {
 #=> 0 directories & files
 function c { if ( $args[0] ) { sl $args[0] } else { sl .. }; pc }  # handily move in or out
 function i { ii . }  # opens  file explorer  on current directory
-set-alias j z  # ZLocation
+Function lc { [string[]]$list = (gci).Name; $list -join '  ' }
+sal j z  # ZLocation
+sal l lsd
+  function la { l -a } # --all
+  function lg { l -glR } # --git stqtus
+  function ll { l -l } # --long
+  function lls { l -lS --reverse } # --sizesort
+  function llt { l -lt --reverse } # --timesort
+  function lt { l --tree }
+  function ltd { l -d --tree } # -directory-only
+  function lx { l -lRX } # --recursive --extensionsort
+
+function g {
+  $env:PAGER='less'
+  $env:SHELL='pwsh'
+  lf -print-last-dir $args | sl
+  } # gokcehan  lf  quits on last viewed directory
 
 #==> changes
 function chco {
@@ -75,6 +91,8 @@ function chco {
 function tt { ri "*.aux"; ri "*.log" }  # tidy tex = clear away TeX ancillary files
 
 #==> investigations
+ipmo PowerColorLS; sal p PowerColorLS
+
 function csl {
   $links = gci $args[0] -force | ?{$_.linktype} | select fullname,target
   foreach ($link in $links) {
@@ -314,8 +332,8 @@ function cc {
   if ( $ci ) { "$ci, $co" } else { "$co" }
   }  # [city, ]country
 function ip { (Invoke-WebRequest -uri "http://ifconfig.me/ip").Content }  # IPv4
-function p {test-connection -computername 8.8.8.8 -ErrorAction SilentlyContinue}
-function pg {test-connection -computername google.com -ErrorAction SilentlyContinue}
+function tc {test-connection 8.8.8.8 -ErrorAction SilentlyContinue}
+function tcg {test-connection google.com -ErrorAction SilentlyContinue}
 function wp { curl wttr.in/Paris }
 
 #==> yt-dlp
@@ -323,77 +341,16 @@ sal y yt-dlp
   function y7 { y -f '[height<=?720]' $args[0] }
   function yf { y -F $args[0] }
 
-#=> 0 places
-$uname = $Env:USERNAME
-  $Drpbx = "C:\Users\$uname\Dropbox"
-    $DJH = "$Drpbx\JH"
-      $ess = "$DJH\now\essential"
-        $eFr = "$ess\France"
-      $CfWk = "$DJH\CforWork"
-      $Cfzd = "$DJH\Cafezoide"
-        $CzPhy = "$Cfzd\PhysicalProperty"
-      $copied = "$DJH\copied"
-      $core = "$DJH\core"
-        $ITstack = "$core\IT_stack"
-          $CrPl = "$ITstack\CP"
-            $LTXj = "$CrPl\documenting\LaTeX\jo"
-          $ITscc = "$ITstack\copied-code"
-          $ITscr = "$ITstack\copied-reference"
-          $onGH = "$ITstack\onGitHub"
-            $Cn = $Env:Computername
-              $machLg = "$ITstack\MSWin\ml-$Cn"
-            $MSwin10 = "$onGH\OS-MSWin10"
-              $machBld = "$MSWin10\mb\$Cn"
-            $SPD = "$onGH\FM-MSWin-syncDrives\RoboCopy\$Cn"  # used in  $machBld\PSProfile.ps1
-            $vimfiles = "$onGH\vimfiles"
-              $vfp = "$vimfiles\pack"
-      $GHrUse = "$Drpbx\CGHrepos"  # GitHub Repositories Use
-      $JHw = "$DJH\work"  # for IT websites and more
-        $JHm = "$JHw\IT-Jekyll-harriott-minima"
-        $rEr = "$JHw\France\IdF\Paris\20e-rueErmitage"
-          $StEr = "$rEr\StudioErmitage"  # $StEr
-      $jtIT = "$DJH\technos\IT"
-      $tIs = "$DJH\Technos\IT-storage"  # $tIs\diskUsage.txt
-      $Pr0 = "$DJH\Copied\Practical0"
-      $Thb = "$DJH\Thb-dr"
-  $Enc = "C:\Users\$uname\encrypted"
-
 #=> 0 shell settings 0
 $env:path +=';C:\Program Files\7-Zip'
 
-if ($PSVersionTable.PSVersion.Major -eq 7) { Import-Module Powershell.Chunks }
+if ($PSVersionTable.PSVersion.Major -eq 7) { ipmo Powershell.Chunks }
 
-Import-Module posh-git
+ipmo posh-git
   $GitPromptSettings.DefaultPromptPath.ForegroundColor = [ConsoleColor]::Cyan
 
-Import-Module ps.checkModuleUpdates
-Import-Module PSScriptTools
-
-#==> colours in outputs
-. $MSWin10\Out-HostColored.ps1
-Function SCFCDC { [System.Console]::ForegroundColor = 'DarkCyan' }  # scfcdc; "DarkCyan"; scrc
-Function SCFCW { [System.Console]::ForegroundColor = 'White' }  # scfcw; "White"; scrc
-Function SCRC { [System.Console]::ResetColor() }
-# SCFCW; "DarkCyan"; "White"; SCRC
-Import-Module Terminal-Icons; Import-Module PowerColorLS
-sal pc PowerColorLS
-
-function Format-Color([hashtable] $Colors = @{}, [switch] $SimpleMatch) {
-    $lines = ($input | Out-String) -replace "`r", "" -split "`n"
-    foreach($line in $lines) {
-        $color = ''
-        foreach($pattern in $Colors.Keys){
-            if(!$SimpleMatch -and $line -match $pattern) { $color = $Colors[$pattern] }
-            elseif ($SimpleMatch -and $line -like $pattern) { $color = $Colors[$pattern] }
-        }
-        if($color) { Write-Host -ForegroundColor $color $line } else { Write-Host $line }
-    }
-}
-
-#===> errors
-# only affecting  Windows PowerShell
-$host.privatedata.errorforegroundcolor = 'green'
-$host.privatedata.ErrorBackgroundColor = 'darkmagenta'
+ipmo ps.checkModuleUpdates
+ipmo PSScriptTools
 
 #==> PSReadLine
 Set-PSReadlineOption -EditMode Vi  # wipes out any other settings, so first
@@ -414,6 +371,44 @@ function prompt {
     { $prompt += "$([char]27)]9;9;`"$($loc.ProviderPath)`"$([char]27)\" }
   $prompt
 } # ctrl+shift+d  now opens a new tab in same directory
+
+#=> 0 useful variables
+$Cn = $Env:Computername
+$uname = $Env:USERNAME
+
+#==> places
+$Drpbx = "C:\Users\$uname\Dropbox"
+  $DJH = "$Drpbx\JH"
+    $ess = "$DJH\now\essential"
+      $eFr = "$ess\France"
+    $CfWk = "$DJH\CforWork"
+    $Cfzd = "$DJH\Cafezoide"
+      $CzPhy = "$Cfzd\PhysicalProperty"
+    $copied = "$DJH\copied"
+    $core = "$DJH\core"
+      $ITstack = "$core\IT_stack"
+        $CrPl = "$ITstack\CP"
+          $LTXj = "$CrPl\documenting\LaTeX\jo"
+        $ITscc = "$ITstack\copied-code"
+        $ITscr = "$ITstack\copied-reference"
+        $machLg = "$ITstack\MSWin\ml-$Cn"
+        $onGH = "$ITstack\onGitHub"
+          $MSWin10 = "$onGH\OS-MSWin10"
+            $machBld = "$MSWin10\mb\$Cn"
+            $MSWSL = "$MSWin10\WSL"
+          $SPD = "$onGH\FM-MSWin-syncDrives\RoboCopy\$Cn"  # used in  $machBld\PSProfile.ps1
+          $vimfiles = "$onGH\vimfiles"
+            $vfp = "$vimfiles\pack"
+    $GHrUse = "$Drpbx\CGHrepos"  # GitHub Repositories Use
+    $JHw = "$DJH\work"  # for IT websites and more
+      $JHm = "$JHw\IT-Jekyll-harriott-minima"
+      $rEr = "$JHw\France\IdF\Paris\20e-rueErmitage"
+        $StEr = "$rEr\StudioErmitage"  # $StEr
+    $jtIT = "$DJH\technos\IT"
+    $tIs = "$DJH\Technos\IT-storage"  # $tIs\diskUsage.txt
+    $Pr0 = "$DJH\Copied\Practical0"
+    $Thb = "$DJH\Thb-dr"
+$Enc = "C:\Users\$uname\encrypted"
 
 #=> 0 Vifm
 $env:path +=';C:\vifm-w64-se-0.12-binary'
@@ -498,11 +493,6 @@ Function tz { Get-MyTimeInfo -Locations ([ordered]@{"GMT" = "GMT Standard Time"}
 # New-Alias g gm.exe # GraphicsMagick
 New-Alias jpo $onGH\jpgorhor\jpgorhor.ps1
 
-Function l {
-  [string[]]$list = (gci).Name
-  $list -join '  '
-}
-
 #==> Jekyll
 function js { sl $JHm; $JHm; bundle exec jekyll serve --drafts; }
 function jt { sl $JHm; ri tag\*; python $JHm\_plugins\compile_tags.py; sl tag; }
@@ -519,4 +509,29 @@ function jt { sl $JHm; ri tag\*; python $JHm\_plugins\compile_tags.py; sl tag; }
 function f { Invoke-Fzf -preview 'bat --color=always {}' }
 sal b bat
 function bd { bat -d $args[0] }  # showing changes from git index
+
+#==> shell - colours in outputs
+. $MSWin10\Out-HostColored.ps1
+Function SCFCDC { [System.Console]::ForegroundColor = 'DarkCyan' }  # scfcdc; "DarkCyan"; scrc
+Function SCFCW { [System.Console]::ForegroundColor = 'White' }  # scfcw; "White"; scrc
+Function SCRC { [System.Console]::ResetColor() }
+# SCFCW; "DarkCyan"; "White"; SCRC
+ipmo Terminal-Icons
+
+function Format-Color([hashtable] $Colors = @{}, [switch] $SimpleMatch) {
+    $lines = ($input | Out-String) -replace "`r", "" -split "`n"
+    foreach($line in $lines) {
+        $color = ''
+        foreach($pattern in $Colors.Keys){
+            if(!$SimpleMatch -and $line -match $pattern) { $color = $Colors[$pattern] }
+            elseif ($SimpleMatch -and $line -like $pattern) { $color = $Colors[$pattern] }
+        }
+        if($color) { Write-Host -ForegroundColor $color $line } else { Write-Host $line }
+    }
+}
+
+#===> errors
+# only affecting  Windows PowerShell
+$host.privatedata.errorforegroundcolor = 'green'
+$host.privatedata.ErrorBackgroundColor = 'darkmagenta'
 
