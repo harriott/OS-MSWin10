@@ -99,7 +99,7 @@ function chco {
     }
   } # (release files for: change contents)  chco '\$m' '$mmm'
 
-function tt { ri "*.aux"; ri "*.log" }  # tidy tex = clear away TeX ancillary files
+function tit { ri "*.aux"; ri "*.log" }  # tidy tex = clear away TeX ancillary files
 
 #==> investigations
 ipmo PowerColorLS; sal p PowerColorLS
@@ -419,11 +419,6 @@ Function lj {
 } # instead of a symlink to avoid snags if MiKTeX is uninstalled
 
 #===> Pandoc
-# helps to define these also in  $HOME\_vimrc
-$tex = "$Env:AppData\MiKTeX\tex"
-$Pandoc = "$Env:AppData\Pandoc"
-  $MD4PDF = "$onGH\pandoc-md4pdf"
-
 function headings0sty { cpi $MD4PDF/iih/headings0.sty $tex\latex\m4p\headings.sty -force } # will need a  miktex fndb refresh  after first run
 function m4p { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4p.ps1 $args[0] $args[1] $args[2] $args[3] }
 function m4ps0 { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4ps.ps1 $args[0] $args[1] $args[2] } # m4ps0 [-n] [-r] [-s]

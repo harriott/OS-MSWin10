@@ -39,8 +39,8 @@ ni ~\Env.ps1 -type symboliclink -value $MSWin10\Env.ps1 -force
 ni ~\PSProfile.ps1 -type symboliclink -value $MSWin10\PSProfile.ps1 -force
 
 #=> vim
-ni ~\_gvimrc -type symboliclink -value $machBld\user\_gvimrc -force  # $MSWin10/user/_gvimrc
-ni ~\_vimrc -type symboliclink -value $machBld\user\_vimrc -force  # $MSWin10/user/_vimrc
+ni ~\_gvimrc -type symboliclink -value $machBld/_gvimrc -force
+ni ~\_vimrc -type symboliclink -value $MSWin10/mb/HPEB840G3-user/_vimrc -force
 ni ~\vimfiles -type symboliclink -value $onGH\vimfiles -force
 
 #=> ~\.bashrc

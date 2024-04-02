@@ -30,6 +30,7 @@ if ( $Cn -eq 'HPEB840G36' ) { $Drpbx = "D:\Dropbox" }
         $machLg = "$ITstack\MSWin\ml-$Cn"
         $onGH = "$ITstack\onGitHub"
           $misc = "$onGH\misc"
+          $MD4PDF = "$onGH\pandoc-md4pdf"
           $MSWin10 = "$onGH\OS-MSWin10"
             $machBld = "$MSWin10\mb\$Cn"
             $MSWSL = "$MSWin10\WSL"
@@ -48,4 +49,7 @@ if ( $Cn -eq 'HPEB840G36' ) { $Drpbx = "D:\Dropbox" }
     $Pr0 = "$DJH\Copied\Practical0"
     $Thb = "$DJH\Thb-dr"
 $Enc = "C:\Users\$uname\encrypted"
+$Pandoc = "$Env:AppData\Pandoc"
+$tex = "$Env:AppData\MiKTeX\tex"
+
 
