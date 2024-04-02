@@ -4,6 +4,7 @@ vim: nospell:
 
     chcp  # reports code page
     java -jar C:\LanguageTool\languagetool-commandline.jar -h
+    java -jar $ITscc\CP\LanguageTool\languagetool-commandline.jar -h
     ~\AppData\Roaming\Vifm\vifmrc
 
 `intl.cpl` (= Panneau de configuration > Région)
@@ -68,12 +69,12 @@ output is simplified when redirected to a file
     pt 's~~$' .
 
 # PowerShell
-    $function:<function>  # contains it's internal commands
     $myinvocation.mycommand.name  # = the script's name
     $MSwin10\gac.ps1  # to explore all commands
     '"Hello world"'
     1..3
     get-volume  # reports partitions
+    if (c1) {a1} elseif (c2) {a2} else (c3) {a3}
     less <someFile>
     foreach($element in 1..3){ $element }
     sleep 1
@@ -94,7 +95,7 @@ limited to single commands
     sal <alias> <string>
 
 ## colour
-    [System.Enum]::GetValues('ConsoleColor') | %{ Write-Host $_ -ForegroundColor $_ }
+    [System.Enum]::GetValues('ConsoleColor') | %{ write-host $_ -ForegroundColor $_ }
     iex "$ITstack\MSWin\PowerShell\colours\ConsoleColor.ps1"
     iex "$ITstack\MSWin\PowerShell\colours\LindbergColors.ps1"
     iex "$onGH\misc\Colors.ps1"
@@ -176,10 +177,6 @@ doesn't find executables in `~\AppData\`
     pc -a -l -t  # includes hidden & time sorted
     stringInVims "string"
 
-#### symlinks
-    csl  # targets in green or red
-    gci -force | ?{$_.linktype}
-
 #### by extension
     cex
     Get-FileExtensionInfo -r
@@ -229,6 +226,10 @@ aliases: `cat`, `type`
     fso
     gfsi
 
+#### symlinks
+    csl  # targets in green or red
+    gci -force | ?{$_.linktype}
+
 ### manipulations
     gci -r -i "*.txt" | %{mi $_.fullname ($_.fullname -replace ".txt",'.dw')}  # renames all txt's to dw's
     remove-itemsafely file_or_dir  # to Recycle Bin
@@ -237,6 +238,8 @@ aliases: `cat`, `type`
 
 - `remove-item`: `del`, `erase`, `rd`, `ri`, `rm`, `rmdir`
 - `ROBOCOPY.exe`
+- `z -?` (`ZLocation`)
+
 
 #### aliases
 `copy-item`: `copy` `cp` `cpi`
@@ -252,6 +255,10 @@ aliases: `cat`, `type`
 ## foreach-object
 - `%` = `foreach`
 - not the `foreach` loop statement
+
+## functions
+    $function:<function>  # contains it's internal commands
+    function global:<function> { ... }
 
 ## help
     get-help Start-BitsTransfer
@@ -383,6 +390,7 @@ tab completion
 
 ## scripts
     $funs = gc "$MSWin10\PSProfile.ps1" | ss -pattern "function\s+([^\s{]+)" | %{ $_.matches.groups[1].value }; $funs -join '  '  # lists function names
+    . <script_to_dot_source>
     Get-InstalledScript
     param( [switch]$doSomething )  # -doSomething  creates  $doSomething = true
     ~\Documents\PowerShell\Scripts
@@ -423,7 +431,7 @@ tab completion
 #### path
     (gp 'registry::hkcu\environment' path).path -split ';'
     Get-PathVariable
-    $env:Path -split ';'
+    $env:path -split ';' > $machLg/path
 
 ### registry
     $oldPathCU = (gp -path ‘registry::hkcu\environment’ -name path).path; $oldPathCU -split ';'
@@ -431,7 +439,7 @@ tab completion
 
 ## text wrangling
     'boob' -replace 'b$', ''
-    "Hello".Replace('l', 'x')
+    "Hello".replace('l','x')
     (gc $file) -replace $regex, $newtext | seco $file
 
 ## version
@@ -443,12 +451,13 @@ tab completion
     /tee - output to console as well as log file
 
 # Windows Package Manager
+    g C:\users\jharr\AppData\local\microsoft\winget\packages
     winget --info
-    winget add altsnap  # install
+    winget add SumatraPDF -h -l C:\SumatraPDF # install (--location, --silent)
     winget find powershell
     winget update --all
     winget update google.chrome
-    winget rm google.chrome
+    winget rm google.chrome  # uninstall
 
 # Windows PowerShell - modules
     get-installedmodule
@@ -487,7 +496,7 @@ tab completion
     Settings > Actions
 
 - `alt+D` duplicate pane right
-- `alt+_` split pane below (AZERTY `alt+shift+-`)
+- `alt+_` split pane below (AZERTY `alt+6`)
 - `alt++` split pane right
 - `alt+arrow` move focus
 - `alt+shift+-` = `split down`

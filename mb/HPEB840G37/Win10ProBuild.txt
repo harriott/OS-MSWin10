@@ -2,14 +2,16 @@ vim: ft=build:
 
 $machBld\Win10ProBuild.txt
 
-HP EliteBook 840 G3 barcoded PC117862 (labelled BC PNB 17 by last owner) = HPEB840G362
+HP EliteBook 840 G3 barcoded PC117862 (labelled BC PNB 17 by last owner) = HPEB840G37
 (jharrio@outlook.com)
 # build - parallel
 Google Chrome somehow there
 Paramètres > Écran > Éclairage nocturne > Activé
-## Administrator PowerShell opacity
+Gestionnaire de périphériques > Cartes graphiques > Intel(R) HD Graphics 520
+  double-clicked to discover  Pilote > 31.0.101.2111
+## APS opacity
 saps pwsh -verb runas  to right-click on toolbar for  Propriétés > Opacité > 80%
-## Administrator Windows PowerShell opacity
+## AWPS opacity
 saps powershell -verb runas  to right-click on toolbar for  Propriétés > Opacité > 80%
 ## AltSnap
 winget add altsnap
@@ -31,6 +33,10 @@ Ctrl+P ( = Tools > Options ) > General >
 with an image open, e  for  C:\Program Files\IrfanView\i_view64.exe 
 ## File Explorer
 Affichage > Options > Affichage > [ [ Afficher l'icône des fichiers sure les miniatures  Afficher la barre d'état ] off-ticked  Afficher le chemin d'accès complet dans la barre de titre  on-ticked  Afficher les fichiers, dossier et lecteurs cachés  [ Masquer les extensions des fichiers dont le type est connu  Masquer les fichier protégés du système d'exploitation ]  off-ticked
+## fix ; at end of path
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU -replace ';$', ''; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## Gestionnaire de tâches
 Options > Masquer l'icône réduite
 hidden icon dragged to taskbar
@@ -38,6 +44,8 @@ hidden icon dragged to taskbar
 winget add IrfanSkiljan.IrfanView -h  went to  "C:\Program Files\IrfanView\i_view64.exe"
 ran it for  P (= Properties/Settings) > [ JPG > Auto-rotate off  Editing > Cut White ]
 winget add IrfanSkiljan.IrfanView.PlugIns -h
+## JRE
+winget add Oracle.JavaRuntimeEnvironment  rebooted for it to work in  Vim
 ## language pack - UK
 win+i (= Paramètres) > Heure et langue > Langue > Langues préférées > Ajouter une langue >
   English (United Kingdom) > Installer
@@ -91,18 +99,27 @@ Install-Module Terminal-Icons -Repository PSGallery
 Install-Module ZLocation
 install-module recycle
 # build - sequential
-Utilisateur
-  À propos de > Spécifications de Windows > Windows 10 Pro 21H2 OS build 19044.1889
+## move from Utilisateur
+Paramètres >
   Mise à jour et sécurité > Activation > Windows est activé à l'aide d'une license numérique
+  Système > À propos de > Spécifications de Windows > Windows 10 Pro 21H2 OS build 19044.1889
 connected to  Jo-X10II
 Mise à jour et sécurité > Windows Update > Updated to Windows 10 version 22H2
 connected to  Jo-OPPO-A76
-Menu > Système Windows > [ Invite de Commandes  Outils d'administration  Panneau de configuration ] >
-  Pinned to Start
+Menu > Système Windows >
+  [ Invite de Commandes  Outils d'administration  Panneau de configuration ] > Pinned to Start
 Menu > [ Disnéy  Microsoft 365 ] > right-click > Désintaller
-Settings > Système > Alimentation et mise en veille > Paramètres d'alimentation supplémentaire > Choisir l'action des boutons d'alimentation > [ Modifier des paramètres actuellement non disponibles > Activer le démarrage rapide  off-ticked  Lorsque je referme le capot > Sur secteur > Ne rien faire ]
 win+i > Comptes > Famille et autres utilisateurs > Ajouter > jharrio@outlook.com > pw
 win+i > Comptes > Famille et autres utilisateurs > Autres > Utilisateur > supprimer
+## screen resolution
+Paramètres > Système > Écran > Résolution de l'écran > 1920 x 1080 (recommandé)
+## Alimentation et mise en veille
+Paramètres > Système > Alimentation et mise en veille > Jamais, Jamais, 10 minutes, Jamais
+  Paramètres d'alimentation supplémentaire >
+    Choisir l'action des boutons d'alimentation >
+    [ Modifier des paramètres actuellement non disponibles >
+    Activer le démarrage rapide  off-ticked  Lorsque je referme le capot > Sur secteur >
+    Ne rien faire ]
 ## Ditto Clipboard
 Microsoft Store > Ditto Clipboard > Install > Pin to Start
 Ran it for  Options > General > [ Maximum Number of Saved Copies > 5000
@@ -110,8 +127,8 @@ Ran it for  Options > General > [ Maximum Number of Saved Copies > 5000
 ctrl+* = Activate Ditto
 ## dropbox.com
 Signed in > DropboxInstaller.exe > English & Selective sync
-## $MSwin10 for symlinks.ps1
-run in Administator PowerShell
+## symlinks
+APS> . $MSwin10\mb\symlinks.ps1
 ## L'Assistant de stockage
 (Paramètres > Système > Stockage) got turned on
 ## Analyse Microsoft Defender hors ligne
@@ -145,7 +162,6 @@ found in Microsoft Store > Obtenir
 ## PowerShell execution policy
 Get-ExecutionPolicy   reported  "Restricted"
 ### Administrateur PowerShell
-Get-ExecutionPolicy   reported  "Restricted"
 Get-ExecutionPolicy -list  reported all as  "Undefined"
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Confirm > y
 ## $Profile
@@ -219,7 +235,7 @@ Paramètres > Encadré > Personnaliser la barre latérale > Toujours afficher la
 ## AutoHotkey v2.0.11
 AutoHotkey_2.0.11_setup.exe
 Shortcut to  $MSwin10\mb-HPEB840G362\user\jo.ahk  moved into
-  ~\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+  "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
 ## after a reboot
 Faisons une sauvegarde des données de votre PC > Ignorer pour le moment > Continuer
 ## FastStone Image Viewer v7.5
@@ -344,19 +360,20 @@ rebooted
 ~\Documents\PowerShell\Modules\BurntToast\0.8.5\README.md
 rebooted  for  uninstall-module burnttoast
 APS> install-module burnttoast  got it in the same location and still no notifications...
-Settings > Apps & features > PowerShell > Uninstall
+Paramètres > Applications > PowerShell > Uninstall
 Idc> winget add microsoft.powershell
 WT: [erreur 2147942402 (0x80070002) lors du lancement de `"C:\Users\jharr\AppData\Local\Microsoft\WindowsApps\Microsoft.PowerShell_8wekyb3d8bbwe\pwsh.exe"'] so
   PowerShell > Ligne de commande > "C:\Program Files\PowerShell\7\pwsh.exe"
 New-BurntToastNotification
 ## Sumatra PDF v3.5.2
 winget add SumatraPDF -h -l C:\SumatraPDF
-##  update-help
+## update-help
   Update-Help: Failed to update Help for the module(s) 'AppBackgroundTask, Appx, AssignedAccess, BitLocker, BitsTransfer, BranchCache, CimCmdlets, Defender, DirectAccessClientComponents, Dism, DnsClient, EventTracingManagement, International, Kds, LanguagePackManagement, LAPS, Microsoft.PowerShell.Archive, Microsoft.PowerShell.Core, Microsoft.PowerShell.Diagnostics, Microsoft.PowerShell.Host, Microsoft.PowerShell.LocalAccounts, Microsoft.PowerShell.Management, Microsoft.PowerShell.Operation.Validation, Microsoft.PowerShell.PSResourceGet, Microsoft.PowerShell.Security, Microsoft.PowerShell.Utility, Microsoft.WSMan.Management, MMAgent, NetAdapter, NetConnection, NetEventPacketCapture, NetLbfo, NetNat, NetQos, NetSecurity, NetSwitchTeam, NetTCPIP, NetworkConnectivityStatus, NetworkSwitchManager, NetworkTransition, PackageManagement, PcsvDevice, PKI, PnpDevice, PowerShellGet, PrintManagement, ProcessMitigations, Provisioning, PSDiagnostics, PSReadLine, ScheduledTasks, SecureBoot, SmbShare, SmbWitness, StartLayout, Storage, ThreadJob, TLS, TroubleshootingPack, TrustedPlatformModule, UEV, VpnClient, Wdac, Whea, WindowsDeveloperLicense, WindowsErrorReporting, WindowsSearch, WindowsUpdate' with UI culture(s) {fr-FR} : No UI culture was found that matches the following pattern: fr-FR. Verify the pattern and then try the command again..
   Update-Help: Failed to update Help for the module(s) 'ConfigDefenderPerformance, PSReadline' with UI culture(s) {fr-FR} : One or more errors occurred. (Response status code does not indicate success: 404 (The specified blob does not exist.).).
   English-US help content is available and can be installed using: Update-Help -UICulture en-US.
 update-help -uiculture en-gb
 update-help -uiculture en-us
+## switched to $MSWin10\AZERTY.ahk
 ## ImageMagick
 winget add imagemagick  went to  "C:\Program Files\ImageMagick-7.1.1-Q16-HDRI"
 fresh PowerShell for:  magick wizard: wizard.jpg
@@ -506,12 +523,37 @@ winget add lsd
 ### path modified
   Variable d’environnement de chemin modifiée ; redémarrez votre interpréteur de commandes pour utiliser la nouvelle valeur.
   Alias de ligne de commande ajouté : "lsd"
-#### fix ;;
+#### fix ; at end of path
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
   C:\Users\jharr\.cargo\bin;C:\Users\jharr\AppData\Local\Microsoft\WindowsApps;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\BurntSushi.ripgrep.MSVC_Microsoft.Winget.Source_8wekyb3d8bbwe\ripgrep-14.1.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.bat_Microsoft.Winget.Source_8wekyb3d8bbwe\bat-v0.24.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.fd_Microsoft.Winget.Source_8wekyb3d8bbwe\fd-v9.0.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Programs\MiKTeX\miktex\bin\x64\;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-6.1.1-full_build\bin;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\gokcehan.lf_Microsoft.Winget.Source_8wekyb3d8bbwe;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\jftuga.less_Microsoft.Winget.Source_8wekyb3d8bbwe;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\hpjansson.Chafa_Microsoft.Winget.Source_8wekyb3d8bbwe\chafa-1.14.0-1-x86_64-win;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\lsd-rs.lsd_Microsoft.Winget.Source_8wekyb3d8bbwe\lsd-v1.0.0-x86_64-pc-windows-msvc;
 ##### remove trailing ;
 $newPathCU = $oldPathCU -replace ';$', ''; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
+## Nom de l'appareil
+Paramètres > Système > À propos de > (Nom de l'appareil > DESKTOP-GSPV6OJ)  Renommer ce PC > HPEB840G37
+## eza
+winget add eza-community.eza
+### path modified
+  Variable d’environnement de chemin modifiée ; redémarrez votre interpréteur de commandes pour utiliser la nouvelle valeur.
+  Alias de ligne de commande ajouté : "eza"
+fixed ; at end of path
+## path to LSD dissappeared
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = "$oldPathCU;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\lsd-rs.lsd_Microsoft.Winget.Source_8wekyb3d8bbwe\lsd-v1.1.2-x86_64-pc-windows-msvc"; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+## Gpg4win
+winget add gnupg.gpg4win  arrived in  C:\Program Files (x86)\Gpg4win
+## add Vifm to path
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = "$oldPathCU;C:\Program Files\7-Zip"; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+## add 7-Zip to path
+## Emacs - no good for Vim
+winget add emacs
+APS> ri $env:programfiles\Emacs -force -recurse
+all other attmempts to  add  to  C:\Emacs  failed  $env:programfiles\Emacs  to run  Uninstall.exe
+## Emacs v29.3 - good for Vim
+winget add emacs  then  APS> mv $env:programfiles\Emacs C:\Emacs -force
 ## waiting
 ### reduce C:
 MiniTool Partition Wizard Free v12.8
@@ -554,8 +596,13 @@ ctrl+, (= Settings)
 Intel Core i5-6300U
 SSD: 119Go
 ## Startup Menu
-repeatedly hit  esc  at start to get into  Startup Menu
-repeatedly hit  f9  at start to get into  Boot Menu
-repeatedly hit  f10  at start to get into  BIOS Setup
+hold  esc  at start to get into  Startup Menu
+hold  f9  at start to get into  Boot Menu
+hold  f10  at start to get into  BIOS Setup
+### BIOS Setup
+Main > System Information > System BIOS : N75 Ver. 01.53 11/19/2021
+#### Advanced
+Built-in Device Options > Backlit keyboard timeout > 30 secs.
+Secure Boot Configuration > Legacy Support Enable and Secure Boot Disable
 ## waiting
 fit SD480GSSDPlus

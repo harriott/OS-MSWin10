@@ -1,11 +1,12 @@
 
 # Joseph Harriott, ven 22 mars 2024
 
-# $MSWin10\PSProfile.ps1 (symlinked in  $MSWin10\symlinks.ps1) sourced by
+# $MSWin10\PSProfile.ps1 (symlinked in  $MSWin10\mb\symlinks.ps1)
 
 sal seco set-content  # because  sc  is overridden by  sc.exe
 sal ss select-string
 sal su C:\SumatraPDF\SumatraPDF.exe
+. ~\Env.ps1
 
 function fonts {
   $mf0 = "$machLg\fonts"
@@ -63,6 +64,7 @@ Function mc {
 function c { if ( $args[0] ) { sl $args[0] } else { sl .. }; pc }  # handily move in or out
 function i { ii . }  # opens  file explorer  on current directory
 Function lc { [string[]]$list = (gci).Name; $list -join '  ' }
+
 sal j z  # ZLocation
 sal l lsd
   function la { l -a } # --all
@@ -73,6 +75,15 @@ sal l lsd
   function lt { l --tree }
   function ltd { l -d --tree } # -directory-only
   function lx { l -lRX } # --recursive --extensionsort
+sal v vifm
+
+# eza
+function a { eza -aF --icons }  # grid, handily showing up symlinks
+function e { eza --icons }
+function ed { eza -DT }  # show directory tree
+function er { eza -R }  # nice recursive list
+function es { eza -al --icons }  # show permissions and symlinks
+function et { eza -T }  # for full tree
 
 function g {
   $env:PAGER='less'
@@ -278,7 +289,6 @@ function ghissues {
   '- moved to ghissues.sifw'
 }
 #=> 0 Ghostscript
-$env:path +=';C:\Program Files\gs\gs9.54.0\bin'
 Function gsp {
     $pl = $args[0]
     $r = '-r'+$args[1]
@@ -341,16 +351,45 @@ sal y yt-dlp
   function y7 { y -f '[height<=?720]' $args[0] }
   function yf { y -F $args[0] }
 
-#=> 0 shell settings 0
-$env:path +=';C:\Program Files\7-Zip'
-
+#=> 0 shell settings
 if ($PSVersionTable.PSVersion.Major -eq 7) { ipmo Powershell.Chunks }
-
-ipmo posh-git
-  $GitPromptSettings.DefaultPromptPath.ForegroundColor = [ConsoleColor]::Cyan
 
 ipmo ps.checkModuleUpdates
 ipmo PSScriptTools
+
+# prompt
+# 0 admin/debug contexts
+$sp_identity = [Security.Principal.WindowsIdentity]::GetCurrent()
+$sp_principal = [Security.Principal.WindowsPrincipal] $sp_identity
+$sp_adminRole = [Security.Principal.WindowsBuiltInRole]::Administrator
+$ps_context = $(if (test-path variable:/PSDebugContext) { '[DBG]: ' }
+                elseif($sp_principal.IsInRole($sp_adminRole)) { "[ADMIN]: " }
+                else { '' })
+# 1 posh-git
+ipmo posh-git; $GitPromptSettings.DefaultPromptPath.ForegroundColor = [ConsoleColor]::cyan
+# 2 togglable prompt
+function pp {
+  if ($shortPrompt) {
+    function global:prompt {
+      # Pasted output of  $function:prompt  only after PowerShell is launched:
+      $loc = gl
+      $prompt = & $GitPromptScriptBlock
+      $prompt += "$([char]27)]9;12$([char]7)"
+      if ($loc.Provider.Name -eq "FileSystem")
+        { $prompt += "$([char]27)]9;9;`"$($loc.ProviderPath)`"$([char]27)\" }
+      $ps_context + $prompt
+    } # long prompt, using  posh-git
+    $global:shortPrompt = $false
+  } else {
+    # function global:prompt { scfcdc; $ps_context + $(split-path $pwd -leaf) + '>'; scrc }
+    function global:prompt {
+      write-host ( $ps_context + $(split-path $pwd -leaf) + '>') -nonewline -ForegroundColor cyan
+      return " "
+    }
+    $global:shortPrompt = $true
+  }
+}
+$global:shortPrompt = $true; pp  # invokes my long prompt
 
 #==> PSReadLine
 Set-PSReadlineOption -EditMode Vi  # wipes out any other settings, so first
@@ -361,57 +400,6 @@ Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 # PSFzf additions
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
 Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
-
-#=> 0 shell settings 1 new tab in same directory
-function prompt {
-  $loc = gl
-  $prompt = & $GitPromptScriptBlock
-  $prompt += "$([char]27)]9;12$([char]7)"
-  if ($loc.Provider.Name -eq "FileSystem")
-    { $prompt += "$([char]27)]9;9;`"$($loc.ProviderPath)`"$([char]27)\" }
-  $prompt
-} # ctrl+shift+d  now opens a new tab in same directory
-
-#=> 0 useful variables
-$Cn = $Env:Computername
-$uname = $Env:USERNAME
-
-#==> places
-$Drpbx = "C:\Users\$uname\Dropbox"
-  $DJH = "$Drpbx\JH"
-    $ess = "$DJH\now\essential"
-      $eFr = "$ess\France"
-    $CfWk = "$DJH\CforWork"
-    $Cfzd = "$DJH\Cafezoide"
-      $CzPhy = "$Cfzd\PhysicalProperty"
-    $copied = "$DJH\copied"
-    $core = "$DJH\core"
-      $ITstack = "$core\IT_stack"
-        $CrPl = "$ITstack\CP"
-          $LTXj = "$CrPl\documenting\LaTeX\jo"
-        $ITscc = "$ITstack\copied-code"
-        $ITscr = "$ITstack\copied-reference"
-        $machLg = "$ITstack\MSWin\ml-$Cn"
-        $onGH = "$ITstack\onGitHub"
-          $MSWin10 = "$onGH\OS-MSWin10"
-            $machBld = "$MSWin10\mb\$Cn"
-            $MSWSL = "$MSWin10\WSL"
-          $SPD = "$onGH\FM-MSWin-syncDrives\RoboCopy\$Cn"  # used in  $machBld\PSProfile.ps1
-          $vimfiles = "$onGH\vimfiles"
-            $vfp = "$vimfiles\pack"
-    $GHrUse = "$Drpbx\CGHrepos"  # GitHub Repositories Use
-    $JHw = "$DJH\work"  # for IT websites and more
-      $JHm = "$JHw\IT-Jekyll-harriott-minima"
-      $rEr = "$JHw\France\IdF\Paris\20e-rueErmitage"
-        $StEr = "$rEr\StudioErmitage"  # $StEr
-    $jtIT = "$DJH\technos\IT"
-    $tIs = "$DJH\Technos\IT-storage"  # $tIs\diskUsage.txt
-    $Pr0 = "$DJH\Copied\Practical0"
-    $Thb = "$DJH\Thb-dr"
-$Enc = "C:\Users\$uname\encrypted"
-
-#=> 0 Vifm
-$env:path +=';C:\vifm-w64-se-0.12-binary'
 
 #=> 1 place-dependent
 # cp $GHrUse/CP/wfxr-code-minimap/completions/powershell/_code-minimap.ps1 $ITsc/forMSWin/_code-minimap.ps1
@@ -477,8 +465,8 @@ Function dcc1 {
 }  # removes them
 
 #==> general tools
-Function e { exit } # quit (doesn't work as an alias)
-Function fcco {Format-Custom -InputObject $args[0] -Expand CoreOnly}
+function xx { exit } # quit (doesn't work as an alias)
+function fcco {Format-Custom -InputObject $args[0] -Expand CoreOnly}
 # - shows summarised layout of array
 function ffmhb { $f = "ffmpeg -hide_banner " + $args -join ' '
   $f = $f.Replace(' -c: a ', ' -c:a ')
@@ -515,7 +503,6 @@ function bd { bat -d $args[0] }  # showing changes from git index
 Function SCFCDC { [System.Console]::ForegroundColor = 'DarkCyan' }  # scfcdc; "DarkCyan"; scrc
 Function SCFCW { [System.Console]::ForegroundColor = 'White' }  # scfcw; "White"; scrc
 Function SCRC { [System.Console]::ResetColor() }
-# SCFCW; "DarkCyan"; "White"; SCRC
 ipmo Terminal-Icons
 
 function Format-Color([hashtable] $Colors = @{}, [switch] $SimpleMatch) {
@@ -526,7 +513,7 @@ function Format-Color([hashtable] $Colors = @{}, [switch] $SimpleMatch) {
             if(!$SimpleMatch -and $line -match $pattern) { $color = $Colors[$pattern] }
             elseif ($SimpleMatch -and $line -like $pattern) { $color = $Colors[$pattern] }
         }
-        if($color) { Write-Host -ForegroundColor $color $line } else { Write-Host $line }
+        if($color) { write-host -ForegroundColor $color $line } else { write-host $line }
     }
 }
 
