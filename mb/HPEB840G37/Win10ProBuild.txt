@@ -9,6 +9,9 @@ Google Chrome somehow there
 Paramètres > Écran > Éclairage nocturne > Activé
 Gestionnaire de périphériques > Cartes graphiques > Intel(R) HD Graphics 520
   double-clicked to discover  Pilote > 31.0.101.2111
+Notepad++ > alt+p > Préférences... > Divers > Surveillance de l'état des fichiers >
+  Mise à jour sans alerte
+  Aller à la dernière ligne après mise à jour
 ## APS opacity
 saps pwsh -verb runas  to right-click on toolbar for  Propriétés > Opacité > 80%
 ## AWPS opacity
@@ -17,6 +20,8 @@ saps powershell -verb runas  to right-click on toolbar for  Propriétés > Opaci
 winget add altsnap
   APS> schtasks /create /f /tn "AltSnap onlogon" /tr "$Env:AppData\AltSnap\AltSnap.exe" /sc onlogon /rl highest
   PS> $ASi="~\AppData\Roaming\AltSnap\AltSnap.ini"; (gc $ASi).replace('AutoSnap=2','AutoSnap=0') | seco -encoding utf8 $ASi
+## dark applications
+Paramètres > Personnalisation > Couleurs > Choisir votre mode d'application par défaut > Sombre
 ## Desktop Background
 Paramètres > [ Personnalisation > Arrière-plan > Couleur unie
 Système > Écran > Mise à l'échelle et disposition > Modifier la taille du texte des applications et d'autres éléments > 100%
@@ -84,20 +89,6 @@ ran it for (default-release) Démarrer Thunderbird)
 ## QuickLook
 winget add 9NV4BS3L1H4S --accept-package-agreements
 ## waiting
-# build - PS 0 PSGallery
-Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
-# build - PS 1 modules
-install-module burnttoast
-Install-Module posh-git
-Install-Module PowerColorLS -Repository PSGallery
-install-module powershell.chunks
-Install-Module -Name ps.checkModuleUpdates
-install-module psscripttools
-install-module pswritecolor
-install-module psfzf
-Install-Module Terminal-Icons -Repository PSGallery
-Install-Module ZLocation
-install-module recycle
 # build - sequential
 ## move from Utilisateur
 Paramètres >
@@ -153,7 +144,7 @@ Services > HP Hotkey UWP Service > Type de démarrage > (was Automatique) Désac
 ## gVim v9.1.0
 gvim_9.1.0_x64_signed.exe
   [ Create icons > On the Desktop off [ Create Default Config  Create Plugin Directories ] off ] >
-  (C:\Vim)
+  (C:\Vim)  C:\Vim\vim91\vim.exe --version
 ## Windows Terminal
 found in Microsoft Store > Obtenir  (~\AppData\Local\Microsoft\WindowsApps\wt.exe)
 ctrl+, > Démarrage > Application Terminal par défaut > Terminal Windows
@@ -169,7 +160,8 @@ $Profile  returns
   C:\Users\jharr\OneDrive\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1  so
 OneDrive Paramètres > Gérer la sauvegarde > [ Documents  Images  Bureau ] off-slid
 ## Nom de l'appareil
-Paramètres > Système > À propos de > (Nom de l'appareil > DESKTOP-GSPV6OJ)  Renommer ce PC > HPEB840G362
+Paramètres > Système > À propos de > (Nom de l'appareil > DESKTOP-GSPV6OJ)
+  Renommer ce PC > HPEB840G362
 ## code-minimap
 code-minimap.exe  copied to  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 ## Python 3.12.3
@@ -178,8 +170,6 @@ python-3.12.3-amd64.exe > Add python.exe to PATH > Customize > Optional Features
 ## Windows Terminal s'ouvre dans Invite de commandes
 Paramètres > Applications > Terminal > Désinstaller  then  win+x > Redémarrer
   then re-installed from Microsoft Store
-## dark applications
-Paramètres > Personnalisation > Couleurs > Choisir votre mode d'application par défaut > Sombre
 ## Git v2.32
 https://git-scm.com/download/win
 Git-2.32.0-64-bit.exe > [ C:\Git  Select Components > [ Associate .sh with Bash > off
@@ -474,7 +464,7 @@ $oldPathCU
 $newPathCU = $oldPathCU -replace ';$', ''
 $newPathCU
 sp -path 'registry::hkcu\environment' -name path -value $newPathCU
-## gokcehan lf
+## gokcehan's lf
 winget add gokcehan.lf
 ### path modified
   Variable d’environnement de chemin modifiée ; redémarrez votre interpréteur de commandes pour utiliser la nouvelle valeur.
@@ -554,25 +544,22 @@ APS> ri $env:programfiles\Emacs -force -recurse
 all other attmempts to  add  to  C:\Emacs  failed  $env:programfiles\Emacs  to run  Uninstall.exe
 ## Emacs v29.3 - good for Vim
 winget add emacs  then  APS> mv $env:programfiles\Emacs C:\Emacs -force
+## fzf.exe v0.48.0 (for PSFzf)
+$MSwin10\mb\fzf.ps1
+## gokcehan's lf update failed
+### uninstall fail
+winget rm gokcehan.lf
+  remove: Accs refus.: "C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\gokcehan.lf_Microsoft.Winget.Source_8wekyb3d8bbwe\lf.exe"
+### uninstall
+reboot  for  winget rm gokcehan.lf  (should've tried update)  still in  $env:path
+winget add gokcehan.lf
+  Alias de ligne de commande ajouté : "lf"
+## Neovim
+winget add Neovim.Neovim  rebooted to get  nvim  working
 ## waiting
 ### reduce C:
 MiniTool Partition Wizard Free v12.8
   right-clicked on C: > Déplacer/redimensionner > Taille de la partition > 118.15
-# build - WPS 0 PowerShellGet
-as Administrator, install-packageprovider nuget -force  got me  nuget 2.8.5.208
-as Administrator, update-module powershellget
-as Administrator, install-module powershellget -force
-install-module microsoft.powershell.psresourceget
-set-psrepository psgallery -installationpolicy trusted
-set-psresourcerepository psgallery -trusted
-# build - WPS 1 modules
-install-module burnttoast
-install-module posh-git
-install-module powercolorls
-install-module ps.checkmoduleupdates
-install-module psfzf
-install-module psscripttools
-install-module terminal-icons
 # build - WT 0 instalL
 https://www.microsoft.com/en-gb/p/windows-terminal-preview/9n0dx20hk701
 # build - WT 1 settings

@@ -2,6 +2,7 @@ vim: nospell:
 
     $MSwin10\QR\cli.md
 
+    $ProgramFiles\Neovim\share\nvim\runtime\mswin.vim
     chcp  # reports code page
     java -jar C:\LanguageTool\languagetool-commandline.jar -h
     java -jar $ITscc\CP\LanguageTool\languagetool-commandline.jar -h
@@ -42,7 +43,7 @@ vim: nospell:
     fzf --version
 
 # lf file manager
-    ~\AppData\Local\lf
+    ~\AppData\Local\lf\lfrc
 
 by gokcehan
 
@@ -79,9 +80,10 @@ output is simplified when redirected to a file
     foreach($element in 1..3){ $element }
     sleep 1
 
+- `$_` = `$PSItem` = current object in the pipeline object
 - `Alt > Space > E > L > up/down` to scroll, then `Esc`
 - `continue` returns to the top of a loop a `trap` or a `switch`
-- `$_` = `$PSItem` = current object in the pipeline object
+- redirection operators: `>`, `>>`, `2>`, `2>>`, `2>&1`
 
 ## alias manage
 limited to single commands
@@ -89,7 +91,6 @@ limited to single commands
 ### ?-Alias
     gal -Definition Get-ChildItem
     gal h*
-    gal ls
     gal | sort Source | ft -view Source
     nal <alias> <string>
     sal <alias> <string>
@@ -101,7 +102,15 @@ limited to single commands
     iex "$onGH\misc\Colors.ps1"
     write-color -text 'red ', 'green ', 'yellow ' -color red,green,yellow  # pswritecolor
 
+### $PSStyle
+    write-host "$($PSStyle.foreground.magenta)$($PSStyle.background.white)magenta_on_white$($PSStyle.reset)"  # no bleeding!
+
+#### view colours
+    $PSStyle.Background
+    $PSStyle.Foreground
+
 ## data
+    $array | sort
     $x.GetType()
 
 ### arrays
@@ -183,21 +192,29 @@ doesn't find executables in `~\AppData\`
     tomalak
 
 #### gci
-    dir, list, ls
-    gci * | select FullName
-    gci * | select Name
-    gci . -force  # Gets both hidden & non-hidden. Shows desired symlinks target.
-    gci -r -i i1*,i2*,i3*
-    gci -r -i '* (* conflicted copy *' |%{echo $_.fullname} | ri
-    gci -r | ? Name -match <regex>
+    dir
+    gal ls
+    list
+    ls * | select FullName
+    ls * | select Name
+    ls . -force  # Gets both hidden & non-hidden. Shows desired symlinks target.
+    ls -s -i i1*,i2*,i3*
+    ls -s -i '* (* conflicted copy *' |%{echo $_.fullname} | ri
+    ls -s | ? Name -match <regex>
+    ls -directory -s  # recursive list
+
+##### list of names
+    ls -name
+    (ls).fullname
+    (ls).name
 
 ##### PSAnsiMap
-    gci . | ft -view ansi  # overrides Terminal-Icons
+    ls . | ft -view ansi  # overrides Terminal-Icons
     Get-PSAnsiFileMap  # shows ANSI mappings
 
 ##### pure string output
-    gci *.pdf | select -expand name
-    gci $path | select -expand FullName
+    ls *.pdf | select -expand name
+    ls $path | select -expand FullName
 
 #### get-content
     gc <file>
@@ -228,10 +245,10 @@ aliases: `cat`, `type`
 
 #### symlinks
     csl  # targets in green or red
-    gci -force | ?{$_.linktype}
+    ls -force | ?{$_.linktype}
 
 ### manipulations
-    gci -r -i "*.txt" | %{mi $_.fullname ($_.fullname -replace ".txt",'.dw')}  # renames all txt's to dw's
+    ls -s -i "*.txt" | %{mi $_.fullname ($_.fullname -replace ".txt",'.dw')}  # renames all txt's to dw's
     remove-itemsafely file_or_dir  # to Recycle Bin
     robocopy /mir <sourcedir> <destinationdir> /l  # runs a simulation of mirroring source to destination
     takeown /? | less
@@ -244,7 +261,6 @@ aliases: `cat`, `type`
 #### aliases
 `copy-item`: `copy` `cp` `cpi`
 `move-item`: `move`, `mv`, `mi`
-`remove-item`: `erase`, `del`, `rd`, `ri`, `rm`, `rmdir`
 `rename-item`: `ren`, `rni`
 
 #### new-item
@@ -255,10 +271,6 @@ aliases: `cat`, `type`
 ## foreach-object
 - `%` = `foreach`
 - not the `foreach` loop statement
-
-## functions
-    $function:<function>  # contains it's internal commands
-    function global:<function> { ... }
 
 ## help
     get-help Start-BitsTransfer
@@ -321,6 +333,7 @@ aliases: `cat`, `type`
     New-BurntToastNotification
     pc  # PowerColorLS
 
+- `inmo` (`install-module`)
 - `ipmo` (`import-module`)
 - `rmo` (`remove-module`)
 
@@ -392,8 +405,13 @@ tab completion
     $funs = gc "$MSWin10\PSProfile.ps1" | ss -pattern "function\s+([^\s{]+)" | %{ $_.matches.groups[1].value }; $funs -join '  '  # lists function names
     . <script_to_dot_source>
     Get-InstalledScript
+    get-verb | sort -property verb
     param( [switch]$doSomething )  # -doSomething  creates  $doSomething = true
     ~\Documents\PowerShell\Scripts
+
+### functions
+    $function:<function>  # contains it's internal commands
+    function global:<function> { ... }
 
 ## stray cmdlets
     get-commandsyntax <command>
@@ -422,7 +440,7 @@ tab completion
     $env:userprofile
     $home
     $psscriptroot
-    gci env:  # list the environment variables
+    ls env:  # list the environment variables
 
 #### Roaming
     $Env:AppData  # C:\Users\...\AppData\Roaming
@@ -447,8 +465,11 @@ tab completion
     gpv -path "hklm:\software\microsoft\powershellcore\installedversions\*" -name "semanticversion"
 
 # robocopy
+    /E  # subfolders, including empty
     /l   - list only (= simulate)
+    /mir  # (mirror) = /e + /purge
     /tee - output to console as well as log file
+    ROBOCOPY.exe
 
 # Windows Package Manager
     g C:\users\jharr\AppData\local\microsoft\winget\packages
@@ -459,9 +480,14 @@ tab completion
     winget update google.chrome
     winget rm google.chrome  # uninstall
 
+# Windows PowerShell - file formats
+    PowerShell command | out-file <file> -encoding utf8BOM  # detected as utf-8
+    PowerShell command > <file>  # detected as latin1
+
 # Windows PowerShell - modules
     get-installedmodule
     get-module -listavailable  # details, including old
+    C:\Users\jnbh\OneDrive\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
 
 ## paths
     $Env:PSModulePath -split ';'

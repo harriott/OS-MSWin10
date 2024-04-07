@@ -5,6 +5,11 @@
 " this is a pointer, on a MSWin system, to my more portably located vimrc
 " -----------------------------------------------------------------------
 
-let mapleader = 'ù'  " AZERTY
-source $HOME\vimfiles\vimrc-Win10.vim  " $vimfiles\vimrc-Win10.vim
+" AZERTY
+let mapleader = 'ù'
+nnoremap ! /
+
+source $HOME\vimfiles\vimrc-Win10-paths.vim  " $vimfiles\vimenter\vimrc-Win10-paths.vim
+source $vimfiles\vimenter\vimrc-Win10.vim
+" source $HOME\vimfiles\vimenter\vimrc-Win10.vim
 

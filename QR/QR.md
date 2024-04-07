@@ -31,7 +31,10 @@ ExifTool by Phil Harvey
 
 Consolas can handle €
 
-# LaTeX Polyglossia
+# LaTeX
+    v $home\Downloads $core\IT_stack\copied-reference\CP\TeX
+
+## Polyglossia
     \setmainfont{Segoe Print}
     \setmainfont{Segoe Script}
     \setmainfont{Trebuchet MS}
@@ -117,6 +120,9 @@ KeePassXC: Getting Started Guide
 
 # text wrangling
     & "${Env:ProgramFiles(x86)}\Vim\vim82\gvim.exe" <textfile>
+    sl ~\_vimswap
+
+`Notepad++`: `alt+p > Préférences...`
 
 ## Emacs
     C:\Emacs\emacs-28.1\bin\emacs.exe -nw

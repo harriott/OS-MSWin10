@@ -34,6 +34,7 @@ if ( $Cn -eq 'HPEB840G36' ) { $Drpbx = "D:\Dropbox" }
           $MSWin10 = "$onGH\OS-MSWin10"
             $machBld = "$MSWin10\mb\$Cn"
             $MSWSL = "$MSWin10\WSL"
+            $OSAB = "$onGH\OS-ArchBuilds"
           $SPD = "$onGH\FM-MSWin-syncDrives\RoboCopy\$Cn"  # used in  $machBld\PSProfile.ps1
           $vimfiles = "$onGH\vimfiles"
             $vfp = "$vimfiles\pack"

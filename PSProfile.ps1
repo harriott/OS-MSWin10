@@ -1,12 +1,14 @@
 
 # Joseph Harriott, ven 22 mars 2024
 
-# $MSWin10\PSProfile.ps1 (symlinked in  $MSWin10\mb\symlinks.ps1)
+# $MSWin10\PSProfile.ps1
+#  symlinked in  $MSWin10\mb\symlinks.ps1
+#  called by  $MSWin10\MPSProfile.ps1
 
 sal seco set-content  # because  sc  is overridden by  sc.exe
 sal ss select-string
 sal su C:\SumatraPDF\SumatraPDF.exe
-. ~\Env.ps1
+. ~\Env.ps1  # ($MSwin10\mb\symlinks.ps1)
 
 function fonts {
   $mf0 = "$machLg\fonts"
@@ -87,6 +89,7 @@ function et { eza -T }  # for full tree
 
 function g {
   $env:PAGER='less'
+  $env:PAGER='bat'  # i  only
   $env:SHELL='pwsh'
   lf -print-last-dir $args | sl
   } # gokcehan  lf  quits on last viewed directory
@@ -167,19 +170,20 @@ function dtsfn { $args[0].lastwritetime.tostring('yyyyMMdd-hh:mm:ss')+' '+$args[
 
 function encrypted {
   $encrypted = "actions", "digital0", "digital1", "secure0", "secure1", "shg", "stack"
-  if (!($(get-location).path).equals($enc)) {
+  if (!($(gl).path).equals($enc)) {
     if ( ( test-path $enc ) ) { sl $enc } else { "$enc ain't there"; return } }
   foreach ($node in $encrypted) {
     ''
     scfcdc; $node; scrc
     if ( gci $node* ) {
       if ( $node.equals('actions') ) { $path = '*ps1*' } else {
-        if ( test-path $node -pathtype container ) { $ldContents = gci $node -recurse -file | sort lastwritetime -descending | select -first 9 | %{ dtsfn $_ '??' } } else { $encdir = '' }
+        if ( test-path $node -pathtype container ) { $encContents = gci $node -recurse -file | sort lastwritetime -descending | select -first 9 | %{ dtsfn $_ '??' } } else { $encdir = '' }
         $path = $node+'*7z'
       }
       $enc7z = gci -path $path | %{ dtsfn $_ '**' }
       $ce7z = gci -path "$core\encrypted\$path" | %{ dtsfn $_ 'dr' }
-      $objects = $ldContents, $enc7z, $ce7z
+      $objects = $encContents, $enc7z, $ce7z
+      $encContents = ''  # incase a  $node  directory isn't in  $enc
       $flattened = @($objects | % {$_})  # optional
       $sorted = $flattened | ? { $_ } | sort -uniq  # also removes nulls
       $sorted.replace('C:\Users\jharr\', '').replace('Dropbox\JH\core\encrypted\', '').replace('encrypted\', '')
@@ -402,9 +406,7 @@ Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory
 Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 
 #=> 1 place-dependent
-# cp $GHrUse/CP/wfxr-code-minimap/completions/powershell/_code-minimap.ps1 $ITsc/forMSWin/_code-minimap.ps1
-. $ITscc/forMSWin/_code-minimap.ps1
-# $GHrUse/CP/wfxr-code-minimap/README.md
+. $ITscc/forMSWin/code-minimap/_code-minimap.ps1  # $GHrUse/CP/wfxr-code-minimap/README.md
 . $machBld\PSProfile.ps1
 
 #==> documenting
@@ -460,7 +462,7 @@ Function dcc1 {
 }  # removes them
 
 #==> general tools
-function xx { exit } # quit (doesn't work as an alias)
+function xx { exit } # quit (doesn't work as an alias) ctrl+d is quicker
 function fcco {Format-Custom -InputObject $args[0] -Expand CoreOnly}
 # - shows summarised layout of array
 function ffmhb { $f = "ffmpeg -hide_banner " + $args -join ' '
@@ -487,7 +489,7 @@ function jt { sl $JHm; ri tag\*; python $JHm\_plugins\compile_tags.py; sl tag; }
 
 # see  $MSWin10\quickReference.txt
 
-#==> sharkdp/bat
+#==> sharkdp/bat 
 # completion
 function f { Invoke-Fzf -preview 'bat --color=always {}' }
 sal b bat

@@ -6,6 +6,8 @@ HP EliteBook 840 G3 barcoded PC117855 (labelled BC PNB 19 by last owner) = HPEB8
 (jharrio@outlook.com)
 # build - parallel
 Paramètres > Écran > Éclairage nocturne > Activé
+## dark applications
+Paramètres > Personnalisation > Couleurs > Choisir votre mode d'application par défaut > Sombre
 ## Desktop Background
 Paramètres > [ Personnalisation > Arrière-plan > Couleur unie
 ## Edge  appears only once in  alt+tab
@@ -72,6 +74,12 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Confirm > y
 Paramètres > Système > À propos de > (Nom de l'appareil > DESKTOP-295IC45)  Renommer ce PC > HPEB840G36  Redémarré
 ## symlinks
 AWPS> sl D:\Dropbox\JH\core\IT_stack\onGitHub\OS-MSWin10\mb\  for  . ..\Env.ps1
+## gVim v9.1.0
+winget add vim.vim -l C:\Vim
+## Python 3.13
+winget add python.python.3.13 -l C:\Python3
+## Git
+winget add git.git -l C:\Git  got me  Git for Windows v2.44.0
 ## waiting
 Signed in  to click on my avatar for  Install desktop app > DropboxInstaller.exe
 Moved directory to  SDSSDA240G  Selective sync
