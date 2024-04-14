@@ -9,10 +9,15 @@
 ;  "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
 
 ; ² (mapped in Vim's insert mode) I can't get to work with any modifier
-!é::SendText "~" ; alt+é = tilde
-!è::SendText "``" ; alt+è = back-tick
+!é::SendText "~" ; alt+é = tilde (without delay)
+!è::SendText "ê" ; alt+è = e circumflex
+; § is available
+ù::SendText "``"  ; ù = backtick
+µ::SendText "^"  ; µ = circumflex
+Ins::SetCapsLockState !GetKeyState("CapsLock", "T")  ; Ins = CapsLock
 
 ; environment variables don't work
+
 #!a::Run "C:\Users\jharr\AppData\Roaming\AltSnap\AltSnap.exe" ; win+alt+a - open AltSnap
 #!e::Run "msedge.exe" ; win+alt+e - open Edge
 #!h::Reload ; win+alt+h - Reloads this file
@@ -21,6 +26,7 @@
 #!m::Run "C:\Emacs\emacs-28.1\bin\runemacs.exe" ; win+alt+m - open Emacs
 #!p::Run "pwsh -wd ~" ; win+alt+p - PowerShell
 #!v::Run "C:\Program Files\Everything\Everything.exe" ; win+alt+v - open Everything
+CapsLock::SendText "\"
 
 #^e::{
 	WinActivate "HP Smart ahk_exe ApplicationFrameHost.exe"
@@ -48,6 +54,7 @@
     MouseMove 30,55
     Sleep 1000
 	Click ; on that big back arrow
+    MouseMove 990,670 ; ready mouse on Numériser button
 } ; win+ctrl+x  after saving, brings forward and returns to  Numériser  window
 #!s::{
     SendEvent "^{Esc}"

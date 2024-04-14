@@ -1,63 +1,118 @@
 
 # Joseph Harriott - https://harriott.github.io/
 
-# once  $Env:Computername,  APS> . $MSwin10\mb\symlinks.ps1
+# once  $Env:Computername,  APS> . $MSwin10\mb\symlinks-mostly.ps1
 
-#=> Emacs
-$Ed = "$Env:AppData\.emacs.d"; if ( ! ( test-path "$Ed" ) ) { ni -path "$Ed" -type directory }
-ni $Ed\custom.el -type symboliclink -value $misc\CP\emacs\custom.el -force
-ni $Ed\diary -type symboliclink -value $core\TextNotes\Emacs\diary -force
-ni $Ed\early-init.el -type symboliclink -value $misc\CP\emacs\early-init.el -force
-ni $Ed\harriott-zenburn-emacs -type symboliclink -value $onGH\harriott-zenburn-emacs -force
-ni $Ed\init.el -type symboliclink -value $misc\CP\emacs\init.el -force
-ni $Ed\lisp -type symboliclink -value $misc\CP\emacs\lisp -force
+function endi { if ( ! ( test-path $args[0] ) ) { md $args[0] } } # ensure directory
+function syli { ni $args[1] -type symboliclink -value $args[0] -force } # symbolic link
 
-#=> ~\.gitconfig
-ni ~\.gitconfig -type symboliclink -value $machBld\gitconfig -force
+# #=> Emacs
+# # $Ed = "$Env:AppData\.emacs.d"; if ( ! ( test-path "$Ed" ) ) { ni -path "$Ed" -type directory }
+# $Ed = "$Env:AppData\.emacs.d"; endi $Ed
+# ni $Ed\custom.el -type symboliclink -value $misc\CP\emacs\custom.el -force
+# ni $Ed\diary -type symboliclink -value $core\TextNotes\Emacs\diary -force
+# ni $Ed\early-init.el -type symboliclink -value $misc\CP\emacs\early-init.el -force
+# ni $Ed\harriott-zenburn-emacs -type symboliclink -value $onGH\harriott-zenburn-emacs -force
+# ni $Ed\init.el -type symboliclink -value $misc\CP\emacs\init.el -force
+# ni $Ed\lisp -type symboliclink -value $misc\CP\emacs\lisp -force
 
-#=> gokcehan lf configuration
-ni ~\AppData\Local\lf\colors -type symboliclink -value $MSWin10\lf\colors -force
-ni ~\AppData\Local\lf\lfrc -type symboliclink -value $MSWin10\lf\lfrc -force
-ni ~\AppData\Local\lf\icons -type symboliclink -value $MSWin10\lf\icons -force
+# #=> ~\.gitconfig
+# ni ~\.gitconfig -type symboliclink -value $machBld\gitconfig -force
 
-#=> LaTeX
-ni $Env:AppData\MiKTeX\tex\latex\jo -type symboliclink -value $CrPl\documenting\LaTeX\jo -force
-#  after changes:  initexmf --update-fndb
-#  ii "$Env:AppData\MiKTeX\tex\latex\jo"
-#  sl $Env:AppData\MiKTeX\tex\latex
+# #=> gokcehan lf configuration
+# ni ~\AppData\Local\lf\colors -type symboliclink -value $MSWin10\lf\colors -force
+# ni ~\AppData\Local\lf\lfrc -type symboliclink -value $MSWin10\lf\lfrc -force
+# ni ~\AppData\Local\lf\icons -type symboliclink -value $MSWin10\lf\icons -force
 
-#=> Pandoc\defaults
-$Pd = "$Pandoc\defaults"; if ( ! ( test-path "$Pd" ) ) { ni -path "$Pd" -type directory }
-ni "$Pd\md4pdfToC.yaml" -type symboliclink -value $MD4PDF\defaults-toc.yaml -force
-ni "$Pd\md4pdf.yaml" -type symboliclink -value $MD4PDF\defaults.yaml -force
+# #=> LaTeX
+# ni $Env:AppData\MiKTeX\tex\latex\jo -type symboliclink -value $CrPl\documenting\LaTeX\jo -force
+# #  after changes:  initexmf --update-fndb
+# #  ii "$Env:AppData\MiKTeX\tex\latex\jo"
+# #  sl $Env:AppData\MiKTeX\tex\latex
 
-#=> Pandoc\templates
-$Pt = "$Pandoc\templates"
-if (test-path $Pt) {$(get-item $Pt).Delete()}
-ni "$Pt" -type symboliclink -value $onGH\pandoc-templates -force
+# #=> Node.js
+# md ~\AppData\Roaming\npm
 
-#=> PSProfile
-cpi $MSWin10\MPSProfile.ps1 ~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
-$DWP = "~\Documents\WindowsPowerShell"
-if ( ! ( test-path "$DWP" ) ) { ni -path "$DWP" -type directory }
-cpi $MSWin10\MPSProfile.ps1 ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
-ni ~\Env.ps1 -type symboliclink -value $MSWin10\Env.ps1 -force
-ni ~\PSProfile.ps1 -type symboliclink -value $MSWin10\PSProfile.ps1 -force
+# #=> Pandoc\defaults
+# # $Pd = "$Pandoc\defaults"; if ( ! ( test-path "$Pd" ) ) { ni -path "$Pd" -type directory }
+# $Pd = "$Pandoc\defaults"; endi $Pd
+# ni "$Pd\md4pdfToC.yaml" -type symboliclink -value $MD4PDF\defaults-toc.yaml -force
+# ni "$Pd\md4pdf.yaml" -type symboliclink -value $MD4PDF\defaults.yaml -force
 
-#=> vim flavours
-cp $ITscc\forMSWin\code-minimap\code-minimap-v0.6.7-x86_64-pc-windows-msvc\code-minimap.exe ~\AppData\Local\Microsoft\WindowsApps\code-minimap.exe
+# #=> Pandoc\templates
+# # $Pt = "$Pandoc\templates"; if (test-path $Pt) {$(get-item $Pt).Delete()}
+# $Pt = "$Pandoc\templates"; endi $Pt
+# ni "$Pt" -type symboliclink -value $onGH\pandoc-templates -force
 
-ni ~\AppData\Local\nvim -type symboliclink -value $MSWin10\nvim -force
+# #=> PSProfile
+# cpi $MSWin10\MPSProfile.ps1 ~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
+# $DWP = "~\Documents\WindowsPowerShell"
+# # if ( ! ( test-path "$DWP" ) ) { ni -path "$DWP" -type directory }
+# endi $DWP
+# cpi $MSWin10\MPSProfile.ps1 ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+# ni ~\Env.ps1 -type symboliclink -value $MSWin10\Env.ps1 -force
+# ni ~\PSProfile.ps1 -type symboliclink -value $MSWin10\PSProfile.ps1 -force
 
-ni ~\_gvimrc -type symboliclink -value $machBld/_gvimrc -force
-ni ~\_vimrc -type symboliclink -value $MSWin10/mb/_vimrc-AZERTY -force
-ni ~\vimfiles -type symboliclink -value $vimfiles\vimfiles -force
-  ni ~\vimfiles\pack -type symboliclink -value $vimfiles\pack -force
-  ni ~\vimfiles\plugin -type symboliclink -value $vimfiles\plugin -force
-  # ni ~\vimfiles\vimenter -type symboliclink -value $vimfiles\vimenter -force
-  ni ~\vimfiles\vimrc-Win10-paths.vim -type symboliclink -value $vimfiles\vimenter\vimrc-Win10-paths.vim -force
-ni ~\_vimtest -type symboliclink -value $misc\CP\vimtest -force
+# #=> Ruby
+# cpi $onGH\misc\irbrc ~\.irbrc
 
-#=> ~\.bashrc
-ni ~\.bashrc -type symboliclink -value $MSWin10\bashrc -force
+# #=> vim flavours - minimap
+# cp $ITscc\forMSWin\code-minimap\code-minimap-v0.6.7-x86_64-pc-windows-msvc\code-minimap.exe ~\AppData\Local\Microsoft\WindowsApps\code-minimap.exe
+
+#=> vim flavours - nvim
+$nvim = "~\AppData\Local\nvim"
+ri -path $nvim -recurse; md $nvim\pack; md $nvim\plugin
+
+syli $vimfiles/vim/after              $nvim/after
+syli $vimfiles/vim/filetype.vim       $nvim/filetype.vim
+syli $vimfiles/vim/ftplugin           $nvim/ftplugin
+syli $vimfiles/nvim/init.vim          $nvim/init.vim
+syli $vimfiles/nvim/lua               $nvim/lua
+syli $vimfiles/vim/packs-cp           $nvim/pack/packs-cp
+syli $vimfiles/vim/packs-unix         $nvim/pack/packs-unix
+syli $vimfiles/vim/plugin/plugin.vim  $nvim/plugin/plugin.vim
+syli $vimfiles/vim/plugin/plugins.vim $nvim/plugin/plugins.vim
+syli $vimfiles/vim/spell              $nvim/spell
+syli $vimfiles/vim/syntax             $nvim/syntax
+syli $vimfiles/vim/thesaurus          $nvim/thesaurus
+
+# #=> vim flavours - vim
+# ri -path ~\vimfiles -recurse; md ~\vimfiles\pack
+
+# syli $vimfiles/vim/after                       ~/vimfiles/after
+# syli $vimfiles/vim/ftplugin                    ~/vimfiles/ftplugin
+# syli $vimfiles/vim/packs-cp                    ~/vimfiles/pack/packs-cp
+# syli $vimfiles/vim/packs-unix                  ~/vimfiles/pack/packs-unix
+# syli $vimfiles/vim/packs-win32                 ~/vimfiles/pack/packs-win32
+# syli $vimfiles/vim/plugin                      ~/vimfiles/plugin
+# syli $vimfiles/vim/spell                       ~/vimfiles/spell
+# syli $vimfiles/vim/syntax                      ~/vimfiles/syntax
+# syli $vimfiles/vim/thesaurus                   ~/vimfiles/thesaurus
+# syli $vimfiles/vim/filetype.vim                ~/vimfiles/filetype.vim
+# syli $vimfiles/vim/enter/vimrc-Win10-paths.vim ~/vimfiles/vimrc-Win10-paths.vim
+
+# # g $home\vimfiles
+
+# #=> vim flavours - test
+# ri -path ~\vimtest -recurse
+# md ~\vimtest\pack\packs-cp\opt
+# md ~\vimtest\pack\packs-win32\opt
+# md ~\vimtest\plugin
+
+# syli $vimfiles/test/filetype.vim               ~/vimtest/filetype.vim
+# syli $vimfiles/vim/packs-cp/opt/bufferize.vim  ~/vimtest/pack/packs-cp/opt/bufferize.vim
+# syli $vimfiles/vim/packs-cp/opt/fzf.vim        ~/vimtest/pack/packs-cp/opt/fzf.vim
+# syli $vimfiles/vim/packs-cp/opt/vim-markdown   ~/vimtest/pack/packs-cp/opt/vim-markdown
+# syli $vimfiles/vim/packs-cp/opt/vim-dokuwiki   ~/vimtest/pack/packs-cp/opt/vim-dokuwiki
+# syli $vimfiles/vim/packs-cp/opt/vim-bbcode     ~/vimtest/pack/packs-cp/opt/vim-bbcode
+# syli $vimfiles/vim/packs-win32/opt/fzf         ~/vimtest/pack/packs-win32/opt/fzf
+# syli $vimfiles/test/plugin.vim                 ~/vimtest/plugin/plugin.vim
+# syli $vimfiles/test/plugins.vim                ~/vimtest/plugin/plugins.vim
+# syli $vimfiles/test/vimrc.vim                  ~/vimtest/vimrc.vim
+# syli $vimfiles/vim/enter/vimrc-Win10-paths.vim ~/vimtest/vimrc-Win10-paths.vim
+
+# # g $home\vimtest
+
+# #=> ~\.bashrc
+# ni ~\.bashrc -type symboliclink -value $MSWin10\bashrc -force
 

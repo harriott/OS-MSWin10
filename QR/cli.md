@@ -2,13 +2,15 @@ vim: nospell:
 
     $MSwin10\QR\cli.md
 
-    $ProgramFiles\Neovim\share\nvim\runtime\mswin.vim
+    C:\Git\usr\bin\perl.exe -v
+    C:\msys64\usr\bin\perl.exe -v
     chcp  # reports code page
     java -jar C:\LanguageTool\languagetool-commandline.jar -h
     java -jar $ITscc\CP\LanguageTool\languagetool-commandline.jar -h
     ~\AppData\Roaming\Vifm\vifmrc
 
-`intl.cpl` (= Panneau de configuration > Région)
+- `intl.cpl` (= `Panneau de configuration > Région`)
+- `Strawberry Perl`: `g $home\.cpanm`
 
 # console code page
     chcp [65001]
@@ -97,9 +99,9 @@ limited to single commands
 
 ## colour
     [System.Enum]::GetValues('ConsoleColor') | %{ write-host $_ -ForegroundColor $_ }
-    iex "$ITstack\MSWin\PowerShell\colours\ConsoleColor.ps1"
-    iex "$ITstack\MSWin\PowerShell\colours\LindbergColors.ps1"
-    iex "$onGH\misc\Colors.ps1"
+    & "$ITstack\MSWin\PowerShell\colours\ConsoleColor.ps1"
+    & "$ITstack\MSWin\PowerShell\colours\LindbergColors.ps1"
+    & "$onGH\misc\Colors.ps1"
     write-color -text 'red ', 'green ', 'yellow ' -color red,green,yellow  # pswritecolor
 
 ### $PSStyle
@@ -150,6 +152,11 @@ no standard aliases
     explorer shell:Appsfolder  # Applications
     start <somefile>
 
+### Microsoft Visual Studio parts
+    & "${env:programfiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -?
+
+otherwise little sign of them
+
 ### PowerShell
     pwsh -nol
     saps pwsh -verb runas  # Administrator
@@ -161,6 +168,7 @@ no standard aliases
 ### where.exe
     where.exe gpg
     where.exe pwsh
+    where.exe python
     where.exe sumatrapdf
     where.exe where.exe
 
@@ -253,10 +261,12 @@ aliases: `cat`, `type`
     robocopy /mir <sourcedir> <destinationdir> /l  # runs a simulation of mirroring source to destination
     takeown /? | less
 
-- `remove-item`: `del`, `erase`, `rd`, `ri`, `rm`, `rmdir`
 - `ROBOCOPY.exe`
 - `z -?` (`ZLocation`)
 
+#### remove-item
+- `del`, `erase`, `rd`, `ri`, `rm`, `rmdir`
+- `--recurse`
 
 #### aliases
 `copy-item`: `copy` `cp` `cpi`
@@ -309,13 +319,16 @@ aliases: `cat`, `type`
     get-PSResourceRepository
 
 ## microsoft.powershell.utility
-    iex <someCommand>  # = invoke-expression
-
 - `fl` (= `format-list`)
 - `measure` (= `measure-object`)
 - `select` (= `select-object`)
 - `sls` (= `select-string`)
 - `sort` (= `sort-object`)
+
+### invoke-expression
+    iex <someCommand>
+
+prefer `&` where possible
 
 ## networking
     wp
@@ -449,7 +462,6 @@ tab completion
 #### path
     (gp 'registry::hkcu\environment' path).path -split ';'
     Get-PathVariable
-    $env:path -split ';' > $machLg/path
 
 ### registry
     $oldPathCU = (gp -path ‘registry::hkcu\environment’ -name path).path; $oldPathCU -split ';'
@@ -459,6 +471,10 @@ tab completion
     'boob' -replace 'b$', ''
     "Hello".replace('l','x')
     (gc $file) -replace $regex, $newtext | seco $file
+
+### Vim
+    C:\Vim\vim91\vim.exe --version
+    sl ~\_vimswap
 
 ## version
     $psversiontable.psversion
@@ -470,6 +486,10 @@ tab completion
     /mir  # (mirror) = /e + /purge
     /tee - output to console as well as log file
     ROBOCOPY.exe
+
+# Vim
+    C:\Vim\vim91\vim.exe -?
+    $ProgramFiles\Neovim\share\nvim\runtime\mswin.vim
 
 # Windows Package Manager
     g C:\users\jharr\AppData\local\microsoft\winget\packages
@@ -526,10 +546,12 @@ tab completion
 - `alt++` split pane right
 - `alt+arrow` move focus
 - `alt+shift+-` = `split down`
+- `alt+shift+arrow` = adjusts pane size
 - `ctrl+,` = `Settings`
 - `ctrl+c` copy text
 - `ctrl+shift+d` new tab in same directory (`$MSWin10\PSProfile.ps1`)
 - `ctrl+shift+f` find
+- `ctrl+shift+n` new window
 - `ctrl+shift+t` new tab
 - `ctrl+shift+w` close pane
 - `ctrl+shift+PgUp` scroll up a page

@@ -10,6 +10,15 @@ sal ss select-string
 sal su C:\SumatraPDF\SumatraPDF.exe
 . ~\Env.ps1  # ($MSwin10\mb\symlinks.ps1)
 
+function ep {
+  $eps = "$machLg/path"
+  'vim: set nowrap:' > $eps
+  '' >> $eps
+  $env:path -split ';' >> $eps
+  '' >> $eps
+  '$env:path  is in  $machLg/path'
+}
+
 function fonts {
   $mf0 = "$machLg\fonts"
   $mf1 = $mf0+'-1'
@@ -77,6 +86,7 @@ sal l lsd
   function lt { l --tree }
   function ltd { l -d --tree } # -directory-only
   function lx { l -lRX } # --recursive --extensionsort
+sal n nvim
 sal v vifm
 
 # eza
@@ -435,7 +445,8 @@ Function dcc0 {
   Set-Variable -scope 1 -Name 'DropboxConflictedLog' -Value "$Drpbx\conflicted\$dts.log"
   "scanning for conflicted copies in $Drpbx"
   $all = gci -r | ? Name -match ".+'s conflicted copy.+" | %{echo $_.fullname}
-  $new = $all | ? { $_ -notmatch 'C:\\Users\\troin\\Dropbox\\conflicted' }
+  # $new = $all | ? { $_ -notmatch 'C:\\Users\\troin\\Dropbox\\conflicted' }
+  $new = $all | ? { $_ -notmatch '.*\\Dropbox\\conflicted' }
   'vim: nowrap:' > $DropboxConflictedLog
   '' >> $DropboxConflictedLog
   $new >> $DropboxConflictedLog

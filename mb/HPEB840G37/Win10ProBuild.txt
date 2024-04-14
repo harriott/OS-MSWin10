@@ -71,6 +71,8 @@ ran it for
   alt+o (= Options) > i (= Tray Icons) > p (= Physical Memory History)
   alt+o (= Options) > h (= Hide When Minimized)
   alt+o (= Options) > l (= Run At Logon) ]
+## Ruby
+winget add RubyInstallerTeam.Ruby.3.2
 ## Sécurité Windows
 pinned to Start
 ## sharkdp/bat
@@ -181,6 +183,7 @@ $Env:Path -split';'
   C:\Git\cmd
   ...
 allowed  MINGW64  for  A ~/.bash_profile that loads ~/.bashrc will be created for you.
+got me  C:\Git\usr\bin\perl.exe
 ## Windows Terminal s'ouvre dans Invite de commandes
 Paramètres > Applications > Terminal > Désinstaller  then  win+x > Redémarrer
   then re-installed from Microsoft Store
@@ -250,7 +253,7 @@ c ~\Documents\PowerShell\Modules\ZLocation\1.4.3
 ## minimal Visual Studio - for Rust
 VisualStudioSetup.exe > [ Composants individuels > [
   Compilateurs, outils de génération et runtime >
-  MSVC v143 - VS 2022 C++ x64/x86 build tools (dernière version)
+    MSVC v143 - VS 2022 C++ x64/x86 build tools (dernière version)
   SDK, biblothèaues et frameworks > Kit SDK Windows 10 (10.0.19041.0) ]
   Modules linguistiques > Anglais ] (over 5GB) Installer
 ## Synaptics TouchPad became inactive
@@ -335,7 +338,7 @@ go1.22.0.windows-amd64.msi > C:\Go\
 ## WizTree v4.18
 wiztree_4_18_setup.exe > pas d'icônes
 ## Rust for ripgrep
-(once Visual Studio) winget add rustup
+(once Visual Studio components) winget add rustup
 ## ripgrep
 (once Rust) winget add burntsushi.ripgrep.msvc
 ## Git v2.44.0
@@ -488,7 +491,7 @@ $oldPathCU = (gp -path 'registry::hkcu\environment' -name path).path; $oldPathCU
 $newPathCU = $oldPathCU -replace ';$', ''; $newPathCU
 sp -path 'registry::hkcu\environment' -name path -value $newPathCU
 ## EUDC 1252 (for PowerColorLS icons)
-right-clicked on  $ITscc/font-CascadiaMono/CaskaydiaMonoNerdFontMono-Regular.ttf >
+right-clicked on  $ITscc/font-Nerd-CascadiaMono/CaskaydiaMonoNerdFontMono-Regular.ttf >
   Installer  then (should be only)  Installer pour tous les utilisateurs
 test-path hkcu:\eudc\1252
 ni -path hkcu:\eudc\1252
@@ -556,7 +559,96 @@ winget add gokcehan.lf
   Alias de ligne de commande ajouté : "lf"
 ## Neovim
 winget add Neovim.Neovim  rebooted to get  nvim  working
+## pipx
+py -m pip install --user pipx
+  Installing collected packages: platformdirs, packaging, colorama, argcomplete, click, userpath, pipx
+    WARNING: The script userpath.exe is installed in 'C:\Users\jharr\AppData\Roaming\Python\Python312\Scripts' which is not on PATH.
+    Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+    WARNING: The script pipx.exe is installed in 'C:\Users\jharr\AppData\Roaming\Python\Python312\Scripts' which is not on PATH.
+    Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  Successfully installed argcomplete-3.2.3 click-8.1.7 colorama-0.4.6 packaging-24.0 pipx-1.5.0 platformdirs-4.2.0 userpath-1.9.2
+sl ~\AppData\Roaming\Python\Python312\Scripts
+for  .\pipx.exe ensurepath
+  Success! Added C:\Users\jharr\.local\bin to the PATH environment variable.
+  Success! Added C:\Users\jharr\AppData\Roaming\Python\Python312\Scripts to the PATH environment variable.
+  Consider adding shell completions for pipx. Run 'pipx completions' for instructions.
+## pynvim (for neovim)
+(needed for python packages)  pip install pynvim
+## Python executable
+where.exe python
+  C:\Python312\python.exe
+  C:\Users\jharr\AppData\Local\Microsoft\WindowsApps\python.exe
+- the latter fires up Microsoft Store. I could remove them from APS
+## Jekyll
+(in a refreshed Powershell) gem install bundler jekyll
+## Ruby neovim gem
+gem install neovim
+  MSYS2 could not be found. Please run 'ridk install'
+ridk install  failed, but fired up  MSYS2  installer  C:\msys64
+ridk install  did a huge pacman install and got me  C:\msys64\usr\bin\perl.exe
+gem install neovim
+## Node.js
+winget add OpenJS.NodeJS
+Node.js  icon pulled over to Start Menu, run for  console.log('Hello')
+  C:\Program Files\nodejs\node.exe
+  $programfiles\nodejs\node_modules\corepack\README.md
+  $programfiles\nodejs\node_modules\npm\README.md
+npm prefix -g  reports  C:\Users\jharr\AppData\Roaming\npm
+md C:\Users\jharr\AppData\Roaming\npm   then  npm ls -g  works
+npm i -g carbonyl  then  carbonyl https://github.com
+  /bin/bash: C:UsersjharrAppDataRoamingnpm/node_modules/carbonyl/index.sh: No such file or directory
+## Node.js - npm - neovim
+npm install -g neovim
+## Perl
+winget add StrawberryPerl.StrawberryPerl
+## Perl - Neovim::Ext
+cpanm Neovim::Ext  authorised  Perl interpreter  in  Windows Firewall
+  Building and testing IO-Async-0.803 ... FAIL
+  ! Installing IO::Async failed. See C:\Users\jharr\.cpanm\work\1712687394.5784\build.log for details. Retry with --force to force install it.
+  ! Installing the dependencies failed: Module 'IO::Async' is not installed
+  ! Bailing out the installation for Neovim-Ext-0.06.
+  10 distributions installed
+cpanm Neovim::Ext  failed again on  IO-Async-0.803
+cpanm IO::Async  failed again
+### Perl remove
+winget rm StrawberryPerl.StrawberryPerl  - took a long time and closed  gVim
+rm -r ~\.cpanm -force  C:\Strawberry  is empty
+### Perl again
+winget add StrawberryPerl.StrawberryPerl
+## Perl - Neovim::Ext again
+cpanm Neovim::Ext  failed again on  IO-Async-0.803
+### Perl remove again
+winget rm StrawberryPerl.StrawberryPerl  - took a long time and closed  gVim
+rm -r ~\.cpanm -force  C:\Strawberry  is empty
+### Perl again
+winget add StrawberryPerl.StrawberryPerl
+### Perl - Neovim::Ext again
+cpanm IO::Async  then  cpanm Neovim::Ext
+  fucking-well tried to re-install  IO::Async, and so failed again...
+### Perl remove again
+winget rm StrawberryPerl.StrawberryPerl  - took a long time and closed  gVim
+rm -r ~\.cpanm -force  C:\Strawberry  is empty
+### Perl again
+winget add StrawberryPerl.StrawberryPerl
+### Perl - Neovim::Ext again
+ppm install Neovim::Ext
+  Error installing package 'Neovim-Ext': Could not locate a PPD file for package Neovim-Ext
+### Perl - Neovim::Ext abandoned
+probably never going to work on native MSWin
+## CMake
+winget add Kitware.CMake
+## Visual Studio Setup PowerShell Module
+inmo VSSetup
+## Visual Studio Build Tools 2022 to make  telescope-fzf-native.nvim
+vs_BuildTools.exe (Visual Studio Installer) > [ Composants individuels > [
+  Compilateurs, outils de génération et runtime >
+    MSVC v143 - VS 2022 C++ x64/x86 build tools (dernière version)
+    Outils C++ CMake pour Windows
+  SDK, biblothèaues et frameworks >
+    Kit de développement logiciel (SDK) Windows 10 (10.0.20348.0)
+  ] > (under 2GB) Installer, 131 packages
 ## waiting
+fix .vim
 ### reduce C:
 MiniTool Partition Wizard Free v12.8
   right-clicked on C: > Déplacer/redimensionner > Taille de la partition > 118.15

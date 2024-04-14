@@ -50,6 +50,7 @@ if ( $Cn -eq 'HPEB840G36' ) { $Drpbx = "D:\Dropbox" }
     $Pr0 = "$DJH\Copied\Practical0"
     $Thb = "$DJH\Thb-dr"
 $Enc = "C:\Users\$uname\encrypted"
+$nvim = "$home\AppData\Local\nvim"  # lf  don't grok  ~
 $Pandoc = "$Env:AppData\Pandoc"
 $tex = "$Env:AppData\MiKTeX\tex"
 

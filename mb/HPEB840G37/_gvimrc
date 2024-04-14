@@ -10,5 +10,5 @@
 let g:monitorheight='1080' " used in  $vimfiles/gvimrc.vim
 
 ""> 1 move on
-source $HOME\vimfiles\vimenter\gvimrc-Win10.vim
+source $vimfiles\vim\enter\gvimrc-Win10.vim
 

@@ -1,15 +1,20 @@
 
-" $MSWin10\mb\HPEB840G3-user\_vimrc (see  $MSwin10\symlinks.ps1)
+" $MSWin10\mb\_vimrc-AZERTY ($MSwin10\mb\symlinks-mostly.ps1)
 
 " -----------------------------------------------------------------------
 " this is a pointer, on a MSWin system, to my more portably located vimrc
 " -----------------------------------------------------------------------
 
+" France
+" se hlg=en " - has no effect
 " AZERTY
-let mapleader = 'ù'
+" let mapleader = 'ù' " comment out if  CapsLock has been mapped to  \  in  $MSWin10\AZERTY.ahk
 nnoremap ! /
 
-source $HOME\vimfiles\vimrc-Win10-paths.vim  " $vimfiles\vimenter\vimrc-Win10-paths.vim
-source $vimfiles\vimenter\vimrc-Win10.vim
-" source $HOME\vimfiles\vimenter\vimrc-Win10.vim
+""> 1 pull in paths
+source $HOME\vimfiles\vimrc-Win10-paths.vim  " $vimfiles\vim\enter\vimrc-Win10-paths.vim
+" csl $HOME\vimfiles\vimrc-Win10-paths.vim
+
+""> 2 continue configuration
+source $vimfiles\vim\enter\vimrc-Win10.vim
 
