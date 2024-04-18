@@ -1,5 +1,5 @@
 
-; Joseph Harriott - AutoHotkey - ven. 08 mars 2024
+; Joseph Harriott - AutoHotkey - jeu 18 avr 2024
 
 ; $MSWin10\AZERTY.ahk
 
@@ -24,7 +24,8 @@ Ins::SetCapsLockState !GetKeyState("CapsLock", "T")  ; Ins = CapsLock
 #!i::Run "C:\Vim\vim91\gvim.exe" ; win+alt+i - open gVim
 #!k::Run "C:\Program Files\KeePassXC\KeePassXC.exe" ; win+alt+k - open KeePassXC
 #!m::Run "C:\Emacs\emacs-28.1\bin\runemacs.exe" ; win+alt+m - open Emacs
-#!p::Run "pwsh -wd ~" ; win+alt+p - PowerShell
+#!n::Run "wt --pos 9,9 --size 106,69" ; see  $vimfiles/vim/enter/gvimrc.vim
+#!p::Run "pwsh -wd ~" ; win+alt+p - PowerShell opened on $home
 #!v::Run "C:\Program Files\Everything\Everything.exe" ; win+alt+v - open Everything
 CapsLock::SendText "\"
 

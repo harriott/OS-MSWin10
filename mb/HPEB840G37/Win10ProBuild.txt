@@ -6,12 +6,15 @@ HP EliteBook 840 G3 barcoded PC117862 (labelled BC PNB 17 by last owner) = HPEB8
 (jharrio@outlook.com)
 # build - parallel
 Google Chrome somehow there
-Paramètres > Écran > Éclairage nocturne > Activé
 Gestionnaire de périphériques > Cartes graphiques > Intel(R) HD Graphics 520
   double-clicked to discover  Pilote > 31.0.101.2111
 Notepad++ > alt+p > Préférences... > Divers > Surveillance de l'état des fichiers >
   Mise à jour sans alerte
   Aller à la dernière ligne après mise à jour
+Paramètres > Écran > Éclairage nocturne > Activé
+Paramètres > Options d'ergonomie > Clavier > all off
+Paramètres > Périphériaues > Saisie > Orthographie >
+  Corriger automatiquement les fautes d'orthograpie > Désactvé
 ## APS opacity
 saps pwsh -verb runas  to right-click on toolbar for  Propriétés > Opacité > 80%
 ## AWPS opacity
@@ -156,6 +159,7 @@ found in Microsoft Store > Obtenir
 Get-ExecutionPolicy   reported  "Restricted"
 ### Administrateur PowerShell
 Get-ExecutionPolicy -list  reported all as  "Undefined"
+#### allow local unsigned and remote signed scripts
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Confirm > y
 ## $Profile
 $Profile  returns

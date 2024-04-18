@@ -40,6 +40,7 @@ Consolas can handle €
     \setmainfont{Trebuchet MS}
 
 # Microsoft Edge
+`ctrl+.` on AZERTY toggles Copilot sidebar
 `ctrl+u` (= `right-click > View page source`) is searchable
 
 ## Extensions

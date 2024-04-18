@@ -16,6 +16,10 @@ vim: nospell:
     chcp [65001]
     REG query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Console\TrueTypeFont"
 
+# console size
+    [console]::WindowHeight=50; 
+    [console]::WindowWidth=80; 
+
 # Command Prompt
     dir * /x
 
@@ -98,10 +102,11 @@ limited to single commands
     sal <alias> <string>
 
 ## colour
-    [System.Enum]::GetValues('ConsoleColor') | %{ write-host $_ -ForegroundColor $_ }
     & "$ITstack\MSWin\PowerShell\colours\ConsoleColor.ps1"
     & "$ITstack\MSWin\PowerShell\colours\LindbergColors.ps1"
     & "$onGH\misc\Colors.ps1"
+    [enum]::getvalues([type]'system.consolecolor').ForEach{@{$_ = $_.value__}}
+    [System.Enum]::GetValues('ConsoleColor') | %{ write-host $_ -ForegroundColor $_ }
     write-color -text 'red ', 'green ', 'yellow ' -color red,green,yellow  # pswritecolor
 
 ### $PSStyle
@@ -114,6 +119,7 @@ limited to single commands
 ## data
     $array | sort
     $x.GetType()
+    sv var $true; $var
 
 ### arrays
     $a = 1,'a',2,'b'
@@ -158,6 +164,8 @@ no standard aliases
 otherwise little sign of them
 
 ### PowerShell
+    $programfiles\PowerShell\7\powershell.config.json
+    pwsh -? | less
     pwsh -nol
     saps pwsh -verb runas  # Administrator
 
@@ -552,8 +560,16 @@ tab completion
 - `ctrl+shift+d` new tab in same directory (`$MSWin10\PSProfile.ps1`)
 - `ctrl+shift+f` find
 - `ctrl+shift+n` new window
+- `ctrl+shift+p` commands
 - `ctrl+shift+t` new tab
 - `ctrl+shift+w` close pane
 - `ctrl+shift+PgUp` scroll up a page
 - `ctrl(+Shift)+Tab` move to next (previous) tab
 
+# Windows Loupe
+- `ctrl+alt+flèche` bouger
+- `ctrl+alt+f/l` basculer en affichage
+- `win+=` activer la loupe
+    - `win+=\-` zoom avant/arrière
+- `win+ctrl+m` paramètres de la loupe
+- `win+esc désactiver la loupe

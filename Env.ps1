@@ -8,6 +8,7 @@
 
 #=> 0 useful variables
 $Cn = $Env:Computername
+$lazy = "$HOME\AppData\Local\nvim-data\lazy"
 $uname = $Env:USERNAME
 
 #==> places

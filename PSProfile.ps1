@@ -86,7 +86,6 @@ sal l lsd
   function lt { l --tree }
   function ltd { l -d --tree } # -directory-only
   function lx { l -lRX } # --recursive --extensionsort
-sal n nvim
 sal v vifm
 
 # eza
@@ -302,6 +301,12 @@ function ghissues {
   mi $sifwof ghissues.sifw -force
   '- moved to ghissues.sifw'
 }
+#==> nvim
+sal n nvim
+function nn {
+  [console]::WindowWidth=150
+}
+
 #=> 0 Ghostscript
 Function gsp {
     $pl = $args[0]
