@@ -75,6 +75,7 @@ Function mc {
 function c { if ( $args[0] ) { sl $args[0] } else { sl .. }; pc }  # handily move in or out
 function i { ii . }  # opens  file explorer  on current directory
 Function lc { [string[]]$list = (gci).Name; $list -join '  ' }
+function n { nvim $args; gc $nvim/last_directory | sl } # see $vimfiles/nvim/init.vim
 
 sal j z  # ZLocation
 sal l lsd
@@ -301,12 +302,6 @@ function ghissues {
   mi $sifwof ghissues.sifw -force
   '- moved to ghissues.sifw'
 }
-#==> nvim
-sal n nvim
-function nn {
-  [console]::WindowWidth=150
-}
-
 #=> 0 Ghostscript
 Function gsp {
     $pl = $args[0]
@@ -371,6 +366,8 @@ sal y yt-dlp
   function yf { y -F $args[0] }
 
 #=> 0 shell settings
+$env:TERM = "xterm-256color"  # $vimfiles/nvim/lua/init.lua
+
 if ($PSVersionTable.PSVersion.Major -eq 7) { ipmo Powershell.Chunks }
 
 ipmo ps.checkModuleUpdates

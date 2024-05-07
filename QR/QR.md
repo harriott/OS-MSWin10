@@ -57,6 +57,7 @@ jigsaw icon
 `ctrl+shift+i` toggles
 
 ## Favourites
+    edge://favorites/
     ••• > Open favourites page > ••• > Sort
 
 ### Favourites
@@ -127,6 +128,12 @@ KeePassXC: Getting Started Guide
     C:\Users\troin\AppData\Roaming\.emacs.d
     sl C:\Users\troin\AppData\Roaming\.emacs.d
     ~\AppData\Roaming\.spacemacs
+
+## Vim
+    C:\Vim\vim91\vim.exe -?
+    g $lazy
+    g 'C:\Program Files\Neovim\share\nvim\runtime'
+    $ProgramFiles\Neovim\share\nvim\runtime\mswin.vim
 
 # Vivaldi
 - `Alt+P` Settings

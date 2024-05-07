@@ -10,15 +10,14 @@ vim: nospell:
     ~\AppData\Roaming\Vifm\vifmrc
 
 - `intl.cpl` (= `Panneau de configuration > Région`)
-- `Strawberry Perl`: `g $home\.cpanm`
 
 # console code page
     chcp [65001]
     REG query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Console\TrueTypeFont"
 
-# console size
-    [console]::WindowHeight=50; 
-    [console]::WindowWidth=80; 
+# console size show
+    [console]::WindowHeight
+    [console]::WindowWidth
 
 # Command Prompt
     dir * /x
@@ -166,7 +165,8 @@ otherwise little sign of them
 ### PowerShell
     $programfiles\PowerShell\7\powershell.config.json
     pwsh -? | less
-    pwsh -nol
+    pwsh -nol  # -NoLogo
+    pwsh -nop  # -NoProfile
     saps pwsh -verb runas  # Administrator
 
 ### Windows PowerShell
@@ -214,6 +214,7 @@ doesn't find executables in `~\AppData\`
     ls * | select FullName
     ls * | select Name
     ls . -force  # Gets both hidden & non-hidden. Shows desired symlinks target.
+    ls -s -depth 1  # including contents of subdirectories
     ls -s -i i1*,i2*,i3*
     ls -s -i '* (* conflicted copy *' |%{echo $_.fullname} | ri
     ls -s | ? Name -match <regex>
@@ -495,9 +496,9 @@ tab completion
     /tee - output to console as well as log file
     ROBOCOPY.exe
 
-# Vim
-    C:\Vim\vim91\vim.exe -?
-    $ProgramFiles\Neovim\share\nvim\runtime\mswin.vim
+# Strawberry Perl
+    C:\Strawberry\perl\bin\perl.exe -v
+    g $home\.cpanm
 
 # Windows Package Manager
     g C:\users\jharr\AppData\local\microsoft\winget\packages

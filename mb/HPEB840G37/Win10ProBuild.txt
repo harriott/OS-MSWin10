@@ -651,8 +651,39 @@ vs_BuildTools.exe (Visual Studio Installer) > [ Composants individuels > [
   SDK, biblothèaues et frameworks >
     Kit de développement logiciel (SDK) Windows 10 (10.0.20348.0)
   ] > (under 2GB) Installer, 131 packages
+## ShellCheck
+winget add koalaman.shellcheck
+### path modified
+  Variable d’environnement de chemin modifiée ; redémarrez votre interpréteur de commandes pour utiliser la nouvelle valeur.
+  Alias de ligne de commande ajouté : "shellcheck"
+fixed ; at end of path
+## developer mode (for nvim-treesitter)
+Paramétres > Mise à jour et sécurité > Espace développeurs > Mode développeur > Activé
+## nvim  in  x64 Native Tools Command Prompt for VS 2022
+  Erreur détectée en traitant C:\Users\jharr\AppData\Local\nvim\init.vim :
+  ligne   92 :
+  E5108: Error executing lua vim/_init_packages.lua:21: C:\Users\jharr\AppData\Local\nvim/lua/lazy/treesitter.lua:15: '=' expected near 'lua'
+  stack traceback:
+        [C]: in function 'error'
+        vim/_init_packages.lua:21: in function <vim/_init_packages.lua:15>
+        [C]: in function 'require'
+        C:\Users\jharr\AppData\Local\nvim/lua/init.lua:50: in main chunk
+        [C]: in function 'require'
+        [string ":lua"]:1: in main chunk
+## Git v2.45.0
+## fd v10.0.0
+executable lost from path
+### add  fd.exe  to path
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+#### 1 accidentally included the executable
+$newPathCU = "$oldPathCU;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.fd_Microsoft.Winget.Source_8wekyb3d8bbwe\fd-v10.0.0-x86_64-pc-windows-msvc\fd.exe"
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+#### 2 remove the executable name
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU -replace '\\fd.exe$', ''; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## waiting
-fix .vim
+TexLab
 ### reduce C:
 MiniTool Partition Wizard Free v12.8
   right-clicked on C: > Déplacer/redimensionner > Taille de la partition > 118.15
