@@ -129,8 +129,10 @@ limited to single commands
     "Hello".Replace('l', 'x').Replace('H', 'Y')
     'a'.equals('b')
     'me'+'et'
+    if ( !$y ) { 'no' }
+    $string.length
     $string.trim()  # removes whitespaces (including newlines) from ends
-    [string]$Pwd
+    [string]$pwd
     format-string powershell -randomize
     if ( '5' -ne '4' ) { '5 is not 4' }
 
@@ -537,10 +539,7 @@ tab completion
 - `sudo apt upgrade`
 
 # Windows Terminal
-    cpi ~\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json $machLg\WT-settings.json
-
 - in Explorer: `Alt+D > wt > Enter`
-- <https://www.microsoft.com/en-gb/p/windows-terminal-preview/9n0dx20hk701>
 - `win+;` emojis
 - `win+r > wt` opens `wt` on `~`
 
@@ -566,6 +565,11 @@ tab completion
 - `ctrl+shift+w` close pane
 - `ctrl+shift+PgUp` scroll up a page
 - `ctrl(+Shift)+Tab` move to next (previous) tab
+
+### settings.json
+    cpi ~\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json $machLg\WT-settings.json
+
+default actions don't show, but when I binned annoying `alt+enter` & `<f11>` "Baculer en plein écran", they show as `unbound`
 
 # Windows Loupe
 - `ctrl+alt+flèche` bouger

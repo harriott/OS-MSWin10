@@ -5,7 +5,7 @@ vim: nospell:
     Adobe Acrobat Reader DC > Shift+Ctrl+Minus -> rotate left
     C:\Users\troin\AppData\Local\Microsoft\WindowsApps
     cpan -l > $machLg\cpanList.txt
-    sl $copied\IT-handy\CP\TeX\LaTeX\structure\classes\memoir
+    sl $JCop\IT-handy\CP\TeX\LaTeX\structure\classes\memoir
     yt-dlp -U  # update inplace
 
 - AutoHotkey `$machBld\user\jo.ahk`

@@ -1,5 +1,5 @@
 
-# Joseph Harriott, ven 22 mars 2024
+# Joseph Harriott, mar 07 mai 2024
 
 # $MSWin10\PSProfile.ps1
 #  symlinked in  $MSWin10\mb\symlinks.ps1
@@ -382,11 +382,15 @@ $ps_context = $(if (test-path variable:/PSDebugContext) { '[DBG]: ' }
                 elseif($sp_principal.IsInRole($sp_adminRole)) { "[ADMIN]: " }
                 else { '' })
 # 1 posh-git
-ipmo posh-git; $GitPromptSettings.DefaultPromptPath.ForegroundColor = [ConsoleColor]::cyan
+ipmo posh-git
+$GitPromptSettings.DefaultPromptPath.ForegroundColor = [ConsoleColor]::cyan
+$GitPromptSettings.WindowTitle = $null
+# - (undocumented) disables  $GitPromptSettings.WindowTitle
 # 2 togglable prompt
 function pp {
   if ($shortPrompt) {
     function global:prompt {
+      $Host.UI.RawUI.WindowTitle = "$(split-path (split-path $pwd) -leaf)\$(split-path $pwd -leaf)"
       # Pasted output of  $function:prompt  only after PowerShell is launched:
       $loc = gl
       $prompt = & $GitPromptScriptBlock
@@ -397,8 +401,8 @@ function pp {
     } # long prompt, using  posh-git
     $global:shortPrompt = $false
   } else {
-    # function global:prompt { scfcdc; $ps_context + $(split-path $pwd -leaf) + '>'; scrc }
     function global:prompt {
+      $Host.UI.RawUI.WindowTitle = "$(split-path (split-path $pwd) -leaf)\$(split-path $pwd -leaf)"
       write-host ( $ps_context + $(split-path $pwd -leaf) + '>') -nonewline -ForegroundColor cyan
       return " "
     }
@@ -418,7 +422,7 @@ Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory
 Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 
 #=> 1 place-dependent
-. $ITscc/forMSWin/code-minimap/_code-minimap.ps1  # $GHrUse/CP/wfxr-code-minimap/README.md
+. $ITscc/CP/wfxr-code-minimap/completions/powershell/_code-minimap.ps1
 . $machBld\PSProfile.ps1
 
 #==> documenting

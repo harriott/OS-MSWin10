@@ -12,8 +12,8 @@
 nnoremap ! /
 
 ""> 1 pull in paths
-source $HOME\vimfiles\vimrc-Win10-paths.vim  " $vimfiles\vim\enter\vimrc-Win10-paths.vim
-" csl $HOME\vimfiles\vimrc-Win10-paths.vim
+source $HOME\vimfiles\Win10Paths.vim  " $vimfiles\vim\enter\Win10Paths.vim
+" csl $HOME\vimfiles\Win10Paths.vim
 
 ""> 2 continue configuration
 source $vimfiles\vim\enter\vimrc-Win10.vim

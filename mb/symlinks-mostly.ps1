@@ -57,59 +57,61 @@ function syli { ni $args[1] -type symboliclink -value $args[0] -force } # symbol
 # cpi $onGH\misc\irbrc ~\.irbrc
 
 # #=> vim flavours - minimap
-# cp $ITscc\forMSWin\code-minimap\code-minimap-v0.6.7-x86_64-pc-windows-msvc\code-minimap.exe ~\AppData\Local\Microsoft\WindowsApps\code-minimap.exe
+# cp $ITscc\forMSWin\code-minimap-v0.6.7-x86_64-pc-windows-msvc\code-minimap.exe ~\AppData\Local\Microsoft\WindowsApps\code-minimap.exe
 
-#=> vim flavours - nvim
-$nvim = "~\AppData\Local\nvim"
-ri -path $nvim -recurse; md $nvim\pack; md $nvim\plugin
+# #=> vim flavours - nvim
+# $nvim = "~\AppData\Local\nvim"
+# ri -path $nvim -recurse; md $nvim\pack; md $nvim\plugin
 
-syli $vimfiles/vim/after              $nvim/after
-syli $vimfiles/vim/filetype.vim       $nvim/filetype.vim
-syli $vimfiles/vim/ftplugin           $nvim/ftplugin
-syli $vimfiles/nvim/init.vim          $nvim/init.vim
-syli $vimfiles/nvim/lua               $nvim/lua
-syli $vimfiles/vim/packs-cp           $nvim/pack/packs-cp
-syli $vimfiles/vim/packs-unix         $nvim/pack/packs-unix
-syli $vimfiles/vim/plugin/plugin.vim  $nvim/plugin/plugin.vim
-syli $vimfiles/vim/plugin/plugins.vim $nvim/plugin/plugins.vim
-syli $vimfiles/vim/spell              $nvim/spell
-syli $vimfiles/vim/syntax             $nvim/syntax
-syli $vimfiles/vim/thesaurus          $nvim/thesaurus
+# syli $vimfiles/vim/after             $nvim/after
+# syli $vimfiles/vim/filetype.vim      $nvim/filetype.vim
+# syli $vimfiles/vim/ftplugin          $nvim/ftplugin
+# syli $vimfiles/nvim/init.vim         $nvim/init.vim
+# syli $vimfiles/nvim/lua              $nvim/lua
+# syli $vimfiles/vim/packs-cp          $nvim/pack/packs-cp
+# syli $vimfiles/vim/packs-unix        $nvim/pack/packs-unix
+# syli $vimfiles/vim/plugin/packs.vim  $nvim/plugin/packs.vim
+# syli $vimfiles/vim/plugin/plugin.vim $nvim/plugin/plugin.vim
+# syli $vimfiles/vim/spell             $nvim/spell
+# syli $vimfiles/vim/syntax            $nvim/syntax
+# syli $vimfiles/vim/thesaurus         $nvim/thesaurus
 
-# #=> vim flavours - vim
-# ri -path ~\vimfiles -recurse; md ~\vimfiles\pack
+#=> vim flavours - vim
+ri -path ~\vimfiles -recurse; md ~\vimfiles\pack
 
-# syli $vimfiles/vim/after                       ~/vimfiles/after
-# syli $vimfiles/vim/ftplugin                    ~/vimfiles/ftplugin
-# syli $vimfiles/vim/packs-cp                    ~/vimfiles/pack/packs-cp
-# syli $vimfiles/vim/packs-unix                  ~/vimfiles/pack/packs-unix
-# syli $vimfiles/vim/packs-win32                 ~/vimfiles/pack/packs-win32
-# syli $vimfiles/vim/plugin                      ~/vimfiles/plugin
-# syli $vimfiles/vim/spell                       ~/vimfiles/spell
-# syli $vimfiles/vim/syntax                      ~/vimfiles/syntax
-# syli $vimfiles/vim/thesaurus                   ~/vimfiles/thesaurus
-# syli $vimfiles/vim/filetype.vim                ~/vimfiles/filetype.vim
-# syli $vimfiles/vim/enter/vimrc-Win10-paths.vim ~/vimfiles/vimrc-Win10-paths.vim
+syli $vimfiles/vim/after                ~/vimfiles/after
+syli $vimfiles/vim/enter/Win10Paths.vim ~/vimfiles/Win10Paths.vim
+syli $vimfiles/vim/ftplugin             ~/vimfiles/ftplugin
+syli $vimfiles/vim/packs-cp             ~/vimfiles/pack/cp
+syli $vimfiles/vim/packs-unix           ~/vimfiles/pack/unix
+syli $vimfiles/vim/packs-win64          ~/vimfiles/pack/win64
+syli $vimfiles/vim/plugin/packs.vim     ~/vimfiles/plugin/packs.vim
+syli $vimfiles/vim/plugin/packsVim.vim  ~/vimfiles/plugin/packsVim.vim
+syli $vimfiles/vim/plugin/plugin.vim    ~/vimfiles/plugin/plugin.vim
+syli $vimfiles/vim/spell                ~/vimfiles/spell
+syli $vimfiles/vim/syntax               ~/vimfiles/syntax
+syli $vimfiles/vim/thesaurus            ~/vimfiles/thesaurus
+syli $vimfiles/vim/filetype.vim         ~/vimfiles/filetype.vim
 
-# # g $home\vimfiles
+# g $home\vimfiles
 
 # #=> vim flavours - test
 # ri -path ~\vimtest -recurse
 # md ~\vimtest\pack\packs-cp\opt
-# md ~\vimtest\pack\packs-win32\opt
+# md ~\vimtest\pack\packs-win64\opt
 # md ~\vimtest\plugin
 
-# syli $vimfiles/test/filetype.vim               ~/vimtest/filetype.vim
-# syli $vimfiles/vim/packs-cp/opt/bufferize.vim  ~/vimtest/pack/packs-cp/opt/bufferize.vim
-# syli $vimfiles/vim/packs-cp/opt/fzf.vim        ~/vimtest/pack/packs-cp/opt/fzf.vim
-# syli $vimfiles/vim/packs-cp/opt/vim-markdown   ~/vimtest/pack/packs-cp/opt/vim-markdown
-# syli $vimfiles/vim/packs-cp/opt/vim-dokuwiki   ~/vimtest/pack/packs-cp/opt/vim-dokuwiki
-# syli $vimfiles/vim/packs-cp/opt/vim-bbcode     ~/vimtest/pack/packs-cp/opt/vim-bbcode
-# syli $vimfiles/vim/packs-win32/opt/fzf         ~/vimtest/pack/packs-win32/opt/fzf
-# syli $vimfiles/test/plugin.vim                 ~/vimtest/plugin/plugin.vim
-# syli $vimfiles/test/plugins.vim                ~/vimtest/plugin/plugins.vim
-# syli $vimfiles/test/vimrc.vim                  ~/vimtest/vimrc.vim
-# syli $vimfiles/vim/enter/vimrc-Win10-paths.vim ~/vimtest/vimrc-Win10-paths.vim
+# syli $vimfiles/test/filetype.vim              ~/vimtest/filetype.vim
+# syli $vimfiles/test/plugin.vim                ~/vimtest/plugin/plugin.vim
+# syli $vimfiles/test/plugins.vim               ~/vimtest/plugin/plugins.vim
+# syli $vimfiles/test/vimrc.vim                 ~/vimtest/vimrc.vim
+# syli $vimfiles/vim/enter/Win10Paths.vim       ~/vimtest/Win10Paths.vim
+# syli $vimfiles/vim/packs-cp/opt/bufferize.vim ~/vimtest/pack/packs-cp/opt/bufferize.vim
+# syli $vimfiles/vim/packs-cp/opt/fzf.vim       ~/vimtest/pack/packs-cp/opt/fzf.vim
+# syli $vimfiles/vim/packs-cp/opt/vim-markdown  ~/vimtest/pack/packs-cp/opt/vim-markdown
+# syli $vimfiles/vim/packs-cp/opt/vim-dokuwiki  ~/vimtest/pack/packs-cp/opt/vim-dokuwiki
+# syli $vimfiles/vim/packs-cp/opt/vim-bbcode    ~/vimtest/pack/packs-cp/opt/vim-bbcode
+# syli $vimfiles/vim/packs-win64/opt/fzf        ~/vimtest/pack/packs-win64/opt/fzf
 
 # # g $home\vimtest
 

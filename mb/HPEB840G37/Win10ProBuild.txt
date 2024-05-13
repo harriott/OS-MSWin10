@@ -682,7 +682,12 @@ sp 'registry::hkcu\environment' -name path -value $newPathCU
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
 $newPathCU = $oldPathCU -replace '\\fd.exe$', ''; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
+## fzf from winget
+$MSwin10\mb\fzf.ps1
+~\AppData\Local\Microsoft\WinGet\Links\fzf.exe
+fixed ; at end of path
 ## waiting
+packs-win64
 TexLab
 ### reduce C:
 MiniTool Partition Wizard Free v12.8
