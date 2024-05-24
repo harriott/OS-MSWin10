@@ -22,6 +22,11 @@ vim: nospell:
 # imagey
 ExifTool by Phil Harvey
 
+## FastStone
+- `f`, `f11` = toggle full screen
+- `f12` = Paramètres
+- `w` = open in `File Explorer`
+
 ## IrfanView
 - `ctrl+shift+a` Acquire/Batch Scanning
 - `ctrl+t` Insert text

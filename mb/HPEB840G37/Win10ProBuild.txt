@@ -11,10 +11,6 @@ Gestionnaire de périphériques > Cartes graphiques > Intel(R) HD Graphics 520
 Notepad++ > alt+p > Préférences... > Divers > Surveillance de l'état des fichiers >
   Mise à jour sans alerte
   Aller à la dernière ligne après mise à jour
-Paramètres > Écran > Éclairage nocturne > Activé
-Paramètres > Options d'ergonomie > Clavier > all off
-Paramètres > Périphériaues > Saisie > Orthographie >
-  Corriger automatiquement les fautes d'orthograpie > Désactvé
 ## APS opacity
 saps pwsh -verb runas  to right-click on toolbar for  Propriétés > Opacité > 80%
 ## AWPS opacity
@@ -23,6 +19,8 @@ saps powershell -verb runas  to right-click on toolbar for  Propriétés > Opaci
 winget add altsnap
   APS> schtasks /create /f /tn "AltSnap onlogon" /tr "$Env:AppData\AltSnap\AltSnap.exe" /sc onlogon /rl highest
   PS> $ASi="~\AppData\Roaming\AltSnap\AltSnap.ini"; (gc $ASi).replace('AutoSnap=2','AutoSnap=0') | seco -encoding utf8 $ASi
+## BgInfo
+ran it, font down to 8 and dark grey, positioned top right
 ## dark applications
 Paramètres > Personnalisation > Couleurs > Choisir votre mode d'application par défaut > Sombre
 ## Desktop Background
@@ -38,7 +36,7 @@ Ctrl+P ( = Tools > Options ) > General >
     Couleur d'avant plan > Personnalisé > selected a white
     Couleur d'arrière plan > Personnalisé > selected a olive
 ## FastStone Image Viewer
-with an image open, e  for  C:\Program Files\IrfanView\i_view64.exe 
+with an image open, e  for  C:\Program Files\IrfanView\i_view64.exe
 ## File Explorer
 Affichage > Options > Affichage > [ [ Afficher l'icône des fichiers sure les miniatures  Afficher la barre d'état ] off-ticked  Afficher le chemin d'accès complet dans la barre de titre  on-ticked  Afficher les fichiers, dossier et lecteurs cachés  [ Masquer les extensions des fichiers dont le type est connu  Masquer les fichier protégés du système d'exploitation ]  off-ticked
 ## fix ; at end of path
@@ -67,6 +65,23 @@ $env:psmodulepath -split (';')
 ## Notepad++
 winget add --name notepad++
 Alt+p (Paramètres) > Préférences > Mode Sombre > Mode sombre > Suivre Windows
+## Paramètres
+Personnalisation > Barre des tâches > Combiner les boutons de la barre des tâches > Jamais
+Options d'ergonomie > Clavier > all off
+Périphériaues > Saisie > Orthographie >
+  Corriger automatiquement les fautes d'orthograpie > Désactvé
+### Système
+Alimentation et mise en veille > Jamais, Jamais, 10 minutes, Jamais
+  Paramètres d'alimentation supplémentaire >
+    Choisir l'action des boutons d'alimentation >
+    [ Modifier des paramètres actuellement non disponibles >
+    Activer le démarrage rapide  off-ticked  Lorsque je referme le capot > Sur secteur >
+    Ne rien faire ]
+Multitâche > Alt + Tab > Uniquement les fenêtres ouvertes
+Stockage (L'Assistant de stockage) > Activé (somehow)
+#### Écran
+Éclairage nocturne > Activé
+Résolution de l'écran > 1920 x 1080 (recommandé)
 ## Process Explorer
 sl $ITscc\forMSWin\ProcessExplorer
   for  cpi procexp64.exe $Env:LOCALAPPDATA\Microsoft\WindowsApps
@@ -80,8 +95,6 @@ winget add RubyInstallerTeam.Ruby.3.2
 pinned to Start
 ## sharkdp/bat
 winget add sharkdp.bat
-## stop individual Edge tabs showing in task switcher
-Paramètres > System > Multitâche > Alt + Tab > Uniquement les fenêtres ouvertes
 ## Thunderbird
 winget add mozilla.thunderbird -h -l C:\MT
 ran it to get  ~\AppData\Roaming\Thunderbird\Profiles\q6qwq868.default-release
@@ -107,15 +120,6 @@ Menu > Système Windows >
 Menu > [ Disnéy  Microsoft 365 ] > right-click > Désintaller
 win+i > Comptes > Famille et autres utilisateurs > Ajouter > jharrio@outlook.com > pw
 win+i > Comptes > Famille et autres utilisateurs > Autres > Utilisateur > supprimer
-## screen resolution
-Paramètres > Système > Écran > Résolution de l'écran > 1920 x 1080 (recommandé)
-## Alimentation et mise en veille
-Paramètres > Système > Alimentation et mise en veille > Jamais, Jamais, 10 minutes, Jamais
-  Paramètres d'alimentation supplémentaire >
-    Choisir l'action des boutons d'alimentation >
-    [ Modifier des paramètres actuellement non disponibles >
-    Activer le démarrage rapide  off-ticked  Lorsque je referme le capot > Sur secteur >
-    Ne rien faire ]
 ## Ditto Clipboard
 Microsoft Store > Ditto Clipboard > Install > Pin to Start
 Ran it for  Options > General > [ Maximum Number of Saved Copies > 5000
@@ -125,10 +129,11 @@ ctrl+* = Activate Ditto
 Signed in > DropboxInstaller.exe > English & Selective sync
 ## symlinks
 APS> . $MSwin10\mb\symlinks.ps1
-## L'Assistant de stockage
-(Paramètres > Système > Stockage) got turned on
 ## Analyse Microsoft Defender hors ligne
-Sécurité Windows > Protection contre les virus et menaces > Options d'analyse > Analyse Microsoft Defender hors ligne > Analyser maintenant > Analyser > Contrôle de compte d'utilisateur > Oui  wouldn't start the process, so  Paramètres > Mise à jour et sécurité > Récupération > Réinitialiser ce PC > Commencer > Conserver mes fichiers  failed to find  KDTG311281  plugged in left or right loaded with  ESD-USB (français (France), Windows 10 2022 Update l Version 22H2)  so  Démarrage avancé > Redémarrer maintenant > Dépannage > Paramètres > Rédémarrer > BitLocker > entered the 8x6 number sequences for  DESKTOP-GSPV6OJ  but system powered off...
+Sécurité Windows > Protection contre les virus et menaces > Options d'analyse > Analyse Microsoft Defender hors ligne > Analyser maintenant > Analyser > Contrôle de compte d'utilisateur > Oui
+- wouldn't start the process, so  Paramètres > Mise à jour et sécurité > Récupération > Réinitialiser ce PC > Commencer > Conserver mes fichiers
+- failed to find  KDTG311281  plugged in left or right loaded with  ESD-USB (français (France), Windows 10 2022 Update l Version 22H2)
+so  Démarrage avancé > Redémarrer maintenant > Dépannage > Paramètres > Rédémarrer > BitLocker > entered the 8x6 number sequences for  DESKTOP-GSPV6OJ  but system powered off...
 ### BitLocker
 Gestion des disques  reports  C: to be  NTFS (Chiffré avec BitLocker)
 #### turn off
@@ -684,10 +689,42 @@ $newPathCU = $oldPathCU -replace '\\fd.exe$', ''; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## fzf from winget
 $MSwin10\mb\fzf.ps1
-~\AppData\Local\Microsoft\WinGet\Links\fzf.exe
+~\AppData\Local\Microsoft\WinGet\Links\fzf.exe --version
 fixed ; at end of path
+## fd v10.1.0
+executable lost from path
+### add  fd.exe  to path
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+#### 1 accidentally included the executable
+$newPathCU = "$oldPathCU;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.fd_Microsoft.Winget.Source_8wekyb3d8bbwe\fd-v10.1.0-x86_64-pc-windows-msvc\fd.exe"
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+#### 2 remove the executable name
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU -replace '\\fd.exe$', ''; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+## bash.exe versions
+C:\Git\bin\bash.exe --help
+C:\Windows\System32\bash.exe --help
+C:\Users\jharr\AppData\Local\Microsoft\WindowsApps\bash.exe --help
+## FastStone Image Viewer v7.8
+f12 (= Paramètres) > Aperçu > [
+  Confirmer la reéctirure des fichiers  Lancer les images associées > dans une Fenêtre ]
+## XnView MP
+winget add XnSoft.XnViewMP
+ran it for  Assistant de démarrage > Thème > Sombre
+## Prettier
+from somewhere, npm i -D -E prettier  not working so  npm un prettier
+  (~\AppData\Roaming\npm\node_modules\prettier  still there)
+npm i -g -D -E prettier
+## Neovide
+winget add neovide  'C:\Program Files\Neovide\neovide.exe'
+##
+winget add sqlite.sqlite
+  Alias de ligne de commande ajouté : "sqldiff"
+  Alias de ligne de commande ajouté : "sqlite3_analyzer"
+  Alias de ligne de commande ajouté : "sqlite3"
+didn't seem to install a  sqlite3.dll
 ## waiting
-packs-win64
 TexLab
 ### reduce C:
 MiniTool Partition Wizard Free v12.8

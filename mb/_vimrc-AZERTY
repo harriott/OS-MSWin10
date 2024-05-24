@@ -1,3 +1,4 @@
+" vim: set fdl=1:
 
 " $MSWin10\mb\_vimrc-AZERTY ($MSwin10\mb\symlinks-mostly.ps1)
 
@@ -17,4 +18,5 @@ source $HOME\vimfiles\Win10Paths.vim  " $vimfiles\vim\enter\Win10Paths.vim
 
 ""> 2 continue configuration
 source $vimfiles\vim\enter\vimrc-Win10.vim
+" source $vimfiles\test\vimrc-Win10.vim
 

@@ -24,7 +24,8 @@ Ins::SetCapsLockState !GetKeyState("CapsLock", "T")  ; Ins = CapsLock
 #!i::Run "C:\Vim\vim91\gvim.exe" ; win+alt+i - open gVim
 #!k::Run "C:\Program Files\KeePassXC\KeePassXC.exe" ; win+alt+k - open KeePassXC
 #!m::Run "C:\Emacs\emacs-28.1\bin\runemacs.exe" ; win+alt+m - open Emacs
-#!n::Run "wt --pos 9,9 --size 106,69 -d ~"
+#!n::Run "C:\Program Files\Neovide\neovide.exe --grid 109x62"
+#!o::Run "wt --pos 9,9 --size 108,69 -d ~"
 ; - win+alt+n - a terminal sized ($vimfiles/vim/enter/gvimrc.vim) for neovim
 #!p::Run "pwsh -wd ~" ; win+alt+p - PowerShell opened on $home
 #!v::Run "C:\Program Files\Everything\Everything.exe" ; win+alt+v - open Everything
@@ -32,7 +33,7 @@ CapsLock::SendText "\"
 
 #^e::{
 	WinActivate "HP Smart ahk_exe ApplicationFrameHost.exe"
-    MouseMove 790,700
+    MouseMove 790,730
 	Click ; on Enregister
     MouseMove 820,430
     Sleep 500
@@ -40,7 +41,7 @@ CapsLock::SendText "\"
     MouseMove 820,460
     Sleep 500
 	Click ; on Image(*.jpg)
-    MouseMove 820,640
+    MouseMove 820,670
     Sleep 1000
 	Click ; on Enregister
 } ; win+ctrl+e  after a scan, brings forward and saves as jpg
@@ -51,7 +52,7 @@ CapsLock::SendText "\"
 } ; win+ctrl+s  brings forward and scans
 #^x::{
 	WinActivate "HP Smart ahk_exe ApplicationFrameHost.exe"
-    MouseMove 905,275
+    MouseMove 905,310
 	Click ; on that tiny x
     MouseMove 30,55
     Sleep 1000

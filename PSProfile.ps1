@@ -75,7 +75,10 @@ Function mc {
 function c { if ( $args[0] ) { sl $args[0] } else { sl .. }; pc }  # handily move in or out
 function i { ii . }  # opens  file explorer  on current directory
 Function lc { [string[]]$list = (gci).Name; $list -join '  ' }
-function n { nvim $args; gc $nvim/last_directory | sl } # see $vimfiles/nvim/init.vim
+
+# nvim/vim, quitting to last file's directory ($vimfiles/vim/enter/vimrc.vim)
+function n { nvim $args; gc $home/last_directory | sl }
+function v { C:\Vim\vim91\vim.exe $args; gc $home/last_directory | sl }
 
 sal j z  # ZLocation
 sal l lsd
@@ -87,7 +90,8 @@ sal l lsd
   function lt { l --tree }
   function ltd { l -d --tree } # -directory-only
   function lx { l -lRX } # --recursive --extensionsort
-sal v vifm
+  function ~ { sl ~ }
+sal vf vifm
 
 # eza
 function a { eza -aF --icons }  # grid, handily showing up symlinks
@@ -108,7 +112,7 @@ function g {
 function chco {
     $afs = gci -recurse . | sls -pattern $args[0] | select -expand path
     foreach ($af in $afs) {
-      $af; (get-content $af) -replace $args[0], $args[1] | Set-Content $af
+      $af; (get-content $af) -replace $args[0], $args[1] | seco $af
     }
   } # (release files for: change contents)  chco '\$m' '$mmm'
 
@@ -246,20 +250,22 @@ function stringintexs { $texfiles = '*.cls','*.tex'; sifwork string-latex $texfi
 function stringinvims { sifwork string-vim '*.vim' $args[0] }
 # stringin* <regex>
 
-function SE {
-  $outfile = "$DJH/search/SEN.sifw"
+function nvdg { $outfile = "$DJH/search/nvdg.rgo"
+  sifwork0 $outfile 'neovim.discourse.group'
+  foreach($ITd in $jtIT, $ITstack) { "Searching in $ITd\..."
+    rg -tmd neovim.discourse.group $ITd >> $outfile; '' >> $outfile}
+  sleep 4; ((gc $outfile) -join "`n") + "`n" | seco -NoNewline $outfile  # CRLF -> LF
+  sl "$DJH/search" }
+
+function SE { $outfile = "$DJH/search/SEN.sifw"
   sifwork0 $outfile 'stackexchange|stackoverflow|superuser'
-  foreach($ITd in $jtIT, $ITstack, "$JHw\France") {
-    "Searching in $ITd\..."
-    sl $ITd
-    gci -r -e $outfile -i '*.md' | ss 'stackexchange|stackoverflow' | %{$_.path+" > "+$_.line} >> $outfile
-    '' >> $outfile
-  }
+  foreach($ITd in $jtIT, $ITstack, "$JHw\France") { "Searching in $ITd\..."; sl $ITd
+    gci -r -e $outfile -i '*.md' | ss 'stackexchange|stackoverflow|superuser' | %{
+      $_.path+" > "+$_.line} >> $outfile; '' >> $outfile }
   sleep 4
   seco $outfile -value (gc $outfile | ss -pattern 'vimfiles\\pack' -notmatch)
   sifwork1 $outfile
-  sl "$DJH/search"
-}
+  sl "$DJH/search" }
 
 function sifwork {
   # not to be called directly
@@ -272,7 +278,7 @@ function sifwork {
 }
 function sifwork0 {
   "" > $args[0]
-  'vim /: '+$args[1].replace('|','\|') >> $args[0]
+  'vim /'+$args[1].replace('|','\|') >> $args[0]
   "" >> $args[0]
 } # header
 function sifwork1 {
@@ -361,7 +367,8 @@ function tcg {test-connection google.com -ErrorAction SilentlyContinue}
 function wp { curl wttr.in/Paris }
 
 #==> yt-dlp
-sal y yt-dlp
+# sal y yt-dlp
+sal y C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\yt-dlp.yt-dlp_Microsoft.Winget.Source_8wekyb3d8bbwe\yt-dlp.exe
   function y7 { y -f '[height<=?720]' $args[0] }
   function yf { y -F $args[0] }
 
@@ -489,7 +496,8 @@ function ffmhb { $f = "ffmpeg -hide_banner " + $args -join ' '
 Function fn { gci | select -ExpandProperty FullName | sort }
 Function ga { git add $args[0] }
 Function gic { git commit -m "$args[0]" }
-Function gis { git status -u }
+Function gsbs { git status -bs } # --branch --short
+Function gsu { git status -u } # --untracked-files=all
 Function gvim { & "C:\Vim\vim91\gvim.exe" $args[0] $args[1] $args[2] }
 Function tz { Get-MyTimeInfo -Locations ([ordered]@{"GMT" = "GMT Standard Time"}) -HomeTimeZone "Romance Standard Time" }
 # New-Alias g gm.exe # GraphicsMagick
@@ -514,7 +522,8 @@ function bd { bat -d $args[0] }  # showing changes from git index
 
 #==> shell - colours in outputs
 . $MSWin10\Out-HostColored.ps1
-Function SCFCDC { [System.Console]::ForegroundColor = 'DarkCyan' }  # scfcdc; "DarkCyan"; scrc
+Function SCFCDC { [System.Console]::ForegroundColor = 'DarkCyan' }
+#  scfcdc; "DarkCyan"; scrc; 'normal'
 Function SCFCW { [System.Console]::ForegroundColor = 'White' }  # scfcw; "White"; scrc
 Function SCRC { [System.Console]::ResetColor() }
 ipmo Terminal-Icons

@@ -1,5 +1,5 @@
 
-# Joseph Harriott - https://harriott.github.io/
+# Joseph Harriott - https://harriott.githubio/ - mer 15 mai 2024
 
 # once  $Env:Computername,  APS> . $MSwin10\mb\symlinks-mostly.ps1
 
@@ -59,61 +59,66 @@ function syli { ni $args[1] -type symboliclink -value $args[0] -force } # symbol
 # #=> vim flavours - minimap
 # cp $ITscc\forMSWin\code-minimap-v0.6.7-x86_64-pc-windows-msvc\code-minimap.exe ~\AppData\Local\Microsoft\WindowsApps\code-minimap.exe
 
-# #=> vim flavours - nvim
-# $nvim = "~\AppData\Local\nvim"
-# ri -path $nvim -recurse; md $nvim\pack; md $nvim\plugin
+#=> vim flavours - nvim
+$nvim = "~\AppData\Local\nvim"
+if ( test-path $nvim ) { ri -path $nvim -recurse } ; md $nvim\pack
 
-# syli $vimfiles/vim/after             $nvim/after
-# syli $vimfiles/vim/filetype.vim      $nvim/filetype.vim
-# syli $vimfiles/vim/ftplugin          $nvim/ftplugin
-# syli $vimfiles/nvim/init.vim         $nvim/init.vim
-# syli $vimfiles/nvim/lua              $nvim/lua
-# syli $vimfiles/vim/packs-cp          $nvim/pack/packs-cp
-# syli $vimfiles/vim/packs-unix        $nvim/pack/packs-unix
-# syli $vimfiles/vim/plugin/packs.vim  $nvim/plugin/packs.vim
-# syli $vimfiles/vim/plugin/plugin.vim $nvim/plugin/plugin.vim
-# syli $vimfiles/vim/spell             $nvim/spell
-# syli $vimfiles/vim/syntax            $nvim/syntax
-# syli $vimfiles/vim/thesaurus         $nvim/thesaurus
+syli $vimfiles/vim/after             $nvim/after
+syli $vimfiles/vim/filetype.vim      $nvim/filetype.vim
+syli $vimfiles/vim/ftplugin          $nvim/ftplugin
+syli $vimfiles/nvim/init.vim         $nvim/init.vim
+syli $vimfiles/nvim/lua              $nvim/lua
+syli $vimfiles/vim/packs/packs-colo  $nvim/pack/colo
+syli $vimfiles/vim/packs/packs-cp    $nvim/pack/cp
+syli $vimfiles/vim/packs/packs-unix  $nvim/pack/unix
+syli $vimfiles/vim/plugin/packs.vim  $nvim/plugin/packs.vim
+syli $vimfiles/vim/plugin/plugin.vim $nvim/plugin/plugin.vim
+syli $vimfiles/vim/spell             $nvim/spell
+syli $vimfiles/vim/syntax            $nvim/syntax
+syli $vimfiles/vim/thesaurus         $nvim/thesaurus
 
-#=> vim flavours - vim
-ri -path ~\vimfiles -recurse; md ~\vimfiles\pack
+# #=> vim flavours - vim
+# syli $MSWin10\mb\_vimrc-AZERTY ~/vimrc
 
-syli $vimfiles/vim/after                ~/vimfiles/after
-syli $vimfiles/vim/enter/Win10Paths.vim ~/vimfiles/Win10Paths.vim
-syli $vimfiles/vim/ftplugin             ~/vimfiles/ftplugin
-syli $vimfiles/vim/packs-cp             ~/vimfiles/pack/cp
-syli $vimfiles/vim/packs-unix           ~/vimfiles/pack/unix
-syli $vimfiles/vim/packs-win64          ~/vimfiles/pack/win64
-syli $vimfiles/vim/plugin/packs.vim     ~/vimfiles/plugin/packs.vim
-syli $vimfiles/vim/plugin/packsVim.vim  ~/vimfiles/plugin/packsVim.vim
-syli $vimfiles/vim/plugin/plugin.vim    ~/vimfiles/plugin/plugin.vim
-syli $vimfiles/vim/spell                ~/vimfiles/spell
-syli $vimfiles/vim/syntax               ~/vimfiles/syntax
-syli $vimfiles/vim/thesaurus            ~/vimfiles/thesaurus
-syli $vimfiles/vim/filetype.vim         ~/vimfiles/filetype.vim
+# #==> vim
+# if ( test-path ~\vimfiles ) { ri -path ~\vimfiles -recurse } ; md ~\vimfiles\pack
 
-# g $home\vimfiles
+# syli $vimfiles/vim/after                ~/vimfiles/after
+# syli $vimfiles/vim/enter/Win10Paths.vim ~/vimfiles/Win10Paths.vim
+# syli $vimfiles/vim/filetype.vim         ~/vimfiles/filetype.vim
+# syli $vimfiles/vim/ftplugin             ~/vimfiles/ftplugin
+# syli $vimfiles/vim/packs/packs-colo     ~/vimfiles/pack/colo
+# syli $vimfiles/vim/packs/packs-cp       ~/vimfiles/pack/cp
+# syli $vimfiles/vim/packs/packs-unix     ~/vimfiles/pack/unix
+# syli $vimfiles/vim/packs/packs-win64    ~/vimfiles/pack/win64
+# syli $vimfiles/vim/plugin/fzf           ~/vimfiles/plugin/fzf
+# syli $vimfiles/vim/plugin/packs.vim     ~/vimfiles/plugin/packs.vim
+# syli $vimfiles/vim/plugin/packsVim.vim  ~/vimfiles/plugin/packsVim.vim
+# syli $vimfiles/vim/plugin/plugin.vim    ~/vimfiles/plugin/plugin.vim
+# syli $vimfiles/vim/spell                ~/vimfiles/spell
+# syli $vimfiles/vim/syntax               ~/vimfiles/syntax
+# syli $vimfiles/vim/thesaurus            ~/vimfiles/thesaurus
 
-# #=> vim flavours - test
-# ri -path ~\vimtest -recurse
-# md ~\vimtest\pack\packs-cp\opt
-# md ~\vimtest\pack\packs-win64\opt
-# md ~\vimtest\plugin
+# # g $home\vimfiles
 
-# syli $vimfiles/test/filetype.vim              ~/vimtest/filetype.vim
-# syli $vimfiles/test/plugin.vim                ~/vimtest/plugin/plugin.vim
-# syli $vimfiles/test/plugins.vim               ~/vimtest/plugin/plugins.vim
-# syli $vimfiles/test/vimrc.vim                 ~/vimtest/vimrc.vim
-# syli $vimfiles/vim/enter/Win10Paths.vim       ~/vimtest/Win10Paths.vim
-# syli $vimfiles/vim/packs-cp/opt/bufferize.vim ~/vimtest/pack/packs-cp/opt/bufferize.vim
-# syli $vimfiles/vim/packs-cp/opt/fzf.vim       ~/vimtest/pack/packs-cp/opt/fzf.vim
-# syli $vimfiles/vim/packs-cp/opt/vim-markdown  ~/vimtest/pack/packs-cp/opt/vim-markdown
-# syli $vimfiles/vim/packs-cp/opt/vim-dokuwiki  ~/vimtest/pack/packs-cp/opt/vim-dokuwiki
-# syli $vimfiles/vim/packs-cp/opt/vim-bbcode    ~/vimtest/pack/packs-cp/opt/vim-bbcode
-# syli $vimfiles/vim/packs-win64/opt/fzf        ~/vimtest/pack/packs-win64/opt/fzf
+# # #==> vim test
+# # if ( test-path ~\vimfiles ) { ri -path ~\vimfiles -recurse } ; md ~\vimfiles\pack
 
-# # g $home\vimtest
+# # syli $vimfiles/test/filetype.vim        ~/vimfiles/filetype.vim
+# # syli $vimfiles/test/plugin/packs.vim    ~/vimfiles/plugin/packs.vim
+# # syli $vimfiles/test/plugin/packsVim.vim ~/vimfiles/plugin/packsVim.vim
+# # syli $vimfiles/test/plugin/plugin.vim   ~/vimfiles/plugin/plugin.vim
+# # syli $vimfiles/vim/enter/Win10Paths.vim ~/vimfiles/Win10Paths.vim
+# # syli $vimfiles/vim/ftplugin             ~/vimfiles/ftplugin
+# # syli $vimfiles/vim/packs/packs-colo     ~/vimfiles/pack/colo
+# # syli $vimfiles/vim/packs/packs-cp       ~/vimfiles/pack/cp
+# # syli $vimfiles/vim/packs/packs-unix     ~/vimfiles/pack/unix
+# # syli $vimfiles/vim/plugin/fzf           ~/vimfiles/plugin/fzf
+# # syli $vimfiles/vim/spell                ~/vimfiles/spell
+# # syli $vimfiles/vim/syntax               ~/vimfiles/syntax
+# # syli $vimfiles/vim/thesaurus            ~/vimfiles/thesaurus
+
+# # # g $home\vimfiles
 
 # #=> ~\.bashrc
 # ni ~\.bashrc -type symboliclink -value $MSWin10\bashrc -force
