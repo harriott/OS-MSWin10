@@ -24,9 +24,9 @@ Ins::SetCapsLockState !GetKeyState("CapsLock", "T")  ; Ins = CapsLock
 #!i::Run "C:\Vim\vim91\gvim.exe" ; win+alt+i - open gVim
 #!k::Run "C:\Program Files\KeePassXC\KeePassXC.exe" ; win+alt+k - open KeePassXC
 #!m::Run "C:\Emacs\emacs-28.1\bin\runemacs.exe" ; win+alt+m - open Emacs
-#!n::Run "C:\Program Files\Neovide\neovide.exe --grid 109x62"
+#!n::Run "C:\Program Files\Neovide\neovide.exe --grid 109x62" ; win+alt+n - open Neovide
 #!o::Run "wt --pos 9,9 --size 108,69 -d ~"
-; - win+alt+n - a terminal sized ($vimfiles/vim/enter/gvimrc.vim) for neovim
+; - win+alt+o - a terminal sized ($vimfiles/vim/enter/gvimrc.vim) for neovim
 #!p::Run "pwsh -wd ~" ; win+alt+p - PowerShell opened on $home
 #!v::Run "C:\Program Files\Everything\Everything.exe" ; win+alt+v - open Everything
 CapsLock::SendText "\"

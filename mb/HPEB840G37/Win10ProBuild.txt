@@ -718,12 +718,14 @@ from somewhere, npm i -D -E prettier  not working so  npm un prettier
 npm i -g -D -E prettier
 ## Neovide
 winget add neovide  'C:\Program Files\Neovide\neovide.exe'
-##
+## SQLite
 winget add sqlite.sqlite
   Alias de ligne de commande ajouté : "sqldiff"
   Alias de ligne de commande ajouté : "sqlite3_analyzer"
   Alias de ligne de commande ajouté : "sqlite3"
 didn't seem to install a  sqlite3.dll
+## Edge reconfigure
+annoying process
 ## waiting
 TexLab
 ### reduce C:

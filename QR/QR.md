@@ -23,8 +23,10 @@ vim: nospell:
 ExifTool by Phil Harvey
 
 ## FastStone
+- `0` fits to screen, `1` - `9` zoom in (corresponding AZERTY principal keymaps work)
 - `f`, `f11` = toggle full screen
 - `f12` = Paramètres
+- `h`/`v` invert horizontally/veritcally
 - `w` = open in `File Explorer`
 
 ## IrfanView
