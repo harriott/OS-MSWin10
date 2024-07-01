@@ -1,0 +1,63 @@
+vim: ft=build:
+
+$machBld\Win10ProBuild.txt
+
+HP EliteBook 840 G3 barcoded PC117860 (labelled BC PNB 18 by last owner) = HPEB840G38
+(jharrio@outlook.com)
+# build - parallel
+## Paramètres
+Personnalisation > [ Arrière-plan > Couleur unie
+  Barre des tâches > Combiner les boutons de la barre des tâches > Jamais
+  Couleurs > Choisir votre mode d'application par défaut > Sombre ]
+### Options d'ergonomie
+Clavier > all off
+Périphériques > Saisie > Orthographie >
+  Corriger automatiquement les fautes d'orthograpie > Désactvé
+### Système
+Alimentation et mise en veille > Jamais, Jamais, 10 minutes, Jamais
+  Paramètres d'alimentation supplémentaire >
+    Choisir l'action des boutons d'alimentation >
+    [ Modifier des paramètres actuellement non disponibles >
+    Activer le démarrage rapide  off-ticked  Lorsque je referme le capot > Sur secteur >
+      Ne rien faire ]
+Écran > Mise à l'échelle et disposition >
+  Éclairage nocturne > Activé
+  Modifier la taille du texte des applications et d'autres éléments > 100%
+  Résolution de l'écran > 1920 x 1080 (recommandé)
+Multitâche > Alt + Tab > Uniquement les fenêtres ouvertes
+Stockage (L'Assistant de stockage) > Activé
+# build - sequential build
+Paramètres >
+  Mise à jour et sécurité > Activation > Windows est activé à l'aide d'une license numérique
+  Système > À propos de > Spécifications de Windows > Windows 10 Pro 21H2 OS build 19044.1889
+connected to  Jo-X10II
+win+i > Comptes > Famille et autres utilisateurs > Ajouter > jnbh@live.co.uk > Supprimer
+win+i > Comptes > Famille et autres utilisateurs > Se connecter via un compte Microsoft >
+  jnbh@live.co.uk  6 digit code sent to jharr@ftml.net
+  then  compte Utilisateur'd somehow disappeared
+  confirmed  jharr@ftml.net  for another 6 digit code
+  Créer un code confidentiel > Inclure des lettre > cc
+droit clique sur  barre des tâches > Rechercher > Afficher l'icônes
+Menu > [ Disnéy  Microsoft 365 ] > right-click > Désintaller
+## Ditto Clipboard
+Microsoft Store > Ditto Clipboard > Install > Pin to Start
+Ran it for  Options > General > [ Maximum Number of Saved Copies > 5000
+  Advanced > Show leading whitespace ] ( $HADL\Ditto_WindowsApp\Ditto.db )
+  Keyboard Shortcuts > Activate Ditto > ctrl+*
+## Windows Update
+## waiting
+# physical configuration
+1366x768 screen
+Intel Core i5-6300U
+## storage
+(essential) M.2 SSD: 119Go
+(optional) 2.5" SSD: SDSSDA240G
+## Startup Menu
+hold  esc  at start to get into  Startup Menu
+hold  f9  at start to get into  Boot Menu
+hold  f10  at start to get into  BIOS Setup
+### BIOS Setup
+Main > System Information > System BIOS : N75 Ver. 01.53 11/19/2021
+#### Advanced
+Built-in Device Options > Backlit keyboard timeout > 30 secs.
+Secure Boot Configuration > Legacy Support Enable and Secure Boot Disable

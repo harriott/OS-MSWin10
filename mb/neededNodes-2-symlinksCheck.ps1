@@ -5,13 +5,13 @@
 # $MSwin10\mb\symlinks-check.ps1
 
 #=> Emacs
-csl $Env:AppData\.emacs.d
+csl $HADR\.emacs.d
 
 #=> gokcehan lf configuration
-csl ~\AppData\Local\lf
+csl $HADL\lf
 
 #=> LaTeX
-csl $Env:AppData\MiKTeX\tex\latex
+csl $HADR\MiKTeX\tex\latex
 
 #=> Pandoc\defaults
 csl $Pandoc\defaults
