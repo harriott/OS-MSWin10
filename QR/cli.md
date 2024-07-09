@@ -1,6 +1,6 @@
 vim: nospell:
 
-    $MSwin10\QR\cli.md
+    $MSWin10\QR\cli.md
 
     ~\AppData\Roaming\Vifm\vifmrc
 
@@ -55,10 +55,12 @@ vim: nospell:
     g $HOME\AppData\Roaming\npm
 
 ## PowerShell
+    $ITstack\MSWin\PowerShell\Scratch.ps1
     $myinvocation.mycommand.name  # = the script's name
     $MSwin10\gac.ps1  # to explore all commands
     '"Hello world"'
     1..3
+    fd -tf -u index.lock | %{ri $_}
     get-volume  # reports partitions
     less <someFile>
     foreach($element in 1..3){ $element }
@@ -196,12 +198,12 @@ doesn't find executables in `~\AppData\`
     tomalak
 
 ##### gci
+    (ls -s).count
     dir
     gal ls
     list
     ls * | select FullName
     ls * | select Name
-    ls . -force  # Gets both hidden & non-hidden. Shows desired symlinks target.
     ls -s -depth 1  # including contents of subdirectories
     ls -s -i i1*,i2*,i3*
     ls -s -i '* (* conflicted copy *' |%{echo $_.fullname} | ri
@@ -250,7 +252,8 @@ aliases: `cat`, `type`
 
 ##### symlinks
     csl  # targets in green or red
-    ls -force | ?{$_.linktype}
+    ls -force -s | ?{$_.linktype} # recursively list symlinks
+    ls . -force  # Gets both hidden & non-hidden. Shows desired symlinks target.
 
 #### manipulations
     ((gc $WF) -join "`n") + "`n" | seco -NoNewline $WF  # CRLF -> LF
@@ -260,7 +263,6 @@ aliases: `cat`, `type`
     takeown /? | less
 
 - `move-item`: `move`, `mv`, `mi`
-- `ROBOCOPY.exe`
 - `z -?` (`ZLocation`)
 
 ##### remove-item
@@ -340,7 +342,7 @@ prefer `&` where possible
     get-package | format-table -autosize
 
 #### modules
-    gvim $env:localappdata\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
+    gvim $HADL\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
     New-BurntToastNotification
     pc  # PowerColorLS
 
@@ -418,13 +420,17 @@ tab completion
     . <script_to_dot_source>
     Get-InstalledScript
     get-verb | sort -property verb
-    if (c1) {a1} elseif (c2) {a2} else (c3) {a3}
     param( [switch]$doSomething )  # -doSomething  creates  $doSomething = true
     ~\Documents\PowerShell\Scripts
 
 #### functions
     $function:<function>  # contains it's internal commands
     function global:<function> { ... }
+
+#### if statement
+    if (c1) {a1} elseif (c2) {a2} else (c3) {a3}
+    if ( $n -gt 13 -and $n -lt 55 )
+    if ( 5 -eq $n )
 
 ### stray cmdlets
     get-commandsyntax <command>
@@ -435,6 +441,7 @@ tab completion
 ### system info
     $profile
     (gcim win32_operatingsystem) | select -property version, caption
+    (gcm prompt).ScriptBlock
     get-pslocation
     get-pswho
     get-windowsupdatelog  # creates  $HOME\Desktop\WindowsUpdate.log
@@ -526,11 +533,13 @@ tab completion
 by gokcehan
 
 # file manage - robocopy
-    /E  # subfolders, including empty
-    /l   - list only (= simulate)
-    /mir  # (mirror) = /e + /purge
-    /tee - output to console as well as log file
     ROBOCOPY.exe
+
+- `/E` subfolders, including empty
+- `/fft` 2-second granularity (FAT File Times)
+- `/l` list only (simulate)
+- `/mir` `/e /purge` (mirror)
+- `/tee` output to console as well as log file
 
 # fzf
     alt+c

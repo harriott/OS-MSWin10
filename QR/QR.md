@@ -2,6 +2,7 @@ vim: nospell:
 
     PS> m4ps0 -s
 
+    $HADR\vlc\vlcrc
     Adobe Acrobat Reader DC > Shift+Ctrl+Minus -> rotate left
     C:\Users\troin\AppData\Local\Microsoft\WindowsApps
     cpan -l > $machLg\cpanList.txt

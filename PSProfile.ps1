@@ -3,12 +3,12 @@
 
 # $MSWin10\PSProfile.ps1
 #  symlinked in  $MSWin10\mb\symlinks.ps1
-#  called by  $MSWin10\MPSProfile.ps1
+#  called by  $MSWin10\PSProfileStub.ps1
 
 sal seco set-content  # because  sc  is overridden by  sc.exe
 sal ss select-string
 sal su C:\SumatraPDF\SumatraPDF.exe
-. ~\Env.ps1  # ($MSwin10\mb\symlinks.ps1)
+. ~\Env.ps1  # ($MSWin10\mb\neededNodes-0-PSProfile.ps1)
 
 function ep {
   $eps = "$machLg/path"
@@ -61,7 +61,7 @@ function stc {
 #   ri $machlg\schtasks.txt
 
 #=> 0 convert images recursively
-Function mc {
+function mc {
   $format1 = $args[0]
   $format2 = $args[1]
   gci -r *.$format1 | %{
@@ -74,7 +74,7 @@ Function mc {
 #=> 0 directories & files
 function c { if ( $args[0] ) { sl $args[0] } else { sl .. }; pc }  # handily move in or out
 function i { ii . }  # opens  file explorer  on current directory
-Function lc { [string[]]$list = (gci).Name; $list -join '  ' }
+function lc { [string[]]$list = (gci).Name; $list -join '  ' }
 
 # nvim/vim, quitting to last file's directory ($vimfiles/vim/enter/vimrc.vim)
 function n { nvim $args; gc $home/last_directory | sl }
@@ -309,7 +309,7 @@ function ghissues {
   '- moved to ghissues.sifw'
 }
 #=> 0 Ghostscript
-Function gsp {
+function gsp {
     $pl = $args[0]
     $r = '-r'+$args[1]
     #  40  can be fine for photos
@@ -344,13 +344,13 @@ function fi {
 
 #==> re-tag image files to 72dpi
 # a single image file:
-Function im72 {
+function im72 {
   $72dpi=$args[0] -replace '((\.[^.]*)$)', '-72dpi$1'
   exiftool -filename=72dpi -xresolution=72 -yresolution=72 $args[0]; mi 72dpi $72dpi -force
   }
 
 # all the files in a folder:
-Function all72 {
+function all72 {
   gci | Where-Object {-not $_.PsIsContainer} | ForEach-Object { im72 $_
   Remove-Item $_ }
   }
@@ -388,35 +388,42 @@ $sp_adminRole = [Security.Principal.WindowsBuiltInRole]::Administrator
 $ps_context = $(if (test-path variable:/PSDebugContext) { '[DBG]: ' }
                 elseif($sp_principal.IsInRole($sp_adminRole)) { "[ADMIN]: " }
                 else { '' })
-# 1 posh-git
-ipmo posh-git
-$GitPromptSettings.DefaultPromptPath.ForegroundColor = [ConsoleColor]::cyan
-$GitPromptSettings.WindowTitle = $null
-# - (undocumented) disables  $GitPromptSettings.WindowTitle
-# 2 togglable prompt
-function pp {
-  if ($shortPrompt) {
-    function global:prompt {
-      $Host.UI.RawUI.WindowTitle = "$(split-path (split-path $pwd) -leaf)\$(split-path $pwd -leaf)"
-      # Pasted output of  $function:prompt  only after PowerShell is launched:
-      $loc = gl
-      $prompt = & $GitPromptScriptBlock
-      $prompt += "$([char]27)]9;12$([char]7)"
-      if ($loc.Provider.Name -eq "FileSystem")
-        { $prompt += "$([char]27)]9;9;`"$($loc.ProviderPath)`"$([char]27)\" }
-      $ps_context + $prompt
-    } # long prompt, using  posh-git
-    $global:shortPrompt = $false
-  } else {
-    function global:prompt {
-      $Host.UI.RawUI.WindowTitle = "$(split-path (split-path $pwd) -leaf)\$(split-path $pwd -leaf)"
-      write-host ( $ps_context + $(split-path $pwd -leaf) + '>') -nonewline -ForegroundColor cyan
-      return " "
+if ( where.exe git 2>$null ) {
+  # 1 posh-git
+  ipmo posh-git
+  $GitPromptSettings.DefaultPromptPath.ForegroundColor = [ConsoleColor]::cyan
+  $GitPromptSettings.WindowTitle = $null  # (undocumented) disables  $GitPromptSettings.WindowTitle
+  # 2 togglable prompt
+  function pp {
+    if ($shortPrompt) {
+      function global:prompt {
+        $Host.UI.RawUI.WindowTitle = "$(split-path (split-path $pwd) -leaf)\$(split-path $pwd -leaf)"
+        # Pasted output of  $function:prompt  only after PowerShell is launched:
+        $loc = gl
+        $prompt = & $GitPromptScriptBlock
+        $prompt += "$([char]27)]9;12$([char]7)"
+        if ($loc.Provider.Name -eq "FileSystem")
+          { $prompt += "$([char]27)]9;9;`"$($loc.ProviderPath)`"$([char]27)\" }
+        $ps_context + $prompt
+      } # long prompt, using  posh-git
+      $global:shortPrompt = $false
+    } else {
+      function global:prompt {
+        $Host.UI.RawUI.WindowTitle = "$(split-path (split-path $pwd) -leaf)\$(split-path $pwd -leaf)"
+        write-host ( $ps_context + $(split-path $pwd -leaf) + '>') -nonewline -ForegroundColor cyan
+        return " "
+      }
+      $global:shortPrompt = $true
     }
-    $global:shortPrompt = $true
+  }
+  $global:shortPrompt = $true; pp  # invokes my long prompt
+} else {
+  function global:prompt {
+    # when  Git  not yet there
+    write-host ( $ps_context + $(Get-Location) + $(if ($NestedPromptLevel -ge 1) { '>>' }) + '> ' ) -NoNewline -ForegroundColor cyan
+    return " "
   }
 }
-$global:shortPrompt = $true; pp  # invokes my long prompt
 
 #==> PSReadLine
 Set-PSReadlineOption -EditMode Vi  # wipes out any other settings, so first
@@ -425,20 +432,26 @@ Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
 # PSFzf additions
-Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
-Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
+$mPSFzf=0  # (because  gmo PSFzf  doesn't work until  PSFzf's been somehow invoked)
+if ( $PSEdition  -eq 'Core'    -and ( test-path "~\Documents\PowerShell\Modules\PSFzf"        ) ) { $mPSFzf=1 }
+if ( $PSEdition  -eq 'Desktop' -and ( test-path "~\Documents\WindowsPowerShell\Modules\PSFzf" ) ) { $mPSFzf=1 }
+if ( $mPSFzf ) {
+  Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
+  Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
+}
 
 #=> 1 place-dependent
-. $ITscc/CP/wfxr-code-minimap/completions/powershell/_code-minimap.ps1
+if ( test-path $ITscc )
+  { . $ITscc/CP/wfxr-code-minimap/completions/powershell/_code-minimap.ps1 }
 . $machBld\PSProfile.ps1
 
 #==> documenting
 function xc { iex "su $ITscr\CP\TeX\LaTeX\appearance\colour\xcolor.pdf -page 38" }
 
 #===> MiKTeX
-Function x { xelatex -halt-on-error --max-print-line=110 $args[1] $args[0] }
+function x { xelatex -halt-on-error --max-print-line=110 $args[1] $args[0] }
 
-Function lj {
+function lj {
   Remove-Item -recurse $tex\latex\jo
   Copy-Item -recurse $ITstack\CrossPlatform\forLaTeX $tex\latex\jo
 } # instead of a symlink to avoid snags if MiKTeX is uninstalled
@@ -452,13 +465,13 @@ function mt { sl $Drpbx\JH\core\TextNotes; [string]$Pwd; m4ps0 -s }
 #==> Dropbox conflicted copies
 $DropboxConflictedLog = ''
 
-Function dcc0 {
+function dcc0 {
   sl $Drpbx
   $dts = (Get-Date).ToString("yyMMdd-HHmmss")
   Set-Variable -scope 1 -Name 'DropboxConflictedLog' -Value "$Drpbx\conflicted\$dts.log"
   "scanning for conflicted copies in $Drpbx"
-  $all = gci -r | ? Name -match ".+'s conflicted copy.+" | %{echo $_.fullname}
-  # $new = $all | ? { $_ -notmatch 'C:\\Users\\troin\\Dropbox\\conflicted' }
+  # $all = gci -r | ? Name -match ".+'s conflicted copy .+" | %{echo $_.fullname}
+  $all = gci -r | ? Name -match ".+'s conflicted copy .+| \(Copie en conflit de " | %{echo $_.fullname}
   $new = $all | ? { $_ -notmatch '.*\\Dropbox\\conflicted' }
   'vim: nowrap:' > $DropboxConflictedLog
   '' >> $DropboxConflictedLog
@@ -466,7 +479,7 @@ Function dcc0 {
   gvim $DropboxConflictedLog
 }  # lists them
 
-Function dcc1 {
+function dcc1 {
   if ( test-path $DropboxConflictedLog ) {
     $DropboxConflictedRemoved=$DropboxConflictedLog.Replace('.log','-removed')
     new-item $DropboxConflictedRemoved -type directory > $null
@@ -485,23 +498,29 @@ Function dcc1 {
   } else { "- you should've dcc0'd" | Out-HostColored dcc0 }
 }  # removes them
 
+#==> FFmpeg
+function ffa { $f = $args -join ' '
+  $f = $f.Replace(' -c: a ', ' -c:a ')
+  $f = $f.Replace(' -q: v ', ' -q:v ')
+  iex "$f" } # no spaces or () in file names
+function ffi { $f = "ffa ffmpeg -hide_banner -i " + $args; iex $f }
+
 #==> general tools
 function xx { exit } # quit (doesn't work as an alias) ctrl+d is quicker
 function fcco {Format-Custom -InputObject $args[0] -Expand CoreOnly}
 # - shows summarised layout of array
-function ffmhb { $f = "ffmpeg -hide_banner " + $args -join ' '
-  $f = $f.Replace(' -c: a ', ' -c:a ')
-  $f = $f.Replace(' -q: v ', ' -q:v ')
-  iex "$f" } # no spaces or () in file names
-Function fn { gci | select -ExpandProperty FullName | sort }
-Function ga { git add $args[0] }
-Function gic { git commit -m "$args[0]" }
-Function gsbs { git status -bs } # --branch --short
-Function gsu { git status -u } # --untracked-files=all
-Function gvim { & "C:\Vim\vim91\gvim.exe" $args[0] $args[1] $args[2] }
-Function tz { Get-MyTimeInfo -Locations ([ordered]@{"GMT" = "GMT Standard Time"}) -HomeTimeZone "Romance Standard Time" }
+function fn { gci | select -ExpandProperty FullName | sort }
+function gvim { & "C:\Vim\vim91\gvim.exe" $args[0] $args[1] $args[2] }
+function tz { Get-MyTimeInfo -Locations ([ordered]@{"GMT" = "GMT Standard Time"}) -HomeTimeZone "Romance Standard Time" }
 # New-Alias g gm.exe # GraphicsMagick
 New-Alias jpo $onGH\jpgorhor\jpgorhor.ps1
+
+#==> Git
+function ga { git add $args[0] }
+function gic { git commit -m "$args[0]" }
+function gsbs { git status -bs } # --branch --short
+function gsu { git status -u } # --untracked-files=all
+function il { sl $Drpbx; fd -tf -u index.lock | %{ri $_} }
 
 #==> Jekyll
 function js { sl $JHm; $JHm; bundle exec jekyll serve --drafts; }
@@ -512,9 +531,9 @@ function jt { sl $JHm; ri tag\*; python $JHm\_plugins\compile_tags.py; sl tag; }
 # Set-PsFzfOption -EnableAliasFuzzyZLocation  # fz  unfortunately kills  Alt+c...
 # and settings for PSReadLine
 
-# see  $MSWin10\quickReference.txt
+# see  $MSWin10\QR\cli.md
 
-#==> sharkdp/bat 
+#==> sharkdp/bat
 # completion
 function f { Invoke-Fzf -preview 'bat --color=always {}' }
 sal b bat
@@ -522,10 +541,10 @@ function bd { bat -d $args[0] }  # showing changes from git index
 
 #==> shell - colours in outputs
 . $MSWin10\Out-HostColored.ps1
-Function SCFCDC { [System.Console]::ForegroundColor = 'DarkCyan' }
+function SCFCDC { [System.Console]::ForegroundColor = 'DarkCyan' }
 #  scfcdc; "DarkCyan"; scrc; 'normal'
-Function SCFCW { [System.Console]::ForegroundColor = 'White' }  # scfcw; "White"; scrc
-Function SCRC { [System.Console]::ResetColor() }
+function SCFCW { [System.Console]::ForegroundColor = 'White' }  # scfcw; "White"; scrc
+function SCRC { [System.Console]::ResetColor() }
 ipmo Terminal-Icons
 
 function Format-Color([hashtable] $Colors = @{}, [switch] $SimpleMatch) {

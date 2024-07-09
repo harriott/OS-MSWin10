@@ -11,6 +11,7 @@ Gestionnaire de périphériques > Cartes graphiques > Intel(R) HD Graphics 520
 Notepad++ > alt+p > Préférences... > Divers > Surveillance de l'état des fichiers >
   Mise à jour sans alerte
   Aller à la dernière ligne après mise à jour
+VLC Player > ctrl+p (= Preferences) > Pause on the last frame of a video > Always
 ## APS opacity
 saps pwsh -verb runas  to right-click on toolbar for  Propriétés > Opacité > 80%
 ## AWPS opacity
@@ -66,9 +67,11 @@ $env:psmodulepath -split (';')
 winget add --name notepad++
 Alt+p (Paramètres) > Préférences > Mode Sombre > Mode sombre > Suivre Windows
 ## Paramètres
+Comptes > Famille et autres utilisateurs > [ deauram@outlook.com  jnbh@live.co.uk ] >
+  Autoriser
 Personnalisation > Barre des tâches > Combiner les boutons de la barre des tâches > Jamais
 Options d'ergonomie > Clavier > all off
-Périphériaues > Saisie > Orthographie >
+Périphériques > Saisie > Orthographie >
   Corriger automatiquement les fautes d'orthograpie > Désactvé
 ### Système
 Alimentation et mise en veille > Jamais, Jamais, 10 minutes, Jamais
@@ -83,12 +86,10 @@ Stockage (L'Assistant de stockage) > Activé (somehow)
 Éclairage nocturne > Activé
 Résolution de l'écran > 1920 x 1080 (recommandé)
 ## Process Explorer
-sl $ITscc\forMSWin\ProcessExplorer
-  for  cpi procexp64.exe $Env:LOCALAPPDATA\Microsoft\WindowsApps
-ran it for
+start $ITscc\forMSWin\ProcessExplorer\procexp64.exe
   alt+o (= Options) > i (= Tray Icons) > p (= Physical Memory History)
   alt+o (= Options) > h (= Hide When Minimized)
-  alt+o (= Options) > l (= Run At Logon) ]
+  alt+o (= Options) > l (= Run At Logon)
 ## Ruby
 winget add RubyInstallerTeam.Ruby.3.2
 ## Sécurité Windows
@@ -106,7 +107,6 @@ ran it to get  ~\AppData\Roaming\Thunderbird\Profiles\q6qwq868.default-release
 ran it for (default-release) Démarrer Thunderbird)
 ## QuickLook
 winget add 9NV4BS3L1H4S --accept-package-agreements
-## waiting
 # build - sequential
 ## move from Utilisateur
 Paramètres >
@@ -197,7 +197,7 @@ got me  C:\Git\usr\bin\perl.exe
 Paramètres > Applications > Terminal > Désinstaller  then  win+x > Redémarrer
   then re-installed from Microsoft Store
 ## fzf (for PSFzf)
-sl $ITscc  for  cpi fzf.exe $Env:LOCALAPPDATA\Microsoft\WindowsApps
+sl $ITscc  for  cpi fzf.exe $HADL\Microsoft\WindowsApps
   fzf --version
 ## 7-Zip
 7z2301-x64.exe
@@ -252,7 +252,7 @@ replaced  PaperSizeList  settings in  ~\AppData\Roaming\FastStone\FSIV\FSSetting
 ## Everything v1.4.1.1024
 Everything-1.4.1.1024.x64-Setup.exe > clicked through > UAC
 ## The Platinum Searcher v2_2_0
-cpi pt.exe $Env:LOCALAPPDATA\Microsoft\WindowsApps -force
+cpi pt.exe $HADL\Microsoft\WindowsApps -force
 pt /version
 ## ExifTool v12.76
 cpi 'exiftool(-k).exe' ~\AppData\Local\Microsoft\WindowsApps\exiftool.exe
@@ -305,9 +305,9 @@ AIdc> reagentc /disable  for  diskpart
 Comptes > Sauvegarde Windows > Vérifier > trohib@gmail.com > Security code
 ### remove symlink in ~\Documents
 ri ~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
-  cpi $MSWin10\MPSProfile.ps1 ~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
+  cpi $MSWin10\PSProfileStub.ps1 ~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
 ri ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
-  cpi $MSWin10\MPSProfile.ps1 ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+  cpi $MSWin10\PSProfileStub.ps1 ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
 ## Windows ADK & Windows PE
 adksetup.exe  (C:\Program Files (x86)\Windows Kits\10\)
   off-ticked all but  Outils de déploiement  around 130 Mo
@@ -532,7 +532,8 @@ $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
 $newPathCU = $oldPathCU -replace ';$', ''; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## Nom de l'appareil
-Paramètres > Système > À propos de > (Nom de l'appareil > DESKTOP-GSPV6OJ)  Renommer ce PC > HPEB840G37
+Paramètres > Système > À propos de > Nom de l'appareil (DESKTOP-GSPV6OJ) >
+  Renommer ce PC > HPEB840G37
 ## eza
 winget add eza-community.eza
 ### path modified
@@ -726,6 +727,28 @@ winget add sqlite.sqlite
 didn't seem to install a  sqlite3.dll
 ## Edge reconfigure
 annoying process
+## FFmpeg v7.0.1 path
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU -replace '7.0', '7.0.1'; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+## Epson EcoTank ET-5170
+plugged into USB (got it going)
+Paramètres > Périphériques > Imprimantes et scanners > Ajouter > DIRECT-8b-EPSON-ET-5170 Series >
+  Ajouter l'appareil (Connexion) > Pilote indisponible  so  epson637525eu.exe (= Pilote v3.01.00) >
+  Installation des utilitaires > Connexion réseau  failed, so  Connexion USB  then unplugged for
+  Paramètres > Périphériques > Imprimantes et scanners > Ajouter > DIRECT-8b-EPSON-ET-5170 Series >
+  Ajouter l'appareil (Connexion) > still Pilote indisponible  so
+  winget add 9WZDNCRFJ4P8winget add 9WZDNCRFJ4P8
+
+    epson661623eu.exe (= Epson Software updater v4.6.7.0)
+
+### Universal Print Driver v2.72.04
+### Driver v3.01.00
+epson637525eu.exe - where the fuck did it go?
+### WiFi
+while connected to  cafezoide, Settings > Printers & scanners > Add a printer or scanner
+  got me  EPSONFE86A3 (ET-5170 Series) then needed to accept installation of
+  Epson Printer Connection Checker  then got into a cycle so rebooted and ran it again
 ## waiting
 TexLab
 ### reduce C:
@@ -752,7 +775,9 @@ ctrl+, (= Settings)
 # physical configuration
 1920x1080 screen
 Intel Core i5-6300U
-SSD: 119Go
+## storage
+(essential) M.2 SSD: 119Go
+(optional) 2.5" SSD: HX256GSSDSATA3
 ## Startup Menu
 hold  esc  at start to get into  Startup Menu
 hold  f9  at start to get into  Boot Menu
@@ -762,5 +787,3 @@ Main > System Information > System BIOS : N75 Ver. 01.53 11/19/2021
 #### Advanced
 Built-in Device Options > Backlit keyboard timeout > 30 secs.
 Secure Boot Configuration > Legacy Support Enable and Secure Boot Disable
-## waiting
-fit SD480GSSDPlus

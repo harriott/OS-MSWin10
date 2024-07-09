@@ -3,9 +3,18 @@ vim: ft=build:
 $machBld\Win10ProBuild.txt
 
 HP EliteBook 840 G3 barcoded PC117860 (labelled BC PNB 18 by last owner) = HPEB840G38
-(jharrio@outlook.com)
+(jnbh@live.co.uk)
 # build - parallel
+## File Explorer
+Affichage > Options > Affichage >
+  [ Afficher l'icône des fichiers sure les miniatures  Afficher la barre d'état ] off-ticked
+  Afficher le chemin d'accès complet dans la barre de titre  on-ticked
+  Afficher les fichiers, dossier et lecteurs cachés
+  [ Masquer les extensions des fichiers dont le type est connu
+    Masquer les fichier protégés du système d'exploitation ] off-ticked
 ## Paramètres
+Comptes > Famille et autres utilisateurs > [ deauram@outlook.com  jharrio@outlook.com ] >
+  Autoriser
 Personnalisation > [ Arrière-plan > Couleur unie
   Barre des tâches > Combiner les boutons de la barre des tâches > Jamais
   Couleurs > Choisir votre mode d'application par défaut > Sombre ]
@@ -38,20 +47,78 @@ win+i > Comptes > Famille et autres utilisateurs > Se connecter via un compte Mi
   confirmed  jharr@ftml.net  for another 6 digit code
   Créer un code confidentiel > Inclure des lettre > cc
 droit clique sur  barre des tâches > Rechercher > Afficher l'icônes
-Menu > [ Disnéy  Microsoft 365 ] > right-click > Désintaller
+Menu > [ Disnéy  Microsoft 365 ] > clic droit > Désintaller
+Menu > Système Windows >
+  [ Invite de Commandes  Outils d'administration  Panneau de configuration ] > Pinned to Start
 ## Ditto Clipboard
 Microsoft Store > Ditto Clipboard > Install > Pin to Start
 Ran it for  Options > General > [ Maximum Number of Saved Copies > 5000
   Advanced > Show leading whitespace ] ( $HADL\Ditto_WindowsApp\Ditto.db )
   Keyboard Shortcuts > Activate Ditto > ctrl+*
 ## Windows Update
+## fitted  BX500
+Gestion de disques > clic droit sur  Disque 0 >
+  Initialiser le disque (Partition GPT (GUID Partition Table)
+  clic droit sur  465.75 Go Non alloué > Nouveau volume simple... > Suivant > D: > BX500
+## dropbox.com
+Signed in > DropboxInstaller.exe > English & Selective sync
+## AWPS
+clic droit sur toolbar pour  Propriétés > Couleurs > Opacité > 86%
+## PowerShell
+winget add Microsoft.PowerShell
+## BitLocker
+File Explorer on Ce PC was showing a padlock and yellow warning triangle on C:
+AIdc> manage-bde -status  then  manage-bde -off c:
+  rebooted then after a while the triangle was gone
+## WPS execution policy
+Get-ExecutionPolicy   reported  "Restricted"
+### Administrateur PowerShell
+Get-ExecutionPolicy -list  reported all as  "Undefined"
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Confirm > o > o
+## PSProfile.ps1
+sl $MSWin10\mb  for
+  WPS> . neededNodes-0-PSProfileStub.ps1
+  AWPS> . neededNodes-1-PSProfile.ps1
+  AWPS> . modules.ps1 (tweaked) > (fournisseur Nuget) o
+## Nom de l'appareil
+Paramètres > Système > À propos de > (Nom de l'appareil > DESKTOP-GSPV6OJ)
+  Renommer ce PC > HPEB840G38 > Redemarrer
+## fail to rename user directory
+it's  C:\Utilisateurs\Utilisateur, which is obviously crap
+AIdc > wmic useraccount list full  shows the situation
+AIdc > cd c:\users  for  rename Utilisateur jnbh  gets  Accès refusé...
+## log in as jharrio to fix user directory
+PW > Créer un code confidentiel > as per  HPEB840G37  then took a while to "prepare" >
+  Sauvegarder vos fichiers avec OneDrive > Ne pas > Suivant > Refuser Microsoft 365 > Refuser
+  authorised the spying stuff then Edge too
+In File Explorer, renamed  C:\Utilisateurs\Utilisateur  to  jnbh  then couldn`t login as  jnbh
+Menu > Système Windows >
+  [ Invite de Commandes  Outils d'administration  Panneau de configuration ] > Pinned to Start
+Paramètres > Système > Écran > [ Éclairage nocturne > Activé  Mise à l'échelle et disposition >
+    Modifier la taille du texte des applications et d'autres éléments > 100% ]
+AWPS > rnlu Utilisateur jnbh  but login as  jnbh  still got  Préparation de Windows,
+  and again couldn't login...
+as jharrio: regedit > HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\WINDOWS NT\CurrentVersion\ProfileList\S-1-5-21-3441228617-810572567-2332938472-1001.bak > ProfileImagePath
+  (was  C:\Utilisateurs\Utilisateur) >
+  C:\Utilisateurs\jnbh  - showed up immediately in  AIdc > wmic useraccount list full
+## log in as jnbh
+Snags:
+  Ditto  empty
+  Dropbox PermissionError WinError 5 Accès refusé C:\\Utilisateurs\\Utilisateur
+winget update --all  successfully brought in some big package updates
+## Dropbox fix
+Paramètres > Applications > Dropbox > Désinstaller
+then  dropbox.com  for  Install  then  Selective sync  for just a few
+renamed  D:\Dropbox  to  D:\Dr  then  moved  Dropbox  to  D:\
+briefly quit Dropbox for  robocopy /mir D:\Dr\conflicted D:\Dropbox\conflicted
+paused to include my  Cop  selection and pull those over from  D:\Dr,  restarted and waited
 ## waiting
 # physical configuration
 1366x768 screen
 Intel Core i5-6300U
 ## storage
 (essential) M.2 SSD: 119Go
-(optional) 2.5" SSD: SDSSDA240G
+(optional) 2.5" SSD: BX500
 ## Startup Menu
 hold  esc  at start to get into  Startup Menu
 hold  f9  at start to get into  Boot Menu

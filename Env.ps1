@@ -4,23 +4,20 @@
 
 # $MSWin10\Env.ps1
 #  needed for system build
-#  symlink ($MSWin10\symlinks.ps1) sourced by  $MSWin10\PSProfile.ps1
+#  symlink ($MSWin10\mb\neededNodes-1.ps1) sourced by  $MSWin10\PSProfile.ps1
 
 #=> 0 useful variables
 $Cn = $Env:Computername
-$lazy = "$HOME\AppData\Local\nvim-data\lazy"
-$uname = $Env:USERNAME
-
 #==> places
-$Drpbx = "C:\Users\$uname\Dropbox"
-if ( $Cn -eq 'HPEB840G36' ) { $Drpbx = "D:\Dropbox" }
+$CPF = $env:programfiles
+$CPFx = ${env:programfiles(x86)}
+$Drpbx = "D:\Dropbox"
   $DJH = "$Drpbx\JH"
     $CfWk = "$DJH\Cop-work"
     $Cfzd = "$DJH\work-Cz"
+      $CzMa = "$Cfzd\manage"
+      $CzPeo = "$Cfzd\people"
       $CzPhy = "$Cfzd\PhysicalProperty"
-    $JCop = "$DJH\Cop"
-      $cFr = "$JCop\France"  # $cFr  used in  $TeNo
-      $Pr0 = "$JCop\Practical0"
     $core = "$DJH\core"
       $ITstack = "$core\IT_stack"
         $CrPl = "$ITstack\CP"
@@ -40,11 +37,14 @@ if ( $Cn -eq 'HPEB840G36' ) { $Drpbx = "D:\Dropbox" }
           $vimfiles = "$onGH\vimfiles"
             $vfvp = "$vimfiles\vim\packs"
       $TeNo = "$core\TextNotes"  # used in  $TeNo
-    $DaLi = "$DJH\now\DailyLife"
+    $DaLi = "$DJH\Jo-now\DailyLife"
     $ess = "$DJH\Jo-now\essential"
       $eFr = "$ess\France"
     $FrFa = "$DJH\Jo-F+F"
       $FFIdF = "$FrFa\France\IdF"  # $FFIdF  used in  $TeNo
+    $JCop = "$DJH\Cop"
+      $cFr = "$JCop\France"  # $cFr  used in  $TeNo
+      $Pr0 = "$JCop\Practical0"
     $JHt = "$DJH\Jo-technos"
       $jtIT = "$JHt\IT"
       $tIs = "$JHt\IT-storage"  # $tIs\diskUsage.txt
@@ -53,11 +53,14 @@ if ( $Cn -eq 'HPEB840G36' ) { $Drpbx = "D:\Dropbox" }
       $rEr = "$JHw\France\IdF\Paris\20e-rueErmitage"
         $StEr = "$rEr\StudioErmitage"  # $StEr
     $Thb = "$DJH\Thb-dr"
-    $JJt0 = "$DJH\Then0"
+    $JJt0 = "$DJH\Jo-then0"
   $DCGRs = "$Drpbx\Cop\GRs"  # Copied Git Repositories Use
-$Enc = "C:\Users\$uname\encrypted"
-$nvim = "$home\AppData\Local\nvim"  # lf  don't grok  ~
-$Pandoc = "$Env:AppData\Pandoc"
-$tex = "$Env:AppData\MiKTeX\tex"
-
+$Enc = "$env:userprofile\encrypted"
+$HADL = "$HOME\AppData\Local"  # ($env:localappdata)
+  $HADLM = "$HADL\Microsoft"
+  $lazy = "$HADL\nvim-data\lazy"
+  $nvim = "$HADL\nvim"  # lf  don't grok  ~
+$HADR = $Env:AppData
+  $Pandoc = "$HADR\Pandoc"
+  $tex = "$HADR\MiKTeX\tex"
 

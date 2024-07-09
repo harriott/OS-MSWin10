@@ -12,7 +12,8 @@ Paramètres > Personnalisation > Couleurs > Choisir votre mode d'application par
 Paramètres > [ Personnalisation > Arrière-plan > Couleur unie
 ## Edge  appears only once in  alt+tab
 Paramètres > Système > Multitâche > Alt + Tab > Uniquement les fenêtres ouvertes
-## waiting
+## WPS
+clic droit sur toolbar pour  Propriétés > [ Couleurs > Opacité > 86%  Police > Taille > 12 ]
 # build - sequential build
 ## failed to get my account correctly named
 Utilisateur
@@ -37,7 +38,7 @@ connected to  Jo-OPPO-A76
 loads of updates
 Settings > Système > Alimentation et mise en veille > Paramètres d'alimentation supplémentaire > Choisir l'action des boutons d'alimentation > [ Modifier des paramètres actuellement non disponibles > Activer le démarrage rapide  off-ticked  Lorsque je referme le capot > Sur secteur > Ne rien faire ]
 Menu > Système Windows > [ Invite de Commandes  Panneau de configuration ] > Pinned to Start
-Menu > Microsoft 365 > right-click > Désintaller
+Menu > Microsoft 365 > clic droit > Désintaller
 ## Ditto Clipboard
 Microsoft Store > Ditto Clipboard > Install > Pin to Start
 Ran it for  Options > General > [ Maximum Number of Saved Copies > 5000
@@ -50,7 +51,7 @@ reagentc /info  reports it to be in  C:\Recovery\WindowsRE  so
   Gestion de disques > Deleted  D:, extended  C:, and formatted  SDSSDA240G  as  D:
 ## after a reboot
 Faisons une sauvegarde des données de votre PC > Ignorer pour le moment > Continuer
-Menu > Spotify > right-click > Désintaller
+Menu > Spotify > clic droit > Désintaller
 Paramètres >
   Mise à jour et sécurité > Activation > Windows est activé à l'aide d'une license numérique liée a votre compte Microsoft
   Système À propos de > Spécifications de Windows > Windows 10 Pro 21H2 OS build 19045.4170
@@ -83,8 +84,6 @@ winget add git.git -l C:\Git  got me  Git for Windows v2.44.0
 ## waiting
 Signed in  to click on my avatar for  Install desktop app > DropboxInstaller.exe
 Moved directory to  SDSSDA240G  Selective sync
-# build - WPS
-right-click on toolbar for  Propriétés > [ Couleurs > Opacité > 80%  Police > Taille > 12 ]
 # physical configuration
 1366x768 screen
 Intel Core i5-6300U

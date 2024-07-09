@@ -2,11 +2,11 @@
 
 # & $MSwin10\mb\modules.ps1
 
-# #=> 0 AWPS 0 PowerShell Gallery
-# set-psrepository psgallery -installationpolicy trusted
+#=> 0 AWPS 0 PowerShell Gallery
+set-psrepository psgallery -installationpolicy trusted
 
-# #=> 0 AWPS 1 Microsoft.PowerShell.PSResourceGet
-# inmo microsoft.powershell.psresourceget  # brings in  nuget
+#=> 0 AWPS 1 Microsoft.PowerShell.PSResourceGet
+inmo microsoft.powershell.psresourceget  # brings in  nuget
 
 # #=> 1 PS - PowerShell Gallery
 # Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
