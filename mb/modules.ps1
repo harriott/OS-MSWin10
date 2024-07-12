@@ -2,11 +2,14 @@
 
 # & $MSwin10\mb\modules.ps1
 
-#=> 0 AWPS 0 PowerShell Gallery
-set-psrepository psgallery -installationpolicy trusted
+# #=> 0 WPS 0 PowerShell Gallery
+# set-psrepository psgallery -installationpolicy trusted  # brings in  nuget
 
-#=> 0 AWPS 1 Microsoft.PowerShell.PSResourceGet
-inmo microsoft.powershell.psresourceget  # brings in  nuget
+# #=> 0 AWPS 1 Microsoft.PowerShell.PSResourceGet
+# inmo microsoft.powershell.psresourceget  # providing  isres
+
+# #=> 0 AWPS 1 update PowerShellGet
+# inmo PowerShellGet -force  # adds to  C:\Program Files\WindowsPowerShell\Modules\PowerShellGet
 
 # #=> 1 PS - PowerShell Gallery
 # Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
@@ -15,16 +18,16 @@ inmo microsoft.powershell.psresourceget  # brings in  nuget
 # #=> 1 WPS - PowerShell Gallery
 # set-psresourcerepository psgallery -trusted; Get-PSResourceRepository
 
-#=> 2 AWPS - modules
-'BurntToast'; inmo burnttoast
-'Posh-Git'; inmo posh-git
-'PowerColorLS'; inmo powercolorls
-'Powershell.Chunks'; inmo powershell.chunks
-'ps.checkmoduleupdates'; inmo ps.checkmoduleupdates
-'PSFzf'; inmo PSFzf
-'PSScriptTools'; inmo psscripttools
-'PSWriteColor'; inmo pswritecolor
-'Recycle'; inmo recycle
-'Terminal-Icons'; inmo terminal-icons
-'ZLocation'; inmo ZLocation
+#=> 2 WPS - modules
+# 'BurntToast'; isres burnttoast
+'Posh-Git'; isres posh-git
+'PowerColorLS'; isres powercolorls
+'Powershell.Chunks'; isres powershell.chunks
+'ps.checkmoduleupdates'; isres ps.checkmoduleupdates
+'PSFzf'; isres PSFzf
+'PSScriptTools'; isres psscripttools
+'PSWriteColor'; isres pswritecolor
+'Recycle'; isres recycle
+'Terminal-Icons'; isres terminal-icons
+'ZLocation'; isres ZLocation
 

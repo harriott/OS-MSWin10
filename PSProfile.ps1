@@ -185,8 +185,7 @@ function encrypted {
   if (!($(gl).path).equals($enc)) {
     if ( ( test-path $enc ) ) { sl $enc } else { "$enc ain't there"; return } }
   foreach ($node in $encrypted) {
-    ''
-    scfcdc; $node; scrc
+    ''; scfcdc; $node; scrc
     if ( gci $node* ) {
       if ( $node.equals('actions') ) { $path = '*ps1*' } else {
         if ( test-path $node -pathtype container ) { $encContents = gci $node -recurse -file | sort lastwritetime -descending | select -first 9 | %{ dtsfn $_ '??' } } else { $encdir = '' }
@@ -427,13 +426,14 @@ Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
 # PSFzf additions
-$mPSFzf=0  # (because  gmo PSFzf  doesn't work until  PSFzf's been somehow invoked)
-if ( $PSEdition  -eq 'Core'    -and ( test-path "~\Documents\PowerShell\Modules\PSFzf"        ) ) { $mPSFzf=1 }
-if ( $PSEdition  -eq 'Desktop' -and ( test-path "~\Documents\WindowsPowerShell\Modules\PSFzf" ) ) { $mPSFzf=1 }
-if ( $mPSFzf ) {
+# $mPSFzf=0  # (because  gmo PSFzf  doesn't work until  PSFzf's been somehow invoked)
+# if ( $PSEdition  -eq 'Core'    -and ( test-path "~\Documents\PowerShell\Modules\PSFzf"        ) ) { $mPSFzf=1 }
+# if ( $PSEdition  -eq 'Desktop' -and ( test-path "~\Documents\WindowsPowerShell\Modules\PSFzf" ) ) { $mPSFzf=1 }
+# if ( $mPSFzf ) {
+# if ( test-path "$HADL\Microsoft\WinGet\Links\fzf.exe" ) {
   Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
   Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
-}
+# }
 
 #=> 1 place-dependent
 if ( test-path $ITscc )

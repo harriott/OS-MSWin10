@@ -1,7 +1,7 @@
 
 ; Joseph Harriott - AutoHotkey - mer 19 juin 2024
 
-; $MSWin10\AutoHotkey\HPEB840G37.ahk
+; $MSWin10\AutoHotkey\1920x1080.ahk
 
 ; Reload if changed!
 

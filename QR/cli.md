@@ -350,13 +350,15 @@ prefer `&` where possible
 ### package manage
     get-package | format-table -autosize
 
+`isres` (`Install-PSResource`, of `Microsoft.PowerShell.PSResourceGet`)
+
 #### modules
     gvim $HADL\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
     New-BurntToastNotification
     pc  # PowerColorLS
 
-- `inmo` (`install-module`)
 - `ipmo` (`import-module`)
+- `inmo` (`install-module`, of deprecated `PowerShellGet`)
 - `rmo` (`remove-module`)
 
 ##### get-module
@@ -371,6 +373,7 @@ prefer `&` where possible
 ##### paths
     $env:psmodulepath -split (';')
     $pshome/Modules
+    C:\Program Files\WindowsPowerShell\Modules
     ~\Documents\PowerShell\Modules
 
 ##### powershellget
@@ -518,6 +521,7 @@ tab completion
 ## Windows PowerShell - modules
     get-installedmodule
     get-module -listavailable  # details, including old
+    C:\Users\jharr\Documents\WindowsPowerShell\Modules
     C:\Users\jnbh\OneDrive\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
 
 ### paths
@@ -556,6 +560,7 @@ by gokcehan
     alt+c
     fzf -h
     fzf --version
+    where.exe fzf
 
 # The Platinum Searcher
     pt /version

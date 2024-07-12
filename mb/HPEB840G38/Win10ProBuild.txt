@@ -12,6 +12,10 @@ Affichage > Options > Affichage >
   Afficher les fichiers, dossier et lecteurs cachés
   [ Masquer les extensions des fichiers dont le type est connu
     Masquer les fichier protégés du système d'exploitation ] off-ticked
+## fix ; at end of path
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU -replace ';$', ''; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## Paramètres
 Comptes > Famille et autres utilisateurs > [ deauram@outlook.com  jharrio@outlook.com ] >
   Autoriser
@@ -46,7 +50,7 @@ win+i > Comptes > Famille et autres utilisateurs > Se connecter via un compte Mi
   then  compte Utilisateur'd somehow disappeared
   confirmed  jharr@ftml.net  for another 6 digit code
   Créer un code confidentiel > Inclure des lettre > cc
-droit clique sur  barre des tâches > Rechercher > Afficher l'icônes
+droit clique sur  barre des tâches > Rechercher > Afficher l'icône
 Menu > [ Disnéy  Microsoft 365 ] > clic droit > Désintaller
 Menu > Système Windows >
   [ Invite de Commandes  Outils d'administration  Panneau de configuration ] > Pinned to Start
@@ -119,6 +123,97 @@ winget add vim.vim -l C:\Vim
 APS> . $MSWin10\mb\neededNodes-2.ps1
 ## Git
 winget add git.git -l C:\Git
+## AutoHotkey
+winget add AutoHotkey.AutoHotkey
+Shortcut to  $MSWin10\AutoHotkey\1920x1080.ahk
+  "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
+## fzf from winget
+winget add fzf  then  where.exe fzf  reports  C:\Users\jnbh\AppData\Local\Microsoft\WinGet\Packages\junegunn.fzf_Microsoft.Winget.Source_8wekyb3d8bbwe\fzf.exe
+### not working
+rebooted for  fzf.vim  to work only occasionally, still not found by  PSFzf
+~\AppData\Local\Microsoft\WinGet\Links  remains unpopulated...
+## WT
+winget add 9N0DX20HK701 > y
+chcp  reports  CodePage 850
+ctrl+, (= Settings)
+  Azure Cloud Shell > Hide profile from dropdown > On > Save
+  Interaction > Warn when closing more than one tab > Off
+  PowerShell >
+    Appearance > [ Text > Font size > 9  Transparency > Background opacity > 79% ] > Save
+    Starting directory >
+      (%USERPROFILE%, opening at launch on  C\:Users\jharr, then subequently on  C\:Users\jhbh) .
+      still opening at launch on  C\:Users\jharr...
+  Windows PowerShell > Appearance >
+    [ Text > Font size > 9  Transparency > Background opacity > 82% ] > Save
+~\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
+## 7-Zip
+winget add 7zip.7zip
+## WPS modules
+they're in  $CPF\WindowsPowerShell\Modules  and  PSFzf  ain't working, so  rmo PSFzf  found nothing
+$env:psmodulepath -split (';')
+  C:\Users\jnbh\Documents\WindowsPowerShell\Modules
+  C:\Program Files\WindowsPowerShell\Modules
+  C:\Windows\system32\WindowsPowerShell\v1.0\Modules
+## fix OneDrive
+Paramètres > Mise à jour et sécurité > Sécurité Windows > Protection contre les virus et menaces >
+  Protection contre les ransomware > Configurer OneDrive > jnbh@live.co.uk >
+  Impossible de trouver votre dossier OneDrive dans  C:\Users\Utilisateur\OneDrive > Configurer >
+  jnbh@live.co.uk > (C:\Users\jnbh\OneDrive) Suivant > (Il y a déjà...) Utiliser >
+  Sauvegarder des fichiers > all off > Suivant > OneDrive > Plus tard > Suivant
+## PS modules
+accidentally  inmo PSFzf
+## WPS module PSFzf
+md C:\Users\jnbh\Documents\WindowsPowerShell\Modules
+inmo PSFzf
+  FullyQualifiedErrorId : InstallModuleNeedsCurrentUserScopeParameterForNonAdminUser,Install-Module
+File Explorer > C:\Program Files\WindowsPowerShell\Modules  and Deleted  BurntToast, Microsoft.PowerShell.PSResourceGet, posh-git, PowerColorLS, Powershell.Chunks, ps.checkModuleUpdates, PSFzf, PSScriptTools, PSWriteColor, Recycle, Terminal-Icons, ThreadJob, ZLocation
+inmo PSFzf -scope currentuser  got it working, but would need to install subsequent modules thus
+## re-install Windows
+because too many annoying artefacts from  C:\Utilisateurs\Utilisateur
+booted to  Windows 10 2022 Update Version 22H2  on  KDTG311281 > (Français (France)...) >
+  Suivant > Installer maintenant > Personnalisé > j'accepte >
+  Lecteur 1 Partition 3 (119.1 Go) > Supprimer > Nouveau > Taille > 121987 Mo > Appliquer >
+  Suivant (let it work) > (France) > Oui > (Français) Oui > Ajouter une disposition >
+  Anglais étendu (Royaume-Uni) > Ajouter > Jo-OPPO-A76 > pw > Suivant >
+  utilisation personnelle > Suivant > jnbh@live.co.uk > Suivant > single-use code from Fastmail >
+  PIN > Accepter... > OneDrive > Ne pas sauvegarder mes fichiers >
+  Refuser Microsoft 365 > Refuser > Cortana > Pas maintenant (let it work)
+Windows Update for loads
+Paramètres all set to my liking again, and tools pulled over
+Menu > [ Office  Linkedin  ] > clic droit > Désintaller
+## Nom de l'appareil
+Paramètres > Système > À propos de > (Nom de l'appareil > DESKTOP-JU8CT53)
+  Renommer ce PC > HPEB840G38 > Redemarrer
+## Ditto Clipboard
+Microsoft Store > Ditto Clipboard > Obtenir > Pin to Start
+Ran it for  Options > General > [ Maximum Number of Saved Copies > 5000
+  Advanced > Show leading whitespace ] ( $HADL\Ditto_WindowsApp\Ditto.db )
+  Keyboard Shortcuts > Activate Ditto > ctrl+*
+## driver Updates
+Windows Update > [ Mise à jour facultatives > Mise à jour du pilote > HP Inc Firmware 1.57.0.0
+  Intel Ports 2316.5.0.0  INTEL System 10.1.1.11  INTEL System 10.1.1.40
+  SunplusIT Camera 3.7.8.2  Synaptics Mouse 19.0.19.73 ] > Redemarrer (Updating BIOS 1.57,
+  auto-rebooted for Final step of BIOS update)
+## dropbox.com
+Signed in, D:\Dropbox renamed for  DropboxInstaller.exe > English & Selective sync
+  Old folder took the big blue icon away with it...
+## WPS
+clic droit sur toolbar pour  Propriétés > Couleurs > Opacité > 86%
+### execution policy
+Get-ExecutionPolicy   reported  "Restricted"
+Get-ExecutionPolicy -list  reported all as  "Undefined"
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Confirm > o > o
+## WPM
+winget update --all > y
+## PowerShell
+winget add Microsoft.PowerShell
+## PSProfile.ps1
+sl $MSWin10\mb  for
+  WPS> . neededNodes-0-PSProfileStub.ps1
+  AWPS> . neededNodes-1-PSProfile.ps1
+## WPS modules
+
+AWPS> . modules.ps1 (tweaked) > (fournisseur Nuget) o
 ## waiting
 # physical configuration
 1366x768 screen

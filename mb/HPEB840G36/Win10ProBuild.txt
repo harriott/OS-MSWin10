@@ -28,7 +28,7 @@ Finalisons la configuration de votre PC > Se connecter avec Microsoft > jharrio@
 Mise à jour et sécurité > Récupération > Réinitialiser > Commencer > Supprimer tout
   "Environment de récupération introuvable" and yes, Gestion de disques shows there's no WinPE...
 ## re-install Windows
-booted to  Windows 10 2022 Update l Version 22H2  on  KDTG311281 > français (France) >
+booted to  Windows 10 2022 Update Version 22H2  on  KDTG311281 > français (France) >
   Installer maintenant > Personnalisé >
     Lecteur 0 Partition 3 (119.1 Go) > Supprimer > Nouveau > Taille > 121000 Mo (118.1 Go)
     Lecteur 0 Partition 4 (987.0 Mo) > Nouveau

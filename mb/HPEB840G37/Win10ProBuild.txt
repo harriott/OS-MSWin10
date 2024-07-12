@@ -207,7 +207,7 @@ mkdir ~/.ssh
   cpi ~\Encrypted\Secure1\Networking\SSH\id_ed25519-forGitHub ~\.ssh\id_rsa
   cpi ~\Encrypted\Secure1\Networking\SSH\id_ed25519-forGitHub.pub ~\.ssh\id_rsa.pub
 ## Test GitHub SSH connection
-(requires Private key as C:\Users\jharr\.ssh\id_rsa)
+(requires Private key as  C:\Users\jharr\.ssh\id_rsa)
 Git Bash > ssh -T git@github.com
   The authenticity of host 'github.com (140.82.121.4)' can't be established.
   ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
@@ -731,6 +731,10 @@ annoying process
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
 $newPathCU = $oldPathCU -replace '7.0', '7.0.1'; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
+## switched to  $MSWin10\AutoHotkey\1920x1080.ahk
+having previously switched to  $MSWin10\AutoHotkey\HPEB840G37.ahk
+## new Outlook for Windows
+after reboot, accepted > Importer les paramètres
 ## Epson EcoTank ET-5170
 plugged into USB (got it going)
 Paramètres > Périphériques > Imprimantes et scanners > Ajouter > DIRECT-8b-EPSON-ET-5170 Series >
@@ -750,6 +754,7 @@ while connected to  cafezoide, Settings > Printers & scanners > Add a printer or
   got me  EPSONFE86A3 (ET-5170 Series) then needed to accept installation of
   Epson Printer Connection Checker  then got into a cycle so rebooted and ran it again
 ## waiting
+Mise à jour facultatives
 TexLab
 ### reduce C:
 MiniTool Partition Wizard Free v12.8
@@ -761,7 +766,7 @@ chcp  reports  CodePage 850
 ctrl+, (= Settings)
   Azure Cloud Shell > Masquez le profil de la liste déroulante > Activé
   Démarrage > Profil par défaut > PowerShell
-  Interaction > M'avertir lorsque je ferme plusieurs onglets  off-slid  
+  Interaction > M'avertir lorsque je ferme plusieurs onglets  off-slid
   PowerShell > Apparance >
     Texte > Taille de police > 9
     Transparence > Opacité de l'arrière plan > 80%
