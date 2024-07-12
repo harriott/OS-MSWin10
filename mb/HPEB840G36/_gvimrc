@@ -1,6 +1,6 @@
 " vim: fdl=1:
 
-" $MSWin10\user\_gvimrc (see  $MSwin10\symlinks.ps1)
+" move from this to  $MSWin10\mb\_gvimrc
 
 " ------------------------------------------------------------------------
 " this is a pointer, on a MSWin system, to my more portably located gvimrc

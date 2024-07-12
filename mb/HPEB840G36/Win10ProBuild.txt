@@ -66,6 +66,8 @@ Paramètres > Système > Alimentation et mise en veille > Jamais, Jamais, 10 min
 winget add ditto.ditto
 winget rm ditto.ditto
 ## dropbox.com
+Signed in  to click on my avatar for  Install desktop app > DropboxInstaller.exe
+Moved directory to  SDSSDA240G  Selective sync
 ## Windows PowerShell execution policy
 Get-ExecutionPolicy   reported  "Restricted"
 ### Administrateur PowerShell
@@ -82,8 +84,6 @@ winget add python.python.3.13 -l C:\Python3
 ## Git
 winget add git.git -l C:\Git  got me  Git for Windows v2.44.0
 ## waiting
-Signed in  to click on my avatar for  Install desktop app > DropboxInstaller.exe
-Moved directory to  SDSSDA240G  Selective sync
 # physical configuration
 1366x768 screen
 Intel Core i5-6300U

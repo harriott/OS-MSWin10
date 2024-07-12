@@ -79,7 +79,8 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Confirm > o > o
 sl $MSWin10\mb  for
   WPS> . neededNodes-0-PSProfileStub.ps1
   AWPS> . neededNodes-1-PSProfile.ps1
-  AWPS> . modules.ps1 (tweaked) > (fournisseur Nuget) o
+## WPS modules
+AWPS> . modules.ps1 (tweaked) > (fournisseur Nuget) o
 ## Nom de l'appareil
 Paramètres > Système > À propos de > (Nom de l'appareil > DESKTOP-GSPV6OJ)
   Renommer ce PC > HPEB840G38 > Redemarrer
@@ -112,6 +113,12 @@ then  dropbox.com  for  Install  then  Selective sync  for just a few
 renamed  D:\Dropbox  to  D:\Dr  then  moved  Dropbox  to  D:\
 briefly quit Dropbox for  robocopy /mir D:\Dr\conflicted D:\Dropbox\conflicted
 paused to include my  Cop  selection and pull those over from  D:\Dr,  restarted and waited
+## gVim v9.1.0
+winget add vim.vim -l C:\Vim
+## neededNodes-2
+APS> . $MSWin10\mb\neededNodes-2.ps1
+## Git
+winget add git.git -l C:\Git
 ## waiting
 # physical configuration
 1366x768 screen

@@ -122,6 +122,8 @@ limited to single commands
     format-string powershell -randomize
     if ( '5' -ne '4' ) { '5 is not 4' }
 
+regex: `\w` = a-z, A-Z, 0-9, _
+
 ### datetime
     [system.timezoneinfo]::getsystemtimezones() | out-gridview
     get-timezone -listavailable | out-gridview
@@ -135,15 +137,21 @@ limited to single commands
 no standard aliases
 
 ### executables
-    cd 'C:\Program Files'
+    (gcm python | select version | ft -HideTableHeaders | out-string).trim()
     (gp hklm:\software\microsoft\windows\currentversion\uninstall\* ).displayname | sort  # lists removable x64 programs
+    cd 'C:\Program Files'
     C:\MozillaThunderbird\thunderbird.exe -addressbook
     C:\Windows\explorer.exe "microsoft-edge:searchterm"
-    gcm explorer
-    gcm lsd
     get-startapps  # lists AppIDs
     explorer shell:Appsfolder  # Applications
     start <somefile>
+
+#### get-command
+    gcm explorer
+    gcm lsd
+    gcm python | fl *
+(gcm python).version
+gcm python | select -expand version
 
 #### Microsoft Visual Studio parts
     & "${env:programfiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -?
@@ -164,6 +172,7 @@ otherwise little sign of them
 #### where.exe
     where.exe bash
     where.exe gpg
+    where.exe ffmpeg
     where.exe pwsh
     where.exe python
     where.exe sumatrapdf
@@ -415,17 +424,19 @@ tab completion
     where.exe ruby
 
 ### scripts
-    $funs = gc "$MSWin10\PSProfile.ps1" | ss -pattern "function\s+([^\s{]+)" | %{ $_.matches.groups[1].value }; $funs -join '  '  # lists function names
+    $funs = gc "$MSWin10\PSProfile.ps1" | sls -pattern "function\s+([^\s{]+)" | %{ $_.matches.groups[1].value }; $funs -join '  '  # lists function names
     'a','b','c'|%{if($_ -eq 'b'){continue}else{$_}}
     . <script_to_dot_source>
     Get-InstalledScript
     get-verb | sort -property verb
     param( [switch]$doSomething )  # -doSomething  creates  $doSomething = true
+    return
     ~\Documents\PowerShell\Scripts
 
 #### functions
     $function:<function>  # contains it's internal commands
     function global:<function> { ... }
+    function args { $a0 = $args[0]; $a1 = $args[1]; "$a0 $a1" }; args here there
 
 #### if statement
     if (c1) {a1} elseif (c2) {a2} else (c3) {a3}

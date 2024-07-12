@@ -6,7 +6,6 @@
 #  called by  $MSWin10\PSProfileStub.ps1
 
 sal seco set-content  # because  sc  is overridden by  sc.exe
-sal ss select-string
 sal su C:\SumatraPDF\SumatraPDF.exe
 . ~\Env.ps1  # ($MSWin10\mb\neededNodes-0-PSProfile.ps1)
 
@@ -42,14 +41,14 @@ function pro {
 
 function wl {
   $dts = (Get-Date).ToString("yyMMdd-HHmmss")
-  $mwgl = "$machLg/winget_list-$dts"
-  $l0 = $mwgl+'0'; winget ls > $l0
-  $l1 = $mwgl+'1'; (gc $l0 -raw) -replace "(?s).*------" > $l1
+  $mLpwgl = "$machLg/packages/winget_list-$dts"
+  $l0 = $mLpwgl+'0'; winget ls > $l0
+  $l1 = $mLpwgl+'1'; (gc $l0 -raw) -replace "(?s).*------" > $l1
   ri $l0
-  $lt  = "$mwgl.txt"; 'vim: set nowrap:' > $lt; '' >> $lt
+  $lt  = "$mLpwgl.txt"; 'vim: set nowrap:' > $lt; '' >> $lt
   gc $l1 | sort | select -skip 2 >> $lt
   sleep 1; ri $l1
-  'winget list  is in  $machLg/winget_list'+"-$dts.txt"
+  'winget list  is in  $machLg/packages/winget_list'+"-$dts.txt"
 }
 
 function stc {
@@ -179,8 +178,7 @@ function gfoln { gci -r $args[0] | where { $_.psiscontainer } | select -expandpr
 # gfoln *u*
 
 #===> lastwritetime
-function dtsfn { $args[0].lastwritetime.tostring('yyyyMMdd-hh:mm:ss')+' '+$args[1]+' '+ $args[0].fullname }
-# - used by other functions  gci <test> | %{ dtsfn $_ ':' }
+function dtsfn { $args[0].lastwritetime.tostring('yyyyMMdd-hh:mm:ss')+' '+$args[1]+' '+ $args[0].fullname } # - used by other functions  gci <test> | %{ dtsfn $_ ':' }
 
 function encrypted {
   $encrypted = "actions", "digital0", "digital1", "secure0", "secure1", "shg", "stack"
@@ -206,7 +204,7 @@ function encrypted {
   ''
 }
 
-function lwp { gci -r | %{ dtsfn $_ ':' } | out-string -stream | ss $args[0] | sort }
+function lwp { gci -r | %{ dtsfn $_ ':' } | out-string -stream | sls $args[0] | sort }
 #  $args[0]  is a regex, something in the filepath
 
 #====> by name
@@ -243,13 +241,6 @@ function gfsi { Get-ChildItem . -Directory | Get-FolderSizeInfo -Hidden | Sort-O
 
 #===> string in files - sifw's
 
-function stringinallfiles { sifwork string-allfiles '*' $args[0] }
-function stringinmds { sifwork string-md '*.md' $args[0] }
-function stringinps1s { sifwork string-ps1 '*.ps1' $args[0] }
-function stringintexs { $texfiles = '*.cls','*.tex'; sifwork string-latex $texfiles $args[0] }
-function stringinvims { sifwork string-vim '*.vim' $args[0] }
-# stringin* <regex>
-
 function nvdg { $outfile = "$DJH/search/nvdg.rgo"
   sifwork0 $outfile 'neovim.discourse.group'
   foreach($ITd in $jtIT, $ITstack) { "Searching in $ITd\..."
@@ -257,13 +248,17 @@ function nvdg { $outfile = "$DJH/search/nvdg.rgo"
   sleep 4; ((gc $outfile) -join "`n") + "`n" | seco -NoNewline $outfile  # CRLF -> LF
   sl "$DJH/search" }
 
+function removeMatchingLines {
+  $a0 = $args[0]; $a1 = $args[1]
+  seco $a0 -value (gc $a0 | sls -pattern $a1 -notmatch)
+} # (gcm removeMatchingLines).scriptblock
+
 function SE { $outfile = "$DJH/search/SEN.sifw"
   sifwork0 $outfile 'stackexchange|stackoverflow|superuser'
   foreach($ITd in $jtIT, $ITstack, "$JHw\France") { "Searching in $ITd\..."; sl $ITd
-    gci -r -e $outfile -i '*.md' | ss 'stackexchange|stackoverflow|superuser' | %{
+    gci -r -e $outfile -i '*.md' | sls 'stackexchange|stackoverflow|superuser' | %{
       $_.path+" > "+$_.line} >> $outfile; '' >> $outfile }
-  sleep 4
-  seco $outfile -value (gc $outfile | ss -pattern 'vimfiles\\pack' -notmatch)
+  sleep 4; removeMatchingLines $outfile 'vimfiles\\vim\\'
   sifwork1 $outfile
   sl "$DJH/search" }
 
@@ -271,7 +266,7 @@ function sifwork {
   # not to be called directly
   $outfile = $args[0]+".sifw"
   sifwork0 $outfile $args[2]
-  gci -r -e $outfile -i $args[1] | ss $args[2] | %{$_.path+" > "+$_.line} >> $outfile
+  gci -r -e $outfile -i $args[1] | sls $args[2] | %{$_.path+" > "+$_.line} >> $outfile
   "" >> $outfile
   sifwork1 $outfile
   $global:sifworkoutfile = $outfile
@@ -288,6 +283,13 @@ function sifwork1 {
   $outfile
 } # footer
 
+function stringinallfiles { sifwork string-allfiles '*' $args[0] }
+function stringinmds { sifwork string-md '*.md' $args[0] }
+function stringinps1s { sifwork string-ps1 '*.ps1' $args[0] }
+function stringintexs { $texfiles = '*.cls','*.tex'; sifwork string-latex $texfiles $args[0] }
+function stringinvims { sifwork string-vim '*.vim' $args[0] }
+# stringin* <regex>
+
 #====> github issues
 # $jtIT\ghissues.sifw
 # $ITstack\ghissues.sifw
@@ -296,16 +298,9 @@ function ghissues {
   'Searching...'
   stringinmds 'github\.com.+issues'  # calling function sifwork
   "Stripping issues that aren't mine..."
-  $sifwof = '.\'+$global:sifworkoutfile  # global variable set in function sifwork
-  sleep 3
-  seco $sifwof -value (gc $sifwof | ss -pattern 'tmux-resurrect' -notmatch)
-  sleep 3
-  seco $sifwof -value (gc $sifwof | ss -pattern 'vimfiles\\pack' -notmatch)
-  sleep 3
-  seco $sifwof -value (gc $sifwof | ss -pattern 'vimfiles\\plugin\\fzf' -notmatch)
-  sleep 3
-  seco $sifwof -value (gc $sifwof | ss -pattern 'vimtest' -notmatch)
-  mi $sifwof ghissues.sifw -force
+  sleep 3; removeMatchingLines $global:sifworkoutfile '\\copied-'
+  sleep 3; removeMatchingLines $global:sifworkoutfile '\\vimfiles\\vim\\'
+  mi $global:sifworkoutfile ghissues.sifw -force
   '- moved to ghissues.sifw'
 }
 #=> 0 Ghostscript

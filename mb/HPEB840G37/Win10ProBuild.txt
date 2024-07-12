@@ -178,7 +178,7 @@ code-minimap.exe  copied to  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 ## Python 3.12.3
 python-3.12.3-amd64.exe > Add python.exe to PATH > Customize > Optional Features > for all users >
   Next > [ Advanced Options > [ Install for all users  Customize install location > C:\Python312 ]
-## Windows Terminal s'ouvre dans Invite de commandes
+## Windows Terminal s'ouvre à l'Invite de commandes
 Paramètres > Applications > Terminal > Désinstaller  then  win+x > Redémarrer
   then re-installed from Microsoft Store
 ## Git v2.32
@@ -193,7 +193,7 @@ $Env:Path -split';'
   ...
 allowed  MINGW64  for  A ~/.bash_profile that loads ~/.bashrc will be created for you.
 got me  C:\Git\usr\bin\perl.exe
-## Windows Terminal s'ouvre dans Invite de commandes
+## Windows Terminal s'ouvre à l'Invite de commandes
 Paramètres > Applications > Terminal > Désinstaller  then  win+x > Redémarrer
   then re-installed from Microsoft Store
 ## fzf (for PSFzf)
