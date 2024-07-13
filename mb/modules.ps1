@@ -3,7 +3,7 @@
 # & $MSwin10\mb\modules.ps1
 
 # #=> 0 WPS 0 PowerShell Gallery
-# set-psrepository psgallery -installationpolicy trusted  # brings in  nuget
+# set-psrepository PSGallery -installationpolicy trusted  # brings in  nuget
 
 # #=> 0 AWPS 1 Microsoft.PowerShell.PSResourceGet
 # inmo microsoft.powershell.psresourceget  # providing  isres
@@ -12,13 +12,12 @@
 # inmo PowerShellGet -force  # adds to  C:\Program Files\WindowsPowerShell\Modules\PowerShellGet
 
 # #=> 1 PS - PowerShell Gallery
-# Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
-# Set-PSRepository PSGallery -InstallationPolicy trusted
+# Set-PSResouRcerepository PSGallery -trusted; Get-PSResourceRepository
 
 # #=> 1 WPS - PowerShell Gallery
-# set-psresourcerepository psgallery -trusted; Get-PSResourceRepository
+# Set-PSResouRcerepository PSGallery -trusted; Get-PSResourceRepository
 
-#=> 2 WPS - modules
+#=> 2 PS/WPS - modules
 # 'BurntToast'; isres burnttoast
 'Posh-Git'; isres posh-git
 'PowerColorLS'; isres powercolorls

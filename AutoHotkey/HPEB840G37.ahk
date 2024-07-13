@@ -1,7 +1,7 @@
 
-; Joseph Harriott - AutoHotkey - mer 19 juin 2024
+; Joseph Harriott - AutoHotkey - sam 13 juil 2024
 
-; $MSWin10\AutoHotkey\1920x1080.ahk
+; $MSWin10\AutoHotkey\HPEB840G37.ahk
 
 ; Reload if changed!
 
@@ -12,6 +12,7 @@
 
 ; 1920x1080 screen
 #^e::{
+	; WinMaximize "HP Smart ahk_exe ApplicationFrameHost.exe"
 	WinActivate "HP Smart ahk_exe ApplicationFrameHost.exe"
     MouseMove 790,700
 	Click ; on Enregister

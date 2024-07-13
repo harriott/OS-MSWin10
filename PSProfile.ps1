@@ -2,7 +2,7 @@
 # Joseph Harriott, mar 07 mai 2024
 
 # $MSWin10\PSProfile.ps1
-#  symlinked in  $MSWin10\mb\symlinks.ps1
+#  symlinked in  $MSWin10\mb\neededNodes-1-PSProfile.ps1
 #  called by  $MSWin10\PSProfileStub.ps1
 
 sal seco set-content  # because  sc  is overridden by  sc.exe
@@ -430,10 +430,10 @@ Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 # if ( $PSEdition  -eq 'Core'    -and ( test-path "~\Documents\PowerShell\Modules\PSFzf"        ) ) { $mPSFzf=1 }
 # if ( $PSEdition  -eq 'Desktop' -and ( test-path "~\Documents\WindowsPowerShell\Modules\PSFzf" ) ) { $mPSFzf=1 }
 # if ( $mPSFzf ) {
-# if ( test-path "$HADL\Microsoft\WinGet\Links\fzf.exe" ) {
+if ( ( test-path "$HADL\Microsoft\WinGet\Links\fzf.exe" ) -or ( test-path "$HADL\Microsoft\WinGet\Packages\junegunn.fzf_Microsoft.Winget.Source_8wekyb3d8bbwe\fzf.exe" ) ) {
   Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
   Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
-# }
+}
 
 #=> 1 place-dependent
 if ( test-path $ITscc )

@@ -5,6 +5,14 @@ $machBld\Win10ProBuild.txt
 HP EliteBook 840 G3 barcoded PC117860 (labelled BC PNB 18 by last owner) = HPEB840G38
 (jnbh@live.co.uk)
 # build - parallel
+## Everything
+winget add voidtools.Everything
+Ctrl+P ( = Tools > Options ) > General >
+  UI > [ Démarrer sur un clic simple > on  Résultats >
+    Autoriser le clic double dans la colonne des chemin ]
+  Polices and couleurs >
+    Couleur d'avant plan > Personnalisé > selected a white
+    Couleur d'arrière plan > Personnalisé > selected a olive
 ## File Explorer
 Affichage > Options > Affichage >
   [ Afficher l'icône des fichiers sure les miniatures  Afficher la barre d'état ] off-ticked
@@ -50,7 +58,7 @@ win+i > Comptes > Famille et autres utilisateurs > Se connecter via un compte Mi
   then  compte Utilisateur'd somehow disappeared
   confirmed  jharr@ftml.net  for another 6 digit code
   Créer un code confidentiel > Inclure des lettre > cc
-droit clique sur  barre des tâches > Rechercher > Afficher l'icône
+clic droit sur  barre des tâches > Rechercher > Afficher l'icône
 Menu > [ Disnéy  Microsoft 365 ] > clic droit > Désintaller
 Menu > Système Windows >
   [ Invite de Commandes  Outils d'administration  Panneau de configuration ] > Pinned to Start
@@ -142,7 +150,8 @@ ctrl+, (= Settings)
     Appearance > [ Text > Font size > 9  Transparency > Background opacity > 79% ] > Save
     Starting directory >
       (%USERPROFILE%, opening at launch on  C\:Users\jharr, then subequently on  C\:Users\jhbh) .
-      still opening at launch on  C\:Users\jharr...
+      still opening at launch on  C\:Users\jharr
+      - way later realised this was set in  $MSWin10\AutoHotkey\1920x1080.ahk
   Windows PowerShell > Appearance >
     [ Text > Font size > 9  Transparency > Background opacity > 82% ] > Save
 ~\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
@@ -212,9 +221,64 @@ sl $MSWin10\mb  for
   WPS> . neededNodes-0-PSProfileStub.ps1
   AWPS> . neededNodes-1-PSProfile.ps1
 ## WPS modules
-
 AWPS> . modules.ps1 (tweaked) > (fournisseur Nuget) o
+## fzf from winget
+winget add fzf  then  where.exe fzf  reports  C:\Users\jnbh\AppData\Local\Microsoft\WinGet\Packages\junegunn.fzf_Microsoft.Winget.Source_8wekyb3d8bbwe\fzf.exe
+## gVim v9.1.0514
+winget add vim.vim -l C:\Vim
+## neededNodes-2
+AWPS> . $MSWin10\mb\neededNodes-2.ps1
+## Git
+winget add git.git -l C:\Git
+## AutoHotkey
+winget add AutoHotkey.AutoHotkey
+Shortcut to  $MSWin10\AutoHotkey\1920x1080.ahk  moved into
+  "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
+## 7-Zip
+winget add 7zip.7zip  arrived in  $CPF\7-Zip, and not in path...
+## Dropbox
+D:\Dropbox  somehow recovered its big blue icon
+### DokuWiki dubious ownership
+$DWp> git grep Everything
+  fatal: detected dubious ownership in repository at 'D:/Dropbox/JH/core/IT_stack/DokuWiki'
+  'D:/Dropbox/JH/core/IT_stack/DokuWiki' is owned by:
+    (inconvertible) (S-1-5-21-3441228617-810572567-2332938472-1001)
+  but the current user is:
+    HPEB840G38/jnbh (S-1-5-21-332200848-1951021372-1013214746-1001)
+  To add an exception for this directory, call:
+    git config --global --add safe.directory D:/Dropbox/JH/core/IT_stack/DokuWiki
+#### fix
+EdF > $ITstack > DokuWiki > Propriétés > Sécurité > Avancé > Modifier > Avancé > Rechercher > jnbh Jo (jnbh@live.co.uk) > OK > OK > Remplacer le propiétaires des sous-conteneurs et des objets  on-ticked > OK > OK
+## 7-Zip fixed
+& $CPF\7-Zip\7z.exe  is clumsy, so  winget rm 7zip.7zip  for  winget add 7zip.7zip -l C:\7-Zip
+### add to path
+fixed ; at end of path
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = "$oldPathCU;C:\7-Zip"; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+rebooted to get  7z  working in  WPS
+## GitHub keys
+sl $Enc  to extract  actions.ps1  to extract  $Enc\Secure1  for
+  & $MSWin10\mb\neededNodes-3-GitHubKeys.ps1
+## WT
+winget add 9N0DX20HK701 > y
+## switched to  $MSWin10\AutoHotkey\HPEB840G38.ahk
+Which would've obviated my need to reinstall Windows...
+## WT configure
+chcp  reports  CodePage 850
+ctrl+, (= Paramètres)
+  Azure Cloud Shell > Masquez le profil de la liste déroulante > Activé
+  Interaction > M'avertir lorsque je ferme plusieurs onglets  off-slid
+  PowerShell > Répertoire de démarrage > . > Apparence >
+    [ Text > Taille de police > 9  Transparence > Opacité de l'arrière plan > 83% ] > Enregistrer
+  Windows PowerShell > Répertoire de démarrage > . > Apparence >
+    [ Text > Taille de police > 9  Transparence > Opacité de l'arrière plan > 84% ] > Enregistrer
+$HADL\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
+## PS modules
+PS> & $MSwin10\mb\modules.ps1 (tweaked)
 ## waiting
+### $MSWin10 ownership
+PS> takeown /f $MSWin10 /r /d o
 # physical configuration
 1366x768 screen
 Intel Core i5-6300U

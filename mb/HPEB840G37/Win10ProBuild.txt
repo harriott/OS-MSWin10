@@ -725,6 +725,9 @@ winget add sqlite.sqlite
   Alias de ligne de commande ajouté : "sqlite3_analyzer"
   Alias de ligne de commande ajouté : "sqlite3"
 didn't seem to install a  sqlite3.dll
+## reduce C:
+MiniTool Partition Wizard Free v12.8
+  right-clicked on C: > Déplacer/redimensionner > Taille de la partition > 118.15
 ## Edge reconfigure
 annoying process
 ## FFmpeg v7.0.1 path
@@ -741,29 +744,33 @@ Paramètres > Périphériques > Imprimantes et scanners > Ajouter > DIRECT-8b-EP
   Ajouter l'appareil (Connexion) > Pilote indisponible  so  epson637525eu.exe (= Pilote v3.01.00) >
   Installation des utilitaires > Connexion réseau  failed, so  Connexion USB  then unplugged for
   Paramètres > Périphériques > Imprimantes et scanners > Ajouter > DIRECT-8b-EPSON-ET-5170 Series >
+  Ajouter l'appareil (Connexion) > still Pilote indisponible  so  winget add 9WZDNCRFJ4P8
+## switched back to  $MSWin10\AutoHotkey\HPEB840G37.ahk
+because different users
+## Epson EcoTank ET-5170
+Applications et fonctionnalités > Epson Software Updater > Désinstaller
   Ajouter l'appareil (Connexion) > still Pilote indisponible  so
-  winget add 9WZDNCRFJ4P8winget add 9WZDNCRFJ4P8
-
-    epson661623eu.exe (= Epson Software updater v4.6.7.0)
-
-### Universal Print Driver v2.72.04
-### Driver v3.01.00
-epson637525eu.exe - where the fuck did it go?
-### WiFi
-while connected to  cafezoide, Settings > Printers & scanners > Add a printer or scanner
-  got me  EPSONFE86A3 (ET-5170 Series) then needed to accept installation of
-  Epson Printer Connection Checker  then got into a cycle so rebooted and ran it again
+Applications et fonctionnalités > Désinstallation de l'imprimante EPSON ET-5170 Series >
+  Désinstaller > Microsoft IPP Class Driver > OK > Oui > OK
+  Ajouter l'appareil (Connexion) > still Pilote indisponible
+Applications et fonctionnalités > Epson Print and Scan > Désinstaller
+  Ajouter l'appareil (Connexion) > still Pilote indisponible
+epson637525eu.exe failed to find on LAN or USB, so Manuel / USB002 (EPSONET-5170 Series FAX)
+Epson Printer Connection Checker  can't connect by LAN, Wi-Fi, or USB...
+EPSON Status Monitor 3: EPSON ET-5170 Series  can't connnect by LAN or Wi-Fi
+Epson Print and Scan Installer.exe  doesn't find the printer...
+somehow got to  Install Navi [ET-5170 Series]  which took ages to install some stuff > Wi-Fi
+  downloaded EpsonNet Setup  which eventually failed to connect
 ## waiting
 Mise à jour facultatives
 TexLab
-### reduce C:
-MiniTool Partition Wizard Free v12.8
-  right-clicked on C: > Déplacer/redimensionner > Taille de la partition > 118.15
+### Epson Software updater v4.6.7.0
+epson661623eu.exe
 # build - WT 0 instalL
 https://www.microsoft.com/en-gb/p/windows-terminal-preview/9n0dx20hk701
 # build - WT 1 settings
 chcp  reports  CodePage 850
-ctrl+, (= Settings)
+ctrl+, (= Paramètres)
   Azure Cloud Shell > Masquez le profil de la liste déroulante > Activé
   Démarrage > Profil par défaut > PowerShell
   Interaction > M'avertir lorsque je ferme plusieurs onglets  off-slid
