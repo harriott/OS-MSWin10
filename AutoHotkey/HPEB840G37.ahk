@@ -1,5 +1,5 @@
 
-; Joseph Harriott - AutoHotkey - sam 13 juil 2024
+; Joseph Harriott - AutoHotkey - dim 14 juil 2024
 
 ; $MSWin10\AutoHotkey\HPEB840G37.ahk
 
@@ -9,6 +9,9 @@
 ;  "$HADR\Microsoft\Windows\Start Menu\Programs\Startup"
 
 ; environment variables don't work
+
+#!a::Run "C:\Users\jharr\AppData\Roaming\AltSnap\AltSnap.exe" ; win+alt+a - open AltSnap
+#!p::Run "wt -d C:\Users\jharr" ; win+alt+p - PowerShell opened on $home
 
 ; 1920x1080 screen
 #^e::{
@@ -25,6 +28,7 @@
     MouseMove 820,630
     Sleep 1000
 	Click ; on Enregister
+	; WinRestore "HP Smart ahk_exe ApplicationFrameHost.exe"
 } ; win+ctrl+e  after a scan, brings forward and saves as jpg
 #!n::Run "C:\Program Files\Neovide\neovide.exe --grid 109x62" ; win+alt+n - open Neovide
 #!o::Run "wt --pos 9,9 --size 108,69 -d C:\Users\jharr"

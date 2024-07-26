@@ -1,5 +1,5 @@
 
-; Joseph Harriott - AutoHotkey - mer 19 juin 2024
+; Joseph Harriott - AutoHotkey - dim 14 juil 2024
 
 ; $MSWin10\AutoHotkey\HPEB840G36.ahk
 
@@ -9,6 +9,9 @@
 ;  "$HADR\Microsoft\Windows\Start Menu\Programs\Startup"
 
 ; environment variables don't work
+
+#!a::Run "C:\Users\jharr\AppData\Roaming\AltSnap\AltSnap.exe" ; win+alt+a - open AltSnap
+#!p::Run "wt -d C:\Users\jharr" ; win+alt+p - PowerShell opened on $home
 
 ; 1366x768 screen
 #^e::{

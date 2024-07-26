@@ -1,11 +1,12 @@
 # vim: fdl=1:
 
-# Joseph Harriott - lun. 04 mars 2024
+# Joseph Harriott - jeu 18 juil 2024
 
 # run Mozilla Thunderbird safely from profile shared on Dropbox
 # -------------------------------------------------------------
-# for  $MSWin10\AZERTY.ahk
+# for  $MSWin10\AutoHotkey\AZERTY.ahk
 #  APS> ni C:\MT-runSafely.ps1 -itemtype symboliclink -value $MSwin10\Thb\runSafely.ps1 -Force
+#  bat C:\MT-runSafely.ps1
 #  csl C:\MT-runSafely.ps1
 
 # Test this script:
@@ -14,16 +15,18 @@
 #  gc $Drpbx\JH\Thb-dr\linuxlock
 #  pwsh -nop -w minimized -f C:\MT-runSafely.ps1
 
-$Drpbx = "$env:userprofile\Dropbox"
-$Thbshort = "JH\Thb-dr"
-$Thb = "$Drpbx\$Thbshort"
-$lf = "$Thb\linuxlock"
-if ( test-path $lf) {
-  $h = gc $lf
-  toast -AppLogo C:\MT\chrome\icons\default\messengerWindow.ico -Text "? $h > linux > Thunderbird", "Dropbox\$Thbshort"
-}
+$Cn = $Env:Computername
+$Drpbx = "D:\Dropbox"
+$Thb = "$Drpbx\JH\Thb-dr"
+$llf = "$Thb\linuxlock"; if ( test-path $llf ) { $h = gc $llf }
+$Wlf = "$Thb\Win10ProLock"; if ( test-path $Wlf ) { $h = gc $Wlf }
+if ( $h -and $h -ne $Cn ) { toast -AppLogo C:\MT\chrome\icons\default\messengerWindow.ico -Text "Thunderbird", "locked to $h" }
 else {
-  echo $Cn > $Thb\Win10ProLock  # noting that Thunderbird is active here
-  start thunderbird
+  if ( gci -r $Thb | ? Name -match ".+'s conflicted copy .+| \(Copie en conflit de " )
+  { toast -AppLogo C:\MT\chrome\icons\default\messengerWindow.ico -Text "Thunderbird", 'Dropbox conflicts in $Thb' }
+  else {
+    echo $Cn > $Wlf  # noting that Thunderbird is launched here
+    start thunderbird
   }
+}
 

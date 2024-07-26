@@ -1,6 +1,6 @@
 # vim: se fdl=2:
 
-# Joseph Harriott, sam 30 mars 2024
+# Joseph Harriott, mar 23 juil 2024
 
 # $MSWin10\Env.ps1
 #  needed for system build
@@ -17,6 +17,7 @@ $Drpbx = "D:\Dropbox"
     $Cfzd = "$DJH\work-Cz"
       $CzMa = "$Cfzd\manage"
       $CzPeo = "$Cfzd\people"
+        $Copil = "$CzPeo\adherents\FA+Copil"
       $CzPhy = "$Cfzd\PhysicalProperty"
     $core = "$DJH\core"
       $ITstack = "$core\IT_stack"
@@ -32,10 +33,14 @@ $Drpbx = "D:\Dropbox"
           $MSWin10 = "$onGH\OS-MSWin10"
             $machBld = "$MSWin10\mb\$Cn"
             $MSWSL = "$MSWin10\WSL"
-            $OSAB = "$onGH\OS-ArchBuilds"
+          $OSAB = "$onGH\OS-ArchBuilds"
+            $ABjo = "$OSAB/jo"
+              $AjB = "$ABjo/Bash"
+          $OSL = "$onGH\OS-Linux"
           $SPD = "$onGH\FM-MSWin-syncDrives\RoboCopy\$Cn"  # used in  $machBld\PSProfile.ps1
           $vimfiles = "$onGH\vimfiles"
-            $vfvp = "$vimfiles\vim\packs"
+            $vfpa = "$vimfiles\vim\packs"
+            $vfpl = "$vimfiles\vim\plugin"
       $TeNo = "$core\TextNotes"  # used in  $TeNo
     $DaLi = "$DJH\Jo-now\DailyLife"
     $ess = "$DJH\Jo-now\essential"

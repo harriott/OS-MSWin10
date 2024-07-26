@@ -5,6 +5,20 @@ $machBld\Win10ProBuild.txt
 HP EliteBook 840 G3 barcoded PC117860 (labelled BC PNB 18 by last owner) = HPEB840G38
 (jnbh@live.co.uk)
 # build - parallel
+Gestionnaire de périphériques > Cartes graphiques > Intel(R) HD Graphics 520
+  double-clicked to discover  Pilote > 31.0.101.2111
+## AltSnap
+winget add altsnap
+  APS> schtasks /create /f /tn "AltSnap onlogon" /tr "$Env:AppData\AltSnap\AltSnap.exe" /sc onlogon /rl highest
+  PS> $ASi="~\AppData\Roaming\AltSnap\AltSnap.ini"; (gc $ASi).replace('AutoSnap=2','AutoSnap=0') | seco -encoding utf8 $ASi
+rebooted to get it working
+## code-minimap
+cpi $ITscc\forMSWin\code-minimap-v0.6.7-x86_64-pc-windows-msvc\code-minimap.exe $HADL\Microsoft\WindowsApps
+## Disk Usage
+cpi "$ITscc\forMSWin\Disk Usage\du64.exe" $HADL\Microsoft\WindowsApps
+du64 -l 1  to accept the license
+## Edge
+see  $CrPl/networking/browsers/browsers.txt
 ## Everything
 winget add voidtools.Everything
 Ctrl+P ( = Tools > Options ) > General >
@@ -24,6 +38,16 @@ Affichage > Options > Affichage >
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
 $newPathCU = $oldPathCU -replace ';$', ''; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
+## fonts DejaVu
+$ITscc\forMSWin\fonts-dejavu-fonts-ttf-2.37\ttf > selected all, right clicked on to Install
+  arrived in  ~\AppData\Local\Microsoft\Windows\Fonts
+## fonts for Pandoc - Noto Sans CJK Regulars
+$ITstack\copied-code\forMSWin\fonts-NotoHinted
+MSWin\fonts-copied\NotoHinted > selected all, right clicked on to Install
+  arrived in  $HADL\Microsoft\Windows\Fonts
+## Gestionnaire de tâches
+ctrl+shift+esc > Plus de détails > Options > Masquer l'icône réduite
+hidden icon dragged to taskbar
 ## Paramètres
 Comptes > Famille et autres utilisateurs > [ deauram@outlook.com  jharrio@outlook.com ] >
   Autoriser
@@ -47,6 +71,25 @@ Alimentation et mise en veille > Jamais, Jamais, 10 minutes, Jamais
   Résolution de l'écran > 1920 x 1080 (recommandé)
 Multitâche > Alt + Tab > Uniquement les fenêtres ouvertes
 Stockage (L'Assistant de stockage) > Activé
+## Process Explorer
+start $ITscc\forMSWin\ProcessExplorer\procexp64.exe > Agree
+  alt+o (= Options) > i (= Tray Icons) > p (= Physical Memory History)
+  alt+o (= Options) > h (= Hide When Minimized)
+  alt+o (= Options) > l (= Run At Logon)
+## Thunderbird
+winget add mozilla.thunderbird -h -l C:\MT
+ran it to get  $HADR\Thunderbird\Profiles\yqi3hpui.default-esr
+emptied  Profiles
+in $HADR\Thunderbird\profiles.ini
+  removed [Profile1]
+  [Profile0] section:
+    Name=default-esr
+    IsRelative=0
+    Path=D:\Dropbox\JH\Thb-dr
+  [Install5CC7CE6A1DCFB43B]
+    Default=D:\Dropbox\JH\Thb-dr
+    Locked=1
+ran it for (default-release) Démarrer Thunderbird)
 # build - sequential build
 Paramètres >
   Mise à jour et sécurité > Activation > Windows est activé à l'aide d'une license numérique
@@ -144,6 +187,7 @@ rebooted for  fzf.vim  to work only occasionally, still not found by  PSFzf
 winget add 9N0DX20HK701 > y
 chcp  reports  CodePage 850
 ctrl+, (= Settings)
+  Actions > Basculer en mode plein écran > binned
   Azure Cloud Shell > Hide profile from dropdown > On > Save
   Interaction > Warn when closing more than one tab > Off
   PowerShell >
@@ -276,14 +320,173 @@ ctrl+, (= Paramètres)
 $HADL\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
 ## PS modules
 PS> & $MSwin10\mb\modules.ps1 (tweaked)
+## Git Bash
+  WARNING: Found ~/.bashrc but no ~/.bash_profile, ~/.bash_login or ~/.profile.
+  This looks like an incorrect setup.
+  A ~/.bash_profile that loads ~/.bashrc will be created for you.
+### obligatory test of GitHub SSH connection
+ssh -T git@github.com
+  The authenticity of host 'github.com (64:ff9b::8c52:7903)' can't be established.
+  ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+  This key is not known by any other names.
+  Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+  Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+  Hi harriott! You've successfully authenticated, but GitHub does not provide shell access.
+got me  $HOME\.ssh\known_hosts
+## LSD
+winget add lsd
+fixed ; at end of path
+## BgInfo
+winget add BgInfo
+fixed ; at end of path
+BgInfo > Agree
+ran it, font down to 8 and Grey 50%, positioned top right
+## sharkdp.fd
+winget add sharkdp.fd
+fixed ; at end of path
+## unwanted HP Hotkey Support popup
+empty popup appearing each time I try to change the screen brightness
+Services > HP Hotkey UWP Service > Type de démarrage > (was Automatique) Désactivé
+rebooted
+## gokcehan's lf
+winget add gokcehan.lf
+fixed ; at end of path
+## Edge
+annoying reconfigure process
+F12 (= DevTools) to clear away question
+## Neovim
+winget add Neovim.Neovim  rebooted to get  nvim  working
+## $MSWin10 ownership
+APS> takeown /f $MSWin10 /r /d o
+## CMake
+winget add Kitware.CMake
+## Visual Studio Build Tools 2022 to make  telescope-fzf-native.nvim
+winget add Microsoft.VisualStudio.2022.BuildTools
+## $vimfiles ownership
+APS> takeown /f $vimfiles /r /d o
+## $OSAB ownership
+APS> takeown /f $OSAB /r /d o
+## KeePassXC
+winget add KeePassXCTeam.KeePassXC
+ran it for  Oui > Ouvrir une base de données > D:\Dropbox\JH\core\encrypted\JH.kdbx
+ctrl+, (= Outils > Paramètres) > [
+  Général > Démarrage > Lancer automatiquement KeePassXC au démarrage du système  off
+  Intégration aux navigateurs > Activer > Edge ]
+restarted Edge > HPEB840G38-Edge
+## LibreOffice
+winget add libreoffice
+ran it to build  ~\AppData\Roaming\LibreOffice\4
+$MSwin10\mb\LibreOfficeConfig.ps1
+## Python 3.12
+winget add python.python.3.12
+got it to  C:\Users\jnbh\AppData\Local\Programs\Python\Python312\python.exe
+new instance of PowerShell for  py -V
+## Rust for ripgrep
+(once Visual Studio components) winget add rustup
+## Idc > Propriétés
+Coleurs > 86%  Police > 14
+## ripgrep
+(once Rust) winget add burntsushi.ripgrep.msvc
+fixed ; at end of path
+## Lua
+cp D:\Dropbox\JH\core\IT_stack\copied-code\forMSWin\LuaBinaries\lua-5.4.2_Win64_bin C:\Lua -recurse
+### add to path
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = "$oldPathCU;C:\Lua"; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+(new PowerShell instance) lua54 -v
+### LuaRocks
+cp D:\Dropbox\JH\core\IT_stack\copied-code\forMSWin\luarocks-3.11.1-windows-64\* C:\Lua
+## Zig
+(for  tree-sitter) winget add zig.zig  took ages to unpack
+fixed ; at end of path
+zig version
+## eza
+winget add eza-community.eza
+fixed ; at end of path
+## Sumatra PDF
+winget add SumatraPDF -h -l C:\SumatraPDF
+## Node.js
+winget add OpenJS.NodeJS
+Node.js  icon pulled over to Start Menu, run for (right-click) console.log('Hello')
+  ls $CPF\nodejs\node.exe
+  $CPF\nodejs\node_modules\corepack\README.md
+  $CPF\nodejs\node_modules\npm\README.md
+(new PS) npm prefix -g  reports  C:\Users\jnbh\AppData\Roaming\npm
+npm ls -g  reports what's in  $HADR\npm
+## Node.js - npx
+npx cowsay goodbye!
+g C:\Users\jnbh\AppData\Local\npm-cache\_npx\8f497369b2d6166e\node_modules
+g $HADL\npm-cache\_npx\8f497369b2d6166e\node_modules  surprisingly populated
+## Neovide
+winget add neovide -l C:\Vim  but it went to  $CPF\Neovide\neovide.exe
+## Google Chrome
+winget add Google.Chrome.EXE
+## $CrPl ownership
+APS> takeown /f $CrPl /r /d o
+## FastStone Image Viewer
+winget add FastStone.Viewer
+ran it for Esc to offtick
+f12 (= Paramètres) > Aperçu > [
+  En boucle  Rotation Auto par tag orientation EXIF > off  Confirmer la reéctirure des fichiers
+  Lancer les images associées > dans une Fenêtre  Unité par défaut > cm ]
+$HADL\FastStone\FSIV\FSSettings.db
+## $TeNo ownership
+APS> takeown /f $TeNo /r /d o
+## brightness
+fn+echap, fn+f5/f6  not working
+### BIOS update
+sp152405.exe (unpacked to  C:\SWSetup\SP152405) > Sauvegarde > Suivant >
+  (C:\SWSetup\SP152405  changed to) D:\SWSetup-SP152405-backup, which had to be made > Suivant
+  (got me  N75_0157.bin)
+sp152405.exe (unpacked again to  C:\SWSetup\SP152405) > Mise à jour > Suivant > Redémarrer >
+  System BIOS Update  took a while then rebooted to  System BIOS Update  again, then rebooted
+appeared in  Gestionnaire de périphériques > Microprogrammes
+fn+echap, fn+f5/f6  still not working
+## PowerShell v7.4.0
+PowerShell-7.4.4-win-x64.msi > [ Add 'Open here' context menu to Explorer
+  Add 'Run with PowerShell 7' context menu for PowerShell files ] > Next > Next > UAC > Yes
+  failed on something not closed enough, so  PowerShell-7.4.4-win-x64.msi > Repair > Repair
+## Intel Video Driver and Control Panel System Software Manager 27.20.100.9416 Rev.W
+sp115295.exe (unpacked again to  C:\SWSetup\SP115295) >
+  Erreur: Ce système d'exploitation n'est pas pris en charge
+## Utilitaire et pilote d'installation du chipset Intel System Software Manager
+sp101370.exe > Suivant > Suivant (unpacked to  C:\SWSetup\SP101370)
+  "HP Softpaq Wrapper Completed" > Terminer
+precautionary reboot, then  C:\SWSetup\SP101370\InstallCmdWrapper.exe  achieved nothing...
+## Assistance relative aux raccourcis clavier HP - UWP System Software Manager
+sp140913.exe (unpacked to  C:\SWSetup\SP140913)
+## Intel Serial IO Driver System Software Manager 30.100.1724.2 Rev.A
+sp82020.exe (unpacked to  C:\SWSETUP\SP82020)
+## Mises à jour système essentielles System Software Manager 11.4 Rev.2
+sp101974.exe (unpacked to  C:\SWSetup\SP101974) > ... > redémarré
+## pip v24.1.2
+pip list  advises  py -m pip install -U pip
+## pipx
+py -m pip install --user pipx
+  Installing collected packages: platformdirs, packaging, colorama, argcomplete, click, userpath, pipx
+    WARNING: The script userpath.exe is installed in 'C:\Users\jnbh\AppData\Roaming\Python\Python312\Scripts' which is not on PATH.
+    Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+    WARNING: The script pipx.exe is installed in 'C:\Users\jnbh\AppData\Roaming\Python\Python312\Scripts' which is not on PATH.
+    Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  Successfully installed argcomplete-3.4.0 click-8.1.7 colorama-0.4.6 packaging-24.1 pipx-1.6.0 platformdirs-4.2.2 userpath-1.9.2
+& $HADR\Python\Python312\Scripts\pipx.exe ensurepath
+  Success! Added C:\Users\jnbh\AppData\Roaming\Python\Python312\Scripts to the PATH environment variable.
+  Success! Added C:\Users\jnbh\.local\bin to the PATH environment variable.
+  Consider adding shell completions for pipx. Run 'pipx completions' for instructions.
+## pynvim (for neovim)
+(needed for python packages)  pip install pynvim
+## less-Windows
+winget install jftuga.less
+fixed ; at end of path
+## WSL
+wsl -l -o  still doesn't list Arch, so  
 ## waiting
-### $MSWin10 ownership
-PS> takeown /f $MSWin10 /r /d o
 # physical configuration
 1366x768 screen
 Intel Core i5-6300U
 ## storage
-(essential) M.2 SSD: 119Go
+(essential) M.2 SSD: 119Go LITEON CV1-8B128-HP
 (optional) 2.5" SSD: BX500
 ## Startup Menu
 hold  esc  at start to get into  Startup Menu

@@ -2,12 +2,14 @@ vim: ft=build:
 
 $machBld/Win10ProBuild.txt
 
+fn+echap (= HP System Information) long time to save to  $machLg/o7o-HPSystemInformation.nfo
 HP EliteBook 840 G3 barcoded PC117862 (labelled BC PNB 17 by last owner) = HPEB840G37
 (jharrio@outlook.com)
 # build - parallel
 Google Chrome somehow there
 Gestionnaire de périphériques > Cartes graphiques > Intel(R) HD Graphics 520
   double-clicked to discover  Pilote > 31.0.101.2111
+Intel(R) HD Graphics 520 v31.0.101.2111 with 1Go memory
 Notepad++ > alt+p > Préférences... > Divers > Surveillance de l'état des fichiers >
   Mise à jour sans alerte
   Aller à la dernière ligne après mise à jour
@@ -29,6 +31,8 @@ Paramètres > [ Personnalisation > Arrière-plan > Couleur unie
 Système > Écran > Mise à l'échelle et disposition > Modifier la taille du texte des applications et d'autres éléments > 100%
 ## Disk Usage
 du64.exe  copied into ~\AppData\Local\Microsoft\WindowsApps
+## Edge
+see  $CrPl/networking/browsers/browsers.txt
 ## Everything
 Ctrl+P ( = Tools > Options ) > General >
   UI > [ Démarrer sur un clic simple > on  Résultats >
@@ -96,15 +100,6 @@ winget add RubyInstallerTeam.Ruby.3.2
 pinned to Start
 ## sharkdp/bat
 winget add sharkdp.bat
-## Thunderbird
-winget add mozilla.thunderbird -h -l C:\MT
-ran it to get  ~\AppData\Roaming\Thunderbird\Profiles\q6qwq868.default-release
-  which I emptied, and then edited  ~\AppData\Roaming\Thunderbird\profiles.ini
-    [Profile0] section:
-      Name=default-release
-      IsRelative=0
-      Path=C:\Users\jharr\Dropbox\JH\Thb-dr
-ran it for (default-release) Démarrer Thunderbird)
 ## QuickLook
 winget add 9NV4BS3L1H4S --accept-package-agreements
 # build - sequential
@@ -232,8 +227,6 @@ SumatraPDF-3.5.2-64-install.exe >
 in Microsoft Store > Installer
 Se connecter  found  HPA22F0E (ENVY 5530)
   Récupération des informations sur le pilote d'impression  took a while
-## Edge
-Paramètres > Encadré > Personnaliser la barre latérale > Toujours afficher la barre latérale  off
 ## AutoHotkey v2.0.11
 AutoHotkey_2.0.11_setup.exe
 Shortcut to  $MSwin10\mb-HPEB840G362\user\jo.ahk  moved into
@@ -247,7 +240,7 @@ ran it for Esc to offtick
 f12 (= Paramètres) > Aperçu >
   [ En boucle  Rotation Auto par tag orientation EXIF > off  Unité par défaut > cm ]
 ### Settings
-replaced  PaperSizeList  settings in  ~\AppData\Roaming\FastStone\FSIV\FSSettings.db
+replaced  PaperSizeList  settings in  $HADR\FastStone\FSIV\FSSettings.db
   with those in  $ITstack\MSWin\FSSettings-PaperSizeList.db
 ## Everything v1.4.1.1024
 Everything-1.4.1.1024.x64-Setup.exe > clicked through > UAC
@@ -460,7 +453,7 @@ apt update
   E: Unable to lock directory /var/lib/apt/lists/
   W: Problem unlinking the file /var/cache/apt/pkgcache.bin - RemoveCaches (13: Permission denied)
   W: Problem unlinking the file /var/cache/apt/srcpkgcache.bin - RemoveCaches (13: Permission denied)
-sudo apt update  reported 84 so  
+sudo apt update  reported 84 so  ...
 sudo apt upgrade
 ## sharkdp.fd
 winget add sharkdp.fd
@@ -568,7 +561,7 @@ reboot  for  winget rm gokcehan.lf  (should've tried update)  still in  $env:pat
 winget add gokcehan.lf
   Alias de ligne de commande ajouté : "lf"
 ## Neovim
-winget add Neovim.Neovim  rebooted to get  nvim  working
+winget add Neovim.Neovim  rebooted   nvim  for Lazy installs
 ## pipx
 py -m pip install --user pipx
   Installing collected packages: platformdirs, packaging, colorama, argcomplete, click, userpath, pipx
@@ -717,6 +710,15 @@ ran it for  Assistant de démarrage > Thème > Sombre
 from somewhere, npm i -D -E prettier  not working so  npm un prettier
   (~\AppData\Roaming\npm\node_modules\prettier  still there)
 npm i -g -D -E prettier
+## Thunderbird
+winget add mozilla.thunderbird -h -l C:\MT
+ran it to get  $HADR\Thunderbird\Profiles\q6qwq868.default-release
+  which I emptied, and then edited  $HADR\Thunderbird\profiles.ini
+    [Profile0] section:
+      Name=default-release
+      IsRelative=0
+      Path=C:\Users\jharr\Dropbox\JH\Thb-dr
+ran it for (default-release) Démarrer Thunderbird)
 ## Neovide
 winget add neovide  'C:\Program Files\Neovide\neovide.exe'
 ## SQLite
@@ -730,6 +732,7 @@ MiniTool Partition Wizard Free v12.8
   right-clicked on C: > Déplacer/redimensionner > Taille de la partition > 118.15
 ## Edge reconfigure
 annoying process
+F12 (= DevTools) to clear away question
 ## FFmpeg v7.0.1 path
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
 $newPathCU = $oldPathCU -replace '7.0', '7.0.1'; $newPathCU
@@ -761,16 +764,71 @@ EPSON Status Monitor 3: EPSON ET-5170 Series  can't connnect by LAN or Wi-Fi
 Epson Print and Scan Installer.exe  doesn't find the printer...
 somehow got to  Install Navi [ET-5170 Series]  which took ages to install some stuff > Wi-Fi
   downloaded EpsonNet Setup  which eventually failed to connect
+## Lua from MS fail
+winget add 9WZDNCRDLTZP > y
+  got unusable  $CPF\WindowsApps\2490UnSoft.Lua_1.0.0.0_x64__eqt05ahzs4mk6\Lua.exe
+winget rm 9WZDNCRDLTZP
+winget add 9WZDNCRDLTZP -l C:\Lua > y
+  still got unusable  $CPF\WindowsApps\2490UnSoft.Lua_1.0.0.0_x64__eqt05ahzs4mk6\Lua.exe
+winget rm 9WZDNCRDLTZP
+## Lua
+cp D:\Dropbox\JH\core\IT_stack\copied-code\forMSWin\LuaBinaries\lua-5.4.2_Win64_bin C:\Lua -recurse
+### add to path
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = "$oldPathCU;C:\Lua"; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+lua54 -v
+### LuaRocks
+cp D:\Dropbox\JH\core\IT_stack\copied-code\forMSWin\luarocks-3.11.1-windows-64\* C:\Lua
+## $HADR\Thunderbird cleanup
+polluted with what's normally in  $HADR\Thunderbird\Profiles\xxxxxxxx.default-esr
+Deleted all but  installs.ini, Profiles, profiles.ini
+emptied  Profiles
+in $HADR\Thunderbird\profiles.ini
+  removed [ProfileN] for N > 0
+  [Profile0]
+    Name=default-esr
+    IsRelative=0
+    Path=D:\Dropbox\JH\Thb-dr
+  [Install5CC7CE6A1DCFB43B]
+    Default=D:\Dropbox\JH\Thb-dr
+    Locked=1
+## updating WSL
+PS> wsl -l -o  shows  Ubuntu-24.04
+$ lsb_release -a  reports  Ubuntu 22.04.4 LTS
+sudo apt update && sudo apt upgrade
+  The following packages have been kept back:
+    libldap-2.5-0 libldap-common python3-update-manager update-manager-core
+sudo apt-get install libldap-2.5-0 libldap-common python3-update-manager update-manager-core
+sudo do-release-upgrade  returns  There is no development version of an LTS available.
+sudo apt install plocate  then took ages to initialize the database
+symlink to  $MSWSL\bash_profile  fixed
+### packages
+sudo apt install fd-find fzf highlight nnn ranger ripgrep zoxide
+sudo apt remove zoxide
+#### Samokovarov's jump
+sudo snap install jump
+#### tmux
+sudo apt install tmux
+bash $MSWSL/bs-symlinks.sh
+#### notify-send
+sudo apt install libnotify-bin
+  but  notify-send -u critical "test of critical notification"
+    gets "Could not connect: No such file or directory"
 ## waiting
 Mise à jour facultatives
-TexLab
 ### Epson Software updater v4.6.7.0
 epson661623eu.exe
+### Zig
+(for  tree-sitter) winget add zig.zig  took ages to unpack
+fixed ; at end of path
+zig version
 # build - WT 0 instalL
 https://www.microsoft.com/en-gb/p/windows-terminal-preview/9n0dx20hk701
 # build - WT 1 settings
 chcp  reports  CodePage 850
 ctrl+, (= Paramètres)
+  Actions > Basculer en mode plein écran > binned
   Azure Cloud Shell > Masquez le profil de la liste déroulante > Activé
   Démarrage > Profil par défaut > PowerShell
   Interaction > M'avertir lorsque je ferme plusieurs onglets  off-slid

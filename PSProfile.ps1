@@ -117,6 +117,8 @@ function chco {
 
 function tit { ri "*.aux"; ri "*.log" }  # tidy tex = clear away TeX ancillary files
 
+#   if ( ! ( test-path 'dir' ) ) { ni -name 'dir' -type directory }
+
 #==> investigations
 ipmo PowerColorLS; sal p PowerColorLS
 
@@ -465,7 +467,6 @@ function dcc0 {
   $dts = (Get-Date).ToString("yyMMdd-HHmmss")
   Set-Variable -scope 1 -Name 'DropboxConflictedLog' -Value "$Drpbx\conflicted\$dts.log"
   "scanning for conflicted copies in $Drpbx"
-  # $all = gci -r | ? Name -match ".+'s conflicted copy .+" | %{echo $_.fullname}
   $all = gci -r | ? Name -match ".+'s conflicted copy .+| \(Copie en conflit de " | %{echo $_.fullname}
   $new = $all | ? { $_ -notmatch '.*\\Dropbox\\conflicted' }
   'vim: nowrap:' > $DropboxConflictedLog
