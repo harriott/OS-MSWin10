@@ -352,7 +352,7 @@ function all72 {
   }
 
 #=> 0 internetworking
-function cc {
+function cico {
   $co = (Invoke-WebRequest http://ifconfig.co/country).Content.replace("`n",'')
   $ci = (Invoke-WebRequest http://ifconfig.co/city).Content.replace("`n",'')
   if ( $ci ) { "$ci, $co" } else { "$co" }

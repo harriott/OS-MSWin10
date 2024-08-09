@@ -1,8 +1,8 @@
 # vim: set ft=sh:
 
-# Joseph Harriott - Mon 23 May 2016
-# Git for Windows .bashrc
-# source ~/.bashrc if you've changed something here...
+# Joseph Harriott - ven 09 août 2024
+# Git for Windows  ~\.bashrc
+# source $MSWin10\bashrc ($MSWin10\mb\neededNodes-2.ps1) if you've changed something here...
 
 set -o vi
 

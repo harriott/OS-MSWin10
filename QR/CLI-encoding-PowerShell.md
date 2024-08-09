@@ -334,6 +334,7 @@ prefer `&` where possible
     compare-module | where updateneeded | foreach { update-module $_.name }  # slow but reliable
 
 # PSScriptTools
+    gal cc  # Copy-Command
     Get-MyAlias  # limited to  PSScriptTools
     Get-DirectoryInfo  # alias  dw
     Get-MyVariable

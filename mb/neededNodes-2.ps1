@@ -64,8 +64,8 @@ syli $vimfiles/nvim/lua              $nvim/lua
 syli $vimfiles/vim/packs/packs-colo  $nvim/pack/colo
 syli $vimfiles/vim/packs/packs-cp    $nvim/pack/cp
 syli $vimfiles/vim/packs/packs-unix  $nvim/pack/unix
-syli $vfpl/packs.vim  $nvim/plugin/packs.vim
-syli $vfpl/plugin.vim $nvim/plugin/plugin.vim
+syli $vfv/plugin/packs.vim           $nvim/plugin/packs.vim
+syli $vfv/plugin/plugin.vim          $nvim/plugin/plugin.vim
 syli $vimfiles/vim/spell             $nvim/spell
 syli $vimfiles/vim/syntax            $nvim/syntax
 syli $vimfiles/vim/thesaurus         $nvim/thesaurus
@@ -86,10 +86,10 @@ syli $vimfiles/vim/thesaurus         $nvim/thesaurus
 # syli $vimfiles/vim/packs/packs-cp       ~/vimfiles/pack/cp
 # syli $vimfiles/vim/packs/packs-unix     ~/vimfiles/pack/unix
 # syli $vimfiles/vim/packs/packs-win64    ~/vimfiles/pack/win64
-# syli $vfpl/fzf           ~/vimfiles/plugin/fzf
-# syli $vfpl/packs.vim     ~/vimfiles/plugin/packs.vim
-# syli $vfpl/packsVim.vim  ~/vimfiles/plugin/packsVim.vim
-# syli $vfpl/plugin.vim    ~/vimfiles/plugin/plugin.vim
+# syli $vfv/plugin/fzf           ~/vimfiles/plugin/fzf
+# syli $vfv/plugin/packs.vim     ~/vimfiles/plugin/packs.vim
+# syli $vfv/plugin/packsVim.vim  ~/vimfiles/plugin/packsVim.vim
+# syli $vfv/plugin/plugin.vim    ~/vimfiles/plugin/plugin.vim
 # syli $vimfiles/vim/spell                ~/vimfiles/spell
 # syli $vimfiles/vim/syntax               ~/vimfiles/syntax
 # syli $vimfiles/vim/thesaurus            ~/vimfiles/thesaurus
@@ -108,7 +108,7 @@ syli $vimfiles/vim/thesaurus         $nvim/thesaurus
 # # syli $vimfiles/vim/packs/packs-colo     ~/vimfiles/pack/colo
 # # syli $vimfiles/vim/packs/packs-cp       ~/vimfiles/pack/cp
 # # syli $vimfiles/vim/packs/packs-unix     ~/vimfiles/pack/unix
-# # syli $vfpl/fzf           ~/vimfiles/plugin/fzf
+# # syli $vfv/plugin/fzf           ~/vimfiles/plugin/fzf
 # # syli $vimfiles/vim/spell                ~/vimfiles/spell
 # # syli $vimfiles/vim/syntax               ~/vimfiles/syntax
 # # syli $vimfiles/vim/thesaurus            ~/vimfiles/thesaurus

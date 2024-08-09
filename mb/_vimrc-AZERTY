@@ -11,6 +11,7 @@
 " AZERTY
 " let mapleader = 'ù' " comment out if  CapsLock has been mapped to  \  in  $MSWin10\AZERTY.ahk
 nnoremap ! /
+nnoremap q! q/
 
 ""> 1 pull in paths
 source $HOME\vimfiles\Win10Paths.vim  " $vimfiles\vim\enter\Win10Paths.vim

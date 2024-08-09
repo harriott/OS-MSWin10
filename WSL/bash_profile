@@ -39,5 +39,5 @@ export Drpbx=/mnt/d/Dropbox
 
 #=> 1 bashrc
 source $OSL/export-jo
-source ~/.bashrc  # works in  tmux
+source ~/.bashrc  # works in  tmux ($MSWSL/bashrc)
 

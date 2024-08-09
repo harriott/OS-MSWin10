@@ -6,6 +6,7 @@
 
 #  also there is  \\wsl$\Ubuntu\etc\profile
 
+alias fe='pwsh.exe -nop -c start .'  # File Explorer here
 alias u=tmux
 source $OSL/bashrc-console-fm
 source $OSL/bashrc-generic

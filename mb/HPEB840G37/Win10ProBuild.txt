@@ -48,6 +48,16 @@ Affichage > Options > Affichage > [ [ Afficher l'icône des fichiers sure les mi
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
 $newPathCU = $oldPathCU -replace ';$', ''; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
+## fonts - Architects Daughter
+for  $Copil/data-1-sorted/counts.tex
+sl $ITscc\forMSWin\fonts-FontSquirrel\architects-daughter
+  right-clicked on  ArchitectsDaughter.ttf  to  Installer
+## fonts - DejaVu fonts
+$ITscc\forMSWin\fonts-dejavu-fonts-ttf-2.37\ttf > selected all, right clicked on to Install
+  arrived in  ~\AppData\Local\Microsoft\Windows\Fonts
+## fonts - Noto Sans CJK Regulars for Pandoc
+$ITstack\MSWin\fonts-copied\NotoHinted > selected all, right clicked on to Install
+  arrived in  ~\AppData\Local\Microsoft\Windows\Fonts
 ## Gestionnaire de tâches
 Options > Masquer l'icône réduite
 hidden icon dragged to taskbar
@@ -389,7 +399,7 @@ sl $jtIT\CP\TeX\distro-MiKTeX\miktex-xetex  for  x mwe.tex  and off_ticked "Alwa
 ## Pandoc
 after MiKTeX
   winget add JohnMacFarlane.Pandoc  got  ~\AppData\Local\Pandoc\pandoc.exe
-    sl $CrPl\Pandoc  for  
+    sl $CrPl\Pandoc  for
       pandoc --toc --toc-depth=6 -f markdown_strict toCdepth6MWE.md -o toCdepth6MWE.pdf
       - took a while for MiKTeX to download all the necessary packages
     md $tex\latex\m4p
@@ -398,9 +408,6 @@ gp -path "registry::\hklm\system\currentcontrolset\control\filesystem" | fl -pro
 sp 'hklm:\system\currentcontrolset\control\filesystem' -name 'longpathsenabled' -value 1
 rebooted
 didn't fix it, and anyway doesn't help gVim
-## Noto Sans CJK Regulars for Pandoc
-$ITstack\MSWin\fonts-copied\NotoHinted > selected all, right clicked on to Install
-  arrived in  ~\AppData\Local\Microsoft\Windows\Fonts
 ## yt-dlp (and FFmpeg)
 winget add yt-dlp.yt-dlp
   Ce package nécessite les dépendances suivantes :
@@ -425,9 +432,6 @@ I seem to've installed with winget.
 ran it to build  ~\AppData\Roaming\LibreOffice\4
   in  user\  removed  config  folder &  registrymodifications.xcu
     & replaced them from  $CrPl\documenting\LibreOffice\lcu-sbMb-user
-## DejaVu fonts
-$ITscc\forMSWin\fonts-dejavu-fonts-ttf-2.37\ttf > selected all, right clicked on to Install
-  arrived in  ~\AppData\Local\Microsoft\Windows\Fonts
 ## WSL
 ### fails (maybe needed to reboot)
 winget add 9MZNMNKSM73X > agreed to  https://vineelsai.com/Privacy/Apps/ArchWSL.html
@@ -804,17 +808,71 @@ sudo do-release-upgrade  returns  There is no development version of an LTS avai
 sudo apt install plocate  then took ages to initialize the database
 symlink to  $MSWSL\bash_profile  fixed
 ### packages
-sudo apt install fd-find fzf highlight nnn ranger ripgrep zoxide
+sudo apt install fd-find fzf highlight nnn ranger ripgrep
+#### zoxide
+sudo apt install zoxide
 sudo apt remove zoxide
+#### 7zip
+sudo apt install 7zip
+sudo apt remove 7zip
+sudo apt install p7zip-full
+#### notify-send
+sudo apt install libnotify-bin
+  but  notify-send -u critical "test of critical notification"
+    gets "Could not connect: No such file or directory"
 #### Samokovarov's jump
 sudo snap install jump
 #### tmux
 sudo apt install tmux
 bash $MSWSL/bs-symlinks.sh
-#### notify-send
-sudo apt install libnotify-bin
-  but  notify-send -u critical "test of critical notification"
-    gets "Could not connect: No such file or directory"
+#### wslu
+sudo add-apt-repository ppa:wslutilities/wslu
+  got me  \\wsl$\Ubuntu\etc\apt\sources.list.d\wslutilities-ubuntu-wslu-jammy.list
+sudo apt update
+sudo apt install wslu
+## Epson EcoTank ET-5170
+still Pilote indisponible  so
+  Applications et fonctionnalités > Désinstallation de l'imprimante EPSON ET-5170 Series > ...
+  Applications et fonctionnalités > Epson Print and Scan > Désinstaller > ...
+  Applications et fonctionnalités > EpsonNet Print > Désinstaller > ...
+  Applications et fonctionnalités > Epson Scan 2 > Désinstaller > ...
+  Applications et fonctionnalités > Epson Printer Connection Checker > ...
+epson637525eu.exe (driver v3.01.00) got it working when plugged into USB
+epson661623eu.exe (Epson Software updater v4.6.7.0) and ran it with printer plugged into USB for
+    Pilote d'impression v3.02.00
+    Epson Printer Connection Checker v3.4.0.0
+    Epson ScanSmart v3.7.10
+  - took forever to download even when switched to a fast connection...
+  ran again to get  Epson ScanSmart v3.7.10
+Epson Printer Connection Checker v3.4.0.0  couldn`t find it on LAN, and so I allowed
+  Install Navi [ET-5170 Series], which again took ages and brought in an unwanted Fax Utility
+    it found the printer on 192.168.1.3
+  unplugged the LAN, and the printer's gone, so, from the Setup Navi page, got
+    Epson_ET-5170_Series_LM_11_Web.exe, which again downloaded a driver without telling me which
+    then  EpsonNet Setup  was again slowly downoaded...
+    managed to get the printer connected to  SSID cafezoide pro
+Applications et fonctionnalités > Désinstallation de l'imprimante EPSON ET-5170 Series >
+  ET-5170 Series(Réseau) and  ET-5170 Series  uninstalled
+## gem update
+  ...
+  Updating sass-embedded
+  Fetching sass-embedded-1.77.8-x64-mingw-ucrt.gem
+  sass-embedded's executable "sass" conflicts with sass
+  Overwrite the executable? [yN] y
+  ...
+  Gems updated: addressable bundler commonmarker dnsruby faraday faraday-net_http google-protobuf html-pipeline selma zeitwerk irb jekyll jekyll-coffeescript jekyll-commonmark-ghpages jekyll-relative-links liquid minitest neovim net-ftp net-imap nokogiri octokit public_suffix racc rbs reline rexml rouge sass-embedded stringio
+## Epson EcoTank ET-5170
+Applications et fonctionnalités > [
+  Epson Event Manager > Désinstaller
+  Epson PC-FAX Driver > Désinstaller
+epson637525eu.exe (driver v3.01.00) got it working when plugged into USB
+## Rclone
+winget add Rclone.Rclone
+## $TeNo/md-JH-DailyLife/roles/roles.md
+:se fenc  reports  latin1
+## winget update --all  stuck on  yt-dlp
+keeps re-offering it, and not pursuing the other updates
+  same after a reboot so  winget rm yt-dlp.yt-dlp
 ## waiting
 Mise à jour facultatives
 ### Epson Software updater v4.6.7.0
@@ -837,9 +895,9 @@ ctrl+, (= Paramètres)
     Transparence > Opacité de l'arrière plan > 80%
     Type de police > Cascadia Mono
   Ubuntu > Apparance >
-    Jeu de couleurs > Vintage
+    Jeu de couleurs > One Half Dark
     Texte > Taille de police > 9
-    Transparence > Opacité de l'arrière plan > 80%
+    Transparence > Opacité de l'arrière plan > 90%
   Windows PowerShell > Apparance > Texte > Taille de police > 9
 ~\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
 # physical configuration

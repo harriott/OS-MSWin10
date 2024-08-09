@@ -102,33 +102,6 @@ vim: nospell:
     $Env:PSModulePath -split ';'
     ~\Documents\WindowsPowerShell\Modules
 
-### WSL
-Windows Subsystem for Linux
-
-#### PowerShell
-    wsl --help
-    wsl --shutdown  # kills all WSL2
-    wsl -l -o  # (--list --online) available flavours
-    wsl -l -v
-    wsl -l --running
-    wsl -v
-
-##### nodes
-    \\wsl$\Ubuntu\etc\bash_completion.d\git-prompt
-    \\wsl$\Ubuntu\etc\updatedb.conf
-    \\wsl$\Ubuntu\etc\wsl.conf
-    \\wsl$\Ubuntu\home\jo\.bash_history
-    \\wsl$\Ubuntu\home\jo\.bash_profile
-    \\wsl$\Ubuntu\run\systemd\system
-    \\wsl$\Ubuntu\usr\bin
-    \\wsl$\Ubuntu\var\lib\plocate
-
-`\\wsl$\Ubuntu\etc\skel` has Bash configuration defaults
-
-#### Ubuntu
-- `sudo apt update` [the package index]
-- `sudo apt upgrade`
-
 ## file manage - lf
     $HOME\AppData\Local\lf\lfrc
 
@@ -205,6 +178,39 @@ default actions don't show, but when I binned annoying `alt+enter` & `<f11>` "Ba
     - `win+=\-` zoom avant/arrière
 - `win+ctrl+m` paramètres de la loupe
 - `win+esc` désactiver la loupe
+
+## WSL
+Windows Subsystem for Linux
+
+### PowerShell
+    wsl --help
+    wsl --shutdown  # kills all WSL2
+    wsl -l -o  # (--list --online) available flavours
+    wsl -l -v
+    wsl -l --running
+    wsl -v
+
+#### nodes
+    \\wsl$\Ubuntu\etc\bash_completion.d\git-prompt
+    \\wsl$\Ubuntu\etc\updatedb.conf
+    \\wsl$\Ubuntu\etc\wsl.conf
+    \\wsl$\Ubuntu\home\jo\.bash_history
+    \\wsl$\Ubuntu\home\jo\.bash_profile
+    \\wsl$\Ubuntu\run\systemd\system
+    \\wsl$\Ubuntu\usr\bin
+    \\wsl$\Ubuntu\var\lib\plocate
+
+- can't access these from `Telescope`, so `:MRU wsl$`
+- `\\wsl$\Ubuntu\etc\apt\sources.list` repositories
+- `\\wsl$\Ubuntu\etc\skel` has Bash configuration defaults
+
+### Ubuntu
+    /mnt/c/vim/vim91/gvim.exe
+    highlight --syntax=bash ~/.bash_history -O ansi
+    pwsh.exe -nop -c start .
+    pwsh.exe -nop -c Get-ExecutionPolicy
+    wslsys  # system info
+    wslview https://wslutiliti.es/wslu/man/wslview.html
 
 # imagey
 ExifTool by Phil Harvey
@@ -324,13 +330,14 @@ KeePassXC: Getting Started Guide
 `Notepad++`: `alt+p > Préférences...`
 
 ## Emacs
+    $HADR\.emacs.d\init.el
     C:\Emacs\emacs-28.1\bin\emacs.exe -nw
-    C:\Users\troin\AppData\Roaming\.emacs.d
-    sl C:\Users\troin\AppData\Roaming\.emacs.d
     ~\AppData\Roaming\.spacemacs
 
 ## Vim
+    C:\Vim\vim91\gvim.exe
     C:\Vim\vim91\vim.exe -?
+    C:\Vim\vim91\vim.exe --version
     g $lazy
     g 'C:\Program Files\Neovim\share\nvim\runtime'
     $ProgramFiles\Neovim\share\nvim\runtime\mswin.vim
