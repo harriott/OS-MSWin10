@@ -1,5 +1,5 @@
 
-# Joseph Harriott - https://harriottgithubio/ - ven 12 juil 2024
+# Joseph Harriott - https://harriottgithubio/ - sam 10 août 2024
 
 # once  $Cn,  APS> . $MSWin10\mb\neededNodes-2.ps1
 
@@ -20,9 +20,9 @@ function syli { ni $args[1] -type symboliclink -value $args[0] -force } # symbol
 # syli $MSWin10\lf\lfrc $HADL\lf\lfrc
 # syli $MSWin10\lf\icons $HADL\lf\icons
 
-# #=> LaTeX
+# #=> MiKTeX
 # syli $CrPl\documenting\LaTeX\jo $tex\latex\jo  # csl $tex\latex
-# #  after changes:  initexmf --update-fndb
+# #  after changes:  miktex fndb refresh
 # #  ii "$tex\latex\jo"
 # #  sl $tex\latex
 
@@ -34,6 +34,9 @@ function syli { ni $args[1] -type symboliclink -value $args[0] -force } # symbol
 
 # #=> Node.js
 # md $HADR\npm
+
+#=> Pandoc m4p
+md $tex\latex\m4p
 
 # #=> Pandoc\defaults
 # $Pd = "$Pandoc\defaults"; endi $Pd

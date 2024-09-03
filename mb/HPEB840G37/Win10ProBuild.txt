@@ -30,7 +30,7 @@ Paramètres > Personnalisation > Couleurs > Choisir votre mode d'application par
 Paramètres > [ Personnalisation > Arrière-plan > Couleur unie
 Système > Écran > Mise à l'échelle et disposition > Modifier la taille du texte des applications et d'autres éléments > 100%
 ## Disk Usage
-du64.exe  copied into ~\AppData\Local\Microsoft\WindowsApps
+du64.exe  copied into $HADL\Microsoft\WindowsApps
 ## Edge
 see  $CrPl/networking/browsers/browsers.txt
 ## Everything
@@ -54,10 +54,10 @@ sl $ITscc\forMSWin\fonts-FontSquirrel\architects-daughter
   right-clicked on  ArchitectsDaughter.ttf  to  Installer
 ## fonts - DejaVu fonts
 $ITscc\forMSWin\fonts-dejavu-fonts-ttf-2.37\ttf > selected all, right clicked on to Install
-  arrived in  ~\AppData\Local\Microsoft\Windows\Fonts
+  arrived in  $HADL\Microsoft\Windows\Fonts
 ## fonts - Noto Sans CJK Regulars for Pandoc
 $ITstack\MSWin\fonts-copied\NotoHinted > selected all, right clicked on to Install
-  arrived in  ~\AppData\Local\Microsoft\Windows\Fonts
+  arrived in  $HADL\Microsoft\Windows\Fonts
 ## Gestionnaire de tâches
 Options > Masquer l'icône réduite
 hidden icon dragged to taskbar
@@ -99,6 +99,9 @@ Stockage (L'Assistant de stockage) > Activé (somehow)
 #### Écran
 Éclairage nocturne > Activé
 Résolution de l'écran > 1920 x 1080 (recommandé)
+## PDFtk
+winget add PDFLabs.PDFtk.Free
+
 ## Process Explorer
 start $ITscc\forMSWin\ProcessExplorer\procexp64.exe
   alt+o (= Options) > i (= Tray Icons) > p (= Physical Memory History)
@@ -110,8 +113,14 @@ winget add RubyInstallerTeam.Ruby.3.2
 pinned to Start
 ## sharkdp/bat
 winget add sharkdp.bat
+## Signal
+winget add OpenWhisperSystems.Signal
 ## QuickLook
 winget add 9NV4BS3L1H4S --accept-package-agreements
+## Zig
+(for  tree-sitter) winget add zig.zig  took ages to unpack
+zig version
+## waiting
 # build - sequential
 ## move from Utilisateur
 Paramètres >
@@ -161,7 +170,7 @@ gvim_9.1.0_x64_signed.exe
   [ Create icons > On the Desktop off [ Create Default Config  Create Plugin Directories ] off ] >
   (C:\Vim)  C:\Vim\vim91\vim.exe --version
 ## Windows Terminal
-found in Microsoft Store > Obtenir  (~\AppData\Local\Microsoft\WindowsApps\wt.exe)
+found in Microsoft Store > Obtenir  ($HADL\Microsoft\WindowsApps\wt.exe)
 ctrl+, > Démarrage > Application Terminal par défaut > Terminal Windows
 ## PowerShell v7.4.0
 found in Microsoft Store > Obtenir
@@ -258,7 +267,7 @@ Everything-1.4.1.1024.x64-Setup.exe > clicked through > UAC
 cpi pt.exe $HADL\Microsoft\WindowsApps -force
 pt /version
 ## ExifTool v12.76
-cpi 'exiftool(-k).exe' ~\AppData\Local\Microsoft\WindowsApps\exiftool.exe
+cpi 'exiftool(-k).exe' $HADL\Microsoft\WindowsApps\exiftool.exe
 ## ZLocation v1.4.3
 z  shows it's there, and  Get-InstalledModule  reports  1.4.3 ZLocation
 c ~\Documents\PowerShell\Modules\ZLocation\1.4.3
@@ -344,7 +353,7 @@ gs10021w64.exe > C:\gs-10_02_1  rebooted
 ## remove Windows PE
 Paramètres > Applications > Extensions de l'environnement de préinstallation Windows (Win PE) du Kit de déploiment et d'évaluation Windows 3,64 Go > Désinstaller
 ## ExifTool v12.77
-cpi "$ITscc\forMSWin\exiftool(-k).exe" ~\AppData\Local\Microsoft\WindowsApps\exiftool.exe
+cpi "$ITscc\forMSWin\exiftool(-k).exe" $HADL\Microsoft\WindowsApps\exiftool.exe
 ## Go
 go1.22.0.windows-amd64.msi > C:\Go\
 ## WizTree v4.18
@@ -389,16 +398,16 @@ fresh PowerShell for:  magick wizard: wizard.jpg
 C:\Program Files\Google\Chrome\Application\chrome.exe
 winget rm google.chrome
 C:\Program Files (x86)\Google  Deleted
-winget add google.chrome  got  ~\AppData\Local\Google\Chrome\Application\chrome.exe
+winget add google.chrome  got  $HADL\Google\Chrome\Application\chrome.exe
 ## MiKTeX
-winget add miktex  went to  ~\AppData\Local\Programs\MiKTeX
+winget add miktex  went to  $HADL\Programs\MiKTeX
 rebooted for  MiKTeX Console  which got me a necessary update
   MiKTeX Console  for 10 updates
-~\AppData\Local\MiKTeX  created at some point
+$HADL\MiKTeX  created at some point
 sl $jtIT\CP\TeX\distro-MiKTeX\miktex-xetex  for  x mwe.tex  and off_ticked "Always show this dialog"
 ## Pandoc
 after MiKTeX
-  winget add JohnMacFarlane.Pandoc  got  ~\AppData\Local\Pandoc\pandoc.exe
+  winget add JohnMacFarlane.Pandoc  got  $HADL\Pandoc\pandoc.exe
     sl $CrPl\Pandoc  for
       pandoc --toc --toc-depth=6 -f markdown_strict toCdepth6MWE.md -o toCdepth6MWE.pdf
       - took a while for MiKTeX to download all the necessary packages
@@ -420,7 +429,7 @@ winget add yt-dlp.yt-dlp
   Installé correctement
   Téléchargement en cours https://github.com/yt-dlp/yt-dlp/releases/download/2023.12.30/yt-dlp.exe
 ### FFmpeg
-  ~\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-6.1.1-full_build\bin\ffmpeg.exe
+  $HADL\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-6.1.1-full_build\bin\ffmpeg.exe
 ffmpeg -version
 ### yt-dlp
   C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\yt-dlp.yt-dlp_Microsoft.Winget.Source_8wekyb3d8bbwe\yt-dlp.exe
@@ -441,12 +450,12 @@ winget add 9MZNMNKSM73X > agreed to  https://vineelsai.com/Privacy/Apps/ArchWSL.
 winget rm 9MZNMNKSM73X
 wsl --install  then  Windows Menu > Ubuntu  got me
   WslRegisterDistribution failed with error: 0x80080005
-  Error: 0x80080005 ╔chec de l?exÚcution du serveur
+  Error: 0x80080005 échec de l'exécution du serveur
 Paramètres > Applications > linux > Désinstaller
 ### Microsoft Store
 https://apps.microsoft.com/detail/9p9tqf7mrm4r > Télécharger > Obténir
   WslRegisterDistribution failed with error: 0x80080005
-  Error: 0x80080005 ╔chec de l?exÚcution du serveur
+  Error: 0x80080005 échec de l'exécution du serveur
 reboot  got a Ubuntu lancement WT
 UNIX username > jo > pw
 ### configure
@@ -504,7 +513,7 @@ ni -path hkcu:\eudc\1252
 sp hkcu:\eudc\1252 -name SystemDefaultEUDCFont -value CaskaydiaMonoNerdFontMono-Regular.ttf -type string
 (gp hkcu:\eudc\1252).SystemDefaultEUDCFont
 ## gokcehan lf configuration
-md ~\AppData\Local\lf
+md $HADL\lf
 ## reboot to ensure path changes for PowerShell
 ## Chafa
 winget add chafa
@@ -687,7 +696,7 @@ $newPathCU = $oldPathCU -replace '\\fd.exe$', ''; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## fzf from winget
 $MSwin10\mb\fzf.ps1
-~\AppData\Local\Microsoft\WinGet\Links\fzf.exe --version
+$HADL\Microsoft\WinGet\Links\fzf.exe --version
 fixed ; at end of path
 ## fd v10.1.0
 executable lost from path
@@ -873,15 +882,28 @@ winget add Rclone.Rclone
 ## winget update --all  stuck on  yt-dlp
 keeps re-offering it, and not pursuing the other updates
   same after a reboot so  winget rm yt-dlp.yt-dlp
+## WT Ubuntu
+Ubuntu
+  Icône > https://assets.ubuntu.com/v1/49a1a858-favicon-32x32.png - the one that shows in use
+  Ligne de commande > ubuntu.exe
+  Masquez le profil de la liste déroulante > Désactivé
+Ubuntu
+  Icône > ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png
+  Ligne de commande > C:\Windows\system32\wsl.exe -d Ubuntu
+  Masquez le profil de la liste déroulante > Activé
+## ExifTool v12.96
+cpi "$ITscc\forMSWin\exiftool-12_96_64\exiftool(-k).exe" $HADL\Microsoft\WindowsApps\exiftool.exe
+cpi -recurse $ITscc\forMSWin\exiftool-12_96_64\exiftool_files $HADL\Microsoft\WindowsApps
+exiftool -ver
+## fix LSD in $PATH
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU+';C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\lsd-rs.lsd_Microsoft.Winget.Source_8wekyb3d8bbwe\lsd-v1.1.5-x86_64-pc-windows-msvc'; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## waiting
 Mise à jour facultatives
 ### Epson Software updater v4.6.7.0
 epson661623eu.exe
-### Zig
-(for  tree-sitter) winget add zig.zig  took ages to unpack
-fixed ; at end of path
-zig version
-# build - WT 0 instalL
+# build - WT 0 install
 https://www.microsoft.com/en-gb/p/windows-terminal-preview/9n0dx20hk701
 # build - WT 1 settings
 chcp  reports  CodePage 850
@@ -899,7 +921,7 @@ ctrl+, (= Paramètres)
     Texte > Taille de police > 9
     Transparence > Opacité de l'arrière plan > 90%
   Windows PowerShell > Apparance > Texte > Taille de police > 9
-~\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
+$HADL\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
 # physical configuration
 1920x1080 screen
 Intel Core i5-6300U

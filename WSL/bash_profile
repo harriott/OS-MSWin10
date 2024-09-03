@@ -2,14 +2,7 @@
 # vim: set fdl=2 sw=2:
 
 # $MSWSL\bash_profile (see  \\wsl$\Ubuntu\etc\skel\.profile)
-
-# setup steps
-#  rm ~/.profile
-#  rm ~/.bash_profile
-#  cp /mnt/d/Dropbox/JH/core/IT_stack/onGitHub/OS-MSWin10/WSL/bash_profile ~/.bash_profile
-#  bash $MSWSL/bs-symlinks.sh
-
-# . "$HOME/.bashrc"
+# setup in  
 
 # private bin
 if [ -d "$HOME/bin" ] ; then PATH="$HOME/bin:$PATH"; fi

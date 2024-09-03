@@ -67,9 +67,9 @@ vim: nospell:
 
 ### MiKTeX
     miktex fndb refresh
-    ~\AppData\Local\MiKTeX\miktex\log\initexmf.log
-    ~\AppData\Local\MiKTeX\miktex\log\miktex-makemf.log
-    ~\AppData\Local\Programs\MiKTeX\miktex\config\xelatex.ini
+    $HADL\MiKTeX\miktex\log\initexmf.log
+    $HADL\MiKTeX\miktex\log\miktex-makemf.log
+    $HADL\Programs\MiKTeX\miktex\config\xelatex.ini
 
 ### npm
     g $HOME\AppData\Local\npm-cache\_npx
@@ -167,7 +167,7 @@ output is simplified when redirected to a file
 - `ctrl(+Shift)+Tab` move to next (previous) tab
 
 #### settings.json
-    cpi ~\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json $machLg\WT-settings.json
+    cpi $HADL\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json $machLg\WT-settings.json
 
 default actions don't show, but when I binned annoying `alt+enter` & `<f11>` "Baculer en plein écran", they show as `unbound`
 
@@ -248,6 +248,7 @@ Consolas can handle €
 - `ctrl+.` on AZERTY toggles Copilot sidebar
 - `ctrl+u` (= `right-click > View page source`) is searchable
 - `f12` toggles last of DevTools
+- Secure Network
 
 ## Extensions
 `Manage` = `edge://extensions`
@@ -301,7 +302,7 @@ KeePassXC: Getting Started Guide
     Ctrl+B -> Manage Bookmarks
 
 # PDF
-    gsp  # Ghostscript convert pdf to png
+    gsp  # ($MSWin10\PSProfile.ps1) Ghostscript convert pdf to png
 
 ## Sumatra PDF
 - `ctrl+6` view single pages (`ctrl+-` on AZERTY)

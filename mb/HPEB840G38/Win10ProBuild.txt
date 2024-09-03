@@ -38,9 +38,13 @@ Affichage > Options > Affichage >
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
 $newPathCU = $oldPathCU -replace ';$', ''; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
+## fonts - Architects Daughter
+for  $Copil/data-1-sorted/counts.tex
+sl $ITscc\forMSWin\fonts-FontSquirrel\architects-daughter
+  right-clicked on  ArchitectsDaughter.ttf  to  Installer
 ## fonts DejaVu
 $ITscc\forMSWin\fonts-dejavu-fonts-ttf-2.37\ttf > selected all, right clicked on to Install
-  arrived in  ~\AppData\Local\Microsoft\Windows\Fonts
+  arrived in  $HADL\Microsoft\Windows\Fonts
 ## fonts for Pandoc - Noto Sans CJK Regulars
 $ITstack\copied-code\forMSWin\fonts-NotoHinted
 MSWin\fonts-copied\NotoHinted > selected all, right clicked on to Install
@@ -76,6 +80,8 @@ start $ITscc\forMSWin\ProcessExplorer\procexp64.exe > Agree
   alt+o (= Options) > i (= Tray Icons) > p (= Physical Memory History)
   alt+o (= Options) > h (= Hide When Minimized)
   alt+o (= Options) > l (= Run At Logon)
+## Signal
+winget add OpenWhisperSystems.Signal
 ## Thunderbird
 winget add mozilla.thunderbird -h -l C:\MT
 ran it to get  $HADR\Thunderbird\Profiles\yqi3hpui.default-esr
@@ -182,7 +188,7 @@ Shortcut to  $MSWin10\AutoHotkey\1920x1080.ahk
 winget add fzf  then  where.exe fzf  reports  C:\Users\jnbh\AppData\Local\Microsoft\WinGet\Packages\junegunn.fzf_Microsoft.Winget.Source_8wekyb3d8bbwe\fzf.exe
 ### not working
 rebooted for  fzf.vim  to work only occasionally, still not found by  PSFzf
-~\AppData\Local\Microsoft\WinGet\Links  remains unpopulated...
+$HADL\Microsoft\WinGet\Links  remains unpopulated...
 ## WT
 winget add 9N0DX20HK701 > y
 chcp  reports  CodePage 850
@@ -198,7 +204,7 @@ ctrl+, (= Settings)
       - way later realised this was set in  $MSWin10\AutoHotkey\1920x1080.ahk
   Windows PowerShell > Appearance >
     [ Text > Font size > 9  Transparency > Background opacity > 82% ] > Save
-~\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
+$HADL\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
 ## 7-Zip
 winget add 7zip.7zip
 ## WPS modules
@@ -479,8 +485,108 @@ py -m pip install --user pipx
 ## less-Windows
 winget install jftuga.less
 fixed ; at end of path
-## WSL
-wsl -l -o  still doesn't list Arch, so  
+## dubious ownership of $onGH/pandoc-templates
+in there, APS> takeown /f . /r /d o
+## MiKTeX
+winget add miktex  went to  $HADL\Programs\MiKTeX
+rebooted for  MiKTeX Console > Check > Updates  for 113
+$HADL\MiKTeX  created at some point
+sl $jtIT\CP\TeX\distro-MiKTeX\miktex-xetex  for  x mwe  and off_ticked "Always show this dialog"
+## Pandoc
+after MiKTeX
+  headings0sty; miktex fndb refresh
+  winget add JohnMacFarlane.Pandoc  got  $HADL\Pandoc\pandoc.exe
+    in a new instance of PowerShell,  sl $CrPl\Pandoc  for
+      pandoc --toc --toc-depth=6 -f markdown_strict toCdepth6MWE.md -o toCdepth6MWE.pdf
+      - took a while for MiKTeX to download all the necessary packages
+## Lecteur Windows Media
+Télécharger automatiquement les droits d'utilisation, Historiques  tous décoché
+## yt-dlp (and FFmpeg)
+winget add yt-dlp.yt-dlp
+  Ce package nécessite les dépendances suivantes :
+    - Packages
+        Gyan.FFmpeg
+  (1/1) Trouvé FFmpeg [Gyan.FFmpeg] Version 6.1.1
+  ...
+  Téléchargement en cours https://github.com/GyanD/codexffmpeg/releases/download/7.0.2/ffmpeg-7.0.2-full_build.zip
+  ...
+  Installé correctement
+  Téléchargement en cours https://github.com/yt-dlp/yt-dlp/releases/download/2024.08.06/yt-dlp.exe
+fixed ; at end of path
+### FFmpeg
+ffmpeg -version
+### yt-dlp
+yt-dlp --version
+## WSL Ubuntu attempt
+winget add Canonical.Ubuntu.2204  rebooted
+## WT configure
+ctrl+, (= Paramètres)
+  Developer Command Prompt for VS 2022 >
+    Masquez le profil de la liste déroulante > Activé > Enregistrer
+  Developer PowerShell for VS 2022 >
+    Masquez le profil de la liste déroulante > Activé > Enregistrer
+## WSL Ubuntu
+WT > ctrl+' (= Ubuntu tab)
+  Installing, this may take a few minutes...
+  WslRegisterDistribution failed with error: 0x8007019e
+  The Windows Subsystem for Linux optional component is not enabled. Please enable it and try again.
+  See https://aka.ms/wslinstall for details.
+winget rm Canonical.Ubuntu.2204  rebooted
+wsl --install  Redemarré  then installation took a while
+UNIX username > jo > pw
+touch ~/.hushlogin
+sudo apt update  reported 119 so  ...
+sudo apt upgrade
+WT > ctrl+, > Ubuntu Apparance >
+  Jeu de couleurs > One Half Dark
+  Texte > Taille de police > 9
+  Transparence > Opacité de l'arrière plan > 86%
+$ lsb_release -a  reports  Ubuntu 22.04.4 LTS
+## WT Ubuntu
+Ubuntu
+  Icône > https://assets.ubuntu.com/v1/49a1a858-favicon-32x32.png - the one that shows in use
+  Ligne de commande > ubuntu.exe
+  Masquez le profil de la liste déroulante > Désactivé
+Ubuntu
+  Icône > ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png
+  Ligne de commande > C:\Windows\system32\wsl.exe -d Ubuntu
+  Masquez le profil de la liste déroulante > Activé
+## WSL Ubuntu Bash configuration
+$MSWSL/bs/neededNodes-0-startBash.sh
+## WSL Ubuntu version
+PS> wsl -l -o  shows  Ubuntu-24.04, but  $ lsb_release -a  reports  Ubuntu 22.04.4 LTS
+## WSL Ubuntu upgrades
+sudo apt update && sudo apt upgrade
+  The following packages have been kept back:
+    e2fsprogs libcom-err2 libext2fs2 libss2 logsave python3-update-manager update-manager-core
+## WSL Ubuntu plocate
+sudo apt install plocate  then took ages to initialize the database
+sudo cp $MSWSL/updatedb.conf /etc/updatedb.conf  then  sudo updatedb
+## WSL Ubuntu packages
+sudo apt install fd-find fzf highlight neofetch nnn p7zip-full ranger ripgrep tmux
+sudo snap install jump  # Samokovarov's
+## ExifTool v12.93
+cpi "$ITscc\forMSWin\exiftool-12_93_64\exiftool(-k).exe" $HADL\Microsoft\WindowsApps\exiftool.exe
+cpi -recurse $ITscc\forMSWin\exiftool-12_93_64\exiftool_files $HADL\Microsoft\WindowsApps
+## HP Smart
+winget add 9WZDNCRFHWLH > y
+Se connecter  found  HPA22F0E (ENVY 5530)
+## WSL Ubuntu upgrades
+sudo apt update && sudo apt upgrade
+  The following packages have been kept back:
+    e2fsprogs libcom-err2 libext2fs2 libss2 logsave python3-update-manager update-manager-core
+## WSL Ubuntu bc
+sudo apt install bc
+## dubious ownership of $Copil
+in there, APS> takeown /f . /r /d o
+## ExifTool v12.96
+cpi "$ITscc\forMSWin\exiftool-12_96_64\exiftool(-k).exe" $HADL\Microsoft\WindowsApps\exiftool.exe
+robocopy /mir $ITscc\forMSWin\exiftool-12_96_64\exiftool_files $HADL\Microsoft\WindowsApps\exiftool_files
+exiftool -ver
+## fix LSD in $PATH
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU+';C:\Users\jnbh\AppData\Local\Microsoft\WinGet\Packages\lsd-rs.lsd_Microsoft.Winget.Source_8wekyb3d8bbwe\lsd-v1.1.5-x86_64-pc-windows-msvc'; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## waiting
 # physical configuration
 1366x768 screen

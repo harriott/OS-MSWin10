@@ -6,7 +6,6 @@
 
 #  also there is  \\wsl$\Ubuntu\etc\profile
 
-alias fe='pwsh.exe -nop -c start .'  # File Explorer here
 alias u=tmux
 source $OSL/bashrc-console-fm
 source $OSL/bashrc-generic
@@ -21,6 +20,7 @@ se () {
 }
 
 #=> better file managing
+alias fe='pwsh.exe -nop -c start .'  # File Explorer here
 if [ -s "/var/snap/jump" ]; then eval "$(jump shell)"; fi # gsamokovarov's jump
 
 c() { if [ -n "$1" ]; then cd "$1" || return 1; else cd ..; fi; ls -a; }

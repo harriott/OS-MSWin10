@@ -91,6 +91,10 @@ no standard aliases
     explorer shell:Appsfolder  # Applications
     start <somefile>
 
+## FFmpeg
+    ffmpeg -version > $machLg\ffmpeg_version
+    where.exe ffmpeg
+
 ## get-command
     gcm explorer
     gcm lsd
@@ -116,7 +120,6 @@ otherwise little sign of them
 ## where.exe
     where.exe bash
     where.exe gpg
-    where.exe ffmpeg
     where.exe pwsh
     where.exe python
     where.exe sumatrapdf
@@ -185,7 +188,7 @@ aliases: `cat`, `type`
     lwp \.ps1
     lwt md md
     lwt sh sh
-    lwt docs doc odt
+    lwt docs doc docx odt
     lwt tex cls sty tex
     lwt txt txt
 
@@ -277,6 +280,8 @@ aliases: `cat`, `type`
     get-PSResourceRepository
 
 # microsoft.powershell.utility
+    $pw = Read-Host "Password?" -MaskInput
+
 - `fl` (= `format-list`)
 - `measure` (= `measure-object`)
 - `select` (= `select-object`)
@@ -412,7 +417,8 @@ tab completion
     (gcm prompt).ScriptBlock
     get-pslocation
     get-pswho
-    get-windowsupdatelog  # creates  $HOME\Desktop\WindowsUpdate.log
+    Get-WindowsUpdateLog  # creates  $HOME\Desktop\WindowsUpdate.log
+    Get-WinSystemLocale
     sysdm.cpl  # pops up  System Properties
     winver  # pops up  About Windows
     get-pssessioninfo

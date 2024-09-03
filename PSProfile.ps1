@@ -74,6 +74,7 @@ function mc {
 function c { if ( $args[0] ) { sl $args[0] } else { sl .. }; pc }  # handily move in or out
 function i { ii . }  # opens  file explorer  on current directory
 function lc { [string[]]$list = (gci).Name; $list -join '  ' }
+function ~ { sl ~ }
 
 # nvim/vim, quitting to last file's directory ($vimfiles/vim/enter/vimrc.vim)
 function n { nvim $args; gc $home/last_directory | sl }
@@ -89,7 +90,6 @@ sal l lsd
   function lt { l --tree }
   function ltd { l -d --tree } # -directory-only
   function lx { l -lRX } # --recursive --extensionsort
-  function ~ { sl ~ }
 sal vf vifm
 
 # eza
@@ -318,7 +318,8 @@ function gsp {
     if ( test-path $pdf ) {
       $g = "gswin64c -dSAFER -sDEVICE=png16m $r -dDownScaleFactor=$DSF -sPageList=$pl -o $pngs '$pdf'"
     } else { "$pdf ain't there" }
-    SCFCW; $g; SCRC; iex $g
+    SCFCW; $g; SCRC
+    iex $g
     }
 #  gsp <startPageNo>-<endPageNo> resolution DownScaleFactor(1-8) outPNGbaseName 'inPDFbaseName'
 
@@ -454,7 +455,8 @@ function lj {
 } # instead of a symlink to avoid snags if MiKTeX is uninstalled
 
 #===> Pandoc
-function headings0sty { cpi $MD4PDF/iih/headings0.sty $tex\latex\m4p\headings.sty -force } # will need a  miktex fndb refresh  after first run
+function headings0sty { cpi $MD4PDF/iih/headings0.sty $tex\latex\m4p\headings.sty -force }
+# - will need a  miktex fndb refresh  after first run
 function m4p { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4p.ps1 $args[0] $args[1] $args[2] $args[3] }
 function m4ps0 { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4ps.ps1 $args[0] $args[1] $args[2] } # m4ps0 [-n] [-r] [-s]
 function mt { sl $Drpbx\JH\core\TextNotes; [string]$Pwd; m4ps0 -s }
