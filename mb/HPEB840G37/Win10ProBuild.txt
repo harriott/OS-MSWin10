@@ -101,7 +101,6 @@ Stockage (L'Assistant de stockage) > Activé (somehow)
 Résolution de l'écran > 1920 x 1080 (recommandé)
 ## PDFtk
 winget add PDFLabs.PDFtk.Free
-
 ## Process Explorer
 start $ITscc\forMSWin\ProcessExplorer\procexp64.exe
   alt+o (= Options) > i (= Tray Icons) > p (= Physical Memory History)
@@ -899,10 +898,27 @@ exiftool -ver
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
 $newPathCU = $oldPathCU+';C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\lsd-rs.lsd_Microsoft.Winget.Source_8wekyb3d8bbwe\lsd-v1.1.5-x86_64-pc-windows-msvc'; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
+## fix fd in $PATH
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU+';C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.fd_Microsoft.Winget.Source_8wekyb3d8bbwe\fd-v10.2.0-x86_64-pc-windows-msvc'; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+## sfc
+AIdc> sfc /scannow  seemed to find some errors so  rebooted  AIdc> sfc /scannow
+## HP Smart
+searched for and found  HP ENVY Inspire 7200  then took a while to setup
+Imprimantes et scanners > Ajouter une imprimante ou un scanner >
+  HPC204A4 (HP ENVY Inspire 7200 series)
 ## waiting
 Mise à jour facultatives
 ### Epson Software updater v4.6.7.0
 epson661623eu.exe
+### WSL Ubuntu dos2unix
+sudo apt install dos2unix
+### WSL Ubuntu trash-cli
+sudo apt install trash-cli
+### MediaInfo
+winget add MediaArea.MediaInfo
+fixed ; at end of path
 # build - WT 0 install
 https://www.microsoft.com/en-gb/p/windows-terminal-preview/9n0dx20hk701
 # build - WT 1 settings

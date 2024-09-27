@@ -1,8 +1,9 @@
 #!/bin/bash
 # vim: set fdl=2 sw=2:
 
-# $MSWSL\bash_profile (see  \\wsl$\Ubuntu\etc\skel\.profile)
-# setup in  
+# $MSWSL/bash_profile (see  \\wsl$\Ubuntu\etc\skel\.profile)
+# setup in  $MSWSL/bs/neededNodes-1-symlinks.sh
+# relaunch  Ubuntu  if any changes here
 
 # private bin
 if [ -d "$HOME/bin" ] ; then PATH="$HOME/bin:$PATH"; fi

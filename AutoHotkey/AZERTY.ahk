@@ -2,7 +2,10 @@
 ; Joseph Harriott - AutoHotkey - dim 14 juil 2024
 
 ; $MSWin10\AutoHotkey\AZERTY.ahk
-; #Include'd by  $MSWin10\AutoHotkey\HPEB840G36.ahk
+; #Include'd by
+;  $MSWin10\AutoHotkey\HPEB840G36.ahk
+;  $MSWin10\AutoHotkey\HPEB840G37.ahk
+;  $MSWin10\AutoHotkey\HPEB840G38.ahk
 
 ; ² (mapped in Vim's insert mode) I can't get to work with any modifier
 !é::SendText "~" ; alt+é = tilde (without delay)

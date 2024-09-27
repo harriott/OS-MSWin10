@@ -3,7 +3,7 @@
 
 # build script
 
-# depends on  $MSWSL\bash_profile  to define  $MSWSL
+# depends on  $MSWSL/bash_profile  to define  $MSWSL
 # bash $MSWSL/bs/neededNodes-1-symlinks.sh
 
 set -e
@@ -16,7 +16,7 @@ echo '- now open a new shell'
 
 #=> 0 tmux
 ln -sf $OSL/GNUReadline-inputrc ~/.inputrc
-ln -sf $OSL/tmux.conf ~/.tmux.conf
+ln -sf $OSL/tmux/tmux.conf ~/.tmux.conf
 
 #=> 1 check
 ls -al ~

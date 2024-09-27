@@ -36,7 +36,7 @@ SC117::MsgBox ThisHotkey " was pressed." ; fn+f6
 } ; win+ctrl+e  after a scan, brings forward and saves as jpg
 #!n::Run "C:\Program Files\Neovide\neovide.exe --grid 109x62" ; win+alt+n - open Neovide
 #!o::Run "wt --pos 9,9 --size 108,69 -d C:\Users\jnbh"
-; - win+alt+o - a terminal sized ($vimfiles/vim/enter/gvimrc.vim) for neovim
+; - win+alt+o - a terminal sized ($vfv/enter/gvimrc.vim) for neovim
 #^x::{
 	WinActivate "HP Smart ahk_exe ApplicationFrameHost.exe"
     ; MouseMove 905,310

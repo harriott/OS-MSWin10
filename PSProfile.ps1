@@ -76,7 +76,7 @@ function i { ii . }  # opens  file explorer  on current directory
 function lc { [string[]]$list = (gci).Name; $list -join '  ' }
 function ~ { sl ~ }
 
-# nvim/vim, quitting to last file's directory ($vimfiles/vim/enter/vimrc.vim)
+# nvim/vim, quitting to last file's directory ($vfv/enter/vimrc.vim)
 function n { nvim $args; gc $home/last_directory | sl }
 function v { C:\Vim\vim91\vim.exe $args; gc $home/last_directory | sl }
 
@@ -115,9 +115,10 @@ function chco {
     }
   } # (release files for: change contents)  chco '\$m' '$mmm'
 
-function tit { ri "*.aux"; ri "*.log" }  # tidy tex = clear away TeX ancillary files
+function endi { if ( ! ( test-path $args[0] ) ) { md $args[0] } } # ensure directory
+function syli { ni $args[1] -type symboliclink -value $args[0] -force } # symbolic link
 
-#   if ( ! ( test-path 'dir' ) ) { ni -name 'dir' -type directory }
+function tit { ri "*.aux"; ri "*.log" }  # tidy tex = clear away TeX ancillary files
 
 #==> investigations
 ipmo PowerColorLS; sal p PowerColorLS
@@ -180,7 +181,7 @@ function gfoln { gci -r $args[0] | where { $_.psiscontainer } | select -expandpr
 # gfoln *u*
 
 #===> lastwritetime
-function dtsfn { $args[0].lastwritetime.tostring('yyyyMMdd-hh:mm:ss')+' '+$args[1]+' '+ $args[0].fullname } # - used by other functions  gci <test> | %{ dtsfn $_ ':' }
+function dtsfn { $args[0].lastwritetime.tostring('yyyyMMdd-hh:mm:ss')+' '+$args[1]+' '+ $args[0].fullname } # - used by other functions  ls <test> | %{ dtsfn $_ ':' }
 
 function encrypted {
   $encrypted = "actions", "digital0", "digital1", "secure0", "secure1", "shg", "stack"
@@ -211,25 +212,20 @@ function lwp { gci -r | %{ dtsfn $_ ':' } | out-string -stream | sls $args[0] | 
 #====> by name
 function lwt {
   if ($args[0]) {
-    $of = 'lwt-'+$args[0]+'.fetl'
-    "" > $of
-    if ($args[1]) { $a1 = '*.'+$args[1]
-      if ($args[2]) { $a2 = '*.'+$args[2] }
-      if ($args[3]) { $a3 = '*.'+$args[3] }
-      "$a1 $a2 $a3" >> $of; "" >> $of
-      lwts $a1 $a2 $a3 >> $of
-      "results in $of"
-    } else { "next three arguments are specific file extensions" }
+  # if ($a0) {
+    $of = 'lwt-'+$args[0]+'.fetl'; "" > $of
+    if ( $args[0] -eq 'gitignore' ) {
+      'gitignore' >> $of; '' >> $of
+      fd -tf -u -E .git gitignore | %{ ls $_ } | %{ dtsfn $_ ':' } | sort >> $of; "results in $of"
+    } else {
+      if ($args[1]) {
+        $args[1]+' '+$args[2]+' '+$args[3] >> $of; '' >> $of
+        fd -tf -e $args[1] -e $args[2] -e $args[3] | %{ ls $_ } | %{ dtsfn $_ ':' } | sort >> $of
+        "results in $of"
+      } else { "next three arguments are specific file extensions" } }
   } else {
     "first argument should be the general descriptor of the type of files you're looking for"
-  } } # examples in  $MSwin10\QR\cli.md
-
-function lwt-gitignore {
-  # "vim: ft=fetl:" > lwt-gitignore.txt; lwts .gitignore >> lwt-gitignore.txt } # specific case
-  lwts .gitignore >> lwt-gitignore.fetl } # specific case
-
-function lwts { gci -r -i $args[0],$args[1],$args[2] | %{ dtsfn $_ ':' } | sort }
-#  can use wildcards in the <filenames(s)>
+  } } # examples in  $MSwin10/QR/CLI-encoding-PowerShell.md
 
 #===> sizes
 function dc { gci | foreach-object { $_.name + ": " + "{0:n2}" -f ((gci $_ -recurse | measure-object length -sum -erroraction silentlycontinue).sum / 1mb) + " mb" } }
@@ -256,9 +252,10 @@ function removeMatchingLines {
 
 function SE { $outfile = "$DJH/search/SEN.sifw"
   sifwork0 $outfile 'stackexchange|stackoverflow|superuser'
-  foreach($ITd in $jtIT, $ITstack, "$JHw\France") { "Searching in $ITd\..."; sl $ITd
+  foreach($ITd in $ITstack, "$JHw\France", $jtIT) { "Searching in $ITd\..."; sl $ITd
     gci -r -e $outfile -i '*.md' | sls 'stackexchange|stackoverflow|superuser' | %{
       $_.path+" > "+$_.line} >> $outfile; '' >> $outfile }
+  sleep 4; removeMatchingLines $outfile 'README.md'
   sleep 4; removeMatchingLines $outfile 'vimfiles\\vim\\'
   sifwork1 $outfile
   sl "$DJH/search" }

@@ -4,7 +4,7 @@ vim: nospell:
 
     $HADR\vlc\vlcrc
     Adobe Acrobat Reader DC > Shift+Ctrl+Minus -> rotate left
-    C:\Users\troin\AppData\Local\Microsoft\WindowsApps
+    $HADL\Microsoft\WindowsApps
     cpan -l > $machLg\cpanList.txt
     sl $JCop\IT-handy\CP\TeX\LaTeX\structure\classes\memoir
     yt-dlp -U  # update inplace
@@ -22,6 +22,7 @@ vim: nospell:
 
 # CLI
     $MSWin10\QR\cli.md
+    win32yank -o  # returns what's in the clipboard
 
     ~\AppData\Roaming\Vifm\vifmrc
 
@@ -36,6 +37,7 @@ vim: nospell:
     [console]::WindowWidth
 
 ## encoding
+    $MSwin10\mb\gitconfig
     C:\Git\usr\bin\perl.exe -v
     C:\msys64\usr\bin\perl.exe -v
     java -jar C:\LanguageTool\languagetool-commandline.jar -h
@@ -72,15 +74,15 @@ vim: nospell:
     $HADL\Programs\MiKTeX\miktex\config\xelatex.ini
 
 ### npm
-    g $HOME\AppData\Local\npm-cache\_npx
-    g $HOME\AppData\Roaming\npm
+    g $HADL\npm-cache\_npx
+    g $HADR\npm
 
 ### Strawberry Perl
     C:\Strawberry\perl\bin\perl.exe -v
     g $home\.cpanm
 
 ### Windows Package Manager
-    g C:\users\jharr\AppData\local\microsoft\winget\packages
+    g $HADL\microsoft\winget\packages
     winget --info
     winget add SumatraPDF -h -l C:\SumatraPDF # install (--location, --silent)
     winget find powershell
@@ -103,7 +105,7 @@ vim: nospell:
     ~\Documents\WindowsPowerShell\Modules
 
 ## file manage - lf
-    $HOME\AppData\Local\lf\lfrc
+    $HADL\lf\lfrc
 
 by gokcehan
 
@@ -114,6 +116,7 @@ by gokcehan
 - `/fft` 2-second granularity (FAT File Times)
 - `/l` list only (simulate)
 - `/mir` `/e /purge` (mirror)
+- once the source/target are specified, exclude some directories: `/xd '.git' /xd '*packs-*'`
 - `/tee` output to console as well as log file
 
 ## fzf
@@ -207,8 +210,13 @@ Windows Subsystem for Linux
 ### Ubuntu
     /mnt/c/vim/vim91/gvim.exe
     highlight --syntax=bash ~/.bash_history -O ansi
+    o hello | clip.exe  # arrives in Ditto
     pwsh.exe -nop -c start .
     pwsh.exe -nop -c Get-ExecutionPolicy
+    win32yank.exe -o  # returns what's in the clipboard
+
+#### wslu
+    wslfetch
     wslsys  # system info
     wslview https://wslutiliti.es/wslu/man/wslview.html
 
@@ -220,6 +228,7 @@ ExifTool by Phil Harvey
 - `f`, `f11` = toggle full screen
 - `f12` = Paramètres
 - `h`/`v` invert horizontally/veritcally
+- `i` image properties
 - `w` = open in `File Explorer`
 - `$JHt/IT/MSWin/Imagey/i6l-FSSettings.db` = last saved, for `PaperSizeList`
 
@@ -340,7 +349,7 @@ KeePassXC: Getting Started Guide
     C:\Vim\vim91\vim.exe -?
     C:\Vim\vim91\vim.exe --version
     g $lazy
-    g 'C:\Program Files\Neovim\share\nvim\runtime'
+    g 'C:\Program Files\Neovim\share\nvim\runtime'g 'C:\Program Files\Neovim\share\nvim\runtime'
     $ProgramFiles\Neovim\share\nvim\runtime\mswin.vim
 
 # Vivaldi

@@ -1,5 +1,7 @@
 vim: nospell:
 
+    $MSwin10/QR/CLI-encoding-PowerShell.md
+
     $ITstack\MSWin\PowerShell\Scratch.ps1
     $myinvocation.mycommand.name  # = the script's name
     $MSwin10\gac.ps1  # to explore all commands
@@ -30,9 +32,13 @@ limited to single commands
     & "$ITstack\MSWin\PowerShell\colours\ConsoleColor.ps1"
     & "$ITstack\MSWin\PowerShell\colours\LindbergColors.ps1"
     & "$onGH\misc\Colors.ps1"
+    write-color -text 'red ', 'green ', 'yellow ' -color red,green,yellow  # pswritecolor
     [enum]::getvalues([type]'system.consolecolor').ForEach{@{$_ = $_.value__}}
     [System.Enum]::GetValues('ConsoleColor') | %{ write-host $_ -ForegroundColor $_ }
-    write-color -text 'red ', 'green ', 'yellow ' -color red,green,yellow  # pswritecolor
+
+## Pansies
+    Get-Gradient red blue -Flatten | %{Write-Host " " -BackgroundColor $_ -NoNewline}
+    "I ${fg:red}LOVE${fg:clear} PS"
 
 ## $PSStyle
     write-host "$($PSStyle.foreground.magenta)$($PSStyle.background.white)magenta_on_white$($PSStyle.reset)"  # no bleeding!
@@ -42,13 +48,13 @@ limited to single commands
     $PSStyle.Foreground
 
 # data
-    $array | sort
     $x.GetType()
     sv var $true; $var
 
 ## arrays
     $a = 1,'a',2,'b'; $a[1]; $a[-1]; $a.length
     $a = @(); $a += 'first'; $a += 'second'
+    $array | sort
     foreach ($element in $myArray) {$element}
     Format-Custom -InputObject $array -Expand CoreOnly  # displays structure
 
@@ -60,14 +66,27 @@ limited to single commands
     "Hello".Replace('l', 'x').Replace('H', 'Y')
     'a'.equals('b')
     'abcdefg'.substring(2,3)  # 3 characters starting from index 2 (= 3rd character)
-    'IF' -match '^t$|^f$'
     'me'+'et'
     [string]$pwd
     if ( !$y ) { 'no' }
     format-string powershell -randomize
+    if ( 'n' -eq 'n' ) { 'equal' }
     if ( '5' -ne '4' ) { '5 is not 4' }
 
-regex: `\w` = a-z, A-Z, 0-9, _
+### regex
+    'hi.there.jpg' -replace 'g', ''          # hi.there.jpg
+    'hi.there.jpg' -replace 'e.*', ''        # hi.th
+    'hi.there.jpg' -replace 'e.*$', ''       # hi.th
+    'hi.there.jpg' -replace 'e.+?$', ''      # hi.th
+    'hi.there.jpg' -replace 'e.*?$', ''      # hi.th
+    'hi.there.jpg' -replace 'e([^.]*)', ''   # hi.th.jpg
+    'hi.there.jpg' -replace '\.([^.]*)', ''  # hi
+    'hi.there.jpg' -replace 't([^.]*)', ''   # hi..jpg
+    'hi.there.jpg' -replace '\.([^.]*)$', '' # hi.there
+    'hi.there.jpg' -replace '([^.]*)$', ''   # hi.there
+    'IF' -match '^t$|^f$'
+
+`\w` = a-z, A-Z, 0-9, _
 
 # datetime
     [system.timezoneinfo]::getsystemtimezones() | out-gridview
@@ -128,8 +147,14 @@ otherwise little sign of them
 doesn't find executables in `~\AppData\`
 
 # file contents
+replace text in files
+
+## Get-Content
     (gc $file | select -skip 3) | seco $file  # removes first 3 lines
     (gc $file_with_whitespaces_at_ends_of_lines).trim() | seco trimmed.txt
+    gc somefile.txt | where { $_ -match “expression”}
+
+aliases: `cat`, `type`
 
 # file manage
     ii .  # invoke Explorer on WD
@@ -160,10 +185,11 @@ doesn't find executables in `~\AppData\`
     ls * | select FullName
     ls * | select Name
     ls -s -depth 1  # including contents of subdirectories
-    ls -s -i i1*,i2*,i3*
+    ls -s -i i1*,i2*,i3*  # -include
     ls -s -i '* (* conflicted copy *' |%{echo $_.fullname} | ri
     ls -s | ? Name -match <regex>
     ls -directory -s  # recursive list
+    -exclude <glob>
 
 #### list of names
     ls -name
@@ -178,15 +204,10 @@ doesn't find executables in `~\AppData\`
     ls *.pdf | select -expand name
     ls $path | select -expand FullName
 
-### get-content
-    gc <file>
-    gc somefile.txt | where { $_ -match “expression”}
-
-aliases: `cat`, `type`
-
 ### lastwritetime
     lwp \.ps1
     lwt md md
+    lwt ps1 ps1
     lwt sh sh
     lwt docs doc docx odt
     lwt tex cls sty tex
@@ -239,7 +260,7 @@ aliases: `cat`, `type`
 - `del`, `erase`, `rd`, `ri`, `rm`, `rmdir`
 - no easy way to remove a folder, and not sent to Recycle...
 
-# foreach-object
+# ForEach-Object
 - `%` = `foreach`
 - not the `foreach` loop statement
 
@@ -339,9 +360,9 @@ prefer `&` where possible
     compare-module | where updateneeded | foreach { update-module $_.name }  # slow but reliable
 
 # PSScriptTools
+    dw (= Get-DirectoryInfo)
     gal cc  # Copy-Command
-    Get-MyAlias  # limited to  PSScriptTools
-    Get-DirectoryInfo  # alias  dw
+    Get-MyAlias
     Get-MyVariable
     Get-PathVariable
     get-powershellengine -detail
@@ -398,10 +419,10 @@ tab completion
 ## functions
     $function:<function>  # contains it's internal commands
     function global:<function> { ... }
-    function args { $a0 = $args[0]; $a1 = $args[1]; "$a0 $a1" }; args here there
+    function args { $a0 = $args[0]; $a1 = $args[1]; "$a0 $a1, and " + $args[0] + ", but $args[0]" }; args here there
 
 ## if statement
-    if (c1) {a1} elseif (c2) {a2} else (c3) {a3}
+    if (c1) {a1} elseif (c2) {a2} else {a3}
     if ( $n -gt 13 -and $n -lt 55 )
     if ( 5 -eq $n )
 

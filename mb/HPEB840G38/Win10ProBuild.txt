@@ -7,11 +7,14 @@ HP EliteBook 840 G3 barcoded PC117860 (labelled BC PNB 18 by last owner) = HPEB8
 # build - parallel
 Gestionnaire de périphériques > Cartes graphiques > Intel(R) HD Graphics 520
   double-clicked to discover  Pilote > 31.0.101.2111
+waiting: Pansies
 ## AltSnap
 winget add altsnap
   APS> schtasks /create /f /tn "AltSnap onlogon" /tr "$Env:AppData\AltSnap\AltSnap.exe" /sc onlogon /rl highest
   PS> $ASi="~\AppData\Roaming\AltSnap\AltSnap.ini"; (gc $ASi).replace('AutoSnap=2','AutoSnap=0') | seco -encoding utf8 $ASi
 rebooted to get it working
+## Bulk Rename
+winget add BulkRenameUtility
 ## code-minimap
 cpi $ITscc\forMSWin\code-minimap-v0.6.7-x86_64-pc-windows-msvc\code-minimap.exe $HADL\Microsoft\WindowsApps
 ## Disk Usage
@@ -75,6 +78,8 @@ Alimentation et mise en veille > Jamais, Jamais, 10 minutes, Jamais
   Résolution de l'écran > 1920 x 1080 (recommandé)
 Multitâche > Alt + Tab > Uniquement les fenêtres ouvertes
 Stockage (L'Assistant de stockage) > Activé
+## PDFtk
+winget add PDFLabs.PDFtk.Free
 ## Process Explorer
 start $ITscc\forMSWin\ProcessExplorer\procexp64.exe > Agree
   alt+o (= Options) > i (= Tray Icons) > p (= Physical Memory History)
@@ -587,6 +592,47 @@ exiftool -ver
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
 $newPathCU = $oldPathCU+';C:\Users\jnbh\AppData\Local\Microsoft\WinGet\Packages\lsd-rs.lsd_Microsoft.Winget.Source_8wekyb3d8bbwe\lsd-v1.1.5-x86_64-pc-windows-msvc'; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
+## fix fd in $PATH
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU+';C:\Users\jnbh\AppData\Local\Microsoft\WinGet\Packages\sharkdp.fd_Microsoft.Winget.Source_8wekyb3d8bbwe\fd-v10.2.0-x86_64-pc-windows-msvc'; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+## fix rg in $PATH
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU+';C:\Users\jnbh\AppData\Local\Microsoft\WinGet\Packages\BurntSushi.ripgrep.MSVC_Microsoft.Winget.Source_8wekyb3d8bbwe\ripgrep-14.1.1-x86_64-pc-windows-msvc'; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+## WSL Ubuntu dos2unix
+sudo apt install dos2unix
+## WSL Ubuntu wslu
+sudo add-apt-repository ppa:wslutilities/wslu
+  got me  \\wsl$\Ubuntu\etc\apt\sources.list.d\wslutilities-ubuntu-wslu-jammy.list
+sudo apt update
+sudo apt install wslu
+## sharkdp/bat
+also for  fzf
+winget add sharkdp.bat
+removed ; from end of path
+## Dropbox loads of files stuck "Waiting to sync"
+Dropbox  exited for  D:\Dropbox\.dropbox.cache  Deleted  then  Dropbox  relaunched
+seemed to be mainly Vim plugin files
+Dropbox > Preferences > Account > alt+h > [ Fix Hardlinks  Fix Permissions ]
+  here and on  i34G1TU02  &  sbMb, no luck
+Seem's to've been due to a  git clone https://github.com/dense-analysis/ale  in  $Drpbx/Play0
+## dubious ownership of $misc
+in there, APS> takeown /f . /r /d o
+## WSL Ubuntu trash-cli
+sudo apt install trash-cli
+## IrfanView
+winget add IrfanSkiljan.IrfanView
+ran it for  p (= Properties/Settings) > [ JPG > Auto-rotate off  Editing > Cut White ]
+winget add IrfanSkiljan.IrfanView.PlugIns
+## FastStone Image Viewer
+with an image open, e  for  C:\Program Files\IrfanView\i_view64.exe
+## VLC Player
+winget add VideoLAN.VLC
+run for  ctrl+p (= Preferences) > Pause on the last frame of a video > Always
+## MediaInfo
+winget add MediaArea.MediaInfo
+fixed ; at end of path
 ## waiting
 # physical configuration
 1366x768 screen

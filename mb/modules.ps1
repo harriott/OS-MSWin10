@@ -18,7 +18,8 @@
 # Set-PSResouRcerepository PSGallery -trusted; Get-PSResourceRepository
 
 #=> 2 PS/WPS - modules
-# 'BurntToast'; isres burnttoast
+'BurntToast'; isres burnttoast
+'Pansies'; isres pansies
 'Posh-Git'; isres posh-git
 'PowerColorLS'; isres powercolorls
 'Powershell.Chunks'; isres powershell.chunks

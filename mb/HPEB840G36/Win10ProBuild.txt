@@ -83,6 +83,12 @@ winget add vim.vim -l C:\Vim
 winget add python.python.3.13 -l C:\Python3
 ## Git
 winget add git.git -l C:\Git  got me  Git for Windows v2.44.0
+## reconnected to  Jo-X10II
+## previously installed
+7-Zip, Calibre, CMake, Everything, eza, fzf, LibreOffice, LSD, Neovide, Neovim, Node.js, Pandoc, ripgrep, Strawberry Perl, Thunderbird, WT
+### AutoHotkey
+Shortcut to  $MSWin10\AutoHotkey\HPEB840G36.ahk  was placed in
+  "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
 ## waiting
 # physical configuration
 1366x768 screen

@@ -9,7 +9,7 @@
 #  iex "$MSwin10\Thb\TaskScheduler\clearWin10ProLock.ps1"
 
 # for  $MSWin10\AutoHotkey\AZERTY.ahk
-#  APS> ni C:\MT-clearWin10ProLock.ps1 -itemtype symboliclink -value $MSwin10\Thb\clearWin10ProLock.ps1 -Force
+#  APS> syli $MSwin10\Thb\clearWin10ProLock.ps1 C:\MT-clearWin10ProLock.ps1
 #   bat C:\MT-clearWin10ProLock.ps1
 #   csl C:\MT-clearWin10ProLock.ps1
 

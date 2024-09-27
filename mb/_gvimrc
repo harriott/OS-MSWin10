@@ -7,7 +7,7 @@
 " ------------------------------------------------------------------------
 "
 ""> 0 monitor height
-" used in  $vimfiles/vim/enter/gvimrc.vim
+" used in  $vfv/enter/gvimrc.vim
 let g:monitorheight='1080'
 if hostname() == 'HPEB840G36' | let g:monitorheight='768' | endif
 

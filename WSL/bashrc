@@ -2,7 +2,7 @@
 # vim: set sw=2:
 
 # $MSWSL/bashrc
-#  symlink ($MSWSL\bs-symlinks.sh) sourced by  $MSWSL\bash_profile
+#  symlink ($MSWSL\bs-symlinks.sh) sourced by  $MSWSL/bash_profile
 
 #  also there is  \\wsl$\Ubuntu\etc\profile
 
@@ -20,6 +20,7 @@ se () {
 }
 
 #=> better file managing
+alias fd=fdfind
 alias fe='pwsh.exe -nop -c start .'  # File Explorer here
 if [ -s "/var/snap/jump" ]; then eval "$(jump shell)"; fi # gsamokovarov's jump
 
@@ -38,6 +39,7 @@ fi
 
 #=> Bash interface
 alias o=echo
+source $OSAB/Bash/xcol.sh
 
 # for nnn & tmux
 export EDITOR=nvim
@@ -46,11 +48,15 @@ export VISUAL=gvim
 #==> prompt
 source /usr/lib/git-core/git-sh-prompt; source $OSL/bashrc-console-prompt
 
+#=> exports
+export eup=$(wslpath $(cmd.exe /C "echo %USERPROFILE%" 2>/dev/null | tr -d '\r'))
+  export Enc=$eup/encrypted
+
 #=> from  \\wsl$\Ubuntu\etc\skel\.bashrc
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# enable color support of ls and also add handy aliases
+# Enable color support of ls and also add handy aliases:
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
@@ -58,6 +64,8 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
+# and then override with fancy colouring
+source $ITscc/forArch/trapd00r-LS_COLORS/lscolors.sh  # o "$LS_COLORS"
 
 # some more ls aliases
 alias ll='ls -alF'
