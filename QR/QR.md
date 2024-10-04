@@ -242,7 +242,7 @@ ExifTool by Phil Harvey
 Consolas can handle €
 
 # LaTeX
-    v $home\Downloads $core\IT_stack\copied-reference\CP\TeX
+    g $ITscr\CP\TeX
 
 ## Polyglossia
     \setmainfont{Segoe Print}

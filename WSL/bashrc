@@ -65,7 +65,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 # and then override with fancy colouring
-source $ITscc/forArch/trapd00r-LS_COLORS/lscolors.sh  # o "$LS_COLORS"
+[ $ITscc ] && source $ITscc/forArch/trapd00r-LS_COLORS/lscolors.sh  # o "$LS_COLORS"
 
 # some more ls aliases
 alias ll='ls -alF'

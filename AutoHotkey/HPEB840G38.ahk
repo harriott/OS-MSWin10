@@ -33,7 +33,7 @@ SC117::MsgBox ThisHotkey " was pressed." ; fn+f6
     Sleep 1000
 	Click ; on Enregister
 	WinRestore "HP Smart ahk_exe ApplicationFrameHost.exe"
-} ; win+ctrl+e  after a scan, brings forward and saves as jpg
+} ; win+ctrl+e  after a scan, brings forward and saves as jpg (works 240928)
 #!n::Run "C:\Program Files\Neovide\neovide.exe --grid 109x62" ; win+alt+n - open Neovide
 #!o::Run "wt --pos 9,9 --size 108,69 -d C:\Users\jnbh"
 ; - win+alt+o - a terminal sized ($vfv/enter/gvimrc.vim) for neovim
@@ -46,7 +46,7 @@ SC117::MsgBox ThisHotkey " was pressed." ; fn+f6
     Sleep 1000
 	Click ; on that big back arrow
     MouseMove 990,670 ; ready mouse on Numériser button
-} ; win+ctrl+x  after saving, brings forward and returns to  Numériser  window
+} ; win+ctrl+x  after saving, brings forward and returns to  Numériser  window (works 240928)
 
 #Include AZERTY.ahk
 

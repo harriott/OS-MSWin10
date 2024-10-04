@@ -58,6 +58,10 @@ limited to single commands
     foreach ($element in $myArray) {$element}
     Format-Custom -InputObject $array -Expand CoreOnly  # displays structure
 
+## numbers
+    $n=9; '{0:d4}' -f $n  # padded to 4 digits
+    1..30 | %{($_*3).ToString('000')} # multiples of 3 padded
+
 ## strings
     $b=$b+'o'
     $s='stringROD'; $s.substring(0, $s.length -3)
@@ -74,16 +78,17 @@ limited to single commands
     if ( '5' -ne '4' ) { '5 is not 4' }
 
 ### regex
-    'hi.there.jpg' -replace 'g', ''          # hi.there.jpg
-    'hi.there.jpg' -replace 'e.*', ''        # hi.th
-    'hi.there.jpg' -replace 'e.*$', ''       # hi.th
-    'hi.there.jpg' -replace 'e.+?$', ''      # hi.th
-    'hi.there.jpg' -replace 'e.*?$', ''      # hi.th
-    'hi.there.jpg' -replace 'e([^.]*)', ''   # hi.th.jpg
-    'hi.there.jpg' -replace '\.([^.]*)', ''  # hi
-    'hi.there.jpg' -replace 't([^.]*)', ''   # hi..jpg
-    'hi.there.jpg' -replace '\.([^.]*)$', '' # hi.there
-    'hi.there.jpg' -replace '([^.]*)$', ''   # hi.there
+    'hi.there.jpg' -replace 'g', ''             # hi.there.jp
+    'hi.there.jpg' -replace 'e.*', ''           # hi.th
+    'hi.there.jpg' -replace 'e.*$', ''          # hi.th
+    'hi.there.jpg' -replace 'e.+?$', ''         # hi.th
+    'hi.there.jpg' -replace 'e.*?$', ''         # hi.th
+    'hi.there.jpg' -replace 'e([^.]*)', ''      # hi.th.jpg
+    'hi.there.jpg' -replace '\.([^.]*)', ''     # hi
+    'hi.there.jpg' -replace 't([^.]*)', ''      # hi..jpg
+    'hi.there.jpg' -replace '\.([^.]*)$', ''    # hi.there
+    'hi:there:jpg' -replace '[^.]*?:', ''       # jpg
+    'hi:there:jpg' -replace '(.*?):(.*)', '$2'  # there:jpg
     'IF' -match '^t$|^f$'
 
 `\w` = a-z, A-Z, 0-9, _
@@ -147,7 +152,8 @@ otherwise little sign of them
 doesn't find executables in `~\AppData\`
 
 # file contents
-replace text in files
+- replace text in files
+- `seco` (= `Set-Content`) `$MSWin10\PSProfile.ps1`
 
 ## Get-Content
     (gc $file | select -skip 3) | seco $file  # removes first 3 lines
@@ -189,7 +195,8 @@ aliases: `cat`, `type`
     ls -s -i '* (* conflicted copy *' |%{echo $_.fullname} | ri
     ls -s | ? Name -match <regex>
     ls -directory -s  # recursive list
-    -exclude <glob>
+
+`-e <leaf_glob>` (invokes `-exclude`)
 
 #### list of names
     ls -name

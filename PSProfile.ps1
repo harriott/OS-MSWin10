@@ -77,8 +77,8 @@ function lc { [string[]]$list = (gci).Name; $list -join '  ' }
 function ~ { sl ~ }
 
 # nvim/vim, quitting to last file's directory ($vfv/enter/vimrc.vim)
-function n { nvim $args; gc $home/last_directory | sl }
-function v { C:\Vim\vim91\vim.exe $args; gc $home/last_directory | sl }
+function n { nvim $args; gc $home/lastVimDirectory | sl }
+function v { C:\Vim\vim91\vim.exe $args; gc $home/lastVimDirectory | sl }
 
 sal j z  # ZLocation
 sal l lsd
@@ -236,10 +236,10 @@ function fso { $fso = new-object -com scripting.filesystemobject; gci -directory
 
 function gfsi { Get-ChildItem . -Directory | Get-FolderSizeInfo -Hidden | Sort-Object TotalSize -Descending | Format-Table -AutoSize -View mb }
 
-#===> string in files - sifw's
+#===> string in files
 
 function nvdg { $outfile = "$DJH/search/nvdg.rgo"
-  sifwork0 $outfile 'neovim.discourse.group'
+  sifw0 $outfile 'neovim.discourse.group'
   foreach($ITd in $jtIT, $ITstack) { "Searching in $ITd\..."
     rg -tmd neovim.discourse.group $ITd >> $outfile; '' >> $outfile}
   sleep 4; ((gc $outfile) -join "`n") + "`n" | seco -NoNewline $outfile  # CRLF -> LF
@@ -251,56 +251,50 @@ function removeMatchingLines {
 } # (gcm removeMatchingLines).scriptblock
 
 function SE { $outfile = "$DJH/search/SEN.sifw"
-  sifwork0 $outfile 'stackexchange|stackoverflow|superuser'
+  sifw0 $outfile 'stackexchange|stackoverflow|superuser'
   foreach($ITd in $ITstack, "$JHw\France", $jtIT) { "Searching in $ITd\..."; sl $ITd
     gci -r -e $outfile -i '*.md' | sls 'stackexchange|stackoverflow|superuser' | %{
       $_.path+" > "+$_.line} >> $outfile; '' >> $outfile }
   sleep 4; removeMatchingLines $outfile 'README.md'
   sleep 4; removeMatchingLines $outfile 'vimfiles\\vim\\'
-  sifwork1 $outfile
+  sifw1 $outfile
   sl "$DJH/search" }
 
-function sifwork {
-  # not to be called directly
-  $outfile = $args[0]+".sifw"
-  sifwork0 $outfile $args[2]
-  gci -r -e $outfile -i $args[1] | sls $args[2] | %{$_.path+" > "+$_.line} >> $outfile
-  "" >> $outfile
-  sifwork1 $outfile
-  $global:sifworkoutfile = $outfile
-}
-function sifwork0 {
+function sifw0 {
   "" > $args[0]
-  'vim /'+$args[1].replace('|','\|') >> $args[0]
+  '  vim search in here for  '+$args[1].replace('|','\|') >> $args[0]
   "" >> $args[0]
 } # header
-function sifwork1 {
+function sifw1 {
   "vim-easy-align: gAip>" >> $outfile
   ":packadd tabular | Tabularize/>" >> $outfile
   '' >> $outfile
   $outfile
 } # footer
 
-function stringinallfiles { sifwork string-allfiles '*' $args[0] }
-function stringinmds { sifwork string-md '*.md' $args[0] }
-function stringinps1s { sifwork string-ps1 '*.ps1' $args[0] }
-function stringintexs { $texfiles = '*.cls','*.tex'; sifwork string-latex $texfiles $args[0] }
-function stringinvims { sifwork string-vim '*.vim' $args[0] }
-# stringin* <regex>
+function rgo {
+  $rgo = 'rg-'+$args[0]+'.sifw'
+  $rgot = "~/rgo-temp"
+  sifw0 $rgo $args[1]  # helpful header
+  $rgs = 'rg -t'+$args[0]+' '+$args[1] # rg search
+  $rgoa = (iex $rgs) # rg output array
+  foreach ($rgf in $rgoa) {
+    $rgfp = $rgf -replace ':.*',''  # rg find path
+    $rgfpl = $rgfp.replace('\','/') # rgf linux style
+    $rgfc = $rgf -replace '(.*?):(.*)', '$2'  # rg find contents
+    $rgfpl+' > '+$rgfc >> $rgo  # tidied up
+  }
+  "" >> $rgo
+  sifw1 $outfile
+  sleep 2; ((gc $rgo) -join "`n") + "`n" | seco -NoNewline $rgo  # CRLF -> LF
+  "- output is in  $rgo"
+} # rgo <rg_file_group> <unquoted_regex>
 
 #====> github issues
 # $jtIT\ghissues.sifw
 # $ITstack\ghissues.sifw
+function ghissues { rgo md 'github\.com.+issues' }
 
-function ghissues {
-  'Searching...'
-  stringinmds 'github\.com.+issues'  # calling function sifwork
-  "Stripping issues that aren't mine..."
-  sleep 3; removeMatchingLines $global:sifworkoutfile '\\copied-'
-  sleep 3; removeMatchingLines $global:sifworkoutfile '\\vimfiles\\vim\\'
-  mi $global:sifworkoutfile ghissues.sifw -force
-  '- moved to ghissues.sifw'
-}
 #=> 0 Ghostscript
 function gsp {
     $pl = $args[0]

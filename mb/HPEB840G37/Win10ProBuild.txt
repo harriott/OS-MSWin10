@@ -908,17 +908,24 @@ AIdc> sfc /scannow  seemed to find some errors so  rebooted  AIdc> sfc /scannow
 searched for and found  HP ENVY Inspire 7200  then took a while to setup
 Imprimantes et scanners > Ajouter une imprimante ou un scanner >
   HPC204A4 (HP ENVY Inspire 7200 series)
+## HX256GSSDSATA3 inaccessible
+
+took it out and chkdsk'd from HPEB840G38 - no errors, refitted and all good
+## fix rg in $PATH
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU+';C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\BurntSushi.ripgrep.MSVC_Microsoft.Winget.Source_8wekyb3d8bbwe\ripgrep-14.1.1-x86_64-pc-windows-msvc'; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+## WSL Ubuntu trash-cli
+sudo apt install trash-cli
+The following packages were automatically installed and are no longer required:
+  htop libnl-3-200 libnl-genl-3-200
+Use 'sudo apt autoremove' to remove them.
+## MediaInfo
+winget add MediaArea.MediaInfo
 ## waiting
 Mise à jour facultatives
 ### Epson Software updater v4.6.7.0
 epson661623eu.exe
-### WSL Ubuntu dos2unix
-sudo apt install dos2unix
-### WSL Ubuntu trash-cli
-sudo apt install trash-cli
-### MediaInfo
-winget add MediaArea.MediaInfo
-fixed ; at end of path
 # build - WT 0 install
 https://www.microsoft.com/en-gb/p/windows-terminal-preview/9n0dx20hk701
 # build - WT 1 settings

@@ -436,7 +436,7 @@ winget add Google.Chrome.EXE
 ## $CrPl ownership
 APS> takeown /f $CrPl /r /d o
 ## FastStone Image Viewer
-winget add FastStone.Viewer
+winget add FastStone.Viewer  "C:\Program Files (x86)\FastStone Image Viewer\FSViewer.exe"
 ran it for Esc to offtick
 f12 (= Paramètres) > Aperçu > [
   En boucle  Rotation Auto par tag orientation EXIF > off  Confirmer la reéctirure des fichiers
@@ -633,6 +633,8 @@ run for  ctrl+p (= Preferences) > Pause on the last frame of a video > Always
 ## MediaInfo
 winget add MediaArea.MediaInfo
 fixed ; at end of path
+## BX500 inaccessible
+took it out and chkdsk'd from HPEB840G37 - no errors, refitted and all good
 ## waiting
 # physical configuration
 1366x768 screen
