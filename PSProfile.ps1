@@ -118,7 +118,8 @@ function chco {
 function endi { if ( ! ( test-path $args[0] ) ) { md $args[0] } } # ensure directory
 function syli { ni $args[1] -type symboliclink -value $args[0] -force } # symbolic link
 
-function tit { ri "*.aux"; ri "*.log" }  # tidy tex = clear away TeX ancillary files
+# tidy tex = clear away TeX ancillary files
+function tit { ri "*.aux"; ri "*.log"; ri "*.out"; ri "*.toc" }
 
 #==> investigations
 ipmo PowerColorLS; sal p PowerColorLS

@@ -20,7 +20,7 @@
 
 $Drpbx = "D:\Dropbox"
 $Thb = "$Drpbx\JH\Thb-dr"
-# $Thb\parent.lock  is kept in use by  Thunderbird
+# ls $Thb\parent.lock  is kept in use by  Thunderbird  ri $Thb\parent.lock
 #  and so isn't sync'd by  Dropbox  until  Thunderbird closes
 # <dot>parentlock  seems to be a relic
 if ( ! (Get-Process thunderbird -ErrorAction SilentlyContinue) ) {

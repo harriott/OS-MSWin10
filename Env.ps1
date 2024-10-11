@@ -46,6 +46,7 @@ $Drpbx = "D:\Dropbox"
             $vfv = "$vimfiles\vim"
               $vfvp = "$vfv\packs"
       $TeNo = "$core\TextNotes"  # used in  $TeNo
+        $TNt = "$TeNo\tex"  # used in  $TeNo
     $DaLi = "$DJH\Jo-now\DailyLife"
     $ess = "$DJH\Jo-now\essential"
       $eFr = "$ess\France"

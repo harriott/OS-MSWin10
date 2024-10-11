@@ -922,6 +922,11 @@ The following packages were automatically installed and are no longer required:
 Use 'sudo apt autoremove' to remove them.
 ## MediaInfo
 winget add MediaArea.MediaInfo
+## MiKTeX updates
+! LaTeX Error: File `currfile.sty' not found.  while compiling
+Start Menu > MiKTeX Console  for 117 updates
+## GIMP
+winget add GIMP.GIMP
 ## waiting
 Mise à jour facultatives
 ### Epson Software updater v4.6.7.0

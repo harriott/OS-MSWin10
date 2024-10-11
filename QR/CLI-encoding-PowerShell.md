@@ -137,6 +137,15 @@ otherwise little sign of them
     pwsh -nop  # -NoProfile
     saps pwsh -verb runas  # Administrator
 
+### *-Process
+    kill -name HP.Smart
+
+#### Get-Process
+    ps *
+    ps HP.Smart
+    ps | oh -paging
+    ps | ?{$_.mainwindowtitle} | ft id, name, mainwindowtitle -autosize
+
 ## Windows PowerShell
     powershell -noprofile  #  runs  Windows PowerShell
     saps powershell -verb runas  # Administrator
@@ -298,10 +307,6 @@ aliases: `cat`, `type`
 - `gpv` (= `get-itempropertyvalue`)
 - `saps` (= `start` = `start-process`)
 - `sp` (= `set-itemproperty`)
-
-## get-process
-    ps | oh -paging
-    ps | ?{$_.mainwindowtitle} | ft id, name, mainwindowtitle -autosize
 
 # microsoft.powershell.psresourceget
     get-installedPSResource
