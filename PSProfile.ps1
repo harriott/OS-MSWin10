@@ -221,7 +221,7 @@ function lwt {
     } else {
       if ($args[1]) {
         $args[1]+' '+$args[2]+' '+$args[3] >> $of; '' >> $of
-        fd -tf -e $args[1] -e $args[2] -e $args[3] | %{ ls $_ } | %{ dtsfn $_ ':' } | sort >> $of
+        fd -tf -E copied-code -E copied-reference -e $args[1] -e $args[2] -e $args[3] | %{ ls $_ } | %{ dtsfn $_ ':' } | sort >> $of
         "results in $of"
       } else { "next three arguments are specific file extensions" } }
   } else {

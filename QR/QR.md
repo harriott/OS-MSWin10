@@ -370,6 +370,10 @@ KeePassXC: Getting Started Guide
 - `win+l` lock screen
 - `win+x` > `t` = `Gestion des disques`
 
+## change language
+- `shift+alt`
+- `win+space` with pop-up
+
 ## File Explorer
 - `alt+d`/`ctrl+l` (& `f4`) le chemin d’accès > `bash`/`pwsh`/`wt` Enter
 - `alt+p` toggle preview panel

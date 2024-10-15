@@ -12,6 +12,8 @@ Paramètres > Personnalisation > Couleurs > Choisir votre mode d'application par
 Paramètres > [ Personnalisation > Arrière-plan > Couleur unie
 ## Edge  appears only once in  alt+tab
 Paramètres > Système > Multitâche > Alt + Tab > Uniquement les fenêtres ouvertes
+## Opera
+winget add XP8CF6S8G2D5T6
 ## WPS
 clic droit sur toolbar pour  Propriétés > [ Couleurs > Opacité > 86%  Police > Taille > 12 ]
 # build - sequential build

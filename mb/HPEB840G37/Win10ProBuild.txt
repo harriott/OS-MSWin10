@@ -927,6 +927,8 @@ winget add MediaArea.MediaInfo
 Start Menu > MiKTeX Console  for 117 updates
 ## GIMP
 winget add GIMP.GIMP
+## Opera
+winget add XP8CF6S8G2D5T6
 ## waiting
 Mise à jour facultatives
 ### Epson Software updater v4.6.7.0
