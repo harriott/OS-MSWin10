@@ -929,6 +929,10 @@ Start Menu > MiKTeX Console  for 117 updates
 winget add GIMP.GIMP
 ## Opera
 winget add XP8CF6S8G2D5T6
+## Microsoft.PowerShell.PSResourceGet
+somehow got the preview2 version
+## Opera
+Paramètres > Au démarrage > Lancer au démarrage de mon ordinateur  décoché
 ## waiting
 Mise à jour facultatives
 ### Epson Software updater v4.6.7.0

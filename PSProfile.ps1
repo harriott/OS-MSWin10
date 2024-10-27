@@ -7,7 +7,7 @@
 
 sal seco set-content  # because  sc  is overridden by  sc.exe
 sal su C:\SumatraPDF\SumatraPDF.exe
-. ~\Env.ps1  # ($MSWin10\mb\neededNodes-0-PSProfile.ps1)
+. ~\Env.ps1  # ($MSWin10\mb\neededNodes-1-PSProfile.ps1)
 
 function ep {
   $eps = "$machLg/path"
@@ -421,10 +421,6 @@ Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
 # PSFzf additions
-# $mPSFzf=0  # (because  gmo PSFzf  doesn't work until  PSFzf's been somehow invoked)
-# if ( $PSEdition  -eq 'Core'    -and ( test-path "~\Documents\PowerShell\Modules\PSFzf"        ) ) { $mPSFzf=1 }
-# if ( $PSEdition  -eq 'Desktop' -and ( test-path "~\Documents\WindowsPowerShell\Modules\PSFzf" ) ) { $mPSFzf=1 }
-# if ( $mPSFzf ) {
 if ( ( test-path "$HADL\Microsoft\WinGet\Links\fzf.exe" ) -or ( test-path "$HADL\Microsoft\WinGet\Packages\junegunn.fzf_Microsoft.Winget.Source_8wekyb3d8bbwe\fzf.exe" ) ) {
   Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
   Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }

@@ -12,8 +12,42 @@ Paramètres > Personnalisation > Couleurs > Choisir votre mode d'application par
 Paramètres > [ Personnalisation > Arrière-plan > Couleur unie
 ## Edge  appears only once in  alt+tab
 Paramètres > Système > Multitâche > Alt + Tab > Uniquement les fenêtres ouvertes
+## File Explorer
+Affichage > Options > Affichage >
+  [ Afficher l'icône des fichiers sur les miniatures  Afficher la barre d'état ] off-ticked
+  Afficher le chemin d'accès complet dans la barre de titre  on-ticked
+  Afficher les fichiers, dossier et lecteurs cachés
+  [ Masquer les extensions des fichiers dont le type est connu
+    Masquer les fichier protégés du système d'exploitation ] off-ticked
+## fix ; at end of path
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU -replace ';$', ''; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## Opera
 winget add XP8CF6S8G2D5T6
+## Paramètres
+Comptes > Famille et autres utilisateurs > [ deauram@outlook.com  jharrio@outlook.com ] >
+  Autoriser
+Personnalisation > [ Arrière-plan > Couleur unie
+  Barre des tâches > Combiner les boutons de la barre des tâches > Jamais
+  Couleurs > Choisir votre mode d'application par défaut > Sombre ]
+### Options d'ergonomie
+Clavier > all off
+Périphériques > Saisie > Orthographie >
+  Corriger automatiquement les fautes d'orthograpie > Désactvé
+### Système
+Alimentation et mise en veille > Jamais, Jamais, 10 minutes, Jamais
+  Paramètres d'alimentation supplémentaire >
+    Choisir l'action des boutons d'alimentation >
+    [ Modifier des paramètres actuellement non disponibles >
+    Activer le démarrage rapide  off-ticked  Lorsque je referme le capot > Sur secteur >
+      Ne rien faire ]
+Écran > Mise à l'échelle et disposition >
+  Éclairage nocturne > Activé
+  Modifier la taille du texte des applications et d'autres éléments > 100%
+  Résolution de l'écran > 1920 x 1080 (recommandé)
+Multitâche > Alt + Tab > Uniquement les fenêtres ouvertes
+Stockage (L'Assistant de stockage) > Activé
 ## WPS
 clic droit sur toolbar pour  Propriétés > [ Couleurs > Opacité > 86%  Police > Taille > 12 ]
 # build - sequential build
@@ -86,11 +120,33 @@ winget add python.python.3.13 -l C:\Python3
 ## Git
 winget add git.git -l C:\Git  got me  Git for Windows v2.44.0
 ## reconnected to  Jo-X10II
+## sharkdp.fd
+winget add sharkdp.fd
+fixed ; at end of path
 ## previously installed
 7-Zip, Calibre, CMake, Everything, eza, fzf, LibreOffice, LSD, Neovide, Neovim, Node.js, Pandoc, ripgrep, Strawberry Perl, Thunderbird, WT
 ### AutoHotkey
 Shortcut to  $MSWin10\AutoHotkey\HPEB840G36.ahk  was placed in
   "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
+## PowerShell
+winget add Microsoft.PowerShell
+somehow commands  j  remove-itemsafely  toast  work
+## language
+no icon in the task bar
+Options de langue : Anglais (Royaume-Uni) > Écriture manuscrite > Télécharger  didn't help
+## fix LSD in $PATH
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU+';C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\lsd-rs.lsd_Microsoft.Winget.Source_8wekyb3d8bbwe\lsd-v1.1.5-x86_64-pc-windows-msvc'; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+## add Deauram
+Paramètres > Comptes > Famille et autres utilisateurs > Ajouter un membre à la famille >
+  [ deauram@outlook.com > Membre ] got it under  Autres utilisateurs, so removed
+Paramètres > Comptes > Vos informations > Mettre à jour
+Paramètres > Comptes > Famille et autres utilisateurs > deauram@outlook.com > Autoriser > Autoriser
+Logged in > email pw > Créer un code confidential > Inclure des lettre et des symboles > qsdf
+  Sauvegardez vos fichiers avec OneDrive > Ne pas sauvegarder mes fichiers > Suivant
+  Paramètres > Applications > Démarrage > Dropbox > Désactivé > code for jharrio
+  set  File Explorer  &  Paramètres
 ## waiting
 # physical configuration
 1366x768 screen

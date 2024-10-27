@@ -9,7 +9,6 @@ vim: nospell:
     1..3
     fd -tf -u index.lock | %{ri $_}
     get-volume  # reports partitions
-    less <someFile>
     foreach($element in 1..3){ $element }
     sleep 1
 
@@ -32,7 +31,7 @@ limited to single commands
     & "$ITstack\MSWin\PowerShell\colours\ConsoleColor.ps1"
     & "$ITstack\MSWin\PowerShell\colours\LindbergColors.ps1"
     & "$onGH\misc\Colors.ps1"
-    write-color -text 'red ', 'green ', 'yellow ' -color red,green,yellow  # pswritecolor
+    write-color -text 'red ', 'green ', 'yellow ' -color red,green,yellow  # PSWriteColor
     [enum]::getvalues([type]'system.consolecolor').ForEach{@{$_ = $_.value__}}
     [System.Enum]::GetValues('ConsoleColor') | %{ write-host $_ -ForegroundColor $_ }
 
@@ -105,6 +104,10 @@ limited to single commands
 
 no standard aliases
 
+### PSCalendar
+    Get-Calendar -Month Octobre -Year 2012 -HighlightDate 27/10/2012
+    Get-Calendar -Start 1/7/24 -End 3/11/2024
+
 # executables
     (gcm python | select version | ft -HideTableHeaders | out-string).trim()
     (gp hklm:\software\microsoft\windows\currentversion\uninstall\* ).displayname | sort  # lists removable x64 programs
@@ -161,6 +164,8 @@ otherwise little sign of them
 doesn't find executables in `~\AppData\`
 
 # file contents
+    less <someFile>
+
 - replace text in files
 - `seco` (= `Set-Content`) `$MSWin10\PSProfile.ps1`
 
@@ -308,10 +313,6 @@ aliases: `cat`, `type`
 - `saps` (= `start` = `start-process`)
 - `sp` (= `set-itemproperty`)
 
-# microsoft.powershell.psresourceget
-    get-installedPSResource
-    get-PSResourceRepository
-
 # microsoft.powershell.utility
     $pw = Read-Host "Password?" -MaskInput
 
@@ -337,15 +338,24 @@ prefer `&` where possible
 # package manage
     get-package | format-table -autosize
 
-`isres` (`Install-PSResource`, of `Microsoft.PowerShell.PSResourceGet`)
+## Microsoft.PowerShell.PSResourceGet
+    Get-PSResourceRepository
+
+- `Get-PSResource` (= `Get-InstalledPSResource`)
+    - doesn't find modules in `$env:programfiles\WindowsPowerShell\Modules`
+- `isres` (= `Install-PSResource`)
+    - installs to `$HOME\Documents\*\Modules`
+    - might need to reload `Windows Powershell`
 
 ## modules
+    $MSwin10\mb\modules.ps1
     gvim $HADL\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
-    New-BurntToastNotification
-    pc  # PowerColorLS
+    p  # PowerColorLS (`$MSWin10\PSProfile.ps1`)
+    toast  # New-BurntToastNotification
 
 - `ipmo` (`import-module`)
 - `inmo` (`install-module`, of deprecated `PowerShellGet`)
+    - installs to `$HOME\Documents\PowerShell\Modules`
 - `rmo` (`remove-module`)
 
 ### get-module
@@ -359,17 +369,40 @@ prefer `&` where possible
 
 ### paths
     $env:psmodulepath -split (';')
-    $pshome/Modules
-    C:\Program Files\WindowsPowerShell\Modules
-    ~\Documents\PowerShell\Modules
+
+#### PowerShell
+    $HOME\Documents\PowerShell\Modules  # and Delete outdated
+    $PSHOME\Modules  # where pre-installeds live
+
+#### Windows PowerShell
+    $HOME\Documents\WindowsPowerShell\Modules  # can Delete outdated
+    $env:programfiles\WindowsPowerShell\Modules
 
 ### powershellget
-    get-installedmodule
-    get-psrepository
+    Get-InstalledModule
+    Get-PSRepository
 
 ### update
-    $machBld\updateModules.ps1  # for reference
-    compare-module | where updateneeded | foreach { update-module $_.name }  # slow but reliable
+    cmu  # throws some errors, lists, then provides an update command at end
+    compare-module | where updateneeded | foreach { update-module $_.name }  # slow
+
+# PS
+    $PSHOME
+    Get-PSReadlineOption
+
+## PSFzf
+    Alt+a   # select an argument
+    Alt+c   # change to sub-directory
+    Ctrl+r  # search PSReadline History
+    Ctrl+t  # select provider path
+    Get-PSResource PSFzf
+    Invoke-Fzf -?
+
+tab completion
+
+## version
+    $psversiontable.psversion
+    gpv -path "hklm:\software\microsoft\powershellcore\installedversions\*" -name "semanticversion"
 
 # PSScriptTools
     dw (= Get-DirectoryInfo)
@@ -400,15 +433,6 @@ prefer `&` where possible
     t [n]  => pstree <depth>
 
 `-InColor` only works in `Windows PowerShell`
-
-# PSFzf
-    Alt+a   # select an argument
-    Alt+c   # change to sub-directory
-    Ctrl+r  # search PSReadline History
-    Ctrl+t  # select provider path
-    Invoke-Fzf -?
-
-tab completion
 
 # Ruby
     where.exe irb
@@ -489,8 +513,4 @@ tab completion
 ## Vim
     C:\Vim\vim91\vim.exe --version
     g $HOME\.vimswap
-
-# version
-    $psversiontable.psversion
-    gpv -path "hklm:\software\microsoft\powershellcore\installedversions\*" -name "semanticversion"
 

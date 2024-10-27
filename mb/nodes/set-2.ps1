@@ -1,7 +1,7 @@
 
 # Joseph Harriott - https://harriottgithubio/ - mer 11 sept 2024
 
-# once  $Cn,  APS> . $MSWin10\mb\neededNodes-2.ps1
+# once  $Cn,  APS> . $MSWin10\mb\nodes\set-2.ps1
 
 # endi & syli  defined in  $MSWin10\PSProfile.ps1
 

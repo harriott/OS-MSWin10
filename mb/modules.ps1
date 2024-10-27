@@ -11,23 +11,37 @@
 # #=> 0 AWPS 1 update PowerShellGet
 # inmo PowerShellGet -force  # adds to  C:\Program Files\WindowsPowerShell\Modules\PowerShellGet
 
-# #=> 1 PS - PowerShell Gallery
+# #=> 1 PS 0 PowerShell Gallery
 # Set-PSResouRcerepository PSGallery -trusted; Get-PSResourceRepository
+
+#=> 1 PS 1 Microsoft.PowerShell.PSResourceGet
+inmo microsoft.powershell.psresourceget -Force
+# might be enough to  isres Microsoft.PowerShell.PSResourceGet
 
 # #=> 1 WPS - PowerShell Gallery
 # Set-PSResouRcerepository PSGallery -trusted; Get-PSResourceRepository
 
-#=> 2 PS/WPS - modules
-'BurntToast'; isres burnttoast
-'Pansies'; isres pansies
-'Posh-Git'; isres posh-git
-'PowerColorLS'; isres powercolorls
-'Powershell.Chunks'; isres powershell.chunks
-'ps.checkmoduleupdates'; isres ps.checkmoduleupdates
-'PSFzf'; isres PSFzf
-'PSScriptTools'; isres psscripttools
-'PSWriteColor'; isres pswritecolor
-'Recycle'; isres recycle
-'Terminal-Icons'; isres terminal-icons
-'ZLocation'; isres ZLocation
+#=> 2 PS/WPS - modules 0 install
+isres BurntToast
+isres Pansies
+isres Posh-Git
+isres PowerColorLS
+isres powershell.chunks
+isres PSCalendar
+isres ps.checkModuleUpdates
+isres PSFzf
+isres PSWriteColor
+isres Recycle
+isres Terminal-Icons
+isres ZLocation
+
+#=> 2 PS/WPS - modules 1 update 1st
+isres PSReadLine
+isres PSScriptTools
+
+#=> 2 PS/WPS - modules 2 update subsequent
+cmu
+upmo Microsoft.PowerShell.PSResourceGet
+upmo PSFzf
+upmo PSReadLine
 

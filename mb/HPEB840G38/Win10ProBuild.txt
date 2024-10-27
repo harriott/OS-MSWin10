@@ -32,7 +32,7 @@ Ctrl+P ( = Tools > Options ) > General >
     Couleur d'arrière plan > Personnalisé > selected a olive
 ## File Explorer
 Affichage > Options > Affichage >
-  [ Afficher l'icône des fichiers sure les miniatures  Afficher la barre d'état ] off-ticked
+  [ Afficher l'icône des fichiers sur les miniatures  Afficher la barre d'état ] off-ticked
   Afficher le chemin d'accès complet dans la barre de titre  on-ticked
   Afficher les fichiers, dossier et lecteurs cachés
   [ Masquer les extensions des fichiers dont le type est connu
@@ -637,6 +637,12 @@ winget add MediaArea.MediaInfo
 fixed ; at end of path
 ## BX500 inaccessible
 took it out and chkdsk'd from HPEB840G37 - no errors, refitted and all good
+## Microsoft.PowerShell.PSResourceGet
+APS> inmo microsoft.powershell.psresourceget
+  WARNING: Version '1.0.4.1' of module 'Microsoft.PowerShell.PSResourceGet' is already installed at 'C:\program files\powershell\7\Modules\Microsoft.PowerShell.PSResourceGet'. To install version '1.0.6', run Install-Module and add the -Force parameter, this command will install version '1.0.6' side-by-side with version '1.0.4.1'.
+it's at  $PSHOME\Modules\Microsoft.PowerShell.PSResourceGet
+  which ain't found by  Get-PSResource Microsoft.PowerShell.PSResourceGet
+inmo microsoft.powershell.psresourceget -Force
 ## waiting
 # physical configuration
 1366x768 screen

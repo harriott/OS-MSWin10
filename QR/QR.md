@@ -249,42 +249,10 @@ Consolas can handle €
     \setmainfont{Segoe Script}
     \setmainfont{Trebuchet MS}
 
-# Microsoft Edge
-    edge://extensions/
-    edge://favorites/
-    edge://settings/profiles/sync
-
-- `ctrl+.` on AZERTY toggles Copilot sidebar
-- `ctrl+u` (= `right-click > View page source`) is searchable
-- `f12` toggles last of DevTools
-- Secure Network
-
-## Extensions
-`Manage` = `edge://extensions`
-
-### Extensions
-    ••• > Extensions
-
-jigsaw icon
-
-### developer tools
-    ••• > More tools > Developer tools > Elements
-
-`ctrl+shift+i` toggles
-
-## Favourites
-    edge://favorites/
-    ••• > Open favourites page > ••• > Sort
-
-### Favourites
-    ctrl+shift+o
-
-star icon
-
 # browsers
 KeePassXC: Getting Started Guide
 
-## Chromium-based
+## chromium-based
     chrome://apps/
     chrome://plugins/
     chrome://system > extensions > Expand -> a list of Extensions
@@ -292,8 +260,41 @@ KeePassXC: Getting Started Guide
     ctrl+Shft+O (= Bookmarks) > Organise > Export
     ctrl+u => view page source in new tab
 
-### Edge
-    ctrl+j -> open downloads pane
+### Microsoft Edge
+    edge://extensions/
+    edge://favorites/
+    edge://settings/privacy
+    edge://settings/profiles/sync
+
+- `alt+f` (= ∙∙∙ menu)
+    - `ctrl+j` (= `Téléchargements`)
+    - `ctrl+p` (= `Imprimer`) includes save as PDF
+- `ctrl+.` on AZERTY toggles Copilot sidebar
+- `ctrl+u` (= `right-click > View page source`) is searchable
+- `f12` toggles last of DevTools
+- Secure Network
+
+#### Extensions
+`Manage` = `edge://extensions`
+
+##### Extensions
+    ••• > Extensions
+
+jigsaw icon
+
+##### developer tools
+    ••• > More tools > Developer tools > Elements
+
+`ctrl+shift+i` toggles
+
+#### Favourites
+    edge://favorites/
+    ••• > Open favourites page > ••• > Sort
+
+##### Favourites
+    ctrl+shift+o
+
+star icon
 
 ## Firefox
     about:config > caret
@@ -370,7 +371,10 @@ KeePassXC: Getting Started Guide
 - `win+l` lock screen
 - `win+x` > `t` = `Gestion des disques`
 
-## change language
+## input
+`ctrl+win+o` tgggles visual keyboard in current language
+
+### change language
 - `shift+alt`
 - `win+space` with pop-up
 
