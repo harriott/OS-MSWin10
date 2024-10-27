@@ -1,6 +1,6 @@
 vim: ft=build:
 
-$machBld\Win10ProBuild.txt
+$mbC\Win10ProBuild.txt
 
 HP EliteBook 840 G3 barcoded PC117860 (labelled BC PNB 18 by last owner) = HPEB840G38
 (jnbh@live.co.uk)

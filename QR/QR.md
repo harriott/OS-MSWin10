@@ -9,13 +9,13 @@ vim: nospell:
     sl $JCop\IT-handy\CP\TeX\LaTeX\structure\classes\memoir
     yt-dlp -U  # update inplace
 
-- AutoHotkey `$machBld\user\jo.ahk`
+- AutoHotkey `$mbC\user\jo.ahk`
 - `ctrl+m` on selected text opens it in `LanguageTool`
 - Task Scheduler: `taskschd.msc`
 - WinRE
 
 # build
-    $machBld
+    $mbC
     $machLg
     pt '$emd' $Drpbx\JH
     pt '$Pr0' $Drpbx\JH
@@ -138,7 +138,7 @@ output is simplified when redirected to a file
     pt 'notmatch' .
 
 #### `$core`
-    pt '$machBld' .
+    pt '$mbC' .
     pt 's~~$' .
 
 ## Windows Terminal

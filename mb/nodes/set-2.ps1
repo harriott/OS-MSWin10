@@ -119,8 +119,8 @@ syli $MSWin10\mb\_vimrc-AZERTY ~/_vimrc
 # #=> ~\.bashrc
 # syli $MSWin10\bashrc ~\.bashrc
 
-# #=> ~\.gitconfig
-# syli $MSwin10\mb\gitconfig ~\.gitconfig
-# # b $HOME\.gitconfig
-# # csl ~\.gitconfig
+#=> ~\.gitconfig
+syli $MSwin10\mb\gitconfig ~\.gitconfig
+# b $HOME\.gitconfig
+# csl ~\.gitconfig
 

@@ -1,6 +1,6 @@
 vim: ft=build:
 
-$machBld/Win10ProBuild.txt
+$mbC/Win10ProBuild.txt
 
 fn+echap (= HP System Information) long time to save to  $machLg/o7o-HPSystemInformation.nfo
 HP EliteBook 840 G3 barcoded PC117862 (labelled BC PNB 17 by last owner) = HPEB840G37
