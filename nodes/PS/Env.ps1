@@ -2,9 +2,9 @@
 
 # Joseph Harriott, mar 23 juil 2024
 
-# $MSWin10\Env.ps1
+# $MSn\PS\Env.ps1
 #  needed for system build
-#  symlink ($MSWin10\mb\neededNodes-1.ps1) sourced by  $MSWin10\PSProfile.ps1
+#  symlink ($MSn\set\1-PSProfile.ps1) sourced by  $MSWin10\PSProfile.ps1
 
 #=> 0 useful variables
 $Cn = $Env:Computername
@@ -32,6 +32,7 @@ $Drpbx = "D:\Dropbox"
           $MD4PDF = "$onGH\pandoc-md4pdf"
           $MSWin10 = "$onGH\OS-MSWin10"
             $MSmb = "$MSWin10\mb"
+            $MSn = "$MSWin10\nodes"
               $mbC = "$MSmb\$Cn"
             $MSWSL = "$MSWin10\WSL"
           $OSAB = "$onGH\OS-ArchBuilds"

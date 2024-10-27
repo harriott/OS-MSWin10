@@ -2,7 +2,7 @@
 
 # Joseph Harriott - https://harriott.github.io/
 
-# $MSwin10\mb\symlinks-check.ps1
+# & $MSn\set\4-symlinksCheck.ps1
 
 #=> Emacs
 csl $HADR\.emacs.d

@@ -1,7 +1,7 @@
 
-# Joseph Harriott, mar 07 mai 2024
+# Joseph Harriott, Sun 27 Oct 2024
 
-# $MSWin10\PSProfile.ps1
+# $MSn\PS\PSProfile.ps1
 #  symlinked in  $MSWin10\mb\neededNodes-1-PSProfile.ps1
 #  called by  $MSWin10\PSProfileStub.ps1
 

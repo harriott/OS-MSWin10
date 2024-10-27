@@ -1,7 +1,7 @@
 
 # Joseph Harriott - https://harriottgithubio/ - mer 11 sept 2024
 
-# once  $Cn,  APS> . $MSWin10\mb\nodes\set-2.ps1
+# once  $Cn, APS> . $MSn\set\3.ps1
 
 # endi & syli  defined in  $MSWin10\PSProfile.ps1
 
@@ -14,10 +14,10 @@
 # syli $misc\CP\emacs\init.el $Ed\init.el
 # syli $misc\CP\emacs\lisp $Ed\lisp
 
-# #=> gokcehan lf configuration
-# syli $MSWin10\lf\colors $HADL\lf\colors
-# syli $MSWin10\lf\lfrc $HADL\lf\lfrc
-# syli $MSWin10\lf\icons $HADL\lf\icons
+#=> gokcehan lf configuration
+syli $MSn\lf\colors $HADL\lf\colors
+syli $MSn\lf\lfrc $HADL\lf\lfrc
+syli $MSn\lf\icons $HADL\lf\icons
 
 # #=> MiKTeX
 # syli $CrPl\documenting\LaTeX\jo $tex\latex\jo  # csl $tex\latex
@@ -25,11 +25,11 @@
 # #  ii "$tex\latex\jo"
 # #  sl $tex\latex
 
-# #=> Mozilla Thunderbird safely
-# syli $MSwin10\Thb\runSafely.ps1 C:\MT-runSafely.ps1
-# #  csl C:\MT-runSafely.ps1
-# syli $MSwin10\Thb\clearParentLock.ps1 C:\MT-clearParentLock.ps1
-# #  csl C:\MT-clearParentLock.ps1
+#=> Mozilla Thunderbird safely
+syli $MSn\Thb\runSafely.ps1 C:\MT-runSafely.ps1
+#  csl C:\MT-runSafely.ps1
+syli $MSn\Thb\clearParentLock.ps1 C:\MT-clearParentLock.ps1
+#  csl C:\MT-clearParentLock.ps1
 
 # #=> Node.js
 # md $HADR\npm
@@ -52,6 +52,7 @@
 # #=> secure
 # endi ~/encrypted
 # endi ~/.ssh
+#
 # #=> vim flavours - minimap
 # cp $ITscc\forMSWin\code-minimap-v0.6.7-x86_64-pc-windows-msvc\code-minimap.exe $HADL\Microsoft\WindowsApps\code-minimap.exe
 
@@ -113,14 +114,14 @@
 # syli $vfv/thesaurus            ~/vimfiles/thesaurus
 
 #=> vim flavours - vim - vimrc
-syli $MSWin10\mb\_gvimrc ~/_gvimrc
-syli $MSWin10\mb\_vimrc-AZERTY ~/_vimrc
+syli $MSn\Vim\_gvimrc ~/_gvimrc
+syli $MSn\Vim\_vimrc-AZERTY ~/_vimrc
 
-# #=> ~\.bashrc
-# syli $MSWin10\bashrc ~\.bashrc
+#=> ~\.bashrc
+syli $MSn\bashrc ~\.bashrc
 
 #=> ~\.gitconfig
-syli $MSwin10\mb\gitconfig ~\.gitconfig
+syli $MSn\gitconfig ~\.gitconfig
 # b $HOME\.gitconfig
 # csl ~\.gitconfig
 
