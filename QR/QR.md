@@ -9,7 +9,7 @@ vim: nospell:
     sl $JCop\IT-handy\CP\TeX\LaTeX\structure\classes\memoir
     yt-dlp -U  # update inplace
 
-- AutoHotkey `$mbC\user\jo.ahk`
+- AutoHotkey `$MSn\AutoHotkey\AZERTY.ahk`
 - `ctrl+m` on selected text opens it in `LanguageTool`
 - Task Scheduler: `taskschd.msc`
 - WinRE

@@ -147,6 +147,10 @@ Logged in > email pw > Créer un code confidential > Inclure des lettre et des s
   Sauvegardez vos fichiers avec OneDrive > Ne pas sauvegarder mes fichiers > Suivant
   Paramètres > Applications > Démarrage > Dropbox > Désactivé > code for jharrio
   set  File Explorer  &  Paramètres
+## PowerShell v7.4.6
+winget update Microsoft.PowerShell  refused
+Paramètres > Applications > PowerShell 7.4.5.0-x64 Uninstalled
+WPS> winget add Microsoft.PowerShell
 ## waiting
 # physical configuration
 1366x768 screen
