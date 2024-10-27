@@ -114,7 +114,7 @@ syli $MSn\Thb\clearParentLock.ps1 C:\MT-clearParentLock.ps1
 # syli $vfv/thesaurus            ~/vimfiles/thesaurus
 
 #=> vim flavours - vim - vimrc
-syli $MSn\Vim\_gvimrc ~/_gvimrc
+syli $MSn\Vim\_gvimrc ~/_gvimrc  # csl ~/_gvimrc
 syli $MSn\Vim\_vimrc-AZERTY ~/_vimrc
 
 #=> ~\.bashrc

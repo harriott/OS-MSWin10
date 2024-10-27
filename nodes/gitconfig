@@ -1,6 +1,6 @@
 # vim: ft=gitconfig
 
-# $MSwin10\mb\gitconfig (see $MSwin10\mb\symlinks.ps1)
+# $MSn\gitconfig (see $MSn\set\3.ps1)
 
 # This is Git's per-user configuration file, adjusted for Powershell.
 

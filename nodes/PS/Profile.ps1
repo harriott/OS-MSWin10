@@ -429,7 +429,6 @@ if ( ( test-path "$HADL\Microsoft\WinGet\Links\fzf.exe" ) -or ( test-path "$HADL
 #=> 1 place-dependent
 if ( test-path $ITscc )
   { . $ITscc/CP/wfxr-code-minimap/completions/powershell/_code-minimap.ps1 }
-. $mbC\PSProfile.ps1
 
 #==> documenting
 function xc { iex "su $ITscr\CP\TeX\LaTeX\appearance\colour\xcolor.pdf -page 38" }
