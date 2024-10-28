@@ -15,8 +15,8 @@ vim: nospell:
 - WinRE
 
 # build
-    $mbC
     $machLg
+    $MSWin10
     pt '$emd' $Drpbx\JH
     pt '$Pr0' $Drpbx\JH
 
@@ -138,7 +138,7 @@ output is simplified when redirected to a file
     pt 'notmatch' .
 
 #### `$core`
-    pt '$mbC' .
+    pt '$MSWin10' .
     pt 's~~$' .
 
 ## Windows Terminal
@@ -249,68 +249,6 @@ Consolas can handle €
     \setmainfont{Segoe Script}
     \setmainfont{Trebuchet MS}
 
-# browsers
-KeePassXC: Getting Started Guide
-
-## chromium-based
-    chrome://apps/
-    chrome://plugins/
-    chrome://system > extensions > Expand -> a list of Extensions
-    ctrl+h -> chrome://history
-    ctrl+Shft+O (= Bookmarks) > Organise > Export
-    ctrl+u => view page source in new tab
-
-### Microsoft Edge
-    edge://extensions/
-    edge://favorites/
-    edge://settings/privacy
-    edge://settings/profiles/sync
-
-- `alt+f` (= ∙∙∙ menu)
-    - `ctrl+j` (= `Téléchargements`)
-    - `ctrl+p` (= `Imprimer`) includes save as PDF
-- `ctrl+.` on AZERTY toggles Copilot sidebar
-- `ctrl+u` (= `right-click > View page source`) is searchable
-- `f12` toggles last of DevTools
-- Secure Network
-
-#### Extensions
-`Manage` = `edge://extensions`
-
-##### Extensions
-    ••• > Extensions
-
-jigsaw icon
-
-##### developer tools
-    ••• > More tools > Developer tools > Elements
-
-`ctrl+shift+i` toggles
-
-#### Favourites
-    edge://favorites/
-    ••• > Open favourites page > ••• > Sort
-
-##### Favourites
-    ctrl+shift+o
-
-star icon
-
-## Firefox
-    about:config > caret
-    about:plugins
-    about:preferences#general
-    about:preferences#sync
-    alt > e (= Edit) > n (= Settings)
-    ctrl+p > Destination > Save to PDF > Save
-    ctrl+shft+b (= toggle Bookmarks Toolbar)
-    ctrl+shft+o (= Library)
-
-## Vivaldi
-    Alt+P (= Settings)
-    Alt+P > Search > [ Google up to top and Set as Default , DuckDuckGo next, Wikipedia third ]
-    Ctrl+B -> Manage Bookmarks
-
 # PDF
     gsp  # ($MSWin10\PSProfile.ps1) Ghostscript convert pdf to png
 
@@ -353,9 +291,72 @@ star icon
     g 'C:\Program Files\Neovim\share\nvim\runtime'g 'C:\Program Files\Neovim\share\nvim\runtime'
     $ProgramFiles\Neovim\share\nvim\runtime\mswin.vim
 
-# Vivaldi
-- `Alt+P` Settings
-- `Ctrl+Shift+E` Extensions
+# WAN
+    $HADR\Thunderbird\profiles.ini
+
+## browsers
+KeePassXC: Getting Started Guide
+
+### chromium-based
+    chrome://apps/
+    chrome://plugins/
+    chrome://system > extensions > Expand -> a list of Extensions
+    ctrl+h -> chrome://history
+    ctrl+Shft+O (= Bookmarks) > Organise > Export
+    ctrl+u => view page source in new tab
+
+#### Microsoft Edge
+    edge://extensions/
+    edge://favorites/
+    edge://settings/privacy
+    edge://settings/profiles/sync
+
+- `alt+f` (= ∙∙∙ menu)
+    - `ctrl+j` (= `Téléchargements`)
+    - `ctrl+p` (= `Imprimer`) includes save as PDF
+- `ctrl+.` on AZERTY toggles Copilot sidebar
+- `ctrl+u` (= `right-click > View page source`) is searchable
+- `f12` toggles last of DevTools
+- Secure Network
+
+##### Extensions
+`Manage` = `edge://extensions`
+
+###### Extensions
+    ••• > Extensions
+
+jigsaw icon
+
+###### developer tools
+    ••• > More tools > Developer tools > Elements
+
+`ctrl+shift+i` toggles
+
+##### Favourites
+    edge://favorites/
+    ••• > Open favourites page > ••• > Sort
+
+###### Favourites
+    ctrl+shift+o
+
+star icon
+
+### Firefox
+    about:config > caret
+    about:plugins
+    about:preferences#general
+    about:preferences#sync
+    alt > e (= Edit) > n (= Settings)
+    ctrl+p > Destination > Save to PDF > Save
+    ctrl+shft+b (= toggle Bookmarks Toolbar)
+    ctrl+shft+o (= Library)
+
+### Vivaldi
+    Alt+P (= Settings)
+    Alt+P > Search > [ Google up to top and Set as Default , DuckDuckGo next, Wikipedia third ]
+    Ctrl+B -> Manage Bookmarks
+
+`Ctrl+Shift+E` Extensions
 
 # Windows
     regedit
@@ -364,7 +365,7 @@ star icon
 - `Control Panel > Programs and Features`
 - `shift+win+/` PowerToys general Win10 Shortcut Guide
 - `System Volume Information` can be Deleted
-- `win+a` action center, brightness at bottom
+- `win+a` action center, brightness at bottom (Dévélopper)
 - `win+C` PowerToys Color Picker
 - `win+H` PowerToys mouse pointer crosshairs
 - `win+S` Snipping

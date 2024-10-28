@@ -4,8 +4,8 @@
 
 # run Mozilla Thunderbird safely from profile shared on Dropbox
 # -------------------------------------------------------------
-# for  $MSWin10\AutoHotkey\AZERTY.ahk
-#  APS> syli $MSwin10\Thb\runSafely.ps1 C:\MT-runSafely.ps1
+# for  $MSn\AutoHotkey\AZERTY.ahk
+#  APS> syli $MSn\Thb\runSafely.ps1 C:\MT-runSafely.ps1
 #  bat C:\MT-runSafely.ps1
 #  csl C:\MT-runSafely.ps1
 

@@ -127,6 +127,14 @@ no standard aliases
     gcm lsd
     gcm python | fl *
 
+## ImageMagick - biz card backgrounds
+    magick -size 924x568 plasma: plasma1.jpg
+    magick -size 924x568 xc:'rgba(0, 0, 0)' black.jpg
+
+## ImageMagick - tiff -> jpg recursively convert
+    gci -r *.tiff | %{ magick $_ $_'.jpg' }
+    gci -r *.tiff | rm
+
 ## Microsoft Visual Studio parts
     & "$CPFx\Microsoft Visual Studio\Installer\vswhere.exe" -?
     Get-VSSetupInstance  # reports  Visual Studio Build Tools 2022  version
@@ -488,8 +496,7 @@ tab completion
     $env:programfiles  # C:\Program Files
     ${env:programfiles(x86)}  # C:\Program Files (x86)
     $env:username
-    $env:userprofile
-    $home
+    $env:userprofile ($home)
     $psscriptroot
     ls env:  # list the environment variables
 

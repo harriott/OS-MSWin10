@@ -4,8 +4,8 @@
 
 # remove my  $Thb\Win10ProLock  if Thunderbird isn't running
 # ----------------------------------------------------------
-# for  $MSWin10\AutoHotkey\AZERTY.ahk
-#  APS> syli $MSwin10\Thb\clearWin10ProLock.ps1 C:\MT-clearWin10ProLock.ps1
+# for  $MSn\AutoHotkey\AZERTY.ahk
+#  APS> syli $MSn\Thb\clearWin10ProLock.ps1 C:\MT-clearWin10ProLock.ps1
 #   bat C:\MT-clearWin10ProLock.ps1
 #   csl C:\MT-clearWin10ProLock.ps1
 

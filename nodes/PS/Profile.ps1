@@ -525,7 +525,7 @@ sal b bat
 function bd { bat -d $args[0] }  # showing changes from git index
 
 #==> shell - colours in outputs
-. $MSWin10\Out-HostColored.ps1
+. $MSn\PS\Out-HostColored.ps1
 function SCFCDC { [System.Console]::ForegroundColor = 'DarkCyan' }
 #  scfcdc; "DarkCyan"; scrc; 'normal'
 function SCFCW { [System.Console]::ForegroundColor = 'White' }  # scfcw; "White"; scrc

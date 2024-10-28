@@ -1,11 +1,11 @@
 
-; Joseph Harriott - AutoHotkey - dim 14 juil 2024
+; Joseph Harriott - AutoHotkey - lun 28 oct 2024
 
-; $MSWin10\AutoHotkey\AZERTY.ahk
+; $MSn\AutoHotkey\AZERTY.ahk
 ; #Include'd by
-;  $MSWin10\AutoHotkey\HPEB840G36.ahk
-;  $MSWin10\AutoHotkey\HPEB840G37.ahk
-;  $MSWin10\AutoHotkey\HPEB840G38.ahk
+;  $MSn\AutoHotkey\HPEB840G36.ahk
+;  $MSn\AutoHotkey\HPEB840G37.ahk
+;  $MSn\AutoHotkey\HPEB840G38.ahk
 
 ; ² (mapped in Vim's insert mode) I can't get to work with any modifier
 !é::SendText "~" ; alt+é = tilde (without delay)
@@ -31,7 +31,7 @@ CapsLock::SendText "\"
 } ; win+ctrl+s  brings forward and scans
 
 #!t::Run "pwsh -nop -w minimized -f C:\MT-runSafely.ps1"
-; - win+alt+t = Mozilla Thunderbird
+; - win+alt+t = Mozilla Thunderbird ($MSn\Thb\runSafely.ps1)
 #^t::{
 	if WinExist("ahk_exe thunderbird.exe") {
 		WinClose "ahk_exe thunderbird.exe"

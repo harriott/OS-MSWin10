@@ -1,7 +1,7 @@
 
 ; Joseph Harriott - AutoHotkey - jeu 25 juil 2024
 
-; $MSWin10\AutoHotkey\HPEB840G38.ahk
+; $MSn\AutoHotkey\HPEB840G38.ahk
 
 ; Reload if changed!
 

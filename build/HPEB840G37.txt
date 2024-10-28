@@ -1,6 +1,6 @@
 vim: ft=build:
 
-$mbC/Win10ProBuild.txt
+$MSWin10\build\HPEB840G37.txt
 
 fn+echap (= HP System Information) long time to save to  $machLg/o7o-HPSystemInformation.nfo
 HP EliteBook 840 G3 barcoded PC117862 (labelled BC PNB 17 by last owner) = HPEB840G37
@@ -933,6 +933,22 @@ winget add XP8CF6S8G2D5T6
 somehow got the preview2 version
 ## Opera
 Paramètres > Au démarrage > Lancer au démarrage de mon ordinateur  décoché
+## Thunderbird
+ran it to get  $HADR\Thunderbird\Profiles\khnbhnp8.default-esr-1
+launched it only enough to get  $HADR\Thunderbird\Profiles\xxxxxxxx.default-esr-1  which I Deleted
+again, then
+  $HADR\Thunderbird\installs.ini  Deleted
+  $HADR\Thunderbird\profiles.ini  reduced to just
+  [Profile0]
+    Name=default-esr
+    IsRelative=0
+    Path=D:\Dropbox\JH\Thb-dr
+  [General]
+    StartWithLastProfile=0
+    Version=2
+launched for  Thunderbird - Choissisez un profil utilisateur > Démarrer Thunderbird
+  brought  [InstallD78BF5DD33499EC2]  into  $HADR\Thunderbird\profiles.ini
+    and a new  $HADR\Thunderbird\installs.ini
 ## waiting
 Mise à jour facultatives
 ### Epson Software updater v4.6.7.0
