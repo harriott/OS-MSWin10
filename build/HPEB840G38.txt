@@ -55,6 +55,8 @@ MSWin\fonts-copied\NotoHinted > selected all, right clicked on to Install
 ## Gestionnaire de tâches
 ctrl+shift+esc > Plus de détails > Options > Masquer l'icône réduite
 hidden icon dragged to taskbar
+## Opera
+winget add XP8CF6S8G2D5T6 > y
 ## Paramètres
 Comptes > Famille et autres utilisateurs > [ deauram@outlook.com  jharrio@outlook.com ] >
   Autoriser
@@ -101,8 +103,6 @@ in $HADR\Thunderbird\profiles.ini
     Default=D:\Dropbox\JH\Thb-dr
     Locked=1
 ran it for (default-release) Démarrer Thunderbird)
-## waiting - Opera
-winget add XP8CF6S8G2D5T6
 # build - sequential build
 Paramètres >
   Mise à jour et sécurité > Activation > Windows est activé à l'aide d'une license numérique

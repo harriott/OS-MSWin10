@@ -814,7 +814,7 @@ sudo apt update && sudo apt upgrade
 sudo apt-get install libldap-2.5-0 libldap-common python3-update-manager update-manager-core
 sudo do-release-upgrade  returns  There is no development version of an LTS available.
 sudo apt install plocate  then took ages to initialize the database
-symlink to  $MSWSL\bash_profile  fixed
+symlink to  $MSn/WSL/bash_profile  fixed
 ### packages
 sudo apt install fd-find fzf highlight nnn ranger ripgrep
 #### zoxide
@@ -949,6 +949,8 @@ again, then
 launched for  Thunderbird - Choissisez un profil utilisateur > Démarrer Thunderbird
   brought  [InstallD78BF5DD33499EC2]  into  $HADR\Thunderbird\profiles.ini
     and a new  $HADR\Thunderbird\installs.ini
+## WSL Ubuntu CLM
+sudo apt install neomutt
 ## waiting
 Mise à jour facultatives
 ### Epson Software updater v4.6.7.0

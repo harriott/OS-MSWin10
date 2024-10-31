@@ -402,6 +402,9 @@ star icon
 
 requires a Windows Recovery partition to be present
 
+## snapping
+if done when eg  AltSnap's default  AutoSnap=2, win+arrow  actions are deadened
+
 ## Start Menus
     cd "$Env:AppData\Microsoft\Windows\Start Menu\Programs"
     Win+r > shell:common programs

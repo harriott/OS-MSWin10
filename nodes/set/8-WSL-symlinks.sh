@@ -1,17 +1,15 @@
 #!/bin/bash
 # vim: fdl=1:
 
-# build script
-
-# depends on  $MSWSL/bash_profile  to define  $MSWSL
-# bash $MSWSL/bs/neededNodes-1-symlinks.sh
+# after  $MSn/set/7-WSL-prep_profile.sh  has preset  $MSn/WSL/bash_profile
+#  bash $MSn/set/8-WSL-symlinks.sh
 
 set -e
 
 #=> 0 Bash symlinks
-ln -sf $MSWSL/bash_profile ~/.bash_profile
+ln -sf $MSn/WSL/bash_profile ~/.bash_profile
 # makes  \\wsl$\Ubuntu\home\jo\.bash_profile  unusable, so check with  ls -l ~/.bash_profile
-ln -sf $MSWSL/bashrc ~/.bashrc
+ln -sf $MSn/WSL/bashrc ~/.bashrc
 echo '- now open a new shell'
 
 #=> 0 tmux

@@ -345,6 +345,7 @@ prefer `&` where possible
 
 # package manage
     get-package | format-table -autosize
+    schtasks /query /tn "AltSnap onlogon"
 
 ## Microsoft.PowerShell.PSResourceGet
     Get-PSResourceRepository

@@ -2,7 +2,7 @@
 
 # Joseph Harriott - https://harriott.github.io/
 
-# $MSwin10\mb\LibreOfficeConfig.ps1
+# $MSWin10\build\LibreOfficeConfig.ps1
 
 #=> 0 config directory
 $uc0 = "$HOME\AppData\Roaming\LibreOffice\4\user"

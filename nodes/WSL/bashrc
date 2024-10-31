@@ -1,8 +1,9 @@
 #!/bin/bash
 # vim: set sw=2:
 
-# $MSWSL/bashrc
-#  symlink ($MSWSL\bs-symlinks.sh) sourced by  $MSWSL/bash_profile
+# $MSn/WSL/bash_profile
+#  setup in  $MSn/set/8-WSL-symlinks.sh
+#  sourced by  $MSn/WSL/bash_profile
 
 #  also there is  \\wsl$\Ubuntu\etc\profile
 
@@ -39,7 +40,6 @@ fi
 
 #=> Bash interface
 alias o=echo
-source $OSAB/Bash/xcol.sh
 
 # for nnn & tmux
 export EDITOR=nvim

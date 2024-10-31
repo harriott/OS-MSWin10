@@ -48,6 +48,8 @@ Alimentation et mise en veille > Jamais, Jamais, 10 minutes, Jamais
   Résolution de l'écran > 1920 x 1080 (recommandé)
 Multitâche > Alt + Tab > Uniquement les fenêtres ouvertes
 Stockage (L'Assistant de stockage) > Activé
+## waiting - Signal
+winget add OpenWhisperSystems.Signal
 ## WPS
 clic droit sur toolbar pour  Propriétés > [ Couleurs > Opacité > 86%  Police > Taille > 12 ]
 # build - sequential build
@@ -173,22 +175,35 @@ ctrl+, (= Paramètres)
   Windows PowerShell > Répertoire de démarrage > . > Apparence >
     [ Text > Taille de police > 8  Transparence > Opacité de l'arrière plan > 84% ] > Enregistrer
 $HADL\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
-### AltSnap
+### AltSnap fail
 winget add altsnap  required jharr code, so didn't install locally
 ## AltSnap globally
 ### winget fails
 winget rm altsnap
 winget add AltSnap --scope=machine
-winget add altsnap
 ### AltSnap1.63-x64-inst.exe
 installed to  C:\AltSnap
 APS> schtasks /create /f /tn "AltSnap onlogon" /tr "C:\AltSnap\AltSnap.exe" /sc onlogon /rl highest
-PS> $ASi="C:\AltSnap\AltSnap.ini"; (gc $ASi).replace('AutoSnap=2','AutoSnap=0') | seco -encoding utf8 $ASi
-
-  APS> schtasks /create /f /tn "AltSnap onlogon" /tr "C:\Users\deaur\AppData\Roaming\AltSnap\AltSnap.exe" /sc onlogon /rl highest
-  PS> $ASi="C:\Users\deaur\AppData\Roaming\AltSnap\AltSnap.ini"; (gc $ASi).replace('AutoSnap=2','AutoSnap=0') | seco -encoding utf8 $ASi
-rebooted to get it working
+$ASi="C:\AltSnap\AltSnap.ini"; (gc $ASi).replace('AutoSnap=2','AutoSnap=0') | seco -encoding utf8 $ASi
+## upgrade DH to administrator
+Paramètres > Comptes > Famille et autres utilisateurs >
+  Deauram Harriott > Changer le type de compte > Administrateur
+## AltSnap back to winget
+Paramètres > Applications > AltSnap 1.63 > Désinstaller > Désinstaller
+winget add altsnap
+APS> schtasks /create /f /tn "AltSnap onlogon" /tr "C:\Users\jharr\AppData\Roaming\AltSnap\AltSnap.exe" /sc onlogon /rl highest
+C:/Users/jharr/AppData/Roaming/AltSnap/AltSnap.ini > AutoSnap=0
+## DH AltSnap
+winget add altsnap
+C:/Users/deaur/AppData/Roaming/AltSnap/AltSnap.ini > AutoSnap=0
+## DH Steam
+winget add Valve.Steam
 ## waiting
+### Ditto Clipboard
+Microsoft Store > Ditto Clipboard > Obtenir > Pin to Start
+Ran it for  Options > General > [ Maximum Number of Saved Copies > 5000
+  Advanced > Show leading whitespace ] ( $HADL\Ditto_WindowsApp\Ditto.db )
+  Keyboard Shortcuts > Activate Ditto > ctrl+*
 # physical configuration
 1366x768 screen
 Intel Core i5-6300U

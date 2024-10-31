@@ -1,8 +1,8 @@
 #!/bin/bash
 # vim: set fdl=2 sw=2:
 
-# $MSWSL/bash_profile (see  \\wsl$\Ubuntu\etc\skel\.profile)
-# setup in  $MSWSL/bs/neededNodes-1-symlinks.sh
+# $MSn/WSL/bash_profile (see  \\wsl$\Ubuntu\etc\skel\.profile)
+#  setup in  $MSn/set/8-WSL-symlinks.sh
 # relaunch  Ubuntu  if any changes here
 
 # private bin
@@ -22,7 +22,8 @@ export Drpbx=/mnt/d/Dropbox
         export machLg=$ITstack/MSWin/ml-$host  # $machLg
         export onGH=$ITstack/onGitHub
           export MSwin10=$onGH/OS-MSWin10
-            export MSWSL=$MSwin10/WSL
+            export MSn=$MSWin10/nodes
+            export MSWSL=$MSn/WSL
           export OSAB=$onGH/OS-ArchBuilds
             export ABjo=$OSAB/jo
               export AjB=$ABjo/Bash
@@ -33,5 +34,5 @@ export Drpbx=/mnt/d/Dropbox
 
 #=> 1 bashrc
 source $OSL/export-jo
-source ~/.bashrc  # works in  tmux ($MSWSL/bashrc)
+source ~/.bashrc  # works in  tmux ($MSn/WSL/bashrc)
 

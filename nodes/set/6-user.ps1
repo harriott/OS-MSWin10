@@ -1,7 +1,7 @@
 
 # Joseph Harriott - https://harriottgithubio/ - mer 11 sept 2024
 
-# once  $Cn, APS> . $MSn\set\3.ps1
+# once  $Cn, APS> . $MSn\set\6-user.ps1
 
 # $HDADL, $HDADR, $HDH  defined in  $MSn\PS\Env.ps1
 # endi & syli  defined in  $MSWin10\PSProfile.ps1

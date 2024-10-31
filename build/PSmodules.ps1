@@ -1,6 +1,6 @@
 # vim: set fdl=1:
 
-# & $MSwin10\mb\modules.ps1
+# $MSWin10\build\PSmodules.ps1
 
 # #=> 0 WPS 0 PowerShell Gallery
 # set-psrepository PSGallery -installationpolicy trusted  # brings in  nuget

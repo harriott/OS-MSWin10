@@ -1,9 +1,7 @@
 #!/bin/bash
 # vim: fdl=1:
 
-# build script  $MSWSL/bs/neededNodes-0-startBash.sh
-
-# bash /mnt/d/Dropbox/JH/core/IT_stack/onGitHub/OS-MSWin10/WSL/bs/neededNodes-0-startBash.sh
+# MSn=/mnt/d/Dropbox/JH/core/IT_stack/onGitHub/OS-MSWin10/nodes; . $MSn/set/7-WSL-prep_profile.sh
 
 set -e
 
