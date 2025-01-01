@@ -1,0 +1,7 @@
+" vim: fdl=1:
+
+" $MSn/WSL/vimrc  symlinked in my  $MSn/set/8-WSL-symlinks.sh
+
+source ~/.vim/vimrc-WSL.vim
+" $vfv/enter/vimrc-WSL.vim  rsync'd in my  $MSn/set/8-WSL-symlinks.sh
+

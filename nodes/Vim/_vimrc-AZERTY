@@ -18,6 +18,6 @@ source $HOME\vimfiles\Win10Paths.vim  " $vimfiles\vim\enter\Win10Paths.vim
 " csl $HOME\vimfiles\Win10Paths.vim
 
 ""> 2 continue configuration
-source $vimfiles\vim\enter\vimrc-Win10.vim
+source $vfv\enter\vimrc-Win10.vim
 " source $vimfiles\test\vimrc-Win10.vim
 

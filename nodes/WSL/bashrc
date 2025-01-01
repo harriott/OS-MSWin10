@@ -1,15 +1,14 @@
 #!/bin/bash
 # vim: set sw=2:
 
-# $MSn/WSL/bash_profile
-#  setup in  $MSn/set/8-WSL-symlinks.sh
-#  sourced by  $MSn/WSL/bash_profile
+# $MSn/WSL/bashrc  copied by  $MSn\set\3.ps1  to  ~/.bashrc  which is by  $MSn/WSL/bash_profile
 
 #  also there is  \\wsl$\Ubuntu\etc\profile
 
 alias u=tmux
-source $OSL/bashrc-console-fm
-source $OSL/bashrc-generic
+source $OSL/nodes//bashrc-clm
+source $OSL/nodes//bashrc-console-fm
+source $OSL/nodes//bashrc-generic
 
 lnd () { [ -d $2 ] && rm -r $2; ln -sf $1 $2; } # symlink a directory
 [[ $TERM == 'xterm-256color' ]] && neofetch
@@ -38,6 +37,11 @@ if [ -s "/usr/bin/fzf" ]; then
   # = \\wsl$\Ubuntu\usr\share\doc\fzf\examples\key-bindings.bash
 fi
 
+r () {
+  eval "ranger --choosedir=$HOME/.ranger_last_visited $@"
+  cd "$(cat /home/jo/.ranger_last_visited)"
+}  # r "$Drpbx/CAM-best/Classic Yo-Yo"
+
 #=> Bash interface
 alias o=echo
 
@@ -46,7 +50,7 @@ export EDITOR=nvim
 export VISUAL=gvim
 
 #==> prompt
-source /usr/lib/git-core/git-sh-prompt; source $OSL/bashrc-console-prompt
+source /usr/lib/git-core/git-sh-prompt; source $OSL/nodes/bashrc-console-prompt
 
 #=> exports
 export eup=$(wslpath $(cmd.exe /C "echo %USERPROFILE%" 2>/dev/null | tr -d '\r'))

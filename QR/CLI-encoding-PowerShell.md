@@ -9,12 +9,14 @@ vim: nospell:
     1..3
     fd -tf -u index.lock | %{ri $_}
     get-volume  # reports partitions
+    gsp  # ($Mn\PSProfile.ps1) Ghostscript convert pdf to png
     foreach($element in 1..3){ $element }
     sleep 1
 
 - `$_` = `$PSItem` = current object in the pipeline object
 - `Alt > Space > E > L > up/down` to scroll, then `Esc`
 - `continue` returns to the top of a loop a `trap` or a `switch`
+- `gi` (= `Get-Item`)
 - redirection operators: `>`, `>>`, `2>`, `2>>`, `2>&1`
 
 # alias manage
@@ -27,30 +29,17 @@ limited to single commands
     nal <alias> <string>
     sal <alias> <string>
 
-# colour
-    & "$ITstack\MSWin\PowerShell\colours\ConsoleColor.ps1"
-    & "$ITstack\MSWin\PowerShell\colours\LindbergColors.ps1"
-    & "$onGH\misc\Colors.ps1"
-    write-color -text 'red ', 'green ', 'yellow ' -color red,green,yellow  # PSWriteColor
-    [enum]::getvalues([type]'system.consolecolor').ForEach{@{$_ = $_.value__}}
-    [System.Enum]::GetValues('ConsoleColor') | %{ write-host $_ -ForegroundColor $_ }
-
-## Pansies
-    Get-Gradient red blue -Flatten | %{Write-Host " " -BackgroundColor $_ -NoNewline}
-    "I ${fg:red}LOVE${fg:clear} PS"
-
-## $PSStyle
-    write-host "$($PSStyle.foreground.magenta)$($PSStyle.background.white)magenta_on_white$($PSStyle.reset)"  # no bleeding!
-
-### view colours
-    $PSStyle.Background
-    $PSStyle.Foreground
-
 # data
     $x.GetType()
     sv var $true; $var
 
+- `gu` (= `Get-Unique`)
+- objects
+
 ## arrays
+    $a = '1 a 2 b'
+        $a.Split(" ")
+        (-split $a)
     $a = 1,'a',2,'b'; $a[1]; $a[-1]; $a.length
     $a = @(); $a += 'first'; $a += 'second'
     $array | sort
@@ -62,19 +51,21 @@ limited to single commands
     1..30 | %{($_*3).ToString('000')} # multiples of 3 padded
 
 ## strings
-    $b=$b+'o'
-    $s='stringROD'; $s.substring(0, $s.length -3)
     $string.length
     $string.trim()  # removes whitespaces (including newlines) from ends
-    "Hello".Replace('l', 'x').Replace('H', 'Y')
     'a'.equals('b')
-    'abcdefg'.substring(2,3)  # 3 characters starting from index 2 (= 3rd character)
     'me'+'et'
     [string]$pwd
     if ( !$y ) { 'no' }
     format-string powershell -randomize
     if ( 'n' -eq 'n' ) { 'equal' }
     if ( '5' -ne '4' ) { '5 is not 4' }
+
+### make changes
+    $b='o'; $b=$b+'o'; $b
+    'boob' -replace 'b$', ''
+    "Hello".Replace('l', 'x').Replace('H', 'Y')
+    (gc $file) -replace $regex, $newtext | seco $file
 
 ### regex
     'hi.there.jpg' -replace 'g', ''             # hi.there.jp
@@ -92,6 +83,11 @@ limited to single commands
 
 `\w` = a-z, A-Z, 0-9, _
 
+### substring method
+    $s='stringROD'; $s.substring(0, $s.length -3)
+    'abcdefg'.substring(2,3)  # 3 characters starting from index 2 (= 3rd character)
+    'abcdefg'.substring(3)  # starting from index 3
+
 # datetime
     [system.timezoneinfo]::getsystemtimezones() | out-gridview
     get-timezone -listavailable | out-gridview
@@ -100,7 +96,7 @@ limited to single commands
 ## get-date
     $n = get-date -f yyyyMMddhhmmss
     (get-date).day  # of month
-    (get-date).tostring("yyMMdd-HHmmss")
+    (get-date).tostring("yyMMdd-HHmmss") # hh would show 12h cycle
 
 no standard aliases
 
@@ -114,9 +110,25 @@ no standard aliases
     cd 'C:\Program Files'
     C:\MozillaThunderbird\thunderbird.exe -addressbook
     C:\Windows\explorer.exe "microsoft-edge:searchterm"
+    get-commandsyntax <command>
     get-startapps  # lists AppIDs
     explorer shell:Appsfolder  # Applications
+    msedge
     start <somefile>
+
+## *-Process
+    kill -name HP.Smart
+
+### Get-Process
+    ps HP.Smart
+    ps | oh -paging
+    ps | ?{$_.mainwindowtitle} | ft id, name, mainwindowtitle -autosize
+
+#### all
+    $procs = ps * | select -expand ProcessName; $pAr = -split $procs
+        $pAr | gu  # vertical list
+        ([string]($pAr | gu)).replace(' ','  ')  # all on one line
+    ps <ProcessName> | select PM,WS  # Private Memory, Working Set
 
 ## FFmpeg
     ffmpeg -version > $machLg\ffmpeg_version
@@ -147,15 +159,6 @@ otherwise little sign of them
     pwsh -nol  # -NoLogo
     pwsh -nop  # -NoProfile
     saps pwsh -verb runas  # Administrator
-
-### *-Process
-    kill -name HP.Smart
-
-#### Get-Process
-    ps *
-    ps HP.Smart
-    ps | oh -paging
-    ps | ?{$_.mainwindowtitle} | ft id, name, mainwindowtitle -autosize
 
 ## Windows PowerShell
     powershell -noprofile  #  runs  Windows PowerShell
@@ -250,9 +253,9 @@ aliases: `cat`, `type`
     du64 -l 1
     Get-GitSize  # when you're in .git's parent directory
 
-#### functions in $MSWin10\PSProfile.ps1
-    dc
-    fso
+#### functions in $MSn\PS\Profile.ps1
+    dc  # all: mb
+    fso  # mb FullName
     gfsi
 
 ### symlinks
@@ -326,7 +329,7 @@ aliases: `cat`, `type`
 
 - `fl` (= `format-list`)
 - `measure` (= `measure-object`)
-- `select` (= `select-object`)
+- `select` (= `Select-Object`)
 - `sls` (= `select-string`)
 - `sort` (= `sort-object`)
 
@@ -336,12 +339,42 @@ aliases: `cat`, `type`
 prefer `&` where possible
 
 # networking
+    Get-NetAdapter
     wp
 
+`iwr` (= `Invoke-WebRequest`)
+
 ## IP
-    cc
     get-whois 8.8.8.8
-    ip
+    ip  # external address
+
+### internal
+    (Get-NetIPConfiguration | Where-Object { $_.IPv4DefaultGateway -ne $null }).IPv4Address.IPAddress
+    ipconfig | where {$_ -match 'IPv4.+\s(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})' } | out-null; $Matches[1] # quick
+
+# output
+`ft` (= `format-table`)
+
+## colour
+    & "$ITstack\MSWin\PowerShell\colours\ConsoleColor.ps1"
+    & "$ITstack\MSWin\PowerShell\colours\LindbergColors.ps1"
+    & "$onGH\misc\Colors.ps1"
+    write-color -text 'red ', 'green ', 'yellow ' -color red,green,yellow  # PSWriteColor
+    [enum]::getvalues([type]'system.consolecolor').ForEach{@{$_ = $_.value__}}
+    [System.Enum]::GetValues('ConsoleColor') | %{ write-host $_ -ForegroundColor $_ }
+
+### Pansies
+    Get-Gradient red blue -Flatten | %{Write-HostGGrb " " -BackgroundColor $_ -NoNewline}
+    "I ${fg:red}LOVE${fg:clear} PS"
+
+`Write-Host` is upgraded with colour functionality
+
+### $PSStyle
+    write-host "$($PSStyle.foreground.magenta)$($PSStyle.background.white)magenta_on_white$($PSStyle.reset)"  # no bleeding!
+
+#### view colours
+    $PSStyle.Background
+    $PSStyle.Foreground
 
 # package manage
     get-package | format-table -autosize
@@ -472,10 +505,7 @@ tab completion
     if ( 5 -eq $n )
 
 # stray cmdlets
-    get-commandsyntax <command>
 
-- `format-table`: `ft`
-- `get-item`: `gi`
 
 # system info
     $profile
@@ -513,12 +543,8 @@ tab completion
     $oldPathCU = (gp -path ‘registry::hkcu\environment’ -name path).path; $oldPathCU -split ';'
     $oldPathLM = (gp -path ‘registry::hklm\system\currentcontrolset\control\session manager\environment’ -name path).path; $oldPathLM -split ';'
 
-# text wrangling
-    'boob' -replace 'b$', ''
-    "Hello".replace('l','x')
-    (gc $file) -replace $regex, $newtext | seco $file
-
-## Vim
+# Vim
     C:\Vim\vim91\vim.exe --version
+    g $HOME\vimfiles
     g $HOME\.vimswap
 

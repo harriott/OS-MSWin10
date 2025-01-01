@@ -643,7 +643,75 @@ APS> inmo microsoft.powershell.psresourceget
 it's at  $PSHOME\Modules\Microsoft.PowerShell.PSResourceGet
   which ain't found by  Get-PSResource Microsoft.PowerShell.PSResourceGet
 inmo microsoft.powershell.psresourceget -Force
+## Python 3.13
+winget rm Python.Python.3.12
+### remove $HADR\Python\python312\scripts from $PATH
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU -replace 'c:\\users\\jnbh\\appdata\\roaming\\python\\python312\\scripts;',''; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+### Python 3.13
+winget add Python.Python.3.13
+python -h  show it's in  $HADL\Programs\Python
+Deleted  $HADL\Python\Python312
+### pipx
+py -m pip install --user -U pipx
+  [notice] A new release of pip is available: 24.2 -> 24.3.1
+  [notice] To update, run: python.exe -m pip install --upgrade pip
+#### switch to $HADR\Python\Python313
+Deleted  $HADR\Python\Python312
+##### add $HADR\Python\Python313 to $PATH
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+(accounting for surplus terminating :) $newPathCU = $oldPathCU+'C:\Users\jnbh\AppData\Roaming\Python\Python313\Scripts'; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+#### test pipx
+pipx run pycowsay moo
+## IrfanView v4.70
+winget update IrfanSkiljan.IrfanView  refused, so  winget rm IrfanSkiljan.IrfanView
+winget add IrfanSkiljan.IrfanView  refused, so
+Paramètres > Applications > IrfanView > Désinstaller > Désinstaller
+winget add IrfanSkiljan.IrfanView
+winget add IrfanSkiljan.IrfanView.PlugIns
+### find the executable
+where.exe IrfanView
+### FastStone Image Viewer
+opened an image > f12 > Programmes > Supprimer  then  e > Ajout > C:\Users\jnbh\AppData\Local\Microsoft\WinGet\Packages\IrfanSkiljan.IrfanView_Microsoft.Winget.Source_8wekyb3d8bbwe\i_view64.exe
+## WSL lsd
+sudo snap install lsd
+## WSL Ubuntu neomutt neovim
+sudo apt install neomutt neovim
+## WSL Ubuntu upgrades
+sudo apt update && sudo apt upgrade
+  ...
+  The following packages were automatically installed and are no longer required: htop libnl-3-200 libnl-genl-3-200  Use 'sudo apt autoremove' to remove them.
+  Get more security updates through Ubuntu Pro with 'esm-apps' enabled: libheif1 imagemagick liblua5.4-0 libopenexr25 libmagickcore-6.q16-6-extra libmagickwand-6.q16-6 imagemagick-6.q16 libmagickcore-6.q16-6 imagemagick-6-common libde265-0
+  The following packages have been kept back: libegl-mesa0 libgbm1 libgl1-mesa-dri libglapi-mesa libglx-mesa0
+## WSL Ubuntu Pro
+sudo pro attach <FPT>
+  Enabling Ubuntu Pro: ESM Apps
+  ...
+  Enabling Ubuntu Pro: ESM Infra
+  ...
+  This machine is now attached to 'Ubuntu Pro - free personal subscription'
+  SERVICE      ENTITLED STATUS    DESCRIPTION
+  anbox-cloud  yes      disabled  Scalable Android in the cloud
+  esm-apps     yes      enabled   Expanded Security Maintenance for Applications
+  esm-infra    yes      enabled   Expanded Security Maintenance for Infrastructure
+  fips-preview yes      disabled  Preview of FIPS crypto packages undergoing certification with NIST
+  fips-updates yes      disabled  FIPS compliant crypto packages with stable security updates
+  usg          yes      disabled  Security compliance and audit tools
+  NOTICES: Operation in progress: pro attach
+  For a list of all Ubuntu Pro services, run 'pro status --all'
+  Enable services with: pro enable <service>
+  Account: trohib@gmail.com
+  Subscription: Ubuntu Pro - free personal subscription
+## dubious ownership of $MD4PDF
+in there, APS> takeown /f . /r /d o
 ## waiting
+fix ~/.tmux.conf
+~\PSEnv.ps1
+### XpdfReader
+XpdfReader-win64-4.05.exe  (C:\Program Files\Glyph & Cog\XpdfReader-win64)
+  pdfimages -h
 # physical configuration
 1366x768 screen
 Intel Core i5-6300U

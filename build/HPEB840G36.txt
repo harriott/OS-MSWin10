@@ -3,7 +3,11 @@ vim: ft=build:
 $MSWin10\build\HPEB840G36.txt
 
 HP EliteBook 840 G3 barcoded PC117855 (labelled BC PNB 19 by last owner) = HPEB840G36
-(jharrio@outlook.com)
+(deauram@outlook.com,jharrio@outlook.com)
+# $core
+## K16GBDTG2
+HPEB840G37 PS> robocopy /mir $core E:\core /fft
+HPEB840G36 PS> $ITstack = 'D:\IT_stack'; robocopy /mir E:\core\IT_stack $ITstack /fft
 # build - parallel
 Paramètres > Écran > Éclairage nocturne > Activé
 ## dark applications
@@ -23,7 +27,7 @@ Affichage > Options > Affichage >
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
 $newPathCU = $oldPathCU -replace ';$', ''; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
-## Opera
+## jJ Opera
 winget add XP8CF6S8G2D5T6
 ## Paramètres
 Comptes > Famille et autres utilisateurs > [ deauram@outlook.com  jharrio@outlook.com ] >
@@ -53,7 +57,8 @@ winget add OpenWhisperSystems.Signal
 ## WPS
 clic droit sur toolbar pour  Propriétés > [ Couleurs > Opacité > 86%  Police > Taille > 12 ]
 # build - sequential build
-## failed to get my account correctly named
+## jJ
+### failed to get my account correctly named
 Utilisateur
   À propos de > Spécifications de Windows > Windows 10 Pro 21H2 OS build 19044.1889
   Mise à jour et sécurité > Activation > Windows est activé à l'aide d'une license numérique
@@ -65,7 +70,7 @@ Finalisons la configuration de votre PC > Se connecter avec Microsoft > jharrio@
     removed Utilisateur, couldn't create account jharrio@outlook.com
 Mise à jour et sécurité > Récupération > Réinitialiser > Commencer > Supprimer tout
   "Environment de récupération introuvable" and yes, Gestion de disques shows there's no WinPE...
-## re-install Windows
+### re-install Windows
 booted to  Windows 10 2022 Update Version 22H2  on  KDTG311281 > français (France) >
   Installer maintenant > Personnalisé >
     Lecteur 0 Partition 3 (119.1 Go) > Supprimer > Nouveau > Taille > 121000 Mo (118.1 Go)
@@ -74,73 +79,76 @@ booted to  Windows 10 2022 Update Version 22H2  on  KDTG311281 > français (Fran
 fitted  SDSSDA240G
 connected to  Jo-OPPO-A76
 loads of updates
-Settings > Système > Alimentation et mise en veille > Paramètres d'alimentation supplémentaire > Choisir l'action des boutons d'alimentation > [ Modifier des paramètres actuellement non disponibles > Activer le démarrage rapide  off-ticked  Lorsque je referme le capot > Sur secteur > Ne rien faire ]
+Settings > Système > Alimentation et mise en veille > Paramètres d'alimentation supplémentaire >
+  Choisir l'action des boutons d'alimentation > [
+    Modifier des paramètres actuellement non disponibles > Activer le démarrage rapide  off-ticked
+    Lorsque je referme le capot > Sur secteur > Ne rien faire ]
 Menu > Système Windows > [ Invite de Commandes  Panneau de configuration ] > Pinned to Start
 Menu > Microsoft 365 > clic droit > Désintaller
-## Ditto Clipboard
+### Ditto Clipboard
 Microsoft Store > Ditto Clipboard > Install > Pin to Start
 Ran it for  Options > General > [ Maximum Number of Saved Copies > 5000
    Advanced > Show leading whitespace ] ( C:\Users\jharr\AppData\Local\Ditto_WindowsApp\Ditto.db )
 ctrl+* = Activate Ditto
-## BitLocker check
+### BitLocker check
 AIdc> manage-bde -status  reports "Intégralement déchiffré"
-## Windows Recovery
+### Windows Recovery
 reagentc /info  reports it to be in  C:\Recovery\WindowsRE  so
   Gestion de disques > Deleted  D:, extended  C:, and formatted  SDSSDA240G  as  D:
-## after a reboot
+### after a reboot
 Faisons une sauvegarde des données de votre PC > Ignorer pour le moment > Continuer
 Menu > Spotify > clic droit > Désintaller
 Paramètres >
   Mise à jour et sécurité > Activation > Windows est activé à l'aide d'une license numérique liée a votre compte Microsoft
   Système À propos de > Spécifications de Windows > Windows 10 Pro 21H2 OS build 19045.4170
-## Alimentation et mise en veille
+### Alimentation et mise en veille
 Paramètres > Système > Alimentation et mise en veille > Jamais, Jamais, 10 minutes, Jamais
   Paramètres d'alimentation supplémentaire >
     Choisir l'action des boutons d'alimentation >
     [ Modifier des paramètres actuellement non disponibles >
     Activer le démarrage rapide  off-ticked  Lorsque je referme le capot > Sur secteur >
     Ne rien faire ]
-## Ditto
+### Ditto
 winget add ditto.ditto
 winget rm ditto.ditto
-## dropbox.com
+### dropbox.com
 Signed in  to click on my avatar for  Install desktop app > DropboxInstaller.exe
 Moved directory to  SDSSDA240G  Selective sync
-## Windows PowerShell execution policy
+### Windows PowerShell execution policy
 Get-ExecutionPolicy   reported  "Restricted"
-### Administrateur PowerShell
+#### Administrateur PowerShell
 Get-ExecutionPolicy -list  reported all as  "Undefined"
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Confirm > y
-## Nom de l'appareil
+### Nom de l'appareil
 Paramètres > Système > À propos de > (Nom de l'appareil > DESKTOP-295IC45)  Renommer ce PC > HPEB840G36  Redémarré
-## symlinks
+### symlinks
 AWPS> sl D:\Dropbox\JH\core\IT_stack\onGitHub\OS-MSWin10\mb\  for  . ..\Env.ps1
-## gVim v9.1.0
+### gVim v9.1.0
 winget add vim.vim -l C:\Vim
-## Python 3.13
+### Python 3.13
 winget add python.python.3.13 -l C:\Python3
-## Git
+### Git
 winget add git.git -l C:\Git  got me  Git for Windows v2.44.0
-## reconnected to  Jo-X10II
-## sharkdp.fd
+### reconnected to  Jo-X10II
+### sharkdp.fd
 winget add sharkdp.fd
 fixed ; at end of path
-## previously installed
+### previously installed
 7-Zip, AltSnap, Calibre, CMake, Everything, eza, fzf, LibreOffice, LSD, Neovide, Neovim, Node.js, Pandoc, ripgrep, Strawberry Perl, Thunderbird, WT
-### AutoHotkey
-Shortcut to  $MSWin10\AutoHotkey\HPEB840G36.ahk  was placed in
+#### AutoHotkey
+Shortcut to  $MSn\AutoHotkey\HPEB840G36.ahk  was placed in
   "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
-## PowerShell
+### PowerShell
 winget add Microsoft.PowerShell
 somehow commands  j  remove-itemsafely  toast  work
-## language
+### language
 no icon in the task bar
 Options de langue : Anglais (Royaume-Uni) > Écriture manuscrite > Télécharger  didn't help
-## fix LSD in $PATH
+### fix LSD in $PATH
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
 $newPathCU = $oldPathCU+';C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\lsd-rs.lsd_Microsoft.Winget.Source_8wekyb3d8bbwe\lsd-v1.1.5-x86_64-pc-windows-msvc'; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
-## add Deauram
+### add Deauram
 Paramètres > Comptes > Famille et autres utilisateurs > Ajouter un membre à la famille >
   [ deauram@outlook.com > Membre ] got it under  Autres utilisateurs, so removed
 Paramètres > Comptes > Vos informations > Mettre à jour
@@ -149,12 +157,12 @@ Logged in > email pw > Créer un code confidential > Inclure des lettre et des s
   Sauvegardez vos fichiers avec OneDrive > Ne pas sauvegarder mes fichiers > Suivant
   Paramètres > Applications > Démarrage > Dropbox > Désactivé > code for jharrio
   set  File Explorer  &  Paramètres
-## PowerShell v7.4.6
+### PowerShell v7.4.6
 winget update Microsoft.PowerShell  refused
 Paramètres > Applications > PowerShell 7.4.5.0-x64 Uninstalled
 WPS> winget add Microsoft.PowerShell
-## DH PS
-sl D:\IT_stack\onGitHub\OS-MSWin10\nodes\set  for  PS> . 1-PSProfileStub.ps1  etc
+## DH PSProfileStub.ps1
+sl D:\IT_stack\onGitHub\OS-MSWin10\nodes\set  for  PS> . 1-PSProfileStub.ps1
 ## DH wingets
 ### fzf
 winget add fzf  then  where.exe fzf  reports  C:\Users\deaur\AppData\Local\Microsoft\WinGet\Packages\junegunn.fzf_Microsoft.Winget.Source_8wekyb3d8bbwe\fzf.exe
@@ -198,12 +206,27 @@ winget add altsnap
 C:/Users/deaur/AppData/Roaming/AltSnap/AltSnap.ini > AutoSnap=0
 ## DH Steam
 winget add Valve.Steam
-## waiting
-### Ditto Clipboard
+## DH Skype
+not going to tray, so
+  ctrl+, > Général > Lancer Skype en arrière-plan off  didn't work, so reset on
+    Paramètres > Applications > Démarrage > Skype > Désactvé
+## DH PS
+sl D:\IT_stack\onGitHub\OS-MSWin10\nodes\set  for  . 0-_MSn.ps1  then  APS> 2-PSProfile.ps1
+## DH programs
+winget update --all
+Paramètres > Applications et fonctionnalités > Dropbox > Désintaller
+winget rm Pandoc
+## Ditto Clipboard
 Microsoft Store > Ditto Clipboard > Obtenir > Pin to Start
 Ran it for  Options > General > [ Maximum Number of Saved Copies > 5000
   Advanced > Show leading whitespace ] ( $HADL\Ditto_WindowsApp\Ditto.db )
   Keyboard Shortcuts > Activate Ditto > ctrl+*
+## gokcehan's lf
+winget add gokcehan.lf  fixed ; at end of path
+## jharrio
+Paramètres > Comptes > Famille et autres utilisateurs  doesn't offer removal, so
+  Comptes > Options de connexion > Code PIN de Windows Hello > <longer_pw>
+## waiting
 # physical configuration
 1366x768 screen
 Intel Core i5-6300U

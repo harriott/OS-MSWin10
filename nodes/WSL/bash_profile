@@ -28,11 +28,14 @@ export Drpbx=/mnt/d/Dropbox
             export ABjo=$OSAB/jo
               export AjB=$ABjo/Bash
           export OSL=$onGH/OS-Linux
+              export clMail="$OSL/jo/clm"
+                export clMn=$clMail/neomutt
           export vimfiles=$onGH/vimfiles
-        export ulL=$ITstack/unix_like-linux
+        export ulL=$ITstack/ulLinux
           export ulLA=$ulL/Arch
+export maild=/home/jo/.local/share/mail  # $maild  for  mutt
 
 #=> 1 bashrc
-source $OSL/export-jo
+source $OSL/jo/export
 source ~/.bashrc  # works in  tmux ($MSn/WSL/bashrc)
 

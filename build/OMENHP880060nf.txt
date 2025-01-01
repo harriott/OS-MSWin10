@@ -1,0 +1,52 @@
+vim: ft=build:
+
+$MSWin10\build\OMENHP880060nf.txt
+
+# build - parallel
+## waiting
+# build - sequential
+## inherited
+everything is glacially slow
+HDMI outlet isn't detected by  Epson EB-W06 WXGA  projector
+user cafezoide with full administrator piviliges and a wholey unneccessary PW
+## restore Windows
+Paramètres > Récupération > Mise à jour et sécurité > Commencer > Supprimer tout >
+  Réinstallation locale > Nettoyer les données
+  during the long disc cleaning there was a power cut, powered back on
+  France > Français > cafezoide pro
+  cafezoideparlotte@outlook.com > pw > Boyo2011
+  Sauvegardez vos fichiers avec OneDrive > Ne pas
+  Refuser Micorosoft 365
+  Obtenir plus d'espace de stockage cloud avec Microsoft 365 Basic > Refuser
+  Découvrez votre prochain jeu préféré > Non
+  Laisser Cortana vous aider > Pas
+  Comptes > Famille et autres utilisateurs > Ajouter un autre > Créer > JZ
+Logged in as JZ
+# physical configuration
+1920x1200 Écran Samsung
+AMD Ryzen5-1400
+## storage
+911 Go
+## Startup Menu
+hold  esc  at start to get into  Menu de démarrage
+### HP Setup Utility
+Alimentation
+  Gestion d'alimentation de matériel
+    Gestion d'alimentation SATA : Activé
+    Réveil S4/S5 par réseau : Désactivé
+  Gestion d'alimentation par le système
+    Économie d'énergiee au repos : Maximale
+    Économie d'énergiee en fonctionement : Activé
+Fichier
+  Informations système
+    Date du BIOS : 05/04/2018
+    Révision du BIOS : 8309 vF.20
+    Taille de la mémoire : 16384 MB DDR4 / 2400 MHz / Dual Channel
+    Vitesse du processeur : 3200 MHz
+Stockage
+  Configuration de la unité
+    SATA1 : 1 TB ST1000DM003-1SB102
+    SATA2 : hpHLDSDVDRWGUD1N
+    SATA3 : 500 GB CT500MX500SSD1
+  Options de stockage
+    Emulation SATA : AHCI

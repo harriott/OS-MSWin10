@@ -1,6 +1,6 @@
 # vim: se fdl=2:
 
-# Joseph Harriott, mar 23 juil 2024
+# Joseph Harriott, mar 26 nov 2024
 
 # $MSn\PS\Env.ps1
 #  needed for system build
@@ -8,18 +8,24 @@
 
 #=> 0 useful variables
 $Cn = $Env:Computername
+
 #==> places
 $CPF = $env:programfiles
 $CPFx = ${env:programfiles(x86)}
+
 #===> 0 $Drpbx, or just $ITstack
 if ( test-path "~\_noDropbox.ps1" ) { $ITstack = 'D:\IT_stack' } else {
   $Drpbx = "D:\Dropbox"
+    $COT = "$Drpbx\Cop\OutThere"
     $DJH = "$Drpbx\JH"
       $CfWk = "$DJH\Cop-work"
+        $Cwet = "$CfWk\education\technos"
       $Cfzd = "$DJH\work-Cz"
         $CzMa = "$Cfzd\manage"
         $CzPeo = "$Cfzd\people"
           $Copil = "$CzPeo\adherents\FA+Copil"
+            $d0g = "$Copil\data-0-grab"
+            $d1ad = "$Copil\data-1-adh"
         $CzPhy = "$Cfzd\PhysicalProperty"
       $core = "$DJH\core"
         $ITstack = "$core\IT_stack"
@@ -30,22 +36,25 @@ if ( test-path "~\_noDropbox.ps1" ) { $ITstack = 'D:\IT_stack' } else {
         $eFr = "$ess\France"
         $hlth = "$ess\health"
       $FrFa = "$DJH\Jo-F+F"
-        $FFIdF = "$FrFa\France\IdF"  # $FFIdF  used in  $TeNo
+        $FFIdF = "$FrFa\France\IdF"
       $JCop = "$DJH\Cop"
-        $cFr = "$JCop\France"  # $cFr  used in  $TeNo
+        $cFr = "$JCop\France"
+          $cFrP = "$JCop\France\places"
         $chum = "$JCop\human"  # used in  $TeNo
         $Pr0 = "$JCop\Practical0"
           $Pr0t = "$Pr0\technos"  # $Pr0t
       $JHt = "$DJH\Jo-technos"
         $jtIT = "$JHt\IT"
+          $jtCP = "$jtIT\CP"
         $tIs = "$JHt\IT-storage"  # $tIs\diskUsage.txt
       $JHw = "$DJH\work"  # for IT websites and more
         $JHm = "$JHw\IT-Jekyll-harriott-minima"
         $rEr = "$JHw\France\IdF\Paris\20e-rueErmitage"
-          $StEr = "$rEr\StudioErmitage"  # $StEr
+          $StEr = "$rEr\StudioErmitage"
       $Thb = "$DJH\Thb-dr"  # Thunderbird
       $JJt0 = "$DJH\Jo-then0"
     $DCGRs = "$Drpbx\Cop\GRs"  # Copied Git Repositories Use
+    $DrSh = "$Drpbx\JH\dev-Sh"
 }
 #===> 0 $HOME
 $Enc = "$home\encrypted"
@@ -56,13 +65,7 @@ $HADL = "$HOME\AppData\Local"  # ($env:localappdata)
 $HADR = $Env:AppData
   $Pandoc = "$HADR\Pandoc"
   $tex = "$HADR\MiKTeX\tex"
-#===> 0 $HOME DH
-if ( $Cn -eq 'HPEB840G36' ) {
-  $HDH = 'C:\Users\deaur'
-  $HDADL = "$HDH\AppData\Local"
-    $nvimD = "$HDADL\nvim"  # lf  don't grok  ~
-  $HDADR = "$HDH\AppData\Roaming"
-}
+
 #===> 1 rooting on $ITstack
 $CrPl = "$ITstack\CP"
   $LTXj = "$CrPl\documenting\LaTeX\jo"
@@ -75,15 +78,15 @@ $onGH = "$ITstack\onGitHub"
   $MD4PDF = "$onGH\pandoc-md4pdf"
   $MSWin10 = "$onGH\OS-MSWin10"
     $MSn = "$MSWin10\nodes"
-    $MSWSL = "$MSn\WSL"
   $OSAB = "$onGH\OS-ArchBuilds"
     $ABjo = "$OSAB\jo"
       $AjB = "$ABjo\Bash"
       $Openbox = "$ABjo\wm\Openbox"
           $Obc = "$Openbox\openbox"
   $OSL = "$onGH\OS-Linux"
-  $ulL = "$ITstack\unix_like-linux"
-    $lclm = "$ulL\clm"  # $lclm  linux command-line mail
+  $ulL = "$ITstack\ulLinux"
+    $lclm = "$ulL\clm"  # linux command-line mail
+    $ulLA = "$ulL\Arch"
   $vimfiles = "$onGH\vimfiles"
   # $vimfiles = "~\vfs"  # vimfiles source - for testing outside of Dropbox
     $vfv = "$vimfiles\vim"

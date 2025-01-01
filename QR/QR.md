@@ -6,7 +6,6 @@ vim: nospell:
     Adobe Acrobat Reader DC > Shift+Ctrl+Minus -> rotate left
     $HADL\Microsoft\WindowsApps
     cpan -l > $machLg\cpanList.txt
-    sl $JCop\IT-handy\CP\TeX\LaTeX\structure\classes\memoir
     yt-dlp -U  # update inplace
 
 - AutoHotkey `$MSn\AutoHotkey\AZERTY.ahk`
@@ -37,7 +36,7 @@ vim: nospell:
     [console]::WindowWidth
 
 ## encoding
-    $MSwin10\mb\gitconfig
+    $MSwin10\nodes\gitconfig
     C:\Git\usr\bin\perl.exe -v
     C:\msys64\usr\bin\perl.exe -v
     java -jar C:\LanguageTool\languagetool-commandline.jar -h
@@ -77,6 +76,10 @@ vim: nospell:
     g $HADL\npm-cache\_npx
     g $HADR\npm
 
+### Python
+    g $HADL\Programs\Python  # winget install
+    g $HADR\Python
+
 ### Strawberry Perl
     C:\Strawberry\perl\bin\perl.exe -v
     g $home\.cpanm
@@ -89,6 +92,8 @@ vim: nospell:
     winget update --all
     winget update google.chrome
     winget rm google.chrome  # uninstall
+
+`-h` (`--silent`)
 
 ### Windows PowerShell - file formats
     PowerShell command | out-file <file> -encoding utf8BOM  # detected as utf-8
@@ -196,6 +201,7 @@ Windows Subsystem for Linux
 #### nodes
     \\wsl$\Ubuntu\etc\bash_completion.d\git-prompt
     \\wsl$\Ubuntu\etc\updatedb.conf
+    \\wsl$\Ubuntu\etc\ranger\config\commands.py
     \\wsl$\Ubuntu\etc\wsl.conf
     \\wsl$\Ubuntu\home\jo\.bash_history
     \\wsl$\Ubuntu\home\jo\.bash_profile
@@ -216,8 +222,10 @@ Windows Subsystem for Linux
     win32yank.exe -o  # returns what's in the clipboard
 
 #### wslu
-    wslfetch
+    wslfetch  # alternative to  neofetch
     wslsys  # system info
+    wslvar -L  # --getshell
+    wslvar -S  # --getsys
     wslview https://wslutiliti.es/wslu/man/wslview.html
 
 # imagey
@@ -233,13 +241,16 @@ ExifTool by Phil Harvey
 - `$JHt/IT/MSWin/Imagey/i6l-FSSettings.db` = last saved, for `PaperSizeList`
 
 ## IrfanView
+`Consolas` can handle €
+
+### commands
 - `ctrl+shift+a` Acquire/Batch Scanning
+- `ctrl+s` = `Save (original folder)`
 - `ctrl+t` Insert text
+- `ctrl+x` = `Cut - selection`
 - `p` Properties/Settings
 - `R` Reopen file
 - `r` rotate right
-
-Consolas can handle €
 
 # LaTeX
     g $ITscr\CP\TeX
@@ -249,17 +260,17 @@ Consolas can handle €
     \setmainfont{Segoe Script}
     \setmainfont{Trebuchet MS}
 
-# PDF
-    gsp  # ($MSWin10\PSProfile.ps1) Ghostscript convert pdf to png
-
-## Sumatra PDF
+# PDF - Sumatra
 - `ctrl+6` view single pages (`ctrl+-` on AZERTY)
 - `ctrl+7` view facing pages (`ctrl+è` on AZERTY)
+- `ctrl+8` view book mode
+    - `b` fip page (forward only)
 - `ctrl+d` properties
 - `ctrl+k` command palette
 - `ctrl+shift+tab` go to previous tab
 - `ctrl+tab` go to next tab
 - `f12` = Afficher les signets
+- `i` invert colours
 - `r` reload
 - `z` toggle zoom between Fit Page, Fit Width, Fit Content
 
@@ -294,64 +305,42 @@ Consolas can handle €
 # WAN
     $HADR\Thunderbird\profiles.ini
 
-## browsers
-KeePassXC: Getting Started Guide
-
-### chromium-based
-    chrome://apps/
-    chrome://plugins/
-    chrome://system > extensions > Expand -> a list of Extensions
-    ctrl+h -> chrome://history
-    ctrl+Shft+O (= Bookmarks) > Organise > Export
-    ctrl+u => view page source in new tab
-
-#### Microsoft Edge
+## browser - Microsoft Edge
     edge://extensions/
     edge://favorites/
     edge://settings/privacy
     edge://settings/profiles/sync
 
-- `alt+f` (= ∙∙∙ menu)
-    - `ctrl+j` (= `Téléchargements`)
-    - `ctrl+p` (= `Imprimer`) includes save as PDF
+- `alt+f` (= `Parmètres et plus`)
+    - `l` (= `Outils supplémentaires`)
+        - `o` (= `Outils de développement`)
 - `ctrl+.` on AZERTY toggles Copilot sidebar
+- `ctrl+I` (= `Outils de développement`)
+- `ctrl+j` (= `Téléchargements`)
+- `ctrl+p` (= `Imprimer`) includes save as PDF
 - `ctrl+u` (= `right-click > View page source`) is searchable
 - `f12` toggles last of DevTools
 - Secure Network
 
-##### Extensions
-`Manage` = `edge://extensions`
-
-###### Extensions
-    ••• > Extensions
-
-jigsaw icon
-
-###### developer tools
+### developer tools
     ••• > More tools > Developer tools > Elements
 
 `ctrl+shift+i` toggles
 
-##### Favourites
+### Extensions
+    ••• > Extensions
+
+- jigsaw icon
+- `Manage` = `edge://extensions`
+
+### Favourites
+    ctrl+shift+o
     edge://favorites/
     ••• > Open favourites page > ••• > Sort
 
-###### Favourites
-    ctrl+shift+o
-
 star icon
 
-### Firefox
-    about:config > caret
-    about:plugins
-    about:preferences#general
-    about:preferences#sync
-    alt > e (= Edit) > n (= Settings)
-    ctrl+p > Destination > Save to PDF > Save
-    ctrl+shft+b (= toggle Bookmarks Toolbar)
-    ctrl+shft+o (= Library)
-
-### Vivaldi
+## browsers - Vivaldi
     Alt+P (= Settings)
     Alt+P > Search > [ Google up to top and Set as Default , DuckDuckGo next, Wikipedia third ]
     Ctrl+B -> Manage Bookmarks

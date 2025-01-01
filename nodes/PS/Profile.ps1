@@ -1,13 +1,13 @@
 
-# Joseph Harriott, Sun 27 Oct 2024
+# Joseph Harriott, ven 20 déc 2024
 
-# $MSn\PS\PSProfile.ps1
-#  symlinked in  $MSWin10\mb\neededNodes-1-PSProfile.ps1
-#  called by  $MSWin10\PSProfileStub.ps1
+# $MSn\PS\Profile.ps1
+#  symlinked in  $MSn/set/2-PSProfile.ps1
+#    then called by  $MSn/PS/ProfileStub.ps1
 
 sal seco set-content  # because  sc  is overridden by  sc.exe
 sal su C:\SumatraPDF\SumatraPDF.exe
-. ~\Env.ps1  # ($MSWin10\mb\neededNodes-1-PSProfile.ps1)
+. ~\PSEnv.ps1  # ($MSWin10\mb\neededNodes-1-PSProfile.ps1)
 
 function ep {
   $eps = "$machLg/path"
@@ -58,6 +58,9 @@ function stc {
 # Alternatively:
 #  schtasks /fo list | out-file $machlg\schtasks.txt -encoding utf8bom
 #   ri $machlg\schtasks.txt
+
+# Pansies coloured line
+function GGrb { Get-Gradient red blue -Flatten | %{Write-Host " " -BackgroundColor $_ -NoNewline} }
 
 #=> 0 convert images recursively
 function mc {
@@ -182,7 +185,7 @@ function gfoln { gci -r $args[0] | where { $_.psiscontainer } | select -expandpr
 # gfoln *u*
 
 #===> lastwritetime
-function dtsfn { $args[0].lastwritetime.tostring('yyyyMMdd-hh:mm:ss')+' '+$args[1]+' '+ $args[0].fullname } # - used by other functions  ls <test> | %{ dtsfn $_ ':' }
+function dtsfn { $args[0].lastwritetime.ToString('yyyyMMdd-HH:mm:ss')+' '+$args[1]+' '+ $args[0].fullname } # - used by other functions  ls <test> | %{ dtsfn $_ ':' }
 
 function encrypted {
   $encrypted = "actions", "digital0", "digital1", "secure0", "secure1", "shg", "stack"
@@ -235,7 +238,7 @@ function du { du64 -nobanner -l 1 }
 
 function fso { $fso = new-object -com scripting.filesystemobject; gci -directory | select @{l='size'; e={$fso.getfolder($_.fullname).size}},fullname | sort size -descending | ft @{l='size [mb]'; e={'{0:n2}    ' -f ($_.size / 1mb)}},fullname }
 
-function gfsi { Get-ChildItem . -Directory | Get-FolderSizeInfo -Hidden | Sort-Object TotalSize -Descending | Format-Table -AutoSize -View mb }
+function gfsi { Get-ChildItem . -Directory | Get-FolderSizeInfo -Hidden | Sort-Object TotalSize -Descending | Format-Table -AutoSize -View mb } # does it still work?
 
 #===> string in files
 
@@ -309,9 +312,9 @@ function gsp {
     $pdf = $args[4]+'.pdf'
     if ( test-path $pdf ) {
       $g = "gswin64c -dSAFER -sDEVICE=png16m $r -dDownScaleFactor=$DSF -sPageList=$pl -o $pngs '$pdf'"
+      SCFCW; $g; SCRC
+      iex "$g"
     } else { "$pdf ain't there" }
-    SCFCW; $g; SCRC
-    iex $g
     }
 #  gsp <startPageNo>-<endPageNo> resolution DownScaleFactor(1-8) outPNGbaseName 'inPDFbaseName'
 
@@ -346,11 +349,11 @@ function all72 {
 
 #=> 0 internetworking
 function cico {
-  $co = (Invoke-WebRequest http://ifconfig.co/country).Content.replace("`n",'')
-  $ci = (Invoke-WebRequest http://ifconfig.co/city).Content.replace("`n",'')
+  $co = (iwr http://ifconfig.co/country).Content.replace("`n",'')
+  $ci = (iwr http://ifconfig.co/city).Content.replace("`n",'')
   if ( $ci ) { "$ci, $co" } else { "$co" }
   }  # [city, ]country
-function ip { (Invoke-WebRequest -uri "http://ifconfig.me/ip").Content }  # IPv4
+function ip { (iwr "http://ifconfig.me/ip").Content }  # IPv6
 function tc {test-connection 8.8.8.8 -ErrorAction SilentlyContinue}
 function tcg {test-connection google.com -ErrorAction SilentlyContinue}
 function wp { curl wttr.in/Paris }

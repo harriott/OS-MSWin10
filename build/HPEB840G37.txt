@@ -949,12 +949,139 @@ again, then
 launched for  Thunderbird - Choissisez un profil utilisateur > Démarrer Thunderbird
   brought  [InstallD78BF5DD33499EC2]  into  $HADR\Thunderbird\profiles.ini
     and a new  $HADR\Thunderbird\installs.ini
-## WSL Ubuntu CLM
-sudo apt install neomutt
+## WSL Ubuntu luarocks neomutt neovim
+sudo apt install luarocks neomutt neovim
+## WSL lsd
+sudo snap install lsd
+## WSL Ubuntu remove neovim
+sudo apt remove luarocks neovim
+## Python 3.13
+winget rm Python.Python.3.12
+didn't remove  $HADR\Python\Python312, C:\Python312\include, C:\Python312\Lib
+probably unneccessary reboot
+winget add Python.Python.3.13
+where.exe python  reports  C:\Users\jharr\AppData\Local\Programs\Python\Python313\python.exe
+Deleted  C:\Python312
+### pipx
+py -m pip install --user -U pipx
+  Installing collected packages: platformdirs, packaging, colorama, argcomplete, click, userpath, pipx
+    WARNING: The scripts activate-global-python-argcomplete.exe, python-argcomplete-check-easy-install-script.exe and register-python-argcomplete.exe are installed in 'C:\Users\jharr\AppData\Roaming\Python\Python313\Scripts' which is not on PATH.
+    Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+    WARNING: The script userpath.exe is installed in 'C:\Users\jharr\AppData\Roaming\Python\Python313\Scripts' which is not on PATH.
+    Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+    WARNING: The script pipx.exe is installed in 'C:\Users\jharr\AppData\Roaming\Python\Python313\Scripts' which is not on PATH.
+    Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  Successfully installed argcomplete-3.5.1 click-8.1.7 colorama-0.4.6 packaging-24.1 pipx-1.7.1 platformdirs-4.3.6 userpath-1.9.2
+$HADR\Python\Python313> fd --max-depth 2
+  Scripts\
+    Scripts\activate-global-python-argcomplete.exe
+    Scripts\pipx.exe
+    Scripts\python-argcomplete-check-easy-install-script.exe
+    Scripts\register-python-argcomplete.exe
+    Scripts\userpath.exe
+  site-packages\
+    site-ackages\argcomplete\
+    site-packages\argcomplete-3.5.1.dist-info\
+    site-packages\click\
+    site-packages\click-8.1.7.dist-info\
+    site-packages\colorama\
+    site-packages\colorama-0.4.6.dist-info\
+    site-packages\packaging\
+    site-packages\packaging-24.1.dist-info\
+    site-packages\pipx\
+    site-packages\pipx-1.7.1.dist-info\
+    site-packages\platformdirs\
+    site-packages\platformdirs-4.3.6.dist-info\
+    site-packages\userpath\
+    site-packages\userpath-1.9.2.dist-info\
+Deleted  $HADR\Python\Python312
+### remove $HADR\Python\python312\scripts from $PATH
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU -replace 'c:\\users\\jharr\\appdata\\roaming\\python\\python312\\scripts;',''; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+### add $HADR\Python\Python313 to $PATH
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU+';C:\Users\jharr\AppData\Roaming\Python\Python313\Scripts'; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+### test pipx
+pipx run pycowsay moo
+## remove multiple $HOME\go\bin from $PATH
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU -replace 'C:\\Users\\jharr\\go\\bin;',''; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+## IrfanView v4.70
+winget update IrfanSkiljan.IrfanView  refused, so  winget rm IrfanSkiljan.IrfanView
+winget add IrfanSkiljan.IrfanView  refused, so
+Paramètres > Applications > IrfanView > Désinstaller > Désinstaller
+winget add IrfanSkiljan.IrfanView
+fixed ; at end of path
+winget add IrfanSkiljan.IrfanView.PlugIns
+### FastStone Image Viewer
+opened an image > f12 > Programmes > Supprimer  then  e > Ajout > C:\Program Files\IrfanView\i_view64.exe
+## WSL Ubuntu mbsync notmuch pass
+sudo apt install isync notmuch pass
+## WSL Ubuntu - GnuPG keys
+gpg -k
+  gpg: directory '/home/jo/.gnupg' created
+  gpg: keybox '/home/jo/.gnupg/pubring.kbx' created
+  gpg: /home/jo/.gnupg/trustdb.gpg: trustdb created
+in  $Enc/Secure1/GnuPG/13F327EF,  gpg --import sprbMbArch-m2o-private.asc > passphrase
+## WSL Ubuntu - pass
+rsync -irtv --delete $Enc/Secure1/password-store/ ~/.password-store
+## WSL Ubuntu - GnuPG keys
+in  $Enc/Secure1/GnuPG/13F327EF,  gpg --import sprbMbArch-ob8-private.asc > passphrase
+## Windows Update
+HP Development Company, L.P. - Extension - 8.10.29.1
+## WSL Ubuntu Pro
+sudo apt update
+sudo pro attach <FPT>
+sudo apt update
+sudo apt upgrade
+## IrfanView
+ran it for  P (= Properties/Settings) > [ JPG > Auto-rotate off  Editing > Cut White ]
+## Desktop Background
+somehow got  Paramètres > Personnalisation > Arrière-plan > Diaporama
+  (and system was slow and keyboard was messed up) resetting  to  Couleur unie  wouldn't stick
+  fixed after a reboot
+## BgInfo
+& $HADLM\WinGet\Packages\Microsoft.Sysinternals.BGInfo_Microsoft.Winget.Source_8wekyb3d8bbwe\bginfo.exe
+## MiniTool Partition Wizard Free v12.9
+allowed
+## csvkit
+pipx install csvkit
+  installed package csvkit 2.0.1, installed using Python 3.13.1
+  These apps are now globally available
+    csvclean.exe
+    csvcut.exe
+    csvformat.exe
+    csvgrep.exe
+    csvjoin.exe
+    csvjson.exe
+    csvlook.exe
+    csvpy.exe
+    csvsort.exe
+    csvsql.exe
+    csvstack.exe
+    csvstat.exe
+    in2csv.exe
+    sql2csv.exe
+## ShellCheck RAM
+shellcheck.exe  using lots of RAM
+## Dropbox reset
+v214.4.517 (same as on HPEB840G38) after a reboot somehow
+  2) wanted me again to choose my folders again, though it remembered all my old choices
+  3) required me to rename away  D:\Dropbox  to  D:\D, but after I'd killed it, I saw it'd dissappeared from Start Menu so  Paramètres > Applications > Dropbox > Désinstaller  took ages...
+## dropbox.com
+https://www.dropbox.com/install for  DropboxInstaller.exe > set my  Selective sync  choices, then got it to move the folder, then closed it to move back in my files, reran it
+## Epson EcoTank ET-5170 connection
+HPEB840G37  at  192.168.0.41
+ET-5170  at  192.168.0.65, but not found...
+Paramètres > Périphériques > Imprimantes et scanners > Ajouter > EPSONFE86A3 (ET-5170 Series) > Ajouter l'appareil  got it  Prêt
+## XpdfReader
+XpdfReader-win64-4.05.exe  (C:\Program Files\Glyph & Cog\XpdfReader-win64)
+  pdfimages -h
 ## waiting
 Mise à jour facultatives
-### Epson Software updater v4.6.7.0
-epson661623eu.exe
 # build - WT 0 install
 https://www.microsoft.com/en-gb/p/windows-terminal-preview/9n0dx20hk701
 # build - WT 1 settings
