@@ -13,8 +13,8 @@ $Cn = $Env:Computername
 $CPF = $env:programfiles
 $CPFx = ${env:programfiles(x86)}
 
-#===> 0 $Drpbx, or just $ITstack
-if ( test-path "~\_noDropbox.ps1" ) { $ITstack = 'D:\IT_stack' } else {
+#===> 0 $Drpbx, or just $coreIT
+if ( test-path "~\_noDropbox.ps1" ) { $coreIT = 'D:\IT' } else {
   $Drpbx = "D:\Dropbox"
     $COT = "$Drpbx\Cop\OutThere"
     $DJH = "$Drpbx\JH"
@@ -28,7 +28,7 @@ if ( test-path "~\_noDropbox.ps1" ) { $ITstack = 'D:\IT_stack' } else {
             $d1ad = "$Copil\data-1-adh"
         $CzPhy = "$Cfzd\PhysicalProperty"
       $core = "$DJH\core"
-        $ITstack = "$core\IT_stack"
+        $coreIT = "$core\IT"
         $TeNo = "$core\TextNotes"  # used in  $TeNo
           $TNt = "$TeNo\tex"  # used in  $TeNo
       $DaLi = "$DJH\Jo-now\DailyLife"
@@ -61,19 +61,20 @@ $Enc = "$home\encrypted"
 $HADL = "$HOME\AppData\Local"  # ($env:localappdata)
   $HADLM = "$HADL\Microsoft"
   $lazy = "$HADL\nvim-data\lazy"
+  $mason = "$HADL\nvim-data\mason\packages"
   $nvim = "$HADL\nvim"  # lf  don't grok  ~
-$HADR = $Env:AppData
+$HADR = $Env:AppData  # Roaming
   $Pandoc = "$HADR\Pandoc"
   $tex = "$HADR\MiKTeX\tex"
 
-#===> 1 rooting on $ITstack
-$CrPl = "$ITstack\CP"
-  $LTXj = "$CrPl\documenting\LaTeX\jo"
-$DWp = "$ITstack\DokuWiki\pages"
-$ITscc = "$ITstack\copied-code"
-$ITscr = "$ITstack\copied-reference"
-$machLg = "$ITstack\MSWin\ml-$Cn"
-$onGH = "$ITstack\onGitHub"
+#===> 1 rooting on $coreIT
+$ITsCP = "$coreIT\CP"
+  $LTXj = "$ITsCP\documenting\LaTeX\jo"
+$DWp = "$coreIT\DokuWiki\pages"
+$ITscc = "$coreIT\copied-code"
+$ITscr = "$coreIT\copied-reference"
+$machLg = "$coreIT\MSWin\ml-$Cn"
+$onGH = "$coreIT\onGitHub"
   $misc = "$onGH\misc"
   $MD4PDF = "$onGH\pandoc-md4pdf"
   $MSWin10 = "$onGH\OS-MSWin10"
@@ -84,7 +85,7 @@ $onGH = "$ITstack\onGitHub"
       $Openbox = "$ABjo\wm\Openbox"
           $Obc = "$Openbox\openbox"
   $OSL = "$onGH\OS-Linux"
-  $ulL = "$ITstack\ulLinux"
+  $ulL = "$coreIT\ulLinux"
     $lclm = "$ulL\clm"  # linux command-line mail
     $ulLA = "$ulL\Arch"
   $vimfiles = "$onGH\vimfiles"

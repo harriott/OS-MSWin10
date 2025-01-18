@@ -146,6 +146,14 @@ output is simplified when redirected to a file
     pt '$MSWin10' .
     pt 's~~$' .
 
+## Windows Loupe
+- `ctrl+alt+flèche` bouger
+- `ctrl+alt+f/l` basculer en affichage
+- `win+=` activer la loupe
+    - `win+=\-` zoom avant/arrière
+- `win+ctrl+m` paramètres de la loupe
+- `win+esc` désactiver la loupe
+
 ## Windows Terminal
 - in Explorer: `Alt+D > wt > Enter`
 - `win+;` emojis
@@ -179,42 +187,41 @@ output is simplified when redirected to a file
 
 default actions don't show, but when I binned annoying `alt+enter` & `<f11>` "Baculer en plein écran", they show as `unbound`
 
-## Windows Loupe
-- `ctrl+alt+flèche` bouger
-- `ctrl+alt+f/l` basculer en affichage
-- `win+=` activer la loupe
-    - `win+=\-` zoom avant/arrière
-- `win+ctrl+m` paramètres de la loupe
-- `win+esc` désactiver la loupe
-
 ## WSL
 Windows Subsystem for Linux
 
-### PowerShell
-    wsl --help
-    wsl --shutdown  # kills all WSL2
-    wsl -l -o  # (--list --online) available flavours
-    wsl -l -v
-    wsl -l --running
-    wsl -v
-
-#### nodes
-    \\wsl$\Ubuntu\etc\bash_completion.d\git-prompt
-    \\wsl$\Ubuntu\etc\updatedb.conf
-    \\wsl$\Ubuntu\etc\ranger\config\commands.py
+### nodes, from Windows
     \\wsl$\Ubuntu\etc\wsl.conf
-    \\wsl$\Ubuntu\home\jo\.bash_history
-    \\wsl$\Ubuntu\home\jo\.bash_profile
-    \\wsl$\Ubuntu\run\systemd\system
-    \\wsl$\Ubuntu\usr\bin
-    \\wsl$\Ubuntu\var\lib\plocate
+    \\wsl$\Ubuntu-24.04\home\jo\.mbsyncrc
+    g \\wsl$\Ubuntu\etc\ranger\config
+    g \\wsl$\Ubuntu\run\systemd\system
+    g \\wsl$\Ubuntu\usr\bin
 
 - can't access these from `Telescope`, so `:MRU wsl$`
-- `\\wsl$\Ubuntu\etc\apt\sources.list` repositories
-- `\\wsl$\Ubuntu\etc\skel` has Bash configuration defaults
+- `\\wsl$\Ubuntu\home\jo\Play0`
+    - not navigable by `oil.nvim`
+    - not seen by `nvim-tree.lua`
+
+#### Bash
+    \\wsl$\Ubuntu\etc\bash_completion.d\git-prompt
+    \\wsl$\Ubuntu\home\jo\.bash_history
+    \\wsl$\Ubuntu\home\jo\.bash_profile
+
+`\\wsl$\Ubuntu\etc\skel` has Bash configuration defaults
+
+#### plocate
+    g \\wsl$\Ubuntu\var\lib\plocate
+    \\wsl$\Ubuntu\etc\updatedb.conf
+
+#### repositories
+    \\wsl$\Ubuntu-24.04\etc\apt\sources.list.d\ubuntu.sources
+
+##### v22.04
+    \\wsl$\Ubuntu\etc\apt\sources.list.d\ubuntu-esm-apps.list
+    \\wsl$\Ubuntu\etc\apt\sources.list.d\ubuntu-esm-infra.list
 
 ### Ubuntu
-    /mnt/c/vim/vim91/gvim.exe
+    /mnt/c/vim/vim91/gvim.exe &
     highlight --syntax=bash ~/.bash_history -O ansi
     o hello | clip.exe  # arrives in Ditto
     pwsh.exe -nop -c start .
@@ -227,6 +234,24 @@ Windows Subsystem for Linux
     wslvar -L  # --getshell
     wslvar -S  # --getsys
     wslview https://wslutiliti.es/wslu/man/wslview.html
+
+# hw - DVD Shrink
+    Backup! > Create VIDEO_TS and AUDIO_TS subfolders off
+    Compressioin Settings > Custom Ratio > slider to left
+
+repeat until small enough
+
+# hw - storage
+    Properties > Tools > Error checking > Check (= Error Checking) > Scan and repair drive
+
+## name limitations
+260 characters
+
+### forbidden characters
+    < > : " / \ | ?  *
+
+### storage - reserved NT names
+    aux com1 com2 com3 com4 com5 com6 com7 com8 com9 con nul prn lpt1 lpt2 lpt3 lpt4 lpt5 lpt6 lpt7 lpt8 lpt9
 
 # imagey
 ExifTool by Phil Harvey
@@ -252,7 +277,7 @@ ExifTool by Phil Harvey
 - `R` Reopen file
 - `r` rotate right
 
-# LaTeX
+# documenting - LaTeX
     g $ITscr\CP\TeX
 
 ## Polyglossia
@@ -260,7 +285,7 @@ ExifTool by Phil Harvey
     \setmainfont{Segoe Script}
     \setmainfont{Trebuchet MS}
 
-# PDF - Sumatra
+# documenting - PDF - Sumatra
 - `ctrl+6` view single pages (`ctrl+-` on AZERTY)
 - `ctrl+7` view facing pages (`ctrl+è` on AZERTY)
 - `ctrl+8` view book mode
@@ -273,18 +298,6 @@ ExifTool by Phil Harvey
 - `i` invert colours
 - `r` reload
 - `z` toggle zoom between Fit Page, Fit Width, Fit Content
-
-# storage
-    Properties > Tools > Error checking > Check (= Error Checking) > Scan and repair drive
-
-## name limitations
-260 characters
-
-### forbidden characters
-    < > : " / \ | ?  *
-
-### storage - reserved NT names
-    aux com1 com2 com3 com4 com5 com6 com7 com8 com9 con nul prn lpt1 lpt2 lpt3 lpt4 lpt5 lpt6 lpt7 lpt8 lpt9
 
 # text wrangling
 `Notepad++`: `alt+p > Préférences...`
@@ -308,6 +321,8 @@ ExifTool by Phil Harvey
 ## browser - Microsoft Edge
     edge://extensions/
     edge://favorites/
+    edge://settings
+    edge://settings/accessibility > Clavier > f7 caret
     edge://settings/privacy
     edge://settings/profiles/sync
 

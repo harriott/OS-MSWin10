@@ -7,7 +7,7 @@ HP EliteBook 840 G3 barcoded PC117855 (labelled BC PNB 19 by last owner) = HPEB8
 # $core
 ## K16GBDTG2
 HPEB840G37 PS> robocopy /mir $core E:\core /fft
-HPEB840G36 PS> $ITstack = 'D:\IT_stack'; robocopy /mir E:\core\IT_stack $ITstack /fft
+HPEB840G36 PS> $coreIT = 'D:\IT_stack'; robocopy /mir E:\core\IT_stack $coreIT /fft
 # build - parallel
 Paramètres > Écran > Éclairage nocturne > Activé
 ## dark applications

@@ -32,7 +32,7 @@ Système > Écran > Mise à l'échelle et disposition > Modifier la taille du te
 ## Disk Usage
 du64.exe  copied into $HADL\Microsoft\WindowsApps
 ## Edge
-see  $CrPl/networking/browsers/browsers.txt
+see  $ITsCP/networking/browsers/browsers.txt
 ## Everything
 Ctrl+P ( = Tools > Options ) > General >
   UI > [ Démarrer sur un clic simple > on  Résultats >
@@ -56,7 +56,7 @@ sl $ITscc\forMSWin\fonts-FontSquirrel\architects-daughter
 $ITscc\forMSWin\fonts-dejavu-fonts-ttf-2.37\ttf > selected all, right clicked on to Install
   arrived in  $HADL\Microsoft\Windows\Fonts
 ## fonts - Noto Sans CJK Regulars for Pandoc
-$ITstack\MSWin\fonts-copied\NotoHinted > selected all, right clicked on to Install
+$coreIT\MSWin\fonts-copied\NotoHinted > selected all, right clicked on to Install
   arrived in  $HADL\Microsoft\Windows\Fonts
 ## Gestionnaire de tâches
 Options > Masquer l'icône réduite
@@ -191,6 +191,25 @@ code-minimap.exe  copied to  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 ## Python 3.12.3
 python-3.12.3-amd64.exe > Add python.exe to PATH > Customize > Optional Features > for all users >
   Next > [ Advanced Options > [ Install for all users  Customize install location > C:\Python312 ]
+## WT 0 install
+https://www.microsoft.com/en-gb/p/windows-terminal-preview/9n0dx20hk701
+## WT 1 settings
+chcp  reports  CodePage 850
+ctrl+, (= Paramètres)
+  Actions > Basculer en mode plein écran > binned
+  Azure Cloud Shell > Masquez le profil de la liste déroulante > Activé
+  Démarrage > Profil par défaut > PowerShell
+  Interaction > M'avertir lorsque je ferme plusieurs onglets  off-slid
+  PowerShell > Apparance >
+    Texte > Taille de police > 9
+    Transparence > Opacité de l'arrière plan > 80%
+    Type de police > Cascadia Mono
+  Ubuntu > Apparance >
+    Jeu de couleurs > One Half Dark
+    Texte > Taille de police > 9
+    Transparence > Opacité de l'arrière plan > 90%
+  Windows PowerShell > Apparance > Texte > Taille de police > 9
+$HADL\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
 ## Windows Terminal s'ouvre à l'Invite de commandes
 Paramètres > Applications > Terminal > Désinstaller  then  win+x > Redémarrer
   then re-installed from Microsoft Store
@@ -259,7 +278,7 @@ f12 (= Paramètres) > Aperçu >
   [ En boucle  Rotation Auto par tag orientation EXIF > off  Unité par défaut > cm ]
 ### Settings
 replaced  PaperSizeList  settings in  $HADR\FastStone\FSIV\FSSettings.db
-  with those in  $ITstack\MSWin\FSSettings-PaperSizeList.db
+  with those in  $coreIT\MSWin\FSSettings-PaperSizeList.db
 ## Everything v1.4.1.1024
 Everything-1.4.1.1024.x64-Setup.exe > clicked through > UAC
 ## The Platinum Searcher v2_2_0
@@ -407,7 +426,7 @@ sl $jtIT\CP\TeX\distro-MiKTeX\miktex-xetex  for  x mwe.tex  and off_ticked "Alwa
 ## Pandoc
 after MiKTeX
   winget add JohnMacFarlane.Pandoc  got  $HADL\Pandoc\pandoc.exe
-    sl $CrPl\Pandoc  for
+    sl $ITsCP\Pandoc  for
       pandoc --toc --toc-depth=6 -f markdown_strict toCdepth6MWE.md -o toCdepth6MWE.pdf
       - took a while for MiKTeX to download all the necessary packages
     md $tex\latex\m4p
@@ -439,7 +458,7 @@ winget update --all
 I seem to've installed with winget.
 ran it to build  ~\AppData\Roaming\LibreOffice\4
   in  user\  removed  config  folder &  registrymodifications.xcu
-    & replaced them from  $CrPl\documenting\LibreOffice\lcu-sbMb-user
+    & replaced them from  $ITsCP\documenting\LibreOffice\lcu-sbMb-user
 ## WSL
 ### fails (maybe needed to reboot)
 winget add 9MZNMNKSM73X > agreed to  https://vineelsai.com/Privacy/Apps/ArchWSL.html
@@ -457,7 +476,7 @@ https://apps.microsoft.com/detail/9p9tqf7mrm4r > Télécharger > Obténir
   Error: 0x80080005 échec de l'exécution du serveur
 reboot  got a Ubuntu lancement WT
 UNIX username > jo > pw
-### configure
+### configure Ubuntu
 touch ~/.hushlogin
 apt update
   Reading package lists... Done
@@ -832,7 +851,7 @@ sudo apt install libnotify-bin
 sudo snap install jump
 #### tmux
 sudo apt install tmux
-bash $MSWSL/bs-symlinks.sh
+. $MSn/set/6-WSL-nodes.sh
 #### wslu
 sudo add-apt-repository ppa:wslutilities/wslu
   got me  \\wsl$\Ubuntu\etc\apt\sources.list.d\wslutilities-ubuntu-wslu-jammy.list
@@ -1080,27 +1099,96 @@ Paramètres > Périphériques > Imprimantes et scanners > Ajouter > EPSONFE86A3 
 ## XpdfReader
 XpdfReader-win64-4.05.exe  (C:\Program Files\Glyph & Cog\XpdfReader-win64)
   pdfimages -h
+## WSL Ubuntu - ncdu
+sudo apt install ncdu
+## Ce PC disk space usage bar
+disappeared, so  Affichage > Options > Affichage > Réinitialer les dossiers
+## WSL Ubuntu - .bash_history
+cp \\wsl$\Ubuntu\home\jo\.bash_history $machLg/WSL/bash_history-$((get-date).tostring("yyMMdd-HHmmss")).sh
+## WSL Ubuntu 24.04.1 LTS
+winget add Canonical.Ubuntu.2404
+Windows Menu > Ubuntu 24.04.1 LTS  fired up a new WT & installed it > UNIX username > jo > pw
+all WT quit for  WT > ctrl+5 (= Ubuntu 24.04 LTS tab)
+## WSL Ubuntu 24.04 update
+touch ~/.hushlogin
+sudo apt update  reported 182 so  sudo apt upgrade
+lsb_release -a  reports  Ubuntu 24.04.1 LTS
+## WT Ubuntu 24.04 settings
+WT > ctrl+, > Ubuntu 24.04 Apparance >
+  Jeu de couleurs > One Half Dark
+  Texte > Taille de police > 9
+  Transparence > Opacité de l'arrière plan > 81%
+## WT Ubuntu 24.04 received settings
+Ubuntu 24.04 LTS
+  Icône > https://assets.ubuntu.com/v1/49a1a858-favicon-32x32.png - the one that shows in use
+  Ligne de commande > ubuntu2404.exe
+  Masquez le profil de la liste déroulante > Désactivé
+Ubuntu 24.04
+  Icône > ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png
+  Ligne de commande > C:\Windows\system32\wsl.exe -d Ubuntu-24.04
+  Masquez le profil de la liste déroulante > Activé
+## WSL Ubuntu 24.04 Bash configuration
+$MSn/set/5-WSL-Bash.sh
+## WSL Ubuntu 24.04 packages
+sudo apt install bc dos2unix fd-find fzf highlight isync ncdu neofetch neomutt neovim nnn notmuch pass p7zip-full ranger ripgrep tmux trash-cli
+## WSL Ubuntu 24.04 Samokovarov's jump
+sudo snap install jump
+## WSL Ubuntu 24.04 plocate
+sudo apt install plocate  then took ages to initialize the database
+cp /etc/updatedb.conf $machLg/WSL/updatedb-$(date '+%y%m%d-%H%M').conf
+sudo cp $MSn/WSL/updatedb.conf /etc/updatedb.conf  then  sudo updatedb  (much faster)
+## WSL Ubuntu 24.04 nodes
+. $MSn/set/6-WSL-nodes.sh
+## WSL Ubuntu 24.04 wslu
+sudo add-apt-repository ppa:wslutilities/wslu
+  got me  \\wsl$\Ubuntu-24.04\etc\apt\sources.list.d\wslutilities-ubuntu-wslu-noble.sources
+sudo apt update
+sudo apt install wslu
+## WSL Ubuntu 24.04 lsd
+sudo snap install lsd
+## WSL Ubuntu 24.04 remove neovim
+sudo apt remove neovim
+## WSL Ubuntu 24.04 GnuPG keys
+gpg -k
+  gpg: directory '/home/jo/.gnupg' created
+  gpg: keybox '/home/jo/.gnupg/pubring.kbx' created
+  gpg: /home/jo/.gnupg/trustdb.gpg: trustdb created
+in  $Enc/Secure1/GnuPG/13F327EF,  gpg --import sprbMbArch-ob8-private.asc > passphrase
+  gpg: key 842A4DEE13F327EF: public key "Joseph Harriott (sprbMb Arch) <jharr@ftml.net>" imported
+  gpg: key 842A4DEE13F327EF: secret key imported
+## WSL Ubuntu 24.04 password-store
+rsync -irtv --delete $Enc/Secure1/password-store/ ~/.password-store
+## WSL Ubuntu 24.04 Pro
+sudo pro attach <FPT>
+[sudo] password for jo:
+  Enabling Ubuntu Pro: ESM Apps
+  ...
+  Enabling Ubuntu Pro: ESM Infra
+  ...
+  This machine is now attached to 'Ubuntu Pro - free personal subscription'
+  SERVICE          ENTITLED  STATUS       DESCRIPTION
+  anbox-cloud      yes       disabled     Scalable Android in the cloud
+  esm-apps         yes       enabled      Expanded Security Maintenance for Applications
+  esm-infra        yes       enabled      Expanded Security Maintenance for Infrastructure
+  landscape        yes       disabled     Management and administration tool for Ubuntu
+  NOTICES: Operation in progress: pro attach
+  For a list of all Ubuntu Pro services, run 'pro status --all'
+  Enable services with: pro enable <service>
+  Account: trohib@gmail.com
+  Subscription: Ubuntu Pro - free personal subscription
+sudo apt update
+sudo apt upgrade
+  The following upgrades have been deferred due to phasing:
+    python3-distupgrade ubuntu-release-upgrader-core
+## WSL Ubuntu remove
+closed WT for  Applications et fonctionnalités > Ubuntu > Désinstaller
+## WSL Ubuntu 24.04 libdata-printer-perl
+(for  Data::Printer  in  $clMail/notmuch/nmsh-sort.pl) sudo apt install libdata-printer-perl
+## BgInfo
+& $HADLM\WinGet\Packages\Microsoft.Sysinternals.BGInfo_Microsoft.Winget.Source_8wekyb3d8bbwe\bginfo.exe > OK
 ## waiting
 Mise à jour facultatives
-# build - WT 0 install
-https://www.microsoft.com/en-gb/p/windows-terminal-preview/9n0dx20hk701
-# build - WT 1 settings
-chcp  reports  CodePage 850
-ctrl+, (= Paramètres)
-  Actions > Basculer en mode plein écran > binned
-  Azure Cloud Shell > Masquez le profil de la liste déroulante > Activé
-  Démarrage > Profil par défaut > PowerShell
-  Interaction > M'avertir lorsque je ferme plusieurs onglets  off-slid
-  PowerShell > Apparance >
-    Texte > Taille de police > 9
-    Transparence > Opacité de l'arrière plan > 80%
-    Type de police > Cascadia Mono
-  Ubuntu > Apparance >
-    Jeu de couleurs > One Half Dark
-    Texte > Taille de police > 9
-    Transparence > Opacité de l'arrière plan > 90%
-  Windows PowerShell > Apparance > Texte > Taille de police > 9
-$HADL\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
+mpv
 # physical configuration
 1920x1080 screen
 Intel Core i5-6300U

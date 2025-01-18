@@ -21,7 +21,7 @@ cpi $ITscc\forMSWin\code-minimap-v0.6.7-x86_64-pc-windows-msvc\code-minimap.exe 
 cpi "$ITscc\forMSWin\Disk Usage\du64.exe" $HADL\Microsoft\WindowsApps
 du64 -l 1  to accept the license
 ## Edge
-see  $CrPl/networking/browsers/browsers.txt
+see  $ITsCP/networking/browsers/browsers.txt
 ## Everything
 winget add voidtools.Everything
 Ctrl+P ( = Tools > Options ) > General >
@@ -49,7 +49,7 @@ sl $ITscc\forMSWin\fonts-FontSquirrel\architects-daughter
 $ITscc\forMSWin\fonts-dejavu-fonts-ttf-2.37\ttf > selected all, right clicked on to Install
   arrived in  $HADL\Microsoft\Windows\Fonts
 ## fonts for Pandoc - Noto Sans CJK Regulars
-$ITstack\copied-code\forMSWin\fonts-NotoHinted
+$coreIT\copied-code\forMSWin\fonts-NotoHinted
 MSWin\fonts-copied\NotoHinted > selected all, right clicked on to Install
   arrived in  $HADL\Microsoft\Windows\Fonts
 ## Gestionnaire de tâches
@@ -305,7 +305,7 @@ $DWp> git grep Everything
   To add an exception for this directory, call:
     git config --global --add safe.directory D:/Dropbox/JH/core/IT_stack/DokuWiki
 #### fix
-EdF > $ITstack > DokuWiki > Propriétés > Sécurité > Avancé > Modifier > Avancé > Rechercher > jnbh Jo (jnbh@live.co.uk) > OK > OK > Remplacer le propiétaires des sous-conteneurs et des objets  on-ticked > OK > OK
+EdF > $coreIT > DokuWiki > Propriétés > Sécurité > Avancé > Modifier > Avancé > Rechercher > jnbh Jo (jnbh@live.co.uk) > OK > OK > Remplacer le propiétaires des sous-conteneurs et des objets  on-ticked > OK > OK
 ## 7-Zip fixed
 & $CPF\7-Zip\7z.exe  is clumsy, so  winget rm 7zip.7zip  for  winget add 7zip.7zip -l C:\7-Zip
 ### add to path
@@ -435,8 +435,8 @@ g $HADL\npm-cache\_npx\8f497369b2d6166e\node_modules  surprisingly populated
 winget add neovide -l C:\Vim  but it went to  $CPF\Neovide\neovide.exe
 ## Google Chrome
 winget add Google.Chrome.EXE
-## $CrPl ownership
-APS> takeown /f $CrPl /r /d o
+## $ITsCP ownership
+APS> takeown /f $ITsCP /r /d o
 ## FastStone Image Viewer
 winget add FastStone.Viewer  "C:\Program Files (x86)\FastStone Image Viewer\FSViewer.exe"
 ran it for Esc to offtick
@@ -503,7 +503,7 @@ sl $jtIT\CP\TeX\distro-MiKTeX\miktex-xetex  for  x mwe  and off_ticked "Always s
 after MiKTeX
   headings0sty; miktex fndb refresh
   winget add JohnMacFarlane.Pandoc  got  $HADL\Pandoc\pandoc.exe
-    in a new instance of PowerShell,  sl $CrPl\Pandoc  for
+    in a new instance of PowerShell,  sl $ITsCP\Pandoc  for
       pandoc --toc --toc-depth=6 -f markdown_strict toCdepth6MWE.md -o toCdepth6MWE.pdf
       - took a while for MiKTeX to download all the necessary packages
 ## Lecteur Windows Media
@@ -549,7 +549,7 @@ WT > ctrl+, > Ubuntu Apparance >
   Texte > Taille de police > 9
   Transparence > Opacité de l'arrière plan > 86%
 $ lsb_release -a  reports  Ubuntu 22.04.4 LTS
-## WT Ubuntu
+## WT Ubuntu received settings
 Ubuntu
   Icône > https://assets.ubuntu.com/v1/49a1a858-favicon-32x32.png - the one that shows in use
   Ligne de commande > ubuntu.exe
@@ -559,7 +559,7 @@ Ubuntu
   Ligne de commande > C:\Windows\system32\wsl.exe -d Ubuntu
   Masquez le profil de la liste déroulante > Activé
 ## WSL Ubuntu Bash configuration
-$MSWSL/bs/neededNodes-0-startBash.sh
+$MSn/set/5-WSL-Bash.sh
 ## WSL Ubuntu version
 PS> wsl -l -o  shows  Ubuntu-24.04, but  $ lsb_release -a  reports  Ubuntu 22.04.4 LTS
 ## WSL Ubuntu upgrades
@@ -706,12 +706,133 @@ sudo pro attach <FPT>
   Subscription: Ubuntu Pro - free personal subscription
 ## dubious ownership of $MD4PDF
 in there, APS> takeown /f . /r /d o
-## waiting
-fix ~/.tmux.conf
-~\PSEnv.ps1
-### XpdfReader
+## XpdfReader
 XpdfReader-win64-4.05.exe  (C:\Program Files\Glyph & Cog\XpdfReader-win64)
   pdfimages -h
+## WSL Ubuntu - .bash_history
+cp \\wsl$\Ubuntu\home\jo\.bash_history $machLg/WSL-bash_history-$((get-date).tostring("yyMMdd-HHmmss")).sh
+## WSL Ubuntu remove
+closed WT for  Applications et fonctionnalités > Ubuntu > Désinstaller
+## WSL Ubuntu 24.04.1 LTS
+winget add Canonical.Ubuntu.2404
+Windows Menu > Ubuntu 24.04.1 LTS  fired up a new WT & installed it > UNIX username > jo > pw
+all WT quit for  WT > ctrl+5 (= Ubuntu 24.04 LTS tab)
+## WSL Ubuntu 24.04 update
+touch ~/.hushlogin
+sudo apt update  reported 182 so  sudo apt upgrade
+lsb_release -a  reports  Ubuntu 24.04.1 LTS
+## WT Ubuntu 24.04 settings
+WT > ctrl+, >
+  Git Bash > Masquez le profil de la liste déroulante > Activé
+  Ubuntu 24.04 Apparance >
+    Jeu de couleurs > One Half Dark
+    Texte > Taille de police > 9
+    Transparence > Opacité de l'arrière plan > 77%
+## WT Ubuntu 24.04 received settings
+Ubuntu 24.04 LTS
+  Icône > https://assets.ubuntu.com/v1/49a1a858-favicon-32x32.png - the one that shows in use
+  Ligne de commande > ubuntu2404.exe
+  Masquez le profil de la liste déroulante > Désactivé
+Ubuntu 24.04
+  Icône > ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png
+  Ligne de commande > C:\Windows\system32\wsl.exe -d Ubuntu-24.04
+  Masquez le profil de la liste déroulante > Activé
+## WSL Ubuntu 24.04 Bash configuration
+$MSn/set/5-WSL-Bash.sh
+## WSL Ubuntu 24.04 packages
+sudo apt install bc dos2unix fd-find fzf highlight isync ncdu neofetch neomutt neovim nnn notmuch pass p7zip-full ranger ripgrep tmux trash-cli
+## WSL Ubuntu 24.04 snaps
+sudo snap install jump lsd  # Samokovarov's jump
+## WSL Ubuntu 24.04 plocate
+sudo apt install plocate  then took ages to initialize the database
+sudo cp $MSn/WSL/updatedb.conf /etc/updatedb.conf  then  sudo updatedb  (much faster)
+## WSL Ubuntu 24.04 nodes
+. $MSn/set/6-WSL-nodes.sh
+## WSL Ubuntu 24.04 wslu
+sudo add-apt-repository ppa:wslutilities/wslu
+  got me  \\wsl$\Ubuntu-24.04\etc\apt\sources.list.d\wslutilities-ubuntu-wslu-noble.sources
+sudo apt update
+sudo apt install wslu
+## WSL Ubuntu 24.04 GnuPG keys
+gpg -k
+  gpg: directory '/home/jo/.gnupg' created
+  gpg: keybox '/home/jo/.gnupg/pubring.kbx' created
+  gpg: /home/jo/.gnupg/trustdb.gpg: trustdb created
+in  $Enc/Secure1/GnuPG/13F327EF,  gpg --import sprbMbArch-ob8-private.asc > passphrase
+  gpg: key 842A4DEE13F327EF: public key "Joseph Harriott (sprbMb Arch) <jharr@ftml.net>" imported
+  gpg: key 842A4DEE13F327EF: secret key imported
+## WSL Ubuntu 24.04 password-store
+rsync -irtv --delete $Enc/Secure1/password-store/ ~/.password-store
+## WSL Ubuntu 24.04 Pro
+sudo pro attach <FPT>
+[sudo] password for jo:
+  Enabling Ubuntu Pro: ESM Apps
+  ...
+  Enabling Ubuntu Pro: ESM Infra
+  ...
+  This machine is now attached to 'Ubuntu Pro - free personal subscription'
+  SERVICE          ENTITLED  STATUS       DESCRIPTION
+  anbox-cloud      yes       disabled     Scalable Android in the cloud
+  esm-apps         yes       enabled      Expanded Security Maintenance for Applications
+  esm-infra        yes       enabled      Expanded Security Maintenance for Infrastructure
+  landscape        yes       disabled     Management and administration tool for Ubuntu
+  NOTICES: Operation in progress: pro attach
+  For a list of all Ubuntu Pro services, run 'pro status --all'
+  Enable services with: pro enable <service>
+  Account: trohib@gmail.com
+  Subscription: Ubuntu Pro - free personal subscription
+sudo apt update
+sudo apt upgrade
+  The following upgrades have been deferred due to phasing:
+    python3-distupgrade ubuntu-release-upgrader-core
+## WSL Ubuntu 24.04 libdata-printer-perl
+(for  Data::Printer  in  $clMail/notmuch/nmsh-sort.pl) sudo apt install libdata-printer-perl
+## Ce PC disk space usage bar
+disappeared, so  Affichage > Options > Affichage > Réinitialer les dossiers
+## DVDFab
+dvdfab13_online_13034.exe   took a long time to install,
+  (leaving  ~\Downloads\DVDFab\DVDFab13\DVDFab 13(13.0.3.4).exe) then run
+  Autoriser > trohib@gmail.com + pw > dvdfab.cn > Deauthorized  T430i73520M  install
+  DVDFab > Ne plus afficher > closed for > (Quitter) Ne plus afficher
+## DVD Shrink
+dvdshrink32setup.exe  ran it
+## VLC speed
++ not working so  ctrl+p > Raccourcis > Accélérer > )
+## mpv
+cpi $ITscc/forMSWin/AV/mpv-x86_64-20250113-git-ca211b5/mpv.exe $HADL\Microsoft\WindowsApps
+## FFmpeg back into $PATH
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU+';C:\Users\jnbh\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-7.1-full_build\bin\ffplay.exe'; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+### not play
+new PowerShell
+  $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+  $newPathCU = $oldPathCU -replace 'play', 'mpeg'; $newPathCU
+  sp 'registry::hkcu\environment' -name path -value $newPathCU
+  new PowerShell
+### not ffmpeg.exe
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU -replace '\\ffmpeg.exe', ''; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+new PowerShell
+## WT Ubuntu Apparance
+WT > ctrl+, > Ubuntu Apparance >
+  Jeu de couleurs > One Half Dark
+  Texte > Taille de police > 9
+  Transparence > Opacité de l'arrière plan > 86%
+## BgInfo
+& $HADLM\WinGet\Packages\Microsoft.Sysinternals.BGInfo_Microsoft.Winget.Source_8wekyb3d8bbwe\bginfo.exe > OK
+## moved to $coreIT
+### allow Dropboox to work
+ri "$HADR\Microsoft\Windows\Start Menu\Programs\Startup\HPEB840G38.ahk.lnk"
+quit  Process Explorer
+### resume full functionality
+APS> $MSn\set  to run the scripts
+shortcut to  $MSn\AutoHotkey\HPEB840G38.ahk
+  to  "$HADR\Microsoft\Windows\Start Menu\Programs\Startup"
+### Process Explorer
+start $ITscc\forMSWin\ProcessExplorer\procexp64.exe
+## waiting
 # physical configuration
 1366x768 screen
 Intel Core i5-6300U

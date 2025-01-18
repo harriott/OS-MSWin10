@@ -13,29 +13,29 @@ if [ -d "$HOME/.local/bin" ] ; then PATH="$HOME/.local/bin:$PATH"; fi
 export host=$(uname -n)
 
 #==> places
-# check against  $OSAB/Bash/export-storage
+# check against  $OSAB/nodes-Bash/export-storage
 export Drpbx=/mnt/d/Dropbox
   export DJH=$Drpbx/JH
     export core=$DJH/core
-      export ITstack=$core/IT_stack
-        export CrPl=$ITstack/CP  # $CrPl
-        export machLg=$ITstack/MSWin/ml-$host  # $machLg
-        export onGH=$ITstack/onGitHub
+      export coreIT=$core/IT
+        export CrPl=$coreIT/CP  # $ITsCP
+        export machLg=$coreIT/MSWin/ml-$host  # $machLg
+        export onGH=$coreIT/onGitHub
           export MSwin10=$onGH/OS-MSWin10
             export MSn=$MSWin10/nodes
             export MSWSL=$MSn/WSL
           export OSAB=$onGH/OS-ArchBuilds
-            export ABjo=$OSAB/jo
+            export ABjo=$OSAB/nodes-jo
               export AjB=$ABjo/Bash
           export OSL=$onGH/OS-Linux
-              export clMail="$OSL/jo/clm"
+              export clMail="$OSL/nodes/jo/clm"
                 export clMn=$clMail/neomutt
           export vimfiles=$onGH/vimfiles
-        export ulL=$ITstack/ulLinux
+        export ulL=$coreIT/ulLinux
           export ulLA=$ulL/Arch
 export maild=/home/jo/.local/share/mail  # $maild  for  mutt
 
 #=> 1 bashrc
-source $OSL/jo/export
+source $OSL/nodes/jo/export
 source ~/.bashrc  # works in  tmux ($MSn/WSL/bashrc)
 

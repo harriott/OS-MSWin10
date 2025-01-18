@@ -8,7 +8,7 @@
 
 # sourced in  $MSn\PS\PSProfile.ps1
 
-# Original  $ITscc\forMSWin\Out-HostColored.ps1
+# Original  $ITscc\forMSWin\PS-Out-HostColored.ps1
 # Revisions  https://gist.github.com/mklement0/243ea8297e7db0e1c03a67ce4b1e765d/revisions
 #  @mklement0 mklement0 revised this gist on Jun 9.
 

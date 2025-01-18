@@ -6,9 +6,10 @@
 #  also there is  \\wsl$\Ubuntu\etc\profile
 
 alias u=tmux
-source $OSL/nodes//bashrc-clm
-source $OSL/nodes//bashrc-console-fm
-source $OSL/nodes//bashrc-generic
+source $OSL/nodes/bashrc-clm
+source $OSL/nodes/bashrc-console-fm
+source $OSL/nodes/bashrc-generic
+source $OSL/nodes/bashrc-wm
 
 lnd () { [ -d $2 ] && rm -r $2; ln -sf $1 $2; } # symlink a directory
 [[ $TERM == 'xterm-256color' ]] && neofetch
@@ -69,7 +70,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 # and then override with fancy colouring
-[ $ITscc ] && source $ITscc/forArch/trapd00r-LS_COLORS/lscolors.sh  # o "$LS_COLORS"
+[ $ITscc ] && source $ITscc/linux/forArch-trapd00r-LS_COLORS/lscolors.sh  # o "$LS_COLORS"
 
 # some more ls aliases
 alias ll='ls -alF'

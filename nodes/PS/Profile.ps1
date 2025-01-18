@@ -5,6 +5,7 @@
 #  symlinked in  $MSn/set/2-PSProfile.ps1
 #    then called by  $MSn/PS/ProfileStub.ps1
 
+sal m mpv
 sal seco set-content  # because  sc  is overridden by  sc.exe
 sal su C:\SumatraPDF\SumatraPDF.exe
 . ~\PSEnv.ps1  # ($MSWin10\mb\neededNodes-1-PSProfile.ps1)
@@ -244,7 +245,7 @@ function gfsi { Get-ChildItem . -Directory | Get-FolderSizeInfo -Hidden | Sort-O
 
 function nvdg { $outfile = "$DJH/search/nvdg.rgo"
   sifw0 $outfile 'neovim.discourse.group'
-  foreach($ITd in $jtIT, $ITstack) { "Searching in $ITd\..."
+  foreach($ITd in $jtIT, $coreIT) { "Searching in $ITd\..."
     rg -tmd neovim.discourse.group $ITd >> $outfile; '' >> $outfile}
   sleep 4; ((gc $outfile) -join "`n") + "`n" | seco -NoNewline $outfile  # CRLF -> LF
   sl "$DJH/search" }
@@ -256,7 +257,7 @@ function removeMatchingLines {
 
 function SE { $outfile = "$DJH/search/SEN.sifw"
   sifw0 $outfile 'stackexchange|stackoverflow|superuser'
-  foreach($ITd in $ITstack, "$JHw\France", $jtIT) { "Searching in $ITd\..."; sl $ITd
+  foreach($ITd in $coreIT, "$JHw\France", $jtIT) { "Searching in $ITd\..."; sl $ITd
     gci -r -e $outfile -i '*.md' | sls 'stackexchange|stackoverflow|superuser' | %{
       $_.path+" > "+$_.line} >> $outfile; '' >> $outfile }
   sleep 4; removeMatchingLines $outfile 'README.md'
@@ -296,7 +297,7 @@ function rgo {
 
 #====> github issues
 # $jtIT\ghissues.sifw
-# $ITstack\ghissues.sifw
+# $coreIT\ghissues.sifw
 function ghissues { rgo md 'github\.com.+issues' }
 
 #=> 0 Ghostscript
@@ -441,7 +442,7 @@ function x { xelatex -halt-on-error --max-print-line=110 $args[1] $args[0] }
 
 function lj {
   Remove-Item -recurse $tex\latex\jo
-  Copy-Item -recurse $ITstack\CrossPlatform\forLaTeX $tex\latex\jo
+  Copy-Item -recurse $coreIT\CrossPlatform\forLaTeX $tex\latex\jo
 } # instead of a symlink to avoid snags if MiKTeX is uninstalled
 
 #===> Pandoc

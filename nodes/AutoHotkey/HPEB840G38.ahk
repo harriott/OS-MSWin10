@@ -35,7 +35,7 @@ SC117::MsgBox ThisHotkey " was pressed." ; fn+f6
 	WinRestore "HP Smart ahk_exe ApplicationFrameHost.exe"
 } ; win+ctrl+e  after a scan, brings forward and saves as jpg (works 240928)
 #!n::Run "C:\Program Files\Neovide\neovide.exe --grid 109x62" ; win+alt+n - open Neovide
-#!o::Run "wt --pos 9,9 --size 108,69 -d C:\Users\jnbh"
+#!o::Run "wt --pos 9,9 --size 106,69 -d C:\Users\jnbh"
 ; - win+alt+o - a terminal sized ($vfv/enter/gvimrc.vim) for neovim
 #^x::{
 	WinActivate "HP Smart ahk_exe ApplicationFrameHost.exe"

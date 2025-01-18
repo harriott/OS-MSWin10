@@ -2,7 +2,7 @@ vim: nospell:
 
     $MSwin10/QR/CLI-encoding-PowerShell.md
 
-    $ITstack\MSWin\PowerShell\Scratch.ps1
+    $coreIT\MSWin\PowerShell\Scratch.ps1
     $myinvocation.mycommand.name  # = the script's name
     $MSwin10\gac.ps1  # to explore all commands
     '"Hello world"'
@@ -120,6 +120,7 @@ no standard aliases
     kill -name HP.Smart
 
 ### Get-Process
+    ps Dropbox
     ps HP.Smart
     ps | oh -paging
     ps | ?{$_.mainwindowtitle} | ft id, name, mainwindowtitle -autosize
@@ -339,7 +340,7 @@ aliases: `cat`, `type`
 prefer `&` where possible
 
 # networking
-    Get-NetAdapter
+    Get-NetAdapter  # returns MacAddress
     wp
 
 `iwr` (= `Invoke-WebRequest`)
@@ -356,8 +357,8 @@ prefer `&` where possible
 `ft` (= `format-table`)
 
 ## colour
-    & "$ITstack\MSWin\PowerShell\colours\ConsoleColor.ps1"
-    & "$ITstack\MSWin\PowerShell\colours\LindbergColors.ps1"
+    & "$coreIT\MSWin\PowerShell\colours\ConsoleColor.ps1"
+    & "$coreIT\MSWin\PowerShell\colours\LindbergColors.ps1"
     & "$onGH\misc\Colors.ps1"
     write-color -text 'red ', 'green ', 'yellow ' -color red,green,yellow  # PSWriteColor
     [enum]::getvalues([type]'system.consolecolor').ForEach{@{$_ = $_.value__}}
@@ -547,4 +548,14 @@ tab completion
     C:\Vim\vim91\vim.exe --version
     g $HOME\vimfiles
     g $HOME\.vimswap
+
+# WSL
+    wsl --help
+    wsl --shutdown  # kills all WSL2
+    wsl -l -o  # (--list --online) available flavours
+    wsl -l -v (--list --verbose)
+    wsl -l --running
+    wsl -v
+
+8 second rule for configuration changes
 
