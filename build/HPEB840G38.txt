@@ -89,20 +89,6 @@ start $ITscc\forMSWin\ProcessExplorer\procexp64.exe > Agree
   alt+o (= Options) > l (= Run At Logon)
 ## Signal
 winget add OpenWhisperSystems.Signal
-## Thunderbird
-winget add mozilla.thunderbird -h -l C:\MT
-ran it to get  $HADR\Thunderbird\Profiles\yqi3hpui.default-esr
-emptied  Profiles
-in $HADR\Thunderbird\profiles.ini
-  removed [Profile1]
-  [Profile0] section:
-    Name=default-esr
-    IsRelative=0
-    Path=D:\Dropbox\JH\Thb-dr
-  [Install5CC7CE6A1DCFB43B]
-    Default=D:\Dropbox\JH\Thb-dr
-    Locked=1
-ran it for (default-release) Démarrer Thunderbird)
 # build - sequential build
 Paramètres >
   Mise à jour et sécurité > Activation > Windows est activé à l'aide d'une license numérique
@@ -524,6 +510,20 @@ fixed ; at end of path
 ffmpeg -version
 ### yt-dlp
 yt-dlp --version
+## Thunderbird
+winget add mozilla.thunderbird -h -l C:\MT
+ran it to get  $HADR\Thunderbird\Profiles\yqi3hpui.default-esr
+emptied  Profiles
+in $HADR\Thunderbird\profiles.ini
+  removed [Profile1]
+  [Profile0] section:
+    Name=default-esr
+    IsRelative=0
+    Path=D:\Dropbox\JH\Thb-dr
+  [Install5CC7CE6A1DCFB43B]
+    Default=D:\Dropbox\JH\Thb-dr
+    Locked=1
+ran it for (default-release) Démarrer Thunderbird)
 ## WSL Ubuntu attempt
 winget add Canonical.Ubuntu.2204  rebooted
 ## WT configure
@@ -832,6 +832,23 @@ shortcut to  $MSn\AutoHotkey\HPEB840G38.ahk
   to  "$HADR\Microsoft\Windows\Start Menu\Programs\Startup"
 ### Process Explorer
 start $ITscc\forMSWin\ProcessExplorer\procexp64.exe
+## WSL Ubuntu
+ran the scripts in  $MSn\set
+## Thunderbird
+old version getting fired up
+  Applications et fonctionnalités > Thunderbird > Désinstaller  got rid of  C:\MT
+### add to path
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU+';C:\Program Files\Mozilla Thunderbird'; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+### Process Explorer
+start $ITscc\forMSWin\ProcessExplorer\procexp64.exe
+## Thunderbird
+start thunderbird
+ran it to get  $HADR\Thunderbird\Profiles\xxxxxxxx.default-esr  then emptied  Profiles
+  (cp $HADR\Thunderbird\profiles.ini $machLg\Thunderbird-profiles-p1o.ini)
+cp $MSn\Thb\profiles.ini $HADR\Thunderbird\profiles.ini
+ran it for (default-esr) Démarrer Thunderbird)
 ## waiting
 # physical configuration
 1366x768 screen

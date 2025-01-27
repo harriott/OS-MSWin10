@@ -110,10 +110,9 @@ no standard aliases
     cd 'C:\Program Files'
     C:\MozillaThunderbird\thunderbird.exe -addressbook
     C:\Windows\explorer.exe "microsoft-edge:searchterm"
+    explorer shell:Appsfolder  # Applications
     get-commandsyntax <command>
     get-startapps  # lists AppIDs
-    explorer shell:Appsfolder  # Applications
-    msedge
     start <somefile>
 
 ## *-Process
@@ -122,6 +121,8 @@ no standard aliases
 ### Get-Process
     ps Dropbox
     ps HP.Smart
+    ps msedge | select PM,WS | ft @{Label='PM (MB)';Expression={$_.PM / 1MB}},@{Label='WS (MB)';Expression={$_.WS / 1MB}} # pageable memory, working set
+    ps thunderbird
     ps | oh -paging
     ps | ?{$_.mainwindowtitle} | ft id, name, mainwindowtitle -autosize
 
@@ -211,6 +212,7 @@ aliases: `cat`, `type`
     tomalak
 
 ### gci
+    (ls -Force -s).count  # includes hidden/system files
     (ls -s).count
     gal dir
     gal ls
@@ -222,7 +224,9 @@ aliases: `cat`, `type`
     ls -s | ? Name -match <regex>
     ls -directory -s  # recursive list
 
-`-e <leaf_glob>` (invokes `-exclude`)
+- `-e <leaf_glob>` (invokes `-exclude`)
+- `-h` = `-Hidden` only
+- `-s` = `-Recurse`
 
 #### list of names
     ls -name
@@ -354,7 +358,7 @@ prefer `&` where possible
     ipconfig | where {$_ -match 'IPv4.+\s(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})' } | out-null; $Matches[1] # quick
 
 # output
-`ft` (= `format-table`)
+`ft` (= `Format-Table`)
 
 ## colour
     & "$coreIT\MSWin\PowerShell\colours\ConsoleColor.ps1"

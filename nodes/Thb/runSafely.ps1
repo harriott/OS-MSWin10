@@ -20,13 +20,13 @@ $Drpbx = "D:\Dropbox"
 $Thb = "$Drpbx\JH\Thb-dr"
 $llf = "$Thb\linuxlock"; if ( test-path $llf ) { $h = gc $llf }
 $Wlf = "$Thb\Win10ProLock"; if ( test-path $Wlf ) { $h = gc $Wlf }
-if ( $h -and $h -ne $Cn ) { toast -AppLogo C:\MT\chrome\icons\default\messengerWindow.ico -Text "Thunderbird", "locked to $h" }
+function tT { toast -AppLogo "$env:programfiles\Mozilla Thunderbird\chrome\icons\default\messengerWindow.ico" -Text "Thunderbird", $args[0] }
+# if ( $h -and $h -ne $Cn ) { toast -AppLogo C:\MT\chrome\icons\default\messengerWindow.ico -Text "Thunderbird", "locked to $h" }
+if ( $h -and $h -ne $Cn ) { tT "locked to $h" }
 else {
   if ( gci -r $Thb | ? Name -match ".+'s conflicted copy .+| \(Copie en conflit de " )
-  { toast -AppLogo C:\MT\chrome\icons\default\messengerWindow.ico -Text "Thunderbird", 'Dropbox conflicts in $Thb' }
-  else {
-    echo $Cn > $Wlf  # noting that Thunderbird is launched here
-    start thunderbird
-  }
+    { tT 'Dropbox conflicts in $Thb' }
+  else { echo $Cn > $Wlf  # noting that Thunderbird is launched here
+    start thunderbird } # thunderbird.exe  must be in path
 }
 

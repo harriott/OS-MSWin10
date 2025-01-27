@@ -1,5 +1,5 @@
 
-# Joseph Harriott, ven 20 déc 2024
+# Joseph Harriott, lun 27 janv 2025
 
 # $MSn\PS\Profile.ps1
 #  symlinked in  $MSn/set/2-PSProfile.ps1
@@ -453,37 +453,36 @@ function m4ps0 { headings0sty; PowerShell -NoProfile $MD4PDF\MSWin\m4ps.ps1 $arg
 function mt { sl $Drpbx\JH\core\TextNotes; [string]$Pwd; m4ps0 -s }
 
 #==> Dropbox conflicted copies
-$DropboxConflictedLog = ''
+$dcc = ''
 
 function dcc0 {
   sl $Drpbx
   $dts = (Get-Date).ToString("yyMMdd-HHmmss")
-  Set-Variable -scope 1 -Name 'DropboxConflictedLog' -Value "$Drpbx\conflicted\$dts.log"
+  Set-Variable -scope 1 -Name 'dcc' -Value "$Drpbx\conflicted\$dts.dcc"
+  '' > $dcc
   "scanning for conflicted copies in $Drpbx"
   $all = gci -r | ? Name -match ".+'s conflicted copy .+| \(Copie en conflit de " | %{echo $_.fullname}
   $new = $all | ? { $_ -notmatch '.*\\Dropbox\\conflicted' }
-  'vim: nowrap:' > $DropboxConflictedLog
-  '' >> $DropboxConflictedLog
-  $new >> $DropboxConflictedLog
-  gvim $DropboxConflictedLog
-}  # lists them
+  $new >> $dcc
+  gvim $dcc
+}  # lists them, using  $vfv/syntax/dcc.vim
 
 function dcc1 {
-  if ( test-path $DropboxConflictedLog ) {
-    $DropboxConflictedRemoved=$DropboxConflictedLog.Replace('.log','-removed')
-    new-item $DropboxConflictedRemoved -type directory > $null
-    $removedRestore = "$DropboxConflictedRemoved-restore.ps1"
-    '# vim: nowrap:' > $removedRestore
-    '' >> $removedRestore
-    gc $DropboxConflictedLog | select-object -skip 2 | %{
+  if ( test-path $dcc ) {
+    $dccRemoved=$dcc.Replace('.dcc','-removed')
+    new-item $dccRemoved -type directory > $null
+    $dccRestore = "$dccRemoved-restore.ps1"
+    '# vim: nowrap:' > $dccRestore
+    '' >> $dccRestore
+    gc $dcc | select-object -skip 1 | %{
       $removedRelativePath=$_.Replace("$Drpbx\",'')
       $removedFlattenedPath = $removedRelativePath.Replace('\','--')
       $removedFPNS = $removedFlattenedPath.Replace(' ','_')
-      mi "$_" "$DropboxConflictedRemoved\$removedFPNS"
-      "cpi `"$DropboxConflictedRemoved\$removedFPNS`" `"$_`"" >> $removedRestore
+      mi "$_" "$dccRemoved\$removedFPNS"
+      "cpi `"$dccRemoved\$removedFPNS`" `"$_`"" >> $dccRestore
     }
-    ri $DropboxConflictedLog
-    gvim $removedRestore
+    ri $dcc
+    gvim $dccRestore -c "silent! /[^\\]\+\ze (Copie\|sbMb"
   } else { "- you should've dcc0'd" | Out-HostColored dcc0 }
 }  # removes them
 

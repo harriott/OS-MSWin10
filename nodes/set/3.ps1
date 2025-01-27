@@ -1,9 +1,11 @@
 
-# Joseph Harriott - https://harriottgithubio/ - mer 11 sept 2024
+# Joseph Harriott - https://harriottgithubio/ - ven 24 janv 2025
 
 # once  $Cn, APS> . $MSn\set\3.ps1
 
 # csl, endi & syli  defined in  $MSn/PS/Profile.ps1
+
+csl ~\PSProfile.ps1
 
 #=> Emacs
 $Ed = "$HADR\.emacs.d"; endi $Ed

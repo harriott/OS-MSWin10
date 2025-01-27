@@ -93,7 +93,8 @@ vim: nospell:
     winget update google.chrome
     winget rm google.chrome  # uninstall
 
-`-h` (`--silent`)
+- `-h` (`--silent`)
+- `Winget`
 
 ### Windows PowerShell - file formats
     PowerShell command | out-file <file> -encoding utf8BOM  # detected as utf-8
@@ -316,7 +317,7 @@ ExifTool by Phil Harvey
     $ProgramFiles\Neovim\share\nvim\runtime\mswin.vim
 
 # WAN
-    $HADR\Thunderbird\profiles.ini
+    cp $HADR\Thunderbird\profiles.ini $HADR\Thunderbird\profilesOld.ini
 
 ## browser - Microsoft Edge
     edge://extensions/

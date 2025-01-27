@@ -1186,6 +1186,35 @@ closed WT for  Applications et fonctionnalités > Ubuntu > Désinstaller
 (for  Data::Printer  in  $clMail/notmuch/nmsh-sort.pl) sudo apt install libdata-printer-perl
 ## BgInfo
 & $HADLM\WinGet\Packages\Microsoft.Sysinternals.BGInfo_Microsoft.Winget.Source_8wekyb3d8bbwe\bginfo.exe > OK
+## moved to $coreIT
+### allow Dropboox to work
+ri "$HADR\Microsoft\Windows\Start Menu\Programs\Startup\HPEB840G37.ahk.lnk"
+quit  Process Explorer
+### resume full functionality
+APS> $MSn\set  to run the scripts
+shortcut to  $MSn\AutoHotkey\HPEB840G37.ahk
+  to  "$HADR\Microsoft\Windows\Start Menu\Programs\Startup"
+### Process Explorer
+start $ITscc\forMSWin\ProcessExplorer\procexp64.exe
+## WT Ubuntu Apparance
+WT > ctrl+, > Ubuntu Apparance >
+  Jeu de couleurs > One Half Dark
+  Texte > Taille de police > 9
+  Transparence > Opacité de l'arrière plan > 79%
+## WSL Ubuntu reconfigure
+ran the scripts in  $MSn\set
+## Dropbox 217.3.4243.0
+triggered a re-indexation
+## OpenSSL versions
+C:\Git\mingw64\bin\openssl.exe version
+  reported  OpenSSL 3.2.3 3 Sep 2024 (Library: OpenSSL 3.2.3 3 Sep 2024)
+C:\Git\usr\bin\openssl.exe version
+  reported  OpenSSL 3.2.3 3 Sep 2024 (Library: OpenSSL 3.2.3 3 Sep 2024)
+C:\msys64\ucrt64\bin\openssl.exe version  reported  OpenSSL 1.1.1q  5 Jul 2022
+C:\msys64\usr\bin\openssl.exe version  reported  OpenSSL 1.1.1q  5 Jul 2022
+where.exe openssl  reports  C:\Strawberry\c\bin\openssl.exe
+  openssl version  reported  OpenSSL 3.3.0 9 Apr 2024 (Library: OpenSSL 3.3.0 9 Apr 2024)
+wsl openssl version  slow to report  OpenSSL 3.0.2 15 Mar 2022 (Library: OpenSSL 3.0.2 15 Mar 2022)
 ## waiting
 Mise à jour facultatives
 mpv

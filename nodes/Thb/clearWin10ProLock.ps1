@@ -11,6 +11,7 @@
 
 # Test:
 #  echo $Cn > $Thb\Win10ProLock
+#  echo other > $Thb\Win10ProLock
 #  echo dud > $Thb\parent.lock
 #  & C:\MT-clearWin10ProLock.ps1
 
