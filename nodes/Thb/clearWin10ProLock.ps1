@@ -1,6 +1,6 @@
 # vim: fdl=2:
 
-# Joseph Harriott - ven 11 oct 2024
+# Joseph Harriott - lun 27 janv 2025
 
 # remove my  $Thb\Win10ProLock  if Thunderbird isn't running
 # ----------------------------------------------------------
@@ -29,6 +29,7 @@ if ( ! (Get-Process thunderbird -ErrorAction SilentlyContinue) ) {
     $removed = $removed + 'Win10ProLock'
     ri $Thb\Win10ProLock
   }
-  if ( $removed ) { toast -AppLogo C:\MT\chrome\icons\default\messengerWindow.ico -Text "Thunderbird", "removed $removed" }
+  . C:\MT-tT.ps1
+  if ( $removed ) { tT "removed $removed" }
 }
 

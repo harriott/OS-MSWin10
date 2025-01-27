@@ -20,8 +20,7 @@ $Drpbx = "D:\Dropbox"
 $Thb = "$Drpbx\JH\Thb-dr"
 $llf = "$Thb\linuxlock"; if ( test-path $llf ) { $h = gc $llf }
 $Wlf = "$Thb\Win10ProLock"; if ( test-path $Wlf ) { $h = gc $Wlf }
-function tT { toast -AppLogo "$env:programfiles\Mozilla Thunderbird\chrome\icons\default\messengerWindow.ico" -Text "Thunderbird", $args[0] }
-# if ( $h -and $h -ne $Cn ) { toast -AppLogo C:\MT\chrome\icons\default\messengerWindow.ico -Text "Thunderbird", "locked to $h" }
+. C:\MT-tT.ps1
 if ( $h -and $h -ne $Cn ) { tT "locked to $h" }
 else {
   if ( gci -r $Thb | ? Name -match ".+'s conflicted copy .+| \(Copie en conflit de " )

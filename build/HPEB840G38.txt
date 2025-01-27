@@ -844,7 +844,7 @@ sp 'registry::hkcu\environment' -name path -value $newPathCU
 ### Process Explorer
 start $ITscc\forMSWin\ProcessExplorer\procexp64.exe
 ## Thunderbird
-start thunderbird
+thunderbird
 ran it to get  $HADR\Thunderbird\Profiles\xxxxxxxx.default-esr  then emptied  Profiles
   (cp $HADR\Thunderbird\profiles.ini $machLg\Thunderbird-profiles-p1o.ini)
 cp $MSn\Thb\profiles.ini $HADR\Thunderbird\profiles.ini

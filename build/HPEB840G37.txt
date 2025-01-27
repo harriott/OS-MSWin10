@@ -119,6 +119,12 @@ winget add 9NV4BS3L1H4S --accept-package-agreements
 ## Zig
 (for  tree-sitter) winget add zig.zig  took ages to unpack
 zig version
+## Thunderbird - fix version
+Applications et fonctionnalités > Thunderbird > Désinstaller  got rid of older = C:\MT
+### add to path
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU+';C:\Program Files\Mozilla Thunderbird'; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## waiting
 # build - sequential
 ## move from Utilisateur
@@ -1215,6 +1221,15 @@ C:\msys64\usr\bin\openssl.exe version  reported  OpenSSL 1.1.1q  5 Jul 2022
 where.exe openssl  reports  C:\Strawberry\c\bin\openssl.exe
   openssl version  reported  OpenSSL 3.3.0 9 Apr 2024 (Library: OpenSSL 3.3.0 9 Apr 2024)
 wsl openssl version  slow to report  OpenSSL 3.0.2 15 Mar 2022 (Library: OpenSSL 3.0.2 15 Mar 2022)
+## SQLite remove
+winget update --all
+  ...
+  ... Trouvé SQLite [SQLite.SQLite] Version 3.48.0
+  ...
+  Le code de hachage du programme d’installation ne correspond pas.
+winget rm sqlite.sqlite
+## Process Explorer
+start $ITscc\forMSWin\ProcessExplorer\procexp64.exe
 ## waiting
 Mise à jour facultatives
 mpv
