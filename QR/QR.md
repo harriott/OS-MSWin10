@@ -326,6 +326,7 @@ ExifTool by Phil Harvey
     edge://settings/accessibility > Clavier > f7 caret
     edge://settings/privacy
     edge://settings/profiles/sync
+    edge://settings/startHomeNTP > Ouvrir ces pagges : https://calendar.google.com/
 
 - `alt+f` (= `Parmètres et plus`)
     - `l` (= `Outils supplémentaires`)

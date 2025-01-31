@@ -841,14 +841,15 @@ old version getting fired up
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
 $newPathCU = $oldPathCU+';C:\Program Files\Mozilla Thunderbird'; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
-### Process Explorer
-start $ITscc\forMSWin\ProcessExplorer\procexp64.exe
 ## Thunderbird
-thunderbird
-ran it to get  $HADR\Thunderbird\Profiles\xxxxxxxx.default-esr  then emptied  Profiles
+thunderbird  to get  $HADR\Thunderbird\Profiles\xxxxxxxx.default-esr  then emptied  Profiles
   (cp $HADR\Thunderbird\profiles.ini $machLg\Thunderbird-profiles-p1o.ini)
 cp $MSn\Thb\profiles.ini $HADR\Thunderbird\profiles.ini
 ran it for (default-esr) Démarrer Thunderbird)
+## WSL Ubuntu internet
+not connecting via  cafezoide pro
+## Process Explorer
+start $ITscc\forMSWin\ProcessExplorer\procexp64.exe
 ## waiting
 # physical configuration
 1366x768 screen

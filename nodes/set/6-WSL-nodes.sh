@@ -21,7 +21,7 @@ ln -sf $OSL/nodes/gpg-agent.conf ~/.gnupg/gpg-agent.conf  # ls ~/.gnupg
 # [ ! -d ~/.vimswap ] && mkdir ~/.vimswap
 
 # #=> 0 ranger
-# rsync -irtv --delete $OSAB/nodes-terminal/ranger/ ~/.config/ranger
+# rsync -irtv --delete $OSL/nodes/terminal-ranger/ ~/.config/ranger
 
 #=> 0 tmux symlinks
 ln -sf $OSL/nodes/GNUReadline-inputrc ~/.inputrc

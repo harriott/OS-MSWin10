@@ -10,9 +10,9 @@
 #   csl C:\MT-clearWin10ProLock.ps1
 
 # Test:
-#  echo $Cn > $Thb\Win10ProLock
-#  echo other > $Thb\Win10ProLock
-#  echo dud > $Thb\parent.lock
+#  $Cn > $Thb\Win10ProLock
+#  'other' > $Thb\Win10ProLock
+#  'dud' > $Thb\parent.lock
 #  & C:\MT-clearWin10ProLock.ps1
 
 $Drpbx = "D:\Dropbox"

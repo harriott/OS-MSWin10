@@ -218,7 +218,7 @@ function lwp { gci -r | %{ dtsfn $_ ':' } | out-string -stream | sls $args[0] | 
 function lwt {
   if ($args[0]) {
   # if ($a0) {
-    $of = 'lwt-'+$args[0]+'.fetl'; "" > $of
+    $of = 'lwt-'+$args[0]+'.ffl'; "" > $of
     if ( $args[0] -eq 'gitignore' ) {
       'gitignore' >> $of; '' >> $of
       fd -tf -u -E .git gitignore | %{ ls $_ } | %{ dtsfn $_ ':' } | sort >> $of; "results in $of"
