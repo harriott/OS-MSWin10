@@ -49,7 +49,7 @@ $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
 $newPathCU = $oldPathCU -replace ';$', ''; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## fonts - Architects Daughter
-for  $Copil/data-1-sorted/counts.tex
+for  $Csst/data-1-sorted/counts.tex
 sl $ITscc\forMSWin\fonts-FontSquirrel\architects-daughter
   right-clicked on  ArchitectsDaughter.ttf  to  Installer
 ## fonts - DejaVu fonts
@@ -106,7 +106,7 @@ start $ITscc\forMSWin\ProcessExplorer\procexp64.exe
   alt+o (= Options) > i (= Tray Icons) > p (= Physical Memory History)
   alt+o (= Options) > h (= Hide When Minimized)
   alt+o (= Options) > l (= Run At Logon)
-## Ruby
+## Ruby 3.2
 winget add RubyInstallerTeam.Ruby.3.2
 ## Sécurité Windows
 pinned to Start
@@ -1101,7 +1101,8 @@ https://www.dropbox.com/install for  DropboxInstaller.exe > set my  Selective sy
 ## Epson EcoTank ET-5170 connection
 HPEB840G37  at  192.168.0.41
 ET-5170  at  192.168.0.65, but not found...
-Paramètres > Périphériques > Imprimantes et scanners > Ajouter > EPSONFE86A3 (ET-5170 Series) > Ajouter l'appareil  got it  Prêt
+Paramètres > Périphériques > Imprimantes et scanners > Ajouter > EPSONFE86A3 (ET-5170 Series) >
+  Ajouter l'appareil  got it  Prêt
 ## XpdfReader
 XpdfReader-win64-4.05.exe  (C:\Program Files\Glyph & Cog\XpdfReader-win64)
   pdfimages -h
@@ -1228,17 +1229,250 @@ winget update --all
   ...
   Le code de hachage du programme d’installation ne correspond pas.
 winget rm sqlite.sqlite
+## mpv
+cpi $DJH/Cop-code/forMSWin/AV/mpv-x86_64-v3-20250202-git-38ad1ed/mpv.exe $HADL\Microsoft\WindowsApps
+## Ookla Speedtest
+winget add Ookla.Speedtest.Desktop
 ## Process Explorer
-start $ITscc\forMSWin\ProcessExplorer\procexp64.exe
+Run At Logon  never working, so  cpi $ITscc\forMSWin\ProcessExplorer\procexp64.exe "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
+## Hamachi
+winget add Hamachi
+after a reboot, Préférences > Paramètres > bienvenue décoché
+## Rustup v1.28.0
+took a long time
+## AltSnap
+wasn't working - clicking on tray icon to disable then re-enable got it going
+## Ghostscript v10.05
+Applications et fonctionnalités > GPL Ghostscript > Désinstaller
+gs10050w64.exe > C:\gs-10_05_0 (Generate cidfmap for Windows CJK TrueType fonts) rebooted
+## Samsung 8GB RAM from HPEB840G38
+30m UEFI Memory Quick Check PASSED
+### BgInfo
+& $HADLM\WinGet\Packages\Microsoft.Sysinternals.BGInfo_Microsoft.Winget.Source_8wekyb3d8bbwe\bginfo.exe > OK  got  Memory  correctly listed as  16260 MB
+## Gems
+gem update
+  ...
+  Updating typeprof
+  ERROR:  Error installing typeprof:
+    typeprof-0.30.1 requires Ruby version >= 3.3. The current ruby version is 3.2.1.
+  ...
+gem list
+  WARN: Unresolved or ambiguous specs during Gem::Specification.reset:
+    stringio (>= 0)
+    Available/installed versions of this gem:
+    - 3.1.5
+    - 3.1.1
+    - 3.0.4
+  WARN: Clearing out unresolved specs. Try 'gem cleanup <gem>'
+  Please report a bug if this causes problems.
+  ...
+gem cl stringio  didn't help...
+gem uni stringio
+  Gem stringio-3.0.4 cannot be uninstalled because it is a default gem
+  Successfully uninstalled stringio-3.1.5
+gem up  brought back that warning
+## Ruby 3.2 remove
+winget rm RubyInstallerTeam.Ruby.3.2
+Applications et fonctionnalités > MSYS2 > Désinstaller > Désinstaller > Désinstaller
+C:/Ruby32-x64  Deleted
+## Ruby 3.4
+winget add RubyInstallerTeam.RubyWithDevKit.3.4  went to  C:/Ruby34-x64
+gem install neovim
+(in a refreshed Powershell) gem install bundler jekyll
+### update gems
+#### update gems - fail
+gem up
+  ...
+  Updating psych
+  Fetching psych-5.2.3.gem
+  Installing required msys2 packages: mingw-w64-ucrt-x86_64-libyaml
+  avertissement : Le trousseau de clés publique est introuvable ; avez-vous exécuté « pacman-key --init » ?
+  erreur : clangarm64 : la clé « 5F944B027F7FE2091985AA2EFA11531AA0AA7F57 » est inconnue
+  erreur : le trousseau de clés n’est pas accessible en écriture
+  erreur : mingw32 : la clé « 5F944B027F7FE2091985AA2EFA11531AA0AA7F57 » est inconnue
+  erreur : le trousseau de clés n’est pas accessible en écriture
+  erreur : mingw64 : la clé « 5F944B027F7FE2091985AA2EFA11531AA0AA7F57 » est inconnue
+  erreur : le trousseau de clés n’est pas accessible en écriture
+  erreur : ucrt64 : la clé « 5F944B027F7FE2091985AA2EFA11531AA0AA7F57 » est inconnue
+  erreur : le trousseau de clés n’est pas accessible en écriture
+  erreur : clang64 : la clé « 5F944B027F7FE2091985AA2EFA11531AA0AA7F57 » est inconnue
+  erreur : le trousseau de clés n’est pas accessible en écriture
+  erreur : msys : la clé « 5F944B027F7FE2091985AA2EFA11531AA0AA7F57 » est inconnue
+  erreur : le trousseau de clés n’est pas accessible en écriture
+  erreur : la base de données « clangarm64 » n’est pas valide (base de données non valide ou corrompue (signature PGP))
+  erreur : la base de données « mingw32 » n’est pas valide (base de données non valide ou corrompue (signature PGP))
+  erreur : la base de données « mingw64 » n’est pas valide (base de données non valide ou corrompue (signature PGP))
+  erreur : la base de données « ucrt64 » n’est pas valide (base de données non valide ou corrompue (signature PGP))
+  erreur : la base de données « clang64 » n’est pas valide (base de données non valide ou corrompue (signature PGP))
+  erreur : la base de données « msys » n’est pas valide (base de données non valide ou corrompue (signature PGP))
+  pacman failed with the following output:
+  Building native extensions. This could take a while...
+  ERROR:  Error installing psych:
+        ERROR: Failed to build gem native extension.
+  ...
+  Gem files will remain installed in C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/psych-5.2.3 for inspection.
+  Results logged to C:/Ruby34-x64/lib/ruby/gems/3.4.0/extensions/x64-mingw-ucrt/3.4.0/psych-5.2.3/gem_make.out
+PSA> gem up  same psych error
+#### initialise MSYS2
+start C:\Ruby34-x64\msys64 > ucrt64.exe
+  MSYS2 is starting for the first time. Executing the initial setup.
+  Copying skeleton files.
+  These files are for the users to personalise their msys2 experience.
+  They will never be overwritten nor automatically updated.
+  'C:\WINDOWS\system32\drivers\etc\hosts' -> '/etc/hosts'
+  'C:\WINDOWS\system32\drivers\etc\protocol' -> '/etc/protocols'
+  'C:\WINDOWS\system32\drivers\etc\services' -> '/etc/services'
+  'C:\WINDOWS\system32\drivers\etc\networks' -> '/etc/networks'
+  gpg: /etc/pacman.d/gnupg/trustdb.gpg: trustdb created
+  gpg: no ultimately trusted keys found
+  gpg: starting migration from earlier GnuPG versions
+  gpg: porting secret keys from '/etc/pacman.d/gnupg/secring.gpg' to gpg-agent
+  gpg: migration succeeded
+  ==> Generating pacman master key. This may take some time.
+  gpg: Generating pacman keyring master key...
+  gpg: directory '/etc/pacman.d/gnupg/openpgp-revocs.d' created
+  gpg: revocation certificate stored as '/etc/pacman.d/gnupg/openpgp-revocs.d/09EF6F352DBFCC7596393460464D4F38D7828719.rev'
+  gpg: Done
+  ==> Updating trust database...
+  gpg: marginals needed: 3  completes needed: 1  trust model: pgp
+  gpg: depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u
+  ==> Appending keys from msys2.gpg...
+  ==> Locally signing trusted keys in keyring...
+    -> Locally signed 5 keys.
+  ==> Importing owner trust values...
+  gpg: setting ownertrust to 4
+  gpg: setting ownertrust to 4
+  gpg: setting ownertrust to 4
+  gpg: setting ownertrust to 4
+  gpg: setting ownertrust to 4
+  ==> Disabling revoked keys in keyring...
+    -> Disabled 4 keys.
+  ==> Updating trust database...
+  gpg: marginals needed: 3  completes needed: 1  trust model: pgp
+  gpg: depth: 0  valid:   1  signed:   5  trust: 0-, 0q, 0n, 0m, 0f, 1u
+  gpg: depth: 1  valid:   5  signed:   7  trust: 0-, 0q, 0n, 5m, 0f, 0u
+  gpg: depth: 2  valid:   4  signed:   2  trust: 4-, 0q, 0n, 0m, 0f, 0u
+  gpg: next trustdb check due at 2025-08-13
+  gpg: error retrieving 'alexey.pawlow@gmail.com' via WKD: No data
+  gpg: error reading key: No data
+  gpg: refreshing 1 key from hkps://keyserver.ubuntu.com
+  gpg: key F40D263ECA25678A: "Alexey Pavlov (Alexpux) <alexey.pawlow@gmail.com>" not changed
+  gpg: Total number processed: 1
+  gpg:              unchanged: 1
+  gpg: error retrieving 'david.macek.0@gmail.com' via WKD: No data
+  gpg: error reading key: No data
+  gpg: refreshing 1 key from hkps://keyserver.ubuntu.com
+  gpg: key 790AE56A1D3CFDDC: "David Macek (MSYS2 master key) <david.macek.0@gmail.com>" not changed
+  gpg: Total number processed: 1
+  gpg:              unchanged: 1
+  gpg: error retrieving 'martellmalone@gmail.com' via WKD: No data
+  gpg: error reading key: No data
+  gpg: refreshing 1 key from hkps://keyserver.ubuntu.com
+  gpg: key DA7EF2ABAEEA755C: "Martell Malone (martell) <martellmalone@gmail.com>" not changed
+  gpg: Total number processed: 1
+  gpg:              unchanged: 1
+  gpg: error retrieving 'reiter.christoph@gmail.com' via WKD: No data
+  gpg: error reading key: No data
+  gpg: refreshing 1 key from hkps://keyserver.ubuntu.com
+  gpg: key 755B8182ACD22879: "Christoph Reiter (MSYS2 master key) <reiter.christoph@gmail.com>" not changed
+  gpg: Total number processed: 1
+  gpg:              unchanged: 1
+  gpg: error retrieving 'icquinteiro@gmail.com' via WKD: No data
+  gpg: error reading key: No data
+  gpg: refreshing 1 key from hkps://keyserver.ubuntu.com
+  gpg: key 9F418C233E652008: "Ignacio Casal Quinteiro <icquinteiro@gmail.com>" not changed
+  gpg: Total number processed: 1
+  gpg:              unchanged: 1
+  gpg: error retrieving 'mingw.android@gmail.com' via WKD: No data
+  gpg: error reading key: No data
+  gpg: refreshing 1 key from hkps://keyserver.ubuntu.com
+  gpg: key BBE514E53E0D0813: "Ray Donnelly (MSYS2 Developer - master key) <mingw.android@gmail.com>" not changed
+  gpg: Total number processed: 1
+  gpg:              unchanged: 1
+  gpg: error retrieving 'alexpux@gmail.com' via WKD: No data
+  gpg: error reading key: No data
+  gpg: refreshing 1 key from hkps://keyserver.ubuntu.com
+  gpg: key 5F92EFC1A47D45A1: "Alexey Pavlov (Alexpux) <alexpux@gmail.com>" not changed
+  gpg: Total number processed: 1
+  gpg:              unchanged: 1
+  gpg: error retrieving 'david.macek.0@gmail.com' via WKD: No data
+  gpg: error reading key: No data
+  gpg: refreshing 1 key from hkps://keyserver.ubuntu.com
+  gpg: key 974C8BE49078F532: "David Macek <david.macek.0@gmail.com>" not changed
+  gpg: Total number processed: 1
+  gpg:              unchanged: 1
+  gpg: error retrieving 'reiter.christoph@gmail.com' via WKD: No data
+  gpg: error reading key: No data
+  gpg: refreshing 1 key from hkps://keyserver.ubuntu.com
+  gpg: key FA11531AA0AA7F57: "Christoph Reiter (MSYS2 development key) <reiter.christoph@gmail.com>" not changed
+  gpg: Total number processed: 1
+  gpg:              unchanged: 1
+  gpg: error retrieving 'me@martellmalone.com' via WKD: General error
+  gpg: error reading key: General error
+  gpg: refreshing 1 key from hkps://keyserver.ubuntu.com
+  gpg: key 794DCF97F93FC717: "Martell Malone (martell) <me@martellmalone.com>" not changed
+  gpg: Total number processed: 1
+  gpg:              unchanged: 1
+  gpg: error retrieving 'martellmalone@gmail.com' via WKD: No data
+  gpg: error reading key: No data
+  gpg: refreshing 1 key from hkps://keyserver.ubuntu.com
+  gpg: key D595C9AB2C51581E: "Martell Malone (MSYS2 Developer) <martellmalone@gmail.com>" not changed
+  gpg: Total number processed: 1
+  gpg:              unchanged: 1
+  gpg: error retrieving 'mingw.android@gmail.com' via WKD: No data
+  gpg: error reading key: No data
+  gpg: refreshing 1 key from hkps://keyserver.ubuntu.com
+  gpg: key 4DF3B7664CA56930: "Ray Donnelly (MSYS2 Developer) <mingw.android@gmail.com>" not changed
+  gpg: Total number processed: 1
+  gpg:              unchanged: 1
+  Initial setup complete. MSYS2 is now ready to use.
+#### update gems - fail
+gem up
+  Updating installed gems
+  Updating psych
+  Temporarily enhancing PATH for MSYS/MINGW...
+  Installing required msys2 packages: mingw-w64-ucrt-x86_64-libyaml
+  ERROR:  While executing gem ... (Gem::FilePermissionError)
+    You don't have write permissions for the C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/psych-5.2.3/CONTRIBUTING.md directory.
+        C:/Ruby34-x64/lib/ruby/3.4.0/rubygems/installer.rb:340:in 'Gem::Installer#install'
+        C:/Ruby34-x64/lib/ruby/3.4.0/rubygems/resolver/specification.rb:105:in 'Gem::Resolver::Specification#install'
+        C:/Ruby34-x64/lib/ruby/3.4.0/rubygems/request_set.rb:195:in 'block in Gem::RequestSet#install'
+        C:/Ruby34-x64/lib/ruby/3.4.0/rubygems/request_set.rb:183:in 'Array#each'
+        C:/Ruby34-x64/lib/ruby/3.4.0/rubygems/request_set.rb:183:in 'Gem::RequestSet#install'
+        C:/Ruby34-x64/lib/ruby/3.4.0/rubygems/dependency_installer.rb:250:in 'Gem::DependencyInstaller#install'
+        C:/Ruby34-x64/lib/ruby/3.4.0/rubygems/commands/update_command.rb:248:in 'Gem::Commands::UpdateCommand#update_gem'
+        C:/Ruby34-x64/lib/ruby/3.4.0/rubygems/commands/update_command.rb:260:in 'block in Gem::Commands::UpdateCommand#update_gems'
+        C:/Ruby34-x64/lib/ruby/3.4.0/rubygems/commands/update_command.rb:259:in 'Array#each'
+        C:/Ruby34-x64/lib/ruby/3.4.0/rubygems/commands/update_command.rb:259:in 'Gem::Commands::UpdateCommand#update_gems'
+        C:/Ruby34-x64/lib/ruby/3.4.0/rubygems/commands/update_command.rb:120:in 'Gem::Commands::UpdateCommand#execute'
+        C:/Ruby34-x64/lib/ruby/3.4.0/rubygems/command.rb:326:in 'Gem::Command#invoke_with_build_args'
+        C:/Ruby34-x64/lib/ruby/3.4.0/rubygems/command_manager.rb:253:in 'Gem::CommandManager#invoke_command'
+        C:/Ruby34-x64/lib/ruby/3.4.0/rubygems/command_manager.rb:194:in 'Gem::CommandManager#process_args'
+        C:/Ruby34-x64/lib/ruby/3.4.0/rubygems/command_manager.rb:152:in 'Gem::CommandManager#run'
+        C:/Ruby34-x64/lib/ruby/3.4.0/rubygems/gem_runner.rb:57:in 'Gem::GemRunner#run'
+        C:/Ruby34-x64/bin/gem.cmd:20:in '<main>'
+#### update gems
+PSA> gem up
+  Updating installed gems
+  Updating psych
+  Temporarily enhancing PATH for MSYS/MINGW...
+  Using msys2 packages: mingw-w64-ucrt-x86_64-libyaml
+  Building native extensions. This could take a while...
+  Successfully installed psych-5.2.3
+  Parsing documentation for psych-5.2.3
+  Installing ri documentation for psych-5.2.3
+  Done installing documentation for psych after 3 seconds
+  Parsing documentation for psych-5.2.3
+  Done installing documentation for psych after 0 seconds
+  Gems updated: psych
 ## waiting
 Mise à jour facultatives
-mpv
 # physical configuration
 1920x1080 screen
 Intel Core i5-6300U
 ## storage
 (essential) M.2 SSD: 119Go
-(optional) 2.5" SSD: HX256GSSDSATA3
+(optional) 2.5" SSD: 238Go HX256GSSDSATA3
 ## Startup Menu
 hold  esc  at start to get into  Startup Menu
 hold  f9  at start to get into  Boot Menu

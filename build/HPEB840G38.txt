@@ -38,11 +38,11 @@ Affichage > Options > Affichage >
   [ Masquer les extensions des fichiers dont le type est connu
     Masquer les fichier protégés du système d'exploitation ] off-ticked
 ## fix ; at end of path
-$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$oldPathCU = (gp hkcu:environment).path; $oldPathCU
 $newPathCU = $oldPathCU -replace ';$', ''; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## fonts - Architects Daughter
-for  $Copil/data-1-sorted/counts.tex
+for  $Csst/data-1-sorted/counts.tex
 sl $ITscc\forMSWin\fonts-FontSquirrel\architects-daughter
   right-clicked on  ArchitectsDaughter.ttf  to  Installer
 ## fonts DejaVu
@@ -375,7 +375,7 @@ restarted Edge > HPEB840G38-Edge
 ## LibreOffice
 winget add libreoffice
 ran it to build  ~\AppData\Roaming\LibreOffice\4
-$MSwin10\mb\LibreOfficeConfig.ps1
+$MSwin10\build\LibreOfficeConfig.ps1
 ## Python 3.12
 winget add python.python.3.12
 got it to  C:\Users\jnbh\AppData\Local\Programs\Python\Python312\python.exe
@@ -584,7 +584,7 @@ sudo apt update && sudo apt upgrade
     e2fsprogs libcom-err2 libext2fs2 libss2 logsave python3-update-manager update-manager-core
 ## WSL Ubuntu bc
 sudo apt install bc
-## dubious ownership of $Copil
+## dubious ownership of $Csst
 in there, APS> takeown /f . /r /d o
 ## ExifTool v12.96
 cpi "$ITscc\forMSWin\exiftool-12_96_64\exiftool(-k).exe" $HADL\Microsoft\WindowsApps\exiftool.exe
@@ -718,7 +718,6 @@ winget add Canonical.Ubuntu.2404
 Windows Menu > Ubuntu 24.04.1 LTS  fired up a new WT & installed it > UNIX username > jo > pw
 all WT quit for  WT > ctrl+5 (= Ubuntu 24.04 LTS tab)
 ## WSL Ubuntu 24.04 update
-touch ~/.hushlogin
 sudo apt update  reported 182 so  sudo apt upgrade
 lsb_release -a  reports  Ubuntu 24.04.1 LTS
 ## WT Ubuntu 24.04 settings
@@ -832,7 +831,7 @@ shortcut to  $MSn\AutoHotkey\HPEB840G38.ahk
   to  "$HADR\Microsoft\Windows\Start Menu\Programs\Startup"
 ### Process Explorer
 start $ITscc\forMSWin\ProcessExplorer\procexp64.exe
-## WSL Ubuntu
+## WSL Ubuntu 24.04
 ran the scripts in  $MSn\set
 ## Thunderbird
 old version getting fired up
@@ -846,14 +845,186 @@ thunderbird  to get  $HADR\Thunderbird\Profiles\xxxxxxxx.default-esr  then empti
   (cp $HADR\Thunderbird\profiles.ini $machLg\Thunderbird-profiles-p1o.ini)
 cp $MSn\Thb\profiles.ini $HADR\Thunderbird\profiles.ini
 ran it for (default-esr) Démarrer Thunderbird)
-## WSL Ubuntu internet
+## WSL Ubuntu 24.04 internet
 not connecting via  cafezoide pro
+## Ookla Speedtest
+speedtestbyookla_x64.msi
 ## Process Explorer
 start $ITscc\forMSWin\ProcessExplorer\procexp64.exe
+## LibreOffice Calc printer delay at launch
+  Attente de la connexion de l'imprimante
+  Attendez la connexion à l'imprimante ou annulez la connexion
+I either wait a minute or hit  Annuler, neither good options...
+Paramètres > Périphériques > Imprimantes et scanners >
+  Laisser Windows gérer mon imprimante par défaut
+  Microsoft XPS Document Writer
+## csvkit
+pipx install csvkit
+  installed package csvkit 2.0.1, installed using Python 3.13.1
+  These apps are now globally available
+    csvclean.exe
+    csvcut.exe
+    csvformat.exe
+    csvgrep.exe
+    csvjoin.exe
+    csvjson.exe
+    csvlook.exe
+    csvpy.exe
+    csvsort.exe
+    csvsql.exe
+    csvstack.exe
+    csvstat.exe
+    in2csv.exe
+    sql2csv.exe
+## VisiData
+pipx install visidata
+installed package visidata 3.1.1, installed using Python 3.13.1
+  These apps are now globally available
+    - vd
+    - vd2to3.vdx
+    - visidata.exe
+  These manual pages are now globally available
+    - man1\vd.1
+    - man1\visidata.1
+vd --version  not working, so  visidata --version
+## OdfPy
+pipx install odfpy
+  installed package odfpy 1.4.1, installed using Python 3.13.1
+  These apps are now globally available
+    - csv2ods
+    - mailodf
+    - odf2mht
+    - odf2xhtml
+    - odf2xml
+    - odfimgimport
+    - odflint
+    - odfmeta
+    - odfoutline
+    - odfuserfield
+    - xml2odf
+## Ruby 3.2
+winget add RubyInstallerTeam.Ruby.3.2
+(in a refreshed Powershell) gem list
+## WSL Ubuntu 24.04 Ruby
+sudo apt install ruby
+## WSL Ubuntu 24.04 libodsstream
+sudo apt install libodsstream-dev
+## WSL Ubuntu 24.04 Ruby gems for ods2csv
+gem install csv
+gem install libarchive libxml-ruby
+  ...
+  mkmf.rb can't find header files for ruby at /usr/lib/ruby/include/ruby.h
+  ...
+  mkmf.rb can't find header files for ruby at /usr/lib/ruby/include/ruby.h
+## WSL Ubuntu 24.04 Ruby
+sudo apt install ruby-dev
+## WSL Ubuntu 24.04 Ruby gems for ods2csv
+gem install libarchive libxml-ruby
+  ...
+  ERROR: Failed to build gem native extension.
+  ...
+  ERROR: Failed to build gem native extension.
+## WSL Ubuntu remove
+sl \\wsl$\Ubuntu  shows it's all still there, so  wsl --unregister Ubuntu
+## WSL Ubuntu 24.04 rename mess
+Win+r > regedit > HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Lxss > {...} >
+  DistributionName > Ubuntu
+WT > ctrl+, > Ubuntu 24.04.1 LTS >
+  Lgine de commande > ubuntu2404.exe
+  Nom > (Ubuntu 24.04.1 LTS) Ubuntu
+  Titre > (Ubuntu 24.04.1 LTS) Ubuntu
+WT lost access to Ubuntu, though  wsl -d Ubuntu  works
+Can't run Ubuntu from Start Menu...
+## WSL Ubuntu 24.04.1 LTS reregister
+cp \\wsl$\Ubuntu\home\jo\.bash_history $machLg/WSL-bash_history-$((get-date).tostring("yyMMdd-HHmmss")).sh
+wsl --unregister Ubuntu
+Start Menu > Ubuntu 24.04.1 LTS  fired up a new WT & installed it > UNIX username > jo > pw
+all WT quit for  WT > ctrl+'  recovered my WT Ubuntu settings, but tab title still Ubuntu 24.04.1 LTS
+$MSn/set/5-WSL-Bash.sh
+$MSn/set/6-WSL-nodes.sh
+sudo apt update  reported 84 so  sudo apt upgrade
+## WSL Ubuntu 24.04.1 LTS packages
+sudo apt install bc dos2unix fd-find fzf highlight isync ncdu neofetch neomutt neovim nnn notmuch pass p7zip-full ranger ripgrep tmux trash-cli
+## WSL Ubuntu 24.04.1 LTS snaps
+sudo snap install jump lsd  # Samokovarov's jump
+## WSL Ubuntu 24.04.1 LTS plocate
+sudo cp $MSn/WSL/updatedb.conf /etc/updatedb.conf  for  sudo apt install plocate
+## WSL Ubuntu 24.04.1 LTS wslu
+sudo add-apt-repository ppa:wslutilities/wslu
+  got me  \\wsl$\Ubuntu-24.04\etc\apt\sources.list.d\wslutilities-ubuntu-wslu-noble.sources
+sudo apt update
+sudo apt install wslu
+## WSL Ubuntu 24.04.1 LTS password-store
+rsync -irtv --delete $Enc/Secure1/password-store/ ~/.password-store
+## WSL Ubuntu 24.04.1 LTS Pro
+sudo pro attach <FPT>
+sudo apt update
+sudo apt upgrade
+## WSL Ubuntu 24.04.1 LTS libdata-printer-perl
+(for  Data::Printer  in  $clMail/notmuch/nmsh-sort.pl) sudo apt install libdata-printer-perl
+## WSL Ubuntu 24.04.1 LTS libodsstream
+sudo apt install libodsstream-dev
+sudo apt remove libodsstream-dev
+## WSL Ubuntu 24.04.1 LTS ods2tsv
+sudo apt install ods2tsv
+sudo apt autoremove
+## Dropbox 217.4.4417.0
+needed to Sign in again, though it remembered my preferences
+  There's already a folder or file named Dropbox
+so had to quit  AutoHotkey  script, and  Process Explorer
+  to be able to rename  D:\Dropbox  to  D:\Dropbo
+  so's I could get going again with  D:\Dropbox
+  which I immediately quit to copy over all of  D:\Dropbo  except  .dropbox  $  .dropbox.cache
+  then relaunched  Dropbox, getting a full re-indexation
+## Epson EcoTank ET-5170 connection
+Paramètres > Périphériques > Imprimantes et scanners > Ajouter > EPSON ET-5170 Series >
+  Ajouter l'appareil  got it  Prêt  printed successfully
+## Dropbox 218.3.4216.0
+full re-indexation
+## WSL Ubuntu 24.04.1 GnuPG keys
+in  $Enc/Secure1/GnuPG/13F327EF,  gpg --import sprbMbArch-ob8-private.asc > passphrase
+  gpg: key 842A4DEE13F327EF: public key "Joseph Harriott (sprbMb Arch) <jharr@ftml.net>" imported
+  gpg: key 842A4DEE13F327EF: secret key imported
+## Opera
+Opera Stable 116.0.5366.71  installed, but no icon, so  winget rm Opera
+winget add Opera.Opera
+## DVDFab 13.0.3.5
+allowed to update
+## Opera
+Paramètres > Basique > Au démarrage > Lancer  off
+## Process Explorer
+procexp64.exe  endlessly sync`d by Dropbox, so quit then  cpi $ITscc\forMSWin\ProcessExplorer\procexp64.exe "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
+## rg -uu  in  $DJH
+maxing out RAM
+## DVDFab 13.0.3.7
+allowed to update
+## Ghostscript v10.05 (in preparation for ImageMagick)
+gs10050w64.exe  (C:\Program Files\gs\gs10.05.0, Generate cidfmap for Windows CJK TrueType fonts)
+Applications et fonctionnalités > GPL Ghostscript > Désinstaller
+precautionary reboot
+gs10050w64.exe > C:\gs-10_05_0 (Generate cidfmap for Windows CJK TrueType fonts) rebooted
+## ImageMagick Q8 7.1.1.46 x64
+winget add ImageMagick.Q8
+C:\Program Files\WindowsApps\ImageMagick.Q8_7.1.1.46_x64__b3hnabsze9y3j\magick.exe
+fresh PowerShell for  magick -version
+can't convert jpg's, so  winget rm ImageMagick.Q8
+precautionary reboot
+winget add ImageMagick.ImageMagick.Q8
+magick wizard.jpg wizard.png
+## CT2K8G4SFRA32A
+f9 at boot for POST Error > Enter
+40m UEFI Memory Quick Check PASSED
+### BgInfo
+& $HADLM\WinGet\Packages\Microsoft.Sysinternals.BGInfo_Microsoft.Winget.Source_8wekyb3d8bbwe\bginfo.exe > OK  got  Memory  correctly listed as  16260 MB
+## Zig
+where.exe zig  finds nothing, so  winget rm zig.zig
+precautionary reboot for  winget add zig.zig  took ages to unpack
 ## waiting
+### Ruby 3.4
 # physical configuration
 1366x768 screen
 Intel Core i5-6300U
+RAM CT2K8G4SFRA32A
 ## storage
 (essential) M.2 SSD: 119Go LITEON CV1-8B128-HP
 (optional) 2.5" SSD: BX500

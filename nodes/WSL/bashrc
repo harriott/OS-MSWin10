@@ -14,6 +14,12 @@ source $OSL/nodes/bashrc-wm
 lnd () { [ -d $2 ] && rm -r $2; ln -sf $1 $2; } # symlink a directory
 [[ $TERM == 'xterm-256color' ]] && neofetch
 
+o2t () { ods2tsv $1.ods > $1.tsv; }
+# fixes for my Cafézoïde expenses sheets:
+#  :%s!2024-\v(\d\d)-(\d\d)T00:00:00!\2/\1/24
+#  :%Substitute 2,6/\./,/g
+#  :%s!\t\+$
+
 se () {
   echo -n "${tpf2}aliases:${tpfn}  "; compgen -a | awk '{print}' ORS=' : '; echo ''
   echo -n "${tpf2}builtins:${tpfn} "; compgen -b | awk '{print}' ORS=' : '; echo ''
@@ -40,8 +46,8 @@ fi
 
 r () {
   eval "ranger --choosedir=$HOME/.ranger_last_visited $@"
-  cd "$(cat /home/jo/.ranger_last_visited)"
-}  # r "$Drpbx/CAM-best/Classic Yo-Yo"
+  cd "$(cat $HOME/.ranger_last_visited)"
+}
 
 #=> Bash interface
 alias o=echo
@@ -70,7 +76,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 # and then override with fancy colouring
-[ $ITscc ] && source $ITscc/unix-linux/forArch-trapd00r-LS_COLORS/lscolors.sh  # o "$LS_COLORS"
+[ $ITscc ] && source $ITscc/unix-linux/trapd00r-LS_COLORS/lscolors.sh  # o "$LS_COLORS"
 
 # some more ls aliases
 alias ll='ls -alF'

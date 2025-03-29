@@ -9,7 +9,6 @@ vim: nospell:
     1..3
     fd -tf -u index.lock | %{ri $_}
     get-volume  # reports partitions
-    gsp  # ($Mn\PSProfile.ps1) Ghostscript convert pdf to png
     foreach($element in 1..3){ $element }
     sleep 1
 
@@ -104,6 +103,15 @@ no standard aliases
     Get-Calendar -Month Octobre -Year 2012 -HighlightDate 27/10/2012
     Get-Calendar -Start 1/7/24 -End 3/11/2024
 
+# drives
+    gdr
+
+## registry
+    (gp -path ‘registry::hklm\system\currentcontrolset\control\session manager\environment’ -name path).path; $oldPathLM -split ';'
+    (gp -path ‘registry::hkcu\environment’ -name path).path; $oldPathCU -split ';'
+    gdr -PSProvider Registry | select -Property Name, Root
+    ls HKCU:Printers -Recurse -Depth 1
+
 # executables
     (gcm python | select version | ft -HideTableHeaders | out-string).trim()
     (gp hklm:\software\microsoft\windows\currentversion\uninstall\* ).displayname | sort  # lists removable x64 programs
@@ -114,6 +122,7 @@ no standard aliases
     get-commandsyntax <command>
     get-startapps  # lists AppIDs
     start <somefile>
+    where.exe zig
 
 ## *-Process
     kill -name HP.Smart
@@ -141,11 +150,14 @@ no standard aliases
     gcm lsd
     gcm python | fl *
 
-## ImageMagick - biz card backgrounds
+## ImageMagick
+    where.exe magick
+
+### biz card backgrounds
     magick -size 924x568 plasma: plasma1.jpg
     magick -size 924x568 xc:'rgba(0, 0, 0)' black.jpg
 
-## ImageMagick - tiff -> jpg recursively convert
+### tiff -> jpg recursively convert
     gci -r *.tiff | %{ magick $_ $_'.jpg' }
     gci -r *.tiff | rm
 
@@ -218,11 +230,6 @@ aliases: `cat`, `type`
     gal ls
     ls * | select FullName
     ls * | select Name
-    ls -s -depth 1  # including contents of subdirectories
-    ls -s -i i1*,i2*,i3*  # -include
-    ls -s -i '* (* conflicted copy *' |%{echo $_.fullname} | ri
-    ls -s | ? Name -match <regex>
-    ls -directory -s  # recursive list
 
 - `-e <leaf_glob>` (invokes `-exclude`)
 - `-h` = `-Hidden` only
@@ -241,6 +248,14 @@ aliases: `cat`, `type`
     ls *.pdf | select -expand name
     ls $path | select -expand FullName
 
+#### recursive lists
+    ls -file -s
+    ls -directory -s
+    ls -s -depth 1  # including contents of subdirectories
+    ls -s -i i1*,i2*,i3*  # -include
+    ls -s -i '* (* conflicted copy *' |%{echo $_.fullname} | ri
+    ls -s | ? Name -match <regex>
+
 ### lastwritetime
     lwp \.ps1
     lwt md md
@@ -253,6 +268,10 @@ aliases: `cat`, `type`
 #### quick terminal output
     lwts *.ps1 *.sh
     lwts *.txt
+
+### lists those using CRLF
+    fd -tf | ?{(gc $_ -raw) -match '\r\n'}
+    fd -tf -uu | ?{(gc $_ -raw) -match '\r\n'}
 
 ### sizes
     du64 -l 1
@@ -268,8 +287,14 @@ aliases: `cat`, `type`
     ls -force -s | ?{$_.linktype} # recursively list symlinks
     ls . -force  # Gets both hidden & non-hidden. Shows desired symlinks target.
 
+## lf
+    $HADL\lf\lfrc
+    g $home
+
+by gokcehan
+
 ## manipulations
-    ((gc $WF) -join "`n") + "`n" | seco -NoNewline $WF  # CRLF -> LF
+    fd -tf | ?{(gc $_ -raw) -match '\r\n'} | %{((gc $_) -join "`n") + "`n" | seco -NoNewline $_} # CRLF -> LF
     ls -s -i "*.txt" | %{mi $_.fullname ($_.fullname -replace ".txt",'.dw')}  # renames all txt's to dw's
     robocopy /mir <sourcedir> <destinationdir> /l  # runs a simulation of mirroring source to destination
     takeown /? | less
@@ -293,13 +318,17 @@ aliases: `cat`, `type`
     remove-itemsafely file_or_dir  # to Recycle Bin
 
 ##### remove-item
-- `--recurse`
+- `-recurse`
 - `del`, `erase`, `rd`, `ri`, `rm`, `rmdir`
 - no easy way to remove a folder, and not sent to Recycle...
 
 # ForEach-Object
 - `%` = `foreach`
 - not the `foreach` loop statement
+
+# Ghostscript
+    gsp  # ($MSn/PS/Profile.ps1) Ghostscript convert pdf to png
+    gswin64c -h
 
 # help
     get-help Start-BitsTransfer
@@ -320,11 +349,11 @@ aliases: `cat`, `type`
     <command> | out-null  # works for some commands
     (gcm <function>).scriptblock  # (get-command) shows what's in <function>
 
-- `?` (= `where` = `where-object`)
+`?` (= `where` = `where-object`)
 
 # microsoft.powershell.management
 - `gc` (= `cat` = `type` = `get-content`)
-- `gp` (= `get-itemproperty`)
+- `gp` (= `Get-ItemProperty`)
 - `gpv` (= `get-itempropertyvalue`)
 - `saps` (= `start` = `start-process`)
 - `sp` (= `set-itemproperty`)
@@ -355,7 +384,7 @@ prefer `&` where possible
 
 ### internal
     (Get-NetIPConfiguration | Where-Object { $_.IPv4DefaultGateway -ne $null }).IPv4Address.IPAddress
-    ipconfig | where {$_ -match 'IPv4.+\s(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})' } | out-null; $Matches[1] # quick
+    lanip  # $MSn\PS\Profile.ps1
 
 # output
 `ft` (= `Format-Table`)
@@ -482,6 +511,10 @@ tab completion
 `-InColor` only works in `Windows PowerShell`
 
 # Ruby
+    g C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems
+    g C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems
+    g C:/Ruby34-x64/lib/ruby/gems/3.4.0/specifications/default
+    gem list > $machLg/gems.gems  # using  $vfv/syntax/gems.vim
     where.exe irb
     where.exe ruby
 
@@ -512,7 +545,7 @@ tab completion
 # stray cmdlets
 
 
-# system info
+# system
     $profile
     (gcim win32_operatingsystem) | select -property version, caption
     (gcm prompt).ScriptBlock
@@ -544,22 +577,21 @@ tab completion
     (gp 'registry::hkcu\environment' path).path -split ';'
     Get-PathVariable
 
-## registry
-    $oldPathCU = (gp -path ‘registry::hkcu\environment’ -name path).path; $oldPathCU -split ';'
-    $oldPathLM = (gp -path ‘registry::hklm\system\currentcontrolset\control\session manager\environment’ -name path).path; $oldPathLM -split ';'
-
 # Vim
     C:\Vim\vim91\vim.exe --version
     g $HOME\vimfiles
     g $HOME\.vimswap
+    robocopy /mir $vimfiles D:\Play0\vf
 
 # WSL
+    (ls HKCU:SOFTWARE\Microsoft\Windows\CurrentVersion\Lxss | gp -Name DistributionName).DistributionName
     wsl --help
     wsl --shutdown  # kills all WSL2
     wsl -l -o  # (--list --online) available flavours
     wsl -l -v (--list --verbose)
     wsl -l --running
     wsl -v
+    wsl df -h /
 
 8 second rule for configuration changes
 

@@ -1,6 +1,6 @@
 # vim: se fdl=2:
 
-# Joseph Harriott, mar 26 nov 2024
+# Joseph Harriott, sam 08 févr 2025
 
 # $MSn\PS\Env.ps1
 #  needed for system build
@@ -23,9 +23,9 @@ if ( test-path "~\_noDropbox.ps1" ) { $coreIT = 'D:\IT' } else {
       $Cfzd = "$DJH\work-Cz"
         $CzMa = "$Cfzd\manage"
         $CzPeo = "$Cfzd\people"
-          $Copil = "$CzPeo\adherents\FA+Copil"
-            $d0g = "$Copil\data-0-grab"
-            $d1ad = "$Copil\data-1-adh"
+          $Csst = "$CzPeo\adherents\sstreat"
+            $d0g = "$Csst\data-0-grab"
+            $d1ad = "$Csst\data-1-adh"
         $CzPhy = "$Cfzd\PhysicalProperty"
       $core = "$DJH\core"
         $coreIT = "$core\IT"
@@ -40,7 +40,8 @@ if ( test-path "~\_noDropbox.ps1" ) { $coreIT = 'D:\IT' } else {
       $JCop = "$DJH\Cop"
         $cFr = "$JCop\France"
           $cFrP = "$JCop\France\places"
-        $chum = "$JCop\human"  # used in  $TeNo
+        $chum = "$JCop\human"  # deprecated
+        $JChu = "$JCop\human"  # used in  $TeNo
         $Pr0 = "$JCop\Practical0"
           $Pr0t = "$Pr0\technos"  # $Pr0t
       $JHt = "$DJH\Jo-technos"
@@ -67,7 +68,7 @@ $HADR = $Env:AppData  # Roaming
   $Pandoc = "$HADR\Pandoc"
   $tex = "$HADR\MiKTeX\tex"
 
-#===> 1 rooting on $coreIT
+$vimfiles#===> 1 rooting on $coreIT
 $ITsCP = "$coreIT\CP"
   $LTXj = "$ITsCP\documenting\LaTeX\jo"
 $DWp = "$coreIT\DokuWiki\pages"
@@ -92,6 +93,8 @@ $onGH = "$coreIT\onGitHub"
     $ulLA = "$ulL\Arch"
   $vimfiles = "$onGH\vimfiles"
   # $vimfiles = "~\vfs"  # vimfiles source - for testing outside of Dropbox
+    $vfn = "$vimfiles\nvim"
+    $vfs = "$vimfiles\settings"
     $vfv = "$vimfiles\vim"
       $vfvp = "$vfv\packs"
 

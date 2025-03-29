@@ -36,6 +36,7 @@ vim: nospell:
     [console]::WindowWidth
 
 ## encoding
+    ~/.rustup/settings.toml
     $MSwin10\nodes\gitconfig
     C:\Git\usr\bin\perl.exe -v
     C:\msys64\usr\bin\perl.exe -v
@@ -110,11 +111,6 @@ vim: nospell:
     $Env:PSModulePath -split ';'
     ~\Documents\WindowsPowerShell\Modules
 
-## file manage - lf
-    $HADL\lf\lfrc
-
-by gokcehan
-
 ## file manage - robocopy
     ROBOCOPY.exe
 
@@ -155,10 +151,11 @@ output is simplified when redirected to a file
 - `win+ctrl+m` paramètres de la loupe
 - `win+esc` désactiver la loupe
 
-## Windows Terminal
+## WT
 - in Explorer: `Alt+D > wt > Enter`
 - `win+;` emojis
 - `win+r > wt` opens `wt` on `~`
+- `Windows Terminal`
 
 ### Settings
     Startup > Launch on machine startup
@@ -192,27 +189,26 @@ default actions don't show, but when I binned annoying `alt+enter` & `<f11>` "Ba
 Windows Subsystem for Linux
 
 ### nodes, from Windows
-    \\wsl$\Ubuntu\etc\wsl.conf
+    \\wsl$\Ubuntu-24.04\etc\wsl.conf
     \\wsl$\Ubuntu-24.04\home\jo\.mbsyncrc
-    g \\wsl$\Ubuntu\etc\ranger\config
-    g \\wsl$\Ubuntu\run\systemd\system
-    g \\wsl$\Ubuntu\usr\bin
+    g \\wsl$\Ubuntu-24.04\etc\ranger\config
+    g \\wsl$\Ubuntu-24.04\run\systemd\system
+    g \\wsl$\Ubuntu-24.04\usr\bin
 
 - can't access these from `Telescope`, so `:MRU wsl$`
-- `\\wsl$\Ubuntu\home\jo\Play0`
+- `\\wsl$\Ubuntu-24.04\home\jo\Play0`
     - not navigable by `oil.nvim`
     - not seen by `nvim-tree.lua`
 
 #### Bash
-    \\wsl$\Ubuntu\etc\bash_completion.d\git-prompt
-    \\wsl$\Ubuntu\home\jo\.bash_history
-    \\wsl$\Ubuntu\home\jo\.bash_profile
+    \\wsl$\Ubuntu-24.04\etc\bash_completion.d\git-prompt
+    \\wsl$\Ubuntu-24.04\home\jo\.bash_history
 
-`\\wsl$\Ubuntu\etc\skel` has Bash configuration defaults
+`\\wsl$\Ubuntu-24.04\etc\skel` has Bash configuration defaults
 
 #### plocate
-    g \\wsl$\Ubuntu\var\lib\plocate
-    \\wsl$\Ubuntu\etc\updatedb.conf
+    g \\wsl$\Ubuntu-24.04\var\lib\plocate
+    \\wsl$\Ubuntu-24.04\etc\updatedb.conf
 
 #### repositories
     \\wsl$\Ubuntu-24.04\etc\apt\sources.list.d\ubuntu.sources
@@ -228,6 +224,7 @@ Windows Subsystem for Linux
     pwsh.exe -nop -c start .
     pwsh.exe -nop -c Get-ExecutionPolicy
     win32yank.exe -o  # returns what's in the clipboard
+    winget find ubuntu
 
 #### wslu
     wslfetch  # alternative to  neofetch
@@ -236,7 +233,10 @@ Windows Subsystem for Linux
     wslvar -S  # --getsys
     wslview https://wslutiliti.es/wslu/man/wslview.html
 
-# hw - DVD Shrink
+# hw - DVD
+    DVDFab 13 > Copier > Disque entier > DVD9 > ($HOME\Documents\DVDFab\DVDFab13\Output) > Démarrer
+
+## Shrink
     Backup! > Create VIDEO_TS and AUDIO_TS subfolders off
     Compressioin Settings > Custom Ratio > slider to left
 
@@ -272,7 +272,7 @@ ExifTool by Phil Harvey
 ### commands
 - `ctrl+shift+a` Acquire/Batch Scanning
 - `ctrl+s` = `Save (original folder)`
-- `ctrl+t` Insert text
+- `ctrl+t` Insert text, but only up to 72pt
 - `ctrl+x` = `Cut - selection`
 - `p` Properties/Settings
 - `R` Reopen file
@@ -299,6 +299,10 @@ ExifTool by Phil Harvey
 - `i` invert colours
 - `r` reload
 - `z` toggle zoom between Fit Page, Fit Width, Fit Content
+
+## AZERTY
+- `=`/`-` zoom in/out
+- `ctrl++` rotate right
 
 # text wrangling
 `Notepad++`: `alt+p > Préférences...`
@@ -365,7 +369,6 @@ star icon
 `Ctrl+Shift+E` Extensions
 
 # Windows
-    regedit
     sl C:\Windows\Fonts
 
 - `Control Panel > Programs and Features`
@@ -407,6 +410,12 @@ star icon
     APS> start-mpwdoscan
 
 requires a Windows Recovery partition to be present
+
+## Registry Editor
+    C:\Windows\System32\regedt32.exe
+    Win+r > regedit
+
+`Éditeur du Registre`
 
 ## snapping
 if done when eg  AltSnap's default  AutoSnap=2, win+arrow  actions are deadened

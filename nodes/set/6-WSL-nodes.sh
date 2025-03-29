@@ -13,32 +13,40 @@ cp -f $lclm/mbsyncrc-backup ~/.mbsyncrc
 cp -f $lclm/notmuch-config-backup ~/.notmuch-config
     # \\wsl$\Ubuntu-24.04\home\jo\.notmuch-config
 
-#=> 0 gpg-agent.conf
-# gpg -k  resets ~/.gnupg, so do that first
-ln -sf $OSL/nodes/gpg-agent.conf ~/.gnupg/gpg-agent.conf  # ls ~/.gnupg
+# #=> 0 gpg initialise
+# gpg -k  # resets ~/.gnupg
 
-# #=> 0 make vimswap
-# [ ! -d ~/.vimswap ] && mkdir ~/.vimswap
+#=> 0 config
+[ -d ~/.config ] || mkdir ~/.config
 
-# #=> 0 ranger
-# rsync -irtv --delete $OSL/nodes/terminal-ranger/ ~/.config/ranger
+#=> 0 hushlogin
+[ -s ~/.hushlogin ] || touch ~/.hushlogin
+
+#=> 0 vimswap
+[ -d ~/.vimswap ] || mkdir ~/.vimswap
 
 #=> 0 tmux symlinks
 ln -sf $OSL/nodes/GNUReadline-inputrc ~/.inputrc
-ln -sf $OSL/nodes/tmux/tmux.conf ~/.tmux.conf
+ln -sf $OSL/nodes/terminal-tmux/tmux.conf ~/.tmux.conf
 
 #=> 0 symlink vimrc
 ln -sf $MSn/WSL/vimrc ~/.vimrc
 
-#=> 1 check ~ symlinks
+#=> 1 gpg-agent.conf
+ln -sf $OSL/nodes/gpg-agent.conf ~/.gnupg/gpg-agent.conf  # ls ~/.gnupg
+
+#=> 1 ranger
+rsync -irtv --delete $OSL/nodes/terminal-ranger/ ~/.config/ranger
+
+#=> 2 check ~ symlinks
 l -al ~
 
-# #=> 2 vimfiles - vim configurations - clear
-# [ -d ~/.vim ] && sudo rm -r ~/.vim
-# mkdir -p ~/.vim/pack
-# mkdir ~/.vim/plugin
+#=> 3 vimfiles - vim configurations - clear
+[ -d ~/.vim ] && sudo rm -r ~/.vim
+mkdir -p ~/.vim/pack
+mkdir ~/.vim/plugin
 
-#=> 3 vimfiles - vim configurations - load
+#=> 4 vimfiles - vim configurations - load
 read -p 'hit Enter to begin the rsyncs'
 rsync -irtv --delete $vimfiles/vim/after/               ~/.vim/after
 rsync -itv $vimfiles/vim/filetype.vim                   ~/.vim/filetype.vim

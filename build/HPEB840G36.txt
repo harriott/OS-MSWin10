@@ -226,6 +226,11 @@ winget add gokcehan.lf  fixed ; at end of path
 ## jharrio
 Paramètres > Comptes > Famille et autres utilisateurs  doesn't offer removal, so
   Comptes > Options de connexion > Code PIN de Windows Hello > <longer_pw>
+## handed to Deauram
+## WizTree
+winget add WizTree
+## Google Chrome
+dadofdeauram@gmail.com
 ## waiting
 # physical configuration
 1366x768 screen

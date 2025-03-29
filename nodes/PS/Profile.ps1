@@ -255,7 +255,7 @@ function removeMatchingLines {
   seco $a0 -value (gc $a0 | sls -pattern $a1 -notmatch)
 } # (gcm removeMatchingLines).scriptblock
 
-function SE { $outfile = "$DJH/search/SEN.sifw"
+function SE { $outfile = "$DJH/search/SEN.sifl"
   sifw0 $outfile 'stackexchange|stackoverflow|superuser'
   foreach($ITd in $coreIT, "$JHw\France", $jtIT) { "Searching in $ITd\..."; sl $ITd
     gci -r -e $outfile -i '*.md' | sls 'stackexchange|stackoverflow|superuser' | %{
@@ -278,7 +278,7 @@ function sifw1 {
 } # footer
 
 function rgo {
-  $rgo = 'rg-'+$args[0]+'.sifw'
+  $rgo = 'rg-'+$args[0]+'.sifl'
   $rgot = "~/rgo-temp"
   sifw0 $rgo $args[1]  # helpful header
   $rgs = 'rg -t'+$args[0]+' '+$args[1] # rg search
@@ -296,8 +296,8 @@ function rgo {
 } # rgo <rg_file_group> <unquoted_regex>
 
 #====> github issues
-# $jtIT\ghissues.sifw
-# $coreIT\ghissues.sifw
+# $jtIT\ghissues.sifl
+# $coreIT\ghissues.sifl
 function ghissues { rgo md 'github\.com.+issues' }
 
 #=> 0 Ghostscript
@@ -355,6 +355,7 @@ function cico {
   if ( $ci ) { "$ci, $co" } else { "$co" }
   }  # [city, ]country
 function ip { (iwr "http://ifconfig.me/ip").Content }  # IPv6
+function lanip { ipconfig | where {$_ -match 'IPv4.+\s(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})' } | out-null; $Matches[1] }
 function tc {test-connection 8.8.8.8 -ErrorAction SilentlyContinue}
 function tcg {test-connection google.com -ErrorAction SilentlyContinue}
 function wp { curl wttr.in/Paris }
@@ -366,7 +367,7 @@ sal y C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\yt-dlp.yt-dlp_Micro
   function yf { y -F $args[0] }
 
 #=> 0 shell settings
-$env:TERM = "xterm-256color"  # $vimfiles/nvim/lua/init.lua
+$env:TERM = "xterm-256color"  # $vfn/lua/init.lua
 
 if ($PSVersionTable.PSVersion.Major -eq 7) { ipmo Powershell.Chunks }
 

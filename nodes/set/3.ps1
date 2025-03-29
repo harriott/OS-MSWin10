@@ -1,7 +1,7 @@
 
 # Joseph Harriott - https://harriottgithubio/ - ven 24 janv 2025
 
-# once  $Cn, APS> . $MSn\set\3.ps1
+# once  $Cn, APS> . $MSn/set/3.ps1
 
 # csl, endi & syli  defined in  $MSn/PS/Profile.ps1
 
@@ -75,8 +75,8 @@ if ( test-path $nvim ) { ri -path $nvim -recurse } ; md $nvim\pack
 syli $vfv/after               $nvim/after
 syli $vfv/filetype.vim        $nvim/filetype.vim
 syli $vfv/ftplugin            $nvim/ftplugin
-syli $vimfiles/nvim/init.vim  $nvim/init.vim
-syli $vimfiles/nvim/lua       $nvim/lua
+syli $vfn/init.vim  $nvim/init.vim
+syli $vfn/lua       $nvim/lua
 syli $vfv/packs/packs-colo    $nvim/pack/colo
 syli $vfv/packs/packs-cp-all  $nvim/pack/cp-all
 syli $vfv/packs/packs-cp-full $nvim/pack/cp-full
@@ -86,7 +86,7 @@ syli $vfv/plugin/plugin.vim   $nvim/plugin/plugin.vim
 syli $vfv/spell               $nvim/spell
 syli $vfv/syntax              $nvim/syntax
 syli $vfv/thesaurus           $nvim/thesaurus
-  csl $nvim
+  csl $nvim; csl $nvim/pack
 
 #=> vim flavours - vim - vimfiles 0 clear
 if ( test-path ~\vimfiles ) { ri -path ~\vimfiles -recurse } ; md ~\vimfiles\pack
