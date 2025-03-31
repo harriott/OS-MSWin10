@@ -5,7 +5,6 @@ vim: nospell:
     $coreIT\MSWin\PowerShell\Scratch.ps1
     $myinvocation.mycommand.name  # = the script's name
     $MSwin10\gac.ps1  # to explore all commands
-    '"Hello world"'
     1..3
     fd -tf -u index.lock | %{ri $_}
     get-volume  # reports partitions
@@ -409,6 +408,10 @@ prefer `&` where possible
 #### view colours
     $PSStyle.Background
     $PSStyle.Foreground
+
+## quotes
+    '"Hello world"'
+    'rg''ing'
 
 # package manage
     get-package | format-table -autosize
