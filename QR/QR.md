@@ -313,12 +313,11 @@ ExifTool by Phil Harvey
     ~\AppData\Roaming\.spacemacs
 
 ## Vim
+    & $CPF\Neovim\bin\nvim.exe -h
     C:\Vim\vim91\gvim.exe
     C:\Vim\vim91\vim.exe -?
     C:\Vim\vim91\vim.exe --version
-    g $lazy
-    g 'C:\Program Files\Neovim\share\nvim\runtime'g 'C:\Program Files\Neovim\share\nvim\runtime'
-    $ProgramFiles\Neovim\share\nvim\runtime\mswin.vim
+    where.exe nvim.exe
 
 # WAN
     cp $HADR\Thunderbird\profiles.ini $HADR\Thunderbird\profilesOld.ini

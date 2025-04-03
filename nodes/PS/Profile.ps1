@@ -217,7 +217,6 @@ function lwp { gci -r | %{ dtsfn $_ ':' } | out-string -stream | sls $args[0] | 
 #====> by name
 function lwt {
   if ($args[0]) {
-  # if ($a0) {
     $of = 'lwt-'+$args[0]+'.ffl'; "" > $of
     if ( $args[0] -eq 'gitignore' ) {
       'gitignore' >> $of; '' >> $of
@@ -225,7 +224,10 @@ function lwt {
     } else {
       if ($args[1]) {
         $args[1]+' '+$args[2]+' '+$args[3] >> $of; '' >> $of
-        fd -tf -E copied-code -E copied-reference -e $args[1] -e $args[2] -e $args[3] | %{ ls $_ } | %{ dtsfn $_ ':' } | sort >> $of
+        $fdfEe = "fd -tf -E copied-code -E copied-reference -e " + $args[1]
+        if ($args[2]) { $fdfEe = $fdfEe + ' -e ' + $args[2] }
+        if ($args[3]) { $fdfEe = $fdfEe + ' -e ' + $args[3] }
+        iex $fdfEe | %{ ls $_ } | %{ dtsfn $_ ':' } | sort >> $of
         "results in $of"
       } else { "next three arguments are specific file extensions" } }
   } else {

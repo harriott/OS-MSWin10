@@ -720,7 +720,7 @@ $newPathCU = $oldPathCU -replace '\\fd.exe$', ''; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## fzf from winget
 $MSwin10\mb\fzf.ps1
-$HADL\Microsoft\WinGet\Links\fzf.exe --version
+& $HADL\Microsoft\WinGet\Links\fzf.exe --version
 fixed ; at end of path
 ## fd v10.1.0
 executable lost from path
@@ -1465,6 +1465,14 @@ PSA> gem up
   Parsing documentation for psych-5.2.3
   Done installing documentation for psych after 0 seconds
   Gems updated: psych
+## sd
+winget add chmln.sd
+## Scoop
+irm get.scoop.sh | iex
+## rga
+scoop install rga
+  brought in 7zip ffmpeg pandoc poppler rga ripgrep, all shim'd
+  splitting WT crashed the process, recovered on next try
 ## waiting
 Mise à jour facultatives
 # physical configuration

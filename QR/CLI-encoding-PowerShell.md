@@ -50,7 +50,6 @@ limited to single commands
 
 ## strings
     $string.length
-    $string.trim()  # removes whitespaces (including newlines) from ends
     'a'.equals('b')
     'me'+'et'
     [string]$pwd
@@ -61,9 +60,9 @@ limited to single commands
 
 ### make changes
     $b='o'; $b=$b+'o'; $b
+    $string.trim()  # removes whitespaces (including newlines) from ends
     'boob' -replace 'b$', ''
     "Hello".Replace('l', 'x').Replace('H', 'Y')
-    (gc $file) -replace $regex, $newtext | seco $file
 
 ### regex
     'hi.there.jpg' -replace 'g', ''             # hi.there.jp
@@ -77,9 +76,14 @@ limited to single commands
     'hi.there.jpg' -replace '\.([^.]*)$', ''    # hi.there
     'hi:there:jpg' -replace '[^.]*?:', ''       # jpg
     'hi:there:jpg' -replace '(.*?):(.*)', '$2'  # there:jpg
-    'IF' -match '^t$|^f$'
 
+`\s` = whitespace character
+`\S` = non-whitespace character
 `\w` = a-z, A-Z, 0-9, _
+
+### match
+    'IF' -match '^t$|^f$'
+    if ( ! ( 'a' -match 'b' ) ) { 'a not b' }
 
 ### substring method
     $s='stringROD'; $s.substring(0, $s.length -3)
@@ -121,6 +125,7 @@ no standard aliases
     get-commandsyntax <command>
     get-startapps  # lists AppIDs
     start <somefile>
+    where.exe rg
     where.exe zig
 
 ## *-Process
@@ -139,6 +144,14 @@ no standard aliases
         $pAr | gu  # vertical list
         ([string]($pAr | gu)).replace(' ','  ')  # all on one line
     ps <ProcessName> | select PM,WS  # Private Memory, Working Set
+
+## Bash
+    & C:\Git\bin\bash.exe --version
+    & C:\Git\usr\bin\bash.exe --version
+    & C:\Users\jharr\AppData\Local\Microsoft\WindowsApps\bash.exe --version
+    & C:\Windows\System32\bash.exe --version
+    bash --version
+    where.exe bash
 
 ## FFmpeg
     ffmpeg -version > $machLg\ffmpeg_version
@@ -173,12 +186,16 @@ otherwise little sign of them
     pwsh -nop  # -NoProfile
     saps pwsh -verb runas  # Administrator
 
+## Scoop
+    g $home/scoop
+    scoop help
+    scoop update
+
 ## Windows PowerShell
     powershell -noprofile  #  runs  Windows PowerShell
     saps powershell -verb runas  # Administrator
 
 ## where.exe
-    where.exe bash
     where.exe gpg
     where.exe pwsh
     where.exe python
@@ -190,8 +207,7 @@ doesn't find executables in `~\AppData\`
 # file contents
     less <someFile>
 
-- replace text in files
-- `seco` (= `Set-Content`) `$MSWin10\PSProfile.ps1`
+`seco` (= `Set-Content`) `$MSWin10\PSProfile.ps1`
 
 ## Get-Content
     (gc $file | select -skip 3) | seco $file  # removes first 3 lines
@@ -199,6 +215,11 @@ doesn't find executables in `~\AppData\`
     gc somefile.txt | where { $_ -match “expression”}
 
 aliases: `cat`, `type`
+
+## replace
+    (gc $file) -replace $regex, $newtext | seco $file
+
+replace text in files
 
 # file manage
     ii .  # invoke Explorer on WD
@@ -257,6 +278,7 @@ aliases: `cat`, `type`
 
 ### lastwritetime
     lwp \.ps1
+    lwt lua lua
     lwt md md
     lwt ps1 ps1
     lwt sh sh
@@ -346,7 +368,6 @@ by gokcehan
 
 # microsoft.powershell.core
     <command> | out-null  # works for some commands
-    (gcm <function>).scriptblock  # (get-command) shows what's in <function>
 
 `?` (= `where` = `where-object`)
 
@@ -537,7 +558,9 @@ tab completion
 
 ## functions
     $function:<function>  # contains it's internal commands
+    (gcm <function>).scriptblock  # (get-command) shows what's in <function>
     function global:<function> { ... }
+    function arg_exists { $a0 = $args[0]; if ($a0) {$a0} }; arg_exists
     function args { $a0 = $args[0]; $a1 = $args[1]; "$a0 $a1, and " + $args[0] + ", but $args[0]" }; args here there
 
 ## if statement
