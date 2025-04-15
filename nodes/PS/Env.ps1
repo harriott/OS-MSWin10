@@ -94,7 +94,6 @@ $onGH = "$coreIT\onGitHub"
   $vimfiles = "$onGH\vimfiles"
   # $vimfiles = "~\vfs"  # vimfiles source - for testing outside of Dropbox
     $vfn = "$vimfiles\nvim"
-    $vfs = "$vimfiles\settings"
     $vfv = "$vimfiles\vim"
       $vfvp = "$vfv\packs"
 

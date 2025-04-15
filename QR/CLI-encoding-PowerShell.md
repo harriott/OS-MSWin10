@@ -1,10 +1,10 @@
 vim: nospell:
 
-    $MSwin10/QR/CLI-encoding-PowerShell.md
+    $MSWin10/QR/CLI-encoding-PowerShell.md
 
     $coreIT\MSWin\PowerShell\Scratch.ps1
     $myinvocation.mycommand.name  # = the script's name
-    $MSwin10\gac.ps1  # to explore all commands
+    $MSWin10\gac.ps1  # to explore all commands
     1..3
     fd -tf -u index.lock | %{ri $_}
     get-volume  # reports partitions
@@ -216,6 +216,10 @@ doesn't find executables in `~\AppData\`
 
 aliases: `cat`, `type`
 
+### those using CRLF
+    fd -tf | ?{(gc $_ -raw) -match '\r\n'} | %{((gc $_) -join "`n") + "`n" | seco -NoNewline $_} # CRLF -> LF
+    fd -tf -uu | ?{(gc $_ -raw) -match '\r\n'}
+
 ## replace
     (gc $file) -replace $regex, $newtext | seco $file
 
@@ -290,10 +294,6 @@ replace text in files
     lwts *.ps1 *.sh
     lwts *.txt
 
-### lists those using CRLF
-    fd -tf | ?{(gc $_ -raw) -match '\r\n'}
-    fd -tf -uu | ?{(gc $_ -raw) -match '\r\n'}
-
 ### sizes
     du64 -l 1
     Get-GitSize  # when you're in .git's parent directory
@@ -315,7 +315,6 @@ replace text in files
 by gokcehan
 
 ## manipulations
-    fd -tf | ?{(gc $_ -raw) -match '\r\n'} | %{((gc $_) -join "`n") + "`n" | seco -NoNewline $_} # CRLF -> LF
     ls -s -i "*.txt" | %{mi $_.fullname ($_.fullname -replace ".txt",'.dw')}  # renames all txt's to dw's
     robocopy /mir <sourcedir> <destinationdir> /l  # runs a simulation of mirroring source to destination
     takeown /? | less
@@ -385,7 +384,7 @@ by gokcehan
 - `measure` (= `measure-object`)
 - `select` (= `Select-Object`)
 - `sls` (= `select-string`)
-- `sort` (= `sort-object`)
+- `sort` (= `sort-object`) `-Unique`
 
 ## invoke-expression
     iex <someCommand>
@@ -448,7 +447,7 @@ prefer `&` where possible
     - might need to reload `Windows Powershell`
 
 ## modules
-    $MSwin10\mb\modules.ps1
+    $MSWin10\mb\modules.ps1
     gvim $HADL\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
     p  # PowerColorLS (`$MSWin10\PSProfile.ps1`)
     toast  # New-BurntToastNotification

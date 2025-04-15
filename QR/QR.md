@@ -37,7 +37,7 @@ vim: nospell:
 
 ## encoding
     ~/.rustup/settings.toml
-    $MSwin10\nodes\gitconfig
+    $MSWin10\nodes\gitconfig
     C:\Git\usr\bin\perl.exe -v
     C:\msys64\usr\bin\perl.exe -v
     java -jar C:\LanguageTool\languagetool-commandline.jar -h

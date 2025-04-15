@@ -125,29 +125,32 @@ Applications et fonctionnalités > Thunderbird > Désinstaller  got rid of older
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
 $newPathCU = $oldPathCU+';C:\Program Files\Mozilla Thunderbird'; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
+## NanaZip
+winget add M2Team.NanaZip
 ## waiting
+lazygit
 # build - sequential
 ## move from Utilisateur
 Paramètres >
-  Mise à jour et sécurité > Activation > Windows est activé à l'aide d'une license numérique
-  Système > À propos de > Spécifications de Windows > Windows 10 Pro 21H2 OS build 19044.1889
+Mise à jour et sécurité > Activation > Windows est activé à l'aide d'une license numérique
+Système > À propos de > Spécifications de Windows > Windows 10 Pro 21H2 OS build 19044.1889
 connected to  Jo-X10II
 Mise à jour et sécurité > Windows Update > Updated to Windows 10 version 22H2
 connected to  Jo-OPPO-A76
 Menu > Système Windows >
-  [ Invite de Commandes  Outils d'administration  Panneau de configuration ] > Pinned to Start
+[ Invite de Commandes  Outils d'administration  Panneau de configuration ] > Pinned to Start
 Menu > [ Disnéy  Microsoft 365 ] > right-click > Désintaller
 win+i > Comptes > Famille et autres utilisateurs > Ajouter > jharrio@outlook.com > pw
 win+i > Comptes > Famille et autres utilisateurs > Autres > Utilisateur > supprimer
 ## Ditto Clipboard
 Microsoft Store > Ditto Clipboard > Install > Pin to Start
 Ran it for  Options > General > [ Maximum Number of Saved Copies > 5000
-   Advanced > Show leading whitespace ] ( C:\Users\jharr\AppData\Local\Ditto_WindowsApp\Ditto.db )
+ Advanced > Show leading whitespace ] ( C:\Users\jharr\AppData\Local\Ditto_WindowsApp\Ditto.db )
 ctrl+* = Activate Ditto
 ## dropbox.com
 Signed in > DropboxInstaller.exe > English & Selective sync
 ## symlinks
-APS> . $MSwin10\mb\symlinks.ps1
+APS> . $MSWin10\mb\symlinks.ps1
 ## Analyse Microsoft Defender hors ligne
 Sécurité Windows > Protection contre les virus et menaces > Options d'analyse > Analyse Microsoft Defender hors ligne > Analyser maintenant > Analyser > Contrôle de compte d'utilisateur > Oui
 - wouldn't start the process, so  Paramètres > Mise à jour et sécurité > Récupération > Réinitialiser ce PC > Commencer > Conserver mes fichiers
@@ -160,10 +163,10 @@ AIdc> manage-bde -status  then  manage-bde -off c:  and kept checking until done
 ### boot from KDTG311281
 loaded with  ESD-USB (français (France), Windows 10 2022 Update l Version 22H2)
 repeatedly hit  f9  at start to get into  Boot Menu >
-  UEFI - Kingston DataTraveler 3.0 08606E6D413DE361970C7E18 > Suivant > Réparer l'ordinateur
-  didn't get me anywhere so  booted into hard drive for  ESD-USB (D:) > setup.exe > Suivant >
-  Accepter  ensured 10G of free space on C: for  Installer
-    eventually got me a  Partition de récupération
+UEFI - Kingston DataTraveler 3.0 08606E6D413DE361970C7E18 > Suivant > Réparer l'ordinateur
+didn't get me anywhere so  booted into hard drive for  ESD-USB (D:) > setup.exe > Suivant >
+Accepter  ensured 10G of free space on C: for  Installer
+  eventually got me a  Partition de récupération
 ### Microsoft Defender Antivirus
 APS> start-mpwdoscan
 Paramètres > Sécurité Windows > Protection contre les virus et menaces (= Sécurité Windows) > Historique de protection
@@ -172,8 +175,8 @@ empty popup appearing each time I try to change the screen brightness
 Services > HP Hotkey UWP Service > Type de démarrage > (was Automatique) Désactivé
 ## gVim v9.1.0
 gvim_9.1.0_x64_signed.exe
-  [ Create icons > On the Desktop off [ Create Default Config  Create Plugin Directories ] off ] >
-  (C:\Vim)  C:\Vim\vim91\vim.exe --version
+[ Create icons > On the Desktop off [ Create Default Config  Create Plugin Directories ] off ] >
+(C:\Vim)  C:\Vim\vim91\vim.exe --version
 ## Windows Terminal
 found in Microsoft Store > Obtenir  ($HADL\Microsoft\WindowsApps\wt.exe)
 ctrl+, > Démarrage > Application Terminal par défaut > Terminal Windows
@@ -187,93 +190,93 @@ Get-ExecutionPolicy -list  reported all as  "Undefined"
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Confirm > y
 ## $Profile
 $Profile  returns
-  C:\Users\jharr\OneDrive\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1  so
+C:\Users\jharr\OneDrive\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1  so
 OneDrive Paramètres > Gérer la sauvegarde > [ Documents  Images  Bureau ] off-slid
 ## Nom de l'appareil
 Paramètres > Système > À propos de > (Nom de l'appareil > DESKTOP-GSPV6OJ)
-  Renommer ce PC > HPEB840G362
+Renommer ce PC > HPEB840G362
 ## code-minimap
 code-minimap.exe  copied to  C:\Users\troin\AppData\Local\Microsoft\WindowsApps
 ## Python 3.12.3
 python-3.12.3-amd64.exe > Add python.exe to PATH > Customize > Optional Features > for all users >
-  Next > [ Advanced Options > [ Install for all users  Customize install location > C:\Python312 ]
+Next > [ Advanced Options > [ Install for all users  Customize install location > C:\Python312 ]
 ## WT 0 install
 https://www.microsoft.com/en-gb/p/windows-terminal-preview/9n0dx20hk701
 ## WT 1 settings
 chcp  reports  CodePage 850
 ctrl+, (= Paramètres)
-  Actions > Basculer en mode plein écran > binned
-  Azure Cloud Shell > Masquez le profil de la liste déroulante > Activé
-  Démarrage > Profil par défaut > PowerShell
-  Interaction > M'avertir lorsque je ferme plusieurs onglets  off-slid
-  PowerShell > Apparance >
-    Texte > Taille de police > 9
-    Transparence > Opacité de l'arrière plan > 80%
-    Type de police > Cascadia Mono
-  Ubuntu > Apparance >
-    Jeu de couleurs > One Half Dark
-    Texte > Taille de police > 9
-    Transparence > Opacité de l'arrière plan > 90%
-  Windows PowerShell > Apparance > Texte > Taille de police > 9
+Actions > Basculer en mode plein écran > binned
+Azure Cloud Shell > Masquez le profil de la liste déroulante > Activé
+Démarrage > Profil par défaut > PowerShell
+Interaction > M'avertir lorsque je ferme plusieurs onglets  off-slid
+PowerShell > Apparance >
+  Texte > Taille de police > 9
+  Transparence > Opacité de l'arrière plan > 80%
+  Type de police > Cascadia Mono
+Ubuntu > Apparance >
+  Jeu de couleurs > One Half Dark
+  Texte > Taille de police > 9
+  Transparence > Opacité de l'arrière plan > 90%
+Windows PowerShell > Apparance > Texte > Taille de police > 9
 $HADL\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
 ## Windows Terminal s'ouvre à l'Invite de commandes
 Paramètres > Applications > Terminal > Désinstaller  then  win+x > Redémarrer
-  then re-installed from Microsoft Store
+then re-installed from Microsoft Store
 ## Git v2.32
 https://git-scm.com/download/win
 Git-2.32.0-64-bit.exe > [ C:\Git  Select Components > [ Associate .sh with Bash > off
-  [ Check daily  Add Git Bash Profile to Windows Terminal ] > on ]
-  Checkout as is, commit Unix-style line endings
-  Choose a credential helper > None
+[ Check daily  Add Git Bash Profile to Windows Terminal ] > on ]
+Checkout as is, commit Unix-style line endings
+Choose a credential helper > None
 $Env:Path -split';'
-  ...
-  C:\Git\cmd
-  ...
+...
+C:\Git\cmd
+...
 allowed  MINGW64  for  A ~/.bash_profile that loads ~/.bashrc will be created for you.
 got me  C:\Git\usr\bin\perl.exe
 ## Windows Terminal s'ouvre à l'Invite de commandes
 Paramètres > Applications > Terminal > Désinstaller  then  win+x > Redémarrer
-  then re-installed from Microsoft Store
+then re-installed from Microsoft Store
 ## fzf (for PSFzf)
 sl $ITscc  for  cpi fzf.exe $HADL\Microsoft\WindowsApps
-  fzf --version
+fzf --version
 ## 7-Zip
 7z2301-x64.exe
 ## SSH keys
 mkdir ~/encrypted
 mkdir ~/.ssh
-  cpi ~\Encrypted\Secure1\Networking\SSH\id_ed25519-forGitHub ~\.ssh\id_rsa
-  cpi ~\Encrypted\Secure1\Networking\SSH\id_ed25519-forGitHub.pub ~\.ssh\id_rsa.pub
+cpi ~\Encrypted\Secure1\Networking\SSH\id_ed25519-forGitHub ~\.ssh\id_rsa
+cpi ~\Encrypted\Secure1\Networking\SSH\id_ed25519-forGitHub.pub ~\.ssh\id_rsa.pub
 ## Test GitHub SSH connection
 (requires Private key as  C:\Users\jharr\.ssh\id_rsa)
 Git Bash > ssh -T git@github.com
-  The authenticity of host 'github.com (140.82.121.4)' can't be established.
-  ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
-  This key is not known by any other names.
-  Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
-  Warning: Permanently added 'github.com,140.82.118.4' (RSA) to the list of known hosts.
-  Hi harriott! You've successfully authenticated, but GitHub does not provide shell access.
+The authenticity of host 'github.com (140.82.121.4)' can't be established.
+ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'github.com,140.82.118.4' (RSA) to the list of known hosts.
+Hi harriott! You've successfully authenticated, but GitHub does not provide shell access.
 got me  $HOME\.ssh\known_hosts
 ## KeePassXC
 in Microsoft Store > Installer
 C:\Users\jharr\Dropbox\JH\core\encrypted\JH.kdbx
 ctrl+, (= Outils > Paramètres) > [
-  Général > Démarrage > Lancer automatiquement KeePassXC au démarrage du système  off
-  Intégration aux navigateurs > Activer > Edge ]
+Général > Démarrage > Lancer automatiquement KeePassXC au démarrage du système  off
+Intégration aux navigateurs > Activer > Edge ]
 restarted Edge
 ## Sumatra PDF v3.4.6
 SumatraPDF-3.5.2-64-install.exe >
-  Options > [ Installer pour tout les utilisateurs
-  Permettre à Windows de montrer des aperçus des documents PDF ] onticked > Ccu > Oui
+Options > [ Installer pour tout les utilisateurs
+Permettre à Windows de montrer des aperçus des documents PDF ] onticked > Ccu > Oui
 "C:\Program Files\SumatraPDF\SumatraPDF.exe"
 ## HP Smart
 in Microsoft Store > Installer
 Se connecter  found  HPA22F0E (ENVY 5530)
-  Récupération des informations sur le pilote d'impression  took a while
+Récupération des informations sur le pilote d'impression  took a while
 ## AutoHotkey v2.0.11
 AutoHotkey_2.0.11_setup.exe
-Shortcut to  $MSwin10\mb-HPEB840G362\user\jo.ahk  moved into
-  "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
+Shortcut to  $MSWin10\mb-HPEB840G362\user\jo.ahk  moved into
+"$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
 ## after a reboot
 Faisons une sauvegarde des données de votre PC > Ignorer pour le moment > Continuer
 ## FastStone Image Viewer v7.5
@@ -281,10 +284,10 @@ FSViewerSetup75.exe
 ran it for Esc to offtick
 *.png  Opens with FastStone Image Viewer
 f12 (= Paramètres) > Aperçu >
-  [ En boucle  Rotation Auto par tag orientation EXIF > off  Unité par défaut > cm ]
+[ En boucle  Rotation Auto par tag orientation EXIF > off  Unité par défaut > cm ]
 ### Settings
 replaced  PaperSizeList  settings in  $HADR\FastStone\FSIV\FSSettings.db
-  with those in  $coreIT\MSWin\FSSettings-PaperSizeList.db
+with those in  $coreIT\MSWin\FSSettings-PaperSizeList.db
 ## Everything v1.4.1.1024
 Everything-1.4.1.1024.x64-Setup.exe > clicked through > UAC
 ## The Platinum Searcher v2_2_0
@@ -297,81 +300,81 @@ z  shows it's there, and  Get-InstalledModule  reports  1.4.3 ZLocation
 c ~\Documents\PowerShell\Modules\ZLocation\1.4.3
 ## minimal Visual Studio - for Rust
 VisualStudioSetup.exe > [ Composants individuels > [
-  Compilateurs, outils de génération et runtime >
-    MSVC v143 - VS 2022 C++ x64/x86 build tools (dernière version)
-  SDK, biblothèaues et frameworks > Kit SDK Windows 10 (10.0.19041.0) ]
-  Modules linguistiques > Anglais ] (over 5GB) Installer
+Compilateurs, outils de génération et runtime >
+  MSVC v143 - VS 2022 C++ x64/x86 build tools (dernière version)
+SDK, biblothèaues et frameworks > Kit SDK Windows 10 (10.0.19041.0) ]
+Modules linguistiques > Anglais ] (over 5GB) Installer
 ## Synaptics TouchPad became inactive
 double tap wouldn't restore it, TouchStyk still working
 began a Windows Update that seemed to get stuck,
-  so hard shutdown then reboot and the TouchPad was working again
+so hard shutdown then reboot and the TouchPad was working again
 ## Windows Update
 2024-01 Mise à jour de sécurité pour Windows 10 Version 22H2 pour les systèmes x64 (KB5034441)
-  Des problèmes sont survenus lors de l'installation des mises à jour, mais nous réessaierons ultérieurement. Si le problème persiste et que vous souhaitez rechercher des informations sur Internet ou contacter l'assistance pour en obtenir, ceci peut vous aider : (0x80070643)
+Des problèmes sont survenus lors de l'installation des mises à jour, mais nous réessaierons ultérieurement. Si le problème persiste et que vous souhaitez rechercher des informations sur Internet ou contacter l'assistance pour en obtenir, ceci peut vous aider : (0x80070643)
 ## PC Health Check
 WindowsPCHealthCheckSetup.msi
-  Processeur : Intel Core i5-6300U CPU @ 2.40GHz  ain't enough for Win11...
+Processeur : Intel Core i5-6300U CPU @ 2.40GHz  ain't enough for Win11...
 ## Bulk Rename
 BRU_setup_3.4.4.0.exe  Ran some changes to off-tick 2 notifications
 ## check fast startup off
 Panneau de configuration > Tous les Panneaux de configuration > Options d'alimentation
-  Choisir l'action des boutons d'alimentation > Activer le démarrage rapide  is off
+Choisir l'action des boutons d'alimentation > Activer le démarrage rapide  is off
 ## KB5034441
 Gestion de disques  shows
-  100Mo - Partition du système EFI
-  C: 118,42 Go NTFS - Démarrer, Fichier d'échange, image mémoire après incident, Partition de données de base
-  722Mo - Partition de récupératon
+100Mo - Partition du système EFI
+C: 118,42 Go NTFS - Démarrer, Fichier d'échange, image mémoire après incident, Partition de données de base
+722Mo - Partition de récupératon
 AIdc> reagentc /info
 AIdc> reagentc /disable  for  diskpart
-  list disk
-  sel disk 0
-  list part
-    N° partition   Type              Taille   Décalage
-    -------------  ----------------  -------  --------
-    Partition 1    Système            100 M   1024 K
-    Partition 2    Réservé             16 M    101 M
-    Partition 3    Principale         118 G    117 M
-    Partition 4    Récupération       722 M    118 G
-  sel part 3
-  shrink desired=250 minimum=200
-    Erreur du service de disque virtuel : La taille de réduction spécifiée est trop grande et le volume sera plus petit que la taille de volume minimale.
-  exit
-  reagentc /enable
+list disk
+sel disk 0
+list part
+  N° partition   Type              Taille   Décalage
+  -------------  ----------------  -------  --------
+  Partition 1    Système            100 M   1024 K
+  Partition 2    Réservé             16 M    101 M
+  Partition 3    Principale         118 G    117 M
+  Partition 4    Récupération       722 M    118 G
+sel part 3
+shrink desired=250 minimum=200
+  Erreur du service de disque virtuel : La taille de réduction spécifiée est trop grande et le volume sera plus petit que la taille de volume minimale.
+exit
+reagentc /enable
 ## Windows Backup
 Comptes > Sauvegarde Windows > Vérifier > trohib@gmail.com > Security code
 ### remove symlink in ~\Documents
 ri ~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
-  cpi $MSWin10\PSProfileStub.ps1 ~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
+cpi $MSWin10\PSProfileStub.ps1 ~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
 ri ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
-  cpi $MSWin10\PSProfileStub.ps1 ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+cpi $MSWin10\PSProfileStub.ps1 ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
 ## Windows ADK & Windows PE
 adksetup.exe  (C:\Program Files (x86)\Windows Kits\10\)
-  off-ticked all but  Outils de déploiement  around 130 Mo
+off-ticked all but  Outils de déploiement  around 130 Mo
 adkwinpesetup.exe  3,6 Go !
 ## create bootable Windows PE media - fail
 Démarrage > Windows Kits > Environnement de déploiement et d'outils de création d'images
-  épinglé au menu Démarrer  then ran as Administrator
-    cd "..\Windows Preinstallation Environment\amd64"
-    md C:\WinPE_amd64\mount
-    Dism /Mount-Image /ImageFile:"en-us\winpe.wim" /index:1 /MountDir:"C:\WinPE_amd64\mount"
-    Xcopy "C:\WinPE_amd64\mount\Windows\Boot\EFI\bootmgr.efi" "Media\bootmgr.efi" /Y
-    Xcopy "C:\WinPE_amd64\mount\Windows\Boot\EFI\bootmgfw.efi" "Media\EFI\Boot\bootx64.efi" /Y
-    Dism /Unmount-Image /MountDir:"C:\WinPE_amd64\mount" /commit
-      Erreur : 0xc1420117
-        Le répertoire n'a pas pu être complètement démonté. Ce problème est généralement dû aux applications qui ont des fichiers encore ouverts dans le répertoire de montage. Fermez ces fichiers et réeffectuez le démontage afin de terminer le processus de démontage.
-        Le fichier journal DISM se trouve à l'emplacement C:\WINDOWS\Logs\DISM\dism.log
-    Dism /Unmount-Image /MountDir:"C:\WinPE_amd64\mount" /commit
-      Erreur : 0xc142011d
-        L'image montée spécifiée ne peut pas être revalidée dans le fichier WIM. Ce problème se produit lorsqu'une image a subi un démontage partiel ou lorsqu'une image est encore montée. Si cette image a été démontée avec une validation antérieure, la validation a probablement réussi. Veuillez vérifier si c'est le cas, puis effectuez un démontage sans validation.
-        Le fichier journal DISM se trouve à l'emplacement C:\WINDOWS\Logs\DISM\dism.log
-  exit
+épinglé au menu Démarrer  then ran as Administrator
+  cd "..\Windows Preinstallation Environment\amd64"
+  md C:\WinPE_amd64\mount
+  Dism /Mount-Image /ImageFile:"en-us\winpe.wim" /index:1 /MountDir:"C:\WinPE_amd64\mount"
+  Xcopy "C:\WinPE_amd64\mount\Windows\Boot\EFI\bootmgr.efi" "Media\bootmgr.efi" /Y
+  Xcopy "C:\WinPE_amd64\mount\Windows\Boot\EFI\bootmgfw.efi" "Media\EFI\Boot\bootx64.efi" /Y
+  Dism /Unmount-Image /MountDir:"C:\WinPE_amd64\mount" /commit
+    Erreur : 0xc1420117
+      Le répertoire n'a pas pu être complètement démonté. Ce problème est généralement dû aux applications qui ont des fichiers encore ouverts dans le répertoire de montage. Fermez ces fichiers et réeffectuez le démontage afin de terminer le processus de démontage.
+      Le fichier journal DISM se trouve à l'emplacement C:\WINDOWS\Logs\DISM\dism.log
+  Dism /Unmount-Image /MountDir:"C:\WinPE_amd64\mount" /commit
+    Erreur : 0xc142011d
+      L'image montée spécifiée ne peut pas être revalidée dans le fichier WIM. Ce problème se produit lorsqu'une image a subi un démontage partiel ou lorsqu'une image est encore montée. Si cette image a été démontée avec une validation antérieure, la validation a probablement réussi. Veuillez vérifier si c'est le cas, puis effectuez un démontage sans validation.
+      Le fichier journal DISM se trouve à l'emplacement C:\WINDOWS\Logs\DISM\dism.log
+exit
 ## optimize-volume
 PS> Optimize-Volume -DriveLetter C -Analyze -Verbose
-  ...
-  Il n'est pas nécessaire de défragmenter ce volume.
+...
+Il n'est pas nécessaire de défragmenter ce volume.
 ## MiniTool Partition Wizard Free v12.8
 pw-free-online.exe > édition gratuite > ShadowMaker off_ticked
-  Ran it for "Ne pas afficher ce message à nouveau."
+Ran it for "Ne pas afficher ce message à nouveau."
 ## Ghostscript v10.02.1 (in preparation for ImageMagick)
 gs10021w64.exe > C:\gs-10_02_1  rebooted
 ## remove Windows PE
@@ -401,23 +404,23 @@ APS> install-module burnttoast  got it in the same location and still no notific
 Paramètres > Applications > PowerShell > Uninstall
 Idc> winget add microsoft.powershell
 WT: [erreur 2147942402 (0x80070002) lors du lancement de `"C:\Users\jharr\AppData\Local\Microsoft\WindowsApps\Microsoft.PowerShell_8wekyb3d8bbwe\pwsh.exe"'] so
-  PowerShell > Ligne de commande > "C:\Program Files\PowerShell\7\pwsh.exe"
+PowerShell > Ligne de commande > "C:\Program Files\PowerShell\7\pwsh.exe"
 New-BurntToastNotification
 ## Sumatra PDF v3.5.2
 winget add SumatraPDF -h -l C:\SumatraPDF
 ## update-help
-  Update-Help: Failed to update Help for the module(s) 'AppBackgroundTask, Appx, AssignedAccess, BitLocker, BitsTransfer, BranchCache, CimCmdlets, Defender, DirectAccessClientComponents, Dism, DnsClient, EventTracingManagement, International, Kds, LanguagePackManagement, LAPS, Microsoft.PowerShell.Archive, Microsoft.PowerShell.Core, Microsoft.PowerShell.Diagnostics, Microsoft.PowerShell.Host, Microsoft.PowerShell.LocalAccounts, Microsoft.PowerShell.Management, Microsoft.PowerShell.Operation.Validation, Microsoft.PowerShell.PSResourceGet, Microsoft.PowerShell.Security, Microsoft.PowerShell.Utility, Microsoft.WSMan.Management, MMAgent, NetAdapter, NetConnection, NetEventPacketCapture, NetLbfo, NetNat, NetQos, NetSecurity, NetSwitchTeam, NetTCPIP, NetworkConnectivityStatus, NetworkSwitchManager, NetworkTransition, PackageManagement, PcsvDevice, PKI, PnpDevice, PowerShellGet, PrintManagement, ProcessMitigations, Provisioning, PSDiagnostics, PSReadLine, ScheduledTasks, SecureBoot, SmbShare, SmbWitness, StartLayout, Storage, ThreadJob, TLS, TroubleshootingPack, TrustedPlatformModule, UEV, VpnClient, Wdac, Whea, WindowsDeveloperLicense, WindowsErrorReporting, WindowsSearch, WindowsUpdate' with UI culture(s) {fr-FR} : No UI culture was found that matches the following pattern: fr-FR. Verify the pattern and then try the command again..
-  Update-Help: Failed to update Help for the module(s) 'ConfigDefenderPerformance, PSReadline' with UI culture(s) {fr-FR} : One or more errors occurred. (Response status code does not indicate success: 404 (The specified blob does not exist.).).
-  English-US help content is available and can be installed using: Update-Help -UICulture en-US.
+Update-Help: Failed to update Help for the module(s) 'AppBackgroundTask, Appx, AssignedAccess, BitLocker, BitsTransfer, BranchCache, CimCmdlets, Defender, DirectAccessClientComponents, Dism, DnsClient, EventTracingManagement, International, Kds, LanguagePackManagement, LAPS, Microsoft.PowerShell.Archive, Microsoft.PowerShell.Core, Microsoft.PowerShell.Diagnostics, Microsoft.PowerShell.Host, Microsoft.PowerShell.LocalAccounts, Microsoft.PowerShell.Management, Microsoft.PowerShell.Operation.Validation, Microsoft.PowerShell.PSResourceGet, Microsoft.PowerShell.Security, Microsoft.PowerShell.Utility, Microsoft.WSMan.Management, MMAgent, NetAdapter, NetConnection, NetEventPacketCapture, NetLbfo, NetNat, NetQos, NetSecurity, NetSwitchTeam, NetTCPIP, NetworkConnectivityStatus, NetworkSwitchManager, NetworkTransition, PackageManagement, PcsvDevice, PKI, PnpDevice, PowerShellGet, PrintManagement, ProcessMitigations, Provisioning, PSDiagnostics, PSReadLine, ScheduledTasks, SecureBoot, SmbShare, SmbWitness, StartLayout, Storage, ThreadJob, TLS, TroubleshootingPack, TrustedPlatformModule, UEV, VpnClient, Wdac, Whea, WindowsDeveloperLicense, WindowsErrorReporting, WindowsSearch, WindowsUpdate' with UI culture(s) {fr-FR} : No UI culture was found that matches the following pattern: fr-FR. Verify the pattern and then try the command again..
+Update-Help: Failed to update Help for the module(s) 'ConfigDefenderPerformance, PSReadline' with UI culture(s) {fr-FR} : One or more errors occurred. (Response status code does not indicate success: 404 (The specified blob does not exist.).).
+English-US help content is available and can be installed using: Update-Help -UICulture en-US.
 update-help -uiculture en-gb
 update-help -uiculture en-us
 ## switched to $MSWin10\AZERTY.ahk
 ## ImageMagick
 winget add imagemagick  went to  "C:\Program Files\ImageMagick-7.1.1-Q16-HDRI"
 fresh PowerShell for:  magick wizard: wizard.jpg
-  then  magick wizard.jpg win:  first time generated an IMDisplay
-    "C:\Users\troin\AppData\Local\Temp\magick-<weirdCode> was not found"
-    2nd run, got the jpg opened in IMDisplay   ri wizard.jpg
+then  magick wizard.jpg win:  first time generated an IMDisplay
+  "C:\Users\troin\AppData\Local\Temp\magick-<weirdCode> was not found"
+  2nd run, got the jpg opened in IMDisplay   ri wizard.jpg
 ## Google Chrome icon not showing in Start Menu
 C:\Program Files\Google\Chrome\Application\chrome.exe
 winget rm google.chrome
@@ -426,16 +429,16 @@ winget add google.chrome  got  $HADL\Google\Chrome\Application\chrome.exe
 ## MiKTeX
 winget add miktex  went to  $HADL\Programs\MiKTeX
 rebooted for  MiKTeX Console  which got me a necessary update
-  MiKTeX Console  for 10 updates
+MiKTeX Console  for 10 updates
 $HADL\MiKTeX  created at some point
 sl $jtIT\CP\TeX\distro-MiKTeX\miktex-xetex  for  x mwe.tex  and off_ticked "Always show this dialog"
 ## Pandoc
 after MiKTeX
-  winget add JohnMacFarlane.Pandoc  got  $HADL\Pandoc\pandoc.exe
-    sl $ITsCP\Pandoc  for
-      pandoc --toc --toc-depth=6 -f markdown_strict toCdepth6MWE.md -o toCdepth6MWE.pdf
-      - took a while for MiKTeX to download all the necessary packages
-    md $tex\latex\m4p
+winget add JohnMacFarlane.Pandoc  got  $HADL\Pandoc\pandoc.exe
+  sl $ITsCP\Pandoc  for
+    pandoc --toc --toc-depth=6 -f markdown_strict toCdepth6MWE.md -o toCdepth6MWE.pdf
+    - took a while for MiKTeX to download all the necessary packages
+  md $tex\latex\m4p
 ## path too long for gVim swap
 gp -path "registry::\hklm\system\currentcontrolset\control\filesystem" | fl -property longpathsenabled
 sp 'hklm:\system\currentcontrolset\control\filesystem' -name 'longpathsenabled' -value 1
@@ -443,65 +446,65 @@ rebooted
 didn't fix it, and anyway doesn't help gVim
 ## yt-dlp (and FFmpeg)
 winget add yt-dlp.yt-dlp
-  Ce package nécessite les dépendances suivantes :
-    - Packages
-        Gyan.FFmpeg
-  (1/1) Trouvé FFmpeg [Gyan.FFmpeg] Version 6.1.1
-  ...
-  Téléchargement en cours https://github.com/GyanD/codexffmpeg/releases/download/6.1.1/ffmpeg-6.1.1-full_build.zip
-  ...
-  Installé correctement
-  Téléchargement en cours https://github.com/yt-dlp/yt-dlp/releases/download/2023.12.30/yt-dlp.exe
+Ce package nécessite les dépendances suivantes :
+  - Packages
+      Gyan.FFmpeg
+(1/1) Trouvé FFmpeg [Gyan.FFmpeg] Version 6.1.1
+...
+Téléchargement en cours https://github.com/GyanD/codexffmpeg/releases/download/6.1.1/ffmpeg-6.1.1-full_build.zip
+...
+Installé correctement
+Téléchargement en cours https://github.com/yt-dlp/yt-dlp/releases/download/2023.12.30/yt-dlp.exe
 ### FFmpeg
-  $HADL\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-6.1.1-full_build\bin\ffmpeg.exe
+$HADL\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-6.1.1-full_build\bin\ffmpeg.exe
 ffmpeg -version
 ### yt-dlp
-  C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\yt-dlp.yt-dlp_Microsoft.Winget.Source_8wekyb3d8bbwe\yt-dlp.exe
+C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\yt-dlp.yt-dlp_Microsoft.Winget.Source_8wekyb3d8bbwe\yt-dlp.exe
 yt-dlp --version
 ## Windows Package Manager Updates
 winget update --all
 ## LibreOffice 24.2.0.3
 I seem to've installed with winget.
 ran it to build  ~\AppData\Roaming\LibreOffice\4
-  in  user\  removed  config  folder &  registrymodifications.xcu
-    & replaced them from  $ITsCP\documenting\LibreOffice\lcu-sbMb-user
+in  user\  removed  config  folder &  registrymodifications.xcu
+  & replaced them from  $ITsCP\documenting\LibreOffice\lcu-sbMb-user
 ## WSL
 ### fails (maybe needed to reboot)
 winget add 9MZNMNKSM73X > agreed to  https://vineelsai.com/Privacy/Apps/ArchWSL.html
-  Installing, this may take a few minutes...
-  WslRegisterDistribution failed with error: 0x8007019e
-  Error: 0x8007019e Le sous-systÞme Windows pour Linux n'a pas ÚtÚ activÚ.
+Installing, this may take a few minutes...
+WslRegisterDistribution failed with error: 0x8007019e
+Error: 0x8007019e Le sous-systÞme Windows pour Linux n'a pas ÚtÚ activÚ.
 winget rm 9MZNMNKSM73X
 wsl --install  then  Windows Menu > Ubuntu  got me
-  WslRegisterDistribution failed with error: 0x80080005
-  Error: 0x80080005 échec de l'exécution du serveur
+WslRegisterDistribution failed with error: 0x80080005
+Error: 0x80080005 échec de l'exécution du serveur
 Paramètres > Applications > linux > Désinstaller
 ### Microsoft Store
 https://apps.microsoft.com/detail/9p9tqf7mrm4r > Télécharger > Obténir
-  WslRegisterDistribution failed with error: 0x80080005
-  Error: 0x80080005 échec de l'exécution du serveur
+WslRegisterDistribution failed with error: 0x80080005
+Error: 0x80080005 échec de l'exécution du serveur
 reboot  got a Ubuntu lancement WT
 UNIX username > jo > pw
 ### configure Ubuntu
 touch ~/.hushlogin
 apt update
-  Reading package lists... Done
-  E: Could not open lock file /var/lib/apt/lists/lock - open (13: Permission denied)
-  E: Unable to lock directory /var/lib/apt/lists/
-  W: Problem unlinking the file /var/cache/apt/pkgcache.bin - RemoveCaches (13: Permission denied)
-  W: Problem unlinking the file /var/cache/apt/srcpkgcache.bin - RemoveCaches (13: Permission denied)
+Reading package lists... Done
+E: Could not open lock file /var/lib/apt/lists/lock - open (13: Permission denied)
+E: Unable to lock directory /var/lib/apt/lists/
+W: Problem unlinking the file /var/cache/apt/pkgcache.bin - RemoveCaches (13: Permission denied)
+W: Problem unlinking the file /var/cache/apt/srcpkgcache.bin - RemoveCaches (13: Permission denied)
 sudo apt update  reported 84 so  ...
 sudo apt upgrade
 ## sharkdp.fd
 winget add sharkdp.fd
 ### path modified
-  Variable d'environnement de chemin modifiée ; redémarrez votre interpréteur de commandes pour utiliser la nouvelle valeur.
-  Alias de ligne de commande ajouté : "bat"
+Variable d'environnement de chemin modifiée ; redémarrez votre interpréteur de commandes pour utiliser la nouvelle valeur.
+Alias de ligne de commande ajouté : "bat"
 and, yes, it added  "C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.bat_Microsoft.Winget.Source_8wekyb3d8bbwe\bat-v0.24.0-x86_64-pc-windows-msvc;;"
 #### fix ;;
 $oldPathCU = (gp -path 'registry::hkcu\environment' -name path).path
 $oldPathCU
-  C:\Users\jharr\.cargo\bin;C:\Users\jharr\AppData\Local\Microsoft\WindowsApps;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\BurntSushi.ripgrep.MSVC_Microsoft.Winget.Source_8wekyb3d8bbwe\ripgrep-14.1.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.bat_Microsoft.Winget.Source_8wekyb3d8bbwe\bat-v0.24.0-x86_64-pc-windows-msvc;
+C:\Users\jharr\.cargo\bin;C:\Users\jharr\AppData\Local\Microsoft\WindowsApps;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\BurntSushi.ripgrep.MSVC_Microsoft.Winget.Source_8wekyb3d8bbwe\ripgrep-14.1.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.bat_Microsoft.Winget.Source_8wekyb3d8bbwe\bat-v0.24.0-x86_64-pc-windows-msvc;
 ##### remove trailing ;
 $newPathCU = $oldPathCU -replace ';$', ''
 $newPathCU
@@ -509,29 +512,29 @@ sp -path 'registry::hkcu\environment' -name path -value $newPathCU
 ## gokcehan's lf
 winget add gokcehan.lf
 ### path modified
-  Variable d’environnement de chemin modifiée ; redémarrez votre interpréteur de commandes pour utiliser la nouvelle valeur.
-  Alias de ligne de commande ajouté : "lf"
+Variable d’environnement de chemin modifiée ; redémarrez votre interpréteur de commandes pour utiliser la nouvelle valeur.
+Alias de ligne de commande ajouté : "lf"
 #### fix ;;
 $oldPathCU = (gp -path 'registry::hkcu\environment' -name path).path; $oldPathCU
-  C:\Users\jharr\.cargo\bin;C:\Users\jharr\AppData\Local\Microsoft\WindowsApps;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\BurntSushi.ripgrep.MSVC_Microsoft.Winget.Source_8wekyb3d8bbwe\ripgrep-14.1.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.bat_Microsoft.Winget.Source_8wekyb3d8bbwe\bat-v0.24.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.fd_Microsoft.Winget.Source_8wekyb3d8bbwe\fd-v9.0.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Programs\MiKTeX\miktex\bin\x64\;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-6.1.1-full_build\bin;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\gokcehan.lf_Microsoft.Winget.Source_8wekyb3d8bbwe;
+C:\Users\jharr\.cargo\bin;C:\Users\jharr\AppData\Local\Microsoft\WindowsApps;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\BurntSushi.ripgrep.MSVC_Microsoft.Winget.Source_8wekyb3d8bbwe\ripgrep-14.1.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.bat_Microsoft.Winget.Source_8wekyb3d8bbwe\bat-v0.24.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.fd_Microsoft.Winget.Source_8wekyb3d8bbwe\fd-v9.0.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Programs\MiKTeX\miktex\bin\x64\;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-6.1.1-full_build\bin;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\gokcehan.lf_Microsoft.Winget.Source_8wekyb3d8bbwe;
 ##### remove trailing ;
 $newPathCU = $oldPathCU -replace ';$', ''; $newPathCU
 sp -path 'registry::hkcu\environment' -name path -value $newPathCU
 ## less-Windows
 winget install jftuga.less
 ### path modified
-  Variable d’environnement de chemin modifiée ; redémarrez votre interpréteur de commandes pour utiliser la nouvelle valeur.
-  Alias de ligne de commande ajouté : "less"
-  Alias de ligne de commande ajouté : "lesskey"
+Variable d’environnement de chemin modifiée ; redémarrez votre interpréteur de commandes pour utiliser la nouvelle valeur.
+Alias de ligne de commande ajouté : "less"
+Alias de ligne de commande ajouté : "lesskey"
 #### fix ;;
 $oldPathCU = (gp -path 'registry::hkcu\environment' -name path).path; $oldPathCU
-  C:\Users\jharr\.cargo\bin;C:\Users\jharr\AppData\Local\Microsoft\WindowsApps;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\BurntSushi.ripgrep.MSVC_Microsoft.Winget.Source_8wekyb3d8bbwe\ripgrep-14.1.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.bat_Microsoft.Winget.Source_8wekyb3d8bbwe\bat-v0.24.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.fd_Microsoft.Winget.Source_8wekyb3d8bbwe\fd-v9.0.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Programs\MiKTeX\miktex\bin\x64\;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-6.1.1-full_build\bin;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\gokcehan.lf_Microsoft.Winget.Source_8wekyb3d8bbwe;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\jftuga.less_Microsoft.Winget.Source_8wekyb3d8bbwe;
+C:\Users\jharr\.cargo\bin;C:\Users\jharr\AppData\Local\Microsoft\WindowsApps;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\BurntSushi.ripgrep.MSVC_Microsoft.Winget.Source_8wekyb3d8bbwe\ripgrep-14.1.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.bat_Microsoft.Winget.Source_8wekyb3d8bbwe\bat-v0.24.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.fd_Microsoft.Winget.Source_8wekyb3d8bbwe\fd-v9.0.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Programs\MiKTeX\miktex\bin\x64\;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-6.1.1-full_build\bin;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\gokcehan.lf_Microsoft.Winget.Source_8wekyb3d8bbwe;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\jftuga.less_Microsoft.Winget.Source_8wekyb3d8bbwe;
 ##### remove trailing ;
 $newPathCU = $oldPathCU -replace ';$', ''; $newPathCU
 sp -path 'registry::hkcu\environment' -name path -value $newPathCU
 ## EUDC 1252 (for PowerColorLS icons)
 right-clicked on  $ITscc/font-Nerd-CascadiaMono/CaskaydiaMonoNerdFontMono-Regular.ttf >
-  Installer  then (should be only)  Installer pour tous les utilisateurs
+Installer  then (should be only)  Installer pour tous les utilisateurs
 test-path hkcu:\eudc\1252
 ni -path hkcu:\eudc\1252
 sp hkcu:\eudc\1252 -name SystemDefaultEUDCFont -value CaskaydiaMonoNerdFontMono-Regular.ttf -type string
@@ -542,33 +545,33 @@ md $HADL\lf
 ## Chafa
 winget add chafa
 ### path modified
-  Variable d’environnement de chemin modifiée ; redémarrez votre interpréteur de commandes pour utiliser la nouvelle valeur.
-  Alias de ligne de commande ajouté : "chafa"
+Variable d’environnement de chemin modifiée ; redémarrez votre interpréteur de commandes pour utiliser la nouvelle valeur.
+Alias de ligne de commande ajouté : "chafa"
 #### fix ;;
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
-  C:\Users\jharr\.cargo\bin;C:\Users\jharr\AppData\Local\Microsoft\WindowsApps;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\BurntSushi.ripgrep.MSVC_Microsoft.Winget.Source_8wekyb3d8bbwe\ripgrep-14.1.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.bat_Microsoft.Winget.Source_8wekyb3d8bbwe\bat-v0.24.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.fd_Microsoft.Winget.Source_8wekyb3d8bbwe\fd-v9.0.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Programs\MiKTeX\miktex\bin\x64\;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-6.1.1-full_build\bin;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\gokcehan.lf_Microsoft.Winget.Source_8wekyb3d8bbwe;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\jftuga.less_Microsoft.Winget.Source_8wekyb3d8bbwe;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\hpjansson.Chafa_Microsoft.Winget.Source_8wekyb3d8bbwe\chafa-1.14.0-1-x86_64-win;
+C:\Users\jharr\.cargo\bin;C:\Users\jharr\AppData\Local\Microsoft\WindowsApps;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\BurntSushi.ripgrep.MSVC_Microsoft.Winget.Source_8wekyb3d8bbwe\ripgrep-14.1.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.bat_Microsoft.Winget.Source_8wekyb3d8bbwe\bat-v0.24.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.fd_Microsoft.Winget.Source_8wekyb3d8bbwe\fd-v9.0.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Programs\MiKTeX\miktex\bin\x64\;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-6.1.1-full_build\bin;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\gokcehan.lf_Microsoft.Winget.Source_8wekyb3d8bbwe;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\jftuga.less_Microsoft.Winget.Source_8wekyb3d8bbwe;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\hpjansson.Chafa_Microsoft.Winget.Source_8wekyb3d8bbwe\chafa-1.14.0-1-x86_64-win;
 ##### remove trailing ;
 $newPathCU = $oldPathCU -replace ';$', ''; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## LSD
 winget add lsd
 ### path modified
-  Variable d’environnement de chemin modifiée ; redémarrez votre interpréteur de commandes pour utiliser la nouvelle valeur.
-  Alias de ligne de commande ajouté : "lsd"
+Variable d’environnement de chemin modifiée ; redémarrez votre interpréteur de commandes pour utiliser la nouvelle valeur.
+Alias de ligne de commande ajouté : "lsd"
 #### fix ; at end of path
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
-  C:\Users\jharr\.cargo\bin;C:\Users\jharr\AppData\Local\Microsoft\WindowsApps;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\BurntSushi.ripgrep.MSVC_Microsoft.Winget.Source_8wekyb3d8bbwe\ripgrep-14.1.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.bat_Microsoft.Winget.Source_8wekyb3d8bbwe\bat-v0.24.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.fd_Microsoft.Winget.Source_8wekyb3d8bbwe\fd-v9.0.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Programs\MiKTeX\miktex\bin\x64\;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-6.1.1-full_build\bin;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\gokcehan.lf_Microsoft.Winget.Source_8wekyb3d8bbwe;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\jftuga.less_Microsoft.Winget.Source_8wekyb3d8bbwe;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\hpjansson.Chafa_Microsoft.Winget.Source_8wekyb3d8bbwe\chafa-1.14.0-1-x86_64-win;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\lsd-rs.lsd_Microsoft.Winget.Source_8wekyb3d8bbwe\lsd-v1.0.0-x86_64-pc-windows-msvc;
+C:\Users\jharr\.cargo\bin;C:\Users\jharr\AppData\Local\Microsoft\WindowsApps;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\BurntSushi.ripgrep.MSVC_Microsoft.Winget.Source_8wekyb3d8bbwe\ripgrep-14.1.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.bat_Microsoft.Winget.Source_8wekyb3d8bbwe\bat-v0.24.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.fd_Microsoft.Winget.Source_8wekyb3d8bbwe\fd-v9.0.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Programs\MiKTeX\miktex\bin\x64\;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-6.1.1-full_build\bin;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\gokcehan.lf_Microsoft.Winget.Source_8wekyb3d8bbwe;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\jftuga.less_Microsoft.Winget.Source_8wekyb3d8bbwe;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\hpjansson.Chafa_Microsoft.Winget.Source_8wekyb3d8bbwe\chafa-1.14.0-1-x86_64-win;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\lsd-rs.lsd_Microsoft.Winget.Source_8wekyb3d8bbwe\lsd-v1.0.0-x86_64-pc-windows-msvc;
 ##### remove trailing ;
 $newPathCU = $oldPathCU -replace ';$', ''; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## Nom de l'appareil
 Paramètres > Système > À propos de > Nom de l'appareil (DESKTOP-GSPV6OJ) >
-  Renommer ce PC > HPEB840G37
+Renommer ce PC > HPEB840G37
 ## eza
 winget add eza-community.eza
 ### path modified
-  Variable d’environnement de chemin modifiée ; redémarrez votre interpréteur de commandes pour utiliser la nouvelle valeur.
-  Alias de ligne de commande ajouté : "eza"
+Variable d’environnement de chemin modifiée ; redémarrez votre interpréteur de commandes pour utiliser la nouvelle valeur.
+Alias de ligne de commande ajouté : "eza"
 fixed ; at end of path
 ## path to LSD dissappeared
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
@@ -588,66 +591,66 @@ all other attmempts to  add  to  C:\Emacs  failed  $env:programfiles\Emacs  to r
 ## Emacs v29.3 - good for Vim
 winget add emacs  then  APS> mv $env:programfiles\Emacs C:\Emacs -force
 ## fzf.exe v0.48.0 (for PSFzf)
-$MSwin10\mb\fzf.ps1
+$MSWin10\mb\fzf.ps1
 ## gokcehan's lf update failed
 ### uninstall fail
 winget rm gokcehan.lf
-  remove: Accs refus.: "C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\gokcehan.lf_Microsoft.Winget.Source_8wekyb3d8bbwe\lf.exe"
+remove: Accs refus.: "C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\gokcehan.lf_Microsoft.Winget.Source_8wekyb3d8bbwe\lf.exe"
 ### uninstall
 reboot  for  winget rm gokcehan.lf  (should've tried update)  still in  $env:path
 winget add gokcehan.lf
-  Alias de ligne de commande ajouté : "lf"
+Alias de ligne de commande ajouté : "lf"
 ## Neovim
 winget add Neovim.Neovim  rebooted   nvim  for Lazy installs
 ## pipx
 py -m pip install --user pipx
-  Installing collected packages: platformdirs, packaging, colorama, argcomplete, click, userpath, pipx
-    WARNING: The script userpath.exe is installed in 'C:\Users\jharr\AppData\Roaming\Python\Python312\Scripts' which is not on PATH.
-    Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
-    WARNING: The script pipx.exe is installed in 'C:\Users\jharr\AppData\Roaming\Python\Python312\Scripts' which is not on PATH.
-    Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
-  Successfully installed argcomplete-3.2.3 click-8.1.7 colorama-0.4.6 packaging-24.0 pipx-1.5.0 platformdirs-4.2.0 userpath-1.9.2
+Installing collected packages: platformdirs, packaging, colorama, argcomplete, click, userpath, pipx
+  WARNING: The script userpath.exe is installed in 'C:\Users\jharr\AppData\Roaming\Python\Python312\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script pipx.exe is installed in 'C:\Users\jharr\AppData\Roaming\Python\Python312\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed argcomplete-3.2.3 click-8.1.7 colorama-0.4.6 packaging-24.0 pipx-1.5.0 platformdirs-4.2.0 userpath-1.9.2
 sl ~\AppData\Roaming\Python\Python312\Scripts
 for  .\pipx.exe ensurepath
-  Success! Added C:\Users\jharr\.local\bin to the PATH environment variable.
-  Success! Added C:\Users\jharr\AppData\Roaming\Python\Python312\Scripts to the PATH environment variable.
-  Consider adding shell completions for pipx. Run 'pipx completions' for instructions.
+Success! Added C:\Users\jharr\.local\bin to the PATH environment variable.
+Success! Added C:\Users\jharr\AppData\Roaming\Python\Python312\Scripts to the PATH environment variable.
+Consider adding shell completions for pipx. Run 'pipx completions' for instructions.
 ## pynvim (for neovim)
 (needed for python packages)  pip install pynvim
 ## Python executable
 where.exe python
-  C:\Python312\python.exe
-  C:\Users\jharr\AppData\Local\Microsoft\WindowsApps\python.exe
+C:\Python312\python.exe
+C:\Users\jharr\AppData\Local\Microsoft\WindowsApps\python.exe
 - the latter fires up Microsoft Store. I could remove them from APS
 ## Jekyll
 (in a refreshed Powershell) gem install bundler jekyll
 ## Ruby neovim gem
 gem install neovim
-  MSYS2 could not be found. Please run 'ridk install'
+MSYS2 could not be found. Please run 'ridk install'
 ridk install  failed, but fired up  MSYS2  installer  C:\msys64
 ridk install  did a huge pacman install and got me  C:\msys64\usr\bin\perl.exe
 gem install neovim
 ## Node.js
 winget add OpenJS.NodeJS
 Node.js  icon pulled over to Start Menu, run for  console.log('Hello')
-  C:\Program Files\nodejs\node.exe
-  $programfiles\nodejs\node_modules\corepack\README.md
-  $programfiles\nodejs\node_modules\npm\README.md
+C:\Program Files\nodejs\node.exe
+$programfiles\nodejs\node_modules\corepack\README.md
+$programfiles\nodejs\node_modules\npm\README.md
 npm prefix -g  reports  C:\Users\jharr\AppData\Roaming\npm
 md C:\Users\jharr\AppData\Roaming\npm   then  npm ls -g  works
 npm i -g carbonyl  then  carbonyl https://github.com
-  /bin/bash: C:UsersjharrAppDataRoamingnpm/node_modules/carbonyl/index.sh: No such file or directory
+/bin/bash: C:UsersjharrAppDataRoamingnpm/node_modules/carbonyl/index.sh: No such file or directory
 ## Node.js - npm - neovim
 npm install -g neovim
 ## Perl
 winget add StrawberryPerl.StrawberryPerl
 ## Perl - Neovim::Ext
 cpanm Neovim::Ext  authorised  Perl interpreter  in  Windows Firewall
-  Building and testing IO-Async-0.803 ... FAIL
-  ! Installing IO::Async failed. See C:\Users\jharr\.cpanm\work\1712687394.5784\build.log for details. Retry with --force to force install it.
-  ! Installing the dependencies failed: Module 'IO::Async' is not installed
-  ! Bailing out the installation for Neovim-Ext-0.06.
-  10 distributions installed
+Building and testing IO-Async-0.803 ... FAIL
+! Installing IO::Async failed. See C:\Users\jharr\.cpanm\work\1712687394.5784\build.log for details. Retry with --force to force install it.
+! Installing the dependencies failed: Module 'IO::Async' is not installed
+! Bailing out the installation for Neovim-Ext-0.06.
+10 distributions installed
 cpanm Neovim::Ext  failed again on  IO-Async-0.803
 cpanm IO::Async  failed again
 ### Perl remove
@@ -664,7 +667,7 @@ rm -r ~\.cpanm -force  C:\Strawberry  is empty
 winget add StrawberryPerl.StrawberryPerl
 ### Perl - Neovim::Ext again
 cpanm IO::Async  then  cpanm Neovim::Ext
-  fucking-well tried to re-install  IO::Async, and so failed again...
+fucking-well tried to re-install  IO::Async, and so failed again...
 ### Perl remove again
 winget rm StrawberryPerl.StrawberryPerl  - took a long time and closed  gVim
 rm -r ~\.cpanm -force  C:\Strawberry  is empty
@@ -672,7 +675,7 @@ rm -r ~\.cpanm -force  C:\Strawberry  is empty
 winget add StrawberryPerl.StrawberryPerl
 ### Perl - Neovim::Ext again
 ppm install Neovim::Ext
-  Error installing package 'Neovim-Ext': Could not locate a PPD file for package Neovim-Ext
+Error installing package 'Neovim-Ext': Could not locate a PPD file for package Neovim-Ext
 ### Perl - Neovim::Ext abandoned
 probably never going to work on native MSWin
 ## CMake
@@ -681,31 +684,31 @@ winget add Kitware.CMake
 inmo VSSetup
 ## Visual Studio Build Tools 2022 to make  telescope-fzf-native.nvim
 vs_BuildTools.exe (Visual Studio Installer) > [ Composants individuels > [
-  Compilateurs, outils de génération et runtime >
-    MSVC v143 - VS 2022 C++ x64/x86 build tools (dernière version)
-    Outils C++ CMake pour Windows
-  SDK, biblothèaues et frameworks >
-    Kit de développement logiciel (SDK) Windows 10 (10.0.20348.0)
-  ] > (under 2GB) Installer, 131 packages
+Compilateurs, outils de génération et runtime >
+  MSVC v143 - VS 2022 C++ x64/x86 build tools (dernière version)
+  Outils C++ CMake pour Windows
+SDK, biblothèaues et frameworks >
+  Kit de développement logiciel (SDK) Windows 10 (10.0.20348.0)
+] > (under 2GB) Installer, 131 packages
 ## ShellCheck
 winget add koalaman.shellcheck
 ### path modified
-  Variable d’environnement de chemin modifiée ; redémarrez votre interpréteur de commandes pour utiliser la nouvelle valeur.
-  Alias de ligne de commande ajouté : "shellcheck"
+Variable d’environnement de chemin modifiée ; redémarrez votre interpréteur de commandes pour utiliser la nouvelle valeur.
+Alias de ligne de commande ajouté : "shellcheck"
 fixed ; at end of path
 ## developer mode (for nvim-treesitter)
 Paramétres > Mise à jour et sécurité > Espace développeurs > Mode développeur > Activé
 ## nvim  in  x64 Native Tools Command Prompt for VS 2022
-  Erreur détectée en traitant C:\Users\jharr\AppData\Local\nvim\init.vim :
-  ligne   92 :
-  E5108: Error executing lua vim/_init_packages.lua:21: C:\Users\jharr\AppData\Local\nvim/lua/lazy/treesitter.lua:15: '=' expected near 'lua'
-  stack traceback:
-        [C]: in function 'error'
-        vim/_init_packages.lua:21: in function <vim/_init_packages.lua:15>
-        [C]: in function 'require'
-        C:\Users\jharr\AppData\Local\nvim/lua/init.lua:50: in main chunk
-        [C]: in function 'require'
-        [string ":lua"]:1: in main chunk
+Erreur détectée en traitant C:\Users\jharr\AppData\Local\nvim\init.vim :
+ligne   92 :
+E5108: Error executing lua vim/_init_packages.lua:21: C:\Users\jharr\AppData\Local\nvim/lua/lazy/treesitter.lua:15: '=' expected near 'lua'
+stack traceback:
+      [C]: in function 'error'
+      vim/_init_packages.lua:21: in function <vim/_init_packages.lua:15>
+      [C]: in function 'require'
+      C:\Users\jharr\AppData\Local\nvim/lua/init.lua:50: in main chunk
+      [C]: in function 'require'
+      [string ":lua"]:1: in main chunk
 ## Git v2.45.0
 ## fd v10.0.0
 executable lost from path
@@ -719,7 +722,7 @@ $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
 $newPathCU = $oldPathCU -replace '\\fd.exe$', ''; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## fzf from winget
-$MSwin10\mb\fzf.ps1
+$MSWin10\mb\fzf.ps1
 & $HADL\Microsoft\WinGet\Links\fzf.exe --version
 fixed ; at end of path
 ## fd v10.1.0
@@ -739,34 +742,34 @@ C:\Windows\System32\bash.exe --help
 C:\Users\jharr\AppData\Local\Microsoft\WindowsApps\bash.exe --help
 ## FastStone Image Viewer v7.8
 f12 (= Paramètres) > Aperçu > [
-  Confirmer la reéctirure des fichiers  Lancer les images associées > dans une Fenêtre ]
+Confirmer la reéctirure des fichiers  Lancer les images associées > dans une Fenêtre ]
 ## XnView MP
 winget add XnSoft.XnViewMP
 ran it for  Assistant de démarrage > Thème > Sombre
 ## Prettier
 from somewhere, npm i -D -E prettier  not working so  npm un prettier
-  (~\AppData\Roaming\npm\node_modules\prettier  still there)
+(~\AppData\Roaming\npm\node_modules\prettier  still there)
 npm i -g -D -E prettier
 ## Thunderbird
 winget add mozilla.thunderbird -h -l C:\MT
 ran it to get  $HADR\Thunderbird\Profiles\q6qwq868.default-release
-  which I emptied, and then edited  $HADR\Thunderbird\profiles.ini
-    [Profile0] section:
-      Name=default-release
-      IsRelative=0
-      Path=C:\Users\jharr\Dropbox\JH\Thb-dr
+which I emptied, and then edited  $HADR\Thunderbird\profiles.ini
+  [Profile0] section:
+    Name=default-release
+    IsRelative=0
+    Path=C:\Users\jharr\Dropbox\JH\Thb-dr
 ran it for (default-release) Démarrer Thunderbird)
 ## Neovide
 winget add neovide  'C:\Program Files\Neovide\neovide.exe'
 ## SQLite
 winget add sqlite.sqlite
-  Alias de ligne de commande ajouté : "sqldiff"
-  Alias de ligne de commande ajouté : "sqlite3_analyzer"
-  Alias de ligne de commande ajouté : "sqlite3"
+Alias de ligne de commande ajouté : "sqldiff"
+Alias de ligne de commande ajouté : "sqlite3_analyzer"
+Alias de ligne de commande ajouté : "sqlite3"
 didn't seem to install a  sqlite3.dll
 ## reduce C:
 MiniTool Partition Wizard Free v12.8
-  right-clicked on C: > Déplacer/redimensionner > Taille de la partition > 118.15
+right-clicked on C: > Déplacer/redimensionner > Taille de la partition > 118.15
 ## Edge reconfigure
 annoying process
 F12 (= DevTools) to clear away question
@@ -781,32 +784,32 @@ after reboot, accepted > Importer les paramètres
 ## Epson EcoTank ET-5170
 plugged into USB (got it going)
 Paramètres > Périphériques > Imprimantes et scanners > Ajouter > DIRECT-8b-EPSON-ET-5170 Series >
-  Ajouter l'appareil (Connexion) > Pilote indisponible  so  epson637525eu.exe (= Pilote v3.01.00) >
-  Installation des utilitaires > Connexion réseau  failed, so  Connexion USB  then unplugged for
-  Paramètres > Périphériques > Imprimantes et scanners > Ajouter > DIRECT-8b-EPSON-ET-5170 Series >
-  Ajouter l'appareil (Connexion) > still Pilote indisponible  so  winget add 9WZDNCRFJ4P8
+Ajouter l'appareil (Connexion) > Pilote indisponible  so  epson637525eu.exe (= Pilote v3.01.00) >
+Installation des utilitaires > Connexion réseau  failed, so  Connexion USB  then unplugged for
+Paramètres > Périphériques > Imprimantes et scanners > Ajouter > DIRECT-8b-EPSON-ET-5170 Series >
+Ajouter l'appareil (Connexion) > still Pilote indisponible  so  winget add 9WZDNCRFJ4P8
 ## switched back to  $MSWin10\AutoHotkey\HPEB840G37.ahk
 because different users
 ## Epson EcoTank ET-5170
 Applications et fonctionnalités > Epson Software Updater > Désinstaller
-  Ajouter l'appareil (Connexion) > still Pilote indisponible  so
+Ajouter l'appareil (Connexion) > still Pilote indisponible  so
 Applications et fonctionnalités > Désinstallation de l'imprimante EPSON ET-5170 Series >
-  Désinstaller > Microsoft IPP Class Driver > OK > Oui > OK
-  Ajouter l'appareil (Connexion) > still Pilote indisponible
+Désinstaller > Microsoft IPP Class Driver > OK > Oui > OK
+Ajouter l'appareil (Connexion) > still Pilote indisponible
 Applications et fonctionnalités > Epson Print and Scan > Désinstaller
-  Ajouter l'appareil (Connexion) > still Pilote indisponible
+Ajouter l'appareil (Connexion) > still Pilote indisponible
 epson637525eu.exe failed to find on LAN or USB, so Manuel / USB002 (EPSONET-5170 Series FAX)
 Epson Printer Connection Checker  can't connect by LAN, Wi-Fi, or USB...
 EPSON Status Monitor 3: EPSON ET-5170 Series  can't connnect by LAN or Wi-Fi
 Epson Print and Scan Installer.exe  doesn't find the printer...
 somehow got to  Install Navi [ET-5170 Series]  which took ages to install some stuff > Wi-Fi
-  downloaded EpsonNet Setup  which eventually failed to connect
+downloaded EpsonNet Setup  which eventually failed to connect
 ## Lua from MS fail
 winget add 9WZDNCRDLTZP > y
-  got unusable  $CPF\WindowsApps\2490UnSoft.Lua_1.0.0.0_x64__eqt05ahzs4mk6\Lua.exe
+got unusable  $CPF\WindowsApps\2490UnSoft.Lua_1.0.0.0_x64__eqt05ahzs4mk6\Lua.exe
 winget rm 9WZDNCRDLTZP
 winget add 9WZDNCRDLTZP -l C:\Lua > y
-  still got unusable  $CPF\WindowsApps\2490UnSoft.Lua_1.0.0.0_x64__eqt05ahzs4mk6\Lua.exe
+still got unusable  $CPF\WindowsApps\2490UnSoft.Lua_1.0.0.0_x64__eqt05ahzs4mk6\Lua.exe
 winget rm 9WZDNCRDLTZP
 ## Lua
 cp D:\Dropbox\JH\core\IT_stack\copied-code\forMSWin\LuaBinaries\lua-5.4.2_Win64_bin C:\Lua -recurse
@@ -822,20 +825,20 @@ polluted with what's normally in  $HADR\Thunderbird\Profiles\xxxxxxxx.default-es
 Deleted all but  installs.ini, Profiles, profiles.ini
 emptied  Profiles
 in $HADR\Thunderbird\profiles.ini
-  removed [ProfileN] for N > 0
-  [Profile0]
-    Name=default-esr
-    IsRelative=0
-    Path=D:\Dropbox\JH\Thb-dr
-  [Install5CC7CE6A1DCFB43B]
-    Default=D:\Dropbox\JH\Thb-dr
-    Locked=1
+removed [ProfileN] for N > 0
+[Profile0]
+  Name=default-esr
+  IsRelative=0
+  Path=D:\Dropbox\JH\Thb-dr
+[Install5CC7CE6A1DCFB43B]
+  Default=D:\Dropbox\JH\Thb-dr
+  Locked=1
 ## updating WSL
 PS> wsl -l -o  shows  Ubuntu-24.04
 $ lsb_release -a  reports  Ubuntu 22.04.4 LTS
 sudo apt update && sudo apt upgrade
-  The following packages have been kept back:
-    libldap-2.5-0 libldap-common python3-update-manager update-manager-core
+The following packages have been kept back:
+  libldap-2.5-0 libldap-common python3-update-manager update-manager-core
 sudo apt-get install libldap-2.5-0 libldap-common python3-update-manager update-manager-core
 sudo do-release-upgrade  returns  There is no development version of an LTS available.
 sudo apt install plocate  then took ages to initialize the database
@@ -851,8 +854,8 @@ sudo apt remove 7zip
 sudo apt install p7zip-full
 #### notify-send
 sudo apt install libnotify-bin
-  but  notify-send -u critical "test of critical notification"
-    gets "Could not connect: No such file or directory"
+but  notify-send -u critical "test of critical notification"
+  gets "Could not connect: No such file or directory"
 #### Samokovarov's jump
 sudo snap install jump
 #### tmux
@@ -860,44 +863,44 @@ sudo apt install tmux
 . $MSn/set/6-WSL-nodes.sh
 #### wslu
 sudo add-apt-repository ppa:wslutilities/wslu
-  got me  \\wsl$\Ubuntu\etc\apt\sources.list.d\wslutilities-ubuntu-wslu-jammy.list
+got me  \\wsl$\Ubuntu\etc\apt\sources.list.d\wslutilities-ubuntu-wslu-jammy.list
 sudo apt update
 sudo apt install wslu
 ## Epson EcoTank ET-5170
 still Pilote indisponible  so
-  Applications et fonctionnalités > Désinstallation de l'imprimante EPSON ET-5170 Series > ...
-  Applications et fonctionnalités > Epson Print and Scan > Désinstaller > ...
-  Applications et fonctionnalités > EpsonNet Print > Désinstaller > ...
-  Applications et fonctionnalités > Epson Scan 2 > Désinstaller > ...
-  Applications et fonctionnalités > Epson Printer Connection Checker > ...
+Applications et fonctionnalités > Désinstallation de l'imprimante EPSON ET-5170 Series > ...
+Applications et fonctionnalités > Epson Print and Scan > Désinstaller > ...
+Applications et fonctionnalités > EpsonNet Print > Désinstaller > ...
+Applications et fonctionnalités > Epson Scan 2 > Désinstaller > ...
+Applications et fonctionnalités > Epson Printer Connection Checker > ...
 epson637525eu.exe (driver v3.01.00) got it working when plugged into USB
 epson661623eu.exe (Epson Software updater v4.6.7.0) and ran it with printer plugged into USB for
-    Pilote d'impression v3.02.00
-    Epson Printer Connection Checker v3.4.0.0
-    Epson ScanSmart v3.7.10
-  - took forever to download even when switched to a fast connection...
-  ran again to get  Epson ScanSmart v3.7.10
+  Pilote d'impression v3.02.00
+  Epson Printer Connection Checker v3.4.0.0
+  Epson ScanSmart v3.7.10
+- took forever to download even when switched to a fast connection...
+ran again to get  Epson ScanSmart v3.7.10
 Epson Printer Connection Checker v3.4.0.0  couldn`t find it on LAN, and so I allowed
-  Install Navi [ET-5170 Series], which again took ages and brought in an unwanted Fax Utility
-    it found the printer on 192.168.1.3
-  unplugged the LAN, and the printer's gone, so, from the Setup Navi page, got
-    Epson_ET-5170_Series_LM_11_Web.exe, which again downloaded a driver without telling me which
-    then  EpsonNet Setup  was again slowly downoaded...
-    managed to get the printer connected to  SSID cafezoide pro
+Install Navi [ET-5170 Series], which again took ages and brought in an unwanted Fax Utility
+  it found the printer on 192.168.1.3
+unplugged the LAN, and the printer's gone, so, from the Setup Navi page, got
+  Epson_ET-5170_Series_LM_11_Web.exe, which again downloaded a driver without telling me which
+  then  EpsonNet Setup  was again slowly downoaded...
+  managed to get the printer connected to  SSID cafezoide pro
 Applications et fonctionnalités > Désinstallation de l'imprimante EPSON ET-5170 Series >
-  ET-5170 Series(Réseau) and  ET-5170 Series  uninstalled
+ET-5170 Series(Réseau) and  ET-5170 Series  uninstalled
 ## gem update
-  ...
-  Updating sass-embedded
-  Fetching sass-embedded-1.77.8-x64-mingw-ucrt.gem
-  sass-embedded's executable "sass" conflicts with sass
-  Overwrite the executable? [yN] y
-  ...
-  Gems updated: addressable bundler commonmarker dnsruby faraday faraday-net_http google-protobuf html-pipeline selma zeitwerk irb jekyll jekyll-coffeescript jekyll-commonmark-ghpages jekyll-relative-links liquid minitest neovim net-ftp net-imap nokogiri octokit public_suffix racc rbs reline rexml rouge sass-embedded stringio
+...
+Updating sass-embedded
+Fetching sass-embedded-1.77.8-x64-mingw-ucrt.gem
+sass-embedded's executable "sass" conflicts with sass
+Overwrite the executable? [yN] y
+...
+Gems updated: addressable bundler commonmarker dnsruby faraday faraday-net_http google-protobuf html-pipeline selma zeitwerk irb jekyll jekyll-coffeescript jekyll-commonmark-ghpages jekyll-relative-links liquid minitest neovim net-ftp net-imap nokogiri octokit public_suffix racc rbs reline rexml rouge sass-embedded stringio
 ## Epson EcoTank ET-5170
 Applications et fonctionnalités > [
-  Epson Event Manager > Désinstaller
-  Epson PC-FAX Driver > Désinstaller
+Epson Event Manager > Désinstaller
+Epson PC-FAX Driver > Désinstaller
 epson637525eu.exe (driver v3.01.00) got it working when plugged into USB
 ## Rclone
 winget add Rclone.Rclone
@@ -905,16 +908,16 @@ winget add Rclone.Rclone
 :se fenc  reports  latin1
 ## winget update --all  stuck on  yt-dlp
 keeps re-offering it, and not pursuing the other updates
-  same after a reboot so  winget rm yt-dlp.yt-dlp
+same after a reboot so  winget rm yt-dlp.yt-dlp
 ## WT Ubuntu
 Ubuntu
-  Icône > https://assets.ubuntu.com/v1/49a1a858-favicon-32x32.png - the one that shows in use
-  Ligne de commande > ubuntu.exe
-  Masquez le profil de la liste déroulante > Désactivé
+Icône > https://assets.ubuntu.com/v1/49a1a858-favicon-32x32.png - the one that shows in use
+Ligne de commande > ubuntu.exe
+Masquez le profil de la liste déroulante > Désactivé
 Ubuntu
-  Icône > ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png
-  Ligne de commande > C:\Windows\system32\wsl.exe -d Ubuntu
-  Masquez le profil de la liste déroulante > Activé
+Icône > ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png
+Ligne de commande > C:\Windows\system32\wsl.exe -d Ubuntu
+Masquez le profil de la liste déroulante > Activé
 ## ExifTool v12.96
 cpi "$ITscc\forMSWin\exiftool-12_96_64\exiftool(-k).exe" $HADL\Microsoft\WindowsApps\exiftool.exe
 cpi -recurse $ITscc\forMSWin\exiftool-12_96_64\exiftool_files $HADL\Microsoft\WindowsApps
@@ -932,7 +935,7 @@ AIdc> sfc /scannow  seemed to find some errors so  rebooted  AIdc> sfc /scannow
 ## HP Smart
 searched for and found  HP ENVY Inspire 7200  then took a while to setup
 Imprimantes et scanners > Ajouter une imprimante ou un scanner >
-  HPC204A4 (HP ENVY Inspire 7200 series)
+HPC204A4 (HP ENVY Inspire 7200 series)
 ## HX256GSSDSATA3 inaccessible
 
 took it out and chkdsk'd from HPEB840G38 - no errors, refitted and all good
@@ -943,7 +946,7 @@ sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## WSL Ubuntu trash-cli
 sudo apt install trash-cli
 The following packages were automatically installed and are no longer required:
-  htop libnl-3-200 libnl-genl-3-200
+htop libnl-3-200 libnl-genl-3-200
 Use 'sudo apt autoremove' to remove them.
 ## MediaInfo
 winget add MediaArea.MediaInfo
@@ -962,18 +965,18 @@ Paramètres > Au démarrage > Lancer au démarrage de mon ordinateur  décoché
 ran it to get  $HADR\Thunderbird\Profiles\khnbhnp8.default-esr-1
 launched it only enough to get  $HADR\Thunderbird\Profiles\xxxxxxxx.default-esr-1  which I Deleted
 again, then
-  $HADR\Thunderbird\installs.ini  Deleted
-  $HADR\Thunderbird\profiles.ini  reduced to just
-  [Profile0]
-    Name=default-esr
-    IsRelative=0
-    Path=D:\Dropbox\JH\Thb-dr
-  [General]
-    StartWithLastProfile=0
-    Version=2
+$HADR\Thunderbird\installs.ini  Deleted
+$HADR\Thunderbird\profiles.ini  reduced to just
+[Profile0]
+  Name=default-esr
+  IsRelative=0
+  Path=D:\Dropbox\JH\Thb-dr
+[General]
+  StartWithLastProfile=0
+  Version=2
 launched for  Thunderbird - Choissisez un profil utilisateur > Démarrer Thunderbird
-  brought  [InstallD78BF5DD33499EC2]  into  $HADR\Thunderbird\profiles.ini
-    and a new  $HADR\Thunderbird\installs.ini
+brought  [InstallD78BF5DD33499EC2]  into  $HADR\Thunderbird\profiles.ini
+  and a new  $HADR\Thunderbird\installs.ini
 ## WSL Ubuntu luarocks neomutt neovim
 sudo apt install luarocks neomutt neovim
 ## WSL lsd
@@ -989,36 +992,36 @@ where.exe python  reports  C:\Users\jharr\AppData\Local\Programs\Python\Python31
 Deleted  C:\Python312
 ### pipx
 py -m pip install --user -U pipx
-  Installing collected packages: platformdirs, packaging, colorama, argcomplete, click, userpath, pipx
-    WARNING: The scripts activate-global-python-argcomplete.exe, python-argcomplete-check-easy-install-script.exe and register-python-argcomplete.exe are installed in 'C:\Users\jharr\AppData\Roaming\Python\Python313\Scripts' which is not on PATH.
-    Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
-    WARNING: The script userpath.exe is installed in 'C:\Users\jharr\AppData\Roaming\Python\Python313\Scripts' which is not on PATH.
-    Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
-    WARNING: The script pipx.exe is installed in 'C:\Users\jharr\AppData\Roaming\Python\Python313\Scripts' which is not on PATH.
-    Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
-  Successfully installed argcomplete-3.5.1 click-8.1.7 colorama-0.4.6 packaging-24.1 pipx-1.7.1 platformdirs-4.3.6 userpath-1.9.2
+Installing collected packages: platformdirs, packaging, colorama, argcomplete, click, userpath, pipx
+  WARNING: The scripts activate-global-python-argcomplete.exe, python-argcomplete-check-easy-install-script.exe and register-python-argcomplete.exe are installed in 'C:\Users\jharr\AppData\Roaming\Python\Python313\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script userpath.exe is installed in 'C:\Users\jharr\AppData\Roaming\Python\Python313\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script pipx.exe is installed in 'C:\Users\jharr\AppData\Roaming\Python\Python313\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed argcomplete-3.5.1 click-8.1.7 colorama-0.4.6 packaging-24.1 pipx-1.7.1 platformdirs-4.3.6 userpath-1.9.2
 $HADR\Python\Python313> fd --max-depth 2
-  Scripts\
-    Scripts\activate-global-python-argcomplete.exe
-    Scripts\pipx.exe
-    Scripts\python-argcomplete-check-easy-install-script.exe
-    Scripts\register-python-argcomplete.exe
-    Scripts\userpath.exe
-  site-packages\
-    site-ackages\argcomplete\
-    site-packages\argcomplete-3.5.1.dist-info\
-    site-packages\click\
-    site-packages\click-8.1.7.dist-info\
-    site-packages\colorama\
-    site-packages\colorama-0.4.6.dist-info\
-    site-packages\packaging\
-    site-packages\packaging-24.1.dist-info\
-    site-packages\pipx\
-    site-packages\pipx-1.7.1.dist-info\
-    site-packages\platformdirs\
-    site-packages\platformdirs-4.3.6.dist-info\
-    site-packages\userpath\
-    site-packages\userpath-1.9.2.dist-info\
+Scripts\
+  Scripts\activate-global-python-argcomplete.exe
+  Scripts\pipx.exe
+  Scripts\python-argcomplete-check-easy-install-script.exe
+  Scripts\register-python-argcomplete.exe
+  Scripts\userpath.exe
+site-packages\
+  site-ackages\argcomplete\
+  site-packages\argcomplete-3.5.1.dist-info\
+  site-packages\click\
+  site-packages\click-8.1.7.dist-info\
+  site-packages\colorama\
+  site-packages\colorama-0.4.6.dist-info\
+  site-packages\packaging\
+  site-packages\packaging-24.1.dist-info\
+  site-packages\pipx\
+  site-packages\pipx-1.7.1.dist-info\
+  site-packages\platformdirs\
+  site-packages\platformdirs-4.3.6.dist-info\
+  site-packages\userpath\
+  site-packages\userpath-1.9.2.dist-info\
 Deleted  $HADR\Python\Python312
 ### remove $HADR\Python\python312\scripts from $PATH
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
@@ -1047,9 +1050,9 @@ opened an image > f12 > Programmes > Supprimer  then  e > Ajout > C:\Program Fil
 sudo apt install isync notmuch pass
 ## WSL Ubuntu - GnuPG keys
 gpg -k
-  gpg: directory '/home/jo/.gnupg' created
-  gpg: keybox '/home/jo/.gnupg/pubring.kbx' created
-  gpg: /home/jo/.gnupg/trustdb.gpg: trustdb created
+gpg: directory '/home/jo/.gnupg' created
+gpg: keybox '/home/jo/.gnupg/pubring.kbx' created
+gpg: /home/jo/.gnupg/trustdb.gpg: trustdb created
 in  $Enc/Secure1/GnuPG/13F327EF,  gpg --import sprbMbArch-m2o-private.asc > passphrase
 ## WSL Ubuntu - pass
 rsync -irtv --delete $Enc/Secure1/password-store/ ~/.password-store
@@ -1473,6 +1476,8 @@ irm get.scoop.sh | iex
 scoop install rga
   brought in 7zip ffmpeg pandoc poppler rga ripgrep, all shim'd
   splitting WT crashed the process, recovered on next try
+## Notepad++ plugin
+CSVLint
 ## waiting
 Mise à jour facultatives
 # physical configuration

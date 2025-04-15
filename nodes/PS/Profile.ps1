@@ -232,7 +232,7 @@ function lwt {
       } else { "next three arguments are specific file extensions" } }
   } else {
     "first argument should be the general descriptor of the type of files you're looking for"
-  } } # examples in  $MSwin10/QR/CLI-encoding-PowerShell.md
+  } } # examples in  $MSWin10/QR/CLI-encoding-PowerShell.md
 
 #===> sizes
 function dc { gci | foreach-object { $_.name + ": " + "{0:n2}" -f ((gci $_ -recurse | measure-object length -sum -erroraction silentlycontinue).sum / 1mb) + " mb" } }

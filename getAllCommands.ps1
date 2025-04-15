@@ -4,7 +4,7 @@
 
 $l = $machLg\allCommands.log
 "vim: ft=build nowrap tw=0:" > $l
-'this file made by $MSwin10\getAllCommands.ps1' >> $l
+'this file made by $MSWin10\getAllCommands.ps1' >> $l
 '%s/ *$//|nohlsearch' >> $l
 "" >> $l
 $cts = 'Alias','Application','Cmdlet','ExternalScript','Function'

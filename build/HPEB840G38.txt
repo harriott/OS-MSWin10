@@ -318,7 +318,7 @@ ctrl+, (= Paramètres)
     [ Text > Taille de police > 9  Transparence > Opacité de l'arrière plan > 84% ] > Enregistrer
 $HADL\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
 ## PS modules
-PS> & $MSwin10\mb\modules.ps1 (tweaked)
+PS> & $MSWin10\mb\modules.ps1 (tweaked)
 ## Git Bash
   WARNING: Found ~/.bashrc but no ~/.bash_profile, ~/.bash_login or ~/.profile.
   This looks like an incorrect setup.
@@ -375,7 +375,7 @@ restarted Edge > HPEB840G38-Edge
 ## LibreOffice
 winget add libreoffice
 ran it to build  ~\AppData\Roaming\LibreOffice\4
-$MSwin10\build\LibreOfficeConfig.ps1
+$MSWin10\build\LibreOfficeConfig.ps1
 ## Python 3.12
 winget add python.python.3.12
 got it to  C:\Users\jnbh\AppData\Local\Programs\Python\Python312\python.exe
@@ -1019,7 +1019,10 @@ f9 at boot for POST Error > Enter
 ## Zig
 where.exe zig  finds nothing, so  winget rm zig.zig
 precautionary reboot for  winget add zig.zig  took ages to unpack
+## MiniTool Partition Wizard Free v12.9
+winget add MiniTool.PartitionWizard.Free
 ## waiting
+lazygit
 ### Ruby 3.4
 ### sd
 winget add chmln.sd
@@ -1029,7 +1032,7 @@ Intel Core i5-6300U
 RAM CT2K8G4SFRA32A
 ## storage
 (essential) M.2 SSD: 119Go LITEON CV1-8B128-HP
-(optional) 2.5" SSD: BX500
+(optional) 2.5" SSD: BX500 shimmed to prevent disconnection
 ## Startup Menu
 hold  esc  at start to get into  Startup Menu
 hold  f9  at start to get into  Boot Menu

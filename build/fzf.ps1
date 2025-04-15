@@ -1,6 +1,6 @@
 # vim: se fdl=2:
 
-# & $MSwin10\mb\fzf.ps1
+# & $MSWin10\mb\fzf.ps1
 
 # Relaunch PowerShell after changing  fzf.exe !
 
