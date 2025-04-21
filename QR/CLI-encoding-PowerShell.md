@@ -64,6 +64,10 @@ limited to single commands
     'boob' -replace 'b$', ''
     "Hello".Replace('l', 'x').Replace('H', 'Y')
 
+### match
+    'IF' -match '^t$|^f$'
+    if ( ! ( 'a' -match 'b' ) ) { 'a not b' }
+
 ### regex
     'hi.there.jpg' -replace 'g', ''             # hi.there.jp
     'hi.there.jpg' -replace 'e.*', ''           # hi.th
@@ -80,10 +84,6 @@ limited to single commands
 `\s` = whitespace character
 `\S` = non-whitespace character
 `\w` = a-z, A-Z, 0-9, _
-
-### match
-    'IF' -match '^t$|^f$'
-    if ( ! ( 'a' -match 'b' ) ) { 'a not b' }
 
 ### substring method
     $s='stringROD'; $s.substring(0, $s.length -3)
@@ -132,6 +132,7 @@ no standard aliases
     kill -name HP.Smart
 
 ### Get-Process
+    ps AltSnap
     ps Dropbox
     ps HP.Smart
     ps msedge | select PM,WS | ft @{Label='PM (MB)';Expression={$_.PM / 1MB}},@{Label='WS (MB)';Expression={$_.WS / 1MB}} # pageable memory, working set
@@ -295,7 +296,7 @@ replace text in files
     lwts *.txt
 
 ### sizes
-    du64 -l 1
+    du64 -l 0 -nobanner
     Get-GitSize  # when you're in .git's parent directory
 
 #### functions in $MSn\PS\Profile.ps1

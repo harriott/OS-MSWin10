@@ -11,10 +11,13 @@
 ; environment variables don't work
 
 ; fn+f5/f6 not dimming/brightening screen
-SC112::MsgBox ThisHotkey " was pressed." ; fn+f5
-SC117::MsgBox ThisHotkey " was pressed." ; fn+f6
+SC112::MsgBox ThisHotkey " was pressed - use ctrl+a for brightness down" ; fn+f6
+SC117::MsgBox ThisHotkey " was pressed - use ctrl+a for brightness up" ; fn+f6
 
-#!a::Run "C:\Users\jnbh\AppData\Roaming\AltSnap\AltSnap.exe" ; win+alt+a - open AltSnap
+#!a::{
+	ProcessClose "AltSnap.exe"
+	Run "C:\Users\jnbh\AppData\Roaming\AltSnap\AltSnap.exe"
+} ; win+alt+a - open AltSnap
 #!p::Run "wt -d C:\Users\jnbh" ; win+alt+p - PowerShell opened on $home
 
 ; 1920x1080 screen

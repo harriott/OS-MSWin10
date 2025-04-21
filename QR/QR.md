@@ -151,40 +151,6 @@ output is simplified when redirected to a file
 - `win+ctrl+m` paramètres de la loupe
 - `win+esc` désactiver la loupe
 
-## WT
-- in Explorer: `Alt+D > wt > Enter`
-- `win+;` emojis
-- `win+r > wt` opens `wt` on `~`
-- `Windows Terminal`
-
-### Settings
-    Startup > Launch on machine startup
-
-#### key-binds
-    Settings > Actions
-
-- `alt+D` duplicate pane right
-- `alt+_` split pane below (AZERTY `alt+6`)
-- `alt++` split pane right
-- `alt+arrow` move focus
-- `alt+shift+-` = `split down`
-- `alt+shift+arrow` = adjusts pane size
-- `ctrl+,` = `Settings`
-- `ctrl+c` copy text
-- `ctrl+shift+d` new tab in same directory (`$MSWin10\PSProfile.ps1`)
-- `ctrl+shift+f` find
-- `ctrl+shift+n` new window
-- `ctrl+shift+p` commands
-- `ctrl+shift+t` new tab
-- `ctrl+shift+w` close pane
-- `ctrl+shift+PgUp` scroll up a page
-- `ctrl(+Shift)+Tab` move to next (previous) tab
-
-#### settings.json
-    cpi $HADL\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json $machLg\WT-settings.json
-
-default actions don't show, but when I binned annoying `alt+enter` & `<f11>` "Baculer en plein écran", they show as `unbound`
-
 ## WSL
 Windows Subsystem for Linux
 
@@ -232,6 +198,40 @@ Windows Subsystem for Linux
     wslvar -L  # --getshell
     wslvar -S  # --getsys
     wslview https://wslutiliti.es/wslu/man/wslview.html
+
+## WT
+- in Explorer: `Alt+D > wt > Enter`
+- `win+;` emojis
+- `win+r > wt` opens `wt` on `~`
+- `Windows Terminal`
+
+### Settings
+    Startup > Launch on machine startup
+
+#### key-binds
+    Settings > Actions
+
+- `alt+D` duplicate pane right
+- `alt+_` split pane below (AZERTY `alt+6`)
+- `alt++` split pane right
+- `alt+arrow` move focus
+- `alt+shift+-` = `split down`
+- `alt+shift+arrow` = adjusts pane size
+- `ctrl+,` = `Settings`
+- `ctrl+c` copy text
+- `ctrl+shift+d` new tab in same directory (`$MSWin10\PSProfile.ps1`)
+- `ctrl+shift+f` find
+- `ctrl+shift+n` new window
+- `ctrl+shift+p` commands
+- `ctrl+shift+t` new tab
+- `ctrl+shift+w` close pane
+- `ctrl+shift+PgUp` scroll up a page
+- `ctrl(+Shift)+Tab` move to next (previous) tab
+
+#### settings.json
+    cpi $HADL\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json $machLg\WT-settings.json
+
+default actions don't show, but when I binned annoying `alt+enter` & `<f11>` "Baculer en plein écran", they show as `unbound`
 
 # hw - DVD
     DVDFab 13 > Copier > Disque entier > DVD9 > ($HOME\Documents\DVDFab\DVDFab13\Output) > Démarrer
