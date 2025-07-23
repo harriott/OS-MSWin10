@@ -1,4 +1,4 @@
-# vim: set fdl=1:
+# vim: set fdl=2:
 
 # $MSWin10\build\PSmodules.ps1
 
@@ -9,7 +9,7 @@
 # inmo microsoft.powershell.psresourceget  # providing  isres
 
 # #=> 0 AWPS 1 update PowerShellGet
-# inmo PowerShellGet -force  # adds to  C:\Program Files\WindowsPowerShell\Modules\PowerShellGet
+# inmo PowerShellGet -force  # adds to  $CPF\WindowsPowerShell\Modules\PowerShellGet
 
 # #=> 1 PS 0 PowerShell Gallery
 # Set-PSResouRcerepository PSGallery -trusted; Get-PSResourceRepository
@@ -40,8 +40,19 @@ isres PSReadLine
 isres PSScriptTools
 
 #=> 2 PS/WPS - modules 2 update subsequent
-cmu
+cmu  # (in PS, throws some errors) lists, then provides an update command at end
+
 upmo Microsoft.PowerShell.PSResourceGet
-upmo PSFzf
-upmo PSReadLine
+
+#==> Update-PSResource
+# doesn't remove the old version
+udres PSFzf
+udres PSReadLine
+udres PSScriptTools
+udres ThreadJob
+
+#=> 2 PS/WPS - modules 3 remove
+# delete from
+#  $HOME\Documents\PowerShell\Modules
+#  $HOME\Documents\WindowsPowerShell\Modules
 

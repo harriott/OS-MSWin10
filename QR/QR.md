@@ -5,7 +5,7 @@ vim: nospell:
     $HADR\vlc\vlcrc
     Adobe Acrobat Reader DC > Shift+Ctrl+Minus -> rotate left
     $HADL\Microsoft\WindowsApps
-    cpan -l > $machLg\cpanList.txt
+    cpan -l > $MSWml\cpanList.txt
     yt-dlp -U  # update inplace
 
 - AutoHotkey `$MSn\AutoHotkey\AZERTY.ahk`
@@ -14,7 +14,7 @@ vim: nospell:
 - WinRE
 
 # build
-    $machLg
+    $MSWml
     $MSWin10
     pt '$emd' $Drpbx\JH
     pt '$Pr0' $Drpbx\JH
@@ -54,9 +54,11 @@ vim: nospell:
     echo %LOCALAPPDATA%  # C:\Users\<user>\AppData\Local
     echo %username%
     echo %userprofile%
-        echo %appdata%
+        echo %AppData%
         echo %localappdata%
     set  # shows them all
+
+can paste these into `File Explorer`
 
 ##### computer name
     echo %computername%
@@ -151,54 +153,6 @@ output is simplified when redirected to a file
 - `win+ctrl+m` paramètres de la loupe
 - `win+esc` désactiver la loupe
 
-## WSL
-Windows Subsystem for Linux
-
-### nodes, from Windows
-    \\wsl$\Ubuntu-24.04\etc\wsl.conf
-    \\wsl$\Ubuntu-24.04\home\jo\.mbsyncrc
-    g \\wsl$\Ubuntu-24.04\etc\ranger\config
-    g \\wsl$\Ubuntu-24.04\run\systemd\system
-    g \\wsl$\Ubuntu-24.04\usr\bin
-
-- can't access these from `Telescope`, so `:MRU wsl$`
-- `\\wsl$\Ubuntu-24.04\home\jo\Play0`
-    - not navigable by `oil.nvim`
-    - not seen by `nvim-tree.lua`
-
-#### Bash
-    \\wsl$\Ubuntu-24.04\etc\bash_completion.d\git-prompt
-    \\wsl$\Ubuntu-24.04\home\jo\.bash_history
-
-`\\wsl$\Ubuntu-24.04\etc\skel` has Bash configuration defaults
-
-#### plocate
-    g \\wsl$\Ubuntu-24.04\var\lib\plocate
-    \\wsl$\Ubuntu-24.04\etc\updatedb.conf
-
-#### repositories
-    \\wsl$\Ubuntu-24.04\etc\apt\sources.list.d\ubuntu.sources
-
-##### v22.04
-    \\wsl$\Ubuntu\etc\apt\sources.list.d\ubuntu-esm-apps.list
-    \\wsl$\Ubuntu\etc\apt\sources.list.d\ubuntu-esm-infra.list
-
-### Ubuntu
-    /mnt/c/vim/vim91/gvim.exe &
-    highlight --syntax=bash ~/.bash_history -O ansi
-    o hello | clip.exe  # arrives in Ditto
-    pwsh.exe -nop -c start .
-    pwsh.exe -nop -c Get-ExecutionPolicy
-    win32yank.exe -o  # returns what's in the clipboard
-    winget find ubuntu
-
-#### wslu
-    wslfetch  # alternative to  neofetch
-    wslsys  # system info
-    wslvar -L  # --getshell
-    wslvar -S  # --getsys
-    wslview https://wslutiliti.es/wslu/man/wslview.html
-
 ## WT
 - in Explorer: `Alt+D > wt > Enter`
 - `win+;` emojis
@@ -229,7 +183,7 @@ Windows Subsystem for Linux
 - `ctrl(+Shift)+Tab` move to next (previous) tab
 
 #### settings.json
-    cpi $HADL\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json $machLg\WT-settings.json
+    cpi $HADL\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json $MSWml\WT-settings.json
 
 default actions don't show, but when I binned annoying `alt+enter` & `<f11>` "Baculer en plein écran", they show as `unbound`
 
@@ -404,11 +358,16 @@ star icon
     control firewall.cpl  # Control Panel > All Control Panel Items > Windows Defender Firewall
     wf (= C:\WINDOWS\system32\wf.msc) # Windows Defender Firewall with Advanced Security, where Rules can be seen
 
+## magnifier
+- `win +` turn on, zoom in
+- `win+esc` turn off
+
 ## Microsoft Defender Antivirus
     PS> get-mpthreatdetection
     APS> start-mpwdoscan
 
-requires a Windows Recovery partition to be present
+- `Msmpeng.exe` = `Microsoft Malaware Protection Engine` for which there's little info and I can't change the `affinity`
+- requires a Windows Recovery partition to be present
 
 ## Registry Editor
     C:\Windows\System32\regedt32.exe
@@ -420,7 +379,7 @@ requires a Windows Recovery partition to be present
 if done when eg  AltSnap's default  AutoSnap=2, win+arrow  actions are deadened
 
 ## Start Menus
-    cd "$Env:AppData\Microsoft\Windows\Start Menu\Programs"
+    sl "$HADR\Microsoft\Windows\Start Menu\Programs"
     Win+r > shell:common programs
     Win+r > shell:programs
     Win+r > shell:startup => user Start-up
@@ -434,4 +393,53 @@ Gestionnaire de tâches
 ## win+r
 - `devmgmt.msc` = Device Manager = Gestionnaire de périphériques
 - `taskschd.msc` = Task Scheduler
+
+## WSL
+- GUI apps
+- Windows Subsystem for Linux
+
+### nodes, from Windows
+    \\wsl$\Ubuntu-24.04\etc\wsl.conf
+    \\wsl$\Ubuntu-24.04\home\jo\.mbsyncrc
+    g \\wsl$\Ubuntu-24.04\etc\ranger\config
+    g \\wsl$\Ubuntu-24.04\run\systemd\system
+    g \\wsl$\Ubuntu-24.04\usr\bin
+
+- can't access these from `Telescope`, so `:MRU wsl$`
+- `\\wsl$\Ubuntu-24.04\home\jo\Play0`
+    - not navigable by `oil.nvim`
+    - not seen by `nvim-tree.lua`
+
+#### Bash
+    \\wsl$\Ubuntu-24.04\etc\bash_completion.d\git-prompt
+    \\wsl$\Ubuntu-24.04\home\jo\.bash_history
+
+`\\wsl$\Ubuntu-24.04\etc\skel` has Bash configuration defaults
+
+#### plocate
+    g \\wsl$\Ubuntu-24.04\var\lib\plocate
+    \\wsl$\Ubuntu-24.04\etc\updatedb.conf
+
+#### repositories
+    \\wsl$\Ubuntu-24.04\etc\apt\sources.list.d\ubuntu.sources
+
+##### v22.04
+    \\wsl$\Ubuntu\etc\apt\sources.list.d\ubuntu-esm-apps.list
+    \\wsl$\Ubuntu\etc\apt\sources.list.d\ubuntu-esm-infra.list
+
+### Ubuntu
+    /mnt/c/vim/vim91/gvim.exe &
+    highlight --syntax=bash ~/.bash_history -O ansi
+    o hello | clip.exe  # arrives in Ditto
+    pwsh.exe -nop -c start .
+    pwsh.exe -nop -c Get-ExecutionPolicy
+    win32yank.exe -o  # returns what's in the clipboard
+    winget find ubuntu
+
+#### wslu
+    wslfetch  # alternative to  neofetch
+    wslsys  # system info
+    wslvar -L  # --getshell
+    wslvar -S  # --getsys
+    wslview https://wslutiliti.es/wslu/man/wslview.html
 

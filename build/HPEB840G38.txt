@@ -523,7 +523,7 @@ in $HADR\Thunderbird\profiles.ini
   [Install5CC7CE6A1DCFB43B]
     Default=D:\Dropbox\JH\Thb-dr
     Locked=1
-ran it for (default-release) Démarrer Thunderbird)
+ran it for (default-release) Démarrer Thunderbird
 ## WSL Ubuntu attempt
 winget add Canonical.Ubuntu.2204  rebooted
 ## WT configure
@@ -710,7 +710,7 @@ in there, APS> takeown /f . /r /d o
 XpdfReader-win64-4.05.exe  (C:\Program Files\Glyph & Cog\XpdfReader-win64)
   pdfimages -h
 ## WSL Ubuntu - .bash_history
-cp \\wsl$\Ubuntu\home\jo\.bash_history $machLg/WSL-bash_history-$((get-date).tostring("yyMMdd-HHmmss")).sh
+cp \\wsl$\Ubuntu\home\jo\.bash_history $MSWml/WSL-bash_history-$((get-date).tostring("yyMMdd-HHmmss")).sh
 ## WSL Ubuntu remove
 closed WT for  Applications et fonctionnalités > Ubuntu > Désinstaller
 ## WSL Ubuntu 24.04.1 LTS
@@ -842,7 +842,7 @@ $newPathCU = $oldPathCU+';C:\Program Files\Mozilla Thunderbird'; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## Thunderbird
 thunderbird  to get  $HADR\Thunderbird\Profiles\xxxxxxxx.default-esr  then emptied  Profiles
-  (cp $HADR\Thunderbird\profiles.ini $machLg\Thunderbird-profiles-p1o.ini)
+  (cp $HADR\Thunderbird\profiles.ini $MSWml\Thunderbird-profiles-p1o.ini)
 cp $MSn\Thb\profiles.ini $HADR\Thunderbird\profiles.ini
 ran it for (default-esr) Démarrer Thunderbird)
 ## WSL Ubuntu 24.04 internet
@@ -936,7 +936,7 @@ WT > ctrl+, > Ubuntu 24.04.1 LTS >
 WT lost access to Ubuntu, though  wsl -d Ubuntu  works
 Can't run Ubuntu from Start Menu...
 ## WSL Ubuntu 24.04.1 LTS reregister
-cp \\wsl$\Ubuntu\home\jo\.bash_history $machLg/WSL-bash_history-$((get-date).tostring("yyMMdd-HHmmss")).sh
+cp \\wsl$\Ubuntu\home\jo\.bash_history $MSWml/WSL-bash_history-$((get-date).tostring("yyMMdd-HHmmss")).sh
 wsl --unregister Ubuntu
 Start Menu > Ubuntu 24.04.1 LTS  fired up a new WT & installed it > UNIX username > jo > pw
 all WT quit for  WT > ctrl+'  recovered my WT Ubuntu settings, but tab title still Ubuntu 24.04.1 LTS
@@ -1021,11 +1021,62 @@ where.exe zig  finds nothing, so  winget rm zig.zig
 precautionary reboot for  winget add zig.zig  took ages to unpack
 ## MiniTool Partition Wizard Free v12.9
 winget add MiniTool.PartitionWizard.Free
-## waiting
-lazygit
-### Ruby 3.4
-### sd
+## Chafa
+winget add chafa
+## DVDFab 13.0.3.9
+allowed to update
+## zoxide
+winget add zoxide
+pulled over the data and removed ZLocation module directories
+## lazygit
+winget add lazygit
+## Yazi
+winget add yazi
+## sd
 winget add chmln.sd
+## Ruby 3.2 remove
+winget rm RubyInstallerTeam.Ruby.3.2
+## Ruby 3.4
+winget add RubyInstallerTeam.RubyWithDevKit.3.4  went to  C:/Ruby34-x64
+### gems
+new PS> gem li
+gem install jekyll neovim
+gem up --system
+gem up
+  ...
+  Updating psych
+  Fetching psych-5.2.3.gem
+  Installing required msys2 packages: mingw-w64-ucrt-x86_64-libyaml
+  avertissement : Le trousseau de clés publique est introuvable ; avez-vous exécuté « pacman-key --init » ?
+start C:\Ruby34-x64\msys64 > ucrt64.exe
+PSA> gem up
+## WezTerm
+winget add wez.wezterm
+## winget update
+PowerShell v7.5.1  not caught
+Python & yt-dlp updates not really installed
+## Firefox v138.0
+after the  winget update  got a popup saying "Couldn't load XPCOM"
+## Corepack
+APS> corepack enable
+## DVDFab 13.0.4.1
+allowed to update > Ne plus afficher
+## Rclone
+winget add Rclone.Rclone
+## $tIs dubious ownership
+in there, APS> takeown /f . /r /d o
+## DVDFab 13.0.4.3
+allowed to update > Ne plus afficher
+## Desktop Background
+somehow got  Paramètres > Personnalisation > Arrière-plan > Diaporama
+  resetting  to  Couleur unie  wouldn't stick, briefly selecting  Image  got it
+## BgInfo gone
+& $HADLM\WinGet\Packages\Microsoft.Sysinternals.BGInfo_Microsoft.Winget.Source_8wekyb3d8bbwe\bginfo.exe > OK  got  Memory  correctly listed as  16260 MB
+## PS modules update
+cmu got me  "BurntToast|PSFzf" | cmu -update -all -allowPrerelease -skipScan
+## waiting
+### GitHub CLI
+winget add GitHub.cli
 # physical configuration
 1366x768 screen
 Intel Core i5-6300U

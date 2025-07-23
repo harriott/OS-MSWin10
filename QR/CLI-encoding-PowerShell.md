@@ -40,6 +40,7 @@ limited to single commands
         (-split $a)
     $a = 1,'a',2,'b'; $a[1]; $a[-1]; $a.length
     $a = @(); $a += 'first'; $a += 'second'
+    $a = gc <file_to_grab_as_array>
     $array | sort
     foreach ($element in $myArray) {$element}
     Format-Custom -InputObject $array -Expand CoreOnly  # displays structure
@@ -119,7 +120,6 @@ no standard aliases
     (gcm python | select version | ft -HideTableHeaders | out-string).trim()
     (gp hklm:\software\microsoft\windows\currentversion\uninstall\* ).displayname | sort  # lists removable x64 programs
     cd 'C:\Program Files'
-    C:\MozillaThunderbird\thunderbird.exe -addressbook
     C:\Windows\explorer.exe "microsoft-edge:searchterm"
     explorer shell:Appsfolder  # Applications
     get-commandsyntax <command>
@@ -136,7 +136,6 @@ no standard aliases
     ps Dropbox
     ps HP.Smart
     ps msedge | select PM,WS | ft @{Label='PM (MB)';Expression={$_.PM / 1MB}},@{Label='WS (MB)';Expression={$_.WS / 1MB}} # pageable memory, working set
-    ps thunderbird
     ps | oh -paging
     ps | ?{$_.mainwindowtitle} | ft id, name, mainwindowtitle -autosize
 
@@ -155,7 +154,7 @@ no standard aliases
     where.exe bash
 
 ## FFmpeg
-    ffmpeg -version > $machLg\ffmpeg_version
+    ffmpeg -version > $MSWml\ffmpeg_version
     where.exe ffmpeg
 
 ## get-command
@@ -170,7 +169,10 @@ no standard aliases
     magick -size 924x568 plasma: plasma1.jpg
     magick -size 924x568 xc:'rgba(0, 0, 0)' black.jpg
 
-### tiff -> jpg recursively convert
+### recursive conversions
+    gci -r *.jpg | %{ magick $_ -resize 900 $_ }
+
+#### tiff -> jpg
     gci -r *.tiff | %{ magick $_ $_'.jpg' }
     gci -r *.tiff | rm
 
@@ -191,6 +193,11 @@ otherwise little sign of them
     g $home/scoop
     scoop help
     scoop update
+
+## Thunderbird
+    C:\MozillaThunderbird\thunderbird.exe -addressbook
+    ps thunderbird
+    where.exe thunderbird
 
 ## Windows PowerShell
     powershell -noprofile  #  runs  Windows PowerShell
@@ -227,6 +234,7 @@ aliases: `cat`, `type`
 replace text in files
 
 # file manage
+    fd -utd '\.git$' | %{ rg 'url = ' $_\config }
     ii .  # invoke Explorer on WD
     lsd --help
     mv file dir/file -force
@@ -381,6 +389,7 @@ by gokcehan
 # microsoft.powershell.utility
     $pw = Read-Host "Password?" -MaskInput
 
+- `echo` (= `write` = `Write-Output`)
 - `fl` (= `format-list`)
 - `measure` (= `measure-object`)
 - `select` (= `Select-Object`)
@@ -407,6 +416,8 @@ prefer `&` where possible
     lanip  # $MSn\PS\Profile.ps1
 
 # output
+    Out-File
+
 `ft` (= `Format-Table`)
 
 ## colour
@@ -444,12 +455,14 @@ prefer `&` where possible
 - `Get-PSResource` (= `Get-InstalledPSResource`)
     - doesn't find modules in `$env:programfiles\WindowsPowerShell\Modules`
 - `isres` (= `Install-PSResource`)
-    - installs to `$HOME\Documents\*\Modules`
+    - installs to
+        - `$HOME\Documents\PowerShell\Modules`
+        - `$HOME\Documents\WindowsPowerShell\Modules`
     - might need to reload `Windows Powershell`
 
 ## modules
-    $MSWin10\mb\modules.ps1
-    gvim $HADL\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
+    $HADR/Microsoft/Windows/PowerShell/PSReadLine/ConsoleHost_history.txt
+    $MSWin10/build/PSmodules.ps1
     p  # PowerColorLS (`$MSWin10\PSProfile.ps1`)
     toast  # New-BurntToastNotification
 
@@ -461,6 +474,7 @@ prefer `&` where possible
 ### get-module
     gmo -all
     gmo -listavailable  # details, including old and those in  Windows PowerShell
+    gmo BurntToast
 
 ### help
     *.help.txt
@@ -483,8 +497,8 @@ prefer `&` where possible
     Get-PSRepository
 
 ### update
-    cmu  # throws some errors, lists, then provides an update command at end
-    compare-module | where updateneeded | foreach { update-module $_.name }  # slow
+    cmu  # (Check-ModuleUpdates) throws some errors, lists, then provides an update command at end
+    compare-module | where updateneeded | foreach { update-module $_.name }  # slow, and only for  inmo
 
 # PS
     $PSHOME
@@ -538,7 +552,7 @@ tab completion
     g C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems
     g C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems
     g C:/Ruby34-x64/lib/ruby/gems/3.4.0/specifications/default
-    gem list > $machLg/gems.gems  # using  $vfv/syntax/gems.vim
+    gem list > $MSWml/gems.gems  # using  $vfv/syntax/gems.vim
     where.exe irb
     where.exe ruby
 
@@ -559,6 +573,7 @@ tab completion
 ## functions
     $function:<function>  # contains it's internal commands
     (gcm <function>).scriptblock  # (get-command) shows what's in <function>
+    function args { "$args" }; args a b c
     function global:<function> { ... }
     function arg_exists { $a0 = $args[0]; if ($a0) {$a0} }; arg_exists
     function args { $a0 = $args[0]; $a1 = $args[1]; "$a0 $a1, and " + $args[0] + ", but $args[0]" }; args here there

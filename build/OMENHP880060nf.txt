@@ -1,6 +1,6 @@
 vim: ft=build:
 
-$MSWin10\build\OMENHP880060nf.txt
+$MSWin10/build/OMENHP880060nf.txt
 
 # build - parallel
 ## waiting

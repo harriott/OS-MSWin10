@@ -12,6 +12,8 @@ $Cn = $Env:Computername
 #==> places
 $CPF = $env:programfiles
 $CPFx = ${env:programfiles(x86)}
+$tricky = "D:\tricky"
+  $cGRs = "$tricky\GRs"  # Copied Git Repositories Use
 
 #===> 0 $Drpbx, or just $coreIT
 if ( test-path "~\_noDropbox.ps1" ) { $coreIT = 'D:\IT' } else {
@@ -39,22 +41,23 @@ if ( test-path "~\_noDropbox.ps1" ) { $coreIT = 'D:\IT' } else {
         $FFIdF = "$FrFa\France\IdF"
       $JCop = "$DJH\Cop"
         $cFr = "$JCop\France"
-          $cFrP = "$JCop\France\places"
+          $CFrp = "$JCop\France\places"
         $chum = "$JCop\human"  # deprecated
         $JChu = "$JCop\human"  # used in  $TeNo
         $Pr0 = "$JCop\Practical0"
-          $Pr0t = "$Pr0\technos"  # $Pr0t
+          $Pr0t = "$Pr0\technos"
       $JHt = "$DJH\Jo-technos"
         $jtIT = "$JHt\IT"
           $jtCP = "$jtIT\CP"
         $tIs = "$JHt\IT-storage"  # $tIs\diskUsage.txt
       $JHw = "$DJH\work"  # for IT websites and more
         $JHm = "$JHw\IT-Jekyll-harriott-minima"
-        $rEr = "$JHw\France\IdF\Paris\20e-rueErmitage"
-          $StEr = "$rEr\StudioErmitage"
-      $Thb = "$DJH\Thb-dr"  # Thunderbird
+        $wP = "$JHw\France\IdF\Paris"
+          $rEr = "$wP\20e-rueErmitage"
+            $StEr = "$rEr\StudioErmitage"
       $JJt0 = "$DJH\Jo-then0"
-    $DCGRs = "$Drpbx\Cop\GRs"  # Copied Git Repositories Use
+        $T0Fr = "$JJt0\world-Europe\France"
+      $Thb = "$DJH\Thb-dr"  # Thunderbird
     $DrSh = "$Drpbx\JH\dev-Sh"
 }
 #===> 0 $HOME
@@ -68,13 +71,13 @@ $HADR = $Env:AppData  # Roaming
   $Pandoc = "$HADR\Pandoc"
   $tex = "$HADR\MiKTeX\tex"
 
-$vimfiles#===> 1 rooting on $coreIT
+#===> 1 rooting on $coreIT
 $ITsCP = "$coreIT\CP"
   $LTXj = "$ITsCP\documenting\LaTeX\jo"
 $DWp = "$coreIT\DokuWiki\pages"
 $ITscc = "$coreIT\copied-code"
 $ITscr = "$coreIT\copied-reference"
-$machLg = "$coreIT\MSWin\ml-$Cn"
+$MSWml = "$coreIT\MSWin\ml-$Cn"
 $onGH = "$coreIT\onGitHub"
   $misc = "$onGH\misc"
   $MD4PDF = "$onGH\pandoc-md4pdf"
@@ -88,9 +91,9 @@ $onGH = "$coreIT\onGitHub"
   $OSL = "$onGH\OS-Linux"
     $clMail = "$OSL\nodes\jo\clm"
       $clMn = "$clMail\neomutt"
-  $ulL = "$coreIT\ulLinux"
-    $lclm = "$ulL\clm"  # linux command-line mail
-    $ulLA = "$ulL\Arch"
+  $culL = "$coreIT\ulLinux"
+    $lclm = "$culL\clm"  # linux command-line mail
+    $culLA = "$culL\Arch"
   $vimfiles = "$onGH\vimfiles"
   # $vimfiles = "~\vfs"  # vimfiles source - for testing outside of Dropbox
     $vfn = "$vimfiles\nvim"

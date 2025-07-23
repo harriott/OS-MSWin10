@@ -1,5 +1,5 @@
 
-# $MSn\lf\lfrc ($MSn/set/3.ps1)
+# $MSn/lf/lfrc ($MSn/set/3.ps1 & $vfv/ftplugin/lf.vim)
 
 set hidden true
 set icons true

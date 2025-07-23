@@ -2,7 +2,7 @@ vim: ft=build:
 
 $MSWin10\build\HPEB840G37.txt
 
-fn+echap (= HP System Information) long time to save to  $machLg/o7o-HPSystemInformation.nfo
+fn+echap (= HP System Information) long time to save to  $MSWml/o7o-HPSystemInformation.nfo
 HP EliteBook 840 G3 barcoded PC117862 (labelled BC PNB 17 by last owner) = HPEB840G37
 (jharrio@outlook.com)
 # build - parallel
@@ -127,6 +127,8 @@ $newPathCU = $oldPathCU+';C:\Program Files\Mozilla Thunderbird'; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## NanaZip
 winget add M2Team.NanaZip
+## Corepack
+APS> corepack enable
 ## waiting
 lazygit
 # build - sequential
@@ -579,11 +581,10 @@ $newPathCU = "$oldPathCU;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\
 sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## Gpg4win
 winget add gnupg.gpg4win  arrived in  C:\Program Files (x86)\Gpg4win
-## add Vifm to path
+## add 7-Zip to path
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
 $newPathCU = "$oldPathCU;C:\Program Files\7-Zip"; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
-## add 7-Zip to path
 ## Emacs - no good for Vim
 winget add emacs
 APS> ri $env:programfiles\Emacs -force -recurse
@@ -1114,7 +1115,7 @@ sudo apt install ncdu
 ## Ce PC disk space usage bar
 disappeared, so  Affichage > Options > Affichage > Réinitialer les dossiers
 ## WSL Ubuntu - .bash_history
-cp \\wsl$\Ubuntu\home\jo\.bash_history $machLg/WSL/bash_history-$((get-date).tostring("yyMMdd-HHmmss")).sh
+cp \\wsl$\Ubuntu\home\jo\.bash_history $MSWml/WSL/bash_history-$((get-date).tostring("yyMMdd-HHmmss")).sh
 ## WSL Ubuntu 24.04.1 LTS
 winget add Canonical.Ubuntu.2404
 Windows Menu > Ubuntu 24.04.1 LTS  fired up a new WT & installed it > UNIX username > jo > pw
@@ -1145,7 +1146,7 @@ sudo apt install bc dos2unix fd-find fzf highlight isync ncdu neofetch neomutt n
 sudo snap install jump
 ## WSL Ubuntu 24.04 plocate
 sudo apt install plocate  then took ages to initialize the database
-cp /etc/updatedb.conf $machLg/WSL/updatedb-$(date '+%y%m%d-%H%M').conf
+cp /etc/updatedb.conf $MSWml/WSL/updatedb-$(date '+%y%m%d-%H%M').conf
 sudo cp $MSn/WSL/updatedb.conf /etc/updatedb.conf  then  sudo updatedb  (much faster)
 ## WSL Ubuntu 24.04 nodes
 . $MSn/set/6-WSL-nodes.sh
@@ -1478,6 +1479,49 @@ scoop install rga
   splitting WT crashed the process, recovered on next try
 ## Notepad++ plugin
 CSVLint
+## zoxide
+winget add zoxide
+pulled over the data and removed ZLocation module directories
+## GitHub CLI
+winget add GitHub.cli
+## Corepack & markdown-preview.nvim
+APS> corepack enable
+but  markdown-preview.nvim  not getting loaded, so  APS> corepack disable
+  didn't seem to remove anything, but made the non-functional  yarn  command totally unavailable
+APS> corepack enable  still not getting  markdown-preview.nvim  loaded
+yarn exec env
+  ...
+  yarn exec v1.22.22
+  error Couldn't find the binary env
+so I Deleted  $lazy/markdown-preview.nvim
+## Dropbox 217.4.4417.0
+needed to Sign in again, though it remembered my preferences
+  There's already a folder or file named Dropbox
+so had to quit  AutoHotkey  script to be able to rename  D:\Dropbox  to  D:\Dropbo
+  so's I could get going again with  D:\Dropbox
+  which I immediately quit to copy over all of  D:\Dropbo  except  .dropbox  $  .dropbox.cache
+  then relaunched  Dropbox, thus starting a full re-indexation
+Dropbox  not in  Start Menu, so  winget add Dropbox.Dropbox
+full re-indexation
+## Thunderbird v128.11.1
+complaint about the profile as it's been upgraded for v139.0.2-1
+### Winget
+g C:\Users\jharr\AppData\Local\Temp\WinGet\cache\V2_PVD\Microsoft.Winget.Source_8wekyb3d8bbwe\packages  shows there to be
+  Mozilla.Thunderbird
+  Mozilla.Thunderbird.ESR.fr
+  Mozilla.Thunderbird.fr
+  all containing empty xxxxxxxx subdirectories
+## Thunderbird v139.0.2
+Applications et fonctionnalités > Mozilla Thunderbird (x64 fr) > Désinstaller >
+  C:\Program Files\Mozilla Thunderbird
+precautionary reboot
+winget add mozilla.thunderbird
+thunderbird
+## Thunderbird in French
+Settings > General > Language > was English (US) with US style dates, so
+  Search > Français > Add > Appliquer et redémarrer
+## LibreOffice light
+alt+f12 > Apparence > Apparence > Claire
 ## waiting
 Mise à jour facultatives
 # physical configuration
@@ -1485,7 +1529,7 @@ Mise à jour facultatives
 Intel Core i5-6300U
 ## storage
 (essential) M.2 SSD: 119Go
-(optional) 2.5" SSD: 238Go HX256GSSDSATA3
+(optional) 2.5" SSD: 238Go HX256GSSDSATA3, not yet shimmed
 ## Startup Menu
 hold  esc  at start to get into  Startup Menu
 hold  f9  at start to get into  Boot Menu

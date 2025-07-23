@@ -1,7 +1,7 @@
 
-# Joseph Harriott, lun 27 janv 2025
+# Joseph Harriott, lun 26 mai 2025
 
-# $MSn\PS\Profile.ps1
+# $MSn/PS/Profile.ps1
 #  symlinked in  $MSn/set/2-PSProfile.ps1
 #    then called by  $MSn/PS/ProfileStub.ps1
 
@@ -11,26 +11,26 @@ sal su C:\SumatraPDF\SumatraPDF.exe
 . ~\PSEnv.ps1  # ($MSWin10\mb\neededNodes-1-PSProfile.ps1)
 
 function ep {
-  $eps = "$machLg/path"
+  $eps = "$MSWml/path"
   'vim: set nowrap:' > $eps
   '' >> $eps
   $env:path -split ';' >> $eps
   '' >> $eps
-  '$env:path  is in  $machLg/path'
+  '$env:path  is in  $MSWml/path'
 }
 
 function fonts {
-  $mf0 = "$machLg\fonts"
+  $mf0 = "$MSWml\fonts"
   $mf1 = $mf0+'-1'
   gp -path "registry::\hklm\software\microsoft\windows nt\currentversion\fonts" | fc > $mf1
   (gc $mf1 | select -skip 3) | seco $mf1
   $mf2 = $mf0+'-2'; (gc $mf1 -raw) -replace "(?s)  PSPath.*" > $mf2; ri $mf1
   $mf3 = $mf0+'.wntf'; 'vim: ft=wntf:' > $mf3; '' >> $mf3; (gc $mf2).trim() >> $mf3; ri $mf2
-} # $machLg\fonts.wntf ($vimfiles/syntax/wntf.vim)
+} # $MSWml\fonts.wntf ($vfv/syntax/wntf.vim)
 
 function GNFR {
   $FRlist = Get-NetFirewallRule | out-string
-  $FRlf = "$machLg\FirewallRules.txt"
+  $FRlf = "$MSWml\FirewallRules.txt"
   "vim: set ft=NFR:" > $FRlf
   $FRlist.TrimEnd() >> $FRlf
   '' >> $FRlf
@@ -42,18 +42,19 @@ function pro {
 
 function wl {
   $dts = (Get-Date).ToString("yyMMdd-HHmmss")
-  $mLpwgl = "$machLg/packages/winget_list-$dts"
+  $mLpwgl = "$MSWml/packages/winget_list-$dts"
   $l0 = $mLpwgl+'0'; winget ls > $l0
   $l1 = $mLpwgl+'1'; (gc $l0 -raw) -replace "(?s).*------" > $l1
   ri $l0
-  $lt  = "$mLpwgl.txt"; 'vim: set nowrap:' > $lt; '' >> $lt
+  $lt  = "$mLpwgl.txt"
+  'vim: set nowrap: Winget list created by  wl ($MSn/PS/Profile.ps1)' > $lt; '' >> $lt
   gc $l1 | sort | select -skip 2 >> $lt
   sleep 1; ri $l1
-  'winget list  is in  $machLg/packages/winget_list'+"-$dts.txt"
+  'winget list  is in  $MSWml/packages/winget_list'+"-$dts.txt"
 }
 
 function stc {
-  '"Nom de la tâche","Prochaine exécution","Statut"' > $machLg\schtasks.csv
+  '"Nom de la tâche","Prochaine exécution","Statut"' > $MSWml\schtasks.csv
   schtasks /fo csv /nh | sort-object | out-file -append $machlg\schtasks.csv
 }
 # Alternatively:
@@ -84,7 +85,6 @@ function ~ { sl ~ }
 function n { nvim $args; gc $home/lastVimDirectory | sl }
 function v { C:\Vim\vim91\vim.exe $args; gc $home/lastVimDirectory | sl }
 
-sal j z  # ZLocation
 sal l lsd
   function la { l -a } # --all
   function lg { l -glR } # --git stqtus
@@ -245,7 +245,7 @@ function gfsi { Get-ChildItem . -Directory | Get-FolderSizeInfo -Hidden | Sort-O
 
 #===> string in files
 
-function nvdg { $outfile = "$DJH/search/nvdg.rgo"
+function nvdg { $outfile = "$DJH/search/nvdg.sifl"
   sifw0 $outfile 'neovim.discourse.group'
   foreach($ITd in $jtIT, $coreIT) { "Searching in $ITd\..."
     rg -tmd neovim.discourse.group $ITd >> $outfile; '' >> $outfile}
@@ -279,28 +279,31 @@ function sifw1 {
   $outfile
 } # footer
 
-function rgo {
-  $rgo = 'rg-'+$args[0]+'.sifl'
+#====> github issues
+# $jtIT\ghissues.sifl
+# $coreIT\ghissues.sifl
+function ghissues { rgw md 'github\.com.+issues' }
+
+#====> ripgrep
+function rgo { rg --field-match-separator ':::' $args } # rgo -tps '^}' $MSWin10 > "$MSWin10/}.rgo"
+
+function rgw {
+  $rgw = 'rg-'+$args[0]+'.sifl'
   $rgot = "~/rgo-temp"
-  sifw0 $rgo $args[1]  # helpful header
+  sifw0 $rgw $args[1]  # helpful header
   $rgs = 'rg -t'+$args[0]+' '+$args[1] # rg search
   $rgoa = (iex $rgs) # rg output array
   foreach ($rgf in $rgoa) {
     $rgfp = $rgf -replace ':.*',''  # rg find path
     $rgfpl = $rgfp.replace('\','/') # rgf linux style
     $rgfc = $rgf -replace '(.*?):(.*)', '$2'  # rg find contents
-    $rgfpl+' > '+$rgfc >> $rgo  # tidied up
+    $rgfpl+' > '+$rgfc >> $rgw  # tidied up
   }
-  "" >> $rgo
+  "" >> $rgw
   sifw1 $outfile
-  sleep 2; ((gc $rgo) -join "`n") + "`n" | seco -NoNewline $rgo  # CRLF -> LF
-  "- output is in  $rgo"
-} # rgo <rg_file_group> <unquoted_regex>
-
-#====> github issues
-# $jtIT\ghissues.sifl
-# $coreIT\ghissues.sifl
-function ghissues { rgo md 'github\.com.+issues' }
+  sleep 2; ((gc $rgw) -join "`n") + "`n" | seco -NoNewline $rgw  # CRLF -> LF
+  "- output is in  $rgw"
+} # ripgrep for Windows: rgw <rg_file_group> <unquoted_regex>, eg  rgw tex geometry
 
 #=> 0 Ghostscript
 function gsp {
@@ -364,12 +367,16 @@ function wp { curl wttr.in/Paris }
 
 #==> yt-dlp
 # sal y yt-dlp
-sal y C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\yt-dlp.yt-dlp_Microsoft.Winget.Source_8wekyb3d8bbwe\yt-dlp.exe
+sal y $HADL\Microsoft\WinGet\Packages\yt-dlp.yt-dlp_Microsoft.Winget.Source_8wekyb3d8bbwe\yt-dlp.exe
   function y7 { y -f '[height<=?720]' $args[0] }
   function yf { y -F $args[0] }
 
 #=> 0 shell settings
 $env:TERM = "xterm-256color"  # $vfn/lua/init.lua
+
+# Backup command history:
+$dts = (Get-Date).ToString("yyMMdd-HHmmss")
+cp (Get-PSReadlineOption).HistorySavePath $MSWml/CHh/$dts  # $coreIT/MSWin
 
 if ($PSVersionTable.PSVersion.Major -eq 7) { ipmo Powershell.Chunks }
 
@@ -554,4 +561,8 @@ function Format-Color([hashtable] $Colors = @{}, [switch] $SimpleMatch) {
 # only affecting  Windows PowerShell
 $host.privatedata.errorforegroundcolor = 'green'
 $host.privatedata.ErrorBackgroundColor = 'darkmagenta'
+
+#=> 2 zoxide
+iex (& { (zoxide init powershell | Out-String) })
+sal j z  # zoxide
 

@@ -141,3 +141,7 @@ syli $MSn\gitconfig ~\.gitconfig
   csl ~\.gitconfig
 # b $HOME\.gitconfig
 
+#=> ~\.wezterm.lua
+syli $MSn/wezterm.lua ~/.wezterm.lua
+  csl ~/.wezterm.lua
+
