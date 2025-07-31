@@ -1075,6 +1075,7 @@ somehow got  Paramètres > Personnalisation > Arrière-plan > Diaporama
 ## PS modules update
 cmu got me  "BurntToast|PSFzf" | cmu -update -all -allowPrerelease -skipScan
 ## waiting
+October 2025: 0patch
 ### GitHub CLI
 winget add GitHub.cli
 # physical configuration

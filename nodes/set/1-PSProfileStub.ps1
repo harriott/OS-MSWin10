@@ -8,7 +8,7 @@ function endi { if ( ! ( test-path $args[0] ) ) { md $args[0] } } # ensure direc
 
 #=> 1 PSProfileStub - PS
 $DWP = "~\Documents\PowerShell"; endi $DWP
-cpi $MSn\PS\ProfileStub.ps1 ~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
+cpi $MSn/PS/ProfileStub.ps1 ~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1
 
 #=> 1 PSProfileStub - WPS
 $DWP = "~\Documents\WindowsPowerShell"; endi $DWP

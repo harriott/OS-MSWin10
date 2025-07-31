@@ -8,5 +8,5 @@
 #  ~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
 #  ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
 
-. ~/PSProfile.ps1  # $MSn\PS\Profile.ps1
+. ~/PSProfile.ps1  # $MSn/PS/Profile.ps1
 

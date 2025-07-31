@@ -53,6 +53,7 @@ Alimentation et mise en veille > Jamais, Jamais, 10 minutes, Jamais
 Multitâche > Alt + Tab > Uniquement les fenêtres ouvertes
 Stockage (L'Assistant de stockage) > Activé
 ## waiting - Signal
+October 2025: 0patch
 winget add OpenWhisperSystems.Signal
 ## WPS
 clic droit sur toolbar pour  Propriétés > [ Couleurs > Opacité > 86%  Police > Taille > 12 ]
@@ -231,7 +232,14 @@ Paramètres > Comptes > Famille et autres utilisateurs  doesn't offer removal, s
 winget add WizTree
 ## Google Chrome
 dadofdeauram@gmail.com
+## $ITr
+$MSn/PS/_noDropbox.ps1
+$MSn/set/0-_MSn.ps1
+$MSWin10/build/HPEB840G36.ps1
+$MSn/set/2-PSProfile.ps1
+$MSWin10/build/HPEB840G36.ps1
 ## waiting
+zoxide
 # physical configuration
 1366x768 screen
 Intel Core i5-6300U

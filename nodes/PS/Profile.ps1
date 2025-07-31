@@ -5,6 +5,7 @@
 #  symlinked in  $MSn/set/2-PSProfile.ps1
 #    then called by  $MSn/PS/ProfileStub.ps1
 
+$dts = (Get-Date).ToString("yyMMdd-HHmmss")
 sal m mpv
 sal seco set-content  # because  sc  is overridden by  sc.exe
 sal su C:\SumatraPDF\SumatraPDF.exe
@@ -375,8 +376,13 @@ sal y $HADL\Microsoft\WinGet\Packages\yt-dlp.yt-dlp_Microsoft.Winget.Source_8wek
 $env:TERM = "xterm-256color"  # $vfn/lua/init.lua
 
 # Backup command history:
-$dts = (Get-Date).ToString("yyMMdd-HHmmss")
-cp (Get-PSReadlineOption).HistorySavePath $MSWml/CHh/$dts  # $coreIT/MSWin
+if ( test-path "~\_noDropbox.ps1" ) {
+  $CHh = "$HOME/CHh"; endi $CHh
+} else {
+  $Chh = "$MSWml/CHh" # $coreIT/MSWin
+}
+# cp (Get-PSReadlineOption).HistorySavePath $MSWml/CHh/$dts.ps1  # $coreIT/MSWin
+cp (Get-PSReadlineOption).HistorySavePath $CHh/$dts.ps1
 
 if ($PSVersionTable.PSVersion.Major -eq 7) { ipmo Powershell.Chunks }
 

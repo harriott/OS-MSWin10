@@ -131,6 +131,7 @@ winget add M2Team.NanaZip
 APS> corepack enable
 ## waiting
 lazygit
+October 2025: 0patch
 # build - sequential
 ## move from Utilisateur
 Paramètres >

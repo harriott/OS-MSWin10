@@ -7,15 +7,15 @@
 
 csl ~\PSProfile.ps1
 
-#=> Emacs
-$Ed = "$HADR\.emacs.d"; endi $Ed
-syli $misc\CP\emacs\custom.el $Ed\custom.el
-syli $core\TextNotes\Emacs\diary $Ed\diary
-syli $misc\CP\emacs\early-init.el $Ed\early-init.el
-syli $onGH\harriott-zenburn-emacs $Ed\harriott-zenburn-emacs
-syli $misc\CP\emacs\init.el $Ed\init.el
-syli $misc\CP\emacs\lisp $Ed\lisp
-  csl $HADR\.emacs.d
+# #=> Emacs
+# $Ed = "$HADR\.emacs.d"; endi $Ed
+# syli $misc\CP\emacs\custom.el $Ed\custom.el
+# syli $core\TextNotes\Emacs\diary $Ed\diary
+# syli $misc\CP\emacs\early-init.el $Ed\early-init.el
+# syli $onGH\harriott-zenburn-emacs $Ed\harriott-zenburn-emacs
+# syli $misc\CP\emacs\init.el $Ed\init.el
+# syli $misc\CP\emacs\lisp $Ed\lisp
+#   csl $HADR\.emacs.d
 
 #=> gokcehan lf configuration
 syli $MSn\lf\colors $HADL\lf\colors
@@ -23,48 +23,48 @@ syli $MSn\lf\lfrc $HADL\lf\lfrc
 syli $MSn\lf\icons $HADL\lf\icons
   csl $HADL\lf
 
-#=> MiKTeX
-syli $ITsCP\documenting\LaTeX\jo $tex\latex\jo  # csl $tex\latex
-#  after changes:  miktex fndb refresh
-#  ii "$tex\latex\jo"
-#  sl $tex\latex
-  csl $tex\latex
+# #=> MiKTeX
+# syli $ITsCP\documenting\LaTeX\jo $tex\latex\jo  # csl $tex\latex
+# #  after changes:  miktex fndb refresh
+# #  ii "$tex\latex\jo"
+# #  sl $tex\latex
+#   csl $tex\latex
 
-#=> Mozilla Thunderbird safely
-syli $MSn\Thb\clearWin10ProLock.ps1 C:\MT-clearWin10ProLock.ps1
-  csl C:\MT-clearWin10ProLock.ps1
-syli $MSn\Thb\runSafely.ps1 C:\MT-runSafely.ps1
-  csl C:\MT-runSafely.ps1
+# #=> Mozilla Thunderbird safely
+# syli $MSn\Thb\clearWin10ProLock.ps1 C:\MT-clearWin10ProLock.ps1
+#   csl C:\MT-clearWin10ProLock.ps1
+# syli $MSn\Thb\runSafely.ps1 C:\MT-runSafely.ps1
+#   csl C:\MT-runSafely.ps1
 
 #=> mpv
 syli $misc/CP/mpv.conf $HADR/mpv/mpv.conf
 
-# #=> Node.js
-# endi $HADR\npm
+#=> Node.js
+endi $HADR\npm
 
 # #=> Pandoc m4p
 # endi $tex\latex\m4p
 
-#=> Pandoc\defaults
-$Pd = "$Pandoc\defaults"; endi $Pd
-syli $MD4PDF\defaults-toc.yaml "$Pd\md4pdfToC.yaml"
-syli $MD4PDF/defaults.yaml "$Pd\md4pdf.yaml"
-  csl $Pandoc\defaults
+# #=> Pandoc\defaults
+# $Pd = "$Pandoc\defaults"; endi $Pd
+# syli $MD4PDF\defaults-toc.yaml "$Pd\md4pdfToC.yaml"
+# syli $MD4PDF/defaults.yaml "$Pd\md4pdf.yaml"
+#   csl $Pandoc\defaults
 
-#=> Pandoc\templates
-$Pt = "$Pandoc\templates"; endi $Pt
-syli $onGH\pandoc-templates "$Pt"
-  csl $Pandoc
+# #=> Pandoc\templates
+# $Pt = "$Pandoc\templates"; endi $Pt
+# syli $onGH\pandoc-templates "$Pt"
+#   csl $Pandoc
 
-# #=> Ruby
-# cpi $onGH\misc\irbrc ~\.irbrc
+#=> Ruby
+cpi $misc\irbrc ~\.irbrc
 
-# #=> secure
-# endi ~/encrypted
-# endi ~/.ssh
+#=> secure
+endi ~/encrypted
+endi ~/.ssh
 
-# #=> vim flavours - minimap
-# cp $ITscc\forMSWin\code-minimap-v0.6.7-x86_64-pc-windows-msvc\code-minimap.exe $HADL\Microsoft\WindowsApps\code-minimap.exe
+#=> vim flavours - minimap
+cp $JHCc/forMSWin/code-minimap-v0.6.8-x86_64-pc-windows-msvc/code-minimap.exe $HADL/Microsoft/WindowsApps/code-minimap.exe
 
 #=> vim flavours - nvim 0 nvim 0 clear
 if ( test-path $nvim ) { ri -path $nvim -recurse } ; md $nvim\pack
@@ -133,7 +133,7 @@ syli $vfv/thesaurus            ~/vimfiles/thesaurus
   csl ~/vimfiles
 
 #=> ~\.bashrc
-syli $MSn\bashrc ~\.bashrc
+syli $MSn/bashrc ~\.bashrc
   csl ~/.bashrc
 
 #=> ~\.gitconfig
@@ -141,7 +141,7 @@ syli $MSn\gitconfig ~\.gitconfig
   csl ~\.gitconfig
 # b $HOME\.gitconfig
 
-#=> ~\.wezterm.lua
-syli $MSn/wezterm.lua ~/.wezterm.lua
-  csl ~/.wezterm.lua
+# #=> ~\.wezterm.lua
+# syli $MSn/wezterm.lua ~/.wezterm.lua
+#   csl ~/.wezterm.lua
 

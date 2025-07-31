@@ -16,7 +16,11 @@ $tricky = "D:\tricky"
   $cGRs = "$tricky\GRs"  # Copied Git Repositories Use
 
 #===> 0 $Drpbx, or just $coreIT
-if ( test-path "~\_noDropbox.ps1" ) { $coreIT = 'D:\IT' } else {
+if ( test-path "~\_noDropbox.ps1" ) {
+    $coreIT = 'D:\ITr-coreIT'
+    $JHCc = "D:\ITr-Cop-code"
+    $jtIT = "D:\ITr-jtIT"
+  } else {
   $Drpbx = "D:\Dropbox"
     $COT = "$Drpbx\Cop\OutThere"
     $DJH = "$Drpbx\JH"
@@ -46,6 +50,7 @@ if ( test-path "~\_noDropbox.ps1" ) { $coreIT = 'D:\IT' } else {
         $JChu = "$JCop\human"  # used in  $TeNo
         $Pr0 = "$JCop\Practical0"
           $Pr0t = "$Pr0\technos"
+      $JHCc = "$DJH\Cop-code"
       $JHt = "$DJH\Jo-technos"
         $jtIT = "$JHt\IT"
           $jtCP = "$jtIT\CP"
@@ -79,9 +84,11 @@ $ITscc = "$coreIT\copied-code"
 $ITscr = "$coreIT\copied-reference"
 $MSWml = "$coreIT\MSWin\ml-$Cn"
 $onGH = "$coreIT\onGitHub"
-  $misc = "$onGH\misc"
+  if ( test-path "~\_noDropbox.ps1" )
+    { $misc = 'D:\ITJ\misc' } else { $misc = "$onGH\misc" }
   $MD4PDF = "$onGH\pandoc-md4pdf"
-  $MSWin10 = "$onGH\OS-MSWin10"
+  if ( test-path "~\_noDropbox.ps1" )
+    { $MSWin10 = 'D:\ITJ\OS-MSWin10' } else { $MSWin10 = "$onGH\OS-MSWin10" }
     $MSn = "$MSWin10\nodes"
   $OSAB = "$onGH\OS-ArchBuilds"
     $ABjo = "$OSAB\nodes-jo"
@@ -94,7 +101,8 @@ $onGH = "$coreIT\onGitHub"
   $culL = "$coreIT\ulLinux"
     $lclm = "$culL\clm"  # linux command-line mail
     $culLA = "$culL\Arch"
-  $vimfiles = "$onGH\vimfiles"
+  if ( test-path "~\_noDropbox.ps1" )
+    { $vimfiles = 'D:\ITJ\vimfiles' } else { $vimfiles = "$onGH\vimfiles" }
   # $vimfiles = "~\vfs"  # vimfiles source - for testing outside of Dropbox
     $vfn = "$vimfiles\nvim"
     $vfv = "$vimfiles\vim"
