@@ -268,6 +268,9 @@ winget ls ripgrep  finds nothing, so logged in  jharrio  for
 fixed ; at end of path
 ## Signal
 winget add OpenWhisperSystems.Signal
+## HP Smart
+winget add 9WZDNCRFHWLH
+Se connecter  found  HPA22F0E (ENVY 5530)
 ## waiting
 zoxide
 # physical configuration
