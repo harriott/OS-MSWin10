@@ -85,10 +85,10 @@ $ITscr = "$coreIT\copied-reference"
 $MSWml = "$coreIT\MSWin\ml-$Cn"
 $onGH = "$coreIT\onGitHub"
   if ( test-path "~\_noDropbox.ps1" )
-    { $misc = 'D:\ITJ\misc' } else { $misc = "$onGH\misc" }
+    { $misc = 'D:\ITJ\gc-misc' } else { $misc = "$onGH\misc" }
   $MD4PDF = "$onGH\pandoc-md4pdf"
   if ( test-path "~\_noDropbox.ps1" )
-    { $MSWin10 = 'D:\ITJ\OS-MSWin10' } else { $MSWin10 = "$onGH\OS-MSWin10" }
+    { $MSWin10 = 'D:\ITJ\gc-OS-MSWin10' } else { $MSWin10 = "$onGH\OS-MSWin10" }
     $MSn = "$MSWin10\nodes"
   $OSAB = "$onGH\OS-ArchBuilds"
     $ABjo = "$OSAB\nodes-jo"
@@ -102,7 +102,7 @@ $onGH = "$coreIT\onGitHub"
     $lclm = "$culL\clm"  # linux command-line mail
     $culLA = "$culL\Arch"
   if ( test-path "~\_noDropbox.ps1" )
-    { $vimfiles = 'D:\ITJ\vimfiles' } else { $vimfiles = "$onGH\vimfiles" }
+    { $vimfiles = 'D:\ITJ\RC-vimfiles' } else { $vimfiles = "$onGH\vimfiles" }
   # $vimfiles = "~\vfs"  # vimfiles source - for testing outside of Dropbox
     $vfn = "$vimfiles\nvim"
     $vfv = "$vimfiles\vim"
