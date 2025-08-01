@@ -7,8 +7,8 @@
 # $MSn/set  for  0-_MSn.ps1
 
 #=> 1 setup my tools 0 directories
-endi $HOME/CHh
-endi D:\ITJ\ml
+endi D:/ITJ/ml/CHh
+endi D:/ITJ/ml/packages
 
 # #=> 1 setup my tools 1 git clones
 # git clone https://github.com/harriott/OS-MSWin10 D:\ITJ\gc-OS-MSWin10
@@ -22,5 +22,5 @@ $gc = 'D:\ITJ\RC-vimfiles\.git\config'; (gc $gc).replace('git@github.com:','http
 # in  .git\config, change  git@github.com:  to  https://github.com/
 
 #=> 1 setup my tools 3 update $vimfiles
-robocopy D:\ITJ\gc-vimfiles D:\ITJ\RC-vimfiles
+robocopy \E D:\ITJ\gc-vimfiles D:\ITJ\RC-vimfiles
 

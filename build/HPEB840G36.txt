@@ -241,9 +241,33 @@ $MSn/PS  manually copied to  ~\PSEnv.ps1
 $MSWin10/build/HPEB840G36.ps1
 $MSn/set/2-PSProfile.ps1
 $MSn/set APS> . 3.ps1
-
-$MSWin10/build/HPEB840G36.ps1
-
+## PowerShell v7.5.2
+winget update Microsoft.PowerShell  refused
+Paramètres > Applications > PowerShell 7.4.6.0-x64 > Désintaller
+WPS> winget add Microsoft.PowerShell
+## Neovim v0.11.3
+winget update Neovim.Neovim
+winget ls Neovim  shows v0.10.1  still there, so  winget rm Neovim -v 0.10.1, failed, so
+Paramètres > Applications > Neovim v0.11.3 > Désintaller
+logged in  jharrio  for  Paramètres > Applications >
+  [ Neovim v0.10.1  Neovide 0.15.1 ] > Désintaller
+logged in  DH  for
+  winget add Neovim.Neovim
+## Neovide
+winget add neovide  'C:\Program Files\Neovide\neovide.exe'
+rebooted to get it finding  Neovim
+## Visual Studio Build Tools 2022 to make  telescope-fzf-native.nvim
+winget add Microsoft.VisualStudio.2022.BuildTools
+## ripgrep
+winget ls ripgrep  finds nothing, so logged in  jharrio  for
+  Paramètres > Applications > RipGrep MSVC v14.1.1 > Désintaller
+## Rust for ripgrep
+(once Visual Studio components) winget add rustup
+## ripgrep
+(once Rust) winget add burntsushi.ripgrep.msvc
+fixed ; at end of path
+## Signal
+winget add OpenWhisperSystems.Signal
 ## waiting
 zoxide
 # physical configuration

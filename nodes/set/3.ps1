@@ -75,8 +75,8 @@ if ( test-path $nvim ) { ri -path $nvim -recurse } ; md $nvim\pack
 syli $vfv/after               $nvim/after
 syli $vfv/filetype.vim        $nvim/filetype.vim
 syli $vfv/ftplugin            $nvim/ftplugin
-syli $vfn/init.vim  $nvim/init.vim
-syli $vfn/lua       $nvim/lua
+syli $vfn/init.vim            $nvim/init.vim
+syli $vfn/lua                 $nvim/lua
 syli $vfv/packs/packs-colo    $nvim/pack/colo
 syli $vfv/packs/packs-cp-all  $nvim/pack/cp-all
 syli $vfv/packs/packs-cp-full $nvim/pack/cp-full
