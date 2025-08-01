@@ -234,15 +234,16 @@ winget add WizTree
 dadofdeauram@gmail.com
 ## $ITJ
 $MSn/PS/_noDropbox.ps1
-
-$MSn/set/0-_MSn.ps1
-$MSn\AutoHotkey\HPEB840G36.ahk
-
+$MSn/gitconfig  manually copied to  ~\.gitconfig
+$MSn/set  for  . .\0-_MSn.ps1
+$MSn/AutoHotkey  in FE to run  HPEB840G36.ahk
+$MSn/PS  manually copied to  ~\PSEnv.ps1
 $MSWin10/build/HPEB840G36.ps1
 $MSn/set/2-PSProfile.ps1
+$MSn/set APS> . 3.ps1
+
 $MSWin10/build/HPEB840G36.ps1
 
-APS> . $MSn/set/3.ps1
 ## waiting
 zoxide
 # physical configuration
