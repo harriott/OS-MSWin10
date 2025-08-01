@@ -8,7 +8,7 @@
 
 #=> 1 setup my tools 0 directories
 endi $HOME/CHh
-endi D:\ITJ
+endi D:\ITJ\ml
 
 # #=> 1 setup my tools 1 git clones
 # git clone https://github.com/harriott/OS-MSWin10 D:\ITJ\gc-OS-MSWin10
