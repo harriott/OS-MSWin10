@@ -376,13 +376,7 @@ sal y $HADL\Microsoft\WinGet\Packages\yt-dlp.yt-dlp_Microsoft.Winget.Source_8wek
 $env:TERM = "xterm-256color"  # $vfn/lua/init.lua
 
 # Backup command history:
-if ( test-path "~\_noDropbox.ps1" ) {
-  $CHh = "$HOME/CHh"; endi $CHh
-} else {
-  $Chh = "$MSWml/CHh" # $coreIT/MSWin
-}
-# cp (Get-PSReadlineOption).HistorySavePath $MSWml/CHh/$dts.ps1  # $coreIT/MSWin
-cp (Get-PSReadlineOption).HistorySavePath $CHh/$dts.ps1
+cp (Get-PSReadlineOption).HistorySavePath $MSWml/CHh/$dts.ps1  # $coreIT/MSWin
 
 if ($PSVersionTable.PSVersion.Major -eq 7) { ipmo Powershell.Chunks }
 
