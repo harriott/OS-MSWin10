@@ -1523,7 +1523,9 @@ Settings > General > Language > was English (US) with US style dates, so
   Search > Français > Add > Appliquer et redémarrer
 ## LibreOffice light
 alt+f12 > Apparence > Apparence > Claire
+## Thunderbird v141.0
 ## waiting
+luarocks-3.12.2-windows-64
 Mise à jour facultatives
 # physical configuration
 1920x1080 screen

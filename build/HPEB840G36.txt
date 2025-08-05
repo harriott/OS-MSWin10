@@ -271,6 +271,10 @@ winget add OpenWhisperSystems.Signal
 ## HP Smart
 winget add 9WZDNCRFHWLH
 Se connecter  found  HPA22F0E (ENVY 5530)
+## OpenAI - ChatGPT
+dadofdeauram@gmail.com
+## Google Chrome
+deauram11@gmail.com, then signed into  ChatGPT
 ## waiting
 zoxide
 # physical configuration

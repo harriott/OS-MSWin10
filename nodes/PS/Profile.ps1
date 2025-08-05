@@ -77,7 +77,7 @@ function mc {
 } #  mc tiff jpg
 
 #=> 0 directories & files
-function c { if ( $args[0] ) { sl $args[0] } else { sl .. }; pc }  # handily move in or out
+function c { if ( $args[0] ) { sl $args[0] } else { sl .. }; p }  # handily move in or out
 function i { ii . }  # opens  file explorer  on current directory
 function lc { [string[]]$list = (gci).Name; $list -join '  ' }
 function ~ { sl ~ }
@@ -190,14 +190,14 @@ function gfoln { gci -r $args[0] | where { $_.psiscontainer } | select -expandpr
 function dtsfn { $args[0].lastwritetime.ToString('yyyyMMdd-HH:mm:ss')+' '+$args[1]+' '+ $args[0].fullname } # - used by other functions  ls <test> | %{ dtsfn $_ ':' }
 
 function encrypted {
-  $encrypted = "actions", "digital0", "digital1", "secure0", "secure1", "shg", "stack"
+  $encrypted = "actions", "Czs", "digital0", "digital1", "secure0", "secure1", "shg", "stack"
   if (!($(gl).path).equals($enc)) {
     if ( ( test-path $enc ) ) { sl $enc } else { "$enc ain't there"; return } }
   foreach ($node in $encrypted) {
     ''; scfcdc; $node; scrc
     if ( gci $node* ) {
       if ( $node.equals('actions') ) { $path = '*ps1*' } else {
-        if ( test-path $node -pathtype container ) { $encContents = gci $node -recurse -file | sort lastwritetime -descending | select -first 9 | %{ dtsfn $_ '??' } } else { $encdir = '' }
+        if ( test-path $node -pathtype container ) { $encContents = gci $node -af -s -e *.eml | ? { $_.fullname -notmatch '.git\\' } | sort lastwritetime -descending | select -first 2 | %{ dtsfn $_ '??' } } else { $encdir = '' }
         $path = $node+'*7z'
       }
       $enc7z = gci -path $path | %{ dtsfn $_ '**' }

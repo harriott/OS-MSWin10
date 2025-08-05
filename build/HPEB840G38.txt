@@ -1074,7 +1074,13 @@ somehow got  Paramètres > Personnalisation > Arrière-plan > Diaporama
 & $HADLM\WinGet\Packages\Microsoft.Sysinternals.BGInfo_Microsoft.Winget.Source_8wekyb3d8bbwe\bginfo.exe > OK  got  Memory  correctly listed as  16260 MB
 ## PS modules update
 cmu got me  "BurntToast|PSFzf" | cmu -update -all -allowPrerelease -skipScan
+## bat back into $PATH
+C:\Users\jnbh\AppData\Local\Microsoft\WinGet\Packages\sharkdp.bat_Microsoft.Winget.Source_8wekyb3d8bbwe\bat-v0.25.0-x86_64-pc-windows-msvc\bat.exe -h
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU+';C:\Users\jnbh\AppData\Local\Microsoft\WinGet\Packages\sharkdp.bat_Microsoft.Winget.Source_8wekyb3d8bbwe\bat-v0.25.0-x86_64-pc-windows-msvc'; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## waiting
+luarocks-3.12.2-windows-64
 October 2025: 0patch
 ### GitHub CLI
 winget add GitHub.cli

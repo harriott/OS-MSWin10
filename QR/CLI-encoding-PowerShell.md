@@ -264,9 +264,16 @@ replace text in files
     ls * | select FullName
     ls * | select Name
 
-- `-e <leaf_glob>` (invokes `-exclude`)
+- `-ad` = `-Directory`
+- `-af` = `-File`
 - `-h` = `-Hidden` only
+
+#### recurse
+    (gci -s).fullname -notmatch 'git\\'
+    gci -s -e *.eml | ? { $_.fullname -notmatch '.git\\' } | select FullName
+
 - `-s` = `-Recurse`
+    - `-e <leaf_glob>` (invokes `-exclude`)
 
 #### list of names
     ls -name
@@ -377,7 +384,7 @@ by gokcehan
 # microsoft.powershell.core
     <command> | out-null  # works for some commands
 
-`?` (= `where` = `where-object`)
+`?` (= `where` = `Where-Object`)
 
 # microsoft.powershell.management
 - `gc` (= `cat` = `type` = `get-content`)
@@ -412,7 +419,7 @@ prefer `&` where possible
     ip  # external address
 
 ### internal
-    (Get-NetIPConfiguration | Where-Object { $_.IPv4DefaultGateway -ne $null }).IPv4Address.IPAddress
+    (Get-NetIPConfiguration | ? { $_.IPv4DefaultGateway -ne $null }).IPv4Address.IPAddress
     lanip  # $MSn\PS\Profile.ps1
 
 # output
