@@ -10,7 +10,7 @@
 
 ; environment variables don't work
 
-#!a::Run "C:\Users\jharr\AppData\Roaming\AltSnap\AltSnap.exe" ; win+alt+a - open AltSnap
+#!a::Run "C:\Users\jharr\AppData\Roaming\AltSnap\AltSnap.exe -r" ; win+alt+a - open AltSnap
 #!p::Run "wt -d C:\Users\jharr" ; win+alt+p - PowerShell opened on $home
 
 ; 1920x1080 screen

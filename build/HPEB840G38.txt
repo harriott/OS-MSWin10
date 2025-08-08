@@ -1079,6 +1079,8 @@ C:\Users\jnbh\AppData\Local\Microsoft\WinGet\Packages\sharkdp.bat_Microsoft.Wing
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
 $newPathCU = $oldPathCU+';C:\Users\jnbh\AppData\Local\Microsoft\WinGet\Packages\sharkdp.bat_Microsoft.Winget.Source_8wekyb3d8bbwe\bat-v0.25.0-x86_64-pc-windows-msvc'; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
+## DVDFab 13.0.4.6
+allowed to update > Ne plus afficher
 ## waiting
 luarocks-3.12.2-windows-64
 October 2025: 0patch

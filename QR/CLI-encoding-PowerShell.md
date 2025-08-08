@@ -79,9 +79,10 @@ limited to single commands
     'hi.there.jpg' -replace '\.([^.]*)', ''     # hi
     'hi.there.jpg' -replace 't([^.]*)', ''      # hi..jpg
     'hi.there.jpg' -replace '\.([^.]*)$', ''    # hi.there
-    'hi:there:jpg' -replace '[^.]*?:', ''       # jpg
+    'hi:there:jpg' -replace '^.*:', ''       # jpg
     'hi:there:jpg' -replace '(.*?):(.*)', '$2'  # there:jpg
 
+`\n` = newline
 `\s` = whitespace character
 `\S` = non-whitespace character
 `\w` = a-z, A-Z, 0-9, _
@@ -182,6 +183,14 @@ no standard aliases
 
 otherwise little sign of them
 
+## Perl
+    perl -e 'print \"Hello World\"'
+    perl -e "print qq(Hello, world!)"
+    perl -i -ne 'printf q(%04d %s), $., $_' <file_needing_linenumbers>
+    perl -ne 'printf' <file_to_print>
+
+`Strawberry Perl`: `$env:TERM="dumb"; cpan`
+
 ## PowerShell
     $programfiles\PowerShell\7\powershell.config.json
     pwsh -? | less
@@ -269,11 +278,14 @@ replace text in files
 - `-h` = `-Hidden` only
 
 #### recurse
+- `-s` = `-Recurse`
+    - `-e <leaf_glob>` (invokes `-exclude`)
+
+##### -notmatch
     (gci -s).fullname -notmatch 'git\\'
     gci -s -e *.eml | ? { $_.fullname -notmatch '.git\\' } | select FullName
 
-- `-s` = `-Recurse`
-    - `-e <leaf_glob>` (invokes `-exclude`)
+takes a regex
 
 #### list of names
     ls -name

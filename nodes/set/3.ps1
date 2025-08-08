@@ -141,7 +141,10 @@ syli $MSn\gitconfig ~\.gitconfig
   csl ~\.gitconfig
 # b $HOME\.gitconfig
 
-# #=> ~\.wezterm.lua
-# syli $MSn/wezterm.lua ~/.wezterm.lua
-#   csl ~/.wezterm.lua
+#=> ~\.alacritty.toml
+syli $MSn/alacritty.toml $Env:AppData/alacritty/alacritty.toml
+
+#=> ~\.wezterm.lua
+syli $MSn/wezterm.lua ~/.wezterm.lua
+  csl ~/.wezterm.lua
 

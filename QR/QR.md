@@ -83,7 +83,10 @@ can paste these into `File Explorer`
     g $HADL\Programs\Python  # winget install
     g $HADR\Python
 
-### Strawberry Perl
+### Perl
+    where.exe perl
+
+#### Strawberry
     C:\Strawberry\perl\bin\perl.exe -v
     g $home\.cpanm
 
@@ -335,7 +338,7 @@ star icon
 - `win+x` > `t` = `Gestion des disques`
 
 ## input
-`ctrl+win+o` tgggles visual keyboard in current language
+`ctrl+win+o` toggles visual keyboard in current language
 
 ### change language
 - `shift+alt`
@@ -376,7 +379,7 @@ star icon
 `Éditeur du Registre`
 
 ## snapping
-if done when eg  AltSnap's default  AutoSnap=2, win+arrow  actions are deadened
+if done when eg  AltSnap's default  AutoSnap=2, then  win+arrow  actions are deadened
 
 ## Start Menus
     sl "$HADR\Microsoft\Windows\Start Menu\Programs"

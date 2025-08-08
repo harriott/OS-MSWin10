@@ -1,11 +1,11 @@
 # vim: se fdl=2:
 
-# & $MSWin10\mb\fzf.ps1
+# & $MSWin10\build\fzf.ps1
 
 # Relaunch PowerShell after changing  fzf.exe !
 
 #=> 0 downloaded  fzf.exe
-& $ITscc\forMSWin\fzf.exe --version
+& $DJH\Cop-code\forMSWin\fzf.exe --version
 
 #==> 0 into WindowsApps
 cpi $ITscc\forMSWin\fzf.exe $HADL\Microsoft\WindowsApps

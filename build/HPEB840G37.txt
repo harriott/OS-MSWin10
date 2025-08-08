@@ -136,13 +136,14 @@ October 2025: 0patch
 ## move from Utilisateur
 Paramètres >
 Mise à jour et sécurité > Activation > Windows est activé à l'aide d'une license numérique
-Système > À propos de > Spécifications de Windows > Windows 10 Pro 21H2 OS build 19044.1889
+Système > À propos de >
+  Spécifications de Windows > Windows 10 Pro 21H2 OS build 19044.1889
 connected to  Jo-X10II
 Mise à jour et sécurité > Windows Update > Updated to Windows 10 version 22H2
 connected to  Jo-OPPO-A76
 Menu > Système Windows >
-[ Invite de Commandes  Outils d'administration  Panneau de configuration ] > Pinned to Start
-Menu > [ Disnéy  Microsoft 365 ] > right-click > Désintaller
+[ Invite de Commandes  Outils d'administration  Panneau de configuration ] >
+  Pinned to Start Menu > [ Disnéy  Microsoft 365 ] > right-click > Désintaller
 win+i > Comptes > Famille et autres utilisateurs > Ajouter > jharrio@outlook.com > pw
 win+i > Comptes > Famille et autres utilisateurs > Autres > Utilisateur > supprimer
 ## Ditto Clipboard
@@ -593,7 +594,7 @@ all other attmempts to  add  to  C:\Emacs  failed  $env:programfiles\Emacs  to r
 ## Emacs v29.3 - good for Vim
 winget add emacs  then  APS> mv $env:programfiles\Emacs C:\Emacs -force
 ## fzf.exe v0.48.0 (for PSFzf)
-$MSWin10\mb\fzf.ps1
+$MSWin10\build\fzf.ps1
 ## gokcehan's lf update failed
 ### uninstall fail
 winget rm gokcehan.lf
@@ -724,7 +725,7 @@ $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
 $newPathCU = $oldPathCU -replace '\\fd.exe$', ''; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## fzf from winget
-$MSWin10\mb\fzf.ps1
+$MSWin10\build\fzf.ps1
 & $HADL\Microsoft\WinGet\Links\fzf.exe --version
 fixed ; at end of path
 ## fd v10.1.0
@@ -1524,6 +1525,49 @@ Settings > General > Language > was English (US) with US style dates, so
 ## LibreOffice light
 alt+f12 > Apparence > Apparence > Claire
 ## Thunderbird v141.0
+## Perl - utf8::all - ppm fail
+ppm install utf8::all
+  Error installing package 'utf8-all': Could not locate a PPD file for package utf8-all
+## Perl - utf8::all - cpanm fail
+cpanm utf8::all
+  ...
+  Successfully installed Import-Into-1.002005
+  ...
+  Successfully installed utf8-all-0.024
+$HOME\.cpanm\latest-build\utf8-all-0.024\README
+perl -e 'use utf8::all;'  got me  Can't locate utf8/all.pm in @INC (you may need to install the utf8::all module) (@INC entries checked: C:/Strawberry/perl/site/lib C:/Strawberry/perl/vendor/lib C:/Strawberry/perl/lib)
+## Perl - utf8::all - cpan
+cpan utf8::all
+  ...
+  Writing Makefile for utf8::all
+  ...
+  Writing Makefile for Import::Into
+## Perl - cpan
+cpan > o conf init pushy_https  got me  commit wrote C:/Strawberry/perl/lib/CPAN/Config.pm
+## Perl - Log::Log4perl
+(for  cpan) cpanm -i Log::Log4perl
+## ConEmu
+winget add ConEmu
+ran it for  (settings > $Env:AppData\ConEmu.xml), startup task > {Shells::PowerShell Core},
+  interface > fr, Single instance mode
+## Everything v1.4.1.1024
+Everything-1.4.1.1028.x64-Setup.exe > clicked through > UAC
+## Alacritty
+winget add Alacritty
+## ~ damaged
+due to accidentally running  $onGH/FM-underscores/underscores.pl  therein...
+### repairs to  PowerShell
+winget add zoxide  failed, so  winget rm zoxide; winget add zoxide
+winget add gokcehan.lf  failed, so  winget rm gokcehan.lf; winget add gokcehan.lf
+uninstall-module burnttoast; isres BurntToast
+cmu  gets me  InvalidOperation: Unable to find type [Windows.UI.Notifications.ToastNotificationManager,Windows.UI.Notifications, ContentType=WindowsRuntime]. InvalidOperation: Unable to find type [Windows.Data.Xml.Dom.XmlDocument,Windows.Data.Xml.Dom.XmlDocument, ContentType=WindowsRuntime]. InvalidOperation: Unable to find type [Windows.Data.Xml.Dom.XmlDocument].
+rmo ps.checkModuleUpdates, isres ps.checkModuleUpdates  having no effect, so
+  winget ls Microsoft.PowerShell; winget rm Microsoft.PowerShell; winget add Microsoft.PowerShell
+winget ls fzf; winget rm fzf; winget add fzf
+winget ls sharkdp.bat; winget rm sharkdp.bat; winget add sharkdp.bat
+winget rm sharkdp.fd; winget add sharkdp.fd
+### repairs to  Microsoft Edge
+edge://extensions/  all reporting  Cette extension a peut-être été endommagée.
 ## waiting
 luarocks-3.12.2-windows-64
 Mise à jour facultatives

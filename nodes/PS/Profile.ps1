@@ -238,7 +238,9 @@ function lwt {
 #===> sizes
 function dc { gci | foreach-object { $_.name + ": " + "{0:n2}" -f ((gci $_ -recurse | measure-object length -sum -erroraction silentlycontinue).sum / 1mb) + " mb" } }
 
-function du { du64 -nobanner -l 1 }
+function dul1 { du64 -nobanner -l 1 } # not good in French
+function duac { $csv = du64 -c -l 0 -nobanner; $d = $csv[1] -split ','
+  'bytes:'+$d[5]+' dirs:'+$d[4]+' files:'+$d[3] }
 
 function fso { $fso = new-object -com scripting.filesystemobject; gci -directory | select @{l='size'; e={$fso.getfolder($_.fullname).size}},fullname | sort size -descending | ft @{l='size [mb]'; e={'{0:n2}    ' -f ($_.size / 1mb)}},fullname }
 
