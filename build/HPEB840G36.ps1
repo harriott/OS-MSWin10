@@ -6,7 +6,7 @@ function rhgc { Read-Host "- good to continue? " }
 
 #=> 0 precursors
 sl $MSn/PS  # or get there manually if  $MSn  not yet defined
-  . _noDropbox.ps1
+  . .\_noDropbox.ps1
 . $MSn/set/0-_MSn.ps1
 rhgc
 
