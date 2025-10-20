@@ -6,6 +6,7 @@
 #  also there is  \\wsl$\Ubuntu\etc\profile
 
 alias u=tmux
+cp ~/.bash_history $MSWml/WSL/bash_history/$(date +%y%m%d-%H%M%S).sh
 source $OSL/nodes/bashrc-clm
 source $OSL/nodes/bashrc-console-fm
 source $OSL/nodes/bashrc-generic

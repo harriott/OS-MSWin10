@@ -7,6 +7,12 @@
 
 csl ~\PSProfile.ps1
 
+#=> $notDr
+endi $notDr/GR-NF
+endi $notDr/GRs
+syli $misc/notDr/notDr.md $notDr/readme.md
+syli $misc/notDr/NF.md $notDr/GR-NF/readme.md
+
 # #=> Emacs
 # $Ed = "$HADR\.emacs.d"; endi $Ed
 # syli $misc\CP\emacs\custom.el $Ed\custom.el
@@ -77,6 +83,7 @@ syli $vfv/filetype.vim        $nvim/filetype.vim
 syli $vfv/ftplugin            $nvim/ftplugin
 syli $vfn/init.vim            $nvim/init.vim
 syli $vfn/lua                 $nvim/lua
+syli $vfn/lsp                 $nvim/lsp
 syli $vfv/packs/packs-colo    $nvim/pack/colo
 syli $vfv/packs/packs-cp-all  $nvim/pack/cp-all
 syli $vfv/packs/packs-cp-full $nvim/pack/cp-full

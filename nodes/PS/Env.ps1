@@ -4,7 +4,7 @@
 
 # $MSn\PS\Env.ps1
 #  needed for system build
-#  symlink ($MSn\set\1-PSProfile.ps1) sourced by  $MSWin10\PSProfile.ps1
+#  symlink ($MSn\set\1-PSProfile.ps1) sourced by  $MSn/PS/Profile.ps1
 
 #=> 0 useful variables
 $Cn = $Env:Computername
@@ -12,8 +12,9 @@ $Cn = $Env:Computername
 #==> places
 $CPF = $env:programfiles
 $CPFx = ${env:programfiles(x86)}
-$tricky = "D:\tricky"
-  $cGRs = "$tricky\GRs"  # Copied Git Repositories Use
+$ITr = 'E:\ITr'  # see  $OSL/nodes/jo/export
+$notDr = "D:\notDr"
+  $GRs = "$notDr\GRs"  # copied Git Repositories
 
 #===> 0 $Drpbx, or just $coreIT
 if ( test-path "~\_noDropbox.ps1" ) {
@@ -22,7 +23,8 @@ if ( test-path "~\_noDropbox.ps1" ) {
     $jtIT = "D:\ITr-jtIT"
   } else {
   $Drpbx = "D:\Dropbox"
-    $COT = "$Drpbx\Cop\OutThere"
+    $DrCop = "$Drpbx\Cop"
+      $COT = "$DrCop\OutThere"
     $DJH = "$Drpbx\JH"
       $CfWk = "$DJH\Cop-work"
         $Cwet = "$CfWk\education\technos"
@@ -72,7 +74,7 @@ $Enc = "$home\encrypted"
 $HADL = "$HOME\AppData\Local"  # ($env:localappdata)
   $HADLM = "$HADL\Microsoft"
   $lazy = "$HADL\nvim-data\lazy"
-  $mason = "$HADL\nvim-data\mason\packages"
+  $nvmp = "$HADL\nvim-data\mason\packages"
   $nvim = "$HADL\nvim"  # lf  don't grok  ~
 $HADR = $Env:AppData  # Roaming
   $Pandoc = "$HADR\Pandoc"

@@ -1081,9 +1081,46 @@ $newPathCU = $oldPathCU+';C:\Users\jnbh\AppData\Local\Microsoft\WinGet\Packages\
 sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## DVDFab 13.0.4.6
 allowed to update > Ne plus afficher
+## WSL Ubuntu 24.04.1 LTS Ruby
+sudo apt install gnuplot
+  The following additional packages will be installed: aglfn gnuplot-data gnuplot-qt libgd3 libnotify4 libpcre2-32-0 libqt5core5t64 libqt5dbus5t64 libqt5gui5t64 libqt5network5t64 libqt5printsupport5t64 libqt5qml5 libqt5qmlmodels5 libqt5quick5 libqt5svg5 libqt5waylandclient5 libqt5waylandcompositor5 libqt5widgets5t64 libwxbase3.2-1t64 libwxgtk3.2-1t64 libxcb-xinerama0 libxcb-xinput0 qt5-gtk-platformtheme qttranslations5-l10n qtwayland5
+  Suggested packages: gnuplot-doc libgd-tools notification-daemon qgnomeplatform-qt5 qt5-image-formats-plugins qt5-qmltooling-plugins
+## mason.nvim
+:MasonInstall ...  doesn`t close off at end...
+## Zimbra Modern Desktop
+Zimbra_Desktop_4.46.0_c975480bb_20250701133104.exe  C:\Program Files\Zimbra Desktop
+  but can't find what to put for  serveur de messagerie
+## DVDFab 13.0.4.7
+allowed to update
+## gokcehan's lf update failed
+winget update gokcehan.lf
+  remove: Accès refusé: "C:\Users\jnbh\AppData\Local\Microsoft\WinGet\Packages\gokcehan.lf_Microsoft.Winget.Source_8wekyb3d8bbwe\lf.exe"
+  But it's there!
+winget rm gokcehan.lf  still  ... Accès refusé...  so reboot got it working
+## fix fd in $PATH
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU+';C:\Users\jnbh\AppData\Local\Microsoft\WinGet\Packages\sharkdp.fd_Microsoft.Winget.Source_8wekyb3d8bbwe\fd-v10.3.0-x86_64-pc-windows-msvc'; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+## 0patch
+0PatchInstaller_22.11.11.10550.msi (${env:programfiles(x86)}\0patch) signed in
+## MiKTeX updates
+Start Menu > MiKTeX Console  for 129 updates
+## explorer.exe  hogging CPU
+Dropbox restarted, slow rescan of everything
+APS> sfc /scannow
+  La Protection des ressources Windows a détecté des fichiers corrompus et les a réparés. Pour les réparations en ligne, les détails sont inclus dans le fichier journal de CBS situé à l'emplacement suivant : windir\Logs\CBS\CBS.log. Exemple : C:\Windows\Logs\CBS\CBS.log. Pour les réparations hors connexion, les détails sont inclus dans le fichier journal fourni par l'indicateur /OFFLOGFILE.
+APS> Dism /Online /Cleanup-Image /ScanHealth
+  Aucun endommagement du magasin de composants n’a été détecté.
+## ESU
+https://www.microsoft.com/en-gb/windows/end-of-support > Get extended security updates >
+  (Paramètres > S'inscrire aux mises à jour de sécurité étendues > start "$MSWml/pag-ESU.png"
+## fix lsd in $PATH
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU+';C:\Users\jnbh\AppData\Local\Microsoft\WinGet\Packages\lsd-rs.lsd_Microsoft.Winget.Source_8wekyb3d8bbwe'; $newPathCU  # g $HADLM\WinGet\Packages\lsd-rs.lsd_Microsoft.Winget.Source_8wekyb3d8bbwe
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+lsd  still not found, so rebooted
 ## waiting
 luarocks-3.12.2-windows-64
-October 2025: 0patch
 ### GitHub CLI
 winget add GitHub.cli
 # physical configuration

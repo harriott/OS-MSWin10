@@ -1,0 +1,17 @@
+#!/bin/bash
+# vim: set sw=2:
+
+# $MSn/WSL/bashrc-Drp
+
+
+WSLDrp () {
+  if [ $1 ]; then
+    WSLpc=0  # set the count to 0
+  else
+    WSLpc=$((WSLpc+=1))
+    echo "  pause $WSLpc"; sleep 1.4
+  fi
+} # Dropbox pause - obviates  "cannot ... denied"  in  $Cmdt
+
+# WSLDrp () { true; } # if Dropbox isn't active
+

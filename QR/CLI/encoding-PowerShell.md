@@ -1,6 +1,6 @@
 vim: nospell:
 
-    $MSWin10/QR/CLI-encoding-PowerShell.md
+    $MSWin10/QR/CLI/encoding-PowerShell.md
 
     $coreIT\MSWin\PowerShell\Scratch.ps1
     $myinvocation.mycommand.name  # = the script's name
@@ -58,6 +58,7 @@ limited to single commands
     format-string powershell -randomize
     if ( 'n' -eq 'n' ) { 'equal' }
     if ( '5' -ne '4' ) { '5 is not 4' }
+    if ( 'b' -gt 'a' ) { 'b gt a' }
 
 ### make changes
     $b='o'; $b=$b+'o'; $b
@@ -123,11 +124,10 @@ no standard aliases
     cd 'C:\Program Files'
     C:\Windows\explorer.exe "microsoft-edge:searchterm"
     explorer shell:Appsfolder  # Applications
+    g $HADLM\WinGet\Packages
     get-commandsyntax <command>
     get-startapps  # lists AppIDs
     start <somefile>
-    where.exe rg
-    where.exe zig
 
 ## *-Process
     kill -name HP.Smart
@@ -216,8 +216,10 @@ otherwise little sign of them
     where.exe gpg
     where.exe pwsh
     where.exe python
+    where.exe rg
     where.exe sumatrapdf
     where.exe where.exe
+    where.exe zig
 
 doesn't find executables in `~\AppData\`
 
@@ -276,6 +278,7 @@ replace text in files
 - `-ad` = `-Directory`
 - `-af` = `-File`
 - `-h` = `-Hidden` only
+- `-Force` = include hidden & system files
 
 #### recurse
 - `-s` = `-Recurse`
@@ -309,6 +312,7 @@ takes a regex
     ls -s | ? Name -match <regex>
 
 ### lastwritetime
+    ls -file -s | %{ dtsfn $_ ':' } | sort  # all files recursively
     lwp \.ps1
     lwt lua lua
     lwt md md
@@ -317,10 +321,6 @@ takes a regex
     lwt docs doc docx odt
     lwt tex cls sty tex
     lwt txt txt
-
-#### quick terminal output
-    lwts *.ps1 *.sh
-    lwts *.txt
 
 ### sizes
     du64 -l 0 -nobanner
@@ -413,7 +413,7 @@ by gokcehan
 - `measure` (= `measure-object`)
 - `select` (= `Select-Object`)
 - `sls` (= `select-string`)
-- `sort` (= `sort-object`) `-Unique`
+- `sort` (= `Sort-Object`) `-Unique`
 
 ## invoke-expression
     iex <someCommand>
@@ -540,6 +540,7 @@ tab completion
 # PSScriptTools
     dw (= Get-DirectoryInfo)
     gal cc  # Copy-Command
+    Get-Help Get-FolderSizeInfo -Detailed
     Get-MyAlias
     Get-MyVariable
     Get-PathVariable
@@ -586,7 +587,7 @@ tab completion
     Get-InstalledScript
     get-verb | sort -property verb
     param( [switch]$doSomething )  # -doSomething  creates  $doSomething = true
-    return
+    return  # about_Return
     ~\Documents\PowerShell\Scripts
 
 ## functions
@@ -596,6 +597,10 @@ tab completion
     function global:<function> { ... }
     function arg_exists { $a0 = $args[0]; if ($a0) {$a0} }; arg_exists
     function args { $a0 = $args[0]; $a1 = $args[1]; "$a0 $a1, and " + $args[0] + ", but $args[0]" }; args here there
+
+### variable scopes
+- `$global:var` then `$var` is usable outside the function
+- `$script:var` persists for subsequent function calls
 
 ## if statement
     if (c1) {a1} elseif (c2) {a2} else {a3}

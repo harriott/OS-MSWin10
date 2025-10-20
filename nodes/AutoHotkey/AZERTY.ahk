@@ -25,6 +25,7 @@ Ins::SetCapsLockState !GetKeyState("CapsLock", "T")  ; Ins = CapsLock
 CapsLock::SendText "\"
 
 #^s::{
+	WinMaximize "HP Smart ahk_exe ApplicationFrameHost.exe"
 	WinActivate "HP Smart ahk_exe ApplicationFrameHost.exe"
     MouseMove 970,730
 	Click ; on Numériser

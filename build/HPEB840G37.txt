@@ -131,7 +131,6 @@ winget add M2Team.NanaZip
 APS> corepack enable
 ## waiting
 lazygit
-October 2025: 0patch
 # build - sequential
 ## move from Utilisateur
 Paramètres >
@@ -598,7 +597,7 @@ $MSWin10\build\fzf.ps1
 ## gokcehan's lf update failed
 ### uninstall fail
 winget rm gokcehan.lf
-remove: Accs refus.: "C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\gokcehan.lf_Microsoft.Winget.Source_8wekyb3d8bbwe\lf.exe"
+remove: Accès refusé: "C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\gokcehan.lf_Microsoft.Winget.Source_8wekyb3d8bbwe\lf.exe"
 ### uninstall
 reboot  for  winget rm gokcehan.lf  (should've tried update)  still in  $env:path
 winget add gokcehan.lf
@@ -1556,6 +1555,10 @@ Everything-1.4.1.1028.x64-Setup.exe > clicked through > UAC
 winget add Alacritty
 ## ~ damaged
 due to accidentally running  $onGH/FM-underscores/underscores.pl  therein...
+### repairs to  dot folders
+that'd been renamed  underscore...
+### repairs to  Microsoft Edge
+edge://extensions/  all reporting  Cette extension a peut-être été endommagée.
 ### repairs to  PowerShell
 winget add zoxide  failed, so  winget rm zoxide; winget add zoxide
 winget add gokcehan.lf  failed, so  winget rm gokcehan.lf; winget add gokcehan.lf
@@ -1566,8 +1569,23 @@ rmo ps.checkModuleUpdates, isres ps.checkModuleUpdates  having no effect, so
 winget ls fzf; winget rm fzf; winget add fzf
 winget ls sharkdp.bat; winget rm sharkdp.bat; winget add sharkdp.bat
 winget rm sharkdp.fd; winget add sharkdp.fd
-### repairs to  Microsoft Edge
-edge://extensions/  all reporting  Cette extension a peut-être été endommagée.
+winget rm lsd; winget add lsd
+### repairs to  $HADL
+underscores back to dots
+### repairs to  Vim
+$mason  deleted, but still  :MasonInstall ...  doesn`t close off at end...
+## WSL Ubuntu 24.04.1 LTS Ruby
+sudo apt install gnuplot  installed a load of packages
+## MiniTool Partition Wizard Free v13.0
+allowed, refusing  MiniTool ShadowMaker Free
+ran it for "Ne pas afficher ce message à nouveau."
+## Thunderbird v143.0.1
+## ESU
+Windows Update > La prise en charge de Windows 10 se termine en octobre 2025 >
+  S'inscrire maintenant > Suivant >
+  Mise à jour de sécurité étendues ... jusqu'au 13 octobre 2026 > Inscrivez-vous > Terminé
+## 0patch
+0PatchInstaller_22.11.11.10550.msi (${env:programfiles(x86)}\0patch) signed in
 ## waiting
 luarocks-3.12.2-windows-64
 Mise à jour facultatives
@@ -1576,7 +1594,7 @@ Mise à jour facultatives
 Intel Core i5-6300U
 ## storage
 (essential) M.2 SSD: 119Go
-(optional) 2.5" SSD: 238Go HX256GSSDSATA3, not yet shimmed
+(optional) 2.5" SSD: 238Go HX256GSSDSATA3, shimmed
 ## Startup Menu
 hold  esc  at start to get into  Startup Menu
 hold  f9  at start to get into  Boot Menu

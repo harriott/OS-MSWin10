@@ -17,7 +17,7 @@
 #^e::{
 	WinMaximize "HP Smart ahk_exe ApplicationFrameHost.exe"
 	WinActivate "HP Smart ahk_exe ApplicationFrameHost.exe"
-    MouseMove 1686,1020
+    MouseMove 1817,1015
 	Click ; on Enregister
     MouseMove 1725,750
     Sleep 500

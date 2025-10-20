@@ -187,12 +187,24 @@ function gfoln { gci -r $args[0] | where { $_.psiscontainer } | select -expandpr
 # gfoln *u*
 
 #===> lastwritetime
-function dtsfn { $args[0].lastwritetime.ToString('yyyyMMdd-HH:mm:ss')+' '+$args[1]+' '+ $args[0].fullname } # - used by other functions  ls <test> | %{ dtsfn $_ ':' }
+function dtsfn { $args[0].lastwritetime.ToString('yyyyMMdd-HH:mm:ss')+' '+$args[1]+' '+ $args[0].fullname } # - used by other functions here, and see  $MSWin10/QR/CLI/encoding-PowerShell.md
 
-function encrypted {
-  $encrypted = "actions", "Czs", "digital0", "digital1", "secure0", "secure1", "shg", "stack"
+function EC0 {
+  $global:EC0r = ''
   if (!($(gl).path).equals($enc)) {
-    if ( ( test-path $enc ) ) { sl $enc } else { "$enc ain't there"; return } }
+    if ( ( test-path $enc ) ) { sl $enc } else { "$enc  ain't there"; $global:EC0r = 'return' } }
+}
+function EC1 {
+  EC0; if ( $EC0r -eq 'return' ) { return }
+  $cel = "$core/encrypted/last"
+  $lrts = (gc $cel -tail 1).substring(0,17); "last: $lrts" # last recorded time stamp
+  $ef = ls -af -s  -e *.eml | ? { $_.fullname -notmatch '.git\\' } | sort lastwritetime | %{ dtsfn $_ ':' } # encrypted files
+  $lll = $ef[-1].substring(0,17); "here: $lll" # local list last
+  if ( $lll -gt $lrts ) { 'write to last' }
+}
+function EC2 {
+  $encrypted = "actions", "Czm", "digital0", "digital1", "secure0", "secure1", "shg", "stack"
+  EC0; if ( $EC0r -eq 'return' ) { return }
   foreach ($node in $encrypted) {
     ''; scfcdc; $node; scrc
     if ( gci $node* ) {
@@ -233,7 +245,7 @@ function lwt {
       } else { "next three arguments are specific file extensions" } }
   } else {
     "first argument should be the general descriptor of the type of files you're looking for"
-  } } # examples in  $MSWin10/QR/CLI-encoding-PowerShell.md
+  } } # examples in  $MSWin10/QR/CLI/encoding-PowerShell.md
 
 #===> sizes
 function dc { gci | foreach-object { $_.name + ": " + "{0:n2}" -f ((gci $_ -recurse | measure-object length -sum -erroraction silentlycontinue).sum / 1mb) + " mb" } }
@@ -242,9 +254,9 @@ function dul1 { du64 -nobanner -l 1 } # not good in French
 function duac { $csv = du64 -c -l 0 -nobanner; $d = $csv[1] -split ','
   'bytes:'+$d[5]+' dirs:'+$d[4]+' files:'+$d[3] }
 
-function fso { $fso = new-object -com scripting.filesystemobject; gci -directory | select @{l='size'; e={$fso.getfolder($_.fullname).size}},fullname | sort size -descending | ft @{l='size [mb]'; e={'{0:n2}    ' -f ($_.size / 1mb)}},fullname }
+function fso { $fso = new-object -com scripting.filesystemobject; gci -ad | select @{l='size'; e={$fso.getfolder($_.fullname).size}},fullname | sort size -descending | ft @{l='size [mb]'; e={'{0:n2}    ' -f ($_.size / 1mb)}},fullname }
 
-function gfsi { Get-ChildItem . -Directory | Get-FolderSizeInfo -Hidden | Sort-Object TotalSize -Descending | Format-Table -AutoSize -View mb }
+function gfsi { gci . -ad | Get-FolderSizeInfo -Hidden | sort TotalSize -Descending | ft -AutoSize -View mb } # not following symlinks
 
 #===> string in files
 
@@ -378,7 +390,7 @@ sal y $HADL\Microsoft\WinGet\Packages\yt-dlp.yt-dlp_Microsoft.Winget.Source_8wek
 $env:TERM = "xterm-256color"  # $vfn/lua/init.lua
 
 # Backup command history:
-cp (Get-PSReadlineOption).HistorySavePath $MSWml/CHh/$dts.ps1  # $coreIT/MSWin
+cp (Get-PSReadlineOption).HistorySavePath $MSWml/PSH/$dts.ps1  # $coreIT/MSWin
 
 if ($PSVersionTable.PSVersion.Major -eq 7) { ipmo Powershell.Chunks }
 
