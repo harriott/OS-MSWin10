@@ -128,6 +128,16 @@ output is simplified when redirected to a file
     pt '$MSWin10' .
     pt 's~~$' .
 
+# schtasks
+    schtasks  # schtasks /query  summary of all tasks
+    schtasks /query /fo LIST /v  # huge detailed list
+
+scheduled tasks
+
+## AltSnap
+    schtasks /delete /tn "AltSnap onlogon" /f
+    schtasks /query /tn "AltSnap onlogon" /fo LIST /v
+
 # Windows Loupe
 - `ctrl+alt+flèche` bouger
 - `ctrl+alt+f/l` basculer en affichage

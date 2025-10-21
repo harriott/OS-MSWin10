@@ -686,11 +686,11 @@ winget add Kitware.CMake
 inmo VSSetup
 ## Visual Studio Build Tools 2022 to make  telescope-fzf-native.nvim
 vs_BuildTools.exe (Visual Studio Installer) > [ Composants individuels > [
-Compilateurs, outils de génération et runtime >
-  MSVC v143 - VS 2022 C++ x64/x86 build tools (dernière version)
-  Outils C++ CMake pour Windows
-SDK, biblothèaues et frameworks >
-  Kit de développement logiciel (SDK) Windows 10 (10.0.20348.0)
+  Compilateurs, outils de génération et runtime >
+    MSVC v143 - VS 2022 C++ x64/x86 build tools (dernière version)
+    Outils C++ CMake pour Windows
+  SDK, biblothèaues et frameworks >
+    Kit de développement logiciel (SDK) Windows 10 (10.0.20348.0)
 ] > (under 2GB) Installer, 131 packages
 ## ShellCheck
 winget add koalaman.shellcheck
@@ -1586,6 +1586,8 @@ Windows Update > La prise en charge de Windows 10 se termine en octobre 2025 >
   Mise à jour de sécurité étendues ... jusqu'au 13 octobre 2026 > Inscrivez-vous > Terminé
 ## 0patch
 0PatchInstaller_22.11.11.10550.msi (${env:programfiles(x86)}\0patch) signed in
+## mpv (Unofficial)
+cpi $ITscc/forMSWin/AV/mpv-x86_64-v3-20251020-git-99d6d4c/mpv.exe $HADL\Microsoft\WindowsApps
 ## waiting
 luarocks-3.12.2-windows-64
 Mise à jour facultatives

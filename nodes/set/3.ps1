@@ -75,8 +75,6 @@ cp $JHCc/forMSWin/code-minimap-v0.6.8-x86_64-pc-windows-msvc/code-minimap.exe $H
 #=> vim flavours - nvim 0 nvim 0 clear
 if ( test-path $nvim ) { ri -path $nvim -recurse } ; md $nvim\pack
 
-# #=> vim flavours - nvim 0 nvim 1 test
-
 #=> vim flavours - nvim 0 nvim 1 use
 syli $vfv/after               $nvim/after
 syli $vfv/filetype.vim        $nvim/filetype.vim

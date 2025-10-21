@@ -275,8 +275,29 @@ Se connecter  found  HPA22F0E (ENVY 5530)
 dadofdeauram@gmail.com
 ## Google Chrome
 deauram11@gmail.com, then signed into  ChatGPT
+## Nvim LuaSnip
+:Lazy update LuaSnip  failed
+  fixed by Deleting  $Lazy/LuaSnip, then re-launching  Nvim
+## persistent FFM Se connecter pop-up
+Fonctionnalites Famille Microsoft > Se connecter pour rien manquer
+Paramètres > Comptes > Famille et autres utilisateurs > [ jnbh@live.co.uk ] > Autoriser
+  still the pop-up reappears
+Services > Contrôle parental > clic droit (= Propriétés ...) >
+  [ Type de démarrage > (was Manuel) Désactivé  État du service > Arrêtér ] >
+  Appliquer > OK
+#### Écran
+Éclairage nocturne > Activé
+Résolution de l'écran > 1920 x 1080 (recommandé)
+## AltSnap
+winget update altsnap
+
+APS> schtasks /create /f /tn "AltSnap onlogon" /tr "C:\Users\deaur\AppData\Roaming\AltSnap\AltSnap.exe" /sc onlogon /rl highest
+C:/Users/deaur/AppData/Roaming/AltSnap/AltSnap.ini > AutoSnap=0
 ## waiting
+FastStone
 zoxide
+### Process Explorer
+cpi $ITscc\forMSWin\ProcessExplorer\procexp64.exe "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
 # physical configuration
 1366x768 screen
 Intel Core i5-6300U

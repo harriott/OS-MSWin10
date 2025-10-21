@@ -223,8 +223,9 @@ if done when eg  AltSnap's default  AutoSnap=2, then  win+arrow  actions are dea
 Gestionnaire de tâches
 
 ## win+r
-- `devmgmt.msc` = Device Manager = Gestionnaire de périphériques
-- `taskschd.msc` = Task Scheduler
+- `devmgmt.msc` = `Device Manager` = `Gestionnaire de périphériques`
+- `services.msc` = `Services`
+- `taskschd.msc` = `Task Scheduler`
 
 ## Windows Package Manager
 - https://winstall.app/

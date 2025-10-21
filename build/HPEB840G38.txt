@@ -848,7 +848,7 @@ ran it for (default-esr) Démarrer Thunderbird)
 ## WSL Ubuntu 24.04 internet
 not connecting via  cafezoide pro
 ## Ookla Speedtest
-speedtestbyookla_x64.msi
+speedtestby  -_x64.msi
 ## Process Explorer
 start $ITscc\forMSWin\ProcessExplorer\procexp64.exe
 ## LibreOffice Calc printer delay at launch

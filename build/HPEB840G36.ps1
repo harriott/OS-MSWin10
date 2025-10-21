@@ -39,7 +39,6 @@ sl D:\ITJ\gc-misc; git pull
 sl D:\ITJ\gc-vimfiles; git pull
 rhgc
 
-#=> 1 setup my tools 2 $vimfiles - update from git clone
-robocopy \E D:\ITJ\gc-vimfiles D:\ITJ\RC-vimfiles  # no /mir = no /purge - won't remove abandoned files
-rhgc
+# #=> 1 setup my tools 2 $vimfiles - update from git clone
+# robocopy /E D:\ITJ\gc-vimfiles D:\ITJ\RC-vimfiles  # no /mir = no /purge - won't remove abandoned files
 
