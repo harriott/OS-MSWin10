@@ -290,9 +290,8 @@ Services > Contrôle parental > clic droit (= Propriétés ...) >
 Résolution de l'écran > 1920 x 1080 (recommandé)
 ## AltSnap
 winget update altsnap
-
 APS> schtasks /create /f /tn "AltSnap onlogon" /tr "C:\Users\deaur\AppData\Roaming\AltSnap\AltSnap.exe" /sc onlogon /rl highest
-C:/Users/deaur/AppData/Roaming/AltSnap/AltSnap.ini > AutoSnap=0
+rebooted to get  $HADR/AltSnap/AltSnap.ini > AutoSnap=0
 ## waiting
 FastStone
 zoxide

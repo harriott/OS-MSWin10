@@ -1,12 +1,13 @@
 
-; Joseph Harriott - AutoHotkey - dim 14 juil 2024
+; Joseph Harriott - AutoHotkey - mar 21 oct 2025
 
-; $MSn\AutoHotkey\HPEB840G36.ahk
+; $MSn\AutoHotkey\HPEB840G36-jharr.ahk
 
 ; Reload if changed!
 
 ; move a Shortcut of this script into
 ;  "$HADR\Microsoft\Windows\Start Menu\Programs\Startup"
+; then run as needed
 
 ; environment variables don't work
 
