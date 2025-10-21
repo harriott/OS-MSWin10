@@ -1113,12 +1113,16 @@ APS> Dism /Online /Cleanup-Image /ScanHealth
   Aucun endommagement du magasin de composants n’a été détecté.
 ## ESU
 https://www.microsoft.com/en-gb/windows/end-of-support > Get extended security updates >
-  (Paramètres > S'inscrire aux mises à jour de sécurité étendues > start "$MSWml/pag-ESU.png"
+  (Paramètres > S'inscrire aux mises à jour de sécurité étendues) > start "$MSWml/pag-ESU.png"
 ## fix lsd in $PATH
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
 $newPathCU = $oldPathCU+';C:\Users\jnbh\AppData\Local\Microsoft\WinGet\Packages\lsd-rs.lsd_Microsoft.Winget.Source_8wekyb3d8bbwe'; $newPathCU  # g $HADLM\WinGet\Packages\lsd-rs.lsd_Microsoft.Winget.Source_8wekyb3d8bbwe
 sp 'registry::hkcu\environment' -name path -value $newPathCU
 lsd  still not found, so rebooted
+## PowerShell v7.5.4
+closed Nvim & PS for  PowerShell-7.5.4-win-x64.msi (C:\Program Files\PowerShell\) >
+  [ Add 'Open here' context menu to Explorer
+  Add 'Run with PowerShell 7' context menu for PowerShell files ] > Next > Next > UAC > Oui
 ## waiting
 luarocks-3.12.2-windows-64
 ### GitHub CLI

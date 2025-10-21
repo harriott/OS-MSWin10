@@ -9,13 +9,6 @@ HP EliteBook 840 G3 barcoded PC117855 (labelled BC PNB 19 by last owner) = HPEB8
 HPEB840G37 PS> robocopy /mir $core E:\core /fft
 HPEB840G36 PS> $coreIT = 'D:\IT_stack'; robocopy /mir E:\core\IT_stack $coreIT /fft
 # build - parallel
-Paramètres > Écran > Éclairage nocturne > Activé
-## dark applications
-Paramètres > Personnalisation > Couleurs > Choisir votre mode d'application par défaut > Sombre
-## Desktop Background
-Paramètres > [ Personnalisation > Arrière-plan > Couleur unie
-## Edge  appears only once in  alt+tab
-Paramètres > Système > Multitâche > Alt + Tab > Uniquement les fenêtres ouvertes
 ## File Explorer
 Affichage > Options > Affichage >
   [ Afficher l'icône des fichiers sur les miniatures  Afficher la barre d'état ] off-ticked
@@ -27,18 +20,13 @@ Affichage > Options > Affichage >
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
 $newPathCU = $oldPathCU -replace ';$', ''; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
-## jJ Opera
-winget add XP8CF6S8G2D5T6
 ## Paramètres
-Comptes > Famille et autres utilisateurs > [ deauram@outlook.com  jharrio@outlook.com ] >
-  Autoriser
-Personnalisation > [ Arrière-plan > Couleur unie
-  Barre des tâches > Combiner les boutons de la barre des tâches > Jamais
-  Couleurs > Choisir votre mode d'application par défaut > Sombre ]
-### Options d'ergonomie
-Clavier > all off
+Options d'ergonomie > Clavier > all off
 Périphériques > Saisie > Orthographie >
   Corriger automatiquement les fautes d'orthograpie > Désactvé
+### Personnalisation
+Arrière-plan > Couleur unie
+Couleurs > Choisir votre mode d'application par défaut > Sombre
 ### Système
 Alimentation et mise en veille > Jamais, Jamais, 10 minutes, Jamais
   Paramètres d'alimentation supplémentaire >
@@ -49,12 +37,9 @@ Alimentation et mise en veille > Jamais, Jamais, 10 minutes, Jamais
 Écran > Mise à l'échelle et disposition >
   Éclairage nocturne > Activé
   Modifier la taille du texte des applications et d'autres éléments > 100%
-  Résolution de l'écran > 1920 x 1080 (recommandé)
+  Résolution de l'écran > 1366 x 768 (recommandé)
 Multitâche > Alt + Tab > Uniquement les fenêtres ouvertes
 Stockage (L'Assistant de stockage) > Activé
-## waiting - Signal
-October 2025: 0patch
-winget add OpenWhisperSystems.Signal
 ## WPS
 clic droit sur toolbar pour  Propriétés > [ Couleurs > Opacité > 86%  Police > Taille > 12 ]
 # build - sequential build
@@ -292,11 +277,104 @@ Résolution de l'écran > 1920 x 1080 (recommandé)
 winget update altsnap
 APS> schtasks /create /f /tn "AltSnap onlogon" /tr "C:\Users\deaur\AppData\Roaming\AltSnap\AltSnap.exe" /sc onlogon /rl highest
 rebooted to get  $HADR/AltSnap/AltSnap.ini > AutoSnap=0
+## ESU
+https://www.microsoft.com/fr-fr/windows/end-of-support > Protégez votre appareil > Obtenir (Paramètres > S'inscrire aux mises à jour de sécurité étendues) > Suivant  got me "Une adulte doit se connecter à cet appareil et s'inscrire aux mises à jour de sécurité étendeus."
+### increase age
+logged out, then chose  jnbh@live.co.uk > Envoyer une notification > Sony Xperia 10 II > Microsoft Authenticator
+  Créer un PIN > Suivant > jjjj  then waited for all the preparations
+  Sauvegarder vos fichiers avec OneDrive > Ne pas
+  Refuser Microsoft 365 > Refuser > Suivante
+  back in  Deauram Harriott, made  jnbh jo  Administrateur/adulte
+  back in  jnbh Jo, made  Deauram Harriott  Utilisateur standard, which appeared as  Enfant
+  rebooted
+  jnbh Jo >
+    Family Safety  reporting  "Deauram is set as an Administrator on HPEB840G36 so certain Family Safety features won’t work." so just waiting for that to end so that can change his  Date of birth
+    Manage permissions > Edit this child's personal info > (Personal info) >
+      [ Birthdate > (6 February) 2007  Time zone > Paris, France - CET ] > Save
+jnbh Jo > Paramètres > Comptes > Famille et autres utilisateurs > Deauram MH
+  showing as  Administrateur/enfant
+Edge > jnbh Jo > Family Safety > kicked Deauram out
+Deauram MH > Paramètres > Comptes > Famille et autres utilisateurs > jharrio Jo > Supprimer
+  still couldn't get ESU, so
+    Comptes > Famille et autres utilisateurs > jharrio Jo > Supprimer
+    reboot
+Deauram MH > Paramètres > Comptes > Famille et autres utilisateurs > Ajouter >
+  jnbh@live.co.uk  then logged in there (Approved  from  Microsoft Authenticator
+  Créer un PIN > Suivant > jjjj  then waited for all the preparations
+  Sauvegarder vos fichiers avec OneDrive > Ne pas
+  Refuser Microsoft 365 > Refuser > Suivante
+Deauram MH > [ Paramètres > Comptes > Famille et autres utilisateurs > jnbh Jo > Changer >
+  Administrateur  Se déconnecter ] reboot
+jnbh Jo > Paramètres > Comptes > Famille et autres utilisateurs > Deauram MH > Supprimer
+  reboot
+Paramètres > Comptes > Famille et autres utilisateurs > deauram@outlook.com
+  then logged in there > Se connecter > mdp
+  Créer un PIN > Suivant > qsdf  then waited for all the preparations
+  Sauvegarder vos fichiers avec OneDrive > Ne pas
+  Refuser Microsoft 365 > Refuser > Suivante
+jnbh Jo > Paramètres > Comptes > Famille et autres utilisateurs > Deauram MH Changer >
+  Administrateur  reboot  finally got  ESU
+Deauram MH > Paramètres > Comptes > Famille et autres utilisateurs > jharrio Jo > Supprimer
+## re-establish all
+### Ditto Clipboard
+Microsoft Store > Ditto Clipboard > Installer > Pin to Start
+Ran it for  Options > General > [ Maximum Number of Saved Copies > 5000
+  Advanced > Show leading whitespace ] ( $HADL\Ditto_WindowsApp\Ditto.db )
+  Keyboard Shortcuts > Activate Ditto > ctrl+*
+### symlinks
+got into  $MSn\set  for
+  APS> . 0-_MSn.ps1
+  APS> . 1-PSProfileStub.ps1
+PS> winget add zoxide
+dubious ownership of $MSWin10, so in there, APS> takeown /f . /r /d o
+
+  APS> . 3.ps1
+### Opera
+winget add Opera.Opera
 ## waiting
+0patch
 FastStone
+mpv
+Opera
+pipx
+XpdfReader
 zoxide
+### Ookla Speedtest
+winget add Ookla.Speedtest.Desktop
+### Disk Usage
+du64.exe  copied into $HADL\Microsoft\WindowsApps
 ### Process Explorer
 cpi $ITscc\forMSWin\ProcessExplorer\procexp64.exe "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
+#### Process Explorer
+start $ITscc\forMSWin\ProcessExplorer\procexp64.exe
+  alt+o (= Options) > i (= Tray Icons) > p (= Physical Memory History)
+  alt+o (= Options) > h (= Hide When Minimized)
+  alt+o (= Options) > l (= Run At Logon)
+### Gestionnaire de tâches
+Options > Masquer l'icône réduite
+hidden icon dragged to taskbar
+### IrfanView
+winget add IrfanSkiljan.IrfanView -h  went to  "C:\Program Files\IrfanView\i_view64.exe"
+ran it for  P (= Properties/Settings) > [ JPG > Auto-rotate off  Editing > Cut White ]
+winget add IrfanSkiljan.IrfanView.PlugIns -h
+### Notepad++
+winget add --name notepad++
+Alt+p (Paramètres) > Préférences > Mode Sombre > Mode sombre > Suivre Windows
+### Sécurité Windows
+pinned to Start
+### sharkdp/bat
+winget add sharkdp.bat
+### QuickLook
+winget add 9NV4BS3L1H4S --accept-package-agreements
+### NanaZip
+winget add M2Team.NanaZip
+### XnView MP
+winget add XnSoft.XnViewMP
+ran it for  Assistant de démarrage > Thème > Sombre
+### MediaInfo
+winget add MediaArea.MediaInfo
+### GIMP
+winget add GIMP.GIMP
 # physical configuration
 1366x768 screen
 Intel Core i5-6300U

@@ -7,11 +7,11 @@
 
 csl ~\PSProfile.ps1
 
-#=> $notDr
-endi $notDr/GR-NF
-endi $notDr/GRs
-syli $misc/notDr/notDr.md $notDr/readme.md
-syli $misc/notDr/NF.md $notDr/GR-NF/readme.md
+# #=> $notDr
+# endi $notDr/GR-NF
+# endi $notDr/GRs
+# syli $misc/notDr/notDr.md $notDr/readme.md
+# syli $misc/notDr/NF.md $notDr/GR-NF/readme.md
 
 # #=> Emacs
 # $Ed = "$HADR\.emacs.d"; endi $Ed
@@ -65,12 +65,12 @@ endi $HADR\npm
 #=> Ruby
 cpi $misc\irbrc ~\.irbrc
 
-#=> secure
-endi ~/encrypted
-endi ~/.ssh
+# #=> secure
+# endi ~/encrypted
+# endi ~/.ssh
 
 #=> vim flavours - minimap
-cp $JHCc/forMSWin/code-minimap-v0.6.8-x86_64-pc-windows-msvc/code-minimap.exe $HADL/Microsoft/WindowsApps/code-minimap.exe
+cp $ITscc/forMSWin/code-minimap-v0.6.8-x86_64-pc-windows-msvc/code-minimap.exe $HADL/Microsoft/WindowsApps/code-minimap.exe
 
 #=> vim flavours - nvim 0 nvim 0 clear
 if ( test-path $nvim ) { ri -path $nvim -recurse } ; md $nvim\pack
@@ -146,8 +146,8 @@ syli $MSn\gitconfig ~\.gitconfig
   csl ~\.gitconfig
 # b $HOME\.gitconfig
 
-#=> ~\.alacritty.toml
-syli $MSn/alacritty.toml $Env:AppData/alacritty/alacritty.toml
+# #=> ~\.alacritty.toml
+# syli $MSn/alacritty.toml $Env:AppData/alacritty/alacritty.toml
 
 #=> ~\.wezterm.lua
 syli $MSn/wezterm.lua ~/.wezterm.lua

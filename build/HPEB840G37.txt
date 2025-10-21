@@ -1108,7 +1108,7 @@ HPEB840G37  at  192.168.0.41
 ET-5170  at  192.168.0.65, but not found...
 Paramètres > Périphériques > Imprimantes et scanners > Ajouter > EPSONFE86A3 (ET-5170 Series) >
   Ajouter l'appareil  got it  Prêt
-## XpdfReader
+## XpdfReader v4.05
 XpdfReader-win64-4.05.exe  (C:\Program Files\Glyph & Cog\XpdfReader-win64)
   pdfimages -h
 ## WSL Ubuntu - ncdu
@@ -1586,7 +1586,7 @@ Windows Update > La prise en charge de Windows 10 se termine en octobre 2025 >
   Mise à jour de sécurité étendues ... jusqu'au 13 octobre 2026 > Inscrivez-vous > Terminé
 ## 0patch
 0PatchInstaller_22.11.11.10550.msi (${env:programfiles(x86)}\0patch) signed in
-## mpv (Unofficial)
+## mpv
 cpi $ITscc/forMSWin/AV/mpv-x86_64-v3-20251020-git-99d6d4c/mpv.exe $HADL\Microsoft\WindowsApps
 ## waiting
 luarocks-3.12.2-windows-64
