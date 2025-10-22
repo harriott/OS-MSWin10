@@ -345,8 +345,9 @@ Get-ExecutionPolicy   reported  "Restricted"
 ### Administrateur PowerShell
 Get-ExecutionPolicy -list  reported all as  "Undefined"
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Confirm > o > o
+## BitLocker check
+AIdc> manage-bde -status  reports "Intégralement déchiffré"
 ## waiting
-BitLocker
 CMake
 Edge
 FastStone

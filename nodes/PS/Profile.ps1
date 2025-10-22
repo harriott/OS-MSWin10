@@ -41,19 +41,6 @@ function pro {
   Get-Process | sort ws -descending | select-object -first 39 ID,Name,WS,VM,PM,Handles,StartTime | ConvertTo-WPFGrid -Refresh -timeout 10 -Title "Top Processes"
 } # needs to be on 3 lines
 
-function wl {
-  $dts = (Get-Date).ToString("yyMMdd-HHmmss")
-  $mLpwgl = "$MSWml/packages/winget_list-$dts"
-  $l0 = $mLpwgl+'0'; winget ls > $l0
-  $l1 = $mLpwgl+'1'; (gc $l0 -raw) -replace "(?s).*------" > $l1
-  ri $l0
-  $lt  = "$mLpwgl.txt"
-  'vim: set nowrap: Winget list created by  wl ($MSn/PS/Profile.ps1)' > $lt; '' >> $lt
-  gc $l1 | sort | select -skip 2 >> $lt
-  sleep 1; ri $l1
-  'winget list  is in  $MSWml/packages/winget_list'+"-$dts.txt"
-}
-
 function stc {
   '"Nom de la tâche","Prochaine exécution","Statut"' > $MSWml\schtasks.csv
   schtasks /fo csv /nh | sort-object | out-file -append $machlg\schtasks.csv
@@ -452,6 +439,34 @@ Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 if ( ( test-path "$HADL\Microsoft\WinGet\Links\fzf.exe" ) -or ( test-path "$HADL\Microsoft\WinGet\Packages\junegunn.fzf_Microsoft.Winget.Source_8wekyb3d8bbwe\fzf.exe" ) ) {
   Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
   Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
+}
+
+#=> 0 WinGets
+function wgf {
+  $dts = (Get-Date).ToString("yyMMdd-HHmmss")
+  (ls $HADL\microsoft\winget\packages).fullname > "$MSWml/packages/WinGet_Packages-fullname-$dts.WGPfn"
+  'WinGet\Packages list is in  $MSWml/packages'
+}
+
+function wgp {
+  $wsl = ls -name $HADL\microsoft\winget\packages
+  $wpp = $wsl -replace '^[^.]*\.','' | sort
+  $wpM = $wpp -replace '\..*',''
+  $wpl = $wpM -replace '_Microsoft',''
+  [string]$wpl
+} # just the generic names
+
+function wl {
+  $dts = (Get-Date).ToString("yyMMdd-HHmmss")
+  $mLpwgl = "$MSWml/packages/winget_list-$dts"
+  $l0 = $mLpwgl+'0'; winget ls > $l0
+  $l1 = $mLpwgl+'1'; (gc $l0 -raw) -replace "(?s).*------" > $l1
+  ri $l0
+  $lt  = "$mLpwgl.txt"
+  'vim: set nowrap: Winget list created by  wl ($MSn/PS/Profile.ps1)' > $lt; '' >> $lt
+  gc $l1 | sort | select -skip 2 >> $lt
+  sleep 1; ri $l1
+  'winget list  is in  $MSWml/packages'
 }
 
 #=> 1 place-dependent
