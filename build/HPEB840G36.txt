@@ -327,22 +327,56 @@ got into  $MSn\set  for
   APS> . 1-PSProfileStub.ps1
 PS> winget add zoxide
 dubious ownership of $MSWin10, so in there, APS> takeown /f . /r /d o
-
+in $MSWin10, git pull
   APS> . 3.ps1
+### gVim v9.1.0
+winget add vim.vim -l C:\Vim
+
+### Python 3.14
+winget add python.python.3.14
+
 ### Opera
 winget add Opera.Opera
 ## waiting
 0patch
+AWPS
+BitLocker
+CMake
+Edge
 FastStone
+Firefox
+fix OneDrive
+fonts
+Ghostscript
+gokcehan's lf
+ImageMagick
+LSD
+minimap
 mpv
+Neovim
 Opera
+PDFtk
 pipx
+PowerShell
+PSProfile.ps1
+Python
+Rust for ripgrep
+Signal
+WPS execution policy
+WPS modules
+WT
 XpdfReader
 zoxide
+Zig
+### once a Vim
+AltSnap
+AutoHotkey
 ### Ookla Speedtest
 winget add Ookla.Speedtest.Desktop
 ### Disk Usage
 du64.exe  copied into $HADL\Microsoft\WindowsApps
+### Idc > Propriétés
+Coleurs > 86%  Police > 14
 ### Process Explorer
 cpi $ITscc\forMSWin\ProcessExplorer\procexp64.exe "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
 #### Process Explorer
@@ -357,6 +391,15 @@ hidden icon dragged to taskbar
 winget add IrfanSkiljan.IrfanView -h  went to  "C:\Program Files\IrfanView\i_view64.exe"
 ran it for  P (= Properties/Settings) > [ JPG > Auto-rotate off  Editing > Cut White ]
 winget add IrfanSkiljan.IrfanView.PlugIns -h
+### Lua
+cp D:\Dropbox\JH\core\IT_stack\copied-code\forMSWin\LuaBinaries\lua-5.4.2_Win64_bin C:\Lua -recurse
+#### add to path
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = "$oldPathCU;C:\Lua"; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+(new PowerShell instance) lua54 -v
+#### LuaRocks
+cp D:\Dropbox\JH\core\IT_stack\copied-code\forMSWin\luarocks-3.11.1-windows-64\* C:\Lua
 ### Notepad++
 winget add --name notepad++
 Alt+p (Paramètres) > Préférences > Mode Sombre > Mode sombre > Suivre Windows
@@ -368,6 +411,9 @@ winget add sharkdp.bat
 winget add 9NV4BS3L1H4S --accept-package-agreements
 ### NanaZip
 winget add M2Team.NanaZip
+### ripgrep
+(once Rust) winget add burntsushi.ripgrep.msvc
+fixed ; at end of path
 ### XnView MP
 winget add XnSoft.XnViewMP
 ran it for  Assistant de démarrage > Thème > Sombre
@@ -375,6 +421,97 @@ ran it for  Assistant de démarrage > Thème > Sombre
 winget add MediaArea.MediaInfo
 ### GIMP
 winget add GIMP.GIMP
+### Visual Studio Build Tools 2022 to make  telescope-fzf-native.nvim
+winget add Microsoft.VisualStudio.2022.BuildTools
+### Zig
+(for  tree-sitter) winget add zig.zig  took ages to unpack
+fixed ; at end of path
+zig version
+### eza
+winget add eza-community.eza
+fixed ; at end of path
+### Sumatra PDF
+winget add SumatraPDF -h -l C:\SumatraPDF
+### Node.js
+winget add OpenJS.NodeJS
+Node.js  icon pulled over to Start Menu, run for (right-click) console.log('Hello')
+  ls $CPF\nodejs\node.exe
+  $CPF\nodejs\node_modules\corepack\README.md
+  $CPF\nodejs\node_modules\npm\README.md
+(new PS) npm prefix -g  reports  C:\Users\jnbh\AppData\Roaming\npm
+npm ls -g  reports what's in  $HADR\npm
+### Node.js - npx
+npx cowsay goodbye!
+g C:\Users\jnbh\AppData\Local\npm-cache\_npx\8f497369b2d6166e\node_modules
+g $HADL\npm-cache\_npx\8f497369b2d6166e\node_modules  surprisingly populated
+### Neovide
+winget add neovide -l C:\Vim  but it went to  $CPF\Neovide\neovide.exe
+### Google Chrome
+winget add Google.Chrome.EXE
+### FastStone Image Viewer
+winget add FastStone.Viewer  "C:\Program Files (x86)\FastStone Image Viewer\FSViewer.exe"
+ran it for Esc to offtick
+f12 (= Paramètres) > Aperçu > [
+  En boucle  Rotation Auto par tag orientation EXIF > off  Confirmer la reéctirure des fichiers
+  Lancer les images associées > dans une Fenêtre  Unité par défaut > cm ]
+$HADL\FastStone\FSIV\FSSettings.db
+### pip v24.1.2
+pip list  advises  py -m pip install -U pip
+### pipx
+py -m pip install --user pipx
+  Installing collected packages: platformdirs, packaging, colorama, argcomplete, click, userpath, pipx
+    WARNING: The script userpath.exe is installed in 'C:\Users\jnbh\AppData\Roaming\Python\Python312\Scripts' which is not on PATH.
+    Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+    WARNING: The script pipx.exe is installed in 'C:\Users\jnbh\AppData\Roaming\Python\Python312\Scripts' which is not on PATH.
+    Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  Successfully installed argcomplete-3.4.0 click-8.1.7 colorama-0.4.6 packaging-24.1 pipx-1.6.0 platformdirs-4.2.2 userpath-1.9.2
+& $HADR\Python\Python312\Scripts\pipx.exe ensurepath
+  Success! Added C:\Users\jnbh\AppData\Roaming\Python\Python312\Scripts to the PATH environment variable.
+  Success! Added C:\Users\jnbh\.local\bin to the PATH environment variable.
+  Consider adding shell completions for pipx. Run 'pipx completions' for instructions.
+### pynvim (for neovim)
+(needed for python packages)  pip install pynvim
+### less-Windows
+winget install jftuga.less
+fixed ; at end of path
+### Lecteur Windows Media
+Télécharger automatiquement les droits d'utilisation, Historiques  tous décoché
+### yt-dlp (and FFmpeg)
+winget add yt-dlp.yt-dlp
+  Ce package nécessite les dépendances suivantes :
+    - Packages
+        Gyan.FFmpeg
+  (1/1) Trouvé FFmpeg [Gyan.FFmpeg] Version 6.1.1
+  ...
+  Téléchargement en cours https://github.com/GyanD/codexffmpeg/releases/download/7.0.2/ffmpeg-7.0.2-full_build.zip
+  ...
+  Installé correctement
+  Téléchargement en cours https://github.com/yt-dlp/yt-dlp/releases/download/2024.08.06/yt-dlp.exe
+fixed ; at end of path
+#### FFmpeg
+ffmpeg -version
+#### yt-dlp
+yt-dlp --version
+### ExifTool v12.93
+cpi "$ITscc\forMSWin\exiftool-12_93_64\exiftool(-k).exe" $HADL\Microsoft\WindowsApps\exiftool.exe
+cpi -recurse $ITscc\forMSWin\exiftool-12_93_64\exiftool_files $HADL\Microsoft\WindowsApps
+### sharkdp/bat
+also for  fzf
+winget add sharkdp.bat
+removed ; from end of path
+### VLC Player
+winget add VideoLAN.VLC
+run for  ctrl+p (= Preferences) > Pause on the last frame of a video > Always
+### MediaInfo
+winget add MediaArea.MediaInfo
+fixed ; at end of path
+### DVD Shrink
+dvdshrink32setup.exe  ran it
+### Zig
+where.exe zig  finds nothing, so  winget rm zig.zig
+precautionary reboot for  winget add zig.zig  took ages to unpack
+### MiniTool Partition Wizard Free v12.9
+winget add MiniTool.PartitionWizard.Free
 # physical configuration
 1366x768 screen
 Intel Core i5-6300U

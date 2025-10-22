@@ -1123,6 +1123,40 @@ lsd  still not found, so rebooted
 closed Nvim & PS for  PowerShell-7.5.4-win-x64.msi (C:\Program Files\PowerShell\) >
   [ Add 'Open here' context menu to Explorer
   Add 'Run with PowerShell 7' context menu for PowerShell files ] > Next > Next > UAC > Oui
+## Python 3.14
+winget rm Python.Python.3.13
+Deleted  $HADL\Python\Python313  (next time  Delete  $HADL\Python ?)
+### Python 3.13
+winget add Python.Python.3.14
+in a new PS, python -h  show it's in  $HADL\Programs\Python
+### pipx
+py -m pip install --user -U pipx
+#### switch to $HADR\Python\Python314
+Deleted  $HADR\Python\Python313
+##### update $PATH
+next time, before re-installing Python, change 14 to 15 in $PATH
+###### remove $HADR\Python\python313\scripts from $PATH
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU -replace 'c:\\users\\jnbh\\appdata\\roaming\\python\\python313\\scripts;',''; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+###### add $HADR\Python\Python314\Scripts to $PATH
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU+';C:\Users\jnbh\AppData\Roaming\Python\Python314\Scripts'; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+#### pipx fail
+pipx run pycowsay moo  failed looking for  $HADL\Python\Python313
+#### Python 3.14 again
+winget rm Python.Python.3.14
+Deleted  $HADL\Python
+winget add Python.Python.3.14
+#### pipx again
+Deleted  $HADR\Python
+python -m pip install --user pipx
+pipx run pycowsay moo  failed looking for  $HADL\Python\Python313
+#### pipx again
+Deleted  $HADR\Python, C:\Users\jnbh\pipx
+python -m pip install --user pipx
+pipx run pycowsay moo  rebuilt  C:\Users\jnbh\pipx, and worked
 ## waiting
 luarocks-3.12.2-windows-64
 ### GitHub CLI

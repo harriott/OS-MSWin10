@@ -118,6 +118,62 @@ no standard aliases
     gdr -PSProvider Registry | select -Property Name, Root
     ls HKCU:Printers -Recurse -Depth 1
 
+# encoding
+    ~/.rustup/settings.toml
+    $MSWin10\nodes\gitconfig
+    C:\Git\usr\bin\perl.exe -v
+    C:\msys64\usr\bin\perl.exe -v
+    java -jar C:\LanguageTool\languagetool-commandline.jar -h
+    java -jar $ITscc\CP\LanguageTool\languagetool-commandline.jar -h
+
+## MiKTeX
+    miktex fndb refresh
+    $HADL\MiKTeX\miktex\log\initexmf.log
+    $HADL\MiKTeX\miktex\log\miktex-makemf.log
+    $HADL\Programs\MiKTeX\miktex\config\xelatex.ini
+
+## npm
+    g $HADL\npm-cache\_npx
+    g $HADR\npm
+
+## Python
+    g $HADL\Programs\Python  # winget install
+    g $HADR\Python
+    winget find python.python  # available versions
+
+## Perl
+    where.exe perl
+
+### Strawberry
+    C:\Strawberry\perl\bin\perl.exe -v
+    g $home\.cpanm
+
+## Windows Package Manager
+    g $HADL\microsoft\winget\packages
+    winget --info
+    winget add SumatraPDF -h -l C:\SumatraPDF # install (--location, --silent)
+    winget find powershell
+    winget update --all
+    winget update google.chrome
+    winget rm google.chrome  # uninstall
+
+- `-h` (`--silent`)
+- `Winget`
+
+## Windows PowerShell - file formats
+    PowerShell command | out-file <file> -encoding utf8BOM  # detected as utf-8
+    PowerShell command > <file>  # detected as latin1
+
+## Windows PowerShell - modules
+    get-installedmodule
+    get-module -listavailable  # details, including old
+    C:\Users\jharr\Documents\WindowsPowerShell\Modules
+    C:\Users\jnbh\OneDrive\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+
+### paths
+    $Env:PSModulePath -split ';'
+    ~\Documents\WindowsPowerShell\Modules
+
 # executables
     (gcm python | select version | ft -HideTableHeaders | out-string).trim()
     (gp hklm:\software\microsoft\windows\currentversion\uninstall\* ).displayname | sort  # lists removable x64 programs

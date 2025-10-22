@@ -7,30 +7,14 @@ vim: nospell:
 
 `intl.cpl` (= `Panneau de configuration > Région`)
 
-# console code page
-    chcp [65001]
-    REG query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Console\TrueTypeFont"
-
-# console size show
-    [console]::WindowHeight
-    [console]::WindowWidth
-
-# encoding
-    ~/.rustup/settings.toml
-    $MSWin10\nodes\gitconfig
-    C:\Git\usr\bin\perl.exe -v
-    C:\msys64\usr\bin\perl.exe -v
-    java -jar C:\LanguageTool\languagetool-commandline.jar -h
-    java -jar $ITscc\CP\LanguageTool\languagetool-commandline.jar -h
-
-## Command Prompt
+# Command Prompt
     dir * /x
     pwsh -nop -c ls
 
 - in Explorer: `Alt+D > cmd > Enter`
 - `PS> cmd` then `exit`
 
-### environment variables
+## environment variables
     echo %LOCALAPPDATA%  # C:\Users\<user>\AppData\Local
     echo %username%
     echo %userprofile%
@@ -40,61 +24,22 @@ vim: nospell:
 
 can paste these into `File Explorer`
 
-#### computer name
+### computer name
     echo %computername%
     hostname
 
-#### path
+### path
     echo %path:;=&echo.%  # %PATH% on separate lines
     powershell -nop -c ($env:Path).split(';')
     pwsh -nop -c ($env:Path).split(';')
 
-## MiKTeX
-    miktex fndb refresh
-    $HADL\MiKTeX\miktex\log\initexmf.log
-    $HADL\MiKTeX\miktex\log\miktex-makemf.log
-    $HADL\Programs\MiKTeX\miktex\config\xelatex.ini
+# console code page
+    chcp [65001]
+    REG query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Console\TrueTypeFont"
 
-## npm
-    g $HADL\npm-cache\_npx
-    g $HADR\npm
-
-## Python
-    g $HADL\Programs\Python  # winget install
-    g $HADR\Python
-
-## Perl
-    where.exe perl
-
-### Strawberry
-    C:\Strawberry\perl\bin\perl.exe -v
-    g $home\.cpanm
-
-## Windows Package Manager
-    g $HADL\microsoft\winget\packages
-    winget --info
-    winget add SumatraPDF -h -l C:\SumatraPDF # install (--location, --silent)
-    winget find powershell
-    winget update --all
-    winget update google.chrome
-    winget rm google.chrome  # uninstall
-
-- `-h` (`--silent`)
-- `Winget`
-
-## Windows PowerShell - file formats
-    PowerShell command | out-file <file> -encoding utf8BOM  # detected as utf-8
-    PowerShell command > <file>  # detected as latin1
-
-## Windows PowerShell - modules
-    get-installedmodule
-    get-module -listavailable  # details, including old
-    C:\Users\jharr\Documents\WindowsPowerShell\Modules
-    C:\Users\jnbh\OneDrive\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
-
-### paths
-    $Env:PSModulePath -split ';'
-    ~\Documents\WindowsPowerShell\Modules
+# console size show
+    [console]::WindowHeight
+    [console]::WindowWidth
 
 # file manage - Robocopy
     ROBOCOPY.exe
