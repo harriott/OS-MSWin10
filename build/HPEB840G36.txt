@@ -4,10 +4,6 @@ $MSWin10\build\HPEB840G36.txt
 
 HP EliteBook 840 G3 barcoded PC117855 (labelled BC PNB 19 by last owner) = HPEB840G36
 (deauram@outlook.com,jharrio@outlook.com)
-# $core
-## K16GBDTG2
-HPEB840G37 PS> robocopy /mir $core E:\core /fft
-HPEB840G36 PS> $coreIT = 'D:\IT_stack'; robocopy /mir E:\core\IT_stack $coreIT /fft
 # build - parallel
 ## File Explorer
 Affichage > Options > Affichage >
@@ -315,7 +311,7 @@ Paramètres > Comptes > Famille et autres utilisateurs > deauram@outlook.com
 jnbh Jo > Paramètres > Comptes > Famille et autres utilisateurs > Deauram MH Changer >
   Administrateur  reboot  finally got  ESU
 Deauram MH > Paramètres > Comptes > Famille et autres utilisateurs > jharrio Jo > Supprimer
-## re-establish all
+## re-establish softwares
 ### Ditto Clipboard
 Microsoft Store > Ditto Clipboard > Installer > Pin to Start
 Ran it for  Options > General > [ Maximum Number of Saved Copies > 5000
@@ -337,14 +333,15 @@ winget add python.python.3.14
 python -m pip install --user pipx
 ##### add $HADR\Python\Python314\Scripts to $PATH
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
-
 $newPathCU = $oldPathCU+';C:\Users\deaur\AppData\Roaming\Python\Python314\Scripts'; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
-pipx run pycowsay moo  rebuilt  C:\Users\jnbh\pipx, and worked
-### Opera
-winget add Opera.Opera
+rebooted  for  pipx run pycowsay moo  rebuilt  C:\Users\jnbh\pipx, and worked
+## 0patch
+
+0PatchInstaller_22.11.11.10550.msi (${env:programfiles(x86)}\0patch) signed in
+## code-minimap
+cpi $ITscc\forMSWin\code-minimap-v0.6.7-x86_64-pc-windows-msvc\code-minimap.exe $HADL\Microsoft\WindowsApps
 ## waiting
-0patch
 AWPS
 BitLocker
 CMake
@@ -357,7 +354,6 @@ Ghostscript
 gokcehan's lf
 ImageMagick
 LSD
-minimap
 mpv
 Neovim
 Opera
@@ -518,6 +514,8 @@ where.exe zig  finds nothing, so  winget rm zig.zig
 precautionary reboot for  winget add zig.zig  took ages to unpack
 ### MiniTool Partition Wizard Free v12.9
 winget add MiniTool.PartitionWizard.Free
+### Opera
+winget add Opera.Opera
 # physical configuration
 1366x768 screen
 Intel Core i5-6300U

@@ -174,10 +174,11 @@ star icon
 - `win+space` with pop-up
 
 ## File Explorer
-- `alt+d`/`ctrl+l` (& `f4`) le chemin d’accès > `bash`/`pwsh`/`wt` Enter
-- `alt+p` toggle preview panel
-- `ctrl+N` new directory
-- `ctrl+space` toggle PowerToys Peek
+- `Alt+d`/`ctrl+l` (& `f4`) le chemin d’accès > `bash`/`pwsh`/`wt` Enter
+- `Alt+p` toggle preview panel
+- `Ctrl+F1` toggle the ribbon
+- `Ctrl+N` new directory
+- `Ctrl+space` toggle PowerToys Peek
 - Explorateur de fichiers
 
 ## internetworking
