@@ -333,7 +333,7 @@ in $MSWin10, git pull
 winget add vim.vim -l C:\Vim
 ### Python 3.14
 winget add python.python.3.14
-#### pipx again
+#### pipx
 
 python -m pip install --user pipx
 pipx run pycowsay moo  rebuilt  C:\Users\jnbh\pipx, and worked
