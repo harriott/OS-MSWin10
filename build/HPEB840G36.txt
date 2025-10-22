@@ -334,8 +334,12 @@ winget add vim.vim -l C:\Vim
 ### Python 3.14
 winget add python.python.3.14
 #### pipx
-
 python -m pip install --user pipx
+##### add $HADR\Python\Python314\Scripts to $PATH
+
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU+';C:\Users\jnbh\AppData\Roaming\Python\Python314\Scripts'; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
 pipx run pycowsay moo  rebuilt  C:\Users\jnbh\pipx, and worked
 ### Opera
 winget add Opera.Opera
