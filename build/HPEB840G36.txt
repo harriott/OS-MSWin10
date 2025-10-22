@@ -346,7 +346,6 @@ Get-ExecutionPolicy   reported  "Restricted"
 Get-ExecutionPolicy -list  reported all as  "Undefined"
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Confirm > o > o
 ## waiting
-AWPS
 BitLocker
 CMake
 Edge

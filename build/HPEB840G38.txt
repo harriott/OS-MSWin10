@@ -1158,6 +1158,7 @@ Deleted  $HADR\Python, C:\Users\jnbh\pipx
 python -m pip install --user pipx
 pipx run pycowsay moo  rebuilt  C:\Users\jnbh\pipx, and worked
 ## waiting
+cmu
 luarocks-3.12.2-windows-64
 ### GitHub CLI
 winget add GitHub.cli
