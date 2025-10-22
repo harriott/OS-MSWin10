@@ -317,7 +317,7 @@ Microsoft Store > Ditto Clipboard > Installer > Pin to Start
 Ran it for  Options > General > [ Maximum Number of Saved Copies > 5000
   Advanced > Show leading whitespace ] ( $HADL\Ditto_WindowsApp\Ditto.db )
   Keyboard Shortcuts > Activate Ditto > ctrl+*
-### symlinks
+### symlinks - including for PS
 got into  $MSn\set  for
   APS> . 0-_MSn.ps1
   APS> . 1-PSProfileStub.ps1
@@ -339,8 +339,12 @@ rebooted  for  pipx run pycowsay moo  rebuilt  C:\Users\jnbh\pipx, and worked
 ## 0patch
 0PatchInstaller_22.11.11.10550.msi (${env:programfiles(x86)}\0patch) signed in
 ## code-minimap
-
-cpi $ITscc\forMSWin\code-minimap-v0.6.7-x86_64-pc-windows-msvc\code-minimap.exe $HADL\Microsoft\WindowsApps
+cpi $ITscc\forMSWin\code-minimap-v0.6.8-x86_64-pc-windows-msvc\code-minimap.exe $HADL\Microsoft\WindowsApps
+## WPS execution policy
+Get-ExecutionPolicy   reported  "Restricted"
+### Administrateur PowerShell
+Get-ExecutionPolicy -list  reported all as  "Undefined"
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Confirm > o > o
 ## waiting
 AWPS
 BitLocker

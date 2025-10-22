@@ -5,6 +5,9 @@ vim: nospell:
 
     ~\AppData\Roaming\Vifm\vifmrc
 
+    code-minimap --version
+    code-minimap -h  # --help
+
 `intl.cpl` (= `Panneau de configuration > Région`)
 
 # Command Prompt
