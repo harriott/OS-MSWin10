@@ -2,6 +2,8 @@
 
 # $MSWin10/build/HPEB840G36.ps1
 
+# $ rsync -irtv --delete --modify-window=1 $core/ /run/media/jo/K16GBDTG2/core
+
 function rhgc { Read-Host "- good to continue? " }
 
 #=> 0 precursors
