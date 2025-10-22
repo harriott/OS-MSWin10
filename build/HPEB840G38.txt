@@ -1157,8 +1157,14 @@ pipx run pycowsay moo  failed looking for  $HADL\Python\Python313
 Deleted  $HADR\Python, C:\Users\jnbh\pipx
 python -m pip install --user pipx
 pipx run pycowsay moo  rebuilt  C:\Users\jnbh\pipx, and worked
+## CMake
+winget add Kitware.CMake
+## Ghostscript v10.06
+Applications et fonctionnalités > GPL Ghostscript > Désinstaller
+gs10060w64.exe > C:\gs-10_06_0 (Generate cidfmap for Windows CJK TrueType fonts) rebooted
 ## waiting
 cmu
+Ghostscript 10.06.0
 luarocks-3.12.2-windows-64
 ### GitHub CLI
 winget add GitHub.cli

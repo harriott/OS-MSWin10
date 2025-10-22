@@ -1589,6 +1589,7 @@ Windows Update > La prise en charge de Windows 10 se termine en octobre 2025 >
 ## mpv
 cpi $ITscc/forMSWin/AV/mpv-x86_64-v3-20251020-git-99d6d4c/mpv.exe $HADL\Microsoft\WindowsApps
 ## waiting
+Ghostscript v10.06
 luarocks-3.12.2-windows-64
 Mise à jour facultatives
 ### code-minimap

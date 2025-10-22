@@ -8,7 +8,8 @@ vim: nospell:
     code-minimap --version
     code-minimap -h  # --help
 
-`intl.cpl` (= `Panneau de configuration > Région`)
+- Ghostscript releases
+- `intl.cpl` (= `Panneau de configuration > Région`)
 
 # Command Prompt
     dir * /x

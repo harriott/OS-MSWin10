@@ -116,7 +116,7 @@ winget add git.git -l C:\Git  got me  Git for Windows v2.44.0
 winget add sharkdp.fd
 fixed ; at end of path
 ### previously installed
-7-Zip, AltSnap, Calibre, CMake, Everything, eza, fzf, LibreOffice, LSD, Neovide, Neovim, Node.js, Pandoc, ripgrep, Strawberry Perl, Thunderbird, WT
+7-Zip, AltSnap, Calibre, Everything, eza, fzf, LibreOffice, LSD, Neovide, Neovim, Node.js, Pandoc, ripgrep, Strawberry Perl, Thunderbird, WT
 #### AutoHotkey
 Shortcut to  $MSn\AutoHotkey\HPEB840G36.ahk  was placed in
   "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
@@ -347,13 +347,19 @@ Get-ExecutionPolicy -list  reported all as  "Undefined"
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Confirm > o > o
 ## BitLocker check
 AIdc> manage-bde -status  reports "Intégralement déchiffré"
+### dubious ownership of D:\ITJ\gc-vimfiles
+so in there, APS> takeown /f . /r /d o
+## Edge
+F12 (= DevTools) to clear away question
+## Firefox
+ran it to clear selections
+## various WinGets
+
+winget add
+altsnap
+AutoHotkey.AutoHotkey
+Kitware.CMake
 ## waiting
-CMake
-Edge
-FastStone
-Firefox
-fix OneDrive
-fonts
 Ghostscript
 gokcehan's lf
 ImageMagick
@@ -374,9 +380,20 @@ WT
 XpdfReader
 zoxide
 Zig
-### once a Vim
-AltSnap
-AutoHotkey
+### AltSnap
+APS> schtasks /create /f /tn "AltSnap onlogon" /tr "$Env:AppData\AltSnap\AltSnap.exe" /sc onlogon /rl highest
+PS> $ASi="$HADR\AltSnap\AltSnap.ini"; (gc $ASi).replace('AutoSnap=2','AutoSnap=0') | seco -encoding utf8 $ASi
+rebooted to get it working
+### AutoHotkey
+Shortcut to  $MSn\AutoHotkey\HPEB840G36-deaur.ahk  placed in
+  "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
+### FastStone Image Viewer
+winget add FastStone.Viewer  gets  ${env:programfiles(x86)}\FastStone Image Viewer\FSViewer.exe"
+ran it for Esc to offtick
+f12 (= Paramètres) > Aperçu > [
+  En boucle  Rotation Auto par tag orientation EXIF > off  Confirmer la reéctirure des fichiers
+  Lancer les images associées > dans une Fenêtre  Unité par défaut > cm ]
+$HADL\FastStone\FSIV\FSSettings.db
 ### Ookla Speedtest
 winget add Ookla.Speedtest.Desktop
 ### Disk Usage
@@ -454,13 +471,6 @@ g $HADL\npm-cache\_npx\8f497369b2d6166e\node_modules  surprisingly populated
 winget add neovide -l C:\Vim  but it went to  $CPF\Neovide\neovide.exe
 ### Google Chrome
 winget add Google.Chrome.EXE
-### FastStone Image Viewer
-winget add FastStone.Viewer  "C:\Program Files (x86)\FastStone Image Viewer\FSViewer.exe"
-ran it for Esc to offtick
-f12 (= Paramètres) > Aperçu > [
-  En boucle  Rotation Auto par tag orientation EXIF > off  Confirmer la reéctirure des fichiers
-  Lancer les images associées > dans une Fenêtre  Unité par défaut > cm ]
-$HADL\FastStone\FSIV\FSSettings.db
 ### pip v24.1.2
 pip list  advises  py -m pip install -U pip
 ### pipx
