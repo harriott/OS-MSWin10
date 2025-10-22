@@ -9,14 +9,15 @@
 # inmo microsoft.powershell.psresourceget  # providing  isres
 
 # #=> 0 AWPS 1 update PowerShellGet
-# inmo PowerShellGet -force  # adds to  $CPF\WindowsPowerShell\Modules\PowerShellGet
+# inmo PowerShellGet -force
+# # - adds to  $CPF\WindowsPowerShell\Modules\PowerShellGet, avoids  AllowPrerelease  error of  cmu -update
 
-# #=> 1 PS 0 PowerShell Gallery
-# Set-PSResouRcerepository PSGallery -trusted; Get-PSResourceRepository
+#=> 1 PS 0 PowerShell Gallery
+Set-PSResouRcerepository PSGallery -trusted; Get-PSResourceRepository
 
-# #=> 1 PS 1 Microsoft.PowerShell.PSResourceGet
-# inmo microsoft.powershell.psresourceget -Force
-# # might be enough to  isres Microsoft.PowerShell.PSResourceGet
+#=> 1 PS 1 Microsoft.PowerShell.PSResourceGet
+inmo microsoft.powershell.psresourceget -Force
+# might be enough to  isres Microsoft.PowerShell.PSResourceGet
 
 #=> 1 WPS - PowerShell Gallery
 Set-PSResouRcerepository PSGallery -trusted; Get-PSResourceRepository
