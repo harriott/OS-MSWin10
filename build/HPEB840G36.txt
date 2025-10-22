@@ -337,7 +337,6 @@ $newPathCU = $oldPathCU+';C:\Users\deaur\AppData\Roaming\Python\Python314\Script
 sp 'registry::hkcu\environment' -name path -value $newPathCU
 rebooted  for  pipx run pycowsay moo  rebuilt  C:\Users\jnbh\pipx, and worked
 ## 0patch
-
 0PatchInstaller_22.11.11.10550.msi (${env:programfiles(x86)}\0patch) signed in
 ## code-minimap
 cpi $ITscc\forMSWin\code-minimap-v0.6.7-x86_64-pc-windows-msvc\code-minimap.exe $HADL\Microsoft\WindowsApps
