@@ -331,10 +331,12 @@ in $MSWin10, git pull
   APS> . 3.ps1
 ### gVim v9.1.0
 winget add vim.vim -l C:\Vim
-
 ### Python 3.14
 winget add python.python.3.14
+#### pipx again
 
+python -m pip install --user pipx
+pipx run pycowsay moo  rebuilt  C:\Users\jnbh\pipx, and worked
 ### Opera
 winget add Opera.Opera
 ## waiting
