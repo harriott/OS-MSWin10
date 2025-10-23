@@ -338,8 +338,6 @@ sp 'registry::hkcu\environment' -name path -value $newPathCU
 rebooted  for  pipx run pycowsay moo  rebuilt  C:\Users\jnbh\pipx, and worked
 ## 0patch
 0PatchInstaller_22.11.11.10550.msi (${env:programfiles(x86)}\0patch) signed in
-## code-minimap
-cpi $ITscc\forMSWin\code-minimap-v0.6.8-x86_64-pc-windows-msvc\code-minimap.exe $HADL\Microsoft\WindowsApps
 ## WPS execution policy
 Get-ExecutionPolicy   reported  "Restricted"
 ### Administrateur PowerShell
@@ -356,15 +354,12 @@ ran it to clear selections
 ## various WinGets
 
 winget add
-altsnap
-AutoHotkey.AutoHotkey
+gokcehan.lf
 Kitware.CMake
+lsd
 ## waiting
-Ghostscript
-gokcehan's lf
-ImageMagick
-LSD
-mpv
+mpv.exe
+
 Neovim
 Opera
 PDFtk
@@ -381,10 +376,12 @@ XpdfReader
 zoxide
 Zig
 ### AltSnap
+winget add altsnap
 APS> schtasks /create /f /tn "AltSnap onlogon" /tr "$Env:AppData\AltSnap\AltSnap.exe" /sc onlogon /rl highest
 PS> $ASi="$HADR\AltSnap\AltSnap.ini"; (gc $ASi).replace('AutoSnap=2','AutoSnap=0') | seco -encoding utf8 $ASi
 rebooted to get it working
 ### AutoHotkey
+winget add AutoHotkey.AutoHotkey
 Shortcut to  $MSn\AutoHotkey\HPEB840G36-deaur.ahk  placed in
   "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
 ### FastStone Image Viewer
@@ -394,6 +391,11 @@ f12 (= Paramètres) > Aperçu > [
   En boucle  Rotation Auto par tag orientation EXIF > off  Confirmer la reéctirure des fichiers
   Lancer les images associées > dans une Fenêtre  Unité par défaut > cm ]
 $HADL\FastStone\FSIV\FSSettings.db
+### Ghostscript v10.06 (in preparation for ImageMagick)
+gs10060w64.exe > C:\gs-10_06_0 (Generate cidfmap for Windows CJK TrueType fonts) rebooted
+### ImageMagick Q8 7.1.1.46 x64
+winget add ImageMagick.ImageMagick.Q8
+magick wizard.jpg wizard.png
 ### Ookla Speedtest
 winget add Ookla.Speedtest.Desktop
 ### Disk Usage

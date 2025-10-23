@@ -10,6 +10,7 @@ vim: nospell:
 
 - AutoHotkey `$MSn\AutoHotkey\AZERTY.ahk`
 - `ctrl+m` on selected text opens it in `LanguageTool`
+- mpv-winbuild/releases
 - Task Scheduler: `taskschd.msc`
 - WinRE
 

@@ -15,8 +15,6 @@ winget add altsnap
 rebooted to get it working
 ## Bulk Rename
 winget add BulkRenameUtility
-## code-minimap
-cpi $ITscc\forMSWin\code-minimap-v0.6.7-x86_64-pc-windows-msvc\code-minimap.exe $HADL\Microsoft\WindowsApps
 ## Disk Usage
 cpi "$ITscc\forMSWin\Disk Usage\du64.exe" $HADL\Microsoft\WindowsApps
 du64 -l 1  to accept the license
@@ -797,8 +795,6 @@ dvdfab13_online_13034.exe   took a long time to install,
 dvdshrink32setup.exe  ran it
 ## VLC speed
 + not working so  ctrl+p > Raccourcis > Accélérer > )
-## mpv
-cpi $ITscc/forMSWin/AV/mpv-x86_64-20250113-git-ca211b5/mpv.exe $HADL\Microsoft\WindowsApps
 ## FFmpeg back into $PATH
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
 $newPathCU = $oldPathCU+';C:\Users\jnbh\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-7.1-full_build\bin\ffplay.exe'; $newPathCU
@@ -1162,12 +1158,12 @@ winget add Kitware.CMake
 ## Ghostscript v10.06
 Applications et fonctionnalités > GPL Ghostscript > Désinstaller
 gs10060w64.exe > C:\gs-10_06_0 (Generate cidfmap for Windows CJK TrueType fonts) rebooted
-## waiting
-cmu
-Ghostscript 10.06.0
-luarocks-3.12.2-windows-64
-### GitHub CLI
+## WizTree
+winget add WizTree
+## GitHub CLI
 winget add GitHub.cli
+## waiting
+luarocks-3.12.2-windows-64
 # physical configuration
 1366x768 screen
 Intel Core i5-6300U

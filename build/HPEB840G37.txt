@@ -1234,8 +1234,6 @@ winget update --all
   ...
   Le code de hachage du programme d’installation ne correspond pas.
 winget rm sqlite.sqlite
-## mpv
-cpi $DJH/Cop-code/forMSWin/AV/mpv-x86_64-v3-20250202-git-38ad1ed/mpv.exe $HADL\Microsoft\WindowsApps
 ## Ookla Speedtest
 winget add Ookla.Speedtest.Desktop
 ## Process Explorer
@@ -1586,14 +1584,13 @@ Windows Update > La prise en charge de Windows 10 se termine en octobre 2025 >
   Mise à jour de sécurité étendues ... jusqu'au 13 octobre 2026 > Inscrivez-vous > Terminé
 ## 0patch
 0PatchInstaller_22.11.11.10550.msi (${env:programfiles(x86)}\0patch) signed in
-## mpv
-cpi $ITscc/forMSWin/AV/mpv-x86_64-v3-20251020-git-99d6d4c/mpv.exe $HADL\Microsoft\WindowsApps
 ## waiting
+code-minimap
+cmu
 Ghostscript v10.06
 luarocks-3.12.2-windows-64
 Mise à jour facultatives
-### code-minimap
-cpi $ITscc\forMSWin\code-minimap-v0.6.8-x86_64-pc-windows-msvc\code-minimap.exe $HADL\Microsoft\WindowsApps
+mpv.exe
 # physical configuration
 1920x1080 screen
 Intel Core i5-6300U
