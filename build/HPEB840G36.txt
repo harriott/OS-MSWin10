@@ -383,6 +383,7 @@ hidden icon dragged to taskbar
 ## IrfanView
 ran it for  p (= Properties/Settings) > [ JPG > Auto-rotate off  Editing > Cut White ]
 winget add IrfanSkiljan.IrfanView.PlugIns
+  Remarques : The plugins need to be installed in the corresponding version of the main programme which is also available here.
 ## Lua
 install  LuaBinaries  &  LuaRocks
 ### add to path
@@ -420,10 +421,20 @@ npm ls -g  reports what's in  $HADR\npm
 ## Node.js - npx
 npx cowsay goodbye!
 g $HADL\npm-cache\_npx\8f497369b2d6166e\node_modules  surprisingly populated
+## Corepack manually
+for  iamcco/markdown-preview.nvim, npm install -g corepack, but didn't work
 ## Neovim
 PS> nvim  to invoke  Lazy
-## Corepack manually
-for  iamcco/markdown-preview.nvim, npm install -g corepack
+  Error: Cannot find module 'C:\Program Files\nodejs\node_modules\corepack\dist\yarn.js'
+  fixed by switching from yarn to npm in  $vfn/lua/lazy/markdown-preview.lua
+## dubious ownership of D:\ITJ\gc-misc
+so in there, APS> takeown /f . /r /d o
+## Opera
+winget add Opera.Opera
+
+Paramètres > Au démarrage > Lancer au démarrage de mon ordinateur  décoché
+## PDFtk
+winget add PDFLabs.PDFtk.Free
 ## various WinGets
 
 winget add
@@ -438,8 +449,6 @@ MediaArea.MediaInfo
 Ookla.Speedtest.Desktop
 sharkdp.bat
 ## waiting
-Opera
-PDFtk
 pipx
 PowerShell
 PSProfile.ps1
@@ -510,8 +519,6 @@ where.exe zig  finds nothing, so  winget rm zig.zig
 precautionary reboot for  winget add zig.zig  took ages to unpack
 ### MiniTool Partition Wizard Free v12.9
 winget add MiniTool.PartitionWizard.Free
-### Opera
-winget add Opera.Opera
 # physical configuration
 1366x768 screen
 Intel Core i5-6300U
