@@ -13,6 +13,9 @@ csl ~\PSProfile.ps1
 # syli $misc/notDr/notDr.md $notDr/readme.md
 # syli $misc/notDr/NF.md $notDr/GR-NF/readme.md
 
+#=> Disk Usage
+cpi $ITscc\forMSWin\DiskUsage\du64.exe "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
+
 # #=> Emacs
 # $Ed = "$HADR\.emacs.d"; endi $Ed
 # syli $misc\CP\emacs\custom.el $Ed\custom.el
@@ -28,6 +31,12 @@ csl ~\PSProfile.ps1
 # syli $MSn\lf\lfrc $HADL\lf\lfrc
 # syli $MSn\lf\icons $HADL\lf\icons
 #   csl $HADL\lf
+
+#=> LuaBinaries
+cpi $ITscc\forMSWin\LuaBinaries\lua-5_4_2_Win64_bin C:\Lua -recurse
+
+#=> LuaRocks
+cpi $ITscc\forMSWin\luarocks-3.12.2-windows-64\* C:\Lua
 
 # #=> MiKTeX
 # syli $ITsCP\documenting\LaTeX\jo $tex\latex\jo  # csl $tex\latex
@@ -45,8 +54,8 @@ csl ~\PSProfile.ps1
 # #=> mpv.conf
 # syli $misc/CP/mpv.conf $HADR/mpv/mpv.conf
 
-#=> mpv.exe
-cpi $ITscc/forMSWin/AV/mpv-x86_64-v3-20251022-git-99d6d4c/mpv.exe $HADL\Microsoft\WindowsApps
+# #=> mpv.exe
+# cpi $ITscc/forMSWin/AV/mpv-x86_64-v3-20251022-git-99d6d4c/mpv.exe $HADL\Microsoft\WindowsApps
 
 # #=> Node.js
 # endi $HADR\npm
@@ -65,6 +74,9 @@ cpi $ITscc/forMSWin/AV/mpv-x86_64-v3-20251022-git-99d6d4c/mpv.exe $HADL\Microsof
 # syli $onGH\pandoc-templates "$Pt"
 #   csl $Pandoc
 
+#=> Process Explorer
+cpi $ITscc\forMSWin\ProcessExplorer\procexp64.exe "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
+
 # #=> Ruby
 # cpi $misc\irbrc ~\.irbrc
 
@@ -72,8 +84,8 @@ cpi $ITscc/forMSWin/AV/mpv-x86_64-v3-20251022-git-99d6d4c/mpv.exe $HADL\Microsof
 # endi ~/encrypted
 # endi ~/.ssh
 
-#=> vim flavours - minimap
-cp $ITscc/forMSWin/code-minimap-v0.6.8-x86_64-pc-windows-msvc/code-minimap.exe $HADL/Microsoft/WindowsApps/code-minimap.exe
+# #=> vim flavours - minimap
+# cp $ITscc/forMSWin/code-minimap-v0.6.8-x86_64-pc-windows-msvc/code-minimap.exe $HADL/Microsoft/WindowsApps/code-minimap.exe
 
 # #=> vim flavours - nvim 0 nvim 0 clear
 # if ( test-path $nvim ) { ri -path $nvim -recurse } ; md $nvim\pack

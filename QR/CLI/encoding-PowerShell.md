@@ -185,6 +185,8 @@ no standard aliases
     get-startapps  # lists AppIDs
     start <somefile>
 
+after piping to `less`, getting weird errors
+
 ## *-Process
     kill -name HP.Smart
 
@@ -220,7 +222,7 @@ no standard aliases
     gcm python | fl *
 
 ## ImageMagick
-    where.exe magick
+    $IMi=$(where.exe magick).Replace('magick.exe','')+'images'; sl $IMi  # version is in path
 
 ### biz card backgrounds
     magick -size 924x568 plasma: plasma1.jpg

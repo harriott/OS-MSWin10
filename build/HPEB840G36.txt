@@ -351,12 +351,52 @@ so in there, APS> takeown /f . /r /d o
 F12 (= DevTools) to clear away question
 ## Firefox
 ran it to clear selections
+## AltSnap
+winget add altsnap
+APS> schtasks /create /f /tn "AltSnap onlogon" /tr "$Env:AppData\AltSnap\AltSnap.exe" /sc onlogon /rl highest
+rebooted to get it working
+PS> $ASi="$HADR\AltSnap\AltSnap.ini"; (gc $ASi).replace('AutoSnap=2','AutoSnap=0') | seco -encoding utf8 $ASi
+## AutoHotkey
+winget add AutoHotkey.AutoHotkey
+Shortcut to  $MSn\AutoHotkey\HPEB840G36-deaur.ahk  placed in
+  "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
+## FastStone Image Viewer
+winget add FastStone.Viewer  gets  ${env:programfiles(x86)}\FastStone Image Viewer\FSViewer.exe"
+ran it for Esc to offtick
+f12 (= Paramètres) > Aperçu > [
+  En boucle  Rotation Auto par tag orientation EXIF > off  Confirmer la reéctirure des fichiers > off
+  Lancer les images associées > dans une Fenêtre  Unité par défaut > cm ]
+## Process Explorer
+(in Démarrage) ran for  Agree
+  alt+o (= Options) > i (= Tray Icons) > p (= Physical Memory History)
+  alt+o (= Options) > h (= Hide When Minimized)
+## Ghostscript v10.06 (in preparation for ImageMagick)
+gs10060w64.exe > Uninstall Ghostscript Version 10.3.1 >
+  C:\gs-10_06_0 (Generate cidfmap for Windows CJK TrueType fonts) rebooted
+## (once Ghostscript) ImageMagick Q8 7.1.2 x64
+winget add ImageMagick.ImageMagick.Q8
+## Idc > Propriétés
+Coleurs > 86%  Police > 14
+## Gestionnaire de tâches
+Options > Masquer l'icône réduite
+hidden icon dragged to taskbar
+## IrfanView
+ran it for  p (= Properties/Settings) > [ JPG > Auto-rotate off  Editing > Cut White ]
+winget add IrfanSkiljan.IrfanView.PlugIns
+## Lua
+install  LuaBinaries  &  LuaRocks
+### add to path
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = "$oldPathCU;C:\Lua"; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+(new PowerShell instance) lua54 -v
 ## various WinGets
 
 winget add
 gokcehan.lf
 Kitware.CMake
 lsd
+Ookla.Speedtest.Desktop
 ## waiting
 mpv.exe
 
@@ -375,56 +415,6 @@ WT
 XpdfReader
 zoxide
 Zig
-### AltSnap
-winget add altsnap
-APS> schtasks /create /f /tn "AltSnap onlogon" /tr "$Env:AppData\AltSnap\AltSnap.exe" /sc onlogon /rl highest
-PS> $ASi="$HADR\AltSnap\AltSnap.ini"; (gc $ASi).replace('AutoSnap=2','AutoSnap=0') | seco -encoding utf8 $ASi
-rebooted to get it working
-### AutoHotkey
-winget add AutoHotkey.AutoHotkey
-Shortcut to  $MSn\AutoHotkey\HPEB840G36-deaur.ahk  placed in
-  "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
-### FastStone Image Viewer
-winget add FastStone.Viewer  gets  ${env:programfiles(x86)}\FastStone Image Viewer\FSViewer.exe"
-ran it for Esc to offtick
-f12 (= Paramètres) > Aperçu > [
-  En boucle  Rotation Auto par tag orientation EXIF > off  Confirmer la reéctirure des fichiers
-  Lancer les images associées > dans une Fenêtre  Unité par défaut > cm ]
-$HADL\FastStone\FSIV\FSSettings.db
-### Ghostscript v10.06 (in preparation for ImageMagick)
-gs10060w64.exe > C:\gs-10_06_0 (Generate cidfmap for Windows CJK TrueType fonts) rebooted
-### ImageMagick Q8 7.1.1.46 x64
-winget add ImageMagick.ImageMagick.Q8
-magick wizard.jpg wizard.png
-### Ookla Speedtest
-winget add Ookla.Speedtest.Desktop
-### Disk Usage
-du64.exe  copied into $HADL\Microsoft\WindowsApps
-### Idc > Propriétés
-Coleurs > 86%  Police > 14
-### Process Explorer
-cpi $ITscc\forMSWin\ProcessExplorer\procexp64.exe "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
-#### Process Explorer
-start $ITscc\forMSWin\ProcessExplorer\procexp64.exe
-  alt+o (= Options) > i (= Tray Icons) > p (= Physical Memory History)
-  alt+o (= Options) > h (= Hide When Minimized)
-  alt+o (= Options) > l (= Run At Logon)
-### Gestionnaire de tâches
-Options > Masquer l'icône réduite
-hidden icon dragged to taskbar
-### IrfanView
-winget add IrfanSkiljan.IrfanView -h  went to  "C:\Program Files\IrfanView\i_view64.exe"
-ran it for  P (= Properties/Settings) > [ JPG > Auto-rotate off  Editing > Cut White ]
-winget add IrfanSkiljan.IrfanView.PlugIns -h
-### Lua
-cp D:\Dropbox\JH\core\IT_stack\copied-code\forMSWin\LuaBinaries\lua-5.4.2_Win64_bin C:\Lua -recurse
-#### add to path
-$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
-$newPathCU = "$oldPathCU;C:\Lua"; $newPathCU
-sp 'registry::hkcu\environment' -name path -value $newPathCU
-(new PowerShell instance) lua54 -v
-#### LuaRocks
-cp D:\Dropbox\JH\core\IT_stack\copied-code\forMSWin\luarocks-3.11.1-windows-64\* C:\Lua
 ### Notepad++
 winget add --name notepad++
 Alt+p (Paramètres) > Préférences > Mode Sombre > Mode sombre > Suivre Windows

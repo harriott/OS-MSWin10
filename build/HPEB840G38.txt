@@ -1162,6 +1162,8 @@ gs10060w64.exe > C:\gs-10_06_0 (Generate cidfmap for Windows CJK TrueType fonts)
 winget add WizTree
 ## GitHub CLI
 winget add GitHub.cli
+## ImageMagick remove old
+Applications et fonctionnalités > ImageMagick 7.1.1.47 Désinstaller
 ## waiting
 luarocks-3.12.2-windows-64
 # physical configuration
