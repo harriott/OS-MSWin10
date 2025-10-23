@@ -431,10 +431,16 @@ PS> nvim  to invoke  Lazy
 so in there, APS> takeown /f . /r /d o
 ## Opera
 winget add Opera.Opera
-
-Paramètres > Au démarrage > Lancer au démarrage de mon ordinateur  décoché
+tidied it, rebooted
+Configuration facile > Paramètres > Au démarrage >
+  Commencer avec le page de démarrage
+  Lancer au démarrage de mon ordinateur  décoché
 ## PDFtk
+
 winget add PDFLabs.PDFtk.Free
+## pipx
+python -m pip install --user pipx
+pipx run pycowsay moo  rebuilt  C:\Users\jnbh\pipx, and worked
 ## various WinGets
 
 winget add
