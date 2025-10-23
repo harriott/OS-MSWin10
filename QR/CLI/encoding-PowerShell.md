@@ -125,6 +125,7 @@ no standard aliases
     C:\msys64\usr\bin\perl.exe -v
     java -jar C:\LanguageTool\languagetool-commandline.jar -h
     java -jar $ITscc\CP\LanguageTool\languagetool-commandline.jar -h
+    winget find NodeJS
 
 ## MiKTeX
     miktex fndb refresh
@@ -147,18 +148,6 @@ no standard aliases
 ### Strawberry
     C:\Strawberry\perl\bin\perl.exe -v
     g $home\.cpanm
-
-## Windows Package Manager
-    g $HADL\microsoft\winget\packages
-    winget --info
-    winget add SumatraPDF -h -l C:\SumatraPDF # install (--location, --silent)
-    winget find powershell
-    winget update --all
-    winget update google.chrome
-    winget rm google.chrome  # uninstall
-
-- `-h` (`--silent`)
-- `Winget`
 
 ## Windows PowerShell - file formats
     PowerShell command | out-file <file> -encoding utf8BOM  # detected as utf-8
@@ -576,6 +565,19 @@ prefer `&` where possible
 ### update
     cmu  # (Check-ModuleUpdates) throws some errors, lists, then provides an update command at end
     compare-module | where updateneeded | foreach { update-module $_.name }  # slow, and only for  inmo
+
+## Windows Package Manager
+    g $HADL\microsoft\winget\packages
+    winget --info
+    winget add SumatraPDF -h -l C:\SumatraPDF # install (--location, --silent)
+    winget find powershell
+    winget update --all
+    winget update google.chrome
+    winget rm google.chrome  # uninstall
+
+- `--accept-package-agreements` licenses
+- `-h` (`--silent`)
+- `Winget`
 
 # PS
     $PSHOME

@@ -390,17 +390,54 @@ $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
 $newPathCU = "$oldPathCU;C:\Lua"; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
 (new PowerShell instance) lua54 -v
+## Notepad++
+winget add notepad++
+Alt+p (Paramètres) > Préférences > Mode sombre > Suivre Windows
+## Sécurité Windows
+pinned to Start
+### QuickLook
+winget add 9NV4BS3L1H4S --accept-package-agreements
+## Rust for ripgrep
+(once Visual Studio components) winget add rustup  takes a while
+## ripgrep
+(once Rust) winget add burntsushi.ripgrep.msvc
+### XnView MP
+winget add XnSoft.XnViewMP
+ran it for  Assistant de démarrage > [ Thème > Sombre  Intégration > Ajouter ]
+## Zig
+(for  tree-sitter) winget add zig.zig  took ages to unpack
+
+zig version
+## Sumatra PDF
+winget add SumatraPDF -h -l C:\SumatraPDF
+## Node.js
+winget add OpenJS.NodeJS
+Node.js  icon pulled over to Start Menu, run for (right-click) console.log('Hello')
+  ls $CPF\nodejs\node.exe
+  $CPF\nodejs\node_modules\npm\README.md
+(new PS) npm prefix -g  reports  C:\Users\jnbh\AppData\Roaming\npm
+npm ls -g  reports what's in  $HADR\npm
+## Node.js - npx
+npx cowsay goodbye!
+g $HADL\npm-cache\_npx\8f497369b2d6166e\node_modules  surprisingly populated
+## Neovim
+PS> nvim  to invoke  Lazy
+## Corepack manually
+for  iamcco/markdown-preview.nvim, npm install -g corepack
 ## various WinGets
 
 winget add
+eza-community.eza
+fixed ; at end of path
+GIMP.GIMP
 gokcehan.lf
 Kitware.CMake
 lsd
+M2Team.NanaZip
+MediaArea.MediaInfo
 Ookla.Speedtest.Desktop
+sharkdp.bat
 ## waiting
-mpv.exe
-
-Neovim
 Opera
 PDFtk
 pipx
@@ -409,56 +446,9 @@ PSProfile.ps1
 Python
 Rust for ripgrep
 Signal
-WPS execution policy
-WPS modules
 WT
 XpdfReader
 zoxide
-Zig
-### Notepad++
-winget add --name notepad++
-Alt+p (Paramètres) > Préférences > Mode Sombre > Mode sombre > Suivre Windows
-### Sécurité Windows
-pinned to Start
-### sharkdp/bat
-winget add sharkdp.bat
-### QuickLook
-winget add 9NV4BS3L1H4S --accept-package-agreements
-### NanaZip
-winget add M2Team.NanaZip
-### ripgrep
-(once Rust) winget add burntsushi.ripgrep.msvc
-fixed ; at end of path
-### XnView MP
-winget add XnSoft.XnViewMP
-ran it for  Assistant de démarrage > Thème > Sombre
-### MediaInfo
-winget add MediaArea.MediaInfo
-### GIMP
-winget add GIMP.GIMP
-### Visual Studio Build Tools 2022 to make  telescope-fzf-native.nvim
-winget add Microsoft.VisualStudio.2022.BuildTools
-### Zig
-(for  tree-sitter) winget add zig.zig  took ages to unpack
-fixed ; at end of path
-zig version
-### eza
-winget add eza-community.eza
-fixed ; at end of path
-### Sumatra PDF
-winget add SumatraPDF -h -l C:\SumatraPDF
-### Node.js
-winget add OpenJS.NodeJS
-Node.js  icon pulled over to Start Menu, run for (right-click) console.log('Hello')
-  ls $CPF\nodejs\node.exe
-  $CPF\nodejs\node_modules\corepack\README.md
-  $CPF\nodejs\node_modules\npm\README.md
-(new PS) npm prefix -g  reports  C:\Users\jnbh\AppData\Roaming\npm
-npm ls -g  reports what's in  $HADR\npm
-### Node.js - npx
-npx cowsay goodbye!
-g C:\Users\jnbh\AppData\Local\npm-cache\_npx\8f497369b2d6166e\node_modules
-g $HADL\npm-cache\_npx\8f497369b2d6166e\node_modules  surprisingly populated
 ### Neovide
 winget add neovide -l C:\Vim  but it went to  $CPF\Neovide\neovide.exe
 ### Google Chrome
