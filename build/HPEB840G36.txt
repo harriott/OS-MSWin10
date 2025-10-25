@@ -467,7 +467,7 @@ scoop install poppler
 
 ## various WinGets
 
-winget add eza-community.eza fixed ; at end of path fzf GIMP.GIMP gokcehan.lf jftuga.less Kitware.CMake lsd M2Team.NanaZip MediaArea.MediaInfo MiniTool.PartitionWizard.Free Ookla.Speedtest.Desktop OpenWhisperSystems.Signal PDFLabs.PDFtk.Free sharkdp.bat yt-dlp.yt-dlp zig.zig
+winget add eza-community.eza fzf GIMP.GIMP.3 gokcehan.lf jftuga.less Kitware.CMake lsd M2Team.NanaZip MediaArea.MediaInfo MiniTool.PartitionWizard.Free Ookla.Speedtest.Desktop OpenWhisperSystems.Signal PDFLabs.PDFtk.Free sharkdp.bat yt-dlp.yt-dlp
 ## waiting
 ### VLC Player
 winget add VideoLAN.VLC
