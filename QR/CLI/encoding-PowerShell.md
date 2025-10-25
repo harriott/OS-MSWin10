@@ -344,7 +344,7 @@ takes a regex
 
 #### pure string output
     ls *.pdf | select -expand name
-    ls $path | select -expand FullName
+    ls <path> | select -expand FullName
 
 #### recursive lists
     ls -file -s
@@ -693,13 +693,14 @@ prefer `&` where possible
     $psscriptroot
     ls env:  # list the environment variables
 
+### path
+    $env:path
+    (gp 'registry::hkcu\environment' path).path -split ';'
+    Get-PathVariable
+
 ### Roaming
     $Env:AppData  # C:\Users\...\AppData\Roaming
     ls "$Env:AppData\Pandoc\defaults"
-
-### path
-    (gp 'registry::hkcu\environment' path).path -split ';'
-    Get-PathVariable
 
 # Vim
     C:\Vim\vim91\vim.exe --version

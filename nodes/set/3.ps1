@@ -1,5 +1,5 @@
 
-# Joseph Harriott - https://harriottgithubio/ - ven 24 janv 2025
+# Joseph Harriott - https://harriottgithubio/ - sam 25 oct 2025
 
 # once  $Cn, APS> . $MSn/set/3.ps1
 
@@ -13,8 +13,8 @@ csl ~\PSProfile.ps1
 # syli $misc/notDr/notDr.md $notDr/readme.md
 # syli $misc/notDr/NF.md $notDr/GR-NF/readme.md
 
-#=> Disk Usage v1.62
-cpi $ITscc\forMSWin\DiskUsage\du64.exe $HADL\Microsoft\WindowsApps
+# #=> Disk Usage v1.62
+# cpi $ITscc\forMSWin\DiskUsage\du64.exe $HADL\Microsoft\WindowsApps
 
 # #=> Emacs
 # $Ed = "$HADR\.emacs.d"; endi $Ed
@@ -26,23 +26,21 @@ cpi $ITscc\forMSWin\DiskUsage\du64.exe $HADL\Microsoft\WindowsApps
 #   syli $misc\CP\emacs\lisp $Ed\lisp
 #     csl $HADR\.emacs.d
 
-#=> ExifTool v13.39
-$ET =  "$ITscc\forMSWin\imagey\exiftool-13_39_64"
-cpi "$ET\exiftool(-k).exe" $HADL\Microsoft\WindowsApps\exiftool.exe
-cpi -recurse "$ET\exiftool_files" $HADL\Microsoft\WindowsApps -force
-robocopy /mir $ET\exiftool_files $HADL\Microsoft\WindowsApp\exiftool_filess
+# #=> ExifTool v13.39
+# $ET =  "$ITscc\forMSWin\imagey\exiftool-13_39_64"
+# cpi "$ET\exiftool(-k).exe" $HADL\Microsoft\WindowsApps\exiftool.exe
+# cpi -recurse "$ET\exiftool_files" $HADL\Microsoft\WindowsApps -force
+# robocopy /mir $ET\exiftool_files $HADL\Microsoft\WindowsApp\exiftool_filess
 
-#=> gokcehan lf configuration
-syli $MSn\lf\colors $HADL\lf\colors
-syli $MSn\lf\lfrc $HADL\lf\lfrc
-syli $MSn\lf\icons $HADL\lf\icons
-  csl $HADL\lf
+# #=> gokcehan lf configuration
+# syli $MSn\lf\colors $HADL\lf\colors
+# syli $MSn\lf\lfrc $HADL\lf\lfrc
+# syli $MSn\lf\icons $HADL\lf\icons
+#   csl $HADL\lf
 
-#=> LuaBinaries v5.4.2
-cpi $ITscc\forMSWin\LuaBinaries\lua-5_4_2_Win64_bin C:\Lua -recurse
-
-#=> LuaRocks v3.12.2
-cpi $ITscc\forMSWin\luarocks-3_12_2-windows-64\* C:\Lua
+#=> C:\Lua (in path)
+robocopy /mir $ITscc\forMSWin\LuaBinaries\lua-5_4_2_Win64_bin C:\Lua
+  cpi $ITscc\forMSWin\luarocks-3_12_2-windows-64\* C:\Lua
 
 # #=> MiKTeX
 # syli $ITsCP\documenting\LaTeX\jo $tex\latex\jo
@@ -57,12 +55,12 @@ cpi $ITscc\forMSWin\luarocks-3_12_2-windows-64\* C:\Lua
 # syli $MSn\Thb\runSafely.ps1 C:\MT-runSafely.ps1
 #   csl C:\MT-runSafely.ps1
 
-#=> mpv.conf
-syli $misc/CP/mpv.conf $HADR/mpv/mpv.conf
+# #=> mpv.conf
+# syli $misc/CP/mpv.conf $HADR/mpv/mpv.conf
 
-#=> mpv.exe (daily)
-# https://github.com/zhongfly/mpv-winbuild/releases
-cpi $ITscc/forMSWin/AV/mpv-x86_64-v3-20251022-git-99d6d4c/mpv.exe $HADL\Microsoft\WindowsApps
+# #=> mpv.exe (daily)
+# # https://github.com/zhongfly/mpv-winbuild/releases
+# cpi $ITscc/forMSWin/AV/mpv-x86_64-v3-20251022-git-99d6d4c/mpv.exe $HADL\Microsoft\WindowsApps
 
 #=> Node.js
 endi $HADR\npm
@@ -81,9 +79,9 @@ endi $HADR\npm
 # syli $onGH\pandoc-templates "$Pt"
 #   csl $Pandoc
 
-#=> Process Explorer v17.06
-# https://learn.microsoft.com/en-gb/sysinternals/downloads/process-explorer
-cpi $ITscc\forMSWin\ProcessExplorer\procexp64.exe "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
+# #=> Process Explorer v17.06
+# # https://learn.microsoft.com/en-gb/sysinternals/downloads/process-explorer
+# cpi $ITscc\forMSWin\ProcessExplorer\procexp64.exe "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
 
 #=> Ruby
 cpi $misc\irbrc ~\.irbrc

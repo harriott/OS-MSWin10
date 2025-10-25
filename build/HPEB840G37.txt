@@ -815,7 +815,7 @@ still got unusable  $CPF\WindowsApps\2490UnSoft.Lua_1.0.0.0_x64__eqt05ahzs4mk6\L
 winget rm 9WZDNCRDLTZP
 ## Lua
 cp D:\Dropbox\JH\core\IT_stack\copied-code\forMSWin\LuaBinaries\lua-5.4.2_Win64_bin C:\Lua -recurse
-### add to path
+### add C:\Lua to path
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
 $newPathCU = "$oldPathCU;C:\Lua"; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
@@ -1833,6 +1833,19 @@ Git Bash > ssh -T git@github.com
   Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
   Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
   Hi harriott! You've successfully authenticated, but GitHub does not provide shell access.
+### LspStop ltex
+  Error executing Lua callback: C:\Program Files\Neovim\share\nvim\runtime/lua/vim/lsp.lua:388: name: expected non-wildcard string, got nil
+  stack traceback:
+	[C]: in function 'error'
+	vim/shared.lua:1045: in function 'validate'
+	C:\Program Files\Neovim\share\nvim\runtime/lua/vim/lsp.lua:388: in function 'validate_config_name'
+	C:\Program Files\Neovim\share\nvim\runtime/lua/vim/lsp.lua:408: in function '__index'
+	...Local/nvim-data/lazy/nvim-lspconfig/plugin/lspconfig.lua:169: in function <...Local/nvim-data/lazy/nvim-lspconfig/plugin/lspconfig.lua:159>
+#### add C:\Lua to path
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU+'C:\Lua;'; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+lua54 -v
 ## waiting
 Ghostscript v10.06
 Mise à jour facultatives
