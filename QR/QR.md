@@ -185,8 +185,11 @@ star icon
 ## internetworking
     whois 8.8.8.8
 
-- Skype: `Ctrl+,` = `Menu > Settings`
-- `WiFi icon > Properties` (or `Settings > Network & Internet > WiFi > Hardware properties`)
+`WiFi icon > Properties` (or `Settings > Network & Internet > WiFi > Hardware properties`)
+
+### Skype
+- `Ctrl+,` = `Menu > Settings`
+- replaced by `Microsoft Teams`
 
 ### Windows Defender Firewall
     control firewall.cpl  # Control Panel > All Control Panel Items > Windows Defender Firewall

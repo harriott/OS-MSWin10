@@ -5,6 +5,7 @@ vim: nospell:
 
     ~\AppData\Roaming\Vifm\vifmrc
 
+    chkdsk d: /f
     code-minimap --version
     code-minimap -h  # --help
 

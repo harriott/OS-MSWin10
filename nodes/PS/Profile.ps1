@@ -43,11 +43,11 @@ function pro {
 
 function stc {
   '"Nom de la tâche","Prochaine exécution","Statut"' > $MSWml\schtasks.csv
-  schtasks /fo csv /nh | sort-object | out-file -append $machlg\schtasks.csv
+  schtasks /fo csv /nh | sort-object | out-file -append $MSWml\schtasks.csv
 }
 # Alternatively:
-#  schtasks /fo list | out-file $machlg\schtasks.txt -encoding utf8bom
-#   ri $machlg\schtasks.txt
+#  schtasks /fo list | out-file $MSWml\schtasks.txt -encoding utf8bom
+#   ri $MSWml\schtasks.txt
 
 # Pansies coloured line
 function GGrb { Get-Gradient red blue -Flatten | %{Write-Host " " -BackgroundColor $_ -NoNewline} }

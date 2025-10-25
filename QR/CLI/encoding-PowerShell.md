@@ -255,10 +255,6 @@ otherwise little sign of them
     ps thunderbird
     where.exe thunderbird
 
-## Windows PowerShell
-    powershell -noprofile  #  runs  Windows PowerShell
-    saps powershell -verb runas  # Administrator
-
 ## where.exe
     where.exe gpg
     where.exe pwsh
@@ -484,7 +480,7 @@ prefer `&` where possible
 # output
     Out-File
 
-`ft` (= `Format-Table`)
+`ft -AutoSize` (= `Format-Table`)
 
 ## colour
     & "$coreIT\MSWin\PowerShell\colours\ConsoleColor.ps1"
@@ -533,12 +529,10 @@ prefer `&` where possible
     toast  # New-BurntToastNotification
 
 - `ipmo` (`import-module`)
-- `inmo` (`install-module`, of deprecated `PowerShellGet`)
-    - installs to `$HOME\Documents\PowerShell\Modules`
 - `rmo` (`remove-module`)
 
 ### get-module
-    gmo -all
+    gmo -all | ft -AutoSize
     gmo -listavailable  # details, including old and those in  Windows PowerShell
     gmo BurntToast
 
@@ -558,9 +552,13 @@ prefer `&` where possible
     $HOME\Documents\WindowsPowerShell\Modules  # can Delete outdated
     $env:programfiles\WindowsPowerShell\Modules
 
-### powershellget
+### PowerShellGet
     Get-InstalledModule
     Get-PSRepository
+
+- `inmo` (`Install-Module`) installs to `$HOME\Documents\PowerShell\Modules`
+- partially superseded by `Microsoft.PowerShell.PSResourceGet`
+- `upmo` (`Update-Module`)
 
 ### update
     cmu  # (Check-ModuleUpdates) throws some errors, lists, then provides an update command at end
@@ -577,7 +575,7 @@ prefer `&` where possible
 
 - `--accept-package-agreements` licenses
 - `-h` (`--silent`)
-- `Winget`
+- `WinGet`
 
 # PS
     $PSHOME
@@ -591,7 +589,8 @@ prefer `&` where possible
     Get-PSResource PSFzf
     Invoke-Fzf -?
 
-tab completion
+- `/fzf` in `$MSn/PS/Profile.ps1`
+- tab completion
 
 ## version
     $psversiontable.psversion
@@ -707,6 +706,10 @@ tab completion
     g $HOME\vimfiles
     g $HOME\.vimswap
     robocopy /mir $vimfiles D:\Play0\vf
+
+# Windows PowerShell
+    powershell -noprofile  #  runs  Windows PowerShell
+    saps powershell -verb runas  # Administrator
 
 # WSL
     (ls HKCU:SOFTWARE\Microsoft\Windows\CurrentVersion\Lxss | gp -Name DistributionName).DistributionName

@@ -706,7 +706,6 @@ sudo pro attach <FPT>
 in there, APS> takeown /f . /r /d o
 ## XpdfReader
 XpdfReader-win64-4.05.exe  (C:\Program Files\Glyph & Cog\XpdfReader-win64)
-  pdfimages -h
 ## WSL Ubuntu - .bash_history
 cp \\wsl$\Ubuntu\home\jo\.bash_history $MSWml/WSL-bash_history-$((get-date).tostring("yyMMdd-HHmmss")).sh
 ## WSL Ubuntu remove
@@ -1164,6 +1163,26 @@ winget add WizTree
 winget add GitHub.cli
 ## ImageMagick remove old
 Applications et fonctionnalités > ImageMagick 7.1.1.47 Désinstaller
+## backup $HADL\Microsoft\WindowsApp
+robocopy /mir $HADL\Microsoft\WindowsApps $MSWml\WindowsApps
+## Scoop
+irm get.scoop.sh | iex
+## XpdfReader remove
+Paramètres > Applications et fonctionnalités > XpdfReader (Win64) -b Glyph & Cog > Désintaller
+## WT Settings tidy
+ctrl+, (= Settings)
+  Ubuntu > Le profil n'est plus détecté > Supprimer
+  Ubuntu > Le profil n'est plus détecté > Supprimer
+  Ubuntu 22.04.4 LTS > Le profil n'est plus détecté > Supprimer
+  remaining  Ubuntu 22.04.4 LTS  is masked, and my preferences are set in  Ubuntu;
+    but  ctrs+shift+'  gets me a tab titled  Ubuntu 22.04.4 LTS
+## LSD no longer working
+winget rm lsd
+winget ls lsd
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU -replace 'C:\\Users\\jnbh\\AppData\\Local\\Microsoft\\WinGet\\Packages\\lsd-rs.lsd_Microsoft.Winget.Source_8wekyb3d8bbwe;',''; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+winget add lsd
 ## waiting
 luarocks-3.12.2-windows-64
 # physical configuration

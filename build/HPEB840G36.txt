@@ -435,76 +435,55 @@ tidied it, rebooted
 Configuration facile > Paramètres > Au démarrage >
   Commencer avec le page de démarrage
   Lancer au démarrage de mon ordinateur  décoché
-## PDFtk
+## Google Chrome
+deauram11@gmail.com, then signed into  ChatGPT  with that  Google
+## PowerShell v7.5.4
+closed Nvim & PS for  PowerShell-7.5.4-win-x64.msi (C:\Program Files\PowerShell\) >
+  [ Add 'Open here' context menu to Explorer
+  Add 'Run with PowerShell 7' context menu for PowerShell files ] > Next > Next > UAC > Oui
+## WT
+winget add 9N0DX20HK701 > y
+### configure
+chcp  reports  CodePage 850
+ctrl+, (= Paramètres)
+  Azure Cloud Shell > Masquez le profil de la liste déroulante > Activé
+  Interaction > M'avertir lorsque je ferme plusieurs onglets  off-slid
+  PowerShell > Répertoire de démarrage > . > Apparence >
+    [ Text > Taille de police > 8  Transparence > Opacité de l'arrière plan > 83% ] > Enregistrer
+  Windows PowerShell > Répertoire de démarrage > . > Apparence >
+    [ Text > Taille de police > 8  Transparence > Opacité de l'arrière plan > 84% ] > Enregistrer
+## XpdfReader v4.05 install
+XpdfReader-win64-4.05.exe  (C:\Program Files\Glyph & Cog\XpdfReader-win64)
+## XpdfReader remove
+Paramètres > Applications et fonctionnalités > XpdfReader (Win64) -b Glyph & Cog > Désintaller
+## Scoop
+irm get.scoop.sh | iex
+## Poppler
+scoop install poppler
+  pdfimages -h
+## pynvim (for neovim)
+(needed for python packages)  pip install pynvim
+## ExifTool v13.39
 
-winget add PDFLabs.PDFtk.Free
-## pipx
-python -m pip install --user pipx
-pipx run pycowsay moo  rebuilt  C:\Users\jnbh\pipx, and worked
 ## various WinGets
 
 winget add
 eza-community.eza
 fixed ; at end of path
+fzf
 GIMP.GIMP
 gokcehan.lf
+jftuga.less
 Kitware.CMake
 lsd
 M2Team.NanaZip
 MediaArea.MediaInfo
 Ookla.Speedtest.Desktop
+OpenWhisperSystems.Signal
+PDFLabs.PDFtk.Free
 sharkdp.bat
+yt-dlp.yt-dlp
 ## waiting
-pipx
-PowerShell
-PSProfile.ps1
-Python
-Rust for ripgrep
-Signal
-WT
-XpdfReader
-zoxide
-### Neovide
-winget add neovide -l C:\Vim  but it went to  $CPF\Neovide\neovide.exe
-### Google Chrome
-winget add Google.Chrome.EXE
-### pip v24.1.2
-pip list  advises  py -m pip install -U pip
-### pipx
-py -m pip install --user pipx
-  Installing collected packages: platformdirs, packaging, colorama, argcomplete, click, userpath, pipx
-    WARNING: The script userpath.exe is installed in 'C:\Users\jnbh\AppData\Roaming\Python\Python312\Scripts' which is not on PATH.
-    Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
-    WARNING: The script pipx.exe is installed in 'C:\Users\jnbh\AppData\Roaming\Python\Python312\Scripts' which is not on PATH.
-    Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
-  Successfully installed argcomplete-3.4.0 click-8.1.7 colorama-0.4.6 packaging-24.1 pipx-1.6.0 platformdirs-4.2.2 userpath-1.9.2
-& $HADR\Python\Python312\Scripts\pipx.exe ensurepath
-  Success! Added C:\Users\jnbh\AppData\Roaming\Python\Python312\Scripts to the PATH environment variable.
-  Success! Added C:\Users\jnbh\.local\bin to the PATH environment variable.
-  Consider adding shell completions for pipx. Run 'pipx completions' for instructions.
-### pynvim (for neovim)
-(needed for python packages)  pip install pynvim
-### less-Windows
-winget install jftuga.less
-fixed ; at end of path
-### Lecteur Windows Media
-Télécharger automatiquement les droits d'utilisation, Historiques  tous décoché
-### yt-dlp (and FFmpeg)
-winget add yt-dlp.yt-dlp
-  Ce package nécessite les dépendances suivantes :
-    - Packages
-        Gyan.FFmpeg
-  (1/1) Trouvé FFmpeg [Gyan.FFmpeg] Version 6.1.1
-  ...
-  Téléchargement en cours https://github.com/GyanD/codexffmpeg/releases/download/7.0.2/ffmpeg-7.0.2-full_build.zip
-  ...
-  Installé correctement
-  Téléchargement en cours https://github.com/yt-dlp/yt-dlp/releases/download/2024.08.06/yt-dlp.exe
-fixed ; at end of path
-#### FFmpeg
-ffmpeg -version
-#### yt-dlp
-yt-dlp --version
 ### ExifTool v12.93
 cpi "$ITscc\forMSWin\exiftool-12_93_64\exiftool(-k).exe" $HADL\Microsoft\WindowsApps\exiftool.exe
 cpi -recurse $ITscc\forMSWin\exiftool-12_93_64\exiftool_files $HADL\Microsoft\WindowsApps
@@ -525,6 +504,8 @@ where.exe zig  finds nothing, so  winget rm zig.zig
 precautionary reboot for  winget add zig.zig  took ages to unpack
 ### MiniTool Partition Wizard Free v12.9
 winget add MiniTool.PartitionWizard.Free
+### Microsoft Teams
+Skype  got it downloaded in
 # physical configuration
 1366x768 screen
 Intel Core i5-6300U

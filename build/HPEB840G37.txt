@@ -32,7 +32,7 @@ Système > Écran > Mise à l'échelle et disposition > Modifier la taille du te
 ## Disk Usage
 du64.exe  copied into $HADL\Microsoft\WindowsApps
 ## Edge
-see  $ITsCP/networking/browsers/browsers.txt
+see  $ITsCP/WAN/browsers/browsers.txt
 ## Everything
 Ctrl+P ( = Tools > Options ) > General >
   UI > [ Démarrer sur un clic simple > on  Résultats >
@@ -939,7 +939,6 @@ searched for and found  HP ENVY Inspire 7200  then took a while to setup
 Imprimantes et scanners > Ajouter une imprimante ou un scanner >
 HPC204A4 (HP ENVY Inspire 7200 series)
 ## HX256GSSDSATA3 inaccessible
-
 took it out and chkdsk'd from HPEB840G38 - no errors, refitted and all good
 ## fix rg in $PATH
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
@@ -1110,7 +1109,6 @@ Paramètres > Périphériques > Imprimantes et scanners > Ajouter > EPSONFE86A3 
   Ajouter l'appareil  got it  Prêt
 ## XpdfReader v4.05
 XpdfReader-win64-4.05.exe  (C:\Program Files\Glyph & Cog\XpdfReader-win64)
-  pdfimages -h
 ## WSL Ubuntu - ncdu
 sudo apt install ncdu
 ## Ce PC disk space usage bar
@@ -1584,13 +1582,224 @@ Windows Update > La prise en charge de Windows 10 se termine en octobre 2025 >
   Mise à jour de sécurité étendues ... jusqu'au 13 octobre 2026 > Inscrivez-vous > Terminé
 ## 0patch
 0PatchInstaller_22.11.11.10550.msi (${env:programfiles(x86)}\0patch) signed in
+## pdfimages
+where.exe pdfimages
+  C:\Users\jharr\scoop\shims\pdfimages.exe
+  C:\Users\jharr\AppData\Local\Programs\MiKTeX\miktex\bin\x64\pdfimages.exe
+## XpdfReader remove
+Paramètres > Applications et fonctionnalités > XpdfReader (Win64) -b Glyph & Cog > Désintaller
+## ExifTool v13.39 disaster
+accidentally overwrote  $HADL\Microsoft\WindowsApps
+MiniTool Partition Wizard Free v13.0 > Récupération de données > C:  didn't find it...
+### restore  $HADL\Microsoft\WindowsApp  from  HPEB840G38
+robocopy /mir $coreIT\MSWin\ml-HPEB840G38\WindowsApps $HADL\Microsoft\WindowsApps
+### remove broken Sykpe
+Paramètres > Applications et fonctionnalités > Skype > Désintaller
+### replace broken Ubuntu
+Should've maybe backed up first...
+wsl --unregister Ubuntu
+wsl --unregister Ubuntu-24.04
+wsl --install -d Ubuntu-24.04 > UNIX username > jo > pw
+### WT profiles
+ctrl+, (= Paramètres)
+  Ubuntu > Le profil n'est plus détecté > Supprimer
+  Ubuntu 22.04.4 LTS > Le profil n'est plus détecté > Supprimer
+relaunched WT > ctrl+,
+  Ubuntu 22.04.4 LTS > Le profil n'est plus détecté > Supprimer
+  but it reappears on new instance, so  Deleted  C:\Users\jharr\AppData\Local\Microsoft\WindowsApps\CanonicalGroupLimited.Ubuntu24.04LTS_79rhkp1fndgsc
+still getting "[erreur 2147942593 (0x800700c1) lors du lancement de `ubuntu2404.exe']"
+wsl --unregister Ubuntu-24.04  then  wsl -l  shows nothing installed
+  Ubuntu 22.04.1 LTS > Supprimer
+wsl --install -d Ubuntu-24.04 > UNIX username > jo > pw
+AIdc> sfc /scannow  seemed to find some errors so  rebooted  AIdc> sfc /scannow
+  La Protection des ressources Windows a détecté des fichiers corrompus et les a réparés.
+  Pour les réparations en ligne, les détails sont inclus dans le fichier journal de CBS situé à l'emplacement suivant : windir\Logs\CBS\CBS.log. Exemple : C:\Windows\Logs\CBS\CBS.log. Pour les réparations hors connexion, les détails sont inclus dans le fichier journal fourni par l'indicateur /OFFLOGFILE.
+reboot
+WT still reporting "[erreur 2147942593 (0x800700c1) lors du lancement de `ubuntu2404.exe']"
+reboot
+### remove broken  WindowsApps
+C:\Users\jharr\AppData\Local\Microsoft\WindowsApps\, all of these:
+  Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\python.exe
+  Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\python3.exe
+  Microsoft.DesktopAppInstaller_8wekyb3d8bbw\WindowsPackageManagerServer.exe
+  Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\winget.exe
+  Microsoft.GetHelp_8wekyb3d8bbwe\GetHelp.exe
+  Microsoft.OutlookForWindows_8wekyb3d8bbwe\olk.exe
+  Microsoft.OutlookForWindows_8wekyb3d8bbwe\olkMcpServer.exe
+  Microsoft.WindowsTerminal_8wekyb3d8bbwe\wt.exe
+  Microsoft.XboxGamingOverlay_8wekyb3d8bbwe\GameBarElevatedFT_Alias.exe
+  Microsoft.ZuneMusic_8wekyb3d8bbwe\MediaPlayer.exe
+  GameBarElevatedFT_Alias.exe
+  GetHelp.exe
+  MediaPlayer.exe
+  olk.exe
+  olkMcpServer.exe
+  python.exe
+  python3.exe
+  ubuntu2404.exe
+  WindowsPackageManagerServer.exe
+  winget.exe
+  wt.exe
+  get a blue pop-up "Cette application ne peut pas s'exécuter sur votre PC" so  Deleted
+### WT profiles fail
+attempting to launch  Ubuntu 22.04.1 LTS  now gets me
+  [erreur 2147942402 (0x80070002) lors du lancement de `ubuntu2404.exe']
+  Le fichier spécifié est introuvable.
+wsl --unregister Ubuntu-24.04  then  wsl -l  shows nothing installed
+  Ubuntu 22 > Supprimer, Ubuntu 22.04.1 LTS > Supprimer, Enregistrer
+wsl --install -d Ubuntu-24.04 > UNIX username > jo > pw
+Even after a reboot, didn't appear as a profile...
+### repair WinGet fail
+winget  not recognised
+https://apps.microsoft.com/detail/9nblggh4nns1 > Installer  button becomes  Installé  greyed-out
+APS> get-appxpackage -allusers *DesktopAppInstaller* |  Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
+  get-appxpackage: The 'get-appxpackage' command was found in the module 'Appx', but the module could not be loaded due to the following error: [Operation is not supported on this platform. (0x80131539)] For more information, run 'Import-Module Appx'.
+PS> Add-AppxPackage -RegisterByFamilyName -MainPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe
+  Add-AppxPackage: The 'Add-AppxPackage' command was found in the module 'Appx', but the module could not be loaded due to the following error: [Operation is not supported on this platform. (0x80131539)] For more information, run 'Import-Module Appx'.
+AIdc> sfc /scannow  seemed to find some errors so  rebooted  AIdc> sfc /scannow
+  Le programme de protection des ressources Windows n’a trouvé aucune violation d’intégrité.
+AIdc> DISM /Online /Cleanup-Image /CheckHealth
+  Aucun endommagement du magasin de composants n’a été détecté.
+### repair my Win10 user profile
+(following windowsreport) Win+r > regedit > Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-3441228617-810572567-2332938472-1002 > right-clicked in there > Nouveau > Valeur DWORD 32bits > reboot
+https://apps.microsoft.com/detail/9nblggh4nns1 > Installer  button becomes  Installé  greyed-out
+winget  still not known...
+Comptes > Famille et autres utilisateurs > jnbh@live.co.uk > Administrateur/adulte
+logged in  jnbh Jo, approved in Microsoft Authenticator app on  Sony Xperia 10 II > PIN > jjjj
+logged in  jharrio Jo
+APS> robocopy /E C:\Users\jnbh\AppData\Local\Microsoft\WindowsApps $HADL\Microsoft\WindowsApps
+winget
+  ResourceUnavailable: Program 'winget.exe' failed to run: An error occurred trying to start process 'C:\Users\jharr\AppData\Local\Microsoft\WindowsApps\winget.exe' with working directory 'C:\Windows\System32'. The specified executable is not a valid application for this OS platform.At line:1 char:1
+### re-install jharrio Jo
+logged out of  jharrio Jo  and into  jnbh Jo
+  Comptes > Famille et autres utilisateurs > jharrio Jo > Supprimer
+  precautionary reboot
+logged into  jnbh Jo
+  Signed into Edge jnbh  which allowed  Comptes > Famille et autres utilisateurs > Votre famille
+    to find  jharrio@outlook.com  Autoriser
+logged into  jharrio Jo, approved in Microsoft Authenticator app on  Sony Xperia 10 II > PIN
+### rebuild  jharrio Jo
+#### Hamachi
+after a reboot, Système > Préférences > Paramètres > bienvenue décoché
+#### Ditto Clipboard
+Microsoft Store > Ditto Clipboard > Install > Pin to Start
+Ran it for  Options > General > [ Maximum Number of Saved Copies > 5000
+  Advanced > Show leading whitespace ] ( C:\Users\jharr\AppData\Local\Ditto_WindowsApp\Ditto.db )
+  Keyboard Shortcuts > Activate Ditto > ctrl+*
+#### Edge
+see  $ITsCP/WAN/browsers/browsers.txt
+#### Paramètres
+Options d'ergonomie > Clavier > all off
+Périphériques > Saisie > Orthographie >
+  Corriger automatiquement les fautes d'orthograpie > Désactvé
+##### Personnalisation
+Arrière-plan > Couleur unie
+Couleurs > Choisir votre mode d'application par défaut > Sombre
+##### Système
+Alimentation et mise en veille > Jamais, Jamais, 10 minutes, Jamais
+  Paramètres d'alimentation supplémentaire >
+    Choisir l'action des boutons d'alimentation >
+    [ Modifier des paramètres actuellement non disponibles >
+    Activer le démarrage rapide (needed PIN jjjj  off-ticked)
+    Lorsque je referme le capot > Sur secteur > Ne rien faire ]
+Comptes > Options de connexion > Code PIN de Windows Hello > Modifier
+Écran >
+  Luminosité et couleur > Éclairage nocturne > Activé
+  Mise à l'échelle et disposition > Modifier la taille du texte des applications et d'autres éléments > 100%
+  Résolution de l'écran > 1366 x 768 (recommandé)
+Multitâche > Alt + Tab > Uniquement les fenêtres ouvertes
+Stockage (L'Assistant de stockage) > Activé
+#### File Explorer
+Affichage > Options > Affichage >
+  [ Afficher l'icône des fichiers sur les miniatures  Afficher la barre d'état ] off-ticked
+  Afficher le chemin d'accès complet dans la barre de titre  on-ticked
+  Afficher les fichiers, dossier et lecteurs cachés
+  [ Masquer les extensions des fichiers dont le type est connu
+    Masquer les fichier protégés du système d'exploitation ] off-ticked
+#### KeePassXC
+ran it for  Oui > Ouvrir une base de données > D:\Dropbox\JH\core\encrypted\JH.kdbx > pw
+ctrl+, (= Outils > Paramètres) > [
+  (Général > Démarrage > Lancer automatiquement KeePassXC au démarrage du système  off)
+  Intégration aux navigateurs > Activer > [ Chrome, Vivaldi, and Brave  Firefow and Tor Browser  Edge ]
+restarted Edge > HPEB840G38-Edge
+#### Dropbox fails
+Signed in, renamed  D:\Dropbox  to  D:\Dropbo  so's I could get going again with  D:\Dropbox
+  which I immediately quit to copy over all of  D:\Dropbo
+  then relaunched  Dropbox, thus starting a full re-indexation
+full re-indexation, 119 seemingly random files in  D:\Dropbox\Cop\OutThere
+  "Pour synchroniser ce fichier, autorisez Dropbox à y accéder."
+so in  D:\Dropbox\Cop, APS> takeown /f . /r /d o  didn't help
+  so removed that directory from selective sync
+Deleted  D:\Dropbox\.dropbox.cache D:\Dropbox\.dropbox
+still getting unsynchable files, so  Uninstalled  Dropbox
+#### Dropbox again
+Edge > dropbox.com > DropboxInstaller.exe > English & Selective sync
+  this time just copied the new  D:\Dropbox\.dropbox.cache  &  D:\Dropbox\.dropbox  into  D:\Dropbo
+    Deleted  D:\Dropbox  then renamed  D:\Dropbo  to  D:\Dropbox
+  still getting unsynchable files, so  AIdc> sfc /scannow  found no faults, so
+    APS> chkdsk d: /f  was quick and found no problems
+removed  $DrCop  &  $Thb  from  Selective Sync, then Deleted both from  D:\
+  - both requiring Administrator Permission...
+  after  reboot  Dropbox completely stuck on 86k files so  Quit  for
+    Deleted  D:\Dropbox\.dropbox.cache D:\Dropbox\.dropbox
+    still stuck so renamed to  D:\Dropbo, zero files downloaded after 6h, so
+      MiniTool Partition Wizard Free v13 > D: > Supprimer > Créer > HX256GSSDSATA3
+      then made  D:\Dropbox, and launched it, getting no donwloads arriving, so
+      Uninstalled, rebooted, reinstalled, Selective Sync, D:\Dropbox  and the files arrived
+#### AutoHotkey
+Shortcut to  $MSn\AutoHotkey\HPEB840G37.ahk  placed in
+  "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
+#### WPS
+clic droit sur toolbar pour  Propriétés > Couleurs > Opacité > 86%
+##### execution policy
+Get-ExecutionPolicy   reported  "Restricted"
+Get-ExecutionPolicy -list  reported all as  "Undefined"
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Confirm > o > o
+##### modules
+iterations of  $MSWin10\build\PSmodules.ps1
+#### Gestionnaire de tâches
+Options > Masquer l'icône réduite
+hidden icon dragged to taskbar
+#### WT configure
+ctrl+, (= Paramètres)
+  Azure Cloud Shell > Masquez le profil de la liste déroulante > Activé  and those for VS
+  Interaction > M'avertir lorsque je ferme plusieurs onglets  off-slid
+  PowerShell > Répertoire de démarrage > . > Apparence >
+    [ Text > Taille de police > 9  Transparence > Opacité de l'arrière plan > 80% ] > Enregistrer
+  Windows PowerShell > Répertoire de démarrage > . > Apparence >
+    [ Text > Taille de police > 9  Transparence > Opacité de l'arrière plan > 82% ] > Enregistrer
+## Microsoft Teams
+Skype  got it downloaded in
+## continue rebuilding  jharrio Jo
+#### WPS modules
+more iterations of  $MSWin10\build\PSmodules.ps1
+### fzf.exe (for PSFzf)
+$MSWin10\build\fzf.ps1
+### symlinks - for PS/WPS
+got into  $MSn\set  for APS> . 0-_MSn.ps1  . 1-PSProfileStub.ps1  . 2-PSProfile.ps1
+winget add zoxide  for  APS> . 3.ps1
+### AltSnap
+winget add altsnap
+APS> schtasks /create /f /tn "AltSnap onlogon" /tr "$Env:AppData\AltSnap\AltSnap.exe" /sc onlogon /rl highest
+rebooted to get it working
+PS> $ASi="$HADR\AltSnap\AltSnap.ini"; (gc $ASi).replace('AutoSnap=2','AutoSnap=0') | seco -encoding utf8 $ASi
+### PS modules
+$MSWin10\build\PSmodules.ps1
+### symlinks
+$MSn/set/3.ps1
+### LSD
+winget add lsd
+### sharkdp/bat
+winget add sharkdp.bat
+### gokcehan's lf
+winget add gokcehan.lf
+### BgInfo
+winget add BgInfo
+& $HADLM\WinGet\Packages\Microsoft.Sysinternals.BGInfo_Microsoft.Winget.Source_8wekyb3d8bbwe\bginfo.exe > OK > font down to 8 and Grey 50%, positioned top right
 ## waiting
-code-minimap
-cmu
 Ghostscript v10.06
-luarocks-3.12.2-windows-64
 Mise à jour facultatives
-mpv.exe
+WSL
 # physical configuration
 1920x1080 screen
 Intel Core i5-6300U

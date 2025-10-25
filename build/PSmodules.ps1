@@ -6,11 +6,13 @@
 # set-psrepository PSGallery -installationpolicy trusted  # brings in  nuget
 
 # #=> 0 AWPS 1 Microsoft.PowerShell.PSResourceGet
-# inmo microsoft.powershell.psresourceget  # providing  isres
+# inmo Microsoft.PowerShell.PSResourceGet  # providing  isres
 
 # #=> 0 AWPS 1 update PowerShellGet
-# inmo PowerShellGet -force
+# inmo PowerShellGet -Force
 # # - adds to  $CPF\WindowsPowerShell\Modules\PowerShellGet, avoids  AllowPrerelease  error of  cmu -update
+# upmo PowerShellGet -RequiredVersion 2.2.5  # if  inmo  failed
+# Get-InstalledModule
 
 #=> 1 PS 0 PowerShell Gallery
 Set-PSResouRcerepository PSGallery -trusted; Get-PSResourceRepository
@@ -19,20 +21,19 @@ Set-PSResouRcerepository PSGallery -trusted; Get-PSResourceRepository
 inmo microsoft.powershell.psresourceget -Force
 # might be enough to  isres Microsoft.PowerShell.PSResourceGet
 
-#=> 1 WPS - PowerShell Gallery
-Set-PSResouRcerepository PSGallery -trusted; Get-PSResourceRepository
+# #=> 1 WPS - PowerShell Gallery
+# Set-PSResouRcerepository PSGallery -trusted; Get-PSResourceRepository
 
 #=> 2 PS/WPS - modules 0 install
-isres BurntToast
+isres BurntToast; toast
 isres Pansies
 isres Posh-Git
 isres PowerColorLS
 isres powershell.chunks
-isres PSCalendar
 isres ps.checkModuleUpdates
+isres PSCalendar
 isres PSFzf
 isres PSWriteColor
-isres Recycle
 isres Terminal-Icons
 # isres ZLocation
 
@@ -40,20 +41,23 @@ isres Terminal-Icons
 isres PSReadLine
 isres PSScriptTools
 
-#=> 2 PS/WPS - modules 2 update subsequent
-cmu  # (in PS, throws some errors) lists, then provides an update command at end
+# #=> 2 PS/WPS - modules 2 update subsequent
+# cmu  # (in PS, throws some errors) lists, then provides an update command at end
 
-# upmo Microsoft.PowerShell.PSResourceGet
+# # upmo Microsoft.PowerShell.PSResourceGet
 
-# #==> Update-PSResource
-# # doesn't remove the old version
-# udres PSFzf
-# udres PSReadLine
-# udres PSScriptTools
-# udres ThreadJob
+# # #==> Update-PSResource
+# # # doesn't remove the old version
+# # udres PSFzf
+# # udres PSReadLine
+# # udres PSScriptTools
+# # udres ThreadJob
 
 #=> 2 PS/WPS - modules 3 remove
 # delete from
 #  $HOME\Documents\PowerShell\Modules
 #  $HOME\Documents\WindowsPowerShell\Modules
+
+# #=> 3 WPS - modules list
+# ls $HOME\Documents\WindowsPowerShell\Modules
 

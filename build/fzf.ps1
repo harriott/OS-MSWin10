@@ -4,22 +4,22 @@
 
 # Relaunch PowerShell after changing  fzf.exe !
 
-#=> 0 downloaded  fzf.exe
-& $DJH\Cop-code\forMSWin\fzf.exe --version
+#=> fzf version
+fzf --version
 
-#==> 0 into WindowsApps
+#=> fzf.exe check downloaded version
+# from  https://github.com/junegunn/fzf/releases
+& $ITscc\forMSWin\fzf.exe --version
+
+#=> fzf.exe into WindowsApps
 cpi $ITscc\forMSWin\fzf.exe $HADL\Microsoft\WindowsApps
 
-# #==> 1 out of WindowsApps
+# #=> fzf.exe out of WindowsApps
 # ri $HADL\Microsoft\WindowsApps\fzf.exe
 
-# #=> 0 winget 0 fzf add
-# winget add fzf
-# # then fix ; at end of path
+#=> winget fzf add
+winget add fzf
 
-#=> 0 winget 1 fzf remove
+#=> winget fzf remove
 winget rm fzf
-
-#=> 1 version
-fzf --version
 
