@@ -467,43 +467,13 @@ scoop install poppler
 
 ## various WinGets
 
-winget add
-eza-community.eza
-fixed ; at end of path
-fzf
-GIMP.GIMP
-gokcehan.lf
-jftuga.less
-Kitware.CMake
-lsd
-M2Team.NanaZip
-MediaArea.MediaInfo
-Ookla.Speedtest.Desktop
-OpenWhisperSystems.Signal
-PDFLabs.PDFtk.Free
-sharkdp.bat
-yt-dlp.yt-dlp
+winget add eza-community.eza fixed ; at end of path fzf GIMP.GIMP gokcehan.lf jftuga.less Kitware.CMake lsd M2Team.NanaZip MediaArea.MediaInfo MiniTool.PartitionWizard.Free Ookla.Speedtest.Desktop OpenWhisperSystems.Signal PDFLabs.PDFtk.Free sharkdp.bat yt-dlp.yt-dlp zig.zig
 ## waiting
-### ExifTool v12.93
-cpi "$ITscc\forMSWin\exiftool-12_93_64\exiftool(-k).exe" $HADL\Microsoft\WindowsApps\exiftool.exe
-cpi -recurse $ITscc\forMSWin\exiftool-12_93_64\exiftool_files $HADL\Microsoft\WindowsApps
-### sharkdp/bat
-also for  fzf
-winget add sharkdp.bat
-removed ; from end of path
 ### VLC Player
 winget add VideoLAN.VLC
 run for  ctrl+p (= Preferences) > Pause on the last frame of a video > Always
-### MediaInfo
-winget add MediaArea.MediaInfo
-fixed ; at end of path
 ### DVD Shrink
 dvdshrink32setup.exe  ran it
-### Zig
-where.exe zig  finds nothing, so  winget rm zig.zig
-precautionary reboot for  winget add zig.zig  took ages to unpack
-### MiniTool Partition Wizard Free v12.9
-winget add MiniTool.PartitionWizard.Free
 ### Microsoft Teams
 Skype  got it downloaded in
 # physical configuration
