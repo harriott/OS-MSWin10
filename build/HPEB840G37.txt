@@ -1805,7 +1805,7 @@ sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## continue rebuilding  jharrio Jo
 ### GitHub keys
 sl $Enc  to extract  actions.ps1  to extract  $Enc\Secure1  for
-  & $MSWin10\mb\neededNodes-3-GitHubKeys.ps1
+  & $MSn\set\4-GitHubKeys.ps1
 ### Python 3.14
 winget add python.python.3.14
 reboot for  mutt-language-server
@@ -1822,18 +1822,17 @@ sp 'registry::hkcu\environment' -name path -value $newPathCU
 rebooted  for  pipx run pycowsay moo  rebuilt  C:\Users\jnbh\pipx, and worked
 ### sharkdp.fd
 winget add sharkdp.fd
-### path modified
-Variable d'environnement de chemin modifiée ; redémarrez votre interpréteur de commandes pour utiliser la nouvelle valeur.
-Alias de ligne de commande ajouté : "bat"
-and, yes, it added  "C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.bat_Microsoft.Winget.Source_8wekyb3d8bbwe\bat-v0.24.0-x86_64-pc-windows-msvc;;"
-#### fix ;;
-$oldPathCU = (gp -path 'registry::hkcu\environment' -name path).path
-$oldPathCU
-C:\Users\jharr\.cargo\bin;C:\Users\jharr\AppData\Local\Microsoft\WindowsApps;C:\Users\jharr\go\bin;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\BurntSushi.ripgrep.MSVC_Microsoft.Winget.Source_8wekyb3d8bbwe\ripgrep-14.1.0-x86_64-pc-windows-msvc;C:\Users\jharr\AppData\Local\Microsoft\WinGet\Packages\sharkdp.bat_Microsoft.Winget.Source_8wekyb3d8bbwe\bat-v0.24.0-x86_64-pc-windows-msvc;
-##### remove trailing ;
-$newPathCU = $oldPathCU -replace ';$', ''
-$newPathCU
-sp -path 'registry::hkcu\environment' -name path -value $newPathCU
+### eza
+winget add eza-community.eza
+### test GitHub SSH connection
+(requires Private key as  C:\Users\jharr\.ssh\id_rsa)
+Git Bash > ssh -T git@github.com
+  The authenticity of host 'github.com (140.82.121.4)' can't be established.
+  ED25519 key fingerprint is: SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU
+  This key is not known by any other names.
+  Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+  Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+  Hi harriott! You've successfully authenticated, but GitHub does not provide shell access.
 ## waiting
 Ghostscript v10.06
 Mise à jour facultatives
