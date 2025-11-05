@@ -343,20 +343,21 @@ Get-ExecutionPolicy   reported  "Restricted"
 ### Administrateur PowerShell
 Get-ExecutionPolicy -list  reported all as  "Undefined"
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Confirm > o > o
-## BitLocker check
+## more re-establising of softwares
+### BitLocker check
 AIdc> manage-bde -status  reports "Intégralement déchiffré"
-### dubious ownership of D:\ITJ\gc-vimfiles
+#### dubious ownership of D:\ITJ\gc-vimfiles
 so in there, APS> takeown /f . /r /d o
-## Edge
+### Edge
 F12 (= DevTools) to clear away question
-## Firefox
+### Firefox
 ran it to clear selections
-## AltSnap
+### AltSnap
 winget add altsnap
 APS> schtasks /create /f /tn "AltSnap onlogon" /tr "$Env:AppData\AltSnap\AltSnap.exe" /sc onlogon /rl highest
 rebooted to get it working
 PS> $ASi="$HADR\AltSnap\AltSnap.ini"; (gc $ASi).replace('AutoSnap=2','AutoSnap=0') | seco -encoding utf8 $ASi
-## AutoHotkey
+### AutoHotkey
 winget add AutoHotkey.AutoHotkey
 Shortcut to  $MSn\AutoHotkey\HPEB840G36-deaur.ahk  placed in
   "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
@@ -435,15 +436,16 @@ tidied it, rebooted
 Configuration facile > Paramètres > Au démarrage >
   Commencer avec le page de démarrage
   Lancer au démarrage de mon ordinateur  décoché
-## Google Chrome
+## more re-establising of softwares
+### Google Chrome
 deauram11@gmail.com, then signed into  ChatGPT  with that  Google
-## PowerShell v7.5.4
+### PowerShell v7.5.4
 closed Nvim & PS for  PowerShell-7.5.4-win-x64.msi (C:\Program Files\PowerShell\) >
   [ Add 'Open here' context menu to Explorer
   Add 'Run with PowerShell 7' context menu for PowerShell files ] > Next > Next > UAC > Oui
-## WT
+### WT
 winget add 9N0DX20HK701 > y
-### configure
+#### configure
 chcp  reports  CodePage 850
 ctrl+, (= Paramètres)
   Azure Cloud Shell > Masquez le profil de la liste déroulante > Activé
@@ -452,9 +454,9 @@ ctrl+, (= Paramètres)
     [ Text > Taille de police > 8  Transparence > Opacité de l'arrière plan > 83% ] > Enregistrer
   Windows PowerShell > Répertoire de démarrage > . > Apparence >
     [ Text > Taille de police > 8  Transparence > Opacité de l'arrière plan > 84% ] > Enregistrer
-## XpdfReader v4.05 install
+### XpdfReader v4.05 install
 XpdfReader-win64-4.05.exe  (C:\Program Files\Glyph & Cog\XpdfReader-win64)
-## XpdfReader remove
+### XpdfReader remove
 Paramètres > Applications et fonctionnalités > XpdfReader (Win64) -b Glyph & Cog > Désintaller
 ## Scoop
 irm get.scoop.sh | iex
@@ -463,19 +465,18 @@ scoop install poppler
   pdfimages -h
 ## pynvim (for neovim)
 (needed for python packages)  pip install pynvim
-## ExifTool v13.39
-
 ## various WinGets
-
 winget add eza-community.eza fzf GIMP.GIMP.3 gokcehan.lf jftuga.less Kitware.CMake lsd M2Team.NanaZip MediaArea.MediaInfo MiniTool.PartitionWizard.Free Ookla.Speedtest.Desktop OpenWhisperSystems.Signal PDFLabs.PDFtk.Free sharkdp.bat yt-dlp.yt-dlp
-## waiting
-### VLC Player
+## VLC Player
 winget add VideoLAN.VLC
 run for  ctrl+p (= Preferences) > Pause on the last frame of a video > Always
-### DVD Shrink
+## DVD Shrink
 dvdshrink32setup.exe  ran it
-### Microsoft Teams
+## Microsoft Teams
 Skype  got it downloaded in
+## Steam
+Deauram, pw
+## waiting
 # physical configuration
 1366x768 screen
 Intel Core i5-6300U

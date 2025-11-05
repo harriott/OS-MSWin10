@@ -107,6 +107,7 @@ cpi $misc\irbrc ~\.irbrc
 # syli $vfv/packs/packs-cp-all  $nvim/pack/cp-all
 # syli $vfv/packs/packs-cp-full $nvim/pack/cp-full
 # syli $vfv/packs/packs-unix    $nvim/pack/unix
+# syli $vfv/packs/packs-win64   $nvim/pack/win64
 # syli $vfv/plugin/packs.vim    $nvim/plugin/packs.vim
 # syli $vfv/plugin/plugin.vim   $nvim/plugin/plugin.vim
 # syli $vfv/spell               $nvim/spell

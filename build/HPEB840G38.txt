@@ -1183,8 +1183,24 @@ $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
 $newPathCU = $oldPathCU -replace 'C:\\Users\\jnbh\\AppData\\Local\\Microsoft\\WinGet\\Packages\\lsd-rs.lsd_Microsoft.Winget.Source_8wekyb3d8bbwe;',''; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
 winget add lsd
+## EUDC 1252
+(for nvim-tree & PowerColorLS icons)
+APS> Install-Font $JHCc/CP-font-Nerd-CascadiaMono/CaskaydiaMonoNerdFontMono-Regular.ttf -Scope AllUsers
+test-path hkcu:\eudc\1252
+ni -path hkcu:\eudc\1252
+sp hkcu:\eudc\1252 -name SystemDefaultEUDCFont -value CaskaydiaMonoNerdFontMono-Regular.ttf -type string
+(gp hkcu:\eudc\1252).SystemDefaultEUDCFont
+## fix rg in $PATH - outdated 14.1.1
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU+';C:\Users\jnbh\AppData\Local\Microsoft\WinGet\Packages\BurntSushi.ripgrep.MSVC_Microsoft.Winget.Source_8wekyb3d8bbwe\ripgrep-14.1.1-x86_64-pc-windows-msvc'; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+## fix rg in $PATH - fixed to 15.1.0
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU -replace '4.1.1','5.1.0'; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## waiting
 luarocks-3.12.2-windows-64
+Microsoft Teams
 # physical configuration
 1366x768 screen
 Intel Core i5-6300U

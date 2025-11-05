@@ -73,7 +73,10 @@ ExifTool by Phil Harvey
     \setmainfont{Segoe Script}
     \setmainfont{Trebuchet MS}
 
-# documenting - PDF - Sumatra
+# documenting - PDF - Sumatra PDF
+SumatraPDF
+
+## internal commands
 - `ctrl+6` view single pages (`ctrl+-` on AZERTY)
 - `ctrl+7` view facing pages (`ctrl+è` on AZERTY)
 - `ctrl+8` view book mode
@@ -87,7 +90,7 @@ ExifTool by Phil Harvey
 - `r` reload
 - `z` toggle zoom between Fit Page, Fit Width, Fit Content
 
-## AZERTY
+### AZERTY
 - `=`/`-` zoom in/out
 - `ctrl++` rotate right
 

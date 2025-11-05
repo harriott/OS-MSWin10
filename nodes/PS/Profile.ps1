@@ -1,5 +1,5 @@
 
-# Joseph Harriott, lun 26 mai 2025
+# Joseph Harriott, jeu 30 oct 2025
 
 # $MSn/PS/Profile.ps1
 #  symlinked in  $MSn/set/2-PSProfile.ps1
@@ -8,7 +8,6 @@
 $dts = (Get-Date).ToString("yyMMdd-HHmmss")
 sal m mpv
 sal seco set-content  # because  sc  is overridden by  sc.exe
-sal su C:\SumatraPDF\SumatraPDF.exe
 . ~\PSEnv.ps1  # ($MSWin10\mb\neededNodes-1-PSProfile.ps1)
 
 function ep {
@@ -19,38 +18,6 @@ function ep {
   '' >> $eps
   '$env:path  is in  $MSWml/path'
 }
-
-function fonts {
-  $mf0 = "$MSWml\fonts"
-  $mf1 = $mf0+'-1'
-  gp -path "registry::\hklm\software\microsoft\windows nt\currentversion\fonts" | fc > $mf1
-  (gc $mf1 | select -skip 3) | seco $mf1
-  $mf2 = $mf0+'-2'; (gc $mf1 -raw) -replace "(?s)  PSPath.*" > $mf2; ri $mf1
-  $mf3 = $mf0+'.wntf'; 'vim: ft=wntf:' > $mf3; '' >> $mf3; (gc $mf2).trim() >> $mf3; ri $mf2
-} # $MSWml\fonts.wntf ($vfv/syntax/wntf.vim)
-
-function GNFR {
-  $FRlist = Get-NetFirewallRule | out-string
-  $FRlf = "$MSWml\FirewallRules.txt"
-  "vim: set ft=NFR:" > $FRlf
-  $FRlist.TrimEnd() >> $FRlf
-  '' >> $FRlf
-} # as administrator
-
-function pro {
-  Get-Process | sort ws -descending | select-object -first 39 ID,Name,WS,VM,PM,Handles,StartTime | ConvertTo-WPFGrid -Refresh -timeout 10 -Title "Top Processes"
-} # needs to be on 3 lines
-
-function stc {
-  '"Nom de la tâche","Prochaine exécution","Statut"' > $MSWml\schtasks.csv
-  schtasks /fo csv /nh | sort-object | out-file -append $MSWml\schtasks.csv
-}
-# Alternatively:
-#  schtasks /fo list | out-file $MSWml\schtasks.txt -encoding utf8bom
-#   ri $MSWml\schtasks.txt
-
-# Pansies coloured line
-function GGrb { Get-Gradient red blue -Flatten | %{Write-Host " " -BackgroundColor $_ -NoNewline} }
 
 #=> 0 convert images recursively
 function mc {
@@ -307,24 +274,28 @@ function rgw {
   "- output is in  $rgw"
 } # ripgrep for Windows: rgw <rg_file_group> <unquoted_regex>, eg  rgw tex geometry
 
-#=> 0 Ghostscript
-function gsp {
-    $pl = $args[0]
-    $r = '-r'+$args[1]
-    #  40  can be fine for photos
-    #  400  can be good for texty pdf
-    $DSF = $args[2]
-    #  1 = no down-scale of size
-    #  8 = maximum blurring down
-    $pngs = $args[3]+'-%02d.png'
-    $pdf = $args[4]+'.pdf'
-    if ( test-path $pdf ) {
-      $g = "gswin64c -dSAFER -sDEVICE=png16m $r -dDownScaleFactor=$DSF -sPageList=$pl -o $pngs '$pdf'"
-      SCFCW; $g; SCRC
-      iex "$g"
-    } else { "$pdf ain't there" }
-    }
-#  gsp <startPageNo>-<endPageNo> resolution DownScaleFactor(1-8) outPNGbaseName 'inPDFbaseName'
+#=> 0 fonts
+function rf {
+  $mf0 = "$MSWml\fonts"
+  $mf1 = $mf0+'-1'
+  gp -path "registry::\hklm\software\microsoft\windows nt\currentversion\fonts" | fc > $mf1
+  sleep 3; (gc $mf1 | select -skip 3) | seco $mf1
+  $mf2 = $mf0+'-2'; (gc $mf1 -raw) -replace "(?s)  PSPath.*" > $mf2
+  # - removed all lines from "  PSPath..." onward
+  ri $mf1  # full registry output no longer needed
+  $mf3 = $mf0+'.wntf'; 'vim: ft=wntf:' > $mf3; (gc $mf2).trim() | sort >> $mf3; '' >> $mf3
+  ri $mf2  # unsorted, untrimmed no longer needed
+  'registry fonts are now listed in  $MSWml\fonts.wntf'
+} # $MSWml\fonts.wntf ($vfv/syntax/wntf.vim)
+
+#==> Fonts
+function gf {
+  'vim: ft=GetFont:' > $MSWml\fonts.GetFont; '' >> $MSWml\fonts.GetFont
+  Get-Font -Scope AllUsers | % { $_.Name+' '+$_.Path } >> $MSWml\fonts.GetFont
+  'output from  Get-Font  is now in  $MSWml\fonts.GetFont'
+}
+
+ipmo Fonts
 
 #=> 0 imagey
 function fi {
@@ -372,6 +343,27 @@ function wp { curl wttr.in/Paris }
 sal y $HADL\Microsoft\WinGet\Packages\yt-dlp.yt-dlp_Microsoft.Winget.Source_8wekyb3d8bbwe\yt-dlp.exe
   function y7 { y -f '[height<=?720]' $args[0] }
   function yf { y -F $args[0] }
+
+#=> 0 PDF
+sal su C:\SumatraPDF\SumatraPDF.exe
+
+function gsp {
+    $pl = $args[0]
+    $r = '-r'+$args[1]
+    #  40  can be fine for photos
+    #  400  can be good for texty pdf
+    $DSF = $args[2]
+    #  1 = no down-scale of size
+    #  8 = maximum blurring down
+    $pngs = $args[3]+'-%02d.png'
+    $pdf = $args[4]+'.pdf'
+    if ( test-path $pdf ) {
+      $g = "gswin64c -dSAFER -sDEVICE=png16m $r -dDownScaleFactor=$DSF -sPageList=$pl -o $pngs '$pdf'"
+      SCFCW; $g; SCRC
+      iex "$g"
+    } else { "$pdf ain't there" }
+    } # Ghostscript pages
+#  gsp <startPageNo>-<endPageNo> resolution DownScaleFactor(1-8) outPNGbaseName 'inPDFbaseName'
 
 #=> 0 shell settings
 $env:TERM = "xterm-256color"  # $vfn/lua/init.lua
@@ -441,6 +433,31 @@ if ( ( test-path "$HADL\Microsoft\WinGet\Links\fzf.exe" ) -or ( test-path "$HADL
   Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 }
 
+#=> 0 system
+function GNFR {
+  $FRlist = Get-NetFirewallRule | out-string
+  $FRlf = "$MSWml\FirewallRules.txt"
+  "vim: set ft=NFR:" > $FRlf
+  $FRlist.TrimEnd() >> $FRlf
+  '' >> $FRlf
+} # as administrator
+
+function pro {
+  Get-Process | sort ws -descending | select-object -first 39 ID,Name,WS,VM,PM,Handles,StartTime
+  | ConvertTo-WPFGrid -Refresh -timeout 10 -Title "Top Processes"
+} # throws up a window
+
+function stc {
+  '"Nom de la tâche","Prochaine exécution","Statut"' > $MSWml\schtasks.csv
+  schtasks /fo csv /nh | sort-object | out-file -append $MSWml\schtasks.csv
+}
+# Alternatively:
+#  schtasks /fo list | out-file $MSWml\schtasks.txt -encoding utf8bom
+#   ri $MSWml\schtasks.txt
+
+# Pansies coloured line
+function GGrb { Get-Gradient red blue -Flatten | %{Write-Host " " -BackgroundColor $_ -NoNewline} }
+
 #=> 0 WinGets
 function wgf {
   $dts = (Get-Date).ToString("yyMMdd-HHmmss")
@@ -450,11 +467,8 @@ function wgf {
 
 function wgp {
   $wsl = ls -name $HADL\microsoft\winget\packages
-  $wpp = $wsl -replace '^[^.]*\.','' | sort
-  $wpM = $wpp -replace '\..*',''
-  $wpl = $wpM -replace '_Microsoft',''
-  [string]$wpl
-} # just the generic names
+  $wsl -replace '_Microsoft.Winget.Source_8wekyb3d8bbwe',''
+} # just the names
 
 function wl {
   $dts = (Get-Date).ToString("yyMMdd-HHmmss")

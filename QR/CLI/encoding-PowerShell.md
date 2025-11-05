@@ -126,6 +126,7 @@ no standard aliases
     java -jar C:\LanguageTool\languagetool-commandline.jar -h
     java -jar $ITscc\CP\LanguageTool\languagetool-commandline.jar -h
     winget find NodeJS
+    lua54.exe -v
 
 ## MiKTeX
     miktex fndb refresh
@@ -452,10 +453,11 @@ by gokcehan
     $pw = Read-Host "Password?" -MaskInput
 
 - `echo` (= `write` = `Write-Output`)
-- `fl` (= `format-list`)
-- `measure` (= `measure-object`)
+- `fc` (= `Format-Custom`)
+- `fl` (= `Format-List`)
+- `measure` (= `Measure-Object`)
 - `select` (= `Select-Object`)
-- `sls` (= `select-string`)
+- `sls` (= `Select-string`)
 - `sort` (= `Sort-Object`) `-Unique`
 
 ## invoke-expression
@@ -508,7 +510,7 @@ prefer `&` where possible
     'rg''ing'
 
 # package manage
-    get-package | format-table -autosize
+    Get-Package | ft -Autosize
     schtasks /query /tn "AltSnap onlogon"
 
 ## Microsoft.PowerShell.PSResourceGet
@@ -528,8 +530,8 @@ prefer `&` where possible
     p  # PowerColorLS (`$MSWin10\PSProfile.ps1`)
     toast  # New-BurntToastNotification
 
-- `ipmo` (`import-module`)
-- `rmo` (`remove-module`)
+- `ipmo` (`Import-Module`)
+- `rmo` (`Remove-Module`)
 
 ### get-module
     gmo -all | ft -AutoSize
@@ -670,6 +672,7 @@ prefer `&` where possible
 
 
 # system
+    $env:LOCALAPPDATA\Microsoft\Windows\Fonts
     $profile
     (gcim win32_operatingsystem) | select -property version, caption
     (gcm prompt).ScriptBlock

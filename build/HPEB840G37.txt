@@ -6,7 +6,6 @@ fn+echap (= HP System Information) long time to save to  $MSWml/o7o-HPSystemInfo
 HP EliteBook 840 G3 barcoded PC117862 (labelled BC PNB 17 by last owner) = HPEB840G37
 (jharrio@outlook.com)
 # build - parallel
-Google Chrome somehow there
 Gestionnaire de périphériques > Cartes graphiques > Intel(R) HD Graphics 520
   double-clicked to discover  Pilote > 31.0.101.2111
 Intel(R) HD Graphics 520 v31.0.101.2111 with 1Go memory
@@ -33,13 +32,6 @@ Système > Écran > Mise à l'échelle et disposition > Modifier la taille du te
 du64.exe  copied into $HADL\Microsoft\WindowsApps
 ## Edge
 see  $ITsCP/WAN/browsers/browsers.txt
-## Everything
-Ctrl+P ( = Tools > Options ) > General >
-  UI > [ Démarrer sur un clic simple > on  Résultats >
-    Autoriser le clic double dans la colonne des chemin ]
-  Polices and couleurs >
-    Couleur d'avant plan > Personnalisé > selected a white
-    Couleur d'arrière plan > Personnalisé > selected a olive
 ## FastStone Image Viewer
 with an image open, e  for  C:\Program Files\IrfanView\i_view64.exe
 ## File Explorer
@@ -67,9 +59,6 @@ ran it for  P (= Properties/Settings) > [ JPG > Auto-rotate off  Editing > Cut W
 winget add IrfanSkiljan.IrfanView.PlugIns -h
 ## JRE
 winget add Oracle.JavaRuntimeEnvironment  rebooted for it to work in  Vim
-## language pack - UK
-win+i (= Paramètres) > Heure et langue > Langue > Langues préférées > Ajouter une langue >
-  English (United Kingdom) > Installer
 ## modules
 $env:psmodulepath -split (';')
   C:\Users\jharr\Documents\PowerShell\Modules
@@ -132,6 +121,7 @@ APS> corepack enable
 ## waiting
 lazygit
 # build - sequential
+Google Chrome somehow there
 ## move from Utilisateur
 Paramètres >
 Mise à jour et sécurité > Activation > Windows est activé à l'aide d'une license numérique
@@ -410,7 +400,7 @@ WT: [erreur 2147942402 (0x80070002) lors du lancement de `"C:\Users\jharr\AppDat
 PowerShell > Ligne de commande > "C:\Program Files\PowerShell\7\pwsh.exe"
 New-BurntToastNotification
 ## Sumatra PDF v3.5.2
-winget add SumatraPDF -h -l C:\SumatraPDF
+winget add SumatraPDF -h -l C:/SumatraPDF
 ## update-help
 Update-Help: Failed to update Help for the module(s) 'AppBackgroundTask, Appx, AssignedAccess, BitLocker, BitsTransfer, BranchCache, CimCmdlets, Defender, DirectAccessClientComponents, Dism, DnsClient, EventTracingManagement, International, Kds, LanguagePackManagement, LAPS, Microsoft.PowerShell.Archive, Microsoft.PowerShell.Core, Microsoft.PowerShell.Diagnostics, Microsoft.PowerShell.Host, Microsoft.PowerShell.LocalAccounts, Microsoft.PowerShell.Management, Microsoft.PowerShell.Operation.Validation, Microsoft.PowerShell.PSResourceGet, Microsoft.PowerShell.Security, Microsoft.PowerShell.Utility, Microsoft.WSMan.Management, MMAgent, NetAdapter, NetConnection, NetEventPacketCapture, NetLbfo, NetNat, NetQos, NetSecurity, NetSwitchTeam, NetTCPIP, NetworkConnectivityStatus, NetworkSwitchManager, NetworkTransition, PackageManagement, PcsvDevice, PKI, PnpDevice, PowerShellGet, PrintManagement, ProcessMitigations, Provisioning, PSDiagnostics, PSReadLine, ScheduledTasks, SecureBoot, SmbShare, SmbWitness, StartLayout, Storage, ThreadJob, TLS, TroubleshootingPack, TrustedPlatformModule, UEV, VpnClient, Wdac, Whea, WindowsDeveloperLicense, WindowsErrorReporting, WindowsSearch, WindowsUpdate' with UI culture(s) {fr-FR} : No UI culture was found that matches the following pattern: fr-FR. Verify the pattern and then try the command again..
 Update-Help: Failed to update Help for the module(s) 'ConfigDefenderPerformance, PSReadline' with UI culture(s) {fr-FR} : One or more errors occurred. (Response status code does not indicate success: 404 (The specified blob does not exist.).).
@@ -537,7 +527,7 @@ $newPathCU = $oldPathCU -replace ';$', ''; $newPathCU
 sp -path 'registry::hkcu\environment' -name path -value $newPathCU
 ## EUDC 1252 (for PowerColorLS icons)
 right-clicked on  $ITscc/font-Nerd-CascadiaMono/CaskaydiaMonoNerdFontMono-Regular.ttf >
-Installer  then (should be only)  Installer pour tous les utilisateurs
+  Installer  then (should be only)  Installer pour tous les utilisateurs
 test-path hkcu:\eudc\1252
 ni -path hkcu:\eudc\1252
 sp hkcu:\eudc\1252 -name SystemDefaultEUDCFont -value CaskaydiaMonoNerdFontMono-Regular.ttf -type string
@@ -1846,8 +1836,43 @@ $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
 $newPathCU = $oldPathCU+'C:\Lua;'; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
 lua54 -v
+## Ghostscript v10.06
+$ITscc\forMSWin\documenting > gs10060w64.exe > Uninstall Ghostscript Version 10.05.0 >
+  C:\gs-10_06_0 (Generate cidfmap for Windows CJK TrueType fonts) rebooted
+## re-establish Google Chrome
+winget add Google.Chrome.EXE
+### MiKTeX
+winget add miktex
+  cancelled itself when I tried to slide down the list of actions
+  so  winget rm miktex > Remove
+  precautionary reboot
+winget add miktex  nice progress bars, went to  $HADL\Programs\MiKTeX
+rebooted for  MiKTeX Console > Check > Updates  for 123
+
+sl $jtIT\CP\TeX\distro-MiKTeX\miktex-xetex  for  x mwe  and off_ticked "Always show this dialog"
+## reset Everything
+Ctrl+P ( = Tools > Options ) > General >
+  UI > [ Démarrer sur un clic simple > on  Résultats >
+    Autoriser le clic double dans la colonne des chemin ]
+  Polices and couleurs >
+    Couleur d'avant plan > Personnalisé > selected a white
+    Couleur d'arrière plan > Personnalisé > selected a olive
+## language pack - UK
+win+i (= Paramètres) > Heure et langue > Langue > Langues préférées > Ajouter une langue >
+  English (United Kingdom) > Installer
+## reinstall EUDC 1252
+(for nvim-tree & PowerColorLS icons)
+test-path hkcu:\eudc\1252
+ni -path hkcu:\eudc\1252
+sp hkcu:\eudc\1252 -name SystemDefaultEUDCFont -value CaskaydiaMonoNerdFontMono-Regular.ttf -type string
+(gp hkcu:\eudc\1252).SystemDefaultEUDCFont
+## PS> GitHub CLI
+gh auth login  responded until web page to paste offered key
+## Sumatra PDF v3.5.2
+not linked through, so
+  winget rm SumatraPDF  found nothing, so  Deleted  C:/SumatraPDF
+winget add SumatraPDF -h -l C:\SumatraPDF  see  $MSn/PS/Profile.ps1
 ## waiting
-Ghostscript v10.06
 Mise à jour facultatives
 WSL
 # physical configuration

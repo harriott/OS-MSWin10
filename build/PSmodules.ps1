@@ -26,6 +26,7 @@ inmo microsoft.powershell.psresourceget -Force
 
 #=> 2 PS/WPS - modules 0 install
 isres BurntToast; toast
+isres Fonts
 isres Pansies
 isres Posh-Git
 isres PowerColorLS
