@@ -32,15 +32,15 @@ csl ~\PSProfile.ps1
 # cpi -recurse "$ET\exiftool_files" $HADL\Microsoft\WindowsApps -force
 # robocopy /mir $ET\exiftool_files $HADL\Microsoft\WindowsApp\exiftool_filess
 
-# #=> gokcehan lf configuration
-# syli $MSn\lf\colors $HADL\lf\colors
-# syli $MSn\lf\lfrc $HADL\lf\lfrc
-# syli $MSn\lf\icons $HADL\lf\icons
-#   csl $HADL\lf
+#=> gokcehan lf configuration
+syli $MSn\lf\colors $HADR\lf\colors
+syli $MSn\lf\lfrc $HADR\lf\lfrc
+syli $MSn\lf\icons $HADR\lf\icons
+  csl $HADL\lf
 
-#=> C:\Lua (in path)
-robocopy /mir $ITscc\forMSWin\LuaBinaries\lua-5_4_2_Win64_bin C:\Lua
-  cpi $ITscc\forMSWin\luarocks-3_12_2-windows-64\* C:\Lua
+# #=> C:\Lua (in path)
+# robocopy /mir $ITscc\forMSWin\LuaBinaries\lua-5_4_2_Win64_bin C:\Lua
+#   cpi $ITscc\forMSWin\luarocks-3_12_2-windows-64\* C:\Lua
 
 # #=> MiKTeX
 # syli $ITsCP\documenting\LaTeX\jo $tex\latex\jo
@@ -62,8 +62,8 @@ robocopy /mir $ITscc\forMSWin\LuaBinaries\lua-5_4_2_Win64_bin C:\Lua
 # # https://github.com/zhongfly/mpv-winbuild/releases
 # cpi $ITscc/forMSWin/AV/mpv-x86_64-v3-20251022-git-99d6d4c/mpv.exe $HADL\Microsoft\WindowsApps
 
-#=> Node.js
-endi $HADR\npm
+# #=> Node.js
+# endi $HADR\npm
 
 # #=> Pandoc m4p
 # endi $tex\latex\m4p
@@ -83,8 +83,8 @@ endi $HADR\npm
 # # https://learn.microsoft.com/en-gb/sysinternals/downloads/process-explorer
 # cpi $ITscc\forMSWin\ProcessExplorer\procexp64.exe "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
 
-#=> Ruby
-cpi $misc\irbrc ~\.irbrc
+# #=> Ruby
+# cpi $misc\irbrc ~\.irbrc
 
 # #=> secure
 # endi ~/encrypted
@@ -159,19 +159,19 @@ cpi $misc\irbrc ~\.irbrc
 # syli $vfv/thesaurus            ~/vimfiles/thesaurus
 #   csl ~/vimfiles
 
-#=> ~\.bashrc
-syli $MSn/bashrc ~\.bashrc
-  csl ~/.bashrc
+# #=> ~\.bashrc
+# syli $MSn/bashrc ~\.bashrc
+#   csl ~/.bashrc
 
 # #=> ~\.gitconfig
 # syli $MSn\gitconfig ~\.gitconfig
 #   csl ~\.gitconfig
 # # b $HOME\.gitconfig
 
-#=> ~\.alacritty.toml
-syli $MSn/alacritty.toml $Env:AppData/alacritty/alacritty.toml
+# #=> ~\.alacritty.toml
+# syli $MSn/alacritty.toml $Env:AppData/alacritty/alacritty.toml
 
-#=> ~\.wezterm.lua
-syli $MSn/wezterm.lua ~/.wezterm.lua
-  csl ~/.wezterm.lua
+# #=> ~\.wezterm.lua
+# syli $MSn/wezterm.lua ~/.wezterm.lua
+#   csl ~/.wezterm.lua
 

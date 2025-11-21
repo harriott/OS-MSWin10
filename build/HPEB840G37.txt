@@ -108,12 +108,6 @@ winget add 9NV4BS3L1H4S --accept-package-agreements
 ## Zig
 (for  tree-sitter) winget add zig.zig  took ages to unpack
 zig version
-## Thunderbird - fix version
-Applications et fonctionnalités > Thunderbird > Désinstaller  got rid of older = C:\MT
-### add to path
-$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
-$newPathCU = $oldPathCU+';C:\Program Files\Mozilla Thunderbird'; $newPathCU
-sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## NanaZip
 winget add M2Team.NanaZip
 ## Corepack
@@ -734,7 +728,7 @@ C:\Windows\System32\bash.exe --help
 C:\Users\jharr\AppData\Local\Microsoft\WindowsApps\bash.exe --help
 ## FastStone Image Viewer v7.8
 f12 (= Paramètres) > Aperçu > [
-Confirmer la reéctirure des fichiers  Lancer les images associées > dans une Fenêtre ]
+  Confirmer la reéctirure des fichiers  Lancer les images associées > dans une Fenêtre ]
 ## XnView MP
 winget add XnSoft.XnViewMP
 ran it for  Assistant de démarrage > Thème > Sombre
@@ -1041,9 +1035,9 @@ opened an image > f12 > Programmes > Supprimer  then  e > Ajout > C:\Program Fil
 sudo apt install isync notmuch pass
 ## WSL Ubuntu - GnuPG keys
 gpg -k
-gpg: directory '/home/jo/.gnupg' created
-gpg: keybox '/home/jo/.gnupg/pubring.kbx' created
-gpg: /home/jo/.gnupg/trustdb.gpg: trustdb created
+  gpg: directory '/home/jo/.gnupg' created
+  gpg: keybox '/home/jo/.gnupg/pubring.kbx' created
+  gpg: /home/jo/.gnupg/trustdb.gpg: trustdb created
 in  $Enc/Secure1/GnuPG/13F327EF,  gpg --import sprbMbArch-m2o-private.asc > passphrase
 ## WSL Ubuntu - pass
 rsync -irtv --delete $Enc/Secure1/password-store/ ~/.password-store
@@ -1560,7 +1554,7 @@ winget rm lsd; winget add lsd
 underscores back to dots
 ### repairs to  Vim
 $mason  deleted, but still  :MasonInstall ...  doesn`t close off at end...
-## WSL Ubuntu 24.04.1 LTS Ruby
+## WSL Ubuntu 24.04.1 LTS - gnuplot
 sudo apt install gnuplot  installed a load of packages
 ## MiniTool Partition Wizard Free v13.0
 allowed, refusing  MiniTool ShadowMaker Free
@@ -1848,7 +1842,6 @@ winget add miktex
   precautionary reboot
 winget add miktex  nice progress bars, went to  $HADL\Programs\MiKTeX
 rebooted for  MiKTeX Console > Check > Updates  for 123
-
 sl $jtIT\CP\TeX\distro-MiKTeX\miktex-xetex  for  x mwe  and off_ticked "Always show this dialog"
 ## reset Everything
 Ctrl+P ( = Tools > Options ) > General >
@@ -1872,9 +1865,131 @@ gh auth login  responded until web page to paste offered key
 not linked through, so
   winget rm SumatraPDF  found nothing, so  Deleted  C:/SumatraPDF
 winget add SumatraPDF -h -l C:\SumatraPDF  see  $MSn/PS/Profile.ps1
+## re-establish Pandoc
+(after MiKTeX)
+winget add JohnMacFarlane.Pandoc  got  $HADL\Pandoc\pandoc.exe
+  sl $ITsCP\Pandoc  for
+    pandoc --toc --toc-depth=6 -f markdown_strict toCdepth6MWE.md -o toCdepth6MWE.pdf
+    - took a while for MiKTeX to download all the necessary packages
+  md $tex\latex\m4p
+## re-establish Firefox
+Signed-in  getting my extensions, Pinned the active ones
+Ctrl+Shift+b = Bookmarks Toolbar visible
+## add Thunderbird to path
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU+';C:\Program Files\Mozilla Thunderbird'; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+## Thunderbird
+launched it only enough to get  $HADR\Thunderbird\Profiles  then quit to be able to Delete the profile therein
+$HADR\Thunderbird\installs.ini  Deleted
+$HADR\Thunderbird\profiles.ini  reduced to just
+  [Profile0]
+  Name=default-esr
+  IsRelative=0
+  Path=D:\Dropbox\JH\Thb-dr
+## re-install WSL Ubuntu 24.04 LTS to WSL1
+winget add Canonical.Ubuntu.2404
+Windows Menu > Ubuntu 24.04.1 LTS
+  fired up a new WT & installed it > UNIX username > jo > pw
+all WT quit for  WT > ctrl+5 (= Ubuntu 24.04 LTS tab)
+### WT Ubuntu 24.04 received settings
+Ubuntu 24.04
+  Icône > ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png
+  Ligne de commande > C:\Windows\system32\wsl.exe -d Ubuntu-24.04
+  Masquez le profil de la liste déroulante > Activé
+Ubuntu 24.04.1 LTS
+  Icône > https://assets.ubuntu.com/v1/49a1a858-favicon-32x32.png - the one that shows in use
+  Ligne de commande > ubuntu2404.exe
+  Masquez le profil de la liste déroulante > Désactivé
+### WT Ubuntu 24.04 settings
+WT > ctrl+, > Ubuntu 24.04 Apparance >
+  Jeu de couleurs > One Half Dark
+  Texte > Taille de police > 9
+  Transparence > Opacité de l'arrière plan > 83%
+### WSL Ubuntu reconfigure
+ran the scripts in  $MSn\set
+### WSL Ubuntu 24.04 Pro
+sudo pro attach  without <FPT>, got a code to put in my Sign'd in browser
+sudo apt update
+#### upgrade  fail
+sudo apt upgrade  fail
+  Errors were encountered while processing:
+   systemd
+   netplan.io
+   dbus-user-session
+   systemd-timesyncd
+   udev
+   systemd-hwe-hwdb
+   libpam-systemd:amd64
+   netplan-generator
+   polkitd
+   systemd-resolved
+   wsl-setup
+   snapd
+   systemd-sysv
+   cloud-init
+   ubuntu-minimal
+   ubuntu-wsl
+   libnss-systemd:amd64
+   packagekit
+   packagekit-tools
+   software-properties-common
+  E: Sub-process /usr/bin/dpkg returned an error code (1)
+## WSL2
+wsl -l -v  show it to be v1, so  wsl --update, but  wsl -l -v  still repoerts v1, so
+  winget rm Canonical.Ubuntu.2404
+wsl --status  reports  Version par défaut : 2
+### re-install WSL Ubuntu 24.04 LTS
+Deleted the two  Ubuntu 24.04  profiles from WT
+winget add Canonical.Ubuntu.2404
+wsl -l -v  show it to be v2
+### WSL Ubuntu 24.04 - Ubuntu Pro
+pro status
+sudo pro attach <FPT>
+sudo apt update
+sudo apt upgrade
+## WSL Ubuntu 24.04 packages
+sudo apt install bc dos2unix fd-find fzf highlight isync ncdu neofetch neomutt neovim nnn notmuch pass p7zip-full ranger ripgrep tmux trash-cli
+## WSL Ubuntu 24.04 LTS snaps
+sudo snap install jump lsd  # Samokovarov's jump
+## WSL Ubuntu 24.04 plocate
+sudo apt install plocate  then took ages to initialize the database
+cp /etc/updatedb.conf $MSWml/WSL/updatedb-$(date '+%y%m%d-%H%M').conf
+sudo cp $MSn/WSL/updatedb.conf /etc/updatedb.conf  then  sudo updatedb  (much faster)
+## WSL Ubuntu 24.04 wslu
+sudo add-apt-repository ppa:wslutilities/wslu
+  got me  \\wsl$\Ubuntu-24.04\etc\apt\sources.list.d\wslutilities-ubuntu-wslu-noble.sources
+sudo apt update
+sudo apt install wslu
+## WSL Ubuntu 24.04 GnuPG keys
+gpg -k
+  gpg: directory '/home/jo/.gnupg' created
+  gpg: keybox '/home/jo/.gnupg/pubring.kbx' created
+  gpg: /home/jo/.gnupg/trustdb.gpg: trustdb created
+in  $Enc/Secure1/GnuPG/13F327EF,  gpg --import sprbMbArch-ob8-private.asc > passphrase
+  gpg: key 842A4DEE13F327EF: public key "Joseph Harriott (sprbMb Arch) <jharr@ftml.net>" imported
+  gpg: key 842A4DEE13F327EF: secret key imported
+## WSL Ubuntu 24.04 LTS password-store
+rsync -irtv --delete $Enc/Secure1/password-store/ ~/.password-store
+## WSL Ubuntu 24.04 libdata-printer-perl
+(for  Data::Printer  in  $clMail/notmuch/nmsh-sort.pl) sudo apt install libdata-printer-perl
+## WSL Ubuntu 24.04 - gnuplot
+(for  $Cmdts1/0-adh/adherents.sh) sudo apt install gnuplot  installed a load of packages
+### FastStone Image Viewer
+opened an image > f12 > Lancer les images associées > dans une Fenêtre
+## MiKTeX
+! LaTeX Error: File `JH.sty' not found.
+  MiKTeX Console > Check > Updates  for 7  fixed that
+## HP Smart
+Se connecter > HP Smart credentials  found  HPC204A4 (HP ENVY Inspire 7200 series)
+## WSL Ubuntu 24.04 no longer default
+WT > ctrl+, > Ubuntu 24.04.1 LTS Apparance >
+  Jeu de couleurs > One Half Dark
+  Texte > Taille de police > 9
+  Transparence > Opacité de l'arrière plan > 81%
 ## waiting
 Mise à jour facultatives
-WSL
+TortoiseGit
 # physical configuration
 1920x1080 screen
 Intel Core i5-6300U

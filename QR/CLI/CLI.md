@@ -56,6 +56,11 @@ can paste these into `File Explorer`
 - once the source/target are specified, exclude some directories: `/xd '.git' /xd '*packs-*'`
 - `/tee` output to console as well as log file
 
+# file manage - Yazi
+    where.exe yazi
+
+Won't previez anything...
+
 # fzf
     alt+c
     fzf -h
@@ -97,6 +102,7 @@ scheduled tasks
 - `win+esc` désactiver la loupe
 
 # WT
+- 24-bit colour depth = true color
 - in Explorer: `Alt+D > wt > Enter`
 - `win+;` emojis
 - `win+r > wt` opens `wt` on `~`

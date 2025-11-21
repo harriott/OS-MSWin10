@@ -1,13 +1,15 @@
 # vim: ft=dircolors:
 
-# $MSWin10\colors ($MSWin10\mb\symlinks.ps1)
+# $MSn/lf/colors ($MSn/set/3.ps1)
 
-# adapted, with thanks, from  https://codeberg.org/tplasdio/lf-config/src/commit/1c295ce7bc09c418dc9e101a0add033d74ce48b7/.config/lf/colors ($cGRs/CP/Go-lf/tplasdio-lf-config/.config/lf/colors)
+# adapted, with thanks, from  https://codeberg.org/tplasdio/lf-config/src/commit/1c295ce7bc09c418dc9e101a0add033d74ce48b7/.config/lf/colors ($cGRs/d-CP/d-encoding/d-Go-lf/r-tplasdio-lf-config/.config/lf/colors) - see there for more
 
 # Colors for filenames in lf
 
-# there's only a very approximate match between what  Vim  shows and what's seen in  WT
+# Vim  should detect this  ft=dircolors, then can see them
+#  but there's only a very approximate match with what's seen in  WT.
 
+# changes herein are seen on next run
 # slight error herein can disable all of these settings
 
 # file types
@@ -18,13 +20,16 @@ ex  01;32 # EXEC
 fi  00    # FILE
 ln  01;36 # LINK
 or  01;91 # ORPHAN
-ow  01;94 # OTHER_WRITABLE = most directories
 pi  00;33 # FIFO
 sg  01;32 # SETGID
 so  01;32 # SOCK
 st  00;37 # STICKY
 su  01;32 # SETUID
 tw  01;32 # STICKY_OTHER_WRITABLE
+
+# file types - OTHER_WRITABLE = most directories
+ow  38;5;220
+# ow  01;94 # hard to read in daytime
 
 # archives or compressed
 *.7z    01;93

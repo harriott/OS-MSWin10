@@ -3,7 +3,6 @@
 
 # $MSn/WSL/bashrc-Drp
 
-
 WSLDrp () {
   if [ $1 ]; then
     WSLpc=0  # set the count to 0
@@ -13,5 +12,5 @@ WSLDrp () {
   fi
 } # Dropbox pause - obviates  "cannot ... denied"  in  $Cmdt
 
-# WSLDrp () { true; } # if Dropbox isn't active
+WSLDrp () { true; } # if Dropbox isn't active
 

@@ -925,7 +925,7 @@ sl \\wsl$\Ubuntu  shows it's all still there, so  wsl --unregister Ubuntu
 Win+r > regedit > HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Lxss > {...} >
   DistributionName > Ubuntu
 WT > ctrl+, > Ubuntu 24.04.1 LTS >
-  Lgine de commande > ubuntu2404.exe
+  Ligne de commande > ubuntu2404.exe
   Nom > (Ubuntu 24.04.1 LTS) Ubuntu
   Titre > (Ubuntu 24.04.1 LTS) Ubuntu
 WT lost access to Ubuntu, though  wsl -d Ubuntu  works
@@ -1076,7 +1076,7 @@ $newPathCU = $oldPathCU+';C:\Users\jnbh\AppData\Local\Microsoft\WinGet\Packages\
 sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## DVDFab 13.0.4.6
 allowed to update > Ne plus afficher
-## WSL Ubuntu 24.04.1 LTS Ruby
+## WSL Ubuntu 24.04.1 LTS - gnuplot
 sudo apt install gnuplot
   The following additional packages will be installed: aglfn gnuplot-data gnuplot-qt libgd3 libnotify4 libpcre2-32-0 libqt5core5t64 libqt5dbus5t64 libqt5gui5t64 libqt5network5t64 libqt5printsupport5t64 libqt5qml5 libqt5qmlmodels5 libqt5quick5 libqt5svg5 libqt5waylandclient5 libqt5waylandcompositor5 libqt5widgets5t64 libwxbase3.2-1t64 libwxgtk3.2-1t64 libxcb-xinerama0 libxcb-xinput0 qt5-gtk-platformtheme qttranslations5-l10n qtwayland5
   Suggested packages: gnuplot-doc libgd-tools notification-daemon qgnomeplatform-qt5 qt5-image-formats-plugins qt5-qmltooling-plugins
@@ -1197,6 +1197,20 @@ sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## fix rg in $PATH - fixed to 15.1.0
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
 $newPathCU = $oldPathCU -replace '4.1.1','5.1.0'; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+## Perl
+winget add StrawberryPerl.StrawberryPerl
+## fix yazi in $PATH
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU+';C:\Users\jnbh\AppData\Local\Microsoft\WinGet\Packages\sxyazi.yazi_Microsoft.Winget.Source_8wekyb3d8bbwe\yazi-x86_64-pc-windows-msvc'; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+## fix chafa in $PATH
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU+';C:\Users\jnbh\AppData\Local\Microsoft\WinGet\Packages\hpjansson.Chafa_Microsoft.Winget.Source_8wekyb3d8bbwe\chafa-1.18.0-1-x86_64-win'; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+## yt-dlp.FFmpeg in $PATH
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU+';C:\Users\jnbh\AppData\Local\Microsoft\WinGet\Packages\yt-dlp.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-N-121583-g4348bde2d2-win64-gpl\bin'; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## waiting
 luarocks-3.12.2-windows-64

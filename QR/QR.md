@@ -114,7 +114,7 @@ SumatraPDF
 
 ## browser - Microsoft Edge
     edge://extensions/
-    edge://favorites/
+    edge://favorites
     edge://settings
     edge://settings/accessibility > Clavier > f7 caret
     edge://settings/privacy
@@ -275,10 +275,11 @@ Gestionnaire de tâches
     \\wsl$\Ubuntu\etc\apt\sources.list.d\ubuntu-esm-infra.list
 
 ### Ubuntu
+    $MSn/WSL/bash_profile
+    $MSn/WSL/bashrc
     /mnt/c/vim/vim91/gvim.exe &
     highlight --syntax=bash ~/.bash_history -O ansi
     o hello | clip.exe  # arrives in Ditto
-    pwsh.exe -nop -c start .
     pwsh.exe -nop -c Get-ExecutionPolicy
     win32yank.exe -o  # returns what's in the clipboard
     winget find ubuntu

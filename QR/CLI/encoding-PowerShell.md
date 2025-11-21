@@ -146,7 +146,14 @@ no standard aliases
 ## Perl
     where.exe perl
 
+## Perl
+    perl -e 'print \"Hello World\"'
+    perl -e "print qq(Hello, world!)"
+    perl -i -ne 'printf q(%04d %s), $., $_' <file_needing_linenumbers>
+    perl -ne 'printf' <file_to_print>
+
 ### Strawberry
+    $env:TERM="dumb"; cpan
     C:\Strawberry\perl\bin\perl.exe -v
     g $home\.cpanm
 
@@ -231,14 +238,6 @@ after piping to `less`, getting weird errors
 
 otherwise little sign of them
 
-## Perl
-    perl -e 'print \"Hello World\"'
-    perl -e "print qq(Hello, world!)"
-    perl -i -ne 'printf q(%04d %s), $., $_' <file_needing_linenumbers>
-    perl -ne 'printf' <file_to_print>
-
-`Strawberry Perl`: `$env:TERM="dumb"; cpan`
-
 ## PowerShell
     $programfiles\PowerShell\7\powershell.config.json
     pwsh -? | less
@@ -250,11 +249,6 @@ otherwise little sign of them
     g $home/scoop
     scoop help
     scoop update
-
-## Thunderbird
-    C:\MozillaThunderbird\thunderbird.exe -addressbook
-    ps thunderbird
-    where.exe thunderbird
 
 ## where.exe
     where.exe gpg
@@ -482,7 +476,8 @@ prefer `&` where possible
 # output
     Out-File
 
-`ft -AutoSize` (= `Format-Table`)
+- `cls` (= `Clear-Host`)
+- `ft -AutoSize` (= `Format-Table`)
 
 ## colour
     & "$coreIT\MSWin\PowerShell\colours\ConsoleColor.ps1"
@@ -705,6 +700,11 @@ prefer `&` where possible
     $Env:AppData  # C:\Users\...\AppData\Roaming
     ls "$Env:AppData\Pandoc\defaults"
 
+# Thunderbird
+    ps thunderbird
+    thunderbird.exe -addressbook  # opens on  Carnet d'adresses  tab
+    where.exe thunderbird  # finds it once it`s in the path
+
 # Vim
     C:\Vim\vim91\vim.exe --version
     g $HOME\vimfiles
@@ -722,7 +722,6 @@ prefer `&` where possible
     wsl -l -o  # (--list --online) available flavours
     wsl -l -v (--list --verbose)
     wsl -l --running
-    wsl -v
     wsl df -h /
 
 8 second rule for configuration changes

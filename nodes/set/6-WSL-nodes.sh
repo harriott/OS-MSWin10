@@ -33,6 +33,7 @@ ln -sf $OSL/nodes/terminal-tmux/tmux.conf ~/.tmux.conf
 ln -sf $MSn/WSL/vimrc ~/.vimrc
 
 #=> 1 gpg-agent.conf
+[ -d ~/.gnupg ] || mkdir ~/.gnupg
 ln -sf $OSL/nodes/gpg-agent.conf ~/.gnupg/gpg-agent.conf  # ls ~/.gnupg
 
 #=> 1 ranger
