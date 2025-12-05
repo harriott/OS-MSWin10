@@ -37,7 +37,7 @@ CapsLock::SendText "\"
 	if WinExist("ahk_exe thunderbird.exe") {
 		WinClose "ahk_exe thunderbird.exe"
 	} else {
-		Run "pwsh -nop -w minimized -f C:\MT-clearWin10ProLock.ps1"
+		Run "pwsh -nop -w minimized -f C:\MT-clearLocks.ps1"
 	}
 } ; win+ctrl+t  closes MT
 

@@ -14,7 +14,7 @@ csl ~\PSProfile.ps1
 # syli $misc/notDr/NF.md $notDr/GR-NF/readme.md
 
 # #=> Disk Usage v1.62
-# cpi $ITscc\forMSWin\DiskUsage\du64.exe $HADL\Microsoft\WindowsApps
+# cpi $cITcc\forMSWin\DiskUsage\du64.exe $HADL\Microsoft\WindowsApps
 
 # #=> Emacs
 # $Ed = "$HADR\.emacs.d"; endi $Ed
@@ -24,26 +24,27 @@ csl ~\PSProfile.ps1
 #   syli $onGH\zenburn-emacs $Ed\zenburn-emacs
 #   syli $misc\CP\emacs\init.el $Ed\init.el
 #   syli $misc\CP\emacs\lisp $Ed\lisp
+#     bat $HADR\.emacs.d\early-init.el
 #     csl $HADR\.emacs.d
 
 # #=> ExifTool v13.39
-# $ET =  "$ITscc\forMSWin\imagey\exiftool-13_39_64"
+# $ET =  "$cITcc\forMSWin\imagey\exiftool-13_39_64"
 # cpi "$ET\exiftool(-k).exe" $HADL\Microsoft\WindowsApps\exiftool.exe
 # cpi -recurse "$ET\exiftool_files" $HADL\Microsoft\WindowsApps -force
 # robocopy /mir $ET\exiftool_files $HADL\Microsoft\WindowsApp\exiftool_filess
 
 #=> gokcehan lf configuration
 syli $MSn\lf\colors $HADR\lf\colors
-syli $MSn\lf\lfrc $HADR\lf\lfrc
 syli $MSn\lf\icons $HADR\lf\icons
+syli $MSn\lf\lfrc $HADR\lf\lfrc
   csl $HADL\lf
 
 # #=> C:\Lua (in path)
-# robocopy /mir $ITscc\forMSWin\LuaBinaries\lua-5_4_2_Win64_bin C:\Lua
-#   cpi $ITscc\forMSWin\luarocks-3_12_2-windows-64\* C:\Lua
+# robocopy /mir $cITcc\forMSWin\LuaBinaries\lua-5_4_2_Win64_bin C:\Lua
+#   cpi $cITcc\forMSWin\luarocks-3_12_2-windows-64\* C:\Lua
 
 # #=> MiKTeX
-# syli $ITsCP\documenting\LaTeX\jo $tex\latex\jo
+# syli $cITCP\documenting\LaTeX\jo $tex\latex\jo
 # #  after changes:  miktex fndb refresh
 # #  ii "$tex\latex\jo"
 # #  sl $tex\latex
@@ -60,7 +61,7 @@ syli $MSn\lf\icons $HADR\lf\icons
 
 # #=> mpv.exe (daily)
 # # https://github.com/zhongfly/mpv-winbuild/releases
-# cpi $ITscc/forMSWin/AV/mpv-x86_64-v3-20251022-git-99d6d4c/mpv.exe $HADL\Microsoft\WindowsApps
+# cpi $cITcc/forMSWin/AV/mpv-x86_64-v3-20251022-git-99d6d4c/mpv.exe $HADL\Microsoft\WindowsApps
 
 # #=> Node.js
 # endi $HADR\npm
@@ -81,7 +82,7 @@ syli $MSn\lf\icons $HADR\lf\icons
 
 # #=> Process Explorer v17.06
 # # https://learn.microsoft.com/en-gb/sysinternals/downloads/process-explorer
-# cpi $ITscc\forMSWin\ProcessExplorer\procexp64.exe "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
+# cpi $cITcc\forMSWin\ProcessExplorer\procexp64.exe "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
 
 # #=> Ruby
 # cpi $misc\irbrc ~\.irbrc
@@ -91,7 +92,7 @@ syli $MSn\lf\icons $HADR\lf\icons
 # endi ~/.ssh
 
 # #=> vim flavours - minimap
-# cp $ITscc/forMSWin/code-minimap-v0_6_8-x86_64-pc-windows-msvc/code-minimap.exe $HADL/Microsoft/WindowsApps/code-minimap.exe
+# cp $cITcc/forMSWin/code-minimap-v0_6_8-x86_64-pc-windows-msvc/code-minimap.exe $HADL/Microsoft/WindowsApps/code-minimap.exe
 
 # #=> vim flavours - nvim 0 nvim 0 clear
 # if ( test-path $nvim ) { ri -path $nvim -recurse } ; md $nvim\pack

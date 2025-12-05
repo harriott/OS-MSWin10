@@ -1,5 +1,5 @@
 
-# Joseph Harriott, jeu 30 oct 2025
+# Joseph Harriott, dim 30 nov 2025
 
 # $MSn/PS/Profile.ps1
 #  symlinked in  $MSn/set/2-PSProfile.ps1
@@ -32,6 +32,7 @@ function mc {
 
 #=> 0 directories & files
 function c { if ( $args[0] ) { sl $args[0] } else { sl .. }; p }  # handily move in or out
+function g { lf -print-last-dir $args | sl } # gokcehan  lf  quits on last viewed directory
 function i { ii . }  # opens  file explorer  on current directory
 function lc { [string[]]$list = (gci).Name; $list -join '  ' }
 function ~ { sl ~ }
@@ -58,13 +59,6 @@ function ed { eza -DT }  # show directory tree
 function er { eza -R }  # nice recursive list
 function es { eza -al --icons }  # show permissions and symlinks
 function et { eza -T }  # for full tree
-
-function g {
-  $env:PAGER='less'
-  $env:PAGER='bat'  # i  only
-  $env:SHELL='pwsh'
-  lf -print-last-dir $args | sl
-  } # gokcehan  lf  quits on last viewed directory
 
 #==> changes
 function chco {
@@ -142,41 +136,6 @@ function gfoln { gci -r $args[0] | where { $_.psiscontainer } | select -expandpr
 
 #===> lastwritetime
 function dtsfn { $args[0].lastwritetime.ToString('yyyyMMdd-HH:mm:ss')+' '+$args[1]+' '+ $args[0].fullname } # - used by other functions here, and see  $MSWin10/QR/CLI/encoding-PowerShell.md
-
-function EC0 {
-  $global:EC0r = ''
-  if (!($(gl).path).equals($enc)) {
-    if ( ( test-path $enc ) ) { sl $enc } else { "$enc  ain't there"; $global:EC0r = 'return' } }
-}
-function EC1 {
-  EC0; if ( $EC0r -eq 'return' ) { return }
-  $cel = "$core/encrypted/last"
-  $lrts = (gc $cel -tail 1).substring(0,17); "last: $lrts" # last recorded time stamp
-  $ef = ls -af -s  -e *.eml | ? { $_.fullname -notmatch '.git\\' } | sort lastwritetime | %{ dtsfn $_ ':' } # encrypted files
-  $lll = $ef[-1].substring(0,17); "here: $lll" # local list last
-  if ( $lll -gt $lrts ) { 'write to last' }
-}
-function EC2 {
-  $encrypted = "actions", "Czm", "digital0", "digital1", "secure0", "secure1", "shg", "stack"
-  EC0; if ( $EC0r -eq 'return' ) { return }
-  foreach ($node in $encrypted) {
-    ''; scfcdc; $node; scrc
-    if ( gci $node* ) {
-      if ( $node.equals('actions') ) { $path = '*ps1*' } else {
-        if ( test-path $node -pathtype container ) { $encContents = gci $node -af -s -e *.eml | ? { $_.fullname -notmatch '.git\\' } | sort lastwritetime -descending | select -first 2 | %{ dtsfn $_ '??' } } else { $encdir = '' }
-        $path = $node+'*7z'
-      }
-      $enc7z = gci -path $path | %{ dtsfn $_ '**' }
-      $ce7z = gci -path "$core\encrypted\$path" | %{ dtsfn $_ 'dr' }
-      $objects = $encContents, $enc7z, $ce7z
-      $encContents = ''  # incase a  $node  directory isn't in  $enc
-      $flattened = @($objects | % {$_})  # optional
-      $sorted = $flattened | ? { $_ } | sort -uniq  # also removes nulls
-      $sorted.replace('C:\Users\jharr\', '').replace('Dropbox\JH\core\encrypted\', '').replace('encrypted\', '')
-    }
-  }
-  ''
-}
 
 function lwp { gci -r | %{ dtsfn $_ ':' } | out-string -stream | sls $args[0] | sort }
 #  $args[0]  is a regex, something in the filepath
@@ -369,7 +328,9 @@ function gsp {
 $env:TERM = "xterm-256color"  # $vfn/lua/init.lua
 
 # Backup command history:
-cp (Get-PSReadlineOption).HistorySavePath $MSWml/PSH/$dts.ps1  # $coreIT/MSWin
+cp (Get-PSReadlineOption).HistorySavePath $MSWml/PSH/$dts.ps1
+#  $coreIT/MSWin/ml-HPEB840G37/PSH
+#  $coreIT/MSWin/ml-HPEB840G38/PSH
 
 if ($PSVersionTable.PSVersion.Major -eq 7) { ipmo Powershell.Chunks }
 
@@ -484,11 +445,47 @@ function wl {
 }
 
 #=> 1 place-dependent
-if ( test-path $ITscc )
-  { . $ITscc/CP/wfxr-code-minimap/completions/powershell/_code-minimap.ps1 }
+if ( test-path $cITcc )
+  { . $cITcc/CP/wfxr-code-minimap/completions/powershell/_code-minimap.ps1 }
+
+#==> $enc
+function EC0 {
+  $global:EC0r = ''
+  if (!($(gl).path).equals($enc)) {
+    if ( ( test-path $enc ) ) { sl $enc } else { "$enc  ain't there"; $global:EC0r = 'return' } }
+}
+function EC1 {
+  EC0; if ( $EC0r -eq 'return' ) { return }
+  $cel = "$core/encrypted/last"
+  $lrts = (gc $cel -tail 1).substring(0,17); "last: $lrts" # last recorded time stamp
+  $ef = ls -af -s -e *.eml | ? { $_.fullname -notmatch '.git\\' } | sort lastwritetime | %{ dtsfn $_ ':' } # encrypted files
+  $lll = $ef[-1].substring(0,17); "here: $lll" # local list last
+  if ( $lll -gt $lrts ) { 'write to last' }
+}
+function EC2 {
+  $encrypted = "actions", "Czm", "digital0", "digital1", "secure0", "secure1", "shg", "stack"
+  EC0; if ( $EC0r -eq 'return' ) { return }
+  foreach ($node in $encrypted) {
+    ''; scfcdc; $node; scrc
+    if ( gci $node* ) {
+      if ( $node.equals('actions') ) { $path = '*ps1*' } else {
+        if ( test-path $node -pathtype container ) { $encContents = gci $node -af -s -e *.eml | ? { $_.fullname -notmatch '.git\\' } | sort lastwritetime -descending | select -first 2 | %{ dtsfn $_ '??' } } else { $encdir = '' }
+        $path = $node+'*7z'
+      }
+      $enc7z = gci -path $path | %{ dtsfn $_ '**' }
+      $ce7z = gci -path "$core\encrypted\$path" | %{ dtsfn $_ 'dr' }
+      $objects = $encContents, $enc7z, $ce7z
+      $encContents = ''  # incase a  $node  directory isn't in  $enc
+      $flattened = @($objects | % {$_})  # optional
+      $sorted = $flattened | ? { $_ } | sort -uniq  # also removes nulls
+      $sorted.replace('C:\Users\jharr\', '').replace('Dropbox\JH\core\encrypted\', '').replace('encrypted\', '')
+    }
+  }
+  ''
+}
 
 #==> documenting
-function xc { iex "su $ITscr\CP\TeX\LaTeX\appearance\colour\xcolor.pdf -page 38" }
+function xc { iex "su $cITcr\CP\TeX\LaTeX\appearance\colour\xcolor.pdf -page 38" }
 
 #===> MiKTeX
 function x { xelatex -halt-on-error --max-print-line=110 $args[1] $args[0] }
@@ -577,7 +574,7 @@ function jt { sl $JHm; ri tag\*; python $JHm\_plugins\compile_tags.py; sl tag; }
 #==> sharkdp/bat
 # completion
 function f { Invoke-Fzf -preview 'bat --color=always {}' }
-sal b bat
+sal b bat  # beautiful formatting and less paging
 function bd { bat -d $args[0] }  # showing changes from git index
 
 #==> shell - colours in outputs
@@ -604,6 +601,20 @@ function Format-Color([hashtable] $Colors = @{}, [switch] $SimpleMatch) {
 # only affecting  Windows PowerShell
 $host.privatedata.errorforegroundcolor = 'green'
 $host.privatedata.ErrorBackgroundColor = 'darkmagenta'
+
+#==> Thb
+function tg {
+  # robocopy /mir $Thb D:\Thb
+  robocopy /mir $Thb $RTh\jo
+  "- you can now run Thunderbird on this machine" } # Thunderbird get from Dropbox
+
+function tp {
+  robocopy /mir $RTh\jo $Thb
+  $DTfl = ls -af -s $Thb | ? { $_.fullname } | sort lastwritetime | %{ dtsfn $_ ':' }
+  $lc = $DTfl[-1].substring(2,17) # last change
+  $lcc = $lc.replace(':','') # last change compact
+  "$lcc $Cn "+'$Thb '+$DTfl.count >> $cITCP/WAN/email-Thunderbird/activity
+  "- you should now let Dropbox finish sync'ing" } # Thunderbird put to Dropbox
 
 #=> 2 zoxide
 iex (& { (zoxide init powershell | Out-String) })

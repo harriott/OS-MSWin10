@@ -16,10 +16,10 @@ rebooted to get it working
 ## Bulk Rename
 winget add BulkRenameUtility
 ## Disk Usage
-cpi "$ITscc\forMSWin\Disk Usage\du64.exe" $HADL\Microsoft\WindowsApps
+cpi "$cITcc\forMSWin\Disk Usage\du64.exe" $HADL\Microsoft\WindowsApps
 du64 -l 1  to accept the license
 ## Edge
-see  $ITsCP/networking/browsers/browsers.txt
+see  $cITCP/networking/browsers/browsers.txt
 ## Everything
 winget add voidtools.Everything
 Ctrl+P ( = Tools > Options ) > General >
@@ -41,10 +41,10 @@ $newPathCU = $oldPathCU -replace ';$', ''; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## fonts - Architects Daughter
 for  $Csst/data-1-sorted/counts.tex
-sl $ITscc\forMSWin\fonts-FontSquirrel\architects-daughter
+sl $cITcc\forMSWin\fonts-FontSquirrel\architects-daughter
   right-clicked on  ArchitectsDaughter.ttf  to  Installer
 ## fonts DejaVu
-$ITscc\forMSWin\fonts-dejavu-fonts-ttf-2.37\ttf > selected all, right clicked on to Install
+$cITcc\forMSWin\fonts-dejavu-fonts-ttf-2.37\ttf > selected all, right clicked on to Install
   arrived in  $HADL\Microsoft\Windows\Fonts
 ## fonts for Pandoc - Noto Sans CJK Regulars
 $coreIT\copied-code\forMSWin\fonts-NotoHinted
@@ -81,7 +81,7 @@ Stockage (L'Assistant de stockage) > Activé
 ## PDFtk
 winget add PDFLabs.PDFtk.Free
 ## Process Explorer
-start $ITscc\forMSWin\ProcessExplorer\procexp64.exe > Agree
+start $cITcc\forMSWin\ProcessExplorer\procexp64.exe > Agree
   alt+o (= Options) > i (= Tray Icons) > p (= Physical Memory History)
   alt+o (= Options) > h (= Hide When Minimized)
   alt+o (= Options) > l (= Run At Logon)
@@ -419,8 +419,8 @@ g $HADL\npm-cache\_npx\8f497369b2d6166e\node_modules  surprisingly populated
 winget add neovide -l C:\Vim  but it went to  $CPF\Neovide\neovide.exe
 ## Google Chrome
 winget add Google.Chrome.EXE
-## $ITsCP ownership
-APS> takeown /f $ITsCP /r /d o
+## $cITCP ownership
+APS> takeown /f $cITCP /r /d o
 ## FastStone Image Viewer
 winget add FastStone.Viewer  "C:\Program Files (x86)\FastStone Image Viewer\FSViewer.exe"
 ran it for Esc to offtick
@@ -487,7 +487,7 @@ sl $jtIT\CP\TeX\distro-MiKTeX\miktex-xetex  for  x mwe  and off_ticked "Always s
 after MiKTeX
   headings0sty; miktex fndb refresh
   winget add JohnMacFarlane.Pandoc  got  $HADL\Pandoc\pandoc.exe
-    in a new instance of PowerShell,  sl $ITsCP\Pandoc  for
+    in a new instance of PowerShell,  sl $cITCP\Pandoc  for
       pandoc --toc --toc-depth=6 -f markdown_strict toCdepth6MWE.md -o toCdepth6MWE.pdf
       - took a while for MiKTeX to download all the necessary packages
 ## Lecteur Windows Media
@@ -571,8 +571,8 @@ sudo cp $MSWSL/updatedb.conf /etc/updatedb.conf  then  sudo updatedb
 sudo apt install fd-find fzf highlight neofetch nnn p7zip-full ranger ripgrep tmux
 sudo snap install jump  # Samokovarov's
 ## ExifTool v12.93
-cpi "$ITscc\forMSWin\exiftool-12_93_64\exiftool(-k).exe" $HADL\Microsoft\WindowsApps\exiftool.exe
-cpi -recurse $ITscc\forMSWin\exiftool-12_93_64\exiftool_files $HADL\Microsoft\WindowsApps
+cpi "$cITcc\forMSWin\exiftool-12_93_64\exiftool(-k).exe" $HADL\Microsoft\WindowsApps\exiftool.exe
+cpi -recurse $cITcc\forMSWin\exiftool-12_93_64\exiftool_files $HADL\Microsoft\WindowsApps
 ## HP Smart
 winget add 9WZDNCRFHWLH > y
 Se connecter  found  HPA22F0E (ENVY 5530)
@@ -585,8 +585,8 @@ sudo apt install bc
 ## dubious ownership of $Csst
 in there, APS> takeown /f . /r /d o
 ## ExifTool v12.96
-cpi "$ITscc\forMSWin\exiftool-12_96_64\exiftool(-k).exe" $HADL\Microsoft\WindowsApps\exiftool.exe
-robocopy /mir $ITscc\forMSWin\exiftool-12_96_64\exiftool_files $HADL\Microsoft\WindowsApps\exiftool_files
+cpi "$cITcc\forMSWin\exiftool-12_96_64\exiftool(-k).exe" $HADL\Microsoft\WindowsApps\exiftool.exe
+robocopy /mir $cITcc\forMSWin\exiftool-12_96_64\exiftool_files $HADL\Microsoft\WindowsApps\exiftool_files
 exiftool -ver
 ## fix LSD in $PATH
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
@@ -825,7 +825,7 @@ APS> $MSn\set  to run the scripts
 shortcut to  $MSn\AutoHotkey\HPEB840G38.ahk
   to  "$HADR\Microsoft\Windows\Start Menu\Programs\Startup"
 ### Process Explorer
-start $ITscc\forMSWin\ProcessExplorer\procexp64.exe
+start $cITcc\forMSWin\ProcessExplorer\procexp64.exe
 ## WSL Ubuntu 24.04
 ran the scripts in  $MSn\set
 ## Thunderbird
@@ -845,7 +845,7 @@ not connecting via  cafezoide pro
 ## Ookla Speedtest
 speedtestby  -_x64.msi
 ## Process Explorer
-start $ITscc\forMSWin\ProcessExplorer\procexp64.exe
+start $cITcc\forMSWin\ProcessExplorer\procexp64.exe
 ## LibreOffice Calc printer delay at launch
   Attente de la connexion de l'imprimante
   Attendez la connexion à l'imprimante ou annulez la connexion
@@ -988,7 +988,7 @@ allowed to update
 ## Opera
 Paramètres > Basique > Au démarrage > Lancer  off
 ## Process Explorer
-procexp64.exe  endlessly sync`d by Dropbox, so quit then  cpi $ITscc\forMSWin\ProcessExplorer\procexp64.exe "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
+procexp64.exe  endlessly sync`d by Dropbox, so quit then  cpi $cITcc\forMSWin\ProcessExplorer\procexp64.exe "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
 ## rg -uu  in  $DJH
 maxing out RAM
 ## DVDFab 13.0.3.7
@@ -1212,9 +1212,37 @@ sp 'registry::hkcu\environment' -name path -value $newPathCU
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
 $newPathCU = $oldPathCU+';C:\Users\jnbh\AppData\Local\Microsoft\WinGet\Packages\yt-dlp.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-N-121583-g4348bde2d2-win64-gpl\bin'; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
+## bat back into $PATH
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU+';C:\Users\jnbh\AppData\Local\Microsoft\WinGet\Packages\sharkdp.bat_Microsoft.Winget.Source_8wekyb3d8bbwe\bat-v0.26.0-x86_64-pc-windows-msvc'; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
+## RegCool
+winget add RegCool
+ran it for  Outils > Paramètres > Affichage > Mode > [ Sombre  Liste sombre ]
+## PeaZip
+winget add peazip
+## Signal
+was connected with Joseph (Free)
+## Microsoft Teams
+Skype  got it downloaded in
+## LuaRocks v3.12.2
+cp $cITcc\forMSWin\luarocks-3_12_2-windows-64\* C:\Lua
+## PowerToys
+winget add Microsoft.PowerToys
+Paramètres PowerToys > Gestion de fichiers >
+  Aperçu > Fermer automatiquement la fenêtre Aperçu après avoir perdu le focus
+  Extensions de l'Explorateur de fichiers >
+    Volet d'aperçu > Portable Document Format > Activé
+    Icône de miniature aperçu > Portable Document Format > Activé
+## QL-Win/QuickLook
+scoop bucket add extras && scoop install extras/quicklook
+## TortoiseGit
+winget add tortoisegit
+## $RTh
+cp $MSn/Thb/profiles.ini $RTh\profiles.ini
+## PowerToys
+[ Always On Top  Rogner et verrouiller ] off
 ## waiting
-luarocks-3.12.2-windows-64
-Microsoft Teams
 # physical configuration
 1366x768 screen
 Intel Core i5-6300U

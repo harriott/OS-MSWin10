@@ -31,7 +31,7 @@ Système > Écran > Mise à l'échelle et disposition > Modifier la taille du te
 ## Disk Usage
 du64.exe  copied into $HADL\Microsoft\WindowsApps
 ## Edge
-see  $ITsCP/WAN/browsers/browsers.txt
+see  $cITCP/WAN/browsers/browsers.txt
 ## FastStone Image Viewer
 with an image open, e  for  C:\Program Files\IrfanView\i_view64.exe
 ## File Explorer
@@ -42,10 +42,10 @@ $newPathCU = $oldPathCU -replace ';$', ''; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## fonts - Architects Daughter
 for  $Csst/data-1-sorted/counts.tex
-sl $ITscc\forMSWin\fonts-FontSquirrel\architects-daughter
+sl $cITcc\forMSWin\fonts-FontSquirrel\architects-daughter
   right-clicked on  ArchitectsDaughter.ttf  to  Installer
 ## fonts - DejaVu fonts
-$ITscc\forMSWin\fonts-dejavu-fonts-ttf-2.37\ttf > selected all, right clicked on to Install
+$cITcc\forMSWin\fonts-dejavu-fonts-ttf-2.37\ttf > selected all, right clicked on to Install
   arrived in  $HADL\Microsoft\Windows\Fonts
 ## fonts - Noto Sans CJK Regulars for Pandoc
 $coreIT\MSWin\fonts-copied\NotoHinted > selected all, right clicked on to Install
@@ -91,7 +91,7 @@ Résolution de l'écran > 1920 x 1080 (recommandé)
 ## PDFtk
 winget add PDFLabs.PDFtk.Free
 ## Process Explorer
-start $ITscc\forMSWin\ProcessExplorer\procexp64.exe
+start $cITcc\forMSWin\ProcessExplorer\procexp64.exe
   alt+o (= Options) > i (= Tray Icons) > p (= Physical Memory History)
   alt+o (= Options) > h (= Hide When Minimized)
   alt+o (= Options) > l (= Run At Logon)
@@ -225,7 +225,7 @@ got me  C:\Git\usr\bin\perl.exe
 Paramètres > Applications > Terminal > Désinstaller  then  win+x > Redémarrer
 then re-installed from Microsoft Store
 ## fzf (for PSFzf)
-sl $ITscc  for  cpi fzf.exe $HADL\Microsoft\WindowsApps
+sl $cITcc  for  cpi fzf.exe $HADL\Microsoft\WindowsApps
 fzf --version
 ## 7-Zip
 7z2301-x64.exe
@@ -367,7 +367,7 @@ gs10021w64.exe > C:\gs-10_02_1  rebooted
 ## remove Windows PE
 Paramètres > Applications > Extensions de l'environnement de préinstallation Windows (Win PE) du Kit de déploiment et d'évaluation Windows 3,64 Go > Désinstaller
 ## ExifTool v12.77
-cpi "$ITscc\forMSWin\exiftool(-k).exe" $HADL\Microsoft\WindowsApps\exiftool.exe
+cpi "$cITcc\forMSWin\exiftool(-k).exe" $HADL\Microsoft\WindowsApps\exiftool.exe
 ## Go
 go1.22.0.windows-amd64.msi > C:\Go\
 ## WizTree v4.18
@@ -422,7 +422,7 @@ sl $jtIT\CP\TeX\distro-MiKTeX\miktex-xetex  for  x mwe.tex  and off_ticked "Alwa
 ## Pandoc
 after MiKTeX
 winget add JohnMacFarlane.Pandoc  got  $HADL\Pandoc\pandoc.exe
-  sl $ITsCP\Pandoc  for
+  sl $cITCP\Pandoc  for
     pandoc --toc --toc-depth=6 -f markdown_strict toCdepth6MWE.md -o toCdepth6MWE.pdf
     - took a while for MiKTeX to download all the necessary packages
   md $tex\latex\m4p
@@ -454,7 +454,7 @@ winget update --all
 I seem to've installed with winget.
 ran it to build  ~\AppData\Roaming\LibreOffice\4
 in  user\  removed  config  folder &  registrymodifications.xcu
-  & replaced them from  $ITsCP\documenting\LibreOffice\lcu-sbMb-user
+  & replaced them from  $cITCP\documenting\LibreOffice\lcu-sbMb-user
 ## WSL
 ### fails (maybe needed to reboot)
 winget add 9MZNMNKSM73X > agreed to  https://vineelsai.com/Privacy/Apps/ArchWSL.html
@@ -520,7 +520,7 @@ C:\Users\jharr\.cargo\bin;C:\Users\jharr\AppData\Local\Microsoft\WindowsApps;C:\
 $newPathCU = $oldPathCU -replace ';$', ''; $newPathCU
 sp -path 'registry::hkcu\environment' -name path -value $newPathCU
 ## EUDC 1252 (for PowerColorLS icons)
-right-clicked on  $ITscc/font-Nerd-CascadiaMono/CaskaydiaMonoNerdFontMono-Regular.ttf >
+right-clicked on  $cITcc/font-Nerd-CascadiaMono/CaskaydiaMonoNerdFontMono-Regular.ttf >
   Installer  then (should be only)  Installer pour tous les utilisateurs
 test-path hkcu:\eudc\1252
 ni -path hkcu:\eudc\1252
@@ -905,8 +905,8 @@ Icône > ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png
 Ligne de commande > C:\Windows\system32\wsl.exe -d Ubuntu
 Masquez le profil de la liste déroulante > Activé
 ## ExifTool v12.96
-cpi "$ITscc\forMSWin\exiftool-12_96_64\exiftool(-k).exe" $HADL\Microsoft\WindowsApps\exiftool.exe
-cpi -recurse $ITscc\forMSWin\exiftool-12_96_64\exiftool_files $HADL\Microsoft\WindowsApps
+cpi "$cITcc\forMSWin\exiftool-12_96_64\exiftool(-k).exe" $HADL\Microsoft\WindowsApps\exiftool.exe
+cpi -recurse $cITcc\forMSWin\exiftool-12_96_64\exiftool_files $HADL\Microsoft\WindowsApps
 exiftool -ver
 ## fix LSD in $PATH
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
@@ -1189,7 +1189,7 @@ APS> $MSn\set  to run the scripts
 shortcut to  $MSn\AutoHotkey\HPEB840G37.ahk
   to  "$HADR\Microsoft\Windows\Start Menu\Programs\Startup"
 ### Process Explorer
-start $ITscc\forMSWin\ProcessExplorer\procexp64.exe
+start $cITcc\forMSWin\ProcessExplorer\procexp64.exe
 ## WT Ubuntu Apparance
 WT > ctrl+, > Ubuntu Apparance >
   Jeu de couleurs > One Half Dark
@@ -1219,7 +1219,7 @@ winget rm sqlite.sqlite
 ## Ookla Speedtest
 winget add Ookla.Speedtest.Desktop
 ## Process Explorer
-Run At Logon  never working, so  cpi $ITscc\forMSWin\ProcessExplorer\procexp64.exe "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
+Run At Logon  never working, so  cpi $cITcc\forMSWin\ProcessExplorer\procexp64.exe "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
 ## Hamachi
 winget add Hamachi
 after a reboot, Préférences > Paramètres > bienvenue décoché
@@ -1671,7 +1671,7 @@ Ran it for  Options > General > [ Maximum Number of Saved Copies > 5000
   Advanced > Show leading whitespace ] ( C:\Users\jharr\AppData\Local\Ditto_WindowsApp\Ditto.db )
   Keyboard Shortcuts > Activate Ditto > ctrl+*
 #### Edge
-see  $ITsCP/WAN/browsers/browsers.txt
+see  $cITCP/WAN/browsers/browsers.txt
 #### Paramètres
 Options d'ergonomie > Clavier > all off
 Périphériques > Saisie > Orthographie >
@@ -1831,7 +1831,7 @@ $newPathCU = $oldPathCU+'C:\Lua;'; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
 lua54 -v
 ## Ghostscript v10.06
-$ITscc\forMSWin\documenting > gs10060w64.exe > Uninstall Ghostscript Version 10.05.0 >
+$cITcc\forMSWin\documenting > gs10060w64.exe > Uninstall Ghostscript Version 10.05.0 >
   C:\gs-10_06_0 (Generate cidfmap for Windows CJK TrueType fonts) rebooted
 ## re-establish Google Chrome
 winget add Google.Chrome.EXE
@@ -1868,7 +1868,7 @@ winget add SumatraPDF -h -l C:\SumatraPDF  see  $MSn/PS/Profile.ps1
 ## re-establish Pandoc
 (after MiKTeX)
 winget add JohnMacFarlane.Pandoc  got  $HADL\Pandoc\pandoc.exe
-  sl $ITsCP\Pandoc  for
+  sl $cITCP\Pandoc  for
     pandoc --toc --toc-depth=6 -f markdown_strict toCdepth6MWE.md -o toCdepth6MWE.pdf
     - took a while for MiKTeX to download all the necessary packages
   md $tex\latex\m4p
@@ -1987,9 +1987,27 @@ WT > ctrl+, > Ubuntu 24.04.1 LTS Apparance >
   Jeu de couleurs > One Half Dark
   Texte > Taille de police > 9
   Transparence > Opacité de l'arrière plan > 81%
+## Dropbox 237.4.5655
+seemed to trigger a lenghty complete re-indexation
+## TortoiseGit
+winget add tortoisegit
+## Signal
+winget add OpenWhisperSystems.Signal
+## LuaRocks v3.12.2
+cp $cITcc\forMSWin\luarocks-3_12_2-windows-64\* C:\Lua
+## PeaZip
+winget add peazip
+## PowerToys
+winget add Microsoft.PowerToys
+Paramètres PowerToys > Gestion de fichiers >
+  Aperçu > Fermer automatiquement la fenêtre Aperçu après avoir perdu le focus
+  Extensions de l'Explorateur de fichiers >
+    Volet d'aperçu > Portable Document Format > Activé
+    Icône de miniature aperçu > Portable Document Format > Activé
+## $RTh
+cp $MSn/Thb/profiles.ini $RTh\profiles.ini
 ## waiting
 Mise à jour facultatives
-TortoiseGit
 # physical configuration
 1920x1080 screen
 Intel Core i5-6300U

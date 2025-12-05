@@ -9,10 +9,10 @@ fzf --version
 
 #=> fzf.exe check downloaded version
 # from  https://github.com/junegunn/fzf/releases
-& $ITscc\forMSWin\fzf.exe --version
+& $cITcc\forMSWin\fzf.exe --version
 
 #=> fzf.exe into WindowsApps
-cpi $ITscc\forMSWin\fzf.exe $HADL\Microsoft\WindowsApps
+cpi $cITcc\forMSWin\fzf.exe $HADL\Microsoft\WindowsApps
 
 # #=> fzf.exe out of WindowsApps
 # ri $HADL\Microsoft\WindowsApps\fzf.exe

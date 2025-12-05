@@ -1,13 +1,19 @@
 # vim: se fdl=2:
 
-# Joseph Harriott, sam 08 févr 2025
+# Joseph Harriott, sam 22 nov 2025
 
 # $MSn\PS\Env.ps1
 #  needed for system build
-#  symlink ($MSn\set\1-PSProfile.ps1) sourced by  $MSn/PS/Profile.ps1
+#  symlink ($MSn\set\2-PSProfile.ps1) sourced by  $MSn/PS/Profile.ps1
 
 #=> 0 useful variables
 $Cn = $Env:Computername
+
+#==> for  gokcehan  lf
+$env:PAGER='bat'  # i  only
+# $env:PAGER='less'
+$env:SHELL='pwsh'
+# see  $MSn/PS/Profile.ps1
 
 #==> places
 $CPF = $env:programfiles
@@ -66,7 +72,7 @@ if ( test-path "~\_noDropbox.ps1" ) {
             $StEr = "$rEr\StudioErmitage"
       $JJt0 = "$DJH\Jo-then0"
         $T0Fr = "$JJt0\world-Europe\France"
-      $Thb = "$DJH\Thb-dr"  # Thunderbird
+      $Thb = "$DJH\Thb"  # Thunderbird
     $DrSh = "$Drpbx\JH\dev-Sh"
 }
 #===> 0 $HOME
@@ -78,14 +84,15 @@ $HADL = "$HOME\AppData\Local"  # ($env:localappdata)
   $nvim = "$HADL\nvim"  # lf  don't grok  ~
 $HADR = $Env:AppData  # Roaming
   $Pandoc = "$HADR\Pandoc"
+  $RTh = "$HADR\Thunderbird"
   $tex = "$HADR\MiKTeX\tex"
 
 #===> 1 rooting on $coreIT
-$ITsCP = "$coreIT\CP"
-  $LTXj = "$ITsCP\documenting\LaTeX\jo"
+$cITCP = "$coreIT\CP"
+  $LTXj = "$cITCP\documenting\LaTeX\jo"
 $DWp = "$coreIT\DokuWiki\pages"
-$ITscc = "$coreIT\copied-code"
-$ITscr = "$coreIT\copied-reference"
+$cITcc = "$coreIT\copied-code"
+$cITcr = "$coreIT\copied-reference"
 if ( test-path "~\_noDropbox.ps1" )
   { $MSWml = "D:\ITJ\ml" } else { $MSWml = "$coreIT\MSWin\ml-$Cn" }
 $onGH = "$coreIT\onGitHub"

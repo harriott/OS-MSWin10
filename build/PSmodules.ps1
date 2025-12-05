@@ -1,4 +1,4 @@
-# vim: set fdl=2:
+# vim: set fdl=1:
 
 # $MSWin10\build\PSmodules.ps1
 

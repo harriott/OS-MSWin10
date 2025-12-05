@@ -10,22 +10,24 @@
 #  csl C:\MT-runSafely.ps1
 
 # Test this script:
-#  ni -Path "$Drpbx\JH\Thb-dr" -name 'linuxlock'
-#  $Env:Computername > $Drpbx\JH\Thb-dr\linuxlock
-#  gc $Drpbx\JH\Thb-dr\linuxlock
+#  ni -Path "$Drpbx\JH\Thb" -name 'linuxlock'
+#  $Env:Computername > $Drpbx\JH\Thb\linuxlock
+#  gc $Drpbx\JH\Thb\linuxlock
 #  pwsh -nop -w minimized -f C:\MT-runSafely.ps1
 
-$Cn = $Env:Computername
-$Drpbx = "D:\Dropbox"
-$Thb = "$Drpbx\JH\Thb-dr"
-$llf = "$Thb\linuxlock"; if ( test-path $llf ) { $h = gc $llf }
-$Wlf = "$Thb\Win10ProLock"; if ( test-path $Wlf ) { $h = gc $Wlf }
-. C:\MT-tT.ps1
-if ( $h -and $h -ne $Cn ) { tT "locked to $h" }
-else {
-  if ( gci -r $Thb | ? Name -match ".+'s conflicted copy .+| \(Copie en conflit de " )
-    { tT 'Dropbox conflicts in $Thb' }
-  else { echo $Cn > $Wlf  # noting that Thunderbird is launched here
-    start thunderbird } # thunderbird.exe  must be in path
-}
+. ~\PSEnv.ps1
+  $llf = "$Thb\linuxlock"; if ( test-path $llf ) { $h = gc $llf }
+  $Wlf = "$Thb\Win10ProLock"; if ( test-path $Wlf ) { $h = gc $Wlf }
+  . $MSn\Thb\tT.ps1
+  if ( $h -and $h -ne $Cn ) { tT "locked to $h" }
+  else {
+    if ( gci -r $Thb | ? Name -match ".+'s conflicted copy .+| \(Copie en conflit de " )
+      { tT 'Dropbox conflicts in $Thb' }
+    else {
+      # echo $Cn > $Wlf  # noting that Thunderbird is launched here - deprecated
+      $now = (get-date).tostring("yyMMdd-HHmmss")
+      "$now  $Cn  "+'$RTh\jo' >> $cITCP/WAN/email-Thunderbird/activity
+      start thunderbird
+      } # thunderbird.exe  must be in path
+  }
 

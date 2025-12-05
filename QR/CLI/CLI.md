@@ -15,11 +15,13 @@ vim: nospell:
 # Command Prompt
     dir * /x
     pwsh -nop -c ls
+    type <file_to_list>
 
 - in Explorer: `Alt+D > cmd > Enter`
 - `PS> cmd` then `exit`
 
 ## environment variables
+    echo %HOMEPATH%
     echo %LOCALAPPDATA%  # C:\Users\<user>\AppData\Local
     echo %username%
     echo %userprofile%
@@ -49,10 +51,11 @@ can paste these into `File Explorer`
 # file manage - Robocopy
     ROBOCOPY.exe
 
-- `/E` subfolders, including empty
+- `/e` subfolders, including empty
 - `/fft` 2-second granularity (FAT File Times)
 - `/l` list only (simulate)
 - `/mir` `/e /purge` (mirror)
+- `/np` no progress report
 - once the source/target are specified, exclude some directories: `/xd '.git' /xd '*packs-*'`
 - `/tee` output to console as well as log file
 

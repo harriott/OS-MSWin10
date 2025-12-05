@@ -12,6 +12,7 @@ vim: nospell:
     sleep 1
 
 - `$_` = `$PSItem` = current object in the pipeline object
+- `?` (= `where` = `Where-Object`)
 - `Alt > Space > E > L > up/down` to scroll, then `Esc`
 - `continue` returns to the top of a loop a `trap` or a `switch`
 - `gi` (= `Get-Item`)
@@ -124,7 +125,7 @@ no standard aliases
     C:\Git\usr\bin\perl.exe -v
     C:\msys64\usr\bin\perl.exe -v
     java -jar C:\LanguageTool\languagetool-commandline.jar -h
-    java -jar $ITscc\CP\LanguageTool\languagetool-commandline.jar -h
+    java -jar $cITcc\CP\LanguageTool\languagetool-commandline.jar -h
     winget find NodeJS
     lua54.exe -v
 
@@ -290,7 +291,6 @@ replace text in files
     sl ~ (= set-location C:\Users\$ENV:UserName")
 
 ## investigations
-    bat <textFile>  # with beautiful formatting and less paging
     dw -?
     dw  # directory counts
     f  # fzf preview files with bat
@@ -375,7 +375,7 @@ takes a regex
     ls . -force  # Gets both hidden & non-hidden. Shows desired symlinks target.
 
 ## lf
-    $HADL\lf\lfrc
+    $HADR\lf\lfrc
     g $home
 
 by gokcehan
@@ -401,9 +401,6 @@ by gokcehan
 `md` = `mkdir`, which calls `new-item`
 
 #### remove-item
-    remove-itemsafely file_or_dir  # to Recycle Bin
-
-##### remove-item
 - `-recurse`
 - `del`, `erase`, `rd`, `ri`, `rm`, `rmdir`
 - no easy way to remove a folder, and not sent to Recycle...
@@ -430,11 +427,6 @@ by gokcehan
 ## command history
     gvim (Get-PSReadlineOption).HistorySavePath
     h  # Get-History
-
-# microsoft.powershell.core
-    <command> | out-null  # works for some commands
-
-`?` (= `where` = `Where-Object`)
 
 # microsoft.powershell.management
 - `gc` (= `cat` = `type` = `get-content`)
@@ -474,6 +466,8 @@ prefer `&` where possible
     lanip  # $MSn\PS\Profile.ps1
 
 # output
+    gp Registry::HKEY_CLASSES_ROOT\.dummy_value 2>&1 | Out-Null
+    <command> | Out-Null  # works for some commands
     Out-File
 
 - `cls` (= `Clear-Host`)
@@ -669,6 +663,7 @@ prefer `&` where possible
 # system
     $env:LOCALAPPDATA\Microsoft\Windows\Fonts
     $profile
+    $RHCRdots = gci Registry::HKEY_CLASSES_ROOT\.* | %{ Split-Path $_.Name -Leaf }; [string]$RHCRdots
     (gcim win32_operatingsystem) | select -property version, caption
     (gcm prompt).ScriptBlock
     get-pslocation
@@ -703,6 +698,7 @@ prefer `&` where possible
 # Thunderbird
     ps thunderbird
     thunderbird.exe -addressbook  # opens on  Carnet d'adresses  tab
+    thunderbird.exe -P
     where.exe thunderbird  # finds it once it`s in the path
 
 # Vim

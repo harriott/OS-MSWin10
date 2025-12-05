@@ -3,6 +3,9 @@
 
 set hidden true
 set icons true
+set incsearch true
+# set previewer chafa  # not shrunk to size and kills other filetypes
+# set previewer %HOMEPATH%\lf-previewer.cmd  # gets zero previews
 
 # 0 remove some defaults
 map m

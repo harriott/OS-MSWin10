@@ -8,11 +8,16 @@ vim: nospell:
     cpan -l > $MSWml\cpanList.txt
     yt-dlp -U  # update inplace
 
-- AutoHotkey `$MSn\AutoHotkey\AZERTY.ahk`
 - `ctrl+m` on selected text opens it in `LanguageTool`
+- `Win+Alt+p` PowerToys Command Palette
 - mpv-winbuild/releases
 - Task Scheduler: `taskschd.msc`
 - WinRE
+
+# AutoHotkey
+    $MSn\AutoHotkey\AZERTY.ahk
+
+open with `AutoHotkey Dash` which appears as `AutoHotkey Launcher`
 
 # build
     $MSWml
@@ -66,7 +71,7 @@ ExifTool by Phil Harvey
 - `r` rotate right
 
 # documenting - LaTeX
-    g $ITscr\CP\TeX
+    g $cITcr\CP\TeX
 
 ## Polyglossia
     \setmainfont{Segoe Print}
@@ -161,29 +166,38 @@ star icon
     sl C:\Windows\Fonts
 
 - `Control Panel > Programs and Features`
-- `shift+win+/` PowerToys general Win10 Shortcut Guide
 - `System Volume Information` can be Deleted
-- `win+a` action center, brightness at bottom (Dévélopper)
-- `win+C` PowerToys Color Picker
-- `win+H` PowerToys mouse pointer crosshairs
-- `win+S` Snipping
-- `win+l` lock screen
-- `win+x` > `t` = `Gestion des disques`
+- `Win+/` PowerToys Shortcut Guide
+- `Win+a` action center, brightness at bottom (Dévélopper)
+- `Win+C` PowerToys Color Picker
+- `Win+l` lock screen
+- `Win+S` Snipping
+- `Win+T` PowerToys Text Extractor
+- `Win+x` > `t` = `Gestion des disques`
 
-## input
-`ctrl+win+o` toggles visual keyboard in current language
+## File Explorer
+- `Alt+d`/`ctrl+l` (& `f4`) le chemin d’accès > `bash`/`pwsh`/`wt` Enter
+- `Ctrl+F1` toggle the ribbon
+- `Ctrl+N` new directory
+- `Ctrl+space` toggle PowerToys Peek
+- Explorateur de fichiers
+
+### preview panel
+    $MSWin10/build/FEPreviewPanel/check.ps1
+    $MSWin10/build/FEPreviewPanel/set.ps1
+
+`Alt+p` toggle preview panel
+
+## cbh
+`Ctrl+Win+o` toggles visual keyboard in current language
 
 ### change language
 - `shift+alt`
 - `win+space` with pop-up
 
-## File Explorer
-- `Alt+d`/`ctrl+l` (& `f4`) le chemin d’accès > `bash`/`pwsh`/`wt` Enter
-- `Alt+p` toggle preview panel
-- `Ctrl+F1` toggle the ribbon
-- `Ctrl+N` new directory
-- `Ctrl+space` toggle PowerToys Peek
-- Explorateur de fichiers
+### mouse
+- `Ctrl Ctrl` locate mouse pointer
+- `Win+H` PowerToys mouse emphasis
 
 ## internetworking
     whois 8.8.8.8
@@ -215,8 +229,9 @@ star icon
 
 `Éditeur du Registre`
 
-## snapping
-if done when eg  AltSnap's default  AutoSnap=2, then  win+arrow  actions are deadened
+## screen
+- ruler: `Ctrl+Win+M`
+- snapping: if done when eg  AltSnap's default `AutoSnap=2`, then `Win+arrow` actions are deadened
 
 ## Start Menus
     sl "$HADR\Microsoft\Windows\Start Menu\Programs"
