@@ -2,7 +2,7 @@ vim: nospell:
 
     $MSWin10/QR/CLI/encoding-PowerShell.md
 
-    $coreIT\MSWin\PowerShell\Scratch.ps1
+    $coreIT\MSWin\PowerShell\scratch2.ps1
     $myinvocation.mycommand.name  # = the script's name
     $MSWin10\gac.ps1  # to explore all commands
     1..3
@@ -28,6 +28,10 @@ limited to single commands
     nal <alias> <string>
     sal <alias> <string>
 
+# AV
+    (gi $HADL\Microsoft\WindowsApps\mpv.exe).VersionInfo.FileVersion
+    ffprobe -h | less
+
 # data
     $x.GetType()
     sv var $true; $var
@@ -36,6 +40,7 @@ limited to single commands
 - objects
 
 ## arrays
+    $a -match 'regex'
     $a = '1 a 2 b'
         $a.Split(" ")
         (-split $a)
@@ -713,6 +718,7 @@ prefer `&` where possible
 
 # WSL
     (ls HKCU:SOFTWARE\Microsoft\Windows\CurrentVersion\Lxss | gp -Name DistributionName).DistributionName
+    wsl  # runs it in the cwd
     wsl --help
     wsl --shutdown  # kills all WSL2
     wsl -l -o  # (--list --online) available flavours

@@ -19,6 +19,49 @@ function ep {
   '$env:path  is in  $MSWml/path'
 }
 
+#=> 0 AV
+function cw {
+  gci -r *.webm | %{
+    ''
+    ffmpeg -hide_banner -i $_.name -c:a libvorbis -aq 4 $_.name.Replace('.webm',' webm.ogg')
+    sleep 1; ri $_
+  }
+}
+
+#==> FFmpeg 0
+function ffa { $f = $args -join ' '
+  $f = $f.Replace(' -c: a ', ' -c:a ')
+  $f = $f.Replace(' -q: v ', ' -q:v ')
+  iex "$f" } # no spaces or () in file names
+function ffi { $f = "ffa ffmpeg -hide_banner -i " + $args; iex $f }
+
+#==> ffmpeg 1 trimming
+function avtb {
+  if ( $args[0] ) {
+    $a0 = $args[0]
+    $global:av = $a0.Replace('.\','')
+    $global:avt = $av.Replace('`','') # remove backticks around YouTube codes
+    $trim = 1; if ( $args[1] ) { $trim = $args[1] }
+    ffmpeg -hide_banner -ss $trim -i "$avt" -c copy -y "t$avt"
+    mpv --end=3 "t$avt"
+  } else { '- need an AV file' }
+}
+
+function avte {
+  if ( $args[0] ) {
+    $a0 = $args[0]
+    $global:av = $a0.Replace('.\','')
+    $global:avt = $av.Replace('`','') # remove backticks around YouTube codes
+    $trim = 1; if ( $args[1] ) { $trim = $args[1] }
+    $d = ((ffprobe -i "$avt" -show_format -v quiet) -match 'duration').Substring(9)
+    $trimmed = $d - $trim
+    ffmpeg -hide_banner -i "$avt" -c copy -t $trimmed -y "t$avt"
+    mpv --start=-3 "t$avt"
+  } else { '- need an AV file' }
+}
+
+# mv "t$av" "$avt" -force
+
 #=> 0 convert images recursively
 function mc {
   $format1 = $args[0]
@@ -98,6 +141,18 @@ function t {
 
 #===> filetypes
 function cex { gci . -r | where { ! $_.psiscontainer } | group extension -noelement | sort count -desc }
+
+function ftPT {
+  $ftl = 'ahk aux cls dw el emdr log md odt ps1 sty tex vim'
+  $fta = $ftl.Split(' ')
+  'ft : (Default) - PerceivedType - Content Type'
+  foreach ($ft in $fta) {
+    $RHCRft = "Registry::HKEY_CLASSES_ROOT\.$ft"
+    if ( Test-Path $RHCRft ) {
+      "$ft : "+(Get-ItemProperty $RHCRft).'(Default)'+' - '+(Get-ItemProperty $RHCRft).'PerceivedType'+' - '+(Get-ItemProperty $RHCRft).'Content Type'
+    } else { $ft }
+  }
+} # filetype PerceivedType - for File Explorer preview panel
 
 function tomalak {
 # https://stackoverflow.com/questions/15064758/summarize-a-file-system-directory-with-powershell
@@ -300,6 +355,7 @@ function wp { curl wttr.in/Paris }
 #==> yt-dlp
 # sal y yt-dlp
 sal y $HADL\Microsoft\WinGet\Packages\yt-dlp.yt-dlp_Microsoft.Winget.Source_8wekyb3d8bbwe\yt-dlp.exe
+  function ya { y -f ba $args[0] }
   function y7 { y -f '[height<=?720]' $args[0] }
   function yf { y -F $args[0] }
 
@@ -536,13 +592,6 @@ function dcc1 {
   } else { "- you should've dcc0'd" | Out-HostColored dcc0 }
 }  # removes them
 
-#==> FFmpeg
-function ffa { $f = $args -join ' '
-  $f = $f.Replace(' -c: a ', ' -c:a ')
-  $f = $f.Replace(' -q: v ', ' -q:v ')
-  iex "$f" } # no spaces or () in file names
-function ffi { $f = "ffa ffmpeg -hide_banner -i " + $args; iex $f }
-
 #==> general tools
 function xx { exit } # quit (doesn't work as an alias) ctrl+d is quicker
 function fcco {Format-Custom -InputObject $args[0] -Expand CoreOnly}
@@ -604,16 +653,16 @@ $host.privatedata.ErrorBackgroundColor = 'darkmagenta'
 
 #==> Thb
 function tg {
-  # robocopy /mir $Thb D:\Thb
-  robocopy /mir $Thb $RTh\jo
+  # robocopy /mir $JHThb D:\Thb
+  robocopy /mir $JHThb $RTh\jo
   "- you can now run Thunderbird on this machine" } # Thunderbird get from Dropbox
 
 function tp {
-  robocopy /mir $RTh\jo $Thb
-  $DTfl = ls -af -s $Thb | ? { $_.fullname } | sort lastwritetime | %{ dtsfn $_ ':' }
+  robocopy /mir $RTh\jo $JHThb
+  $DTfl = ls -af -s $JHThb | ? { $_.fullname } | sort lastwritetime | %{ dtsfn $_ ':' }
   $lc = $DTfl[-1].substring(2,17) # last change
   $lcc = $lc.replace(':','') # last change compact
-  "$lcc $Cn "+'$Thb '+$DTfl.count >> $cITCP/WAN/email-Thunderbird/activity
+  "$lcc $Cn "+'$JHThb '+$DTfl.count >> $cITCP/WAN/email-Thunderbird/activity
   "- you should now let Dropbox finish sync'ing" } # Thunderbird put to Dropbox
 
 #=> 2 zoxide

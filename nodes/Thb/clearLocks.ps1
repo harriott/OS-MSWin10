@@ -2,7 +2,7 @@
 
 # Joseph Harriott - ven 05 déc 2025
 
-# remove my  $Thb\Win10ProLock  if Thunderbird isn't running
+# remove my  $JHThb\Win10ProLock  if Thunderbird isn't running
 # ----------------------------------------------------------
 # for  $MSn\AutoHotkey\AZERTY.ahk
 #  APS> syli $MSn\Thb\clearLocks.ps1 C:\MT-clearLocks.ps1
@@ -10,13 +10,13 @@
 #   csl C:\MT-*
 
 # Test:
-#  $Cn > $Thb\Win10ProLock
-#  'other' > $Thb\Win10ProLock
-#  'dud' > $Thb\parent.lock
+#  $Cn > $JHThb\Win10ProLock
+#  'other' > $JHThb\Win10ProLock
+#  'dud' > $JHThb\parent.lock
 #  & C:\MT-clearWin10ProLock.ps1
 
 . ~\PSEnv.ps1
-  # ls $Thb\parent.lock  is kept in use by  Thunderbird
+  # ls $JHThb\parent.lock  is kept in use by  Thunderbird
   #  and so isn't sync'd by  Dropbox  until  Thunderbird closes
   # <dot>parentlock  seems to be a relic
   if ( ! (Get-Process thunderbird -ErrorAction SilentlyContinue) ) {
@@ -29,13 +29,13 @@
       ri $RTh\jo\Win10ProLock
       tT 'removed  $RTh\jo\Win10ProLock'
     }
-    if ( test-path "$Thb\parent.lock" ) {
-      ri $Thb\parent.lock
-      tT 'removed  $Thb\parent.lock'
+    if ( test-path "$JHThb\parent.lock" ) {
+      ri $JHThb\parent.lock
+      tT 'removed  $JHThb\parent.lock'
     }
-    if ( test-path "$Thb\Win10ProLock" ) {
-      ri $Thb\Win10ProLock
-      tT 'removed  $Thb\Win10ProLock'
+    if ( test-path "$JHThb\Win10ProLock" ) {
+      ri $JHThb\Win10ProLock
+      tT 'removed  $JHThb\Win10ProLock'
     }
   }
 

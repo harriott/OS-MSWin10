@@ -1722,7 +1722,7 @@ Edge > dropbox.com > DropboxInstaller.exe > English & Selective sync
     Deleted  D:\Dropbox  then renamed  D:\Dropbo  to  D:\Dropbox
   still getting unsynchable files, so  AIdc> sfc /scannow  found no faults, so
     APS> chkdsk d: /f  was quick and found no problems
-removed  $DrCop  &  $Thb  from  Selective Sync, then Deleted both from  D:\
+removed  $DrCop  &  $JHThb  from  Selective Sync, then Deleted both from  D:\
   - both requiring Administrator Permission...
   after  reboot  Dropbox completely stuck on 86k files so  Quit  for
     Deleted  D:\Dropbox\.dropbox.cache D:\Dropbox\.dropbox
@@ -2007,6 +2007,7 @@ Paramètres PowerToys > Gestion de fichiers >
 ## $RTh
 cp $MSn/Thb/profiles.ini $RTh\profiles.ini
 ## waiting
+fastmail
 Mise à jour facultatives
 # physical configuration
 1920x1080 screen

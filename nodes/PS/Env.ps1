@@ -60,11 +60,11 @@ if ( test-path "~\_noDropbox.ps1" ) {
         $JChu = "$JCop\human"  # used in  $TeNo
         $Pr0 = "$JCop\Practical0"
           $Pr0t = "$Pr0\technos"
-      $JHCc = "$DJH\Cop-code"
       $JHt = "$DJH\Jo-technos"
         $jtIT = "$JHt\IT"
           $jtCP = "$jtIT\CP"
         $tIs = "$JHt\IT-storage"  # $tIs\diskUsage.txt
+      $JHThb = "$DJH\Thb"  # Thunderbird
       $JHw = "$DJH\work"  # for IT websites and more
         $JHm = "$JHw\IT-Jekyll-harriott-minima"
         $wP = "$JHw\France\IdF\Paris"
@@ -72,7 +72,6 @@ if ( test-path "~\_noDropbox.ps1" ) {
             $StEr = "$rEr\StudioErmitage"
       $JJt0 = "$DJH\Jo-then0"
         $T0Fr = "$JJt0\world-Europe\France"
-      $Thb = "$DJH\Thb"  # Thunderbird
     $DrSh = "$Drpbx\JH\dev-Sh"
 }
 #===> 0 $HOME

@@ -16,13 +16,13 @@
 #  pwsh -nop -w minimized -f C:\MT-runSafely.ps1
 
 . ~\PSEnv.ps1
-  $llf = "$Thb\linuxlock"; if ( test-path $llf ) { $h = gc $llf }
-  $Wlf = "$Thb\Win10ProLock"; if ( test-path $Wlf ) { $h = gc $Wlf }
+  $llf = "$JHThb\linuxlock"; if ( test-path $llf ) { $h = gc $llf }
+  $Wlf = "$JHThb\Win10ProLock"; if ( test-path $Wlf ) { $h = gc $Wlf }
   . $MSn\Thb\tT.ps1
   if ( $h -and $h -ne $Cn ) { tT "locked to $h" }
   else {
-    if ( gci -r $Thb | ? Name -match ".+'s conflicted copy .+| \(Copie en conflit de " )
-      { tT 'Dropbox conflicts in $Thb' }
+    if ( gci -r $JHThb | ? Name -match ".+'s conflicted copy .+| \(Copie en conflit de " )
+      { tT 'Dropbox conflicts in $JHThb' }
     else {
       # echo $Cn > $Wlf  # noting that Thunderbird is launched here - deprecated
       $now = (get-date).tostring("yyMMdd-HHmmss")

@@ -175,6 +175,17 @@ star icon
 - `Win+T` PowerToys Text Extractor
 - `Win+x` > `t` = `Gestion des disques`
 
+## cbh
+`Ctrl+Win+o` toggles visual keyboard in current language
+
+### change language
+- `shift+alt`
+- `win+space` with pop-up
+
+### mouse
+- `Ctrl Ctrl` locate mouse pointer
+- `Win+H` PowerToys mouse emphasis
+
 ## File Explorer
 - `Alt+d`/`ctrl+l` (& `f4`) le chemin d’accès > `bash`/`pwsh`/`wt` Enter
 - `Ctrl+F1` toggle the ribbon
@@ -186,18 +197,8 @@ star icon
     $MSWin10/build/FEPreviewPanel/check.ps1
     $MSWin10/build/FEPreviewPanel/set.ps1
 
-`Alt+p` toggle preview panel
-
-## cbh
-`Ctrl+Win+o` toggles visual keyboard in current language
-
-### change language
-- `shift+alt`
-- `win+space` with pop-up
-
-### mouse
-- `Ctrl Ctrl` locate mouse pointer
-- `Win+H` PowerToys mouse emphasis
+- `Alt+p` toggle preview panel
+- function `ftPT`
 
 ## internetworking
     whois 8.8.8.8

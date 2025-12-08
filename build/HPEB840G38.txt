@@ -87,6 +87,10 @@ start $cITcc\forMSWin\ProcessExplorer\procexp64.exe > Agree
   alt+o (= Options) > l (= Run At Logon)
 ## Signal
 winget add OpenWhisperSystems.Signal
+## mpv v0.40.0-401-g99d6d4c1c
+cp $cITcc/forMSWin/AV/mpv-x86_64-v3-20251207-git-dbd7a90/mpv.exe $HADL\Microsoft\WindowsApps
+(gi $HADL\Microsoft\WindowsApps\mpv.exe).VersionInfo.FileVersion
+.ogg, .webm  Ouvrir avec
 # build - sequential build
 Paramètres >
   Mise à jour et sécurité > Activation > Windows est activé à l'aide d'une license numérique
@@ -1242,6 +1246,10 @@ winget add tortoisegit
 cp $MSn/Thb/profiles.ini $RTh\profiles.ini
 ## PowerToys
 [ Always On Top  Rogner et verrouiller ] off
+## Fastmail
+Fastmail Setup 1.0.6.exe
+## WSL Ubuntu 24.04 LTS - ffmpeg, mpv
+sudo apt install ffmpeg
 ## waiting
 # physical configuration
 1366x768 screen
