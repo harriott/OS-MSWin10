@@ -104,6 +104,8 @@ limited to single commands
     get-timezone -listavailable | out-gridview
     Get-TZData Australia/Hobart
 
+`gtz` (`Get-Timezone`)
+
 ## get-date
     $n = get-date -f yyyyMMddhhmmss
     (get-date).day  # of month
@@ -117,6 +119,7 @@ no standard aliases
 
 # drives
     gdr
+    Get-Volume
 
 ## registry
     (gp -path ‘registry::hklm\system\currentcontrolset\control\session manager\environment’ -name path).path; $oldPathLM -split ';'
@@ -357,12 +360,14 @@ takes a regex
 ### lastwritetime
     ls -file -s | %{ dtsfn $_ ':' } | sort  # all files recursively
     lwp \.ps1
+    lwt csv csv
+    lwt doc docs docx odt
     lwt lua lua
     lwt md md
+    lwt ods ods
     lwt ps1 ps1
     lwt sh sh
-    lwt docs doc docx odt
-    lwt tex cls sty tex
+    lwt cls sty tex tex
     lwt txt txt
 
 ### sizes
@@ -431,6 +436,7 @@ by gokcehan
 
 ## command history
     gvim (Get-PSReadlineOption).HistorySavePath
+    nvim (Get-PSReadlineOption).HistorySavePath
     h  # Get-History
 
 # microsoft.powershell.management

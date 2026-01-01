@@ -1,5 +1,5 @@
 
-# Alacritty - $MSn/Alacritty.lua ($MSn/set/3.ps1)
+# Alacritty - $MSn/alacritty.toml ($MSn/set/3.ps1)
 
 [font]
   size = 10  # change is instantaneous

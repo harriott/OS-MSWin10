@@ -8,6 +8,7 @@ vim: nospell:
     chkdsk d: /f
     code-minimap --version
     code-minimap -h  # --help
+    tasklist
 
 - Ghostscript releases
 - `intl.cpl` (= `Panneau de configuration > Région`)
@@ -121,17 +122,6 @@ scheduled tasks
 - `ctrl+shift+n` new window
 - `ctrl+shift+p` commands
 
-#### pane contents
-- `ctrl+c` copy text
-- `ctrl+shift+a` select all
-- `ctrl+shift+f` find
-
-##### scrolls
-- `ctrl+shift+End`
-- `ctrl+shift+Home`
-- `ctrl+shift+PgDn`
-- `ctrl+shift+PgUp`
-
 #### panes
 - `alt+D` duplicate pane right
 - `alt+_` split pane below (AZERTY `alt+6`)
@@ -142,6 +132,17 @@ scheduled tasks
 - `ctrl+shift+w` close pane
 
 No way to throw a split out to full...
+
+#### pane contents
+- `ctrl+c` copy text
+- `ctrl+shift+a` select all
+- `ctrl+shift+f` find
+
+##### scrolls
+- `ctrl+shift+End`
+- `ctrl+shift+Home`
+- `ctrl+shift+PgDn`
+- `ctrl+shift+PgUp`
 
 #### tabs
 - `ctrl+shift+d` new tab in same directory (`$MSWin10\PSProfile.ps1`)

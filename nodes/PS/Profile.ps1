@@ -74,34 +74,11 @@ function mc {
 } #  mc tiff jpg
 
 #=> 0 directories & files
-function c { if ( $args[0] ) { sl $args[0] } else { sl .. }; p }  # handily move in or out
-function g { lf -print-last-dir $args | sl } # gokcehan  lf  quits on last viewed directory
 function i { ii . }  # opens  file explorer  on current directory
-function lc { [string[]]$list = (gci).Name; $list -join '  ' }
-function ~ { sl ~ }
 
 # nvim/vim, quitting to last file's directory ($vfv/enter/vimrc.vim)
 function n { nvim $args; gc $home/lastVimDirectory | sl }
 function v { C:\Vim\vim91\vim.exe $args; gc $home/lastVimDirectory | sl }
-
-sal l lsd
-  function la { l -a } # --all
-  function lg { l -glR } # --git stqtus
-  function ll { l -l } # --long
-  function lls { l -lS --reverse } # --sizesort
-  function llt { l -lt --reverse } # --timesort
-  function lt { l --tree }
-  function ltd { l -d --tree } # -directory-only
-  function lx { l -lRX } # --recursive --extensionsort
-sal vf vifm
-
-# eza
-function a { eza -aF --icons }  # grid, handily showing up symlinks
-function e { eza --icons }
-function ed { eza -DT }  # show directory tree
-function er { eza -R }  # nice recursive list
-function es { eza -al --icons }  # show permissions and symlinks
-function et { eza -T }  # for full tree
 
 #==> changes
 function chco {
@@ -118,6 +95,17 @@ function syli { ni $args[1] -type symboliclink -value $args[0] -force } # symbol
 function tit { ri "*.aux"; ri "*.log"; ri "*.out"; ri "*.toc" }
 
 #==> investigations
+# eza
+  function a { eza -aF --icons }  # grid, handily showing up symlinks
+  function e { eza --icons }
+  function ed { eza -DT }  # show directory tree
+  function er { eza -R }  # nice recursive list
+  function es { eza -al --icons }  # show permissions and symlinks
+  function et { eza -T }  # for full tree
+
+function lc { [string[]]$list = (gci).Name; $list -join '  ' }
+function led { & $cITcc/forMSWin/fleschutz-PowerShell/scripts/list-empty-dirs.ps1 }
+function lef { & $cITcc/forMSWin/fleschutz-PowerShell/scripts/list-empty-files.ps1 }
 ipmo PowerColorLS; sal p PowerColorLS
 
 function csl {
@@ -138,6 +126,17 @@ function t {
   $pst
   iex $pst
   }
+
+sal l lsd
+  function la { l -a } # --all
+  function lg { l -glR } # --git stqtus
+  function ll { l -l } # --long
+  function lls { l -lS --reverse } # --sizesort
+  function llt { l -lt --reverse } # --timesort
+  function lt { l --tree }
+  function ltd { l -d --tree } # -directory-only
+  function lx { l -lRX } # --recursive --extensionsort
+sal vf vifm
 
 #===> filetypes
 function cex { gci . -r | where { ! $_.psiscontainer } | group extension -noelement | sort count -desc }
@@ -214,6 +213,7 @@ function lwt {
   } else {
     "first argument should be the general descriptor of the type of files you're looking for"
   } } # examples in  $MSWin10/QR/CLI/encoding-PowerShell.md
+  # fails on accented filenames
 
 #===> sizes
 function dc { gci | foreach-object { $_.name + ": " + "{0:n2}" -f ((gci $_ -recurse | measure-object length -sum -erroraction silentlycontinue).sum / 1mb) + " mb" } }
@@ -288,6 +288,11 @@ function rgw {
   "- output is in  $rgw"
 } # ripgrep for Windows: rgw <rg_file_group> <unquoted_regex>, eg  rgw tex geometry
 
+#==> movements
+function c { if ( $args[0] ) { sl $args[0] } else { sl .. }; p }  # handily move in or out
+function g { lf -print-last-dir $args | sl } # gokcehan  lf  quits on last viewed directory
+function ~ { sl ~ }
+
 #=> 0 fonts
 function rf {
   $mf0 = "$MSWml\fonts"
@@ -350,6 +355,17 @@ function ip { (iwr "http://ifconfig.me/ip").Content }  # IPv6
 function lanip { ipconfig | where {$_ -match 'IPv4.+\s(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})' } | out-null; $Matches[1] }
 function tc {test-connection 8.8.8.8 -ErrorAction SilentlyContinue}
 function tcg {test-connection google.com -ErrorAction SilentlyContinue}
+function tiobe { & $cITcc/forMSWin/fleschutz-PowerShell/scripts/list-tiobe-index.ps1 }
+
+#==> world
+function leq { & $cITcc/forMSWin/fleschutz-PowerShell/scripts/list-earthquakes.ps1 }
+
+#===> weather
+function lw { & $cITcc/forMSWin/fleschutz-PowerShell/scripts/list-weather.ps1 }
+
+# wttr.in
+function w { & $cITcc/forMSWin/fleschutz-PowerShell/scripts/weather.ps1 }
+function wr { & $cITcc/forMSWin/fleschutz-PowerShell/scripts/weather-report.ps1 }
 function wp { curl wttr.in/Paris }
 
 #==> yt-dlp
@@ -504,11 +520,12 @@ function wl {
 if ( test-path $cITcc )
   { . $cITcc/CP/wfxr-code-minimap/completions/powershell/_code-minimap.ps1 }
 
-#==> $enc
+#==> $Enc
+# Encrypted Changes
 function EC0 {
   $global:EC0r = ''
-  if (!($(gl).path).equals($enc)) {
-    if ( ( test-path $enc ) ) { sl $enc } else { "$enc  ain't there"; $global:EC0r = 'return' } }
+  if (!($(gl).path).equals($Enc)) {
+    if ( ( test-path $Enc ) ) { sl $Enc } else { "$Enc  ain't there"; $global:EC0r = 'return' } }
 }
 function EC1 {
   EC0; if ( $EC0r -eq 'return' ) { return }
@@ -531,7 +548,7 @@ function EC2 {
       $enc7z = gci -path $path | %{ dtsfn $_ '**' }
       $ce7z = gci -path "$core\encrypted\$path" | %{ dtsfn $_ 'dr' }
       $objects = $encContents, $enc7z, $ce7z
-      $encContents = ''  # incase a  $node  directory isn't in  $enc
+      $encContents = ''  # incase a  $node  directory isn't in  $Enc
       $flattened = @($objects | % {$_})  # optional
       $sorted = $flattened | ? { $_ } | sort -uniq  # also removes nulls
       $sorted.replace('C:\Users\jharr\', '').replace('Dropbox\JH\core\encrypted\', '').replace('encrypted\', '')

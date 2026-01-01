@@ -40,15 +40,17 @@ $oldPathCU = (gp hkcu:environment).path; $oldPathCU
 $newPathCU = $oldPathCU -replace ';$', ''; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## fonts - Architects Daughter
-for  $Csst/data-1-sorted/counts.tex
-sl $cITcc\forMSWin\fonts-FontSquirrel\architects-daughter
+for  $Cmdts1/0-adh/counts.sty
+sl $cITcc/forMSWin/fonts-FontSquirrel/architects-daughter
   right-clicked on  ArchitectsDaughter.ttf  to  Installer
 ## fonts DejaVu
-$cITcc\forMSWin\fonts-dejavu-fonts-ttf-2.37\ttf > selected all, right clicked on to Install
+sl $cITcc/forMSWin/fonts-dejavu-fonts-ttf-2_37/ttf > selected all, right clicked on to Install
   arrived in  $HADL\Microsoft\Windows\Fonts
 ## fonts for Pandoc - Noto Sans CJK Regulars
-$coreIT\copied-code\forMSWin\fonts-NotoHinted
-MSWin\fonts-copied\NotoHinted > selected all, right clicked on to Install
+(next time try those in  $cITcc/forMSWin/fonts_google)
+sl $cITcc/forMSWin/fonts-NotoHinted > [
+  NotoSansCJKjp-Regular.otf NotoSansCJKkr-Regular.otf NotoSansCJKsc-Regular.otf NotoSansCJKtc-Regular.otf ]
+    right clicked on to Install
   arrived in  $HADL\Microsoft\Windows\Fonts
 ## Gestionnaire de tâches
 ctrl+shift+esc > Plus de détails > Options > Masquer l'icône réduite
@@ -1250,7 +1252,12 @@ cp $MSn/Thb/profiles.ini $RTh\profiles.ini
 Fastmail Setup 1.0.6.exe
 ## WSL Ubuntu 24.04 LTS - ffmpeg, mpv
 sudo apt install ffmpeg
+## Pygments
+pip install Pygments
 ## waiting
+lazyjournal
+lnav
+toolong
 # physical configuration
 1366x768 screen
 Intel Core i5-6300U
