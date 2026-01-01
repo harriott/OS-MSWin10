@@ -476,6 +476,9 @@ dvdshrink32setup.exe  ran it
 Skype  got it downloaded in
 ## Steam
 Deauram, pw
+## dubious ownership of $MSWin10
+so in there, APS> takeown /f . /r /d o
+in $MSWin10, git pull
 ## waiting
 gokcehan lf configuration
 # physical configuration

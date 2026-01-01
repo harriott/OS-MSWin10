@@ -97,24 +97,24 @@ syli $MSn\lf\lfrc $HADR\lf\lfrc
 # #=> vim flavours - nvim 0 nvim 0 clear
 # if ( test-path $nvim ) { ri -path $nvim -recurse } ; md $nvim\pack
 
-# #=> vim flavours - nvim 0 nvim 1 use
-# syli $vfv/after               $nvim/after
-# syli $vfv/filetype.vim        $nvim/filetype.vim
-# syli $vfv/ftplugin            $nvim/ftplugin
-# syli $vfn/init.vim            $nvim/init.vim
-# syli $vfn/lua                 $nvim/lua
-# syli $vfn/lsp                 $nvim/lsp
-# syli $vfv/packs/packs-colo    $nvim/pack/colo
-# syli $vfv/packs/packs-cp-all  $nvim/pack/cp-all
-# syli $vfv/packs/packs-cp-full $nvim/pack/cp-full
-# syli $vfv/packs/packs-unix    $nvim/pack/unix
-# syli $vfv/packs/packs-win64   $nvim/pack/win64
-# syli $vfv/plugin/packs.vim    $nvim/plugin/packs.vim
-# syli $vfv/plugin/plugin.vim   $nvim/plugin/plugin.vim
-# syli $vfv/spell               $nvim/spell
-# syli $vfv/syntax              $nvim/syntax
-# syli $vfv/thesaurus           $nvim/thesaurus
-#   csl $nvim; csl $nvim/pack
+#=> vim flavours - nvim 0 nvim 1 use
+syli $vfv/after               $nvim/after
+syli $vfv/filetype.vim        $nvim/filetype.vim
+syli $vfv/ftplugin            $nvim/ftplugin
+syli $vfn/init.vim            $nvim/init.vim
+syli $vfn/lua                 $nvim/lua
+syli $vfn/lsp                 $nvim/lsp
+syli $vfv/packs/packs-colo    $nvim/pack/colo
+syli $vfv/packs/packs-cp-all  $nvim/pack/cp-all
+syli $vfv/packs/packs-cp-full $nvim/pack/cp-full
+syli $vfv/packs/packs-unix    $nvim/pack/unix
+syli $vfv/packs/packs-win64   $nvim/pack/win64
+syli $vfv/plugin/packs.vim    $nvim/plugin/packs.vim
+syli $vfv/plugin/plugin.vim   $nvim/plugin/plugin.vim
+syli $vfv/spell               $nvim/spell
+syli $vfv/syntax              $nvim/syntax
+syli $vfv/thesaurus           $nvim/thesaurus
+  csl $nvim; csl $nvim/pack
 
 # #=> vim flavours - vim - vimfiles 0 clear
 # if ( test-path ~\vimfiles ) { ri -path ~\vimfiles -recurse } ; md ~\vimfiles\pack
@@ -142,23 +142,23 @@ syli $MSn\lf\lfrc $HADR\lf\lfrc
 # syli $vfv/thesaurus                     ~/vimfiles/thesaurus
 # csl ~/vimfiles
 
-# #=> vim flavours - vim - vimfiles 1 use
-# syli $vfv/after                ~/vimfiles/after
-# syli $vfv/enter/Win10Paths.vim ~/vimfiles/Win10Paths.vim
-# syli $vfv/filetype.vim         ~/vimfiles/filetype.vim
-# syli $vfv/ftplugin             ~/vimfiles/ftplugin
-# syli $vfv/packs/packs-colo     ~/vimfiles/pack/colo
-# syli $vfv/packs/packs-cp-all   ~/vimfiles/pack/cp-all
-# syli $vfv/packs/packs-cp-full  ~/vimfiles/pack/cp-full
-# syli $vfv/packs/packs-unix     ~/vimfiles/pack/unix
-# syli $vfv/packs/packs-win64    ~/vimfiles/pack/win64
-# syli $vfv/plugin/fzf           ~/vimfiles/plugin/fzf
-# syli $vfv/plugin/packs.vim     ~/vimfiles/plugin/packs.vim
-# syli $vfv/plugin/plugin.vim    ~/vimfiles/plugin/plugin.vim
-# syli $vfv/spell                ~/vimfiles/spell
-# syli $vfv/syntax               ~/vimfiles/syntax
-# syli $vfv/thesaurus            ~/vimfiles/thesaurus
-#   csl ~/vimfiles
+#=> vim flavours - vim - vimfiles 1 use
+syli $vfv/after                ~/vimfiles/after
+syli $vfv/enter/Win10Paths.vim ~/vimfiles/Win10Paths.vim
+syli $vfv/filetype.vim         ~/vimfiles/filetype.vim
+syli $vfv/ftplugin             ~/vimfiles/ftplugin
+syli $vfv/packs/packs-colo     ~/vimfiles/pack/colo
+syli $vfv/packs/packs-cp-all   ~/vimfiles/pack/cp-all
+syli $vfv/packs/packs-cp-full  ~/vimfiles/pack/cp-full
+syli $vfv/packs/packs-unix     ~/vimfiles/pack/unix
+syli $vfv/packs/packs-win64    ~/vimfiles/pack/win64
+syli $vfv/plugin/fzf           ~/vimfiles/plugin/fzf
+syli $vfv/plugin/packs.vim     ~/vimfiles/plugin/packs.vim
+syli $vfv/plugin/plugin.vim    ~/vimfiles/plugin/plugin.vim
+syli $vfv/spell                ~/vimfiles/spell
+syli $vfv/syntax               ~/vimfiles/syntax
+syli $vfv/thesaurus            ~/vimfiles/thesaurus
+  csl ~/vimfiles
 
 # #=> ~\.bashrc
 # syli $MSn/bashrc ~\.bashrc
