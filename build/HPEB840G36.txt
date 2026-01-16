@@ -112,9 +112,6 @@ winget add python.python.3.13 -l C:\Python3
 ### Git
 winget add git.git -l C:\Git  got me  Git for Windows v2.44.0
 ### reconnected to  Jo-X10II
-### sharkdp.fd
-winget add sharkdp.fd
-fixed ; at end of path
 ### previously installed
 7-Zip, AltSnap, Calibre, Everything, eza, fzf, LibreOffice, LSD, Neovide, Neovim, Node.js, Pandoc, ripgrep, Strawberry Perl, Thunderbird, WT
 #### AutoHotkey
@@ -479,8 +476,11 @@ Deauram, pw
 ## dubious ownership of $MSWin10
 so in there, APS> takeown /f . /r /d o
 in $MSWin10, git pull
+## sharkdp.fd
+winget add sharkdp.fd
 ## waiting
 gokcehan lf configuration
+$vfv/getRepos/win64.ps1 $msv
 # physical configuration
 1366x768 screen
 Intel Core i5-6300U

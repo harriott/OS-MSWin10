@@ -1254,6 +1254,11 @@ Fastmail Setup 1.0.6.exe
 sudo apt install ffmpeg
 ## Pygments
 pip install Pygments
+## Dropbox File Explorer context menu gone
+## fix Rclone in $PATH
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU+';C:\Users\jnbh\AppData\Local\Microsoft\WinGet\Packages\Rclone.Rclone_Microsoft.Winget.Source_8wekyb3d8bbwe\rclone-v1.72.1-windows-amd64'; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## waiting
 lazyjournal
 lnav

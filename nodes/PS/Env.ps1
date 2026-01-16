@@ -36,6 +36,7 @@ if ( test-path "~\_noDropbox.ps1" ) {
         $Cwet = "$CfWk\education\technos"
       $Cfzd = "$DJH\work-Cz"
         $CzMa = "$Cfzd\manage"
+          $CzMaEx = "$CzMa\expenses"
         $CzPeo = "$Cfzd\people"
           $Cmdt = "$CzPeo\adherents\dt"
             $Cmd0 = "$Cmdt\data-0-wgetGS"

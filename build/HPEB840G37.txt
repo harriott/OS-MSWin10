@@ -2020,6 +2020,18 @@ winget add Dropbox.Dropbox
   Aucune version de package plus récente n’est disponible à partir des sources configurées.
 winget rm Dropbox.Dropbox  also got me  Échec de la désinstallation
 DropboxInstaller.exe  got it going again
+## WinGet updates
+Windows App Runtime 1.8  kept failing
+## MiKTeX
+  Sorry, but miktex-makemf did not succeed.
+  The log file hopefully contains the information to get MiKTeX going again:
+    C:\Users\jharr\AppData\Local\MiKTeX\miktex\log\miktex-makemf.log
+  Running miktex-hbf2gf.exe...
+  Couldn't open `ArchitectsDaught.cfg'
+## fonts - Architects Daughter
+for  $Cmdts1/0-adh/counts.sty
+sl $cITcc/forMSWin/fonts-FontSquirrel/architects-daughter
+  right-clicked on  ArchitectsDaughter.ttf  to  Installer
 ## waiting
 lazyjournal
 lnav

@@ -1,31 +1,16 @@
 
-; Joseph Harriott - AutoHotkey - jeu 25 juil 2024
+; Joseph Harriott - AutoHotkey - ven 16 janv 2026
 
-; $MSn\AutoHotkey\HPEB840G38.ahk
 ; $MSn\AutoHotkey\AZERTY-HPSmart.ahk
-
-; Reload if changed!
-
-; move a Shortcut of this script into
-;  "$HADR\Microsoft\Windows\Start Menu\Programs\Startup"
-
-; environment variables don't work
-
-; fn+f5/f6 not dimming/brightening screen
-SC112::MsgBox ThisHotkey " was pressed - use win+a for brightness down" ; fn+f7
-SC117::MsgBox ThisHotkey " was pressed - use win+a for brightness up" ; fn+f6
-
-#!a::{
-    ProcessClose "AltSnap.exe"
-    Run "C:\Users\jnbh\AppData\Roaming\AltSnap\AltSnap.exe"
-} ; win+alt+a - open AltSnap
-#!p::Run "wt -d C:\Users\jnbh" ; win+alt+p - PowerShell opened on $home
+; #Include'd by
+;  $MSn\AutoHotkey\HPEB840G37.ahk
+;  $MSn\AutoHotkey\HPEB840G38.ahk
 
 ; 1920x1080 screen
 #^e::{
     WinMaximize "HP Smart ahk_exe ApplicationFrameHost.exe"
     WinActivate "HP Smart ahk_exe ApplicationFrameHost.exe"
-    MouseMove 1817,1012
+    MouseMove 1680,1012
     Click ; on Enregister
     MouseMove 1725,750
     Sleep 500
@@ -38,20 +23,15 @@ SC117::MsgBox ThisHotkey " was pressed - use win+a for brightness up" ; fn+f6
     Click ; on Enregister
     WinRestore "HP Smart ahk_exe ApplicationFrameHost.exe"
 } ; win+ctrl+e  after a scan, brings forward and saves as jpg (works 250510)
-#!n::Run "C:\Program Files\Neovide\neovide.exe --grid 109x62" ; win+alt+n - open Neovide
-#!o::Run "wt --pos 9,9 --size 106,69 -d C:\Users\jnbh"
-; - win+alt+o - a terminal sized ($vfv/enter/gvimrc.vim) for neovim
 #^x::{
     WinMaximize "HP Smart ahk_exe ApplicationFrameHost.exe"
     WinActivate "HP Smart ahk_exe ApplicationFrameHost.exe"
     ; MouseMove 907,275
-    MouseMove 1787,588
+    MouseMove 1794,588
     Click ; on that tiny x
     MouseMove 23,57
     Sleep 1000
     Click ; on that big back arrow
     WinRestore "HP Smart ahk_exe ApplicationFrameHost.exe"
 } ; win+ctrl+x  after saving, brings forward and returns to  Numériser  window (works 250510)
-
-#Include AZERTY.ahk
 

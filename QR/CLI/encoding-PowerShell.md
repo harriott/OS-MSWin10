@@ -698,7 +698,7 @@ prefer `&` where possible
     ls env:  # list the environment variables
 
 ### path
-    $env:path
+    $env:path -split ';'
     (gp 'registry::hkcu\environment' path).path -split ';'
     Get-PathVariable
 
