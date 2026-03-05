@@ -168,6 +168,7 @@ star icon
     sl C:\Windows\Fonts
 
 - `Control Panel > Programs and Features`
+- `ctrl+win+t` PowerToys Always On Top toggle
 - `System Volume Information` can be Deleted
 - `Win+/` PowerToys Shortcut Guide
 - `Win+a` action center, brightness at bottom (Dévélopper)
@@ -203,8 +204,6 @@ star icon
 - function `ftPT`
 
 ## internetworking
-    whois 8.8.8.8
-
 `WiFi icon > Properties` (or `Settings > Network & Internet > WiFi > Hardware properties`)
 
 ### Skype

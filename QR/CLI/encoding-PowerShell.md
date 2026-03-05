@@ -44,7 +44,7 @@ limited to single commands
     $a = '1 a 2 b'
         $a.Split(" ")
         (-split $a)
-    $a = 1,'a',2,'b'; $a[1]; $a[-1]; $a.length
+    $a = 1,'a',2,'b'; $a[1]; $a[-1]; $a.length; $a -join ''
     $a = @(); $a += 'first'; $a += 'second'
     $a = gc <file_to_grab_as_array>
     $array | sort
@@ -70,6 +70,7 @@ limited to single commands
     $b='o'; $b=$b+'o'; $b
     $string.trim()  # removes whitespaces (including newlines) from ends
     'boob' -replace 'b$', ''
+    'Boob' -creplace 'b', ''
     "Hello".Replace('l', 'x').Replace('H', 'Y')
 
 ### match
@@ -86,7 +87,7 @@ limited to single commands
     'hi.there.jpg' -replace '\.([^.]*)', ''     # hi
     'hi.there.jpg' -replace 't([^.]*)', ''      # hi..jpg
     'hi.there.jpg' -replace '\.([^.]*)$', ''    # hi.there
-    'hi:there:jpg' -replace '^.*:', ''       # jpg
+    'hi:there:jpg' -replace '^.*:', ''          # jpg
     'hi:there:jpg' -replace '(.*?):(.*)', '$2'  # there:jpg
 
 `\n` = newline
@@ -166,20 +167,6 @@ no standard aliases
     C:\Strawberry\perl\bin\perl.exe -v
     g $home\.cpanm
 
-## Windows PowerShell - file formats
-    PowerShell command | out-file <file> -encoding utf8BOM  # detected as utf-8
-    PowerShell command > <file>  # detected as latin1
-
-## Windows PowerShell - modules
-    get-installedmodule
-    get-module -listavailable  # details, including old
-    C:\Users\jharr\Documents\WindowsPowerShell\Modules
-    C:\Users\jnbh\OneDrive\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
-
-### paths
-    $Env:PSModulePath -split ';'
-    ~\Documents\WindowsPowerShell\Modules
-
 # executables
     (gcm python | select version | ft -HideTableHeaders | out-string).trim()
     (gp hklm:\software\microsoft\windows\currentversion\uninstall\* ).displayname | sort  # lists removable x64 programs
@@ -194,6 +181,7 @@ no standard aliases
 after piping to `less`, getting weird errors
 
 ## *-Process
+    kill -name Dropbox
     kill -name HP.Smart
 
 ### Get-Process
@@ -271,6 +259,7 @@ otherwise little sign of them
 doesn't find executables in `~\AppData\`
 
 # file contents
+    ((gc -raw <file> ).ToCharArray() | sort -Unique) -join '' # lists all the internal glyphs
     less <someFile>
 
 `seco` (= `Set-Content`) `$MSWin10\PSProfile.ps1`
@@ -292,15 +281,22 @@ aliases: `cat`, `type`
 replace text in files
 
 # file manage
-    fd -utd '\.git$' | %{ rg 'url = ' $_\config }
     ii .  # invoke Explorer on WD
     lsd --help
     mv file dir/file -force
     sl ~ (= set-location C:\Users\$ENV:UserName")
 
+## fd
+    fd -utd '\.git$' | %{ rg 'url = ' $_\config }
+
+errors when piping accented characters
+
 ## investigations
+    $dir = Split-Path -Path $filePath -Parent
+    $pwd | select -expand Path
     dw -?
     dw  # directory counts
+    eza -?
     f  # fzf preview files with bat
     get-filehash <fileForWhichYouWantSHA256>
     gl  # pwd = get-location
@@ -318,11 +314,11 @@ replace text in files
     (ls -s).count
     gal dir
     gal ls
-    ls * | select FullName
-    ls * | select Name
+    Get-ChildItem
+    ls * | select FullName  # absolute path
+    ls * | select Name  # leaf
+    ls -force -s -e .git .git* | select -expand FullName
 
-- `-ad` = `-Directory`
-- `-af` = `-File`
 - `-h` = `-Hidden` only
 - `-Force` = include hidden & system files
 
@@ -347,6 +343,8 @@ takes a regex
 
 #### pure string output
     ls *.pdf | select -expand name
+    ls <path> | select -expand basename
+    ls <path> | select -expand extension
     ls <path> | select -expand FullName
 
 #### recursive lists
@@ -357,10 +355,15 @@ takes a regex
     ls -s -i '* (* conflicted copy *' |%{echo $_.fullname} | ri
     ls -s | ? Name -match <regex>
 
+#### undocumented filters
+- `-ad` = `-Directory`
+- `-af` = `-File`
+
 ### lastwritetime
     ls -file -s | %{ dtsfn $_ ':' } | sort  # all files recursively
     lwp \.ps1
     lwt csv csv
+    lwt gitignore
     lwt doc docs docx odt
     lwt lua lua
     lwt md md
@@ -388,7 +391,8 @@ takes a regex
     $HADR\lf\lfrc
     g $home
 
-by gokcehan
+- by gokcehan
+- can navigate into accented directories, but not quit out of
 
 ## manipulations
     ls -s -i "*.txt" | %{mi $_.fullname ($_.fullname -replace ".txt",'.dw')}  # renames all txt's to dw's
@@ -664,6 +668,7 @@ prefer `&` where possible
 - `$script:var` persists for subsequent function calls
 
 ## if statement
+    if ($reply -ne 'y') { return }
     if (c1) {a1} elseif (c2) {a2} else {a3}
     if ( $n -gt 13 -and $n -lt 55 )
     if ( 5 -eq $n )
@@ -721,6 +726,20 @@ prefer `&` where possible
 # Windows PowerShell
     powershell -noprofile  #  runs  Windows PowerShell
     saps powershell -verb runas  # Administrator
+
+## file formats
+    PowerShell command | out-file <file> -encoding utf8BOM  # detected as utf-8
+    PowerShell command > <file>  # detected as latin1
+
+## modules
+    get-installedmodule
+    get-module -listavailable  # details, including old
+    C:\Users\jharr\Documents\WindowsPowerShell\Modules
+    C:\Users\jnbh\OneDrive\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+
+### paths
+    $Env:PSModulePath -split ';'
+    ~\Documents\WindowsPowerShell\Modules
 
 # WSL
     (ls HKCU:SOFTWARE\Microsoft\Windows\CurrentVersion\Lxss | gp -Name DistributionName).DistributionName

@@ -54,9 +54,9 @@ if ( test-path "~\_noDropbox.ps1" ) {
         $hlth = "$ess\health"
       $FrFa = "$DJH\Jo-F+F"
         $FFIdF = "$FrFa\France\IdF"
+      $cFr = "$DJH\Cop-France"
+        $CFrp = "$cFr\places"
       $JCop = "$DJH\Cop"
-        $cFr = "$JCop\France"
-          $CFrp = "$JCop\France\places"
         $chum = "$JCop\human"  # deprecated
         $JChu = "$JCop\human"  # used in  $TeNo
         $Pr0 = "$JCop\Practical0"
@@ -73,7 +73,9 @@ if ( test-path "~\_noDropbox.ps1" ) {
             $StEr = "$rEr\StudioErmitage"
       $JJt0 = "$DJH\Jo-then0"
         $T0Fr = "$JJt0\world-Europe\France"
+          $T0Frl = "$T0Fr\lieux"
     $DrSh = "$Drpbx\JH\dev-Sh"
+    $ZNc = "$DJH/work-Cz-manage-online-ZNc"
 }
 #===> 0 $HOME
 $Enc = "$home\encrypted"

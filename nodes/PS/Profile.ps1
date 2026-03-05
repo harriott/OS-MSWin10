@@ -29,10 +29,12 @@ function cw {
 }
 
 #==> FFmpeg 0
-function ffa { $f = $args -join ' '
+function ffa {
+  $f = $args -join ' '
   $f = $f.Replace(' -c: a ', ' -c:a ')
   $f = $f.Replace(' -q: v ', ' -q:v ')
-  iex "$f" } # no spaces or () in file names
+  iex "$f"
+  } # no spaces or () in file names
 function ffi { $f = "ffa ffmpeg -hide_banner -i " + $args; iex $f }
 
 #==> ffmpeg 1 trimming
@@ -200,7 +202,7 @@ function lwt {
     $of = 'lwt-'+$args[0]+'.ffl'; "" > $of
     if ( $args[0] -eq 'gitignore' ) {
       'gitignore' >> $of; '' >> $of
-      fd -tf -u -E .git gitignore | %{ ls $_ } | %{ dtsfn $_ ':' } | sort >> $of; "results in $of"
+      ls -force -s -e .git .gitignore | %{ls $_} | %{ dtsfn $_ ':' } | sort >> $of; "results in $of"
     } else {
       if ($args[1]) {
         $args[1]+' '+$args[2]+' '+$args[3] >> $of; '' >> $of
@@ -268,6 +270,7 @@ function sifw1 {
 function ghissues { rgw md 'github\.com.+issues' }
 
 #====> ripgrep
+# $vfv/syntax/rgo.vim
 function rgo { rg --field-match-separator ':::' $args } # rgo -tps '^}' $MSWin10 > "$MSWin10/}.rgo"
 
 function rgw {
@@ -401,8 +404,8 @@ $env:TERM = "xterm-256color"  # $vfn/lua/init.lua
 
 # Backup command history:
 cp (Get-PSReadlineOption).HistorySavePath $MSWml/PSH/$dts.ps1
-#  $coreIT/MSWin/ml-HPEB840G37/PSH
-#  $coreIT/MSWin/ml-HPEB840G38/PSH
+#  g $coreIT/MSWin/ml-HPEB840G37/PSH
+#  g $coreIT/MSWin/ml-HPEB840G38/PSH
 
 if ($PSVersionTable.PSVersion.Major -eq 7) { ipmo Powershell.Chunks }
 
@@ -490,6 +493,8 @@ function stc {
 
 # Pansies coloured line
 function GGrb { Get-Gradient red blue -Flatten | %{Write-Host " " -BackgroundColor $_ -NoNewline} }
+
+sal ff fastfetch
 
 #=> 0 WinGets
 function wgf {

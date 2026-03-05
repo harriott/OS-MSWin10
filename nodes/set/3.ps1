@@ -10,8 +10,9 @@ csl ~\PSProfile.ps1
 # #=> $notDr
 # endi $notDr/GR-NF
 # endi $notDr/GRs
-# syli $misc/notDr/notDr.md $notDr/readme.md
-# syli $misc/notDr/NF.md $notDr/GR-NF/readme.md
+# endi $notDr/ZN-rcl
+# syli $coreIT/notDr/readme.md $notDr/readme.md
+# syli $coreIT/notDr/NF.md $notDr/GR-NF/readme.md
 
 # #=> Disk Usage v1.62
 # cpi $cITcc\forMSWin\DiskUsage\du64.exe $HADL\Microsoft\WindowsApps
@@ -69,11 +70,11 @@ syli $MSn\lf\lfrc $HADR\lf\lfrc
 # #=> Pandoc m4p
 # endi $tex\latex\m4p
 
-# #=> Pandoc\defaults
-# $Pd = "$Pandoc\defaults"; endi $Pd
-# syli $MD4PDF\defaults-toc.yaml "$Pd\md4pdfToC.yaml"
-# syli $MD4PDF/defaults.yaml "$Pd\md4pdf.yaml"
-#   csl $Pandoc\defaults
+#=> Pandoc\defaults
+$Pd = "$Pandoc\defaults"; endi $Pd
+syli $MD4PDF\defaults-toc.yaml "$Pd\md4pdfToC.yaml"
+syli $MD4PDF/defaults.yaml "$Pd\md4pdf.yaml"
+  csl $Pandoc\defaults
 
 # #=> Pandoc\templates
 # $Pt = "$Pandoc\templates"; endi $Pt

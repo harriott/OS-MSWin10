@@ -274,7 +274,7 @@ FSViewerSetup75.exe
 ran it for Esc to offtick
 *.png  Opens with FastStone Image Viewer
 f12 (= Paramètres) > Aperçu >
-[ En boucle  Rotation Auto par tag orientation EXIF > off  Unité par défaut > cm ]
+  [ En boucle > on  Rotation Auto par tag orientation EXIF > off  Unité par défaut > cm ]
 ### Settings
 replaced  PaperSizeList  settings in  $HADR\FastStone\FSIV\FSSettings.db
 with those in  $coreIT\MSWin\FSSettings-PaperSizeList.db
@@ -851,7 +851,7 @@ Applications et fonctionnalités > EpsonNet Print > Désinstaller > ...
 Applications et fonctionnalités > Epson Scan 2 > Désinstaller > ...
 Applications et fonctionnalités > Epson Printer Connection Checker > ...
 epson637525eu.exe (driver v3.01.00) got it working when plugged into USB
-epson661623eu.exe (Epson Software updater v4.6.7.0) and ran it with printer plugged into USB for
+epson661623eu.exe (Epson Software Updater v4.6.7.0) and ran it with printer plugged into USB for
   Pilote d'impression v3.02.00
   Epson Printer Connection Checker v3.4.0.0
   Epson ScanSmart v3.7.10
@@ -2032,11 +2032,54 @@ Windows App Runtime 1.8  kept failing
 for  $Cmdts1/0-adh/counts.sty
 sl $cITcc/forMSWin/fonts-FontSquirrel/architects-daughter
   right-clicked on  ArchitectsDaughter.ttf  to  Installer
+## yt-dlp (and FFmpeg)
+winget add yt-dlp.yt-dlp
+## Windows App Runtime 1.8.4
+  (6/6) Trouvé App Installer [Microsoft.AppInstaller] Version 1.27.440.0
+  ...
+  (2/2) Trouvé Windows App Runtime 1.8 [Microsoft.WindowsAppRuntime.1.8] Version 1.8.4
+  ...
+  Le code de hachage de l’installation a été vérifié avec succès
+  Démarrage du package d’installation... Merci de patienter.
+  ...
+  Une erreur inattendue s'est produite lors de l'exécution de la commande :
+  0x800704c7 : The operation was canceled by the user.
+  Annulé
+## toolong
+PS> pipx install toolong
+  installed package toolong 1.5.0, installed using Python 3.14.3
+  These apps are now globally available - tl.exe
+  Note: 'C:\Users\jharr\.local\bin' is not on your PATH environment variable. These apps will not be globally accessible until your PATH is updated. Run `pipx ensurepath` to automatically add it, or manually modify your PATH in your shell's config file (e.g. ~/.bashrc).
+## FastStone Image Viewer v8.2
+f12 (= Paramètres) > Aperçu >
+  [ En boucle > on  Rotation Auto par tag orientation EXIF > off  Unité par défaut > cm ]
+## PowerToys Always On Top toggle
+Désactvé
+## Epson Software Updater
+winget update --all
+  Epson Software Updater EPSON.SoftwareUpdater 4.6.7   5.0.1.0    winget
+  Échec du programme d’installation avec le code de sortie : 1603
+  $HADL\Packages\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\LocalState\DiagOutputDir\EPSON.SoftwareUpdater.5.0.1.0-26-02-24-14-26-27.log  no more informative
+ESU_469.exe > EPSONFE86A3 (ET-5170 Series) > [
+  Epson Printer Connection Checker v3.4.3
+  Epson Printer Driver Security Support Tool v1.0.1.00
+  Pilote d'impression v3.03.00 ] > Installer > Accepter
+still getting offered  Epson Software Updater v5
+## bottom
+winget add bottom
+## fastfetch
+winget add Fastfetch-cli.Fastfetch
+## PS modules update
+cmu got me  "Admin|PSFzf" | cmu -update -all -allowPrerelease -skipScan
+## pip-review
+pip-review -a
+## qrtool
+winget add qrtool
+## Rclone
+winget add Rclone.Rclone
+md $Env:AppData\rclone
 ## waiting
-lazyjournal
-lnav
 Mise à jour facultatives
-toolong
 # physical configuration
 1920x1080 screen
 Intel Core i5-6300U

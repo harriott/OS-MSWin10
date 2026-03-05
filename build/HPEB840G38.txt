@@ -7,7 +7,6 @@ HP EliteBook 840 G3 barcoded PC117860 (labelled BC PNB 18 by last owner) = HPEB8
 # build - parallel
 Gestionnaire de périphériques > Cartes graphiques > Intel(R) HD Graphics 520
   double-clicked to discover  Pilote > 31.0.101.2111
-waiting: Pansies
 ## AltSnap
 winget add altsnap
   APS> schtasks /create /f /tn "AltSnap onlogon" /tr "$Env:AppData\AltSnap\AltSnap.exe" /sc onlogon /rl highest
@@ -1259,10 +1258,28 @@ pip install Pygments
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
 $newPathCU = $oldPathCU+';C:\Users\jnbh\AppData\Local\Microsoft\WinGet\Packages\Rclone.Rclone_Microsoft.Winget.Source_8wekyb3d8bbwe\rclone-v1.72.1-windows-amd64'; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
+## Thunderbird outdated
+Paramètres > Applications et fonctionnalités > Mozilla Thunderbird (x64 fr) 146.0 > Désinstaller
+  (C:\Program Files\Mozilla Thunderbird) > Désinstaller
+winget add mozilla.thunderbird  got v147.0.1
+## catgoose/nvim-colorizer.lua
+failed to install with duplicate tag  M.cleanup
+## bottom
+winget add bottom
+## fastfetch
+winget add Fastfetch-cli.Fastfetch
+## pip-review
+pip install pip-review
+py -m pip install -U pip
+pip-review -a
+## qrtool
+winget add qrtool
+## PS modules update
+cmu got me  "Admin|Microsoft.PowerShell.PSResourceGet|PSFzf|PSReadLine" | cmu -update -all -allowPrerelease -skipScan
+## toolong
+pipx install toolong  took a while
 ## waiting
-lazyjournal
-lnav
-toolong
+$coreIT/notDr/readme.md
 # physical configuration
 1366x768 screen
 Intel Core i5-6300U
