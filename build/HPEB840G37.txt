@@ -2078,6 +2078,27 @@ winget add qrtool
 ## Rclone
 winget add Rclone.Rclone
 md $Env:AppData\rclone
+## Opera
+winget add XP8CF6S8G2D5T6, signed in
+## MiKTeX
+MiKTeX Console  for 94 updates
+## OBS Studio
+winget add OBSProject.OBSStudio
+Alt+f (= File) > s (= Paramètres) >
+  Apparence > [ Densité > Classique  Style > Classic ]
+  Sortie > Enregistrement > Générer le nom du fichier sans espace
+  Vidéo > Résolution de Sortie 1280x720
+Mélangeur audio > Mic/Aux  off
+Sources > Capture de fenêtre > Propriétés > [ Capture audio (BÉTA) on  Capturer le curseur off ]
+## mpv v0.41.0-296-g24500c5e2
+cp $cITcc/forMSWin/AV/mpv-x86_64-v3-20260311-git-24500c5/mpv.exe $HADL\Microsoft\WindowsApps
+(gi $HADL\Microsoft\WindowsApps\mpv.exe).VersionInfo.FileVersion
+## less-Windows
+winget install jftuga.less
+## add Git to path
+$oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
+$newPathCU = $oldPathCU+';C:\Git'; $newPathCU
+sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## waiting
 Mise à jour facultatives
 # physical configuration

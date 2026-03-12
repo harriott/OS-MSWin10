@@ -131,12 +131,15 @@ no standard aliases
 # encoding
     ~/.rustup/settings.toml
     $MSWin10\nodes\gitconfig
-    C:\Git\usr\bin\perl.exe -v
     C:\msys64\usr\bin\perl.exe -v
     java -jar C:\LanguageTool\languagetool-commandline.jar -h
     java -jar $cITcc\CP\LanguageTool\languagetool-commandline.jar -h
     winget find NodeJS
     lua54.exe -v
+
+# Git
+    C:\Git\usr\bin\perl.exe -v
+    ls -force -s desktop.ini | %{ git rm --cached $_ }
 
 ## MiKTeX
     miktex fndb refresh
@@ -317,6 +320,7 @@ errors when piping accented characters
     Get-ChildItem
     ls * | select FullName  # absolute path
     ls * | select Name  # leaf
+    ls *.odt,*.pdf
     ls -force -s -e .git .git* | select -expand FullName
 
 - `-h` = `-Hidden` only
@@ -324,7 +328,7 @@ errors when piping accented characters
 
 #### recurse
 - `-s` = `-Recurse`
-    - `-e <leaf_glob>` (invokes `-exclude`)
+    - `-e <leaf_glob>` (invokes `-exclude`) no way to exclude subdirectories
 
 ##### -notmatch
     (gci -s).fullname -notmatch 'git\\'
@@ -364,13 +368,13 @@ takes a regex
     lwp \.ps1
     lwt csv csv
     lwt gitignore
-    lwt doc docs docx odt
+    lwt docs doc docx odt
     lwt lua lua
     lwt md md
     lwt ods ods
     lwt ps1 ps1
     lwt sh sh
-    lwt cls sty tex tex
+    lwt tex cls sty tex
     lwt txt txt
 
 ### sizes

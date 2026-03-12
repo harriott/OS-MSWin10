@@ -196,7 +196,7 @@ function dtsfn { $args[0].lastwritetime.ToString('yyyyMMdd-HH:mm:ss')+' '+$args[
 function lwp { gci -r | %{ dtsfn $_ ':' } | out-string -stream | sls $args[0] | sort }
 #  $args[0]  is a regex, something in the filepath
 
-#====> by name
+#====> by extension
 function lwt {
   if ($args[0]) {
     $of = 'lwt-'+$args[0]+'.ffl'; "" > $of
@@ -209,13 +209,15 @@ function lwt {
         $fdfEe = "fd -tf -E copied-code -E copied-reference -e " + $args[1]
         if ($args[2]) { $fdfEe = $fdfEe + ' -e ' + $args[2] }
         if ($args[3]) { $fdfEe = $fdfEe + ' -e ' + $args[3] }
-        iex $fdfEe | %{ ls $_ } | %{ dtsfn $_ ':' } | sort >> $of
+        iex $fdfEe | %{ ls "$_" } | %{ dtsfn $_ ':' } | sort >> $of
         "results in $of"
       } else { "next three arguments are specific file extensions" } }
   } else {
     "first argument should be the general descriptor of the type of files you're looking for"
   } } # examples in  $MSWin10/QR/CLI/encoding-PowerShell.md
-  # fails on accented filenames
+  # fails on
+  #  accented filenames
+  #  contents of  $vfvp/packs-cp-full/opt/vimtex/test/test-get-main/test-ugly-paths
 
 #===> sizes
 function dc { gci | foreach-object { $_.name + ": " + "{0:n2}" -f ((gci $_ -recurse | measure-object length -sum -erroraction silentlycontinue).sum / 1mb) + " mb" } }
@@ -325,7 +327,7 @@ function fi {
   $pIF = "$wd-imageyFlat"
   if ( test-path $pIF ) { ri -r $pIF }
   [void](ni $pIF -type directory)
-  $imagies = gci $wd -r -i *.jpeg,*.jpg,*.png,*.ogv | resolve-path -relative
+  $imagies = gci $wd -r -i *.3gpp,*.avi,*.bmp,*.jfif,*.jpeg,*.jpg,*.mkv,*.png,*.tiff,*.MOV*.ogv | resolve-path -relative
   foreach ($imagey in $imagies) {$imagey.replace('.\','')}
   foreach ($imagey in $imagies) {
     $imageyReady = $imagey.replace('.\','')

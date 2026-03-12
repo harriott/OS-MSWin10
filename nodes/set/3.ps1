@@ -45,7 +45,7 @@ syli $MSn\lf\lfrc $HADR\lf\lfrc
 #   cpi $cITcc\forMSWin\luarocks-3_12_2-windows-64\* C:\Lua
 
 # #=> MiKTeX
-# syli $cITCP\documenting\LaTeX\jo $tex\latex\jo
+# syli $LTXj $tex\latex\jo
 # #  after changes:  miktex fndb refresh
 # #  ii "$tex\latex\jo"
 # #  sl $tex\latex

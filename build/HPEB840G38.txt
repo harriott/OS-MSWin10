@@ -1278,6 +1278,8 @@ winget add qrtool
 cmu got me  "Admin|Microsoft.PowerShell.PSResourceGet|PSFzf|PSReadLine" | cmu -update -all -allowPrerelease -skipScan
 ## toolong
 pipx install toolong  took a while
+## MiniTool Partition Wizard Free v13.6
+allowed
 ## waiting
 $coreIT/notDr/readme.md
 # physical configuration
