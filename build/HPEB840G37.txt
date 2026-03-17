@@ -2101,6 +2101,7 @@ $newPathCU = $oldPathCU+';C:\Git'; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
 ## waiting
 Mise à jour facultatives
+WSL Ubuntu 24.04.4 LTS - Fastfetch
 # physical configuration
 1920x1080 screen
 Intel Core i5-6300U

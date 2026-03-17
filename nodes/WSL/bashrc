@@ -13,7 +13,7 @@ source $OSL/nodes/bashrc-generic
 source $OSL/nodes/bashrc-wm
 
 lnd () { [ -d $2 ] && rm -r $2; ln -sf $1 $2; } # symlink a directory
-[[ $TERM == 'xterm-256color' ]] && neofetch
+[[ $TERM == 'xterm-256color' ]] && fastfetch --color-keys green --logo-color-1 yellow --logo-color-2 blue
 
 o2t () { ods2tsv $1.ods > $1.tsv; }
 # fixes for my Cafézoïde expenses sheets:

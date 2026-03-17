@@ -543,7 +543,7 @@ function EC1 {
   if ( $lll -gt $lrts ) { 'write to last' }
 }
 function EC2 {
-  $encrypted = "actions", "Czm", "digital0", "digital1", "secure0", "secure1", "shg", "stack"
+  $encrypted = "actions", "Czm", "digital0", "digital1", "secure0", "secure1", "shg", "stack", "ZN-rcl"
   EC0; if ( $EC0r -eq 'return' ) { return }
   foreach ($node in $encrypted) {
     ''; scfcdc; $node; scrc

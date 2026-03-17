@@ -121,6 +121,7 @@ scheduled tasks
 - `ctrl+,` = `Settings`
 - `ctrl+shift+n` new window
 - `ctrl+shift+p` commands
+- `ctrl+shift+w` close window
 
 #### panes
 - `alt+D` duplicate pane right

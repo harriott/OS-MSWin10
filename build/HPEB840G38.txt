@@ -1280,8 +1280,11 @@ cmu got me  "Admin|Microsoft.PowerShell.PSResourceGet|PSFzf|PSReadLine" | cmu -u
 pipx install toolong  took a while
 ## MiniTool Partition Wizard Free v13.6
 allowed
+## WSL Ubuntu 24.04.4 LTS - Fastfetch
+sudo add-apt-repository ppa:zhangsongcui3371/fastfetch
+sudo apt update
+sudo apt install fastfetch
 ## waiting
-$coreIT/notDr/readme.md
 # physical configuration
 1366x768 screen
 Intel Core i5-6300U

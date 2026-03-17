@@ -11,7 +11,7 @@ csl ~\PSProfile.ps1
 # endi $notDr/GR-NF
 # endi $notDr/GRs
 # endi $notDr/ZN-rcl
-# syli $coreIT/notDr/readme.md $notDr/readme.md
+# syli $coreIT/notDr/readme.md $notDr/readme.md  # csl $notDr/readme.md
 # syli $coreIT/notDr/NF.md $notDr/GR-NF/readme.md
 
 # #=> Disk Usage v1.62
