@@ -9,7 +9,6 @@ vim: nospell:
     yt-dlp -U  # update inplace
 
 - `ctrl+m` on selected text opens it in `LanguageTool`
-- `Win+Alt+p` PowerToys Command Palette
 - mpv-winbuild/releases
 - Task Scheduler: `taskschd.msc`
 - WinRE
@@ -24,6 +23,35 @@ open with `AutoHotkey Dash` which appears as `AutoHotkey Launcher`
     $MSWin10
     pt '$emd' $Drpbx\JH
     pt '$Pr0' $Drpbx\JH
+
+# documenting - LaTeX
+    g $cITcr\CP\TeX
+
+## Polyglossia
+    \setmainfont{Segoe Print}
+    \setmainfont{Segoe Script}
+    \setmainfont{Trebuchet MS}
+
+# documenting - PDF - Sumatra PDF
+SumatraPDF
+
+## internal commands
+- `ctrl+6` view single pages (`ctrl+-` on AZERTY)
+- `ctrl+7` view facing pages (`ctrl+è` on AZERTY)
+- `ctrl+8` view book mode
+    - `b` fip page (forward only)
+- `ctrl+d` properties
+- `ctrl+k` command palette
+- `ctrl+shift+tab` go to previous tab
+- `ctrl+tab` go to next tab
+- `f12` = Afficher les signets
+- `i` invert colours
+- `r` reload
+- `z` toggle zoom between Fit Page, Fit Width, Fit Content
+
+### AZERTY
+- `=`/`-` zoom in/out
+- `ctrl++` rotate right
 
 # hw - DVD
     DVDFab 13 > Copier > Disque entier > DVD9 > ($HOME\Documents\DVDFab\DVDFab13\Output) > Démarrer
@@ -71,35 +99,6 @@ ExifTool by Phil Harvey
 - `p` Properties/Settings
 - `R` Reopen file
 - `r` rotate right
-
-# documenting - LaTeX
-    g $cITcr\CP\TeX
-
-## Polyglossia
-    \setmainfont{Segoe Print}
-    \setmainfont{Segoe Script}
-    \setmainfont{Trebuchet MS}
-
-# documenting - PDF - Sumatra PDF
-SumatraPDF
-
-## internal commands
-- `ctrl+6` view single pages (`ctrl+-` on AZERTY)
-- `ctrl+7` view facing pages (`ctrl+è` on AZERTY)
-- `ctrl+8` view book mode
-    - `b` fip page (forward only)
-- `ctrl+d` properties
-- `ctrl+k` command palette
-- `ctrl+shift+tab` go to previous tab
-- `ctrl+tab` go to next tab
-- `f12` = Afficher les signets
-- `i` invert colours
-- `r` reload
-- `z` toggle zoom between Fit Page, Fit Width, Fit Content
-
-### AZERTY
-- `=`/`-` zoom in/out
-- `ctrl++` rotate right
 
 # text wrangling
 `Notepad++`: `alt+p > Préférences...`
@@ -177,6 +176,7 @@ star icon
 - `Win+S` Snipping
 - `Win+T` PowerToys Text Extractor
 - `Win+x` > `t` = `Gestion des disques`
+- `Win+Alt+p` PowerToys Command Palette
 
 ## cbh
 `Ctrl+Win+o` toggles visual keyboard in current language
@@ -253,6 +253,8 @@ Gestionnaire de tâches
 - `taskschd.msc` = `Task Scheduler`
 
 ## Windows Package Manager
+    winget pin list
+
 - https://winstall.app/
 - WinGet Client
 

@@ -115,8 +115,6 @@ zig version
 winget add M2Team.NanaZip
 ## Corepack
 APS> corepack enable
-## waiting
-lazygit
 # build - sequential
 Google Chrome somehow there
 ## move from Utilisateur
@@ -2099,8 +2097,21 @@ winget install jftuga.less
 $oldPathCU = (gp 'registry::hkcu\environment' path).path; $oldPathCU
 $newPathCU = $oldPathCU+';C:\Git'; $newPathCU
 sp 'registry::hkcu\environment' -name path -value $newPathCU
+## EPSON.SoftwareUpdater
+winget pin add EPSON.SoftwareUpdater
+## lazygit
+winget add lazygit
+## PowerShell v7.6.0
+not updating from WinGet, neither when run from  WPS
+winget find Microsoft.PowerShell  reporting  v7.6.0.0
+closed Nvim & PS for  PowerShell-7.6.0-win-x64.msi (C:\Program Files\PowerShell\) >
+
+  [ Add 'Open here' context menu to Explorer
+  Add 'Run with PowerShell 7' context menu for PowerShell files ] > Next > Next > UAC > Oui
 ## waiting
+Files
 Mise à jour facultatives
+superfile
 WSL Ubuntu 24.04.4 LTS - Fastfetch
 # physical configuration
 1920x1080 screen

@@ -1,14 +1,15 @@
 
-# Joseph Harriott, dim 30 nov 2025
+# Joseph Harriott, mer 25 mars 2026
 
 # $MSn/PS/Profile.ps1
 #  symlinked in  $MSn/set/2-PSProfile.ps1
 #    then called by  $MSn/PS/ProfileStub.ps1
 
 $dts = (Get-Date).ToString("yyMMdd-HHmmss")
+if ($PSVersionTable.PSVersion.Major -eq 7) { . ~\PSProfile-PS.ps1 }
 sal m mpv
 sal seco set-content  # because  sc  is overridden by  sc.exe
-. ~\PSEnv.ps1  # ($MSWin10\mb\neededNodes-1-PSProfile.ps1)
+. ~\PSEnv.ps1  # ($MSn/set/2-PSProfile.ps1)
 
 function ep {
   $eps = "$MSWml/path"
@@ -319,7 +320,7 @@ function gf {
   'output from  Get-Font  is now in  $MSWml\fonts.GetFont'
 }
 
-ipmo Fonts
+if ($PSVersionTable.PSVersion.Major -eq 7) { ipmo Fonts }
 
 #=> 0 imagey
 function fi {
@@ -472,6 +473,8 @@ if ( ( test-path "$HADL\Microsoft\WinGet\Links\fzf.exe" ) -or ( test-path "$HADL
 }
 
 #=> 0 system
+function ff {fastfetch --color-keys magenta --logo-color-1 red --logo-color-2 blue --logo-color-2 green --logo-color-4 yellow}
+
 function GNFR {
   $FRlist = Get-NetFirewallRule | out-string
   $FRlf = "$MSWml\FirewallRules.txt"
@@ -479,11 +482,6 @@ function GNFR {
   $FRlist.TrimEnd() >> $FRlf
   '' >> $FRlf
 } # as administrator
-
-function pro {
-  Get-Process | sort ws -descending | select-object -first 39 ID,Name,WS,VM,PM,Handles,StartTime
-  | ConvertTo-WPFGrid -Refresh -timeout 10 -Title "Top Processes"
-} # throws up a window
 
 function stc {
   '"Nom de la tâche","Prochaine exécution","Statut"' > $MSWml\schtasks.csv
@@ -495,8 +493,6 @@ function stc {
 
 # Pansies coloured line
 function GGrb { Get-Gradient red blue -Flatten | %{Write-Host " " -BackgroundColor $_ -NoNewline} }
-
-sal ff fastfetch
 
 #=> 0 WinGets
 function wgf {

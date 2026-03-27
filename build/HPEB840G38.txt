@@ -1284,7 +1284,11 @@ allowed
 sudo add-apt-repository ppa:zhangsongcui3371/fastfetch
 sudo apt update
 sudo apt install fastfetch
+## Dropbox refusing to run
+DropboxInstaller.exe  got it going again as v244.4.6580
 ## waiting
+Files
+superfile
 # physical configuration
 1366x768 screen
 Intel Core i5-6300U

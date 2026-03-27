@@ -1,10 +1,11 @@
 # vim: se fdl=2:
 
-# Joseph Harriott, sam 22 nov 2025
+# Joseph Harriott, mer 25 mars 2026
 
 # $MSn\PS\Env.ps1
 #  needed for system build
-#  symlink ($MSn\set\2-PSProfile.ps1) sourced by  $MSn/PS/Profile.ps1
+#  symlinked in  $MSn/set/2-PSProfile.ps1
+#   then called by  $MSn/PS/Profile.ps1
 
 #=> 0 useful variables
 $Cn = $Env:Computername
@@ -72,7 +73,7 @@ if ( test-path "~\_noDropbox.ps1" ) {
           $rEr = "$wP\20e-rueErmitage"
             $StEr = "$rEr\StudioErmitage"
       $JJt0 = "$DJH\Jo-then0"
-        $T0Fr = "$JJt0\world-Europe\France"
+        $T0Fr = "$JJt0\world\Europe\France"
           $T0Frl = "$T0Fr\lieux"
     $DrSh = "$Drpbx\JH\dev-Sh"
     $ZNc = "$DJH/work-Cz-manage-online-ZNc"

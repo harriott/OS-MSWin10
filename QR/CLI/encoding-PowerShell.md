@@ -15,6 +15,7 @@ vim: nospell:
 - `?` (= `where` = `Where-Object`)
 - `Alt > Space > E > L > up/down` to scroll, then `Esc`
 - `continue` returns to the top of a loop a `trap` or a `switch`
+- `gcim` (= `Get-CimInstance`)
 - `gi` (= `Get-Item`)
 - redirection operators: `>`, `>>`, `2>`, `2>>`, `2>&1`
 
@@ -118,16 +119,6 @@ no standard aliases
     Get-Calendar -Month Octobre -Year 2012 -HighlightDate 27/10/2012
     Get-Calendar -Start 1/7/24 -End 3/11/2024
 
-# drives
-    gdr
-    Get-Volume
-
-## registry
-    (gp -path ‘registry::hklm\system\currentcontrolset\control\session manager\environment’ -name path).path; $oldPathLM -split ';'
-    (gp -path ‘registry::hkcu\environment’ -name path).path; $oldPathCU -split ';'
-    gdr -PSProvider Registry | select -Property Name, Root
-    ls HKCU:Printers -Recurse -Depth 1
-
 # encoding
     ~/.rustup/settings.toml
     $MSWin10\nodes\gitconfig
@@ -137,38 +128,53 @@ no standard aliases
     winget find NodeJS
     lua54.exe -v
 
-# Git
+## Git
     C:\Git\usr\bin\perl.exe -v
     ls -force -s desktop.ini | %{ git rm --cached $_ }
 
-## MiKTeX
+### MiKTeX
     miktex fndb refresh
     $HADL\MiKTeX\miktex\log\initexmf.log
     $HADL\MiKTeX\miktex\log\miktex-makemf.log
     $HADL\Programs\MiKTeX\miktex\config\xelatex.ini
 
-## npm
+### npm
     g $HADL\npm-cache\_npx
     g $HADR\npm
 
-## Python
+### Python
     g $HADL\Programs\Python  # winget install
     g $HADR\Python
     winget find python.python  # available versions
 
-## Perl
+### Perl
     where.exe perl
 
-## Perl
+### Perl
     perl -e 'print \"Hello World\"'
     perl -e "print qq(Hello, world!)"
     perl -i -ne 'printf q(%04d %s), $., $_' <file_needing_linenumbers>
     perl -ne 'printf' <file_to_print>
 
-### Strawberry
+#### Strawberry
     $env:TERM="dumb"; cpan
     C:\Strawberry\perl\bin\perl.exe -v
     g $home\.cpanm
+
+# hw - drives
+    gdr
+    Get-Volume
+
+## registry
+    (gp -path ‘registry::hklm\system\currentcontrolset\control\session manager\environment’ -name path).path; $oldPathLM -split ';'
+    (gp -path ‘registry::hkcu\environment’ -name path).path; $oldPathCU -split ';'
+    gdr -PSProvider Registry | select -Property Name, Root
+    ls HKCU:Printers -Recurse -Depth 1
+
+# hw - screen brightness
+    (gcim -Namespace root/WMI -ClassName WmiMonitorBrightness).CurrentBrightness
+    desk.cpl
+    start ms-settings:display
 
 # executables
     (gcm python | select version | ft -HideTableHeaders | out-string).trim()
@@ -177,6 +183,7 @@ no standard aliases
     C:\Windows\explorer.exe "microsoft-edge:searchterm"
     explorer shell:Appsfolder  # Applications
     g $HADLM\WinGet\Packages
+    gcim Win32_StartupCommand | select Name, Command, Location, User | fl
     get-commandsyntax <command>
     get-startapps  # lists AppIDs
     start <somefile>
@@ -645,10 +652,6 @@ prefer `&` where possible
     where.exe irb
     where.exe ruby
 
-# screen brightness
-    desk.cpl
-    start ms-settings:display
-
 # scripts
     $funs = gc "$MSWin10\PSProfile.ps1" | sls -pattern "function\s+([^\s{]+)" | %{ $_.matches.groups[1].value }; $funs -join '  '  # lists function names
     'a','b','c'|%{if($_ -eq 'b'){continue}else{$_}}
@@ -715,7 +718,10 @@ prefer `&` where possible
     $Env:AppData  # C:\Users\...\AppData\Roaming
     ls "$Env:AppData\Pandoc\defaults"
 
-# Thunderbird
+# WAN
+    tracert 8.8.8.8
+
+## Thunderbird
     ps thunderbird
     thunderbird.exe -addressbook  # opens on  Carnet d'adresses  tab
     thunderbird.exe -P
