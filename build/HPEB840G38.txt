@@ -1232,6 +1232,7 @@ was connected with Joseph (Free)
 Skype  got it downloaded in
 ## LuaRocks v3.12.2
 cp $cITcc\forMSWin\luarocks-3_12_2-windows-64\* C:\Lua
+luarocks -h
 ## PowerToys
 winget add Microsoft.PowerToys
 Paramètres PowerToys > Gestion de fichiers >
@@ -1286,9 +1287,31 @@ sudo apt update
 sudo apt install fastfetch
 ## Dropbox refusing to run
 DropboxInstaller.exe  got it going again as v244.4.6580
+## Lua v5.5.0
+(should just  cp) robocopy /mir $cITcc/forMSWin/lua-5_5_0_Win64_bin C:\Lua
+lua55 -v
+## LuaRocks v3.13.0
+cp $cITcc\forMSWin\luarocks-3_13_0-windows-64\* C:\Lua
+luarocks -h
+## Neovim v0.12.0
+from  winget update --all  got me  FontOptions  snag - need to wait for  WinGet to update repository
+:MasonInstall lua-language-server
+  [5/5] "C:/Users/jnbh/AppData/Local/nvim-data/mason/bin/lua-language-server.cmd" is already linked.
+  so Deleted that file and tried again
+  [5/5] "C:/Users/jnbh/AppData/Local/nvim-data/mason/share/mason-schemas/lsp/lua-language-server.json" is already linked.
+  so Deleted that file and tried again, success
+## tree-sitter-cli
+cpi $cITcc/forMSWin/encoding/tree-sitter.exe $HADL\Microsoft\WindowsApps
+cmd> tree-sitter -h
+## Neovim v0.12.0
+:Telescope search_history  become painfully slow...
+## superfile
+winget add yorukot.superfile
+## Firefox v149.0.2
+winget add Mozilla.Firefox.fr
+Signed-in  getting my extensions, Pinned the active ones
+Ctrl+Shift+b = my sync'd Bookmarks Toolbar visible
 ## waiting
-Files
-superfile
 # physical configuration
 1366x768 screen
 Intel Core i5-6300U

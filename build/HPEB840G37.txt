@@ -2105,14 +2105,30 @@ winget add lazygit
 not updating from WinGet, neither when run from  WPS
 winget find Microsoft.PowerShell  reporting  v7.6.0.0
 closed Nvim & PS for  PowerShell-7.6.0-win-x64.msi (C:\Program Files\PowerShell\) >
-
   [ Add 'Open here' context menu to Explorer
   Add 'Run with PowerShell 7' context menu for PowerShell files ] > Next > Next > UAC > Oui
+## WSL Ubuntu 24.04.1 LTS - Fastfetch
+sudo add-apt-repository ppa:zhangsongcui3371/fastfetch
+sudo apt update
+sudo apt install fastfetch
+## Opera
+Paramètres > Au démarrage > Lancer au démarrage de mon ordinateur  décoché
+## superfile
+winget add yorukot.superfile
+## C:\$Recycle.Bin  Deleted
+took a while
+## C:\$SysReset  Deleted
+## C:\$WinREAgent  Deleted
+## Telescope preview of markdown
+  Error executing vim.schedule lua callback: ...a/lazy/telescope.nvim/lua/telescope/previewers/utils.lua:135: attempt to call field 'ft_to_lang' (a nil value)
+  stack traceback:
+	...a/lazy/telescope.nvim/lua/telescope/previewers/utils.lua:135: in function 'ts_highlighter'
+	...a/lazy/telescope.nvim/lua/telescope/previewers/utils.lua:119: in function 'highlighter'
+	...scope.nvim/lua/telescope/previewers/buffer_previewer.lua:247: in function 'fn'
+	vim/_editor.lua:366: in function <vim/_editor.lua:365>
 ## waiting
-Files
+Lua v5.5.0
 Mise à jour facultatives
-superfile
-WSL Ubuntu 24.04.4 LTS - Fastfetch
 # physical configuration
 1920x1080 screen
 Intel Core i5-6300U

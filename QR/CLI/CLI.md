@@ -49,7 +49,11 @@ can paste these into `File Explorer`
     [console]::WindowHeight
     [console]::WindowWidth
 
-# file manage - Robocopy
+# file manage
+    tar -h
+
+## Robocopy
+    robocopy /mir <source> <destination>
     ROBOCOPY.exe
 
 - `/e` subfolders, including empty
@@ -60,7 +64,7 @@ can paste these into `File Explorer`
 - once the source/target are specified, exclude some directories: `/xd '.git' /xd '*packs-*'`
 - `/tee` output to console as well as log file
 
-# file manage - Yazi
+## Yazi
     where.exe yazi
 
 Won't previez anything...

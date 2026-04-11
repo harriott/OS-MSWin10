@@ -536,7 +536,11 @@ function EC1 {
   $lrts = (gc $cel -tail 1).substring(0,17); "last: $lrts" # last recorded time stamp
   $ef = ls -af -s -e *.eml | ? { $_.fullname -notmatch '.git\\' } | sort lastwritetime | %{ dtsfn $_ ':' } # encrypted files
   $lll = $ef[-1].substring(0,17); "here: $lll" # local list last
-  if ( $lll -gt $lrts ) { 'write to last' }
+  if ( $lll -gt $lrts ) {
+    [System.IO.File]::AppendAllText($cel,"# HPEB840G37`n")
+    foreach ($en in $ef) {[System.IO.File]::AppendAllText($cel,"$en`n")}
+    'written to  $core/encrypted/last'
+    }
 }
 function EC2 {
   $encrypted = "actions", "Czm", "digital0", "digital1", "secure0", "secure1", "shg", "stack", "ZN-rcl"

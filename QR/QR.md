@@ -167,6 +167,7 @@ star icon
     sl C:\Windows\Fonts
 
 - `Control Panel > Programs and Features`
+- `Ctrl+Win+d` creates a new desktop, `Ctrl+Win+f4` destroys it
 - `ctrl+win+t` PowerToys Always On Top toggle
 - `System Volume Information` can be Deleted
 - `Win+/` PowerToys Shortcut Guide

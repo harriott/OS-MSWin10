@@ -272,7 +272,13 @@ doesn't find executables in `~\AppData\`
     ((gc -raw <file> ).ToCharArray() | sort -Unique) -join '' # lists all the internal glyphs
     less <someFile>
 
-`seco` (= `Set-Content`) `$MSWin10\PSProfile.ps1`
+## [System.IO.File]::AppendAllText
+    [System.IO.File]::AppendAllText(<file>,"text`n") # appends with LF not CRLF
+    foreach ($item in <array>) {[System.IO.File]::AppendAllText(<file>,"$item`n")}
+
+## Add/Set-Content
+- `-NoNewline`
+- `seco` (= `Set-Content`) `$MSWin10\PSProfile.ps1`
 
 ## Get-Content
     (gc $file | select -skip 3) | seco $file  # removes first 3 lines

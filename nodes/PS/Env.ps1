@@ -97,7 +97,7 @@ $DWp = "$coreIT\DokuWiki\pages"
 $cITcc = "$coreIT\copied-code"
 $cITcr = "$coreIT\copied-reference"
 if ( test-path "~\_noDropbox.ps1" )
-  { $MSWml = "D:\ITJ\ml" } else { $MSWml = "$coreIT\MSWin\ml-$Cn" }
+  { $MSWml = "D:\ITJ\ml" } else { $MSWml = "$coreIT\MSWin\ml-$Cn" } # $coreIT/MSWin
 $onGH = "$coreIT\onGitHub"
   if ( test-path "~\_noDropbox.ps1" )
     { $misc = 'D:\ITJ\gc-misc' } else { $misc = "$onGH\misc" }

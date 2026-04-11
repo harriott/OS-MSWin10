@@ -18,7 +18,7 @@ Ins::SetCapsLockState !GetKeyState("CapsLock", "T")  ; Ins = CapsLock
 
 #!e::Run "msedge.exe" ; win+alt+e - open Edge
 #!h::Reload ; win+alt+h - Reloads this file
-#!i::Run "C:\Vim\vim91\gvim.exe" ; win+alt+i - open gVim
+#!i::Run "C:\Vim\vim92\gvim.exe" ; win+alt+i - open gVim
 #!k::Run "C:\Program Files\KeePassXC\KeePassXC.exe" ; win+alt+k - open KeePassXC
 #!m::Run "C:\Emacs\emacs-28.1\bin\runemacs.exe" ; win+alt+m - open Emacs
 #!v::Run "C:\Program Files\Everything\Everything.exe" ; win+alt+v - open Everything
