@@ -249,6 +249,7 @@ star icon
 Gestionnaire de tâches
 
 ## win+r
+- `appwiz.cpl` = `Add/Remove Programs control`
 - `devmgmt.msc` = `Device Manager` = `Gestionnaire de périphériques`
 - `services.msc` = `Services`
 - `taskschd.msc` = `Task Scheduler`
@@ -303,11 +304,4 @@ Gestionnaire de tâches
     pwsh.exe -nop -c Get-ExecutionPolicy
     win32yank.exe -o  # returns what's in the clipboard
     winget find ubuntu
-
-#### wslu
-    wslfetch  # alternative to  neofetch
-    wslsys  # system info
-    wslvar -L  # --getshell
-    wslvar -S  # --getsys
-    wslview https://wslutiliti.es/wslu/man/wslview.html
 

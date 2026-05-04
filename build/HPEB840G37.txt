@@ -2119,16 +2119,66 @@ winget add yorukot.superfile
 took a while
 ## C:\$SysReset  Deleted
 ## C:\$WinREAgent  Deleted
-## Telescope preview of markdown
+## Neovim: Telescope preview of markdown
   Error executing vim.schedule lua callback: ...a/lazy/telescope.nvim/lua/telescope/previewers/utils.lua:135: attempt to call field 'ft_to_lang' (a nil value)
   stack traceback:
 	...a/lazy/telescope.nvim/lua/telescope/previewers/utils.lua:135: in function 'ts_highlighter'
 	...a/lazy/telescope.nvim/lua/telescope/previewers/utils.lua:119: in function 'highlighter'
 	...scope.nvim/lua/telescope/previewers/buffer_previewer.lua:247: in function 'fn'
 	vim/_editor.lua:366: in function <vim/_editor.lua:365>
+## Neovim: lazy.nvim render.lua snag
+occasionally
+## PowerShell v7.6.0
+not updating from WinGet
+closed Nvim & PS for  PowerShell-7.6.1-win-x64.msi (C:\Program Files\PowerShell\)
+## Ubuntu updates - wslutilities
+  ...
+  Err:7 https://ppa.launchpadcontent.net/wslutilities/wslu/ubuntu noble InRelease
+  ...
+sudo apt remove wslu
+sudo add-apt-repository --remove ppa:wslutilities/wslu
+## Ubuntu updates - zhangsongcui3371
+  ...
+  Err:8 https://ppa.launchpadcontent.net/zhangsongcui3371/fastfetch/ubuntu noble InRelease
+  ...
+went away when  launchpad.net  came back up
+## Neovim
+no longer managed by  WinGet, instead showing:
+  Neovim: ARP\Machine\X64\{075AD9D5-C301-4D8B-9549-5371F0… 0.11.4
+  Neovim: ARP\Machine\X64\{3809FC8B-E640-4C9E-B528-8EE172… 0.10.1
+Paramètres > Applications et fonctionnalités > Neovim 0.11.4
+winget add Neovim.Neovim  got me:
+  Neovim: Neovim.Neovim 0.10.1 winget
+  Neovim: Neovim.Neovim 0.12.2 winget
+so  winget rm Neovim.Neovim -v 0.10.1
+  Échec du programme de désinstallation avec le code de sortie : 1605
+Paramètres > Applications et fonctionnalités > Neovim 0.12.2
+winget rm Neovim.Neovim  still got  Échec du programme de désinstallation avec le code de sortie : 1605
+appwiz.cpl  doesn't list it
+winget uninstall --id Neovim.Neovim --scope machine  still EC 1605, even in APS
+winget uninstall --id Neovim.Neovim --force --disable-interactivity  still EC 1605, even in APS
+APS> sl HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\
+  but no sign of "neovim" therein
+winget rm Neovide.Neovide  then precautionary reboot, still can't get rid of ghost  Neovim 0.10.1
+traces of Ruby, so  Deleted  C:\Ruby34-x64
+winget add RubyInstallerTeam.RubyWithDevKit.4.0  went to  C:/Ruby34-x64
+Deleted  $env:programfiles\Neovim, still there, so  winget source reset, still there, so
+winget upgrade Neovim.Neovim
+  Neovim: Neovim.Neovim 0.10.1 winget
+  Neovim: Neovim.Neovim 0.12.2 winget
+winget rm Neovim.Neovim -v 0.10.1  still EC 1605
+winget add neovide  reboot to get  Neovim  detected but still can't remove ghost  Neovim 0.10.1
+## Dropbox shutting down repeatedly
+Paramètres > Applications et fonctionnalités > Dropbox v250.4.3245 > Désintaller > Désintaller
+DropboxInstaller.exe  got it going again, indexed over 3k files
+## gVim
+Paramètres > Applications et fonctionnalités > Vim v9.1.1868 > Désintaller > Désintaller
+winget add vim.vim -l C:\Vim
 ## waiting
+batcat
 Lua v5.5.0
 Mise à jour facultatives
+Mountain Duck
 # physical configuration
 1920x1080 screen
 Intel Core i5-6300U

@@ -1311,6 +1311,12 @@ winget add yorukot.superfile
 winget add Mozilla.Firefox.fr
 Signed-in  getting my extensions, Pinned the active ones
 Ctrl+Shift+b = my sync'd Bookmarks Toolbar visible
+## keyboard went crazy
+used mouse to launch reboot
+## WSL Ubuntu 24.04 LTS - batcat
+sudo apt install bat
+## Mountain Duck
+winget add mountainduck
 ## waiting
 # physical configuration
 1366x768 screen

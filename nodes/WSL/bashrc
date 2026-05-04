@@ -5,6 +5,7 @@
 
 #  also there is  \\wsl$\Ubuntu\etc\profile
 
+alias b=batcat
 alias u=tmux
 cp ~/.bash_history $MSWml/WSL/bash_history/$(date +%y%m%d-%H%M%S).sh
 source $OSL/nodes/bashrc-clm

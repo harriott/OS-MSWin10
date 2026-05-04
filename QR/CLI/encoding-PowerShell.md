@@ -192,6 +192,7 @@ after piping to `less`, getting weird errors
 
 ## *-Process
     kill -name Dropbox
+    kill -name Everything
     kill -name HP.Smart
 
 ### Get-Process
@@ -391,7 +392,7 @@ takes a regex
     lwt txt txt
 
 ### sizes
-    du64 -l 0 -nobanner
+    du64 -l 0 -nobanner  # crap in French
     Get-GitSize  # when you're in .git's parent directory
 
 #### functions in $MSn\PS\Profile.ps1
@@ -589,6 +590,7 @@ prefer `&` where possible
 
 ## Windows Package Manager
     g $HADL\microsoft\winget\packages
+    g $HADL\Packages\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\LocalState\DiagOutputDir  # logs
     winget --info
     winget add SumatraPDF -h -l C:\SumatraPDF # install (--location, --silent)
     winget find powershell

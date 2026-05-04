@@ -537,13 +537,13 @@ function EC1 {
   $ef = ls -af -s -e *.eml | ? { $_.fullname -notmatch '.git\\' } | sort lastwritetime | %{ dtsfn $_ ':' } # encrypted files
   $lll = $ef[-1].substring(0,17); "here: $lll" # local list last
   if ( $lll -gt $lrts ) {
-    [System.IO.File]::AppendAllText($cel,"# HPEB840G37`n")
+    [System.IO.File]::AppendAllText($cel,"# $Cn`n")
     foreach ($en in $ef) {[System.IO.File]::AppendAllText($cel,"$en`n")}
     'written to  $core/encrypted/last'
     }
 }
 function EC2 {
-  $encrypted = "actions", "Czm", "digital0", "digital1", "secure0", "secure1", "shg", "stack", "ZN-rcl"
+  $encrypted = 'actions', 'Czm', 'Digital0', 'Digital1', 'RGPD', 'Secure0', 'Secure1', 'SHG', 'Stack'
   EC0; if ( $EC0r -eq 'return' ) { return }
   foreach ($node in $encrypted) {
     ''; scfcdc; $node; scrc
@@ -621,7 +621,7 @@ function xx { exit } # quit (doesn't work as an alias) ctrl+d is quicker
 function fcco {Format-Custom -InputObject $args[0] -Expand CoreOnly}
 # - shows summarised layout of array
 function fn { gci | select -ExpandProperty FullName | sort }
-function gvim { & "C:\Vim\vim91\gvim.exe" $args[0] $args[1] $args[2] }
+function gvim { & "C:\Vim\vim92\gvim.exe" $args[0] $args[1] $args[2] }
 function tz { Get-MyTimeInfo -Locations ([ordered]@{"GMT" = "GMT Standard Time"}) -HomeTimeZone "Romance Standard Time" }
 # New-Alias g gm.exe # GraphicsMagick
 New-Alias jpo $onGH\jpgorhor\jpgorhor.ps1

@@ -39,7 +39,7 @@ if ( test-path "~\_noDropbox.ps1" ) {
         $CzMa = "$Cfzd\manage"
           $CzMaEx = "$CzMa\expenses"
         $CzPeo = "$Cfzd\people"
-          $Cmdt = "$CzPeo\adherents\dt"
+          $Cmdt = "$CzPeo\members\data\dt"
             $Cmd0 = "$Cmdt\data-0-wgetGS"
             $Cmd1 = "$Cmdt\data-1-adh"
             $Cmdts = "$Cmdt\scripts"
