@@ -52,6 +52,12 @@ can paste these into `File Explorer`
 # file manage
     tar -h
 
+## Everything ES
+    es.exe -h
+    es.exe -highlight -i -s -w -txt -extension 7z
+    es.exe -get-everything-version
+    es.exe -version
+
 ## Robocopy
     robocopy /mir <source> <destination>
     ROBOCOPY.exe

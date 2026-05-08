@@ -2174,11 +2174,20 @@ DropboxInstaller.exe  got it going again, indexed over 3k files
 ## gVim
 Paramètres > Applications et fonctionnalités > Vim v9.1.1868 > Désintaller > Désintaller
 winget add vim.vim -l C:\Vim
+## WSL Ubuntu 24.04.1 LTS - batcat
+sudo apt install bat
+## Lua v5.5.0
+robocopy /mir $cITcc/forMSWin/encoding/lua-5_5_0_Win64_bin C:\Lua
+lua55 -v
+## LuaRocks v3.13.0
+cp $cITcc\forMSWin\encoding\luarocks-3_13_0-windows-64\* C:\Lua
+luarocks -h
+## Mountain Duck
+winget add mountainduck
+## Everything ES
+winget add voidtools.Everything.Cli  rebooted for  es.exe HPEB840G37
 ## waiting
-batcat
-Lua v5.5.0
 Mise à jour facultatives
-Mountain Duck
 # physical configuration
 1920x1080 screen
 Intel Core i5-6300U
