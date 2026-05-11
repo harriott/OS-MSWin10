@@ -2185,7 +2185,10 @@ luarocks -h
 ## Mountain Duck
 winget add mountainduck
 ## Everything ES
-winget add voidtools.Everything.Cli  rebooted for  es.exe HPEB840G37
+winget add voidtools.Everything.Cli  rebooted for  es.exe -h
+## Dropbox shutting down again
+## localsend
+winget add localsend
 ## waiting
 Mise à jour facultatives
 # physical configuration

@@ -161,17 +161,21 @@ no standard aliases
     C:\Strawberry\perl\bin\perl.exe -v
     g $home\.cpanm
 
-# hw - drives
+# hw
+- `netsh wlan show wlanreport` generates `C:\ProgramData\Microsoft\Windows\WlanReport\wlan-report-latest.html`
+- `powercfg /batteryreport` generates `battery-report.html`
+
+## drives
     gdr
     Get-Volume
 
-## registry
+### registry
     (gp -path ‘registry::hklm\system\currentcontrolset\control\session manager\environment’ -name path).path; $oldPathLM -split ';'
     (gp -path ‘registry::hkcu\environment’ -name path).path; $oldPathCU -split ';'
     gdr -PSProvider Registry | select -Property Name, Root
     ls HKCU:Printers -Recurse -Depth 1
 
-# hw - screen brightness
+## screen brightness
     (gcim -Namespace root/WMI -ClassName WmiMonitorBrightness).CurrentBrightness
     desk.cpl
     start ms-settings:display
@@ -705,6 +709,8 @@ prefer `&` where possible
     winver  # pops up  About Windows
     get-pssessioninfo
     test-iselevated
+
+`APS> shutdown /r /o /f /t 0` reboots into Windows Recovery environment
 
 ## environment variables
     $env:computername

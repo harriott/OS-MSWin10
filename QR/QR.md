@@ -65,6 +65,8 @@ repeat until small enough
 # hw - storage
     Properties > Tools > Error checking > Check (= Error Checking) > Scan and repair drive
 
+`diskmgmt.msc` Disk Management
+
 ## name limitations
 260 characters
 

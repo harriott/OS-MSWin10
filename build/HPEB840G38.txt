@@ -1317,7 +1317,13 @@ used mouse to launch reboot
 sudo apt install bat
 ## Mountain Duck
 winget add mountainduck
+## Everything ES
+winget add voidtools.Everything.Cli  rebooted for  es.exe -h
+## Notepad++
+winget add --name notepad++
+Alt+p (Paramètres) > Préférences > Mode Sombre > Mode sombre
 ## waiting
+localsend
 # physical configuration
 1366x768 screen
 Intel Core i5-6300U
